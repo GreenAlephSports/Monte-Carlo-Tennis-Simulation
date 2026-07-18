@@ -11,6 +11,9 @@ STARTING_ELO = 1500
 K_FACTOR = 32
 SURFACE_FALLBACK_THRESHOLD = 10
 LOOKBACK_YEARS = 5
+# Excludes Wimbledon 2026 (starts 2026-06-29) and anything after, so ratings
+# don't leak the outcome of the tournament they're meant to predict.
+PREDICTION_CUTOFF = pd.Timestamp("2026-06-29")
 
 
 def expected_score(rating_a: float, rating_b: float) -> float:
@@ -18,8 +21,9 @@ def expected_score(rating_a: float, rating_b: float) -> float:
 
 
 def calculate_elo_ratings(df: pd.DataFrame):
-    cutoff = df["Date"].max() - pd.DateOffset(years=LOOKBACK_YEARS)
-    df = df[df["Date"] >= cutoff]
+    df = df[df["Date"] < PREDICTION_CUTOFF]
+    lookback_start = df["Date"].max() - pd.DateOffset(years=LOOKBACK_YEARS)
+    df = df[df["Date"] >= lookback_start]
     df = df.sort_values("Date", kind="stable")
 
     overall_elo = {}
