@@ -20,10 +20,14 @@ def expected_score(rating_a: float, rating_b: float) -> float:
     return 1 / (1 + 10 ** ((rating_b - rating_a) / 400))
 
 
-def calculate_elo_ratings(df: pd.DataFrame):
+def apply_training_window(df: pd.DataFrame) -> pd.DataFrame:
     df = df[df["Date"] < PREDICTION_CUTOFF]
     lookback_start = df["Date"].max() - pd.DateOffset(years=LOOKBACK_YEARS)
-    df = df[df["Date"] >= lookback_start]
+    return df[df["Date"] >= lookback_start]
+
+
+def calculate_elo_ratings(df: pd.DataFrame):
+    df = apply_training_window(df)
     df = df.sort_values("Date", kind="stable")
 
     overall_elo = {}
