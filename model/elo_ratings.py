@@ -4,7 +4,10 @@ import pandas as pd
 
 from data_loader import load_matches
 
-OUTPUT_PATH = Path(__file__).resolve().parent.parent / "output" / "player_elo_ratings.csv"
+ATP_DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "atp_tennis.csv"
+WTA_DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "wta_tennis.csv"
+ATP_OUTPUT_PATH = Path(__file__).resolve().parent.parent / "output" / "player_elo_ratings_atp.csv"
+WTA_OUTPUT_PATH = Path(__file__).resolve().parent.parent / "output" / "player_elo_ratings_wta.csv"
 
 SURFACES = ["Hard", "Clay", "Grass"]
 STARTING_ELO = 1500
@@ -87,13 +90,15 @@ def calculate_elo_ratings(df: pd.DataFrame):
 
 
 if __name__ == "__main__":
-    matches = load_matches()
-    ratings = calculate_elo_ratings(matches)
-    ratings = ratings.sort_values("overall_elo", ascending=False).reset_index(drop=True)
+    for data_path, output_path in [(ATP_DATA_PATH, ATP_OUTPUT_PATH), (WTA_DATA_PATH, WTA_OUTPUT_PATH)]:
+        matches = load_matches(data_path)
+        ratings = calculate_elo_ratings(matches)
+        ratings = ratings.sort_values("overall_elo", ascending=False).reset_index(drop=True)
 
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    ratings.to_csv(OUTPUT_PATH, index=False)
-    print(f"Saved {len(ratings)} player ratings to {OUTPUT_PATH}")
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        ratings.to_csv(output_path, index=False)
+        print(f"Saved {len(ratings)} player ratings to {output_path}")
 
-    print("\nTop 15 players by overall Elo:")
-    print(ratings.head(15).to_string(index=False))
+        print("\nTop 15 players by overall Elo:")
+        print(ratings.head(15).to_string(index=False))
+
