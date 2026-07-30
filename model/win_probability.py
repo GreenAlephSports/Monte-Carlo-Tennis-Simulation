@@ -14,6 +14,7 @@ SURFACE_COLUMNS = {
 }
 
 
+# cache so we're not re-reading the csv on every single matchup lookup during a sim run
 @lru_cache(maxsize=1)
 def _load_ratings() -> pd.DataFrame:
     return pd.read_csv(RATINGS_PATH).set_index("player")
@@ -30,6 +31,7 @@ def get_surface_elo(player: str, surface: str) -> float:
     return ratings.loc[player, SURFACE_COLUMNS[surface]]
 
 
+# just pulls each player's surface-specific elo and updates ratings
 def win_probability(player_a: str, player_b: str, surface: str) -> float:
     elo_a = get_surface_elo(player_a, surface)
     elo_b = get_surface_elo(player_b, surface)

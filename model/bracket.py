@@ -23,14 +23,23 @@ ROUND_NAMES = [
 DRAW_MD_PATH = Path(__file__).resolve().parent.parent / "data" / "wimbledon_2026_draw.md"
 RATINGS_PATH = Path(__file__).resolve().parent.parent / "output" / "player_elo_ratings.csv"
 
+# matches lines from the draw markdown - seed and status (wildcard/qualifier/etc) are both optional
 DRAW_LINE_RE = re.compile(
     r"^\d+\.\s+(?P<lastname>[^,]+),\s+(?P<firstname>[^\[\(]+?)"
     r"\s*(?:\[(?P<seed>\d+)\])?\s*(?:\((?P<status>[A-Z])\))?\s*$"
 )
 
-# A CSV name's trailing "initials" tokens are letters/dots/hyphens containing
-# at least one dot (e.g. "B.", "J-L.", "J.M."); lastname tokens never contain a dot.
+# csv initials always have a dot in them (B., J-L., J.M.)
 INITIALS_TOKEN_RE = re.compile(r"^[A-Za-z](?:[.\-][A-Za-z]*)*\.$")
+
+# manual overrides for players whose draw name and Elo-CSV name don't share a common
+# lastname/initials shape (e.g. csv has an extra surname word, or a different first name
+# entirely) - keyed by normalized (draw lastname, draw firstname). lives in code instead of
+# the csv so it survives elo_ratings.py regenerating player_elo_ratings.csv from scratch.
+MANUAL_NAME_ALIASES = {
+    ("merida", "daniel"): "Merida Aguilar D.",
+    ("vallejo", "adolfo daniel"): "Vallejo D.",
+}
 
 
 def _split_words(text):
@@ -38,7 +47,7 @@ def _split_words(text):
 
 
 def parse_draw(path=DRAW_MD_PATH):
-    """Parse the markdown draw file into a list of 128 entries in bracket order."""
+# reads the draw md file into a list of 128 entries, in bracket order
     entries = []
     with open(path, encoding="utf-8") as f:
         for line in f:
@@ -61,9 +70,8 @@ def _normalize_lastname(text):
 def _initials_from_words(words):
     return "".join(w[0] for w in words).upper()
 
-
+# splits a csv name like "Van De Zandschulp B." into (lastname, initials)
 def _split_csv_name(csv_name):
-    """Split an Elo CSV name like 'Van De Zandschulp B.' into (lastname, initials letters)."""
     tokens = csv_name.split()
     boundary = len(tokens)
     while boundary > 0 and INITIALS_TOKEN_RE.match(tokens[boundary - 1]):
@@ -80,7 +88,7 @@ def _ratings_total_matches(ratings_df):
 
 
 def _build_ratings_index(ratings_df):
-    """Map (normalized lastname, full initials) -> best CSV player name (most total matches wins ties)."""
+# tier 1 lookup table: (lastname, full initials) to csv name, most-played player wins ties
     index = {}
     for csv_name, matches in zip(ratings_df["player"], _ratings_total_matches(ratings_df)):
         key = _split_csv_name(csv_name.strip())
@@ -90,7 +98,6 @@ def _build_ratings_index(ratings_df):
 
 
 def _build_first_initial_index(ratings_df):
-    """Map (normalized lastname, first initial) -> list of candidate CSV player names."""
     index = {}
     for csv_name, matches in zip(ratings_df["player"], _ratings_total_matches(ratings_df)):
         lastname, initials = _split_csv_name(csv_name.strip())
@@ -101,17 +108,13 @@ def _build_first_initial_index(ratings_df):
 
 
 def _lastnames_in_training_window():
-    """Normalized lastnames of every player with at least one match in the current Elo training window."""
     df = apply_training_window(load_matches())
     player_names = pd.concat([df["Player_1"], df["Player_2"]]).unique()
     return {_split_csv_name(name.strip())[0] for name in player_names}
 
 
 def _has_training_history(lastname, known_lastnames):
-    """True if `lastname` matches a known one exactly, or is a whole-word prefix/suffix of one
-    (e.g. draw lastname 'merida' vs CSV's fuller 'merida aguilar') — avoids tier 3 false positives
-    on players whose surname is recorded with more or fewer words than the draw uses.
-    """
+    #true if lastname matches a known one exactly, or is a prefix/suffix of one
     return any(
         known == lastname or known.startswith(lastname + " ") or lastname.startswith(known + " ")
         for known in known_lastnames
@@ -119,12 +122,6 @@ def _has_training_history(lastname, known_lastnames):
 
 
 def match_draw_to_ratings(draw_entries, ratings_df):
-    """Resolve each draw entry to an Elo CSV player name via a 3-tier fallback chain:
-    (1) exact lastname + full initials, (2) lastname + first initial when unambiguous,
-    (3) a fresh STARTING_ELO placeholder for players with zero rows in the training window.
-    Returns (names, resolutions, updated_ratings_df) where resolutions records the tier used
-    (1, 2, 3, or None for unresolved) for every draw entry, in draw order.
-    """
     exact_index = _build_ratings_index(ratings_df)
     first_initial_index = _build_first_initial_index(ratings_df)
     known_lastnames = None  # computed lazily; only needed if tiers 1-2 both miss
@@ -140,15 +137,26 @@ def match_draw_to_ratings(draw_entries, ratings_df):
         firstname_words = _split_words(entry["firstname"])
         full_initials = _initials_from_words(firstname_words)
         first_initial = firstname_words[0][0].upper() if firstname_words else ""
+        firstname_key = " ".join(w.lower() for w in firstname_words)
 
-        csv_name = exact_index.get((lastname, full_initials))
-        tier = 1 if csv_name is not None else None
+        # tier 0: explicit manual alias, checked first since it's a known-correct override.
+        # falls through to the normal tiers if the aliased name isn't in the csv (e.g. it
+        # got renamed upstream) instead of trusting a stale alias.
+        csv_name = MANUAL_NAME_ALIASES.get((lastname, firstname_key))
+        csv_name = csv_name if csv_name in existing_names else None
+        tier = 0 if csv_name is not None else None
+
+        if csv_name is None:
+            csv_name = exact_index.get((lastname, full_initials))
+            tier = 1 if csv_name is not None else None
 
         if csv_name is None:
             candidates = first_initial_index.get((lastname, first_initial), [])
             if len(candidates) == 1:
                 csv_name = candidates[0][0]
                 tier = 2
+
+        # tier 3: only give a fresh STARTING_ELO placeholder if this player genuinely has no matches in the training window 
 
         if csv_name is None:
             if known_lastnames is None:
@@ -184,7 +192,6 @@ def match_draw_to_ratings(draw_entries, ratings_df):
 
 
 def get_matchups(players):
-    """Pair adjacent players in the current round: [p0, p1, p2, p3] -> [(p0, p1), (p2, p3)]."""
     if len(players) % 2 != 0:
         raise ValueError(f"Cannot pair an odd number of players: {len(players)}")
     return list(zip(players[0::2], players[1::2]))
@@ -206,7 +213,6 @@ _ratings_df = pd.read_csv(RATINGS_PATH)
 DRAW, RESOLUTIONS, _updated_ratings_df = match_draw_to_ratings(_draw_entries, _ratings_df)
 UNMATCHED = [r for r in RESOLUTIONS if r["tier"] is None]
 
-# Persist any tier-3 placeholder rows so win_probability.py's own CSV read picks them up too.
 if len(_updated_ratings_df) != len(_ratings_df):
     _updated_ratings_df.to_csv(RATINGS_PATH, index=False)
 
@@ -216,6 +222,7 @@ if __name__ == "__main__":
     print(f"Matched {len(DRAW) - len(UNMATCHED)}/{len(DRAW)} players to Elo ratings")
 
     tier_counts = Counter(r["tier"] for r in RESOLUTIONS)
+    print(f"  Tier 0 (manual alias override): {tier_counts.get(0, 0)}")
     print(f"  Tier 1 (exact lastname + full initials): {tier_counts.get(1, 0)}")
     print(f"  Tier 2 (lastname + first initial, unique candidate): {tier_counts.get(2, 0)}")
     print(f"  Tier 3 (no training-window history, STARTING_ELO placeholder): {tier_counts.get(3, 0)}")
@@ -226,7 +233,7 @@ if __name__ == "__main__":
         print("\nNon-tier-1 matches (review these):")
         for entry in non_tier1:
             seed = f"[{entry['seed']}]" if entry["seed"] else ""
-            tier_label = f"tier {entry['tier']}" if entry["tier"] else "UNRESOLVED"
+            tier_label = f"tier {entry['tier']}" if entry["tier"] is not None else "UNRESOLVED"
             print(f"  [{tier_label}] {entry['lastname']}, {entry['firstname']} {seed} -> {entry['csv_name']}")
 
     if UNMATCHED:

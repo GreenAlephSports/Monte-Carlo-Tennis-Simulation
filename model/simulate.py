@@ -7,10 +7,11 @@ import pandas as pd
 from bracket import DRAW, ROUND_NAMES, SURFACE, get_matchups, validate_draw
 from win_probability import win_probability
 
-N_SIMULATIONS = 10_000
+N_SIMULATIONS = 10000
 OUTPUT_PATH = Path(__file__).resolve().parent.parent / "output" / "wimbledon_2026_simulation_results.csv"
 
 
+# plays out one full random bracket: each round, rng by weighted by win_probability to pick the winner of each matchup, then the winners become next round's field
 def simulate_tournament(draw, surface):
     players = draw
     for _ in ROUND_NAMES:

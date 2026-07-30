@@ -10,6 +10,8 @@ SURFACE = "Grass"
 WIMBLEDON_YEAR = 2026
 
 
+# only round 1 
+# later rounds depend on who wins earlier matches so there's no easier predicatble comparison
 def load_wimbledon_matches():
     df = load_matches()
     return df[
@@ -20,7 +22,7 @@ def load_wimbledon_matches():
 
 
 def implied_probabilities(odd_1, odd_2):
-    """De-vig bookmaker odds into a pair of probabilities that sum to 1."""
+    #gets rid of vig, makes probability total 1
     raw_1 = 1 / odd_1
     raw_2 = 1 / odd_2
     total = raw_1 + raw_2
@@ -32,6 +34,7 @@ def build_comparison(matches):
     skipped = []
     for row in matches.itertuples(index=False):
         p1, p2 = row.Player_1, row.Player_2
+        # if either player isn't in the Elo ratings, skips match and move on
         try:
             model_prob_p1 = win_probability(p1, p2, SURFACE)
         except ValueError as e:
@@ -69,7 +72,7 @@ if __name__ == "__main__":
     comparison[output_columns].to_csv(OUTPUT_PATH, index=False)
     print(f"\nSaved {len(comparison)} player-rows ({len(comparison) // 2} matches) to {OUTPUT_PATH}")
 
-    # One row per match (not both mirrored perspectives) for the printed top 10.
+    # One row per match for the printed top 10.
     biggest_disagreements = comparison.drop_duplicates(subset="match_id").head(10)
     print("\nTop 10 biggest model-vs-market disagreements:")
     print(biggest_disagreements[output_columns].to_string(index=False))

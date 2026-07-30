@@ -5,6 +5,8 @@ import pandas as pd
 DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "atp_tennis.csv"
 
 
+# parse_dates so date is real timestamp
+# date cutoff and loockback window later use this as date
 def load_matches(path: Path = DATA_PATH) -> pd.DataFrame:
     df = pd.read_csv(path, parse_dates=["Date"])
     return df
