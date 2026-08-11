@@ -1,129 +1,129 @@
 player,win_count,tournament_win_probability
-Fritz T.,113,0.113
-Ruud C.,108,0.108
-Djokovic N.,105,0.105
-Jodar R.,85,0.085
-Sinner J.,81,0.081
-Tien L.,76,0.076
-Fonseca J.,33,0.033
-Kokkinakis T.,28,0.028
-Berrettini M.,22,0.022
-De Minaur A.,22,0.022
-Tiafoe F.,22,0.022
-Shelton B.,18,0.018
-Medvedev D.,18,0.018
-Blockx A.,14,0.014
-Navone M.,13,0.013
-Bublik A.,13,0.013
-Lehecka J.,12,0.012
-Zverev A.,12,0.012
-Tirante T.A.,10,0.01
-Paul T.,10,0.01
-Dimitrov G.,10,0.01
-Griekspoor T.,9,0.009
-Kopriva V.,8,0.008
-Hurkacz H.,8,0.008
-Buse I.,7,0.007
-Medjedovic H.,7,0.007
-Fucsovics M.,6,0.006
-Humbert U.,6,0.006
-Davidovich Fokina A.,6,0.006
-Molcan A.,5,0.005
-Nakashima B.,5,0.005
-Prizmic D.,5,0.005
-Diallo G.,5,0.005
-Mannarino A.,4,0.004
-Michelsen A.,4,0.004
-Majchrzak K.,4,0.004
-Shevchenko A.,3,0.003
-Quinn E.,3,0.003
-Carreno Busta P.,3,0.003
-Brooksby J.,3,0.003
-Atmane T.,3,0.003
-Droguet T.,3,0.003
-Khachanov K.,3,0.003
-Giron M.,3,0.003
-Norrie C.,3,0.003
-Collignon R.,3,0.003
-Sonego L.,2,0.002
-Fearnley J.,2,0.002
-Tabilo A.,2,0.002
-Bergs Z.,2,0.002
-Mensik J.,2,0.002
-Cobolli F.,2,0.002
-Etcheverry T. M.,2,0.002
-Damm M.,2,0.002
-Bautista Agut R.,2,0.002
-Cerundolo J.M.,2,0.002
-Vukic A.,2,0.002
-Struff J.L.,2,0.002
-Svrcina D.,2,0.002
-De Jong J.,2,0.002
-Merida Aguilar D.,1,0.001
-Ugo Carabelli C.,1,0.001
-Shapovalov D.,1,0.001
-Boyer T.,1,0.001
-Moutet C.,1,0.001
-Halys Q.,1,0.001
-Altmaier D.,1,0.001
-Arnaldi M.,1,0.001
-Wendelken H.,1,0.001
-Cerundolo F.,1,0.001
-Faria J.,1,0.001
-Virtanen O.,1,0.001
-Sweeny D.,1,0.001
-Harris B.,1,0.001
-Burruchaga R.,1,0.001
-Llamas Ruiz P.,1,0.001
-Hanfmann Y.,1,0.001
-Samuel T.,1,0.001
-Wawrinka S.,1,0.001
-Fils A.,1,0.001
-Lajovic D.,1,0.001
-Zheng M.,1,0.001
-Auger-Aliassime F.,1,0.001
-Walton A.,1,0.001
-Rublev A.,1,0.001
-Rinderknech A.,1,0.001
-Tsitsipas S.,1,0.001
-Wu Y.,1,0.001
-Kwon S.W.,0,0.0
-Landaluce M.,0,0.0
-Mochizuki S.,0,0.0
-Basing M.,0,0.0
-Borges N.,0,0.0
-Kecmanovic M.,0,0.0
-Nava E.,0,0.0
-Gill F.,0,0.0
+Ruud C.,1188,0.1188
+Djokovic N.,1097,0.1097
+Fritz T.,1049,0.1049
+Sinner J.,859,0.0859
+Tien L.,711,0.0711
+Jodar R.,630,0.063
+Fonseca J.,349,0.0349
+Berrettini M.,232,0.0232
+De Minaur A.,228,0.0228
+Kokkinakis T.,208,0.0208
+Tiafoe F.,187,0.0187
+Shelton B.,183,0.0183
+Zverev A.,173,0.0173
+Dimitrov G.,172,0.0172
+Bublik A.,159,0.0159
+Blockx A.,155,0.0155
+Paul T.,135,0.0135
+Medvedev D.,126,0.0126
+Navone M.,98,0.0098
+Tirante T.A.,93,0.0093
+Lehecka J.,93,0.0093
+Majchrzak K.,82,0.0082
+Collignon R.,81,0.0081
+Davidovich Fokina A.,79,0.0079
+Humbert U.,78,0.0078
+Buse I.,74,0.0074
+Hurkacz H.,62,0.0062
+Molcan A.,57,0.0057
+Griekspoor T.,53,0.0053
+Prizmic D.,52,0.0052
+Khachanov K.,51,0.0051
+Rublev A.,51,0.0051
+Kopriva V.,51,0.0051
+Medjedovic H.,48,0.0048
+Arnaldi M.,44,0.0044
+Cerundolo F.,42,0.0042
+Norrie C.,41,0.0041
+Nakashima B.,39,0.0039
+Michelsen A.,33,0.0033
+Giron M.,32,0.0032
+Fucsovics M.,31,0.0031
+Bautista Agut R.,30,0.003
+Mannarino A.,29,0.0029
+Diallo G.,26,0.0026
+Llamas Ruiz P.,26,0.0026
+Cobolli F.,25,0.0025
+Quinn E.,25,0.0025
+Struff J.L.,25,0.0025
+Carreno Busta P.,22,0.0022
+Cilic M.,22,0.0022
+Droguet T.,20,0.002
+Auger-Aliassime F.,18,0.0018
+Tsitsipas S.,18,0.0018
+Fils A.,16,0.0016
+De Jong J.,15,0.0015
+Cerundolo J.M.,15,0.0015
+Wu Y.,15,0.0015
+Ugo Carabelli C.,14,0.0014
+Fery A.,14,0.0014
+Mpetshi Perricard G.,13,0.0013
+Bergs Z.,13,0.0013
+Shevchenko A.,13,0.0013
+Wendelken H.,13,0.0013
+Landaluce M.,12,0.0012
+Damm M.,12,0.0012
+Harris B.,12,0.0012
+Bonzi B.,12,0.0012
+Sonego L.,11,0.0011
+Shimabukuro S.,11,0.0011
+Moutet C.,11,0.0011
+Tabilo A.,11,0.0011
+Brooksby J.,11,0.0011
+Faria J.,10,0.001
+Samuel T.,10,0.001
+Basing M.,10,0.001
+Halys Q.,10,0.001
+Tarvet O.,9,0.0009
+Merida Aguilar D.,9,0.0009
+Fearnley J.,9,0.0009
+Mensik J.,8,0.0008
+Atmane T.,8,0.0008
+Vallejo D.,8,0.0008
+Borges N.,8,0.0008
+Vukic A.,8,0.0008
+Gaubas V.,8,0.0008
+Mcdonald M.,8,0.0008
+Wawrinka S.,8,0.0008
+Burruchaga R.,7,0.0007
+Hijikata R.,7,0.0007
+Altmaier D.,7,0.0007
+Kecmanovic M.,7,0.0007
+Shapovalov D.,6,0.0006
+Pinnington Jones J.,6,0.0006
+Muller A.,5,0.0005
+Zheng M.,5,0.0005
+Rinderknech A.,5,0.0005
+Sweeny D.,5,0.0005
+Virtanen O.,5,0.0005
+Duckworth J.,5,0.0005
+Svajda Z.,5,0.0005
+Darderi L.,4,0.0004
+Walton A.,4,0.0004
+Dzumhur D.,4,0.0004
+Hanfmann Y.,4,0.0004
+Etcheverry T. M.,3,0.0003
+Jacquet K.,3,0.0003
+Marozsan F.,3,0.0003
+Trungelliti M.,3,0.0003
+Mochizuki S.,3,0.0003
+Kovacevic A.,2,0.0002
+Boyer T.,2,0.0002
+Nava E.,2,0.0002
+Kwon S.W.,2,0.0002
+Ofner S.,2,0.0002
+Choinski J.,2,0.0002
+Van De Zandschulp B.,2,0.0002
+Svrcina D.,2,0.0002
+Van Assche L.,2,0.0002
+Safiullin R.,2,0.0002
+Baez S.,1,0.0001
+Munar J.,1,0.0001
+Mejia N.,1,0.0001
+Gill F.,1,0.0001
+Lajovic D.,1,0.0001
+Royer V.,1,0.0001
+Popyrin A.,1,0.0001
 Gaston H.,0,0.0
-Trungelliti M.,0,0.0
-Tarvet O.,0,0.0
-Hijikata R.,0,0.0
-Van De Zandschulp B.,0,0.0
-Kovacevic A.,0,0.0
-Safiullin R.,0,0.0
-Van Assche L.,0,0.0
-Vallejo D.,0,0.0
-Mejia N.,0,0.0
-Marozsan F.,0,0.0
-Ofner S.,0,0.0
-Muller A.,0,0.0
-Pinnington Jones J.,0,0.0
-Baez S.,0,0.0
-Cilic M.,0,0.0
-Darderi L.,0,0.0
-Fery A.,0,0.0
-Dzumhur D.,0,0.0
-Duckworth J.,0,0.0
-Mpetshi Perricard G.,0,0.0
-Svajda Z.,0,0.0
-Shimabukuro S.,0,0.0
 Kypson P.,0,0.0
-Jacquet K.,0,0.0
-Gaubas V.,0,0.0
-Choinski J.,0,0.0
-Bonzi B.,0,0.0
-Mcdonald M.,0,0.0
-Popyrin A.,0,0.0
-Munar J.,0,0.0
-Royer V.,0,0.0

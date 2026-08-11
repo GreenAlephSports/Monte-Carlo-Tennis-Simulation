@@ -72,7 +72,7 @@ def main():
     print("Name matching:")
     print(f"  Tier 0 (manual alias override): {tier_counts.get(0, 0)}")
     print(f"  Tier 1 (exact lastname + full initials): {tier_counts.get(1, 0)}")
-    print(f"  Tier 2 (lastname + first initial, unique candidate): {tier_counts.get(2, 0)}")
+    print(f"  Tier 2 (lastname + first initial, unique candidate or compound-initials match): {tier_counts.get(2, 0)}")
     print(f"  Tier 3 (no training-window history, STARTING_ELO placeholder): {tier_counts.get(3, 0)}")
     print(f"  Unresolved: {tier_counts.get(None, 0)}")
 

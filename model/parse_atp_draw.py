@@ -5,17 +5,22 @@ import sys
 from collections import defaultdict
 from datetime import datetime
 
-HEADER_DATE_RE = re.compile(
+ATP_HEADER_DATE_RE = re.compile(
     r'(?P<start_day>\d{1,2})(?P<start_month>[A-Za-z]+)—'
     r'(?P<end_day>\d{1,2})(?P<end_month>[A-Za-z]+)(?P<year>\d{4})'
-    r'\|.*\|(?P<surface>\w+)'
+    r'\s*\|.*\|\s*(?P<surface>[\w,\-]+)'
+)
+WTA_HEADER_DATE_RE = re.compile(
+    r'(?P<start_day>\d{1,2})-(?P<end_day>\d{1,2})(?P<month>[A-Za-z]+)(?P<year>\d{4})'
+    r'\s*\|.*\|\s*(?P<surface>[\w,\-]+)'
 )
 
 def extract_header(first_page, top_cutoff=55):
-    """Pulls tournament name, location, start date, and surface from the top
-    of page 1 - e.g. 'Omnium Banque Nationale...' / 'Montreal,Canada' /
-    '2August—13August2026|USD9415724|Hard'. Same row-grouping trick as the
-    player list, just restricted to the header region instead of the left column."""
+    """Pulls tournament name, location, start date, and surface from the top of
+    page 1. Handles two known date formats: ATP-style '2August—13August2026'
+    (separate month per day) and WTA-style '1-13August2026' (shared month).
+    Surface can be a comma-separated list (e.g. 'Hard,Har-Tru') - takes the
+    first listed as the primary surface."""
     words = [w for w in first_page.extract_words() if w['top'] < top_cutoff]
     rows = defaultdict(list)
     for w in words:
@@ -27,13 +32,21 @@ def extract_header(first_page, top_cutoff=55):
     location = lines[1] if len(lines) > 1 else None
     start_date, surface = None, None
     for line in lines:
-        m = HEADER_DATE_RE.search(line)
+        m = ATP_HEADER_DATE_RE.search(line)
         if m:
             dt = datetime.strptime(
                 f"{m.group('start_day')} {m.group('start_month')} {m.group('year')}", '%d %B %Y'
             )
             start_date = dt.strftime('%Y-%m-%d')
-            surface = m.group('surface')
+            surface = m.group('surface').split(',')[0]
+            break
+        m = WTA_HEADER_DATE_RE.search(line)
+        if m:
+            dt = datetime.strptime(
+                f"{m.group('start_day')} {m.group('month')} {m.group('year')}", '%d %B %Y'
+            )
+            start_date = dt.strftime('%Y-%m-%d')
+            surface = m.group('surface').split(',')[0]
             break
     return tournament, location, start_date, surface
 
@@ -55,7 +68,7 @@ def extract_left_column(page, x_cutoff=150, y_tolerance=3):
 
 LINE_RE = re.compile(
     r'^(?P<position>\d+)\s*'
-    r'(?:(?P<seed>\d+)\s+|(?P<status>Q|WC|PR|L)\s*)?'
+    r'(?:(?P<seed>\d+)\s*|(?P<status>Q|WC|PR|L)\s*)?'
     r'(?:Bye|(?P<lastname>[A-Z][A-Za-z\-\.\'…]*(?:\s[A-Z][A-Za-z\-\.\'…]*)*),\s*'
     r'(?P<firstname>[A-Za-z\-\.…]+)\s*(?P<country>[A-Z]{3})?)\s*$'
 )
@@ -139,25 +152,40 @@ def to_yaml_players(entries):
     return players
 
 if __name__ == "__main__":
-    with pdfplumber.open(sys.argv[1]) as pdf:
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("pdf_path")
+    parser.add_argument("output_path", nargs="?", default="parsed_draw.yaml")
+    parser.add_argument("--draw-size", type=int, default=128,
+                         help="highest RAW position number printed on the draw sheet, including "
+                              "the empty 'Bye' placeholder rows - NOT the number of real players "
+                              "in the output. These sheets are always numbered on a full 128-slot "
+                              "chart (a Masters/1000 draw with byes still numbers positions up to "
+                              "128; it just has fewer real names than a Slam). Leave this at the "
+                              "default unless the sheet genuinely uses a different max position.")
+    parser.add_argument("--tour", choices=["ATP", "WTA"], required=True,
+                         help="which tour this draw is for - the PDF has no reliable signal for "
+                              "this, so it must be passed explicitly rather than assumed")
+    args = parser.parse_args()
+
+    with pdfplumber.open(args.pdf_path) as pdf:
         tournament, location, start_date, surface = extract_header(pdf.pages[0])
     print(f"Header found: {tournament!r} | {location!r} | starts {start_date!r} | surface {surface!r}")
     if not all([tournament, location, start_date, surface]):
         print("WARNING: header extraction incomplete - check/fill these fields manually in the output YAML")
 
-    entries, missing, unparsed = parse_draw_pdf(sys.argv[1], expected_size=128)
-    print(f"Parsed {len(entries)}/128 expected positions")
+    entries, missing, unparsed = parse_draw_pdf(args.pdf_path, expected_size=args.draw_size)
+    print(f"Parsed {len(entries)}/{args.draw_size} expected positions")
     if missing:
         print(f"MISSING positions: {missing}")
     players = to_yaml_players(entries)
 
     year = int(start_date[:4]) if start_date else 2026
     output = {
-        'tournament': tournament or 'PLACEHOLDER', 'year': year, 'tour': 'ATP',
+        'tournament': tournament or 'PLACEHOLDER', 'year': year, 'tour': args.tour,
         'surface': surface or 'PLACEHOLDER', 'start_date': start_date or 'PLACEHOLDER',
         'draw_size': len(players), 'players': players,
     }
-    out_path = sys.argv[2] if len(sys.argv) > 2 else "parsed_draw.yaml"
-    with open(out_path, 'w') as f:
+    with open(args.output_path, 'w') as f:
         yaml.dump(output, f, sort_keys=False, allow_unicode=True)
-    print(f"Wrote {out_path}")
+    print(f"Wrote {args.output_path}")

@@ -52,6 +52,10 @@ ATP_NAME_ALIASES = {
 }
 
 WTA_NAME_ALIASES = {
+    # only safe while a bracket has exactly one "Wang X."-truncated player - Wang Xiyu and Wang
+    # Xinyu both truncate to "Wang X.", and a single alias can't tell them apart. A draw with
+    # both (e.g. brackets/wta_toronto_2026.yaml) must spell each entry out fully instead
+    # (Wang Xiy. / Wang Xin., matching the ratings csv) rather than relying on this alias.
     "Wang X.": "Wang Xin.",
     "Pliskova K.": "Pliskova Ka.",
     "Osorio C.": "Osorio M.",
@@ -166,6 +170,21 @@ def match_draw_to_ratings(players, ratings_df, name_aliases, match_data_path, cu
             if len(candidates) == 1:
                 csv_name = candidates[0][0]
                 tier = 2
+            elif len(candidates) > 1:
+                # a truncated single-letter query (e.g. "Ruse E." for "Elena-Gabriela") can
+                # still be unambiguous even with multiple first-initial candidates, if those
+                # candidates are just punctuation variants of the same compound initials
+                # (e.g. "Ruse E.G." and "Ruse E-G." both normalize to "EG") - group by full
+                # initials and resolve if they all agree, most-played wins the tiebreak (same
+                # convention as the tier-1 exact index)
+                by_full_initials = {}
+                for candidate_name, match_count in candidates:
+                    candidate_initials = _split_csv_name(candidate_name)[1]
+                    if candidate_initials not in by_full_initials or match_count > by_full_initials[candidate_initials][1]:
+                        by_full_initials[candidate_initials] = (candidate_name, match_count)
+                if len(by_full_initials) == 1:
+                    csv_name = next(iter(by_full_initials.values()))[0]
+                    tier = 2
 
         # tier 3: only give a fresh STARTING_ELO placeholder if this player genuinely has no matches in the training window
 
@@ -295,7 +314,7 @@ if __name__ == "__main__":
     tier_counts = Counter(r["tier"] for r in resolutions)
     print(f"  Tier 0 (manual alias override): {tier_counts.get(0, 0)}")
     print(f"  Tier 1 (exact lastname + full initials): {tier_counts.get(1, 0)}")
-    print(f"  Tier 2 (lastname + first initial, unique candidate): {tier_counts.get(2, 0)}")
+    print(f"  Tier 2 (lastname + first initial, unique candidate or compound-initials match): {tier_counts.get(2, 0)}")
     print(f"  Tier 3 (no training-window history, STARTING_ELO placeholder): {tier_counts.get(3, 0)}")
     print(f"  Unresolved: {tier_counts.get(None, 0)}")
 
