@@ -6,25 +6,28 @@ GreenAleph Sports take-home project. Builds surface-adjusted Elo ratings from hi
 
 - **`data/`** — raw inputs
   - `atp_tennis.csv` / `wta_tennis.csv` — historical match results (players, surface, date, round, bookmaker odds, etc.)
-  - `wimbledon_2026_atp.yaml` / `wimbledon_2026_wta.yaml` — bracket files (see "Bracket YAML format" below)
+  - `wimbledon_2026_atp.yaml` / `wimbledon_2026_wta.yaml` — clean 128-draw bracket files, no byes (see "Bracket YAML format" below)
+- **`brackets/`** — bracket files for events smaller than a clean 128-draw (Masters 1000s etc.), which pad out to 128 slots with byes
+  - `montreal_2026.yaml` — a 96-player draw (64 play Round 1, 32 byes), extracted from the official PDF via `model/parse_atp_draw.py`
 - **`model/`** — the pipeline library, driven by `run_tournament.py`
   - `data_loader.py` — loads match-history CSVs into a DataFrame
   - `elo_ratings.py` — computes overall + per-surface Elo ratings from match history, up to a cutoff date
   - `win_probability.py` — looks up two players' surface Elo and returns a win probability
   - `bracket_schema.py` — YAML bracket schema validation and loading
-  - `bracket.py` — matches bracket player names to Elo ratings (tier-based fallback matching)
-  - `simulate.py` — runs the Monte Carlo tournament simulations over a resolved draw
+  - `bracket.py` — matches bracket player names to Elo ratings (tier-based fallback matching), byes/draw-order helpers
+  - `simulate.py` — runs the Monte Carlo tournament simulations over a resolved draw, byes-aware
   - `ev_comparison.py` — compares model round-1 win probabilities to de-vigged sportsbook odds
+  - `parse_atp_draw.py` — extracts a bracket YAML from an official draw-sheet PDF (position/seed/status/bye per player)
   - `explore_data.py` — scratch script for poking at the raw data, not part of the pipeline
 - **`run_tournament.py`** — single entry point: takes a bracket YAML path and runs the full pipeline (Elo calculation, name matching, simulation) end to end
 - **`output/`** — generated results (created by running the scripts below)
   - `player_elo_ratings_atp.csv` / `player_elo_ratings_wta.csv` — Elo ratings per player, from `run_tournament.py` / `elo_ratings.py`
-  - `wimbledon_2026_simulation_results_atp.csv` / `..._wta.csv` — tournament-win probabilities per player, from `run_tournament.py`
+  - `<tournament>_<year>_simulation_results_<tour>.csv` — tournament-win probabilities per player, from `run_tournament.py`
   - `wimbledon_2026_ev_comparison.csv` — model vs. market probabilities, from `ev_comparison.py`
 
 ## Bracket YAML format
 
-A bracket file fully describes one 128-player draw — no more hand-parsed markdown. Example:
+A bracket file fully describes one draw — no more hand-parsed markdown. Example:
 
 ```yaml
 tournament: Wimbledon
@@ -35,20 +38,31 @@ start_date: 2026-06-29 # Elo ratings only use matches strictly before this date,
 players:
   - seed: 1             # null if unseeded
     name: "Sinner J."   # written in ratings-csv format (Lastname Initials.) — see matching below
-    status: null         # null, or a single uppercase letter: Q = qualifier, W = wildcard, L = lucky loser
+    status: null         # null, or 1-3 uppercase letters: Q = qualifier, WC = wildcard, L = lucky loser, PR = protected ranking, etc.
+    bye: false           # true if this player skips Round 1 and advances straight to Round 2 (see "Byes" below); omit or false for a clean draw
   - seed: null
     name: "Kecmanovic M."
     status: null
-  # ... exactly 128 entries, in bracket order
+  # ... in bracket order (or tag each entry with position: N — see "Byes" below)
 ```
 
-Loading a bracket runs schema validation first and fails with a clear, itemized error if required fields are missing, `surface`/`tour` aren't recognized, `start_date` isn't parseable, or the player list isn't exactly 128 entries. Try it directly:
+Loading a bracket runs schema validation first and fails with a clear, itemized error if required fields are missing, `surface`/`tour` aren't recognized, `start_date` isn't parseable, `status` isn't a valid code, or the player list is empty. Try it directly:
 
 ```
 python model/bracket_schema.py   # (import-only; see run_tournament.py or bracket.py for CLI usage)
 ```
 
 or just run a broken file through `run_tournament.py` — it prints the same validation errors and exits non-zero.
+
+### Byes
+
+Events smaller than a clean 128-draw (Masters 1000s, 96-player events, etc.) are still described as a single bracket file — the players who don't fit evenly into the round just get `bye: true` and skip Round 1 entirely. `run_tournament.py`:
+
+1. Validates the bracket's *shape* right after loading it: the number of non-bye players must be even (they need to pair up), and `bye_count + non_bye_count / 2` — the field size once Round 1 is done — must be a power of two, so Round 2 onward is a normal single-elimination bracket. A malformed count (odd non-bye players, or a Round-2 field that isn't a power of two) fails with a clear error before any Elo work happens.
+2. Each Monte Carlo trial then pairs up **only** the non-bye players for Round 1 (in draw order), simulates that round, and combines the winners with the bye players to form the Round 2 field — which plays out with the same round-by-round logic as any other bracket.
+3. Draw order is normally just the YAML list order. A PDF-extracted bracket (see `model/parse_atp_draw.py`) instead tags every player with an explicit `position` (their slot 1..N in the full bracket) because the source PDF omits the "phantom" opponent row for a bye entirely — when every player in the file has a `position`, that's used as the authoritative draw order instead of trusting the list order.
+
+This is a no-op for a clean draw: zero byes means every player plays Round 1, and the logic reduces to plain single-elimination (verified against `data/wimbledon_2026_atp.yaml` / `..._wta.yaml`, which carry no `bye`/`position` fields at all).
 
 ### Name matching
 
@@ -67,6 +81,7 @@ Requires `pandas` and `pyyaml`. Run the full pipeline for one bracket from the p
 ```
 python run_tournament.py data/wimbledon_2026_atp.yaml
 python run_tournament.py data/wimbledon_2026_wta.yaml --simulations 5000 --output output/custom_results.csv
+python run_tournament.py brackets/montreal_2026.yaml   # 96-player draw with byes
 ```
 
 This recalculates Elo ratings up to the bracket's `start_date`, matches every player name to a rating, writes the ratings CSV, and runs the Monte Carlo simulation — writing results to `output/`.

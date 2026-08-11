@@ -11,7 +11,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "model"))
 
-from bracket import TOUR_CONFIG, match_draw_to_ratings, validate_draw  # noqa: E402
+from bracket import (  # noqa: E402
+    TOUR_CONFIG, match_draw_to_ratings, order_by_draw_position, split_byes, validate_bracket_structure, validate_draw,
+)
 from bracket_schema import BracketValidationError, load_bracket_yaml  # noqa: E402
 from data_loader import load_matches  # noqa: E402
 from elo_ratings import calculate_elo_ratings  # noqa: E402
@@ -39,8 +41,20 @@ def main():
         print(e, file=sys.stderr)
         sys.exit(1)
 
+    # a PDF-extracted bracket carries an explicit draw 'position' per player (some slots are
+    # omitted at the source - a bye's would-be opponent has no row to extract) - reorder by it
+    # when present so Round 1 pairing is correct regardless of the YAML's raw list order
+    players = order_by_draw_position(bracket.players)
+    byes = [p.bye for p in players]
+    try:
+        non_bye_count, bye_count = validate_bracket_structure(byes)
+    except ValueError as e:
+        print(f"{args.bracket_path}: {e}", file=sys.stderr)
+        sys.exit(1)
+
     print(f"Loaded bracket: {bracket.tournament} {bracket.year} ({bracket.tour}, {bracket.surface}) "
-          f"— {len(bracket.players)} players, start date {bracket.start_date.date()}")
+          f"— {len(players)} players ({non_bye_count} play Round 1, {bye_count} bye(s)), "
+          f"start date {bracket.start_date.date()}")
 
     tour_config = TOUR_CONFIG[bracket.tour]
 
@@ -51,7 +65,7 @@ def main():
           f"(cutoff excludes matches on/after this date)")
 
     draw, resolutions, ratings_df = match_draw_to_ratings(
-        bracket.players, ratings_df, tour_config.name_aliases, tour_config.match_data_path, bracket.start_date
+        players, ratings_df, tour_config.name_aliases, tour_config.match_data_path, bracket.start_date
     )
 
     tier_counts = Counter(r["tier"] for r in resolutions)
@@ -75,12 +89,13 @@ def main():
     print(f"Saved Elo ratings to {tour_config.ratings_path}")
 
     validate_draw(draw)
+    non_bye_players, bye_players = split_byes(draw, byes)
 
     output_path = args.output or default_output_path(bracket)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     print()
     simulate_and_report(
-        f"{bracket.tournament} {bracket.year} {bracket.tour}", draw, bracket.surface,
+        f"{bracket.tournament} {bracket.year} {bracket.tour}", draw, non_bye_players, bye_players, bracket.surface,
         tour_config.ratings_path, output_path, n_simulations=args.simulations,
     )
 

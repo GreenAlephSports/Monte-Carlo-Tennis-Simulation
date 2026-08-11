@@ -6,19 +6,27 @@ from pathlib import Path
 
 import pandas as pd
 
-from bracket_schema import DRAW_SIZE, BracketValidationError, load_bracket_yaml
+from bracket_schema import BracketValidationError, load_bracket_yaml
 from data_loader import load_matches
 from elo_ratings import STARTING_ELO, apply_training_window
 
-ROUND_NAMES = [
-    "Round of 128",
-    "Round of 64",
-    "Round of 32",
-    "Round of 16",
-    "Quarterfinals",
-    "Semifinals",
-    "Final",
-]
+# maps the player count in a round to its conventional Grand-Slam-style name; falls back to
+# "Round of N" for any size that doesn't land on one of these (shouldn't happen in practice
+# since round sizes always halve down from a validated bracket size)
+ROUND_NAME_BY_SIZE = {
+    128: "Round of 128",
+    64: "Round of 64",
+    32: "Round of 32",
+    16: "Round of 16",
+    8: "Quarterfinals",
+    4: "Semifinals",
+    2: "Final",
+}
+
+
+def round_name_for_size(size):
+    return ROUND_NAME_BY_SIZE.get(size, f"Round of {size}")
+
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
@@ -39,6 +47,8 @@ INITIALS_TOKEN_RE = re.compile(r"^[A-Za-z](?:[.\-][A-Za-z]*)*\.$")
 ATP_NAME_ALIASES = {
     "Merida D.": "Merida Aguilar D.",
     "Vallejo A.D.": "Vallejo D.",
+    "Vallejo A.": "Vallejo D.",  # single-initial spelling, e.g. from PDF-extracted draws
+    "Tirante T.": "Tirante T.A.",  # single-initial spelling, e.g. from PDF-extracted draws
 }
 
 WTA_NAME_ALIASES = {
@@ -194,6 +204,16 @@ def match_draw_to_ratings(players, ratings_df, name_aliases, match_data_path, cu
     return names, resolutions, ratings_df
 
 
+# draw order is normally just list order, but a PDF-extracted bracket carries an explicit
+# 'position' (bracket slot number) per player because some slots are omitted from the source
+# entirely (the "phantom" opponent of a bye has no row to extract). when every player has a
+# position, that's the authoritative draw order; otherwise trust the YAML's list order as-is.
+def order_by_draw_position(players):
+    if players and all(p.position is not None for p in players):
+        return sorted(players, key=lambda p: p.position)
+    return list(players)
+
+
 def get_matchups(players):
     if len(players) % 2 != 0:
         raise ValueError(f"Cannot pair an odd number of players: {len(players)}")
@@ -201,14 +221,45 @@ def get_matchups(players):
 
 
 def validate_draw(draw):
-    size = len(draw)
-    if size != DRAW_SIZE:
-        raise ValueError(f"Expected a {DRAW_SIZE}-player draw, got {size}")
     if any(player is None for player in draw):
         missing = sum(1 for player in draw if player is None)
         raise ValueError(f"Draw contains {missing} unresolved slot(s) — fix unmatched names before simulating")
-    if len(set(draw)) != size:
+    if len(set(draw)) != len(draw):
         raise ValueError("Draw contains duplicate players")
+
+
+def _is_power_of_two(n):
+    return n > 0 and (n & (n - 1)) == 0
+
+
+# byes let a player skip Round 1 and advance straight to Round 2 - used for draws smaller than a
+# clean power-of-two bracket size (e.g. a 96-player Masters draw padded out with 32 byes). works
+# unchanged for a draw with zero byes (a clean 128-draw like a Grand Slam).
+def split_byes(items, byes):
+    non_bye = [item for item, bye in zip(items, byes) if not bye]
+    bye_items = [item for item, bye in zip(items, byes) if bye]
+    return non_bye, bye_items
+
+
+def validate_bracket_structure(byes):
+    non_bye_count = sum(1 for bye in byes if not bye)
+    bye_count = len(byes) - non_bye_count
+
+    if non_bye_count % 2 != 0:
+        raise ValueError(
+            f"Number of non-bye players must be even to pair up for Round 1, got {non_bye_count} "
+            f"non-bye player(s) (plus {bye_count} bye(s))"
+        )
+
+    round1_result = bye_count + non_bye_count // 2
+    if not _is_power_of_two(round1_result):
+        raise ValueError(
+            f"Not a valid bracket size: Round 1 has {non_bye_count} non-bye players "
+            f"({non_bye_count // 2} matchups) plus {bye_count} bye(s), leaving {round1_result} players "
+            f"for Round 2 onward — {round1_result} is not a power of two"
+        )
+
+    return non_bye_count, bye_count
 
 
 if __name__ == "__main__":
@@ -222,14 +273,22 @@ if __name__ == "__main__":
         print(e)
         sys.exit(1)
 
+    players = order_by_draw_position(bracket.players)
+    byes = [p.bye for p in players]
+    try:
+        validate_bracket_structure(byes)
+    except ValueError as e:
+        print(f"{bracket.source_path}: {e}")
+        sys.exit(1)
+
     tour_config = TOUR_CONFIG[bracket.tour]
     ratings_df = pd.read_csv(tour_config.ratings_path)
     draw, resolutions, _updated_ratings_df = match_draw_to_ratings(
-        bracket.players, ratings_df, tour_config.name_aliases, tour_config.match_data_path, bracket.start_date
+        players, ratings_df, tour_config.name_aliases, tour_config.match_data_path, bracket.start_date
     )
     unmatched = [r for r in resolutions if r["tier"] is None]
 
-    print(f"Parsed {len(bracket.players)} players from {bracket.source_path.name} "
+    print(f"Parsed {len(players)} players from {bracket.source_path.name} "
           f"({bracket.tournament} {bracket.year} {bracket.tour}, {bracket.surface})")
     print(f"Matched {len(draw) - len(unmatched)}/{len(draw)} players to Elo ratings")
 
@@ -255,8 +314,18 @@ if __name__ == "__main__":
             print(f"  {entry['name']} {seed}  (looked for key={entry['expected_key']})")
     else:
         validate_draw(draw)
-        print("\nAll 128 players matched. Draw is ready to simulate.")
-        for round_index, round_name in enumerate(ROUND_NAMES):
-            players_remaining = DRAW_SIZE // (2 ** round_index)
-            print(f"Round {round_index + 1} ({round_name}): {players_remaining} players, "
-                  f"{players_remaining // 2} matchups")
+        non_bye_count, bye_count = validate_bracket_structure(byes)
+        print(f"\nAll {len(draw)} players matched. Draw is ready to simulate.")
+
+        total_round1 = non_bye_count + bye_count
+        bye_note = f", {bye_count} bye(s) advance automatically" if bye_count else ""
+        print(f"Round 1 ({round_name_for_size(total_round1)}): {non_bye_count} players play "
+              f"({non_bye_count // 2} matchups){bye_note}")
+
+        remaining = bye_count + non_bye_count // 2
+        round_number = 2
+        while remaining > 1:
+            print(f"Round {round_number} ({round_name_for_size(remaining)}): {remaining} players, "
+                  f"{remaining // 2} matchups")
+            remaining //= 2
+            round_number += 1

@@ -8,9 +8,10 @@ import yaml
 
 from elo_ratings import SURFACES
 
-DRAW_SIZE = 128
 ALLOWED_TOURS = ("ATP", "WTA")
-STATUS_RE = re.compile(r"^[A-Z]$")
+# 1-3 uppercase letters covers every code actually seen in draw sheets: Q (qualifier),
+# W/WC (wildcard), L (lucky loser), PR (protected ranking), etc.
+STATUS_RE = re.compile(r"^[A-Z]{1,3}$")
 
 REQUIRED_TOP_LEVEL_FIELDS = ("tournament", "year", "tour", "surface", "start_date", "players")
 
@@ -24,6 +25,12 @@ class PlayerEntry:
     seed: Optional[int]
     name: str
     status: Optional[str]
+    bye: bool = False
+    # slot number (1..N) in the full bracket, e.g. from a PDF-extracted draw sheet where some
+    # slots are omitted because they're the "phantom" opponent of a bye. Optional - a hand-written
+    # bracket YAML can omit it entirely and rely on list order instead. When present on every
+    # player, it's used as the authoritative draw order instead of trusting the YAML's list order.
+    position: Optional[int] = None
 
 
 @dataclass(frozen=True)
@@ -55,12 +62,24 @@ def _validate_player(entry, index, errors):
 
     status = entry.get("status")
     if status is not None and (not isinstance(status, str) or not STATUS_RE.match(status)):
-        errors.append(f"{prefix}: 'status' must be a single uppercase letter (e.g. Q, W, L) or null, got {status!r}")
+        errors.append(f"{prefix}: 'status' must be 1-3 uppercase letters (e.g. Q, WC, L, PR) or null, got {status!r}")
         status = None
+
+    bye = entry.get("bye", False)
+    if bye is None:
+        bye = False
+    if not isinstance(bye, bool):
+        errors.append(f"{prefix}: 'bye' must be true/false, got {bye!r}")
+        bye = False
+
+    position = entry.get("position")
+    if position is not None and not isinstance(position, int):
+        errors.append(f"{prefix}: 'position' must be an integer or null, got {position!r}")
+        position = None
 
     if name is None:
         return None
-    return PlayerEntry(seed=seed, name=name.strip(), status=status)
+    return PlayerEntry(seed=seed, name=name.strip(), status=status, bye=bye, position=position)
 
 
 def _validate(data):
@@ -102,13 +121,18 @@ def _validate(data):
                 player = _validate_player(entry, index, errors)
                 if player is not None:
                     players.append(player)
-            if len(players_raw) != DRAW_SIZE:
-                errors.append(f"expected {DRAW_SIZE} players, got {len(players_raw)}")
+            if not players_raw:
+                errors.append("'players' must not be empty")
 
             seeds = [p.seed for p in players if p.seed is not None]
             duplicate_seeds = {seed for seed in seeds if seeds.count(seed) > 1}
             if duplicate_seeds:
                 errors.append(f"duplicate seed value(s): {sorted(duplicate_seeds)}")
+
+            positions = [p.position for p in players if p.position is not None]
+            duplicate_positions = {pos for pos in positions if positions.count(pos) > 1}
+            if duplicate_positions:
+                errors.append(f"duplicate position value(s): {sorted(duplicate_positions)}")
 
     return {
         "tournament": data.get("tournament"),
