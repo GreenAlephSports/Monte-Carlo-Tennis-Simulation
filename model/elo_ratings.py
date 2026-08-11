@@ -14,8 +14,6 @@ STARTING_ELO = 1500
 K_FACTOR = 32
 SURFACE_FALLBACK_THRESHOLD = 10
 LOOKBACK_YEARS = 5
-#Doeasnt include ratings past the wimbeldon start date. Doesnt allow for peeking into the future when calculating ratings
-PREDICTION_CUTOFF = pd.Timestamp("2026-06-29")
 
 
 # standard logistic Elo formula - 400 pt gap = ~91% win chance for the higher rated player to winn
@@ -23,15 +21,18 @@ def expected_score(rating_a: float, rating_b: float) -> float:
     return 1 / (1 + 10 ** ((rating_b - rating_a) / 400))
 
 
-#track current form instead of dragging in ancient match history
-def apply_training_window(df: pd.DataFrame) -> pd.DataFrame:
-    df = df[df["Date"] < PREDICTION_CUTOFF]
+# track current form instead of dragging in ancient match history
+# cutoff_date excludes matches on/after it, so ratings never peek into the future relative to the
+# tournament being predicted - it comes from the bracket file's start_date, not a hardcoded constant
+def apply_training_window(df: pd.DataFrame, cutoff_date) -> pd.DataFrame:
+    cutoff_date = pd.Timestamp(cutoff_date)
+    df = df[df["Date"] < cutoff_date]
     lookback_start = df["Date"].max() - pd.DateOffset(years=LOOKBACK_YEARS)
     return df[df["Date"] >= lookback_start]
 
 
-def calculate_elo_ratings(df: pd.DataFrame):
-    df = apply_training_window(df)
+def calculate_elo_ratings(df: pd.DataFrame, cutoff_date):
+    df = apply_training_window(df, cutoff_date)
     df = df.sort_values("Date", kind="stable")  # elo is path dependent, gotta process in date order
 
     overall_elo = {}
@@ -90,9 +91,21 @@ def calculate_elo_ratings(df: pd.DataFrame):
 
 
 if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="Recalculate Elo ratings from match history up to a cutoff date."
+    )
+    parser.add_argument(
+        "--cutoff-date", required=True,
+        help="Exclude matches on/after this date (YYYY-MM-DD). Normally the target tournament's start_date.",
+    )
+    args = parser.parse_args()
+    cutoff_date = pd.Timestamp(args.cutoff_date)
+
     for data_path, output_path in [(ATP_DATA_PATH, ATP_OUTPUT_PATH), (WTA_DATA_PATH, WTA_OUTPUT_PATH)]:
         matches = load_matches(data_path)
-        ratings = calculate_elo_ratings(matches)
+        ratings = calculate_elo_ratings(matches, cutoff_date)
         ratings = ratings.sort_values("overall_elo", ascending=False).reset_index(drop=True)
 
         output_path.parent.mkdir(parents=True, exist_ok=True)

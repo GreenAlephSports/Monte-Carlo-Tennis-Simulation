@@ -12,6 +12,7 @@ def load_matches(path: Path = DATA_PATH) -> pd.DataFrame:
     return df
 
 
+
 if __name__ == "__main__":
     df = load_matches()
     print(f"Loaded {len(df)} rows from {DATA_PATH}")

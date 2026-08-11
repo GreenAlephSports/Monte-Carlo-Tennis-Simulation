@@ -1,14 +1,14 @@
 import re
+import sys
 from collections import Counter
+from dataclasses import dataclass
 from pathlib import Path
 
 import pandas as pd
 
+from bracket_schema import DRAW_SIZE, BracketValidationError, load_bracket_yaml
 from data_loader import load_matches
 from elo_ratings import STARTING_ELO, apply_training_window
-
-DRAW_SIZE = 128
-SURFACE = "Grass"
 
 ROUND_NAMES = [
     "Round of 128",
@@ -20,36 +20,44 @@ ROUND_NAMES = [
     "Final",
 ]
 
-ATP_DRAW_MD_PATH = Path(__file__).resolve().parent.parent / "data" / "wimbledon_2026_draw.md"
-WTA_DRAW_MD_PATH = Path(__file__).resolve().parent.parent / "data" / "wimbledon_2026_wta_draw.md"
-ATP_RATINGS_PATH = Path(__file__).resolve().parent.parent / "output" / "player_elo_ratings_atp.csv"
-WTA_RATINGS_PATH = Path(__file__).resolve().parent.parent / "output" / "player_elo_ratings_wta.csv"
+DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
 
-ATP_MATCH_DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "atp_tennis.csv"
-WTA_MATCH_DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "wta_tennis.csv"
+ATP_RATINGS_PATH = OUTPUT_DIR / "player_elo_ratings_atp.csv"
+WTA_RATINGS_PATH = OUTPUT_DIR / "player_elo_ratings_wta.csv"
 
-# matches lines from the draw markdown - seed and status (wildcard/qualifier/etc) are both optional
-DRAW_LINE_RE = re.compile(
-    r"^\d+\.\s+(?P<lastname>[^,]+),\s+(?P<firstname>[^\[\(]+?)"
-    r"\s*(?:\[(?P<seed>\d+)\])?\s*(?:\((?P<status>[A-Z])\))?\s*$"
-)
+ATP_MATCH_DATA_PATH = DATA_DIR / "atp_tennis.csv"
+WTA_MATCH_DATA_PATH = DATA_DIR / "wta_tennis.csv"
 
 # csv initials always have a dot in them (B., J-L., J.M.)
 INITIALS_TOKEN_RE = re.compile(r"^[A-Za-z](?:[.\-][A-Za-z]*)*\.$")
 
-# manual overrides for players whose draw name and Elo-CSV name don't share a common
-# lastname/initials shape (e.g. csv has an extra surname word, or a different first name
-# entirely) - keyed by normalized (draw lastname, draw firstname). lives in code instead of
-# the csv so it survives elo_ratings.py regenerating player_elo_ratings.csv from scratch.
+# manual overrides for players whose bracket-file name and Elo-CSV name don't share a common
+# lastname/initials shape (e.g. csv has an extra surname word, or drops a given name entirely) -
+# keyed by the exact name string as written in the bracket YAML. lives in code instead of the csv
+# so it survives elo_ratings.py regenerating the ratings csv from scratch.
 ATP_NAME_ALIASES = {
-    ("merida", "daniel"): "Merida Aguilar D.",
-    ("vallejo", "adolfo daniel"): "Vallejo D.",
+    "Merida D.": "Merida Aguilar D.",
+    "Vallejo A.D.": "Vallejo D.",
 }
 
 WTA_NAME_ALIASES = {
-    ("wang", "xinyu"): "Wang Xin.",
-    ("pliskova", "karolina"): "Pliskova Ka.",
-    ("osorio", "camila"): "Osorio M.",
+    "Wang X.": "Wang Xin.",
+    "Pliskova K.": "Pliskova Ka.",
+    "Osorio C.": "Osorio M.",
+}
+
+
+@dataclass(frozen=True)
+class TourConfig:
+    ratings_path: Path
+    match_data_path: Path
+    name_aliases: dict
+
+
+TOUR_CONFIG = {
+    "ATP": TourConfig(ATP_RATINGS_PATH, ATP_MATCH_DATA_PATH, ATP_NAME_ALIASES),
+    "WTA": TourConfig(WTA_RATINGS_PATH, WTA_MATCH_DATA_PATH, WTA_NAME_ALIASES),
 }
 
 
@@ -57,33 +65,15 @@ def _split_words(text):
     return [w for w in re.split(r"[\s\-]+", text.strip()) if w]
 
 
-def parse_draw(path):
-# reads the draw md file into a list of 128 entries, in bracket order
-    entries = []
-    with open(path, encoding="utf-8") as f:
-        for line in f:
-            match = DRAW_LINE_RE.match(line.strip())
-            if not match:
-                continue
-            entries.append({
-                "lastname": match.group("lastname").strip(),
-                "firstname": match.group("firstname").strip(),
-                "seed": match.group("seed"),
-                "status": match.group("status"),
-            })
-    return entries
-
-
 def _normalize_lastname(text):
     return " ".join(_split_words(text)).lower()
 
 
-def _initials_from_words(words):
-    return "".join(w[0] for w in words).upper()
-
-# splits a csv name like "Van De Zandschulp B." into (lastname, initials)
-def _split_csv_name(csv_name):
-    tokens = csv_name.split()
+# splits a csv-style name like "Van De Zandschulp B." into (lastname, initials).
+# bracket YAML player names are expected in this same format, so this same splitter is used on
+# both sides of the match - that's what makes tier 1 (exact lastname + initials) hit cleanly.
+def _split_csv_name(name):
+    tokens = name.split()
     boundary = len(tokens)
     while boundary > 0 and INITIALS_TOKEN_RE.match(tokens[boundary - 1]):
         boundary -= 1
@@ -118,8 +108,8 @@ def _build_first_initial_index(ratings_df):
     return index
 
 
-def _lastnames_in_training_window(match_data_path):
-    df = apply_training_window(load_matches(match_data_path))
+def _lastnames_in_training_window(match_data_path, cutoff_date):
+    df = apply_training_window(load_matches(match_data_path), cutoff_date)
     player_names = pd.concat([df["Player_1"], df["Player_2"]]).unique()
     return {_split_csv_name(name.strip())[0] for name in player_names}
 
@@ -132,7 +122,7 @@ def _has_training_history(lastname, known_lastnames):
     )
 
 
-def match_draw_to_ratings(draw_entries, ratings_df, name_aliases, match_data_path):
+def match_draw_to_ratings(players, ratings_df, name_aliases, match_data_path, cutoff_date):
     exact_index = _build_ratings_index(ratings_df)
     first_initial_index = _build_first_initial_index(ratings_df)
     known_lastnames = None  # computed lazily; only needed if tiers 1-2 both miss
@@ -143,20 +133,20 @@ def match_draw_to_ratings(draw_entries, ratings_df, name_aliases, match_data_pat
 
     names = []
     resolutions = []
-    for entry in draw_entries:
-        lastname = _normalize_lastname(entry["lastname"])
-        firstname_words = _split_words(entry["firstname"])
-        full_initials = _initials_from_words(firstname_words)
-        first_initial = firstname_words[0][0].upper() if firstname_words else ""
-        firstname_key = " ".join(w.lower() for w in firstname_words)
+    for entry in players:
+        raw_name = entry.name
+        lastname, full_initials = _split_csv_name(raw_name)
+        first_initial = full_initials[0] if full_initials else ""
 
         # tier 0: explicit manual alias, checked first since it's a known-correct override.
         # falls through to the normal tiers if the aliased name isn't in the csv (e.g. it
         # got renamed upstream) instead of trusting a stale alias.
-        csv_name = name_aliases.get((lastname, firstname_key))
+        csv_name = name_aliases.get(raw_name)
         csv_name = csv_name if csv_name in existing_names else None
         tier = 0 if csv_name is not None else None
 
+        # tier 1: bracket names are written in ratings-csv format already, so splitting both
+        # sides the same way (_split_csv_name) usually hits this tier directly.
         if csv_name is None:
             csv_name = exact_index.get((lastname, full_initials))
             tier = 1 if csv_name is not None else None
@@ -167,13 +157,13 @@ def match_draw_to_ratings(draw_entries, ratings_df, name_aliases, match_data_pat
                 csv_name = candidates[0][0]
                 tier = 2
 
-        # tier 3: only give a fresh STARTING_ELO placeholder if this player genuinely has no matches in the training window 
+        # tier 3: only give a fresh STARTING_ELO placeholder if this player genuinely has no matches in the training window
 
         if csv_name is None:
             if known_lastnames is None:
-                known_lastnames = _lastnames_in_training_window(match_data_path)
+                known_lastnames = _lastnames_in_training_window(match_data_path, cutoff_date)
             if not _has_training_history(lastname, known_lastnames):
-                csv_name = f"{lastname.title()} {first_initial}."
+                csv_name = raw_name
                 tier = 3
                 if csv_name not in existing_names:
                     new_rows.append({
@@ -190,7 +180,9 @@ def match_draw_to_ratings(draw_entries, ratings_df, name_aliases, match_data_pat
 
         names.append(csv_name)
         resolutions.append({
-            **entry,
+            "seed": entry.seed,
+            "name": raw_name,
+            "status": entry.status,
             "expected_key": (lastname, full_initials),
             "tier": tier,
             "csv_name": csv_name,
@@ -219,53 +211,50 @@ def validate_draw(draw):
         raise ValueError("Draw contains duplicate players")
 
 
-_draw_entries = parse_draw(ATP_DRAW_MD_PATH)
-_ratings_df = pd.read_csv(ATP_RATINGS_PATH)
-DRAW, RESOLUTIONS, _updated_ratings_df = match_draw_to_ratings(
-    _draw_entries, _ratings_df, ATP_NAME_ALIASES, ATP_MATCH_DATA_PATH
-)
-UNMATCHED = [r for r in RESOLUTIONS if r["tier"] is None]
-
-if len(_updated_ratings_df) != len(_ratings_df):
-    _updated_ratings_df.to_csv(ATP_RATINGS_PATH, index=False)
-
-_wta_draw_entries = parse_draw(WTA_DRAW_MD_PATH)
-_wta_ratings_df = pd.read_csv(WTA_RATINGS_PATH)
-WTA_DRAW, WTA_RESOLUTIONS, _updated_wta_ratings_df = match_draw_to_ratings(
-    _wta_draw_entries, _wta_ratings_df, WTA_NAME_ALIASES, WTA_MATCH_DATA_PATH
-)
-WTA_UNMATCHED = [r for r in WTA_RESOLUTIONS if r["tier"] is None]
-
-if len(_updated_wta_ratings_df) != len(_wta_ratings_df):
-    _updated_wta_ratings_df.to_csv(WTA_RATINGS_PATH, index=False)
-
-
 if __name__ == "__main__":
-    print(f"Parsed {len(_draw_entries)} draw entries from {ATP_DRAW_MD_PATH.name}")
-    print(f"Matched {len(DRAW) - len(UNMATCHED)}/{len(DRAW)} players to Elo ratings")
+    if len(sys.argv) != 2:
+        print("Usage: python bracket.py <bracket.yaml>")
+        sys.exit(1)
 
-    tier_counts = Counter(r["tier"] for r in RESOLUTIONS)
+    try:
+        bracket = load_bracket_yaml(sys.argv[1])
+    except BracketValidationError as e:
+        print(e)
+        sys.exit(1)
+
+    tour_config = TOUR_CONFIG[bracket.tour]
+    ratings_df = pd.read_csv(tour_config.ratings_path)
+    draw, resolutions, _updated_ratings_df = match_draw_to_ratings(
+        bracket.players, ratings_df, tour_config.name_aliases, tour_config.match_data_path, bracket.start_date
+    )
+    unmatched = [r for r in resolutions if r["tier"] is None]
+
+    print(f"Parsed {len(bracket.players)} players from {bracket.source_path.name} "
+          f"({bracket.tournament} {bracket.year} {bracket.tour}, {bracket.surface})")
+    print(f"Matched {len(draw) - len(unmatched)}/{len(draw)} players to Elo ratings")
+
+    tier_counts = Counter(r["tier"] for r in resolutions)
     print(f"  Tier 0 (manual alias override): {tier_counts.get(0, 0)}")
     print(f"  Tier 1 (exact lastname + full initials): {tier_counts.get(1, 0)}")
     print(f"  Tier 2 (lastname + first initial, unique candidate): {tier_counts.get(2, 0)}")
     print(f"  Tier 3 (no training-window history, STARTING_ELO placeholder): {tier_counts.get(3, 0)}")
     print(f"  Unresolved: {tier_counts.get(None, 0)}")
 
-    non_tier1 = [r for r in RESOLUTIONS if r["tier"] != 1]
+    non_tier1 = [r for r in resolutions if r["tier"] != 1]
     if non_tier1:
         print("\nNon-tier-1 matches (review these):")
         for entry in non_tier1:
             seed = f"[{entry['seed']}]" if entry["seed"] else ""
             tier_label = f"tier {entry['tier']}" if entry["tier"] is not None else "UNRESOLVED"
-            print(f"  [{tier_label}] {entry['lastname']}, {entry['firstname']} {seed} -> {entry['csv_name']}")
+            print(f"  [{tier_label}] {entry['name']} {seed} -> {entry['csv_name']}")
 
-    if UNMATCHED:
+    if unmatched:
         print("\nUnmatched names (check spelling/format against the Elo CSV):")
-        for entry in UNMATCHED:
+        for entry in unmatched:
             seed = f"[{entry['seed']}]" if entry["seed"] else ""
-            print(f"  {entry['lastname']}, {entry['firstname']} {seed}  (looked for key={entry['expected_key']})")
+            print(f"  {entry['name']} {seed}  (looked for key={entry['expected_key']})")
     else:
-        validate_draw(DRAW)
+        validate_draw(draw)
         print("\nAll 128 players matched. Draw is ready to simulate.")
         for round_index, round_name in enumerate(ROUND_NAMES):
             players_remaining = DRAW_SIZE // (2 ** round_index)

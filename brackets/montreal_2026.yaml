@@ -1,0 +1,487 @@
+tournament: Montreal Open
+year: 2026
+tour: ATP
+surface: Hard
+start_date: '2026-08-02'
+draw_size: 96
+players:
+- position: 1
+  seed: 1
+  name: Zverev A.
+  bye: true
+  status: null
+- position: 3
+  seed: null
+  name: Sonego L.
+  bye: false
+  status: null
+- position: 4
+  seed: null
+  name: Griekspoor T.
+  bye: false
+  status: null
+- position: 5
+  seed: null
+  name: Mochizuki S.
+  bye: false
+  status: Q
+- position: 6
+  seed: null
+  name: Marozsan F.
+  bye: false
+  status: null
+- position: 8
+  seed: 30
+  name: Arnaldi M.
+  bye: true
+  status: null
+- position: 9
+  seed: 24
+  name: Humbert U.
+  bye: true
+  status: null
+- position: 11
+  seed: null
+  name: Merida D.
+  bye: false
+  status: null
+- position: 12
+  seed: null
+  name: Draxl L.
+  bye: false
+  status: WC
+- position: 13
+  seed: null
+  name: Michelsen A.
+  bye: false
+  status: null
+- position: 14
+  seed: null
+  name: Struff J.
+  bye: false
+  status: null
+- position: 16
+  seed: 16
+  name: Cerundolo F.
+  bye: true
+  status: null
+- position: 17
+  seed: 12
+  name: Tien L.
+  bye: true
+  status: null
+- position: 19
+  seed: null
+  name: Majchrzak K.
+  bye: false
+  status: null
+- position: 20
+  seed: null
+  name: Monfils G.
+  bye: false
+  status: WC
+- position: 21
+  seed: null
+  name: Carrenobusta P.
+  bye: false
+  status: null
+- position: 22
+  seed: null
+  name: Royer V.
+  bye: false
+  status: null
+- position: 24
+  seed: 17
+  name: Paul T.
+  bye: true
+  status: null
+- position: 25
+  seed: 32
+  name: Collignon R.
+  bye: true
+  status: null
+- position: 27
+  seed: null
+  name: Popyrin A.
+  bye: false
+  status: Q
+- position: 28
+  seed: null
+  name: Burruchaga R.
+  bye: false
+  status: null
+- position: 29
+  seed: null
+  name: Chan D.
+  bye: false
+  status: Q
+- position: 30
+  seed: null
+  name: Tirante T.
+  bye: false
+  status: null
+- position: 32
+  seed: 7
+  name: Fritz T.
+  bye: true
+  status: null
+- position: 33
+  seed: 4
+  name: Medvedev D.
+  bye: true
+  status: null
+- position: 35
+  seed: null
+  name: Mpetshiperricard G.
+  bye: false
+  status: null
+- position: 36
+  seed: null
+  name: Vandezandschulp B.
+  bye: false
+  status: null
+- position: 37
+  seed: null
+  name: Hurkacz H.
+  bye: false
+  status: PR
+- position: 38
+  seed: null
+  name: Giron M.
+  bye: false
+  status: Q
+- position: 40
+  seed: 25
+  name: Tabilo A.
+  bye: true
+  status: null
+- position: 41
+  seed: 21
+  name: Khachanov K.
+  bye: true
+  status: null
+- position: 43
+  seed: null
+  name: Atmane T.
+  bye: false
+  status: null
+- position: 44
+  seed: null
+  name: Draper J.
+  bye: false
+  status: WC
+- position: 45
+  seed: null
+  name: Fearnley J.
+  bye: false
+  status: Q
+- position: 46
+  seed: null
+  name: Mannarino A.
+  bye: false
+  status: null
+- position: 48
+  seed: 13
+  name: Mensik J.
+  bye: true
+  status: null
+- position: 49
+  seed: 9
+  name: Ruud C.
+  bye: true
+  status: null
+- position: 51
+  seed: null
+  name: Cerundolo J.
+  bye: false
+  status: null
+- position: 52
+  seed: null
+  name: Medjedovic H.
+  bye: false
+  status: null
+- position: 53
+  seed: null
+  name: Damm M.
+  bye: false
+  status: Q
+- position: 54
+  seed: null
+  name: Tsitsipas S.
+  bye: false
+  status: Q
+- position: 56
+  seed: 22
+  name: Fonseca J.
+  bye: true
+  status: null
+- position: 57
+  seed: 31
+  name: Bergs Z.
+  bye: true
+  status: null
+- position: 59
+  seed: null
+  name: Baez S.
+  bye: false
+  status: null
+- position: 60
+  seed: null
+  name: Bellucci M.
+  bye: false
+  status: null
+- position: 61
+  seed: null
+  name: Walton A.
+  bye: false
+  status: Q
+- position: 62
+  seed: null
+  name: Brooksby J.
+  bye: false
+  status: null
+- position: 64
+  seed: 5
+  name: Shelton B.
+  bye: true
+  status: null
+- position: 65
+  seed: 8
+  name: Lehecka J.
+  bye: true
+  status: null
+- position: 67
+  seed: null
+  name: Galarneau A.
+  bye: false
+  status: WC
+- position: 68
+  seed: null
+  name: Kopriva V.
+  bye: false
+  status: null
+- position: 69
+  seed: null
+  name: Munar J.
+  bye: false
+  status: null
+- position: 70
+  seed: null
+  name: Hijikata R.
+  bye: false
+  status: null
+- position: 72
+  seed: 27
+  name: Blockx A.
+  bye: true
+  status: null
+- position: 73
+  seed: 20
+  name: Jodar R.
+  bye: true
+  status: null
+- position: 75
+  seed: null
+  name: Fucsovics M.
+  bye: false
+  status: null
+- position: 76
+  seed: null
+  name: Moutet C.
+  bye: false
+  status: null
+- position: 77
+  seed: null
+  name: Mejia N.
+  bye: false
+  status: Q
+- position: 78
+  seed: null
+  name: Andaluce M.
+  bye: false
+  status: L
+- position: 80
+  seed: 11
+  name: Musetti L.
+  bye: true
+  status: null
+- position: 81
+  seed: 14
+  name: Vacherot V.
+  bye: true
+  status: null
+- position: 83
+  seed: null
+  name: Berrettini M.
+  bye: false
+  status: null
+- position: 84
+  seed: null
+  name: Navone M.
+  bye: false
+  status: null
+- position: 85
+  seed: null
+  name: Svajda Z.
+  bye: false
+  status: null
+- position: 86
+  seed: null
+  name: Shapovalov D.
+  bye: false
+  status: null
+- position: 88
+  seed: 18
+  name: Fils A.
+  bye: true
+  status: null
+- position: 89
+  seed: 29
+  name: Buse I.
+  bye: true
+  status: null
+- position: 91
+  seed: null
+  name: Ugocarabelli C.
+  bye: false
+  status: null
+- position: 92
+  seed: null
+  name: Norrie C.
+  bye: false
+  status: null
+- position: 93
+  seed: null
+  name: Duckworth J.
+  bye: false
+  status: null
+- position: 94
+  seed: null
+  name: O'Connell C.
+  bye: false
+  status: Q
+- position: 96
+  seed: 3
+  name: Deminaur A.
+  bye: true
+  status: null
+- position: 97
+  seed: 6
+  name: Cobolli F.
+  bye: true
+  status: null
+- position: 99
+  seed: null
+  name: Bonzi B.
+  bye: false
+  status: Q
+- position: 100
+  seed: null
+  name: Hanfmann Y.
+  bye: false
+  status: null
+- position: 101
+  seed: null
+  name: Kovacevic A.
+  bye: false
+  status: null
+- position: 102
+  seed: null
+  name: Borges N.
+  bye: false
+  status: null
+- position: 104
+  seed: 26
+  name: Etcheverry T.
+  bye: true
+  status: null
+- position: 105
+  seed: 19
+  name: Darderi L.
+  bye: true
+  status: null
+- position: 107
+  seed: null
+  name: Diallo G.
+  bye: false
+  status: WC
+- position: 108
+  seed: null
+  name: Jacquet K.
+  bye: false
+  status: Q
+- position: 109
+  seed: null
+  name: Vallejo A.
+  bye: false
+  status: null
+- position: 110
+  seed: null
+  name: Shang J.
+  bye: false
+  status: PR
+- position: 112
+  seed: 10
+  name: Rublev A.
+  bye: true
+  status: null
+- position: 113
+  seed: 15
+  name: Tiafoe F.
+  bye: true
+  status: null
+- position: 115
+  seed: null
+  name: Shimabukuro S.
+  bye: false
+  status: Q
+- position: 116
+  seed: null
+  name: Cilic M.
+  bye: false
+  status: null
+- position: 117
+  seed: null
+  name: Zheng M.
+  bye: false
+  status: Q
+- position: 118
+  seed: null
+  name: Kecmanovic M.
+  bye: false
+  status: null
+- position: 120
+  seed: 23
+  name: Rinderknech A.
+  bye: true
+  status: null
+- position: 121
+  seed: 28
+  name: Nakashima B.
+  bye: true
+  status: null
+- position: 123
+  seed: null
+  name: Vukic A.
+  bye: false
+  status: Q
+- position: 124
+  seed: null
+  name: Altmaier D.
+  bye: false
+  status: null
+- position: 125
+  seed: null
+  name: Vanassche L.
+  bye: false
+  status: null
+- position: 126
+  seed: null
+  name: Droguet T.
+  bye: false
+  status: Q
+- position: 128
+  seed: null
+  name: Faria J.
+  bye: true
+  status: null
