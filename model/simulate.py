@@ -17,6 +17,16 @@ def _play_round(players, surface, ratings_path):
     return winners
 
 
+# plays out single-elimination from an arbitrary starting field until one player remains. Used
+# both for a full from-scratch simulation (starting field = Round 1 winners + byes) and for a
+# hybrid simulation that resumes from a field already partly decided by real results.
+def simulate_from_field(field, surface, ratings_path):
+    players = list(field)
+    while len(players) > 1:
+        players = _play_round(players, surface, ratings_path)
+    return players[0]
+
+
 # plays out one full random bracket. Round 1 only pairs up non-bye players (rng by weighted by
 # win_probability to pick the winner of each matchup); those winners are then combined with the
 # bye players - who skipped Round 1 entirely - to form the Round 2 field, and play continues the
@@ -24,9 +34,14 @@ def _play_round(players, surface, ratings_path):
 # and bye_players is empty, so this reduces to the plain single-elimination case.
 def simulate_tournament(non_bye_players, bye_players, surface, ratings_path):
     players = _play_round(non_bye_players, surface, ratings_path) + bye_players
-    while len(players) > 1:
-        players = _play_round(players, surface, ratings_path)
-    return players[0]
+    return simulate_from_field(players, surface, ratings_path)
+
+
+def run_simulations_from_field(field, surface, n_simulations, ratings_path):
+    champion_counts = Counter()
+    for _ in range(n_simulations):
+        champion_counts[simulate_from_field(field, surface, ratings_path)] += 1
+    return champion_counts
 
 
 def run_simulations(non_bye_players, bye_players, surface, n_simulations, ratings_path):

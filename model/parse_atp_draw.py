@@ -50,8 +50,14 @@ def extract_header(first_page, top_cutoff=55):
             break
     return tournament, location, start_date, surface
 
-def extract_left_column(page, x_cutoff=150, y_tolerance=3):
-    words = [w for w in page.extract_words() if w['x0'] < x_cutoff]
+def extract_left_column(page, x_cutoff=150, y_tolerance=3, x_tolerance=1.0):
+    # pdfplumber's extract_words() defaults to x_tolerance=3, which is wider than the real
+    # inter-word gap in this sheet's tightly-kerned two-word surnames (e.g. "BOUZAS MANEIRO" -
+    # confirmed via char-level inspection to have a ~1.75pt gap, well under 3) - so those get
+    # merged into a single word ("BOUZASMANEIRO") with no space at all. Within-word letter
+    # gaps here are ~0-0.02pt, so 1.0 leaves comfortable margin on both sides without risking
+    # splitting a real single word apart.
+    words = [w for w in page.extract_words(x_tolerance=x_tolerance) if w['x0'] < x_cutoff]
     words.sort(key=lambda w: w['top'])
     rows, current_row, current_top = [], [], None
     for w in words:
@@ -67,8 +73,11 @@ def extract_left_column(page, x_cutoff=150, y_tolerance=3):
     return [' '.join(w['text'] for w in sorted(row, key=lambda w: w['x0'])) for row in rows]
 
 LINE_RE = re.compile(
+    # seed/status must be followed by real whitespace (\s+, not \s*) - otherwise a lastname
+    # starting with "L" (e.g. LYS, LINETTE) gets misread as status='L' (Lucky Loser) plus a
+    # truncated lastname ('YS', 'INETTE'), since \s* also accepts zero separating characters
     r'^(?P<position>\d+)\s*'
-    r'(?:(?P<seed>\d+)\s*|(?P<status>Q|WC|PR|L)\s*)?'
+    r'(?:(?P<seed>\d+)\s+|(?P<status>Q|WC|PR|L)\s+)?'
     r'(?:Bye|(?P<lastname>[A-Z][A-Za-z\-\.\'…]*(?:\s[A-Z][A-Za-z\-\.\'…]*)*),\s*'
     r'(?P<firstname>[A-Za-z\-\.…]+)\s*(?P<country>[A-Z]{3})?)\s*$'
 )

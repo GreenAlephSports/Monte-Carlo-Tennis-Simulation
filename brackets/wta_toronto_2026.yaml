@@ -72,7 +72,7 @@ players:
   status: null
 - position: 19
   seed: null
-  name: Bouzasmaneiro J.
+  name: Bouzas Maneiro J.
   bye: false
   status: null
 - position: 20
@@ -262,7 +262,7 @@ players:
   status: null
 - position: 69
   seed: null
-  name: Jimenezkasintseva V.
+  name: Jimenez Kasintseva V.
   bye: false
   status: Q
 - position: 70
@@ -317,9 +317,9 @@ players:
   status: WC
 - position: 84
   seed: null
-  name: Inette M.
+  name: Linette M.
   bye: false
-  status: L
+  status: null
 - position: 85
   seed: null
   name: Korneeva A.
@@ -417,9 +417,9 @@ players:
   status: null
 - position: 110
   seed: null
-  name: Ys E.
+  name: Lys E.
   bye: false
-  status: L
+  status: null
 - position: 112
   seed: 11
   name: Osaka N.
