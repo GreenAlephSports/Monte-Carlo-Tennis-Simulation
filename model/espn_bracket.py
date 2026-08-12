@@ -41,7 +41,7 @@ import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from bracket import TOUR_CONFIG  # noqa: E402
+from bracket import TOUR_CONFIG, _build_ratings_index  # noqa: E402
 from elo_ratings import SURFACES  # noqa: E402
 from hybrid_simulation import match_espn_name_to_draw  # noqa: E402
 from live_scores import LiveScoresError, fetch_scoreboard  # noqa: E402
@@ -55,11 +55,19 @@ def _known_ratings_names(tour):
     for match_espn_name_to_draw so an already-known player gets their already-correct truncated
     name reused directly, rather than re-derived (and re-risking the same Western/native
     name-order ambiguity ESPN's own data has - e.g. 'Wang Xiyu' vs 'Wang Xinyu', where ESPN's
-    own shortName field gets the surname backwards for both)."""
+    own shortName field gets the surname backwards for both).
+
+    Deduped via _build_ratings_index (same logic bracket.py's own tier-1 exact-match index
+    uses), not a raw column dump - the ratings CSV has near-duplicate rows for some players
+    (e.g. 'Ruse E.G.' / 'Ruse E-G.', 'McNally C.' / 'Mcnally C.' - punctuation/case variants of
+    the same person). Handing match_espn_name_to_draw the raw list gives it two equally-valid
+    candidates for such a player and it correctly refuses to guess between them (returns None);
+    deduping upstream to the most-played representative avoids ever creating that ambiguity."""
     ratings_path = TOUR_CONFIG[tour.upper()].ratings_path
     if not ratings_path.exists():
         return []
-    return pd.read_csv(ratings_path)["player"].tolist()
+    ratings_df = pd.read_csv(ratings_path)
+    return list(set(_build_ratings_index(ratings_df).values()))
 
 
 def _fallback_lastname_firstname(display_name, short_name):
@@ -82,13 +90,16 @@ def _fallback_lastname_firstname(display_name, short_name):
     return lastname, firstname
 
 
-def _resolve_player_name(display_name, short_name, ratings_names):
+def _resolve_player_name(display_name, short_name, ratings_names, name_aliases):
     """Returns a final ratings-csv-style name ('Lastname X.') for a real (non-TBD) player.
-    Tries the ratings-csv cross-reference first (exact, reuses match_espn_name_to_draw); falls
-    back to a fresh best-effort truncation (single initial) only for players not already known -
-    collision-widening against other same-lastname fallback players in this draw happens as a
-    separate pass afterward, mirroring parse_atp_draw.py's own to_yaml_players logic."""
-    matched = match_espn_name_to_draw(display_name, ratings_names) if ratings_names else None
+    Tries the ratings-csv cross-reference first (exact, reuses match_espn_name_to_draw,
+    including the manual alias table for the handful of players whose ratings-csv name doesn't
+    share an initial with their real first name at all, e.g. 'Osorio M.' for Camila Osorio);
+    falls back to a fresh best-effort truncation (single initial) only for players not already
+    known - collision-widening against other same-lastname fallback players in this draw
+    happens as a separate pass afterward, mirroring parse_atp_draw.py's own to_yaml_players
+    logic."""
+    matched = match_espn_name_to_draw(display_name, ratings_names, name_aliases) if ratings_names else None
     if matched:
         return matched, None  # None = "already final, skip collision-truncation pass"
     lastname, firstname = _fallback_lastname_firstname(display_name, short_name)
@@ -137,6 +148,21 @@ def build_bracket_players(tour, event_id):
         raise ValueError(f"No Round 1 matches found for event {event_id} / {category}")
 
     ratings_names = _known_ratings_names(tour)
+    name_aliases = TOUR_CONFIG[tour.upper()].name_aliases
+
+    # bye detection compares RAW ESPN display names, not resolved ratings-csv names - a
+    # player's displayName is guaranteed identical between their Round 1 and Round 2 JSON
+    # entries (same athlete object), whereas resolved names aren't a safe comparison key: two
+    # calls can independently land on different results (name-matching ambiguity, or - for a
+    # genuine newcomer with no ratings-csv entry - both stay unresolved until the later
+    # collision-truncation pass). Comparing raw names first, before any resolution happens,
+    # sidesteps that whole class of bug rather than depending on resolution being consistent.
+    round1_display_names = set()
+    for competition in round1:
+        for competitor in competition.get("competitors", []):
+            name = (competitor.get("athlete") or {}).get("displayName")
+            if name and name != "TBD":
+                round1_display_names.add(name)
 
     # pass 1: resolve every real (non-TBD) name to either an already-known ratings-csv name, or
     # a (lastname, firstname) pair still needing the collision-truncation pass
@@ -153,7 +179,7 @@ def build_bracket_players(tour, event_id):
             tbd_counter += 1
             raw_records.append({"kind": kind, "seed": None, "name": f"TBD (Qualifier {tbd_counter})"})
             return
-        resolved, fallback_key = _resolve_player_name(display_name, athlete.get("shortName"), ratings_names)
+        resolved, fallback_key = _resolve_player_name(display_name, athlete.get("shortName"), ratings_names, name_aliases)
         record = {"kind": kind, "seed": seed, "name": resolved}
         if fallback_key is not None:
             fallback_players[len(raw_records)] = fallback_key
@@ -164,21 +190,14 @@ def build_bracket_players(tour, event_id):
         for competitor in by_order:
             add_record("round1", competitor)
 
-    round1_real_names = {r["name"] for r in raw_records if r["kind"] == "round1" and r["name"]}
     for competition in round2:
         for competitor in competition.get("competitors", []):
-            athlete = competitor.get("athlete") or {}
-            display_name = athlete.get("displayName")
+            display_name = (competitor.get("athlete") or {}).get("displayName")
             if not display_name or display_name == "TBD":
                 continue  # the pending Round 1 winner - already represented by its Round 1 entry
-            resolved, fallback_key = _resolve_player_name(display_name, athlete.get("shortName"), ratings_names)
-            if resolved and resolved in round1_real_names:
-                continue  # safety net - shouldn't happen, but never double-count a player
-            record = {"kind": "round2_bye", "seed": (competitor.get("curatedRank") or {}).get("current"),
-                       "name": resolved}
-            if fallback_key is not None:
-                fallback_players[len(raw_records)] = fallback_key
-            raw_records.append(record)
+            if display_name in round1_display_names:
+                continue  # the Round 1 winner, now confirmed and advancing - not a bye
+            add_record("round2_bye", competitor)
 
     resolved_fallbacks = _resolve_fallback_collisions(fallback_players)
     for index, name in resolved_fallbacks.items():
