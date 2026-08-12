@@ -118,13 +118,25 @@ def parse_draw_pdf(path, expected_size=None):
     missing = [p for p in range(1, max_pos + 1) if p not in by_position]
     return entries, missing, unparsed
 
+def _truncation_length(firstnames):
+    """Shortest prefix length that keeps every name in this same-lastname group distinct
+    (e.g. Xiyu vs Xinyu need 3 chars - 'Xi' collides, 'Xiy'/'Xin' don't). Falls back to the
+    longest full first name if some are still tied even at full length (identical names -
+    truncation can't disambiguate two players who are actually named the same)."""
+    max_len = max(len(fn) for fn in firstnames)
+    for length in range(1, max_len + 1):
+        if len({fn[:length] for fn in firstnames}) == len(firstnames):
+            return length
+    return max_len
+
+
 def to_yaml_players(entries):
     """Positions pair up (1,2), (3,4), (5,6)... A literal 'Bye' placeholder line
     means the OTHER player in that pair has a real bye (auto-advances to Round 2)
-    - it does not mean there's a 32nd 'ghost' player. This pairs them up and
-    outputs only the 96 real players, each correctly flagged."""
+    - it does not mean there's a 32nd 'ghost' player. This pairs them up into the
+    real players in the draw, each correctly flagged."""
     by_position = {e['position']: e for e in entries}
-    players = []
+    real_players = []
     positions = sorted(by_position.keys())
     for i in range(0, len(positions), 2):
         pos_a, pos_b = positions[i], positions[i + 1]
@@ -136,19 +148,30 @@ def to_yaml_players(entries):
         if entry_a['bye'] or entry_b['bye']:
             # one real player + one empty placeholder -> the real one has a bye
             real = entry_b if entry_a['bye'] else entry_a
-            name = f"{real['lastname'].title()} {real['firstname'][0]}."
-            players.append({
-                'position': real['position'], 'seed': real['seed'], 'name': name,
-                'bye': True, 'status': real['status'],
-            })
+            real_players.append({**real, 'output_bye': True})
         else:
             # both real players - a genuine Round 1 match, output both
-            for entry in (entry_a, entry_b):
-                name = f"{entry['lastname'].title()} {entry['firstname'][0]}."
-                players.append({
-                    'position': entry['position'], 'seed': entry['seed'], 'name': name,
-                    'bye': False, 'status': entry['status'],
-                })
+            real_players.append({**entry_a, 'output_bye': False})
+            real_players.append({**entry_b, 'output_bye': False})
+
+    # a single first-initial can collide across different players who share a lastname (e.g.
+    # Wang Xiyu / Wang Xinyu both truncate to "Wang X.") - group same-lastname players in this
+    # draw and widen the truncation only for the groups that actually need it, so the output
+    # never has two entries with the identical name
+    by_lastname = defaultdict(list)
+    for player in real_players:
+        by_lastname[player['lastname'].title()].append(player)
+
+    players = []
+    for lastname, group in by_lastname.items():
+        length = _truncation_length([p['firstname'] for p in group])
+        for player in group:
+            name = f"{lastname} {player['firstname'][:length]}."
+            players.append({
+                'position': player['position'], 'seed': player['seed'], 'name': name,
+                'bye': player['output_bye'], 'status': player['status'],
+            })
+    players.sort(key=lambda p: p['position'])
     return players
 
 if __name__ == "__main__":
