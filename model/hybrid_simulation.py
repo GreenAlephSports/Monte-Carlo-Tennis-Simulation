@@ -29,8 +29,7 @@ from bracket import (  # noqa: E402
     split_byes, validate_bracket_structure, validate_draw,
 )
 from bracket_schema import BracketValidationError, load_bracket_yaml  # noqa: E402
-from data_loader import load_matches  # noqa: E402
-from elo_ratings import calculate_elo_ratings  # noqa: E402
+from elo_ratings import calculate_elo_ratings, load_matches_for_tour  # noqa: E402
 from live_scores import LiveScoresError, extract_matches, fetch_scoreboard  # noqa: E402
 from simulate import N_SIMULATIONS, run_simulations_from_field  # noqa: E402
 
@@ -235,7 +234,7 @@ def main():
         sys.exit(1)
 
     tour_config = TOUR_CONFIG[bracket.tour]
-    matches_history = load_matches(tour_config.match_data_path)
+    matches_history = load_matches_for_tour(bracket.tour)
     ratings_df = calculate_elo_ratings(matches_history, bracket.start_date)
     ratings_df = ratings_df.sort_values("overall_elo", ascending=False).reset_index(drop=True)
 

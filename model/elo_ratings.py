@@ -1,13 +1,34 @@
+import sys
 from pathlib import Path
 
 import pandas as pd
 
 from data_loader import load_matches
+from data_loader_kaggle import load_matches as load_matches_kaggle
 
 ATP_DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "atp_tennis.csv"
 WTA_DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "wta_tennis.csv"
 ATP_OUTPUT_PATH = Path(__file__).resolve().parent.parent / "output" / "player_elo_ratings_atp.csv"
 WTA_OUTPUT_PATH = Path(__file__).resolve().parent.parent / "output" / "player_elo_ratings_wta.csv"
+TOUR_LOCAL_PATH = {"ATP": ATP_DATA_PATH, "WTA": WTA_DATA_PATH}
+
+
+def load_matches_for_tour(tour: str) -> pd.DataFrame:
+    """Live-by-default match history: pulls the current Kaggle dataset first (auto-updating,
+    no manual re-download needed). If that fails for any reason - no internet, Kaggle auth
+    expired, the API having an issue - falls back to the local CSV snapshot in data/ instead of
+    crashing, since a live-data hiccup shouldn't take down a pipeline run mid-tournament."""
+    tour = tour.upper()
+    try:
+        df = load_matches_kaggle(tour)
+        print(f"Loaded {len(df)} live {tour} rows from Kaggle "
+              f"({df['Date'].min().date()} to {df['Date'].max().date()})")
+        return df
+    except Exception as e:
+        local_path = TOUR_LOCAL_PATH[tour]
+        print(f"WARNING: live Kaggle fetch failed for {tour} ({type(e).__name__}: {e}) - "
+              f"falling back to local snapshot {local_path}", file=sys.stderr)
+        return load_matches(local_path)
 
 SURFACES = ["Hard", "Clay", "Grass"]
 STARTING_ELO = 1500
@@ -103,8 +124,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     cutoff_date = pd.Timestamp(args.cutoff_date)
 
-    for data_path, output_path in [(ATP_DATA_PATH, ATP_OUTPUT_PATH), (WTA_DATA_PATH, WTA_OUTPUT_PATH)]:
-        matches = load_matches(data_path)
+    for tour, output_path in [("ATP", ATP_OUTPUT_PATH), ("WTA", WTA_OUTPUT_PATH)]:
+        matches = load_matches_for_tour(tour)
         ratings = calculate_elo_ratings(matches, cutoff_date)
         ratings = ratings.sort_values("overall_elo", ascending=False).reset_index(drop=True)
 

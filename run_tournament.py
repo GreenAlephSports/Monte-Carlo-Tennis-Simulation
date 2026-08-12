@@ -15,8 +15,7 @@ from bracket import (  # noqa: E402
     TOUR_CONFIG, match_draw_to_ratings, order_by_draw_position, split_byes, validate_bracket_structure, validate_draw,
 )
 from bracket_schema import BracketValidationError, load_bracket_yaml  # noqa: E402
-from data_loader import load_matches  # noqa: E402
-from elo_ratings import calculate_elo_ratings  # noqa: E402
+from elo_ratings import calculate_elo_ratings, load_matches_for_tour  # noqa: E402
 from simulate import N_SIMULATIONS, simulate_and_report  # noqa: E402
 
 OUTPUT_DIR = Path(__file__).resolve().parent / "output"
@@ -58,7 +57,7 @@ def main():
 
     tour_config = TOUR_CONFIG[bracket.tour]
 
-    matches = load_matches(tour_config.match_data_path)
+    matches = load_matches_for_tour(bracket.tour)
     ratings_df = calculate_elo_ratings(matches, bracket.start_date)
     ratings_df = ratings_df.sort_values("overall_elo", ascending=False).reset_index(drop=True)
     print(f"Calculated Elo ratings for {len(ratings_df)} players as of {bracket.start_date.date()} "
