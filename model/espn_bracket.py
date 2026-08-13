@@ -20,12 +20,15 @@ What ESPN's scoreboard actually gives us, confirmed by inspection (see investiga
     after, matching the same list-order convention bracket.py's own byes handling already expects
     when no 'position' field is present.
   - No status codes (Q/WC/LL/PR) anywhere in this feed - out of scope per the request, ignored.
-  - Some Round 1 slots can be 'TBD' - the draw was released before qualifying finished, so that
-    slot's occupant genuinely isn't decided yet. Each gets its own uniquely-named placeholder
-    entry (e.g. "TBD (Qualifier 1)") rather than being skipped or blocking the whole bracket -
-    it never appears in any historical match data, so bracket.py's existing tier-3 fallback
-    (STARTING_ELO placeholder for a player with no training-window history) picks it up
-    automatically. No new fallback logic needed here for that part.
+  - Some Round 1 slots can be 'TBD' - the draw was released before qualifying finished. Many of
+    these aren't actually unknown, though: ESPN's feed carries the Qualifying Final matches for
+    the same event, and if one has already gone final ('post' state, real score), its winner IS
+    that TBD slot's occupant - so it's resolved to that winner's real name through the normal
+    ratings-CSV pipeline, same as any other player, instead of a placeholder. Only a TBD slot
+    with no decided Qualifying Final winner left to assign gets a genuine, uniquely-named
+    placeholder entry (e.g. "TBD (Qualifier 1)") - it never appears in any historical match data,
+    so bracket.py's existing tier-3 fallback (STARTING_ELO placeholder for a player with no
+    training-window history) picks it up automatically.
 
 Usage:
     python model/espn_bracket.py --tour atp --event-id 718-2026 --surface Hard brackets/cincinnati_2026_atp.yaml
@@ -123,6 +126,22 @@ def _resolve_fallback_collisions(fallback_players):
     return resolved
 
 
+def _decided_qualifying_winners(qualifying_final):
+    """Competitors who won a Qualifying Final ESPN already marked 'post' (final, real score) -
+    real, already-decided players who belong in a Round 1 TBD slot, not placeholders. A
+    Qualifying Final still 'pre' or 'in' hasn't concluded, so it contributes nothing - that's
+    the genuinely-unknown case a TBD placeholder is still for."""
+    winners = []
+    for competition in qualifying_final:
+        status_state = ((competition.get("status") or {}).get("type") or {}).get("state")
+        if status_state != "post":
+            continue
+        winner = next((c for c in competition.get("competitors", []) if c.get("winner") is True), None)
+        if winner is not None:
+            winners.append(winner)
+    return winners
+
+
 def build_bracket_players(tour, event_id):
     """Returns a list of player dicts (seed/name/bye/status) in bracket order, plus the raw
     ESPN event dict (used by the caller for tournament/date metadata)."""
@@ -144,8 +163,11 @@ def build_bracket_players(tour, event_id):
     competitions = grouping.get("competitions", [])
     round1 = [c for c in competitions if (c.get("round") or {}).get("displayName") == "Round 1"]
     round2 = [c for c in competitions if (c.get("round") or {}).get("displayName") == "Round 2"]
+    qualifying_final = [c for c in competitions if (c.get("round") or {}).get("displayName") == "Qualifying Final"]
     if not round1:
         raise ValueError(f"No Round 1 matches found for event {event_id} / {category}")
+
+    qualifier_winners = iter(_decided_qualifying_winners(qualifying_final))
 
     ratings_names = _known_ratings_names(tour)
     name_aliases = TOUR_CONFIG[tour.upper()].name_aliases
@@ -169,16 +191,25 @@ def build_bracket_players(tour, event_id):
     raw_records = []  # each: dict(kind, seed, resolved_name_or_None, fallback_key_or_None)
     fallback_players = {}  # index into raw_records -> (lastname, firstname), for collision pass
     tbd_counter = 0
+    qualifiers_resolved = 0
 
     def add_record(kind, competitor):
-        nonlocal tbd_counter
+        nonlocal tbd_counter, qualifiers_resolved
         athlete = competitor.get("athlete") or {}
         display_name = athlete.get("displayName")
-        seed = (competitor.get("curatedRank") or {}).get("current")
+
         if not display_name or display_name == "TBD":
-            tbd_counter += 1
-            raw_records.append({"kind": kind, "seed": None, "name": f"TBD (Qualifier {tbd_counter})"})
-            return
+            qualifier = next(qualifier_winners, None)
+            if qualifier is None:
+                tbd_counter += 1
+                raw_records.append({"kind": kind, "seed": None, "name": f"TBD (Qualifier {tbd_counter})"})
+                return
+            qualifiers_resolved += 1
+            competitor = qualifier
+            athlete = competitor.get("athlete") or {}
+            display_name = athlete.get("displayName")
+
+        seed = (competitor.get("curatedRank") or {}).get("current")
         resolved, fallback_key = _resolve_player_name(display_name, athlete.get("shortName"), ratings_names, name_aliases)
         record = {"kind": kind, "seed": seed, "name": resolved}
         if fallback_key is not None:
@@ -211,7 +242,8 @@ def build_bracket_players(tour, event_id):
             "status": None,
             "bye": record["kind"] == "round2_bye",
         })
-    return players, event, round1
+    qualifier_stats = {"resolved": qualifiers_resolved, "unresolved": tbd_counter}
+    return players, event, round1, qualifier_stats
 
 
 def _tournament_start_date(event, round1):
@@ -225,11 +257,11 @@ def build_bracket_yaml(tour, event_id, surface):
     if surface not in SURFACES:
         raise ValueError(f"surface must be one of {SURFACES}, got {surface!r}")
 
-    players, event, round1 = build_bracket_players(tour, event_id)
+    players, event, round1, qualifier_stats = build_bracket_players(tour, event_id)
     start_date = _tournament_start_date(event, round1)
     year = int(start_date[:4]) if start_date else None
 
-    return {
+    bracket = {
         "tournament": event.get("name"),
         "year": year,
         "tour": tour,
@@ -238,6 +270,7 @@ def build_bracket_yaml(tour, event_id, surface):
         "draw_size": len(players),
         "players": players,
     }
+    return bracket, qualifier_stats
 
 
 if __name__ == "__main__":
@@ -250,7 +283,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     try:
-        bracket = build_bracket_yaml(args.tour, args.event_id, args.surface)
+        bracket, qualifier_stats = build_bracket_yaml(args.tour, args.event_id, args.surface)
     except (LiveScoresError, ValueError) as e:
         print(f"ERROR: {e}", file=sys.stderr)
         sys.exit(1)
@@ -260,6 +293,10 @@ if __name__ == "__main__":
     bye_count = sum(1 for p in bracket["players"] if p["bye"])
     print(f"Built bracket: {bracket['tournament']} {bracket['year']} ({bracket['tour']}, {bracket['surface']}) "
           f"- {len(bracket['players'])} players ({bye_count} byes, {tbd_count} TBD/qualifier placeholders)")
+    if qualifier_stats["resolved"] or qualifier_stats["unresolved"]:
+        print(f"  Round 1 TBD slots: {qualifier_stats['resolved']} resolved to already-decided "
+              f"qualifying winners, {qualifier_stats['unresolved']} still genuinely unknown "
+              f"(qualifying not concluded)")
 
     with open(args.output_path, "w", encoding="utf-8") as f:
         yaml.dump(bracket, f, sort_keys=False, allow_unicode=True)

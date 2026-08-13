@@ -18,7 +18,13 @@ def load_matches(tour: str = "ATP") -> pd.DataFrame:
     if not csv_files:
         raise FileNotFoundError(f"No CSV found in downloaded dataset at {download_path}")
 
-    df = pd.read_csv(csv_files[0], parse_dates=["Date"])
+    # Odd_1/Odd_2 aren't cleanly numeric in the raw CSV (e.g. WTA has stray values like "5..5"
+    # and "-"), which makes the C parser flip-flop between dtypes across chunks and raise a
+    # DtypeWarning. Read them as strings (skips that inference entirely) and coerce to numeric
+    # afterward so genuine garbage becomes NaN instead of silently staying an unusable string.
+    df = pd.read_csv(csv_files[0], parse_dates=["Date"], dtype={"Odd_1": str, "Odd_2": str})
+    df["Odd_1"] = pd.to_numeric(df["Odd_1"], errors="coerce")
+    df["Odd_2"] = pd.to_numeric(df["Odd_2"], errors="coerce")
     return df
 
 

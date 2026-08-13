@@ -10,6 +10,8 @@ Usage:
     python model/live_scores.py --dates 20260812
     python model/live_scores.py --dates 20260810-20260812
     python model/live_scores.py --live-only
+    python model/live_scores.py --event-id 718-2026     # one tournament only, ESPN event id
+    python model/live_scores.py --tournament "Cincinnati Open"  # name substring match (less reliable)
 """
 import json
 import sys
@@ -78,7 +80,7 @@ def _is_doubles_shaped(competition):
     return bool(competitors) and all(c.get("type") == "team" and "roster" in c for c in competitors)
 
 
-def _extract_match(tournament_name, category_name, competition):
+def _extract_match(tournament_name, category_name, event_id, competition):
     competitors = competition.get("competitors", [])
     if len(competitors) != 2:
         raise ValueError(f"expected 2 competitors, got {len(competitors)}")
@@ -99,6 +101,7 @@ def _extract_match(tournament_name, category_name, competition):
 
     return {
         "tournament": tournament_name,
+        "event_id": event_id,
         "category": category_name,
         "round": (competition.get("round") or {}).get("displayName"),
         "status": status_type.get("description"),
@@ -123,6 +126,7 @@ def extract_matches(data):
     skipped_malformed = 0
     for event in data.get("events", []):
         tournament_name = event.get("name", "Unknown tournament")
+        event_id = event.get("id")
         for grouping in event.get("groupings", []):
             category_name = (grouping.get("grouping") or {}).get("displayName", "Unknown category")
             for competition in grouping.get("competitions", []):
@@ -130,7 +134,7 @@ def extract_matches(data):
                     skipped_doubles += 1
                     continue
                 try:
-                    matches.append(_extract_match(tournament_name, category_name, competition))
+                    matches.append(_extract_match(tournament_name, category_name, event_id, competition))
                 except (ValueError, KeyError, TypeError) as e:
                     skipped_malformed += 1
                     match_id = competition.get("id", "?")
@@ -151,6 +155,17 @@ def filter_by_tour(matches, tour):
     return [m for m in matches if m["category"].startswith(prefix)]
 
 
+def filter_by_event_id(matches, event_id):
+    return [m for m in matches if m["event_id"] == event_id]
+
+
+def filter_by_tournament_name(matches, name):
+    """Case-insensitive substring match on tournament name - less reliable than event_id since
+    ESPN's naming can be inconsistent (e.g. 'Cincinnati Open' vs 'Western & Southern Open')."""
+    needle = name.lower()
+    return [m for m in matches if needle in m["tournament"].lower()]
+
+
 def format_match(m):
     score_1 = " ".join(m["sets_1"]) or "-"
     score_2 = " ".join(m["sets_2"]) or "-"
@@ -169,6 +184,15 @@ if __name__ == "__main__":
     parser.add_argument("--dates", default=None, help="YYYYMMDD or YYYYMMDD-YYYYMMDD")
     parser.add_argument("--live-only", action="store_true", help="only show in-progress matches")
     parser.add_argument("--limit", type=int, default=15, help="max matches to print")
+    tournament_group = parser.add_mutually_exclusive_group()
+    tournament_group.add_argument(
+        "--event-id", default=None,
+        help="restrict to one ESPN event id, e.g. 718-2026 (see espn_bracket.py) - more reliable than --tournament",
+    )
+    tournament_group.add_argument(
+        "--tournament", default=None,
+        help="restrict to tournaments whose name contains this substring (case-insensitive)",
+    )
     args = parser.parse_args()
 
     try:
@@ -181,6 +205,13 @@ if __name__ == "__main__":
     matches = filter_by_tour(matches, args.tour)
     print(f"Fetched {len(matches)} {args.tour.upper()} matches "
           f"({stats['doubles']} doubles skipped, {stats['malformed']} malformed skipped)")
+
+    if args.event_id:
+        matches = filter_by_event_id(matches, args.event_id)
+        print(f"{len(matches)} matches for event {args.event_id}")
+    elif args.tournament:
+        matches = filter_by_tournament_name(matches, args.tournament)
+        print(f"{len(matches)} matches matching tournament {args.tournament!r}")
 
     if args.live_only:
         matches = [m for m in matches if m["status_state"] == "in"]
