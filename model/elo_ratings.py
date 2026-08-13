@@ -33,7 +33,10 @@ def load_matches_for_tour(tour: str) -> pd.DataFrame:
 SURFACES = ["Hard", "Clay", "Grass"]
 STARTING_ELO = 1500
 K_FACTOR = 32
-SURFACE_FALLBACK_THRESHOLD = 10
+# surface_elo is blended toward overall_elo when surface_matches is small - weight on surface_elo
+# is surface_matches / (surface_matches + SURFACE_BLEND_K), so it's 0 at 0 matches, 50% at
+# SURFACE_BLEND_K matches, and approaches (but never fully reaches) 100% as matches grow.
+SURFACE_BLEND_K = 7
 LOOKBACK_YEARS = 5
 
 
@@ -88,12 +91,15 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date):
             "player": player,
             "overall_elo": overall_elo[player],
         }
-        # if a player hasn't played enough matches on a surface, the elo calculated for that surface isnt used
-        # resorts to just ovr elo for greater sample size
+        # blend surface_elo toward overall_elo, weighted by how much surface-specific sample size
+        # backs it up - a player with few surface matches leans on the more-data-backed overall
+        # rating; one with a deep surface history gets (most of) their own surface rating instead
+        # of a hard cutoff snapping between the two.
         for surface in SURFACES:
             match_count = surface_matches[surface].get(player, 0)
             raw_elo = surface_elo[surface].get(player, STARTING_ELO)
-            final_elo = raw_elo if match_count >= SURFACE_FALLBACK_THRESHOLD else overall_elo[player]
+            surface_weight = match_count / (match_count + SURFACE_BLEND_K)
+            final_elo = surface_weight * raw_elo + (1 - surface_weight) * overall_elo[player]
             record[f"{surface.lower()}_elo"] = final_elo
             record[f"{surface.lower()}_matches"] = match_count
         records.append(record)

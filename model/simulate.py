@@ -9,9 +9,18 @@ from win_probability import win_probability
 N_SIMULATIONS = 10000
 
 
-def _play_round(players, surface, ratings_path):
+def _play_round(players, surface, ratings_path, known_results=None):
+    """known_results, if given, maps frozenset({player_a, player_b}) -> real winner for
+    pairings already decided in reality - that winner is used as-is (no randomness spent),
+    while any pairing missing from known_results is Monte Carlo-simulated as usual. Lets a
+    round mix real, already-known results with genuinely undecided matches instead of requiring
+    the whole round to be one or the other."""
     winners = []
     for player_a, player_b in get_matchups(players):
+        known_winner = (known_results or {}).get(frozenset((player_a, player_b)))
+        if known_winner is not None:
+            winners.append(known_winner)
+            continue
         prob_a = win_probability(player_a, player_b, surface, ratings_path)
         winners.append(player_a if random.random() < prob_a else player_b)
     return winners
@@ -42,6 +51,71 @@ def run_simulations_from_field(field, surface, n_simulations, ratings_path):
     for _ in range(n_simulations):
         champion_counts[simulate_from_field(field, surface, ratings_path)] += 1
     return champion_counts
+
+
+# for a round that's only partly decided in reality (some matches final, others not yet played) -
+# not just round 1, any round whose matchup structure is fully known (see
+# hybrid_simulation.known_matchups_for_round). known_results pins whichever pairings already have
+# a real winner, and Monte Carlo-decides the rest, same as any other simulated match. bye_players
+# is only non-empty when starting_field is the pre-round-1 field (byes join in right after round
+# 1); for any later round they're already folded into starting_field, so pass ().  Every round
+# after this one is always fully simulated, same as run_simulations_from_field.
+def run_simulations_partial_round(starting_field, bye_players, known_results, surface, n_simulations, ratings_path):
+    champion_counts = Counter()
+    for _ in range(n_simulations):
+        round_winners = _play_round(starting_field, surface, ratings_path, known_results)
+        field = round_winners + list(bye_players)
+        champion_counts[simulate_from_field(field, surface, ratings_path)] += 1
+    return champion_counts
+
+
+# like run_simulations_partial_round, but also tracks which players reach the semifinal (last 4
+# remaining) and final (last 2 remaining) in each trial, not just the eventual champion - needed
+# for a p_sf/p_final breakdown alongside p_champ. Checks field size at the top of each round
+# (before playing it), so this is correct even when the real starting field is already down to 4
+# or 2 players by itself.
+#
+# ordered_field/is_bye must be in TRUE bracket order (real draw adjacency), not "plays now" and
+# "joins after" concatenated in bulk - see known_matchups_for_round's docstring in
+# hybrid_simulation.py for why naive concatenation of round winners + byes doesn't reconstruct the
+# real bracket tree (it always pairs winner-vs-winner and bye-vs-bye in the following round instead
+# of winner-vs-bye). A bye (is_bye[i] True) passes straight through to the next round unplayed;
+# two consecutive non-bye entries are this round's real match. For a round with no byes joining
+# (i.e. every round after byes have already been absorbed), pass is_bye as all False.
+def run_simulations_tracking_milestones(ordered_field, is_bye, known_results, surface, n_simulations, ratings_path):
+    champion_counts = Counter()
+    semifinal_counts = Counter()
+    final_counts = Counter()
+    n = len(ordered_field)
+    for _ in range(n_simulations):
+        players = []
+        i = 0
+        while i < n:
+            if is_bye[i]:
+                players.append(ordered_field[i])
+                i += 1
+                continue
+            player_a, player_b = ordered_field[i], ordered_field[i + 1]
+            known_winner = (known_results or {}).get(frozenset((player_a, player_b)))
+            if known_winner is not None:
+                winner = known_winner
+            else:
+                prob_a = win_probability(player_a, player_b, surface, ratings_path)
+                winner = player_a if random.random() < prob_a else player_b
+            players.append(winner)
+            i += 2
+        while True:
+            if len(players) == 4:
+                for p in players:
+                    semifinal_counts[p] += 1
+            elif len(players) == 2:
+                for p in players:
+                    final_counts[p] += 1
+            if len(players) == 1:
+                champion_counts[players[0]] += 1
+                break
+            players = _play_round(players, surface, ratings_path)
+    return champion_counts, semifinal_counts, final_counts
 
 
 def run_simulations(non_bye_players, bye_players, surface, n_simulations, ratings_path):

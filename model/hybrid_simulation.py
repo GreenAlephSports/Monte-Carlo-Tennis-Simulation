@@ -10,11 +10,25 @@ the fixed starting point for Monte Carlo simulation of the rest. There's no such
 known but round 2 unknown" - the field a simulated round 2 would produce doesn't match reality, so
 round 3 can't be pinned to real results without round 2 having been real too.
 
+A round doesn't have to be fully *decided* to be usable, though - only its matchup structure has
+to be fully *known*, which is a genuinely weaker, separate condition. Round 1's pairing is always
+known (fixed by the bracket itself, via get_matchups - never depends on any match actually being
+played). Round 2+'s pairing is only known once ESPN has published real names on both sides of
+every match in that round - which ESPN does well before those matches are played, since it
+returns every round's competitions upfront and only uses 'TBD' for a slot still waiting on an
+earlier round's real outcome (see build_known_pairings_by_round). Whichever round comes right
+after the last fully-decided one, if its matchups are fully known, can be partially replayed:
+whichever of its pairings already have a real winner are pinned, and the rest are Monte
+Carlo-simulated like any other match. `--through-round N` falls back to this automatically for
+that one round when it isn't fully decided yet but has at least one final result and a fully
+known matchup set.
+
 Usage:
     python model/hybrid_simulation.py brackets/wta_toronto_2026.yaml --through-round 3
     python model/hybrid_simulation.py brackets/wta_toronto_2026.yaml --all-rounds
 """
 import argparse
+import random
 import re
 import sys
 from collections import defaultdict
@@ -31,7 +45,7 @@ from bracket import (  # noqa: E402
 from bracket_schema import BracketValidationError, load_bracket_yaml  # noqa: E402
 from elo_ratings import calculate_elo_ratings, load_matches_for_tour  # noqa: E402
 from live_scores import LiveScoresError, extract_matches, fetch_scoreboard  # noqa: E402
-from simulate import N_SIMULATIONS, run_simulations_from_field  # noqa: E402
+from simulate import N_SIMULATIONS, run_simulations_from_field, run_simulations_partial_round  # noqa: E402
 
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
 
@@ -118,13 +132,24 @@ def match_espn_name_to_draw(espn_name, draw_csv_names, name_aliases=None):
     return next(iter(candidates)) if len(candidates) == 1 else None
 
 
+def _round_index(espn_matches):
+    """Shared by build_real_results_by_round and build_known_pairings_by_round so both agree on
+    the same round numbering - both derive round_sequence from the identical input list (not
+    filtered by match status first), so calling this once per (tournament, category) match list
+    and reusing the result, or just calling both functions with that same list, keeps them
+    consistent automatically."""
+    round_labels = {m["round"] for m in espn_matches if m["round"]}
+    round_sequence = build_round_sequence(round_labels)
+    return round_sequence, {label: i + 1 for i, label in enumerate(round_sequence)}
+
+
 def build_real_results_by_round(espn_matches, draw_csv_names, name_aliases=None):
     """Returns (results_by_round, round_sequence, unresolved_names). results_by_round[n] maps
     frozenset({player_a, player_b}) -> winner, for round n. Only completed matches with a clear
-    winner and both players resolvable to the draw contribute a result."""
-    round_labels = {m["round"] for m in espn_matches if m["round"]}
-    round_sequence = build_round_sequence(round_labels)
-    round_index = {label: i + 1 for i, label in enumerate(round_sequence)}
+    winner and both players resolvable to the draw contribute a result - a match that hasn't
+    been played yet, even with two real (non-'TBD') names, contributes nothing here; see
+    build_known_pairings_by_round for that weaker, separate signal."""
+    round_sequence, round_index = _round_index(espn_matches)
 
     results_by_round = defaultdict(dict)
     unresolved_names = set()
@@ -150,34 +175,83 @@ def build_real_results_by_round(espn_matches, draw_csv_names, name_aliases=None)
     return results_by_round, round_sequence, unresolved_names
 
 
-def replay_real_rounds(non_bye_players, bye_players, results_by_round):
-    """Replays as many rounds as have a COMPLETE set of real results, starting at round 1 and
-    stopping at the first round with any unresolved matchup. Returns a list `fields` where
-    fields[n] is the real field entering round n+1 (fields[0] = pre-Round-1 non-bye field);
-    len(fields) - 1 is the highest round fully known from real results.
+def build_known_pairings_by_round(espn_matches, draw_csv_names, name_aliases=None):
+    """Returns (known_pairings_by_round, round_sequence, unresolved_names). known_pairings_by_round[n]
+    is a set of frozenset({player_a, player_b}) for round n - every match where BOTH players are
+    already resolvable to the draw (i.e. neither side is still 'TBD'), regardless of whether the
+    match has actually been played yet. A genuinely separate, weaker signal than
+    build_real_results_by_round's "decided" results: ESPN returns every round's competitions
+    upfront, using 'TBD' only for a slot still waiting on an earlier round's real outcome (see
+    espn_bracket.py's own docstring) - so a round's matchup structure is often fully knowable well
+    before any of its matches conclude."""
+    round_sequence, round_index = _round_index(espn_matches)
 
-    Round 1's matchups come from get_matchups(non_bye_players) - that pairing genuinely matches
-    the real bracket, since a bye's phantom opponent never sits between two real non-bye players.
-    Round 2 onward is different: the simulated field is "Round 1 winners + byes" concatenated
-    (plenty good enough for plain Monte Carlo simulation, where pairing order doesn't affect
-    aggregate win probabilities), which does NOT reconstruct the true bracket-tree adjacency a
-    real Round 2 pairing follows. So for round 2+, ESPN's own reported pairings are used as the
-    source of truth directly, rather than re-deriving an expected pairing order ourselves - the
-    round only counts as fully known if its real matches account for every player in the field
-    exactly once."""
+    known_pairings_by_round = defaultdict(set)
+    unresolved_names = set()
+    for m in espn_matches:
+        round_num = round_index.get(m["round"])
+        if round_num is None:
+            continue
+        p1_name, p2_name = m["player_1"], m["player_2"]
+        if not p1_name or not p2_name or p1_name == "TBD" or p2_name == "TBD":
+            continue
+
+        p1 = match_espn_name_to_draw(p1_name, draw_csv_names, name_aliases)
+        p2 = match_espn_name_to_draw(p2_name, draw_csv_names, name_aliases)
+        if p1 is None:
+            unresolved_names.add(p1_name)
+        if p2 is None:
+            unresolved_names.add(p2_name)
+        if p1 is None or p2 is None:
+            continue
+
+        known_pairings_by_round[round_num].add(frozenset((p1, p2)))
+
+    return known_pairings_by_round, round_sequence, unresolved_names
+
+
+def known_matchups_for_round(round_num, current_field, known_pairings_by_round):
+    """Returns round_num's full matchup list if it's completely determined, else None.
+
+    Round 1's matchups are always determined - get_matchups(current_field) reconstructs the real
+    bracket pairing directly from the draw itself, independent of anything ESPN reports (a bye's
+    phantom opponent never sits between two real non-bye players). Round 2+ has no such
+    independent source: the "winners + byes" concatenation that forms a simulated field does NOT
+    reconstruct true bracket-tree adjacency, so round 2+'s pairing can only come from ESPN's own
+    known_pairings_by_round - and only counts as determined if those known pairings account for
+    every player in current_field exactly once (anything less means some slot is still 'TBD',
+    waiting on a match this function doesn't have visibility into)."""
+    if round_num == 1:
+        return get_matchups(current_field)
+
+    known_pairs = known_pairings_by_round.get(round_num, set())
+    players_in_known_pairs = [p for pair in known_pairs for p in pair]
+    if set(players_in_known_pairs) != set(current_field) or len(players_in_known_pairs) != len(current_field):
+        return None
+    return [tuple(pair) for pair in known_pairs]
+
+
+def replay_real_rounds(non_bye_players, bye_players, results_by_round, known_pairings_by_round=None):
+    """Replays as many rounds as have a COMPLETE set of real results, starting at round 1 and
+    stopping at the first round whose matchup structure isn't fully known (known_matchups_for_round
+    returns None) or that has any unresolved matchup within a known structure. Returns a list
+    `fields` where fields[n] is the real field entering round n+1 (fields[0] = pre-Round-1
+    non-bye field); len(fields) - 1 is the highest round fully known (matchups AND results) from
+    real results.
+
+    known_pairings_by_round is optional (round 1 never needs it - see known_matchups_for_round);
+    omitting it just means round 2+ can never be treated as known here, matching this function's
+    original round-1-only behavior."""
+    known_pairings_by_round = known_pairings_by_round or {}
     fields = [list(non_bye_players)]
     current_field = list(non_bye_players)
     round_num = 1
     while len(current_field) > 1:
-        round_results = results_by_round.get(round_num, {})
-        if round_num == 1:
-            matchups = get_matchups(current_field)
-        else:
-            matchups = [tuple(pair) for pair in round_results.keys()]
-            players_in_matchups = [p for pair in matchups for p in pair]
-            if set(players_in_matchups) != set(current_field) or len(players_in_matchups) != len(current_field):
-                return fields
+        matchups = known_matchups_for_round(round_num, current_field, known_pairings_by_round)
+        if matchups is None:
+            return fields
 
+        round_results = results_by_round.get(round_num, {})
         winners = []
         for pair in matchups:
             winner = round_results.get(frozenset(pair))
@@ -214,6 +288,7 @@ def main():
                               "each to its own labeled output file")
     parser.add_argument("--simulations", type=int, default=N_SIMULATIONS)
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
+    parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducible Monte Carlo results")
     args = parser.parse_args()
 
     if not args.all_rounds and args.through_round is None:
@@ -271,27 +346,74 @@ def main():
     results_by_round, round_sequence, unresolved_names = build_real_results_by_round(
         tournament_matches, draw, tour_config.name_aliases
     )
+    known_pairings_by_round, _round_sequence_2, unresolved_names_2 = build_known_pairings_by_round(
+        tournament_matches, draw, tour_config.name_aliases
+    )
+    unresolved_names = unresolved_names | unresolved_names_2
     if unresolved_names:
         print(f"WARNING: {len(unresolved_names)} ESPN player name(s) could not be matched to the "
               f"draw (their matches are excluded from real results): {sorted(unresolved_names)}",
               file=sys.stderr)
 
-    fields = replay_real_rounds(non_bye_players, bye_players, results_by_round)
+    fields = replay_real_rounds(non_bye_players, bye_players, results_by_round, known_pairings_by_round)
     max_known_round = len(fields) - 1
     print(f"Round sequence observed: {round_sequence}")
     print(f"Real results fully known through round {max_known_round} of the main draw "
           f"(then simulated normally from there)")
-    if max_known_round == 0:
-        print("No fully-known real round available - nothing to replay yet.", file=sys.stderr)
+
+    # the round right after the last fully-decided one may still be partially replayable: its
+    # matchup structure might already be fully known (round 1, always; round 2+, only if ESPN
+    # has published real names for every pairing) even though not every match in it has been
+    # played yet. Not a round-1 special case - round 1 is just the instance of this that's
+    # always available, since its matchups never depend on ESPN reporting anything.
+    target_round = max_known_round + 1
+    partial_field = fields[max_known_round]
+    partial_matchups = known_matchups_for_round(target_round, partial_field, known_pairings_by_round)
+    partial_known_results = {}
+    if partial_matchups is not None:
+        round_results = results_by_round.get(target_round, {})
+        partial_known_results = {
+            frozenset(pair): round_results[frozenset(pair)]
+            for pair in partial_matchups if frozenset(pair) in round_results
+        }
+
+    if partial_matchups is not None and partial_known_results:
+        print(f"Round {target_round} matchups are fully known ({len(partial_field)} players) - "
+              f"{len(partial_known_results)}/{len(partial_matchups)} already final - "
+              f"--through-round {target_round} will pin those and simulate the rest.")
+    elif max_known_round == 0:
+        print("No fully-known real round available, and the next round's matchups and/or "
+              "results aren't usable yet either - nothing to replay yet.", file=sys.stderr)
         sys.exit(1)
 
     bracket_stem = args.bracket_path.stem
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     def run_snapshot(n):
-        if not (0 <= n <= max_known_round):
+        partial = n == target_round and partial_matchups is not None and partial_known_results
+        if not partial and not (0 <= n <= max_known_round):
             print(f"ERROR: --through-round {n} is out of range (0..{max_known_round} known)", file=sys.stderr)
             sys.exit(1)
+        # reseeded per-round (not once for the whole run) so a standalone --through-round N
+        # always reproduces exactly the same snapshot as round N within an --all-rounds run -
+        # neither draws from wherever the global random stream happened to be left by whatever
+        # ran before it.
+        random.seed(args.seed + n)
+        if partial:
+            # byes only join in right after round 1 - for any later partial round they're
+            # already folded into partial_field (fields[max_known_round]).
+            extra_after = bye_players if n == 1 else []
+            champion_counts = run_simulations_partial_round(
+                partial_field, extra_after, partial_known_results, bracket.surface,
+                args.simulations, tour_config.ratings_path,
+            )
+            output_path = args.output_dir / f"{bracket_stem}_through_round_{n}_partial.csv"
+            _report(
+                f"Through round {n} - PARTIAL ({len(partial_known_results)}/{len(partial_matchups)} "
+                f"round-{n} matches final, rest of round {n} and beyond simulated)",
+                draw, champion_counts, args.simulations, output_path,
+            )
+            return
         starting_field = fields[n]
         champion_counts = run_simulations_from_field(starting_field, bracket.surface, args.simulations, tour_config.ratings_path)
         output_path = args.output_dir / f"{bracket_stem}_through_round_{n}.csv"
@@ -300,6 +422,8 @@ def main():
     if args.all_rounds:
         for n in range(1, max_known_round + 1):
             run_snapshot(n)
+        if partial_matchups is not None and partial_known_results:
+            run_snapshot(target_round)
     else:
         run_snapshot(args.through_round)
 

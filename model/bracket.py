@@ -49,6 +49,21 @@ ATP_NAME_ALIASES = {
     "Vallejo A.D.": "Vallejo D.",
     "Vallejo A.": "Vallejo D.",  # single-initial spelling, e.g. from PDF-extracted draws
     "Tirante T.": "Tirante T.A.",  # single-initial spelling, e.g. from PDF-extracted draws
+    # these keys are in ESPN-match-alias form ("Lastname I.", built from a live ESPN display
+    # name - see hybrid_simulation.match_espn_name_to_draw), not bracket-YAML form like the
+    # entries above. brackets/montreal_2026.yaml is PDF-extracted (parse_atp_draw.py), which has
+    # a known word-gap issue on tightly-kerned multi-word surnames (see parse_atp_draw.py's own
+    # docstring) - these six players' surnames came out glued/mis-split, so ESPN's normally-
+    # spaced real name can't be pattern-matched to the draw's mangled one without an explicit
+    # alias. Needed to backtest that bracket against real ESPN results.
+    "Busta P.": "Carrenobusta P.",
+    "Perricard G.": "Mpetshiperricard G.",
+    "Zandschulp B.": "Vandezandschulp B.",
+    "Cerundolo J.": "Cerundolo J.M.",
+    "Assche L.": "Vanassche L.",
+    "Landaluce M.": "Andaluce M.",
+    "Carabelli C.": "Ugocarabelli C.",
+    "Minaur A.": "Deminaur A.",
 }
 
 WTA_NAME_ALIASES = {

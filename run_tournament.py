@@ -5,6 +5,7 @@ Usage:
     python run_tournament.py data/wimbledon_2026_wta.yaml --simulations 5000
 """
 import argparse
+import random
 import sys
 from collections import Counter
 from pathlib import Path
@@ -32,6 +33,7 @@ def main():
     parser.add_argument("bracket_path", type=Path, help="Path to a bracket YAML file")
     parser.add_argument("--simulations", type=int, default=N_SIMULATIONS, help="Number of Monte Carlo runs")
     parser.add_argument("--output", type=Path, default=None, help="Simulation results CSV path")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducible Monte Carlo results")
     args = parser.parse_args()
 
     try:
@@ -93,6 +95,7 @@ def main():
     output_path = args.output or default_output_path(bracket)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     print()
+    random.seed(args.seed)
     simulate_and_report(
         f"{bracket.tournament} {bracket.year} {bracket.tour}", draw, non_bye_players, bye_players, bracket.surface,
         tour_config.ratings_path, output_path, n_simulations=args.simulations,
