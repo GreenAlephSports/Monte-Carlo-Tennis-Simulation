@@ -21,7 +21,7 @@ draw's fixed Round 1 -> Round 2 bracket tree - never from which matches happen t
 every player's tag is stable from the moment the draw is set, not just once they reach Round 2.
 
 Usage:
-    python model/daron_export.py brackets/cincinnati_2026_atp.yaml --simulations 5000
+    python model/bracket_export.py brackets/cincinnati_2026_atp.yaml --simulations 5000
 """
 import argparse
 import json
@@ -264,7 +264,7 @@ def true_bracket_order(leaves_by_slot):
     return [leaf for slot_leaves in leaves_by_slot for leaf in slot_leaves]
 
 
-def export_daron_json(bracket_path, output_path=None, n_simulations=N_SIMULATIONS, seed=SEED):
+def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATIONS, seed=SEED):
     bracket = load_bracket_yaml(bracket_path)
     players = order_by_draw_position(bracket.players)
     byes = [p.bye for p in players]
@@ -454,7 +454,7 @@ def export_daron_json(bracket_path, output_path=None, n_simulations=N_SIMULATION
     }
 
     if output_path is None:
-        output_path = OUTPUT_DIR / f"{Path(bracket_path).stem}_daron_export.json"
+        output_path = OUTPUT_DIR / f"{Path(bracket_path).stem}_bracket_export.json"
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
@@ -472,7 +472,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     try:
-        output_path, output = export_daron_json(args.bracket_path, args.output, args.simulations, args.seed)
+        output_path, output = export_bracket_json(args.bracket_path, args.output, args.simulations, args.seed)
     except (BracketValidationError, LiveScoresError, RuntimeError) as e:
         print(f"ERROR: {e}", file=sys.stderr)
         sys.exit(1)

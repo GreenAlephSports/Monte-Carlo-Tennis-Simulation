@@ -1,360 +1,360 @@
 {
   "meta": {
     "tournament": "cincinnati-open-men-2026",
-    "generated_at": "2026-08-13T19:35:11Z",
-    "iterations": 3000,
+    "generated_at": "2026-08-13T20:03:46Z",
+    "iterations": 10000,
     "seed": 42
   },
   "players": [
     {
       "player": "Novak Djokovic",
       "quarter": "Q1",
-      "p_champ": 0.233,
-      "p_sf": 0.403,
-      "p_final": 0.328
+      "p_champ": 0.231,
+      "p_sf": 0.41,
+      "p_final": 0.324
     },
     {
       "player": "Alexander Zverev",
       "quarter": "Q3",
-      "p_champ": 0.137,
-      "p_sf": 0.293,
-      "p_final": 0.225
+      "p_champ": 0.138,
+      "p_sf": 0.296,
+      "p_final": 0.23
     },
     {
       "player": "Daniil Medvedev",
       "quarter": "Q1",
-      "p_champ": 0.081,
-      "p_sf": 0.202,
-      "p_final": 0.134
+      "p_champ": 0.085,
+      "p_sf": 0.197,
+      "p_final": 0.136
     },
     {
       "player": "Felix Auger-Aliassime",
       "quarter": "Q3",
-      "p_champ": 0.076,
-      "p_sf": 0.193,
-      "p_final": 0.134
+      "p_champ": 0.074,
+      "p_sf": 0.204,
+      "p_final": 0.144
     },
     {
       "player": "Taylor Fritz",
       "quarter": "Q3",
-      "p_champ": 0.065,
-      "p_sf": 0.195,
-      "p_final": 0.131
+      "p_champ": 0.063,
+      "p_sf": 0.186,
+      "p_final": 0.125
     },
     {
       "player": "Ben Shelton",
       "quarter": "Q2",
-      "p_champ": 0.058,
-      "p_sf": 0.273,
-      "p_final": 0.12
+      "p_champ": 0.056,
+      "p_sf": 0.265,
+      "p_final": 0.115
     },
     {
       "player": "Alex de Minaur",
       "quarter": "Q3",
-      "p_champ": 0.042,
+      "p_champ": 0.043,
       "p_sf": 0.138,
-      "p_final": 0.094
+      "p_final": 0.092
     },
     {
       "player": "Jakub Mensik",
       "quarter": "Q2",
-      "p_champ": 0.036,
-      "p_sf": 0.19,
-      "p_final": 0.074
+      "p_champ": 0.035,
+      "p_sf": 0.186,
+      "p_final": 0.076
     },
     {
       "player": "Arthur Fils",
       "quarter": "Q1",
-      "p_champ": 0.035,
-      "p_sf": 0.123,
-      "p_final": 0.07
+      "p_champ": 0.033,
+      "p_sf": 0.12,
+      "p_final": 0.068
+    },
+    {
+      "player": "Tomas Machac",
+      "quarter": "Q2",
+      "p_champ": 0.022,
+      "p_sf": 0.125,
+      "p_final": 0.05
+    },
+    {
+      "player": "Learner Tien",
+      "quarter": "Q4",
+      "p_champ": 0.02,
+      "p_sf": 0.133,
+      "p_final": 0.049
     },
     {
       "player": "Tommy Paul",
       "quarter": "Q4",
       "p_champ": 0.019,
-      "p_sf": 0.136,
-      "p_final": 0.052
-    },
-    {
-      "player": "Tomas Machac",
-      "quarter": "Q2",
-      "p_champ": 0.018,
-      "p_sf": 0.12,
-      "p_final": 0.045
-    },
-    {
-      "player": "Lorenzo Musetti",
-      "quarter": "Q3",
-      "p_champ": 0.017,
-      "p_sf": 0.062,
-      "p_final": 0.036
+      "p_sf": 0.133,
+      "p_final": 0.048
     },
     {
       "player": "Frances Tiafoe",
       "quarter": "Q4",
       "p_champ": 0.017,
-      "p_sf": 0.145,
+      "p_sf": 0.142,
       "p_final": 0.049
     },
     {
       "player": "Grigor Dimitrov",
       "quarter": "Q4",
-      "p_champ": 0.016,
-      "p_sf": 0.103,
-      "p_final": 0.04
+      "p_champ": 0.014,
+      "p_sf": 0.101,
+      "p_final": 0.038
     },
     {
       "player": "Jiri Lehecka",
       "quarter": "Q1",
-      "p_champ": 0.016,
-      "p_sf": 0.066,
-      "p_final": 0.036
+      "p_champ": 0.014,
+      "p_sf": 0.064,
+      "p_final": 0.035
     },
     {
-      "player": "Learner Tien",
-      "quarter": "Q4",
-      "p_champ": 0.014,
-      "p_sf": 0.131,
-      "p_final": 0.047
+      "player": "Lorenzo Musetti",
+      "quarter": "Q3",
+      "p_champ": 0.013,
+      "p_sf": 0.066,
+      "p_final": 0.035
     },
     {
       "player": "Casper Ruud",
       "quarter": "Q2",
-      "p_champ": 0.011,
-      "p_sf": 0.102,
-      "p_final": 0.032
-    },
-    {
-      "player": "Brandon Nakashima",
-      "quarter": "Q1",
-      "p_champ": 0.01,
-      "p_sf": 0.041,
-      "p_final": 0.02
-    },
-    {
-      "player": "Joao Fonseca",
-      "quarter": "Q4",
-      "p_champ": 0.01,
-      "p_sf": 0.082,
-      "p_final": 0.028
+      "p_champ": 0.012,
+      "p_sf": 0.108,
+      "p_final": 0.034
     },
     {
       "player": "Valentin Vacherot",
       "quarter": "Q4",
       "p_champ": 0.01,
-      "p_sf": 0.093,
-      "p_final": 0.033
+      "p_sf": 0.095,
+      "p_final": 0.031
+    },
+    {
+      "player": "Alex Michelsen",
+      "quarter": "Q4",
+      "p_champ": 0.009,
+      "p_sf": 0.073,
+      "p_final": 0.026
     },
     {
       "player": "Ugo Humbert",
       "quarter": "Q1",
       "p_champ": 0.009,
-      "p_sf": 0.051,
-      "p_final": 0.026
-    },
-    {
-      "player": "Alex Michelsen",
-      "quarter": "Q4",
-      "p_champ": 0.008,
-      "p_sf": 0.073,
-      "p_final": 0.023
-    },
-    {
-      "player": "Francisco Cerundolo",
-      "quarter": "Q3",
-      "p_champ": 0.007,
-      "p_sf": 0.032,
-      "p_final": 0.015
+      "p_sf": 0.049,
+      "p_final": 0.025
     },
     {
       "player": "Rafael Jodar",
       "quarter": "Q4",
-      "p_champ": 0.007,
-      "p_sf": 0.076,
-      "p_final": 0.024
+      "p_champ": 0.009,
+      "p_sf": 0.079,
+      "p_final": 0.025
+    },
+    {
+      "player": "Joao Fonseca",
+      "quarter": "Q4",
+      "p_champ": 0.008,
+      "p_sf": 0.088,
+      "p_final": 0.025
     },
     {
       "player": "Denis Shapovalov",
       "quarter": "Q1",
+      "p_champ": 0.007,
+      "p_sf": 0.036,
+      "p_final": 0.017
+    },
+    {
+      "player": "Brandon Nakashima",
+      "quarter": "Q1",
       "p_champ": 0.006,
-      "p_sf": 0.042,
-      "p_final": 0.02
+      "p_sf": 0.041,
+      "p_final": 0.018
     },
     {
       "player": "Flavio Cobolli",
       "quarter": "Q2",
       "p_champ": 0.005,
-      "p_sf": 0.061,
-      "p_final": 0.016
+      "p_sf": 0.06,
+      "p_final": 0.015
+    },
+    {
+      "player": "Francisco Cerundolo",
+      "quarter": "Q3",
+      "p_champ": 0.005,
+      "p_sf": 0.028,
+      "p_final": 0.014
     },
     {
       "player": "Gael Monfils",
       "quarter": "Q2",
       "p_champ": 0.004,
-      "p_sf": 0.046,
-      "p_final": 0.011
+      "p_sf": 0.045,
+      "p_final": 0.012
+    },
+    {
+      "player": "Alejandro Tabilo",
+      "quarter": "Q2",
+      "p_champ": 0.004,
+      "p_sf": 0.053,
+      "p_final": 0.013
     },
     {
       "player": "Cameron Norrie",
       "quarter": "Q1",
+      "p_champ": 0.003,
+      "p_sf": 0.025,
+      "p_final": 0.011
+    },
+    {
+      "player": "Andrey Rublev",
+      "quarter": "Q3",
+      "p_champ": 0.003,
+      "p_sf": 0.022,
+      "p_final": 0.011
+    },
+    {
+      "player": "Tallon Griekspoor",
+      "quarter": "Q2",
       "p_champ": 0.002,
-      "p_sf": 0.014,
+      "p_sf": 0.022,
+      "p_final": 0.006
+    },
+    {
+      "player": "Kamil Majchrzak",
+      "quarter": "Q2",
+      "p_champ": 0.002,
+      "p_sf": 0.021,
       "p_final": 0.005
     },
     {
       "player": "Matteo Berrettini",
       "quarter": "Q3",
       "p_champ": 0.002,
-      "p_sf": 0.011,
-      "p_final": 0.006
-    },
-    {
-      "player": "Ignacio Buse",
-      "quarter": "Q1",
-      "p_champ": 0.002,
-      "p_sf": 0.014,
+      "p_sf": 0.01,
       "p_final": 0.004
     },
     {
-      "player": "Alejandro Tabilo",
-      "quarter": "Q2",
+      "player": "Marin Cilic",
+      "quarter": "Q4",
       "p_champ": 0.002,
-      "p_sf": 0.048,
-      "p_final": 0.009
+      "p_sf": 0.022,
+      "p_final": 0.004
     },
     {
-      "player": "Andrey Rublev",
-      "quarter": "Q3",
+      "player": "Zizou Bergs",
+      "quarter": "Q4",
       "p_champ": 0.002,
-      "p_sf": 0.024,
-      "p_final": 0.01
+      "p_sf": 0.019,
+      "p_final": 0.005
     },
     {
       "player": "Arthur Rinderknech",
       "quarter": "Q4",
       "p_champ": 0.002,
-      "p_sf": 0.036,
+      "p_sf": 0.035,
       "p_final": 0.008
     },
     {
-      "player": "Martin Landaluce",
-      "quarter": "Q1",
-      "p_champ": 0.001,
-      "p_sf": 0.004,
-      "p_final": 0.002
-    },
-    {
-      "player": "Roman Andres Burruchaga",
-      "quarter": "Q1",
-      "p_champ": 0.001,
-      "p_sf": 0.006,
-      "p_final": 0.002
-    },
-    {
-      "player": "Adrian Mannarino",
-      "quarter": "Q1",
-      "p_champ": 0.001,
-      "p_sf": 0.005,
-      "p_final": 0.001
-    },
-    {
-      "player": "Raphael Collignon",
-      "quarter": "Q1",
-      "p_champ": 0.001,
-      "p_sf": 0.003,
-      "p_final": 0.002
-    },
-    {
-      "player": "Pablo Carreno Busta",
+      "player": "Botic Van De Zandschulp",
       "quarter": "Q2",
       "p_champ": 0.001,
       "p_sf": 0.008,
       "p_final": 0.002
     },
     {
-      "player": "Tallon Griekspoor",
+      "player": "Karen Khachanov",
       "quarter": "Q2",
       "p_champ": 0.001,
       "p_sf": 0.021,
-      "p_final": 0.004
-    },
-    {
-      "player": "Kamil Majchrzak",
-      "quarter": "Q2",
-      "p_champ": 0.001,
-      "p_sf": 0.019,
       "p_final": 0.006
     },
     {
-      "player": "Thanasi Kokkinakis",
-      "quarter": "Q3",
-      "p_champ": 0.001,
-      "p_sf": 0.009,
-      "p_final": 0.004
-    },
-    {
-      "player": "Yannick Hanfmann",
+      "player": "Jenson Brooksby",
       "quarter": "Q3",
       "p_champ": 0.001,
       "p_sf": 0.003,
       "p_final": 0.001
     },
     {
-      "player": "Hubert Hurkacz",
+      "player": "Thanasi Kokkinakis",
       "quarter": "Q3",
       "p_champ": 0.001,
       "p_sf": 0.01,
       "p_final": 0.004
+    },
+    {
+      "player": "Stefanos Tsitsipas",
+      "quarter": "Q3",
+      "p_champ": 0.001,
+      "p_sf": 0.008,
+      "p_final": 0.004
+    },
+    {
+      "player": "Yannick Hanfmann",
+      "quarter": "Q3",
+      "p_champ": 0.001,
+      "p_sf": 0.004,
+      "p_final": 0.001
     },
     {
       "player": "Fabian Marozsan",
       "quarter": "Q4",
       "p_champ": 0.001,
-      "p_sf": 0.018,
-      "p_final": 0.002
-    },
-    {
-      "player": "Marin Cilic",
-      "quarter": "Q4",
-      "p_champ": 0.001,
-      "p_sf": 0.019,
+      "p_sf": 0.02,
       "p_final": 0.005
     },
     {
-      "player": "Luciano Darderi",
-      "quarter": "Q2",
+      "player": "Lorenzo Sonego",
+      "quarter": "Q4",
       "p_champ": 0.001,
-      "p_sf": 0.011,
-      "p_final": 0.003
+      "p_sf": 0.012,
+      "p_final": 0.004
     },
     {
-      "player": "Matteo Arnaldi",
-      "quarter": "Q2",
+      "player": "Daniel Merida",
+      "quarter": "Q4",
       "p_champ": 0.001,
-      "p_sf": 0.006,
+      "p_sf": 0.01,
       "p_final": 0.002
+    },
+    {
+      "player": "Ignacio Buse",
+      "quarter": "Q1",
+      "p_champ": 0.001,
+      "p_sf": 0.016,
+      "p_final": 0.006
+    },
+    {
+      "player": "Arthur Fery",
+      "quarter": "Q1",
+      "p_champ": 0.001,
+      "p_sf": 0.013,
+      "p_final": 0.003
     },
     {
       "player": "Tomas Martin Etcheverry",
       "quarter": "Q3",
       "p_champ": 0.001,
-      "p_sf": 0.01,
-      "p_final": 0.004
+      "p_sf": 0.009,
+      "p_final": 0.003
     },
     {
-      "player": "Zizou Bergs",
-      "quarter": "Q4",
-      "p_champ": 0.001,
-      "p_sf": 0.022,
-      "p_final": 0.004
-    },
-    {
-      "player": "Dino Prizmic",
+      "player": "Martin Landaluce",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.001,
+      "p_sf": 0.004,
       "p_final": 0.001
+    },
+    {
+      "player": "Roman Andres Burruchaga",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.006,
+      "p_final": 0.002
     },
     {
       "player": "Jan-Lennard Struff",
@@ -364,10 +364,17 @@
       "p_final": 0.0
     },
     {
+      "player": "Adrian Mannarino",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.001
+    },
+    {
       "player": "Camilo Ugo Carabelli",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.0,
+      "p_sf": 0.001,
       "p_final": 0.0
     },
     {
@@ -381,7 +388,7 @@
       "player": "Thiago Agustin Tirante",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.005,
+      "p_sf": 0.004,
       "p_final": 0.001
     },
     {
@@ -395,15 +402,15 @@
       "player": "Marton Fucsovics",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.001
+      "p_sf": 0.001,
+      "p_final": 0.0
     },
     {
       "player": "Terence Atmane",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.001
+      "p_sf": 0.001,
+      "p_final": 0.0
     },
     {
       "player": "Mariano Navone",
@@ -413,18 +420,25 @@
       "p_final": 0.0
     },
     {
+      "player": "Raphael Collignon",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
+      "p_final": 0.002
+    },
+    {
       "player": "Rinky Hijikata",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.007,
-      "p_final": 0.002
+      "p_sf": 0.006,
+      "p_final": 0.001
     },
     {
       "player": "Zachary Svajda",
       "quarter": "Q2",
       "p_champ": 0.0,
       "p_sf": 0.003,
-      "p_final": 0.001
+      "p_final": 0.0
     },
     {
       "player": "Mattia Bellucci",
@@ -434,32 +448,25 @@
       "p_final": 0.001
     },
     {
-      "player": "Botic Van De Zandschulp",
+      "player": "Pablo Carreno Busta",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.007,
+      "p_sf": 0.008,
       "p_final": 0.002
     },
     {
       "player": "Hamad Medjedovic",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.012,
+      "p_sf": 0.01,
       "p_final": 0.002
     },
     {
       "player": "Aleksandar Kovacevic",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.001,
+      "p_sf": 0.002,
       "p_final": 0.0
-    },
-    {
-      "player": "Karen Khachanov",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.025,
-      "p_final": 0.005
     },
     {
       "player": "Adam Walton",
@@ -469,17 +476,10 @@
       "p_final": 0.0
     },
     {
-      "player": "Jenson Brooksby",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.003,
-      "p_final": 0.0
-    },
-    {
       "player": "Nuno Borges",
       "quarter": "Q3",
       "p_champ": 0.0,
-      "p_sf": 0.002,
+      "p_sf": 0.001,
       "p_final": 0.001
     },
     {
@@ -490,133 +490,120 @@
       "p_final": 0.0
     },
     {
-      "player": "Stefanos Tsitsipas",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.008,
-      "p_final": 0.003
-    },
-    {
       "player": "Juan Manuel Cerundolo",
       "quarter": "Q3",
       "p_champ": 0.0,
-      "p_sf": 0.0,
-      "p_final": 0.0
+      "p_sf": 0.002,
+      "p_final": 0.001
+    },
+    {
+      "player": "Hubert Hurkacz",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.006,
+      "p_final": 0.002
     },
     {
       "player": "Adolfo Daniel Vallejo",
       "quarter": "Q3",
       "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
+      "p_sf": 0.002,
+      "p_final": 0.001
     },
     {
       "player": "Daniel Altmaier",
       "quarter": "Q4",
       "p_champ": 0.0,
-      "p_sf": 0.004,
-      "p_final": 0.001
+      "p_sf": 0.003,
+      "p_final": 0.0
     },
     {
       "player": "Sebastian Baez",
       "quarter": "Q4",
       "p_champ": 0.0,
-      "p_sf": 0.003,
+      "p_sf": 0.002,
       "p_final": 0.001
     },
     {
       "player": "Shang Juncheng",
       "quarter": "Q4",
       "p_champ": 0.0,
-      "p_sf": 0.008,
+      "p_sf": 0.007,
       "p_final": 0.001
-    },
-    {
-      "player": "Lorenzo Sonego",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.01,
-      "p_final": 0.003
-    },
-    {
-      "player": "Daniel Merida",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.009,
-      "p_final": 0.002
     },
     {
       "player": "Jesper de Jong",
       "quarter": "Q4",
       "p_champ": 0.0,
       "p_sf": 0.003,
-      "p_final": 0.001
+      "p_final": 0.0
     },
     {
       "player": "James Duckworth",
       "quarter": "Q4",
       "p_champ": 0.0,
-      "p_sf": 0.002,
+      "p_sf": 0.001,
       "p_final": 0.0
     },
     {
       "player": "Vit Kopriva",
       "quarter": "Q4",
       "p_champ": 0.0,
-      "p_sf": 0.006,
+      "p_sf": 0.004,
       "p_final": 0.001
     },
     {
-      "player": "Arthur Fery",
-      "quarter": "Q1",
+      "player": "Luciano Darderi",
+      "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.013,
-      "p_final": 0.005
+      "p_sf": 0.009,
+      "p_final": 0.001
+    },
+    {
+      "player": "Matteo Arnaldi",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.007,
+      "p_final": 0.001
     },
     {
       "player": "Alexander Blockx",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.016,
-      "p_final": 0.003
+      "p_sf": 0.015,
+      "p_final": 0.002
     }
   ],
   "matchups": {
-    "T-R1-2": {
-      "slot_a": "Cameron Norrie",
-      "slot_b": "Dino Prizmic",
-      "p_slot_a": 0.921,
-      "p_slot_b": 0.079
-    },
     "T-R1-3": {
       "slot_a": "Roman Andres Burruchaga",
       "slot_b": "Jan-Lennard Struff",
-      "p_slot_a": 0.458,
-      "p_slot_b": 0.542
+      "p_slot_a": 0.414,
+      "p_slot_b": 0.586
     },
     "T-R1-4": {
-      "slot_a": "Camilo Ugo Carabelli",
-      "slot_b": "Miomir Kecmanovic",
-      "p_slot_a": 0.27,
-      "p_slot_b": 0.73
-    },
-    "T-R1-5": {
       "slot_a": "Thiago Agustin Tirante",
       "slot_b": "Jan Choinski",
-      "p_slot_a": 0.655,
-      "p_slot_b": 0.345
+      "p_slot_a": 0.657,
+      "p_slot_b": 0.343
     },
-    "T-R1-6": {
+    "T-R1-5": {
       "slot_a": "Denis Shapovalov",
       "slot_b": "Adrian Mannarino",
-      "p_slot_a": 0.546,
-      "p_slot_b": 0.454
+      "p_slot_a": 0.543,
+      "p_slot_b": 0.457
     },
-    "T-R1-7": {
+    "T-R1-6": {
       "slot_a": "Marton Fucsovics",
       "slot_b": "Terence Atmane",
       "p_slot_a": 0.347,
       "p_slot_b": 0.653
+    },
+    "T-R1-7": {
+      "slot_a": "Camilo Ugo Carabelli",
+      "slot_b": "Miomir Kecmanovic",
+      "p_slot_a": 0.27,
+      "p_slot_b": 0.73
     },
     "T-R1-8": {
       "slot_a": "Mariano Navone",
@@ -695,6 +682,12 @@
       "slot_b": "Matteo Arnaldi",
       "p_slot_a": 0.505,
       "p_slot_b": 0.495
+    },
+    "B-R2-4": {
+      "slot_a": "Alexander Zverev",
+      "slot_b": "Cameron Norrie",
+      "p_slot_a": 0.802,
+      "p_slot_b": 0.198
     }
   },
   "head_to_head": {
@@ -720,7 +713,6 @@
     "Adam Walton|Daniel Merida": 0.347,
     "Adam Walton|Daniil Medvedev": 0.096,
     "Adam Walton|Denis Shapovalov": 0.232,
-    "Adam Walton|Dino Prizmic": 0.387,
     "Adam Walton|Fabian Marozsan": 0.309,
     "Adam Walton|Felix Auger-Aliassime": 0.107,
     "Adam Walton|Flavio Cobolli": 0.293,
@@ -800,7 +792,6 @@
     "Adolfo Daniel Vallejo|Daniel Merida": 0.421,
     "Adolfo Daniel Vallejo|Daniil Medvedev": 0.127,
     "Adolfo Daniel Vallejo|Denis Shapovalov": 0.293,
-    "Adolfo Daniel Vallejo|Dino Prizmic": 0.464,
     "Adolfo Daniel Vallejo|Fabian Marozsan": 0.38,
     "Adolfo Daniel Vallejo|Felix Auger-Aliassime": 0.141,
     "Adolfo Daniel Vallejo|Flavio Cobolli": 0.362,
@@ -878,7 +869,6 @@
     "Adrian Mannarino|Daniel Altmaier": 0.594,
     "Adrian Mannarino|Daniel Merida": 0.468,
     "Adrian Mannarino|Daniil Medvedev": 0.15,
-    "Adrian Mannarino|Dino Prizmic": 0.511,
     "Adrian Mannarino|Fabian Marozsan": 0.425,
     "Adrian Mannarino|Felix Auger-Aliassime": 0.166,
     "Adrian Mannarino|Flavio Cobolli": 0.407,
@@ -956,7 +946,6 @@
     "Alejandro Tabilo|Daniel Merida": 0.55,
     "Alejandro Tabilo|Daniil Medvedev": 0.197,
     "Alejandro Tabilo|Denis Shapovalov": 0.41,
-    "Alejandro Tabilo|Dino Prizmic": 0.592,
     "Alejandro Tabilo|Fabian Marozsan": 0.507,
     "Alejandro Tabilo|Felix Auger-Aliassime": 0.217,
     "Alejandro Tabilo|Flavio Cobolli": 0.488,
@@ -1033,7 +1022,6 @@
     "Aleksandar Kovacevic|Daniel Merida": 0.363,
     "Aleksandar Kovacevic|Daniil Medvedev": 0.102,
     "Aleksandar Kovacevic|Denis Shapovalov": 0.245,
-    "Aleksandar Kovacevic|Dino Prizmic": 0.403,
     "Aleksandar Kovacevic|Fabian Marozsan": 0.323,
     "Aleksandar Kovacevic|Felix Auger-Aliassime": 0.114,
     "Aleksandar Kovacevic|Flavio Cobolli": 0.307,
@@ -1108,7 +1096,6 @@
     "Alex Michelsen|Daniel Merida": 0.649,
     "Alex Michelsen|Daniil Medvedev": 0.27,
     "Alex Michelsen|Denis Shapovalov": 0.512,
-    "Alex Michelsen|Dino Prizmic": 0.687,
     "Alex Michelsen|Fabian Marozsan": 0.608,
     "Alex Michelsen|Felix Auger-Aliassime": 0.295,
     "Alex Michelsen|Flavio Cobolli": 0.59,
@@ -1182,7 +1169,6 @@
     "Alex de Minaur|Daniel Merida": 0.768,
     "Alex de Minaur|Daniil Medvedev": 0.398,
     "Alex de Minaur|Denis Shapovalov": 0.653,
-    "Alex de Minaur|Dino Prizmic": 0.797,
     "Alex de Minaur|Fabian Marozsan": 0.735,
     "Alex de Minaur|Felix Auger-Aliassime": 0.428,
     "Alex de Minaur|Flavio Cobolli": 0.72,
@@ -1256,7 +1242,6 @@
     "Alexander Blockx|Daniel Merida": 0.443,
     "Alexander Blockx|Daniil Medvedev": 0.137,
     "Alexander Blockx|Denis Shapovalov": 0.312,
-    "Alexander Blockx|Dino Prizmic": 0.486,
     "Alexander Blockx|Fabian Marozsan": 0.401,
     "Alexander Blockx|Felix Auger-Aliassime": 0.153,
     "Alexander Blockx|Flavio Cobolli": 0.383,
@@ -1322,14 +1307,12 @@
     "Alexander Zverev|Ben Shelton": 0.659,
     "Alexander Zverev|Botic Van De Zandschulp": 0.859,
     "Alexander Zverev|Brandon Nakashima": 0.784,
-    "Alexander Zverev|Cameron Norrie": 0.802,
     "Alexander Zverev|Camilo Ugo Carabelli": 0.906,
     "Alexander Zverev|Casper Ruud": 0.77,
     "Alexander Zverev|Daniel Altmaier": 0.909,
     "Alexander Zverev|Daniel Merida": 0.857,
     "Alexander Zverev|Daniil Medvedev": 0.546,
     "Alexander Zverev|Denis Shapovalov": 0.773,
-    "Alexander Zverev|Dino Prizmic": 0.877,
     "Alexander Zverev|Fabian Marozsan": 0.834,
     "Alexander Zverev|Felix Auger-Aliassime": 0.576,
     "Alexander Zverev|Flavio Cobolli": 0.824,
@@ -1401,7 +1384,6 @@
     "Andrey Rublev|Daniel Merida": 0.62,
     "Andrey Rublev|Daniil Medvedev": 0.246,
     "Andrey Rublev|Denis Shapovalov": 0.481,
-    "Andrey Rublev|Dino Prizmic": 0.659,
     "Andrey Rublev|Fabian Marozsan": 0.578,
     "Andrey Rublev|Felix Auger-Aliassime": 0.27,
     "Andrey Rublev|Flavio Cobolli": 0.56,
@@ -1472,7 +1454,6 @@
     "Arthur Fery|Daniel Merida": 0.49,
     "Arthur Fery|Daniil Medvedev": 0.161,
     "Arthur Fery|Denis Shapovalov": 0.353,
-    "Arthur Fery|Dino Prizmic": 0.532,
     "Arthur Fery|Fabian Marozsan": 0.446,
     "Arthur Fery|Felix Auger-Aliassime": 0.178,
     "Arthur Fery|Flavio Cobolli": 0.428,
@@ -1542,7 +1523,6 @@
     "Arthur Fils|Daniel Merida": 0.738,
     "Arthur Fils|Daniil Medvedev": 0.361,
     "Arthur Fils|Denis Shapovalov": 0.616,
-    "Arthur Fils|Dino Prizmic": 0.77,
     "Arthur Fils|Fabian Marozsan": 0.703,
     "Arthur Fils|Felix Auger-Aliassime": 0.389,
     "Arthur Fils|Flavio Cobolli": 0.687,
@@ -1611,7 +1591,6 @@
     "Arthur Rinderknech|Daniel Merida": 0.534,
     "Arthur Rinderknech|Daniil Medvedev": 0.186,
     "Arthur Rinderknech|Denis Shapovalov": 0.394,
-    "Arthur Rinderknech|Dino Prizmic": 0.576,
     "Arthur Rinderknech|Fabian Marozsan": 0.49,
     "Arthur Rinderknech|Felix Auger-Aliassime": 0.206,
     "Arthur Rinderknech|Flavio Cobolli": 0.471,
@@ -1679,7 +1658,6 @@
     "Ben Shelton|Daniel Merida": 0.756,
     "Ben Shelton|Daniil Medvedev": 0.383,
     "Ben Shelton|Denis Shapovalov": 0.638,
-    "Ben Shelton|Dino Prizmic": 0.786,
     "Ben Shelton|Fabian Marozsan": 0.723,
     "Ben Shelton|Felix Auger-Aliassime": 0.412,
     "Ben Shelton|Flavio Cobolli": 0.707,
@@ -1746,7 +1724,6 @@
     "Botic Van De Zandschulp|Daniel Merida": 0.497,
     "Botic Van De Zandschulp|Daniil Medvedev": 0.165,
     "Botic Van De Zandschulp|Denis Shapovalov": 0.36,
-    "Botic Van De Zandschulp|Dino Prizmic": 0.539,
     "Botic Van De Zandschulp|Fabian Marozsan": 0.453,
     "Botic Van De Zandschulp|Felix Auger-Aliassime": 0.182,
     "Botic Van De Zandschulp|Flavio Cobolli": 0.434,
@@ -1811,7 +1788,6 @@
     "Brandon Nakashima|Daniel Merida": 0.624,
     "Brandon Nakashima|Daniil Medvedev": 0.249,
     "Brandon Nakashima|Denis Shapovalov": 0.485,
-    "Brandon Nakashima|Dino Prizmic": 0.663,
     "Brandon Nakashima|Fabian Marozsan": 0.582,
     "Brandon Nakashima|Felix Auger-Aliassime": 0.273,
     "Brandon Nakashima|Flavio Cobolli": 0.563,
@@ -1939,7 +1915,6 @@
     "Camilo Ugo Carabelli|Daniel Merida": 0.383,
     "Camilo Ugo Carabelli|Daniil Medvedev": 0.11,
     "Camilo Ugo Carabelli|Denis Shapovalov": 0.261,
-    "Camilo Ugo Carabelli|Dino Prizmic": 0.424,
     "Camilo Ugo Carabelli|Fabian Marozsan": 0.343,
     "Camilo Ugo Carabelli|Felix Auger-Aliassime": 0.123,
     "Camilo Ugo Carabelli|Flavio Cobolli": 0.326,
@@ -2001,7 +1976,6 @@
     "Casper Ruud|Daniel Merida": 0.641,
     "Casper Ruud|Daniil Medvedev": 0.264,
     "Casper Ruud|Denis Shapovalov": 0.505,
-    "Casper Ruud|Dino Prizmic": 0.68,
     "Casper Ruud|Fabian Marozsan": 0.601,
     "Casper Ruud|Felix Auger-Aliassime": 0.288,
     "Casper Ruud|Flavio Cobolli": 0.582,
@@ -2063,7 +2037,6 @@
     "Daniel Altmaier|Daniel Merida": 0.375,
     "Daniel Altmaier|Daniil Medvedev": 0.107,
     "Daniel Altmaier|Denis Shapovalov": 0.255,
-    "Daniel Altmaier|Dino Prizmic": 0.416,
     "Daniel Altmaier|Fabian Marozsan": 0.336,
     "Daniel Altmaier|Felix Auger-Aliassime": 0.12,
     "Daniel Altmaier|Flavio Cobolli": 0.319,
@@ -2124,7 +2097,6 @@
     "Daniel Altmaier|Zizou Bergs": 0.374,
     "Daniel Merida|Daniil Medvedev": 0.167,
     "Daniel Merida|Denis Shapovalov": 0.363,
-    "Daniel Merida|Dino Prizmic": 0.543,
     "Daniel Merida|Fabian Marozsan": 0.457,
     "Daniel Merida|Felix Auger-Aliassime": 0.184,
     "Daniel Merida|Flavio Cobolli": 0.438,
@@ -2183,7 +2155,6 @@
     "Daniel Merida|Zachary Svajda": 0.66,
     "Daniel Merida|Zizou Bergs": 0.499,
     "Daniil Medvedev|Denis Shapovalov": 0.74,
-    "Daniil Medvedev|Dino Prizmic": 0.856,
     "Daniil Medvedev|Fabian Marozsan": 0.808,
     "Daniil Medvedev|Felix Auger-Aliassime": 0.531,
     "Daniil Medvedev|Flavio Cobolli": 0.796,
@@ -2242,7 +2213,6 @@
     "Daniil Medvedev|Yannick Hanfmann": 0.834,
     "Daniil Medvedev|Zachary Svajda": 0.907,
     "Daniil Medvedev|Zizou Bergs": 0.833,
-    "Denis Shapovalov|Dino Prizmic": 0.676,
     "Denis Shapovalov|Fabian Marozsan": 0.596,
     "Denis Shapovalov|Felix Auger-Aliassime": 0.284,
     "Denis Shapovalov|Flavio Cobolli": 0.578,
@@ -2301,64 +2271,6 @@
     "Denis Shapovalov|Yannick Hanfmann": 0.639,
     "Denis Shapovalov|Zachary Svajda": 0.773,
     "Denis Shapovalov|Zizou Bergs": 0.636,
-    "Dino Prizmic|Fabian Marozsan": 0.415,
-    "Dino Prizmic|Felix Auger-Aliassime": 0.16,
-    "Dino Prizmic|Flavio Cobolli": 0.396,
-    "Dino Prizmic|Frances Tiafoe": 0.296,
-    "Dino Prizmic|Francisco Cerundolo": 0.322,
-    "Dino Prizmic|Gael Monfils": 0.369,
-    "Dino Prizmic|Grigor Dimitrov": 0.271,
-    "Dino Prizmic|Hamad Medjedovic": 0.486,
-    "Dino Prizmic|Hubert Hurkacz": 0.434,
-    "Dino Prizmic|Ignacio Buse": 0.451,
-    "Dino Prizmic|Jakub Mensik": 0.238,
-    "Dino Prizmic|James Duckworth": 0.635,
-    "Dino Prizmic|Jan Choinski": 0.62,
-    "Dino Prizmic|Jan-Lennard Struff": 0.582,
-    "Dino Prizmic|Jenson Brooksby": 0.44,
-    "Dino Prizmic|Jesper de Jong": 0.565,
-    "Dino Prizmic|Jiri Lehecka": 0.272,
-    "Dino Prizmic|Joao Fonseca": 0.339,
-    "Dino Prizmic|Juan Manuel Cerundolo": 0.521,
-    "Dino Prizmic|Kamil Majchrzak": 0.413,
-    "Dino Prizmic|Karen Khachanov": 0.433,
-    "Dino Prizmic|Learner Tien": 0.283,
-    "Dino Prizmic|Lorenzo Musetti": 0.271,
-    "Dino Prizmic|Lorenzo Sonego": 0.443,
-    "Dino Prizmic|Luciano Darderi": 0.59,
-    "Dino Prizmic|Mariano Navone": 0.656,
-    "Dino Prizmic|Marin Cilic": 0.398,
-    "Dino Prizmic|Martin Landaluce": 0.517,
-    "Dino Prizmic|Marton Fucsovics": 0.462,
-    "Dino Prizmic|Matteo Arnaldi": 0.559,
-    "Dino Prizmic|Matteo Berrettini": 0.348,
-    "Dino Prizmic|Mattia Bellucci": 0.569,
-    "Dino Prizmic|Miomir Kecmanovic": 0.52,
-    "Dino Prizmic|Novak Djokovic": 0.091,
-    "Dino Prizmic|Nuno Borges": 0.486,
-    "Dino Prizmic|Pablo Carreno Busta": 0.489,
-    "Dino Prizmic|Rafael Jodar": 0.342,
-    "Dino Prizmic|Raphael Collignon": 0.424,
-    "Dino Prizmic|Rinky Hijikata": 0.528,
-    "Dino Prizmic|Roman Andres Burruchaga": 0.479,
-    "Dino Prizmic|Sebastian Baez": 0.554,
-    "Dino Prizmic|Shang Juncheng": 0.481,
-    "Dino Prizmic|Stefanos Tsitsipas": 0.389,
-    "Dino Prizmic|Tallon Griekspoor": 0.384,
-    "Dino Prizmic|Taylor Fritz": 0.189,
-    "Dino Prizmic|Terence Atmane": 0.474,
-    "Dino Prizmic|Thanasi Kokkinakis": 0.365,
-    "Dino Prizmic|Thiago Agustin Tirante": 0.47,
-    "Dino Prizmic|Tomas Machac": 0.256,
-    "Dino Prizmic|Tomas Martin Etcheverry": 0.449,
-    "Dino Prizmic|Tommy Paul": 0.281,
-    "Dino Prizmic|Ugo Humbert": 0.308,
-    "Dino Prizmic|Valentin Royer": 0.619,
-    "Dino Prizmic|Valentin Vacherot": 0.339,
-    "Dino Prizmic|Vit Kopriva": 0.555,
-    "Dino Prizmic|Yannick Hanfmann": 0.459,
-    "Dino Prizmic|Zachary Svajda": 0.621,
-    "Dino Prizmic|Zizou Bergs": 0.456,
     "Fabian Marozsan|Felix Auger-Aliassime": 0.212,
     "Fabian Marozsan|Flavio Cobolli": 0.481,
     "Fabian Marozsan|Frances Tiafoe": 0.373,
