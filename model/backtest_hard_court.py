@@ -30,7 +30,8 @@ from bracket import (  # noqa: E402
 from bracket_schema import BracketValidationError, load_bracket_yaml  # noqa: E402
 from elo_ratings import calculate_elo_ratings, load_matches_for_tour  # noqa: E402
 from hybrid_simulation import (  # noqa: E402
-    TOUR_SINGLES_CATEGORY, _report, build_real_results_by_round, replay_real_rounds,
+    TOUR_SINGLES_CATEGORY, _report, build_known_pairings_by_round, build_real_results_by_round,
+    reconstruct_leaves_by_round2_slot, replay_real_rounds, true_bracket_order,
 )
 from live_scores import LiveScoresError, extract_matches, fetch_scoreboard  # noqa: E402
 from simulate import N_SIMULATIONS, run_simulations_from_field  # noqa: E402
@@ -91,10 +92,30 @@ def analyze_tournament(bracket_path, pretournament_csv_path, event_id, n_simulat
     results_by_round, round_sequence, _unresolved = build_real_results_by_round(
         tournament_matches, draw, tour_config.name_aliases
     )
-    fields = replay_real_rounds(non_bye_players, bye_players, results_by_round)
+    # known_pairings_by_round is required for replay_real_rounds to advance past Round 1 at all -
+    # Round 2+'s matchup structure has no other source (see known_matchups_for_round's docstring
+    # in hybrid_simulation.py). Omitting it silently truncates replay to Round 1 regardless of how
+    # much of the real tournament actually finished - confirmed the hard way: this call used to
+    # omit it and produced "Rounds fully known ... 1 of 7" for an already-fully-concluded event.
+    known_pairings_by_round, _round_sequence_2, _unresolved_2 = build_known_pairings_by_round(
+        tournament_matches, draw, tour_config.name_aliases
+    )
+    fields = replay_real_rounds(non_bye_players, bye_players, results_by_round, known_pairings_by_round)
     max_known_round = len(fields) - 1
     if max_known_round == 0:
         raise RuntimeError(f"No fully-known real round for {bracket_path} yet")
+
+    # fields[n] (n>=1) is only reliable for *which* players remain - its own order isn't real
+    # bracket adjacency (byes get merged in as "round winners + byes" appended in bulk, not
+    # interleaved at their true position - see reconstruct_leaves_by_round2_slot's docstring).
+    # run_simulations_from_field below plays every subsequent round via plain positional pairing,
+    # so it needs fields[n] resorted into TRUE bracket order first, or it simulates rounds 2+
+    # against a bracket structure that doesn't match the real draw.
+    leaves_by_slot = reconstruct_leaves_by_round2_slot(tournament_matches, non_bye_players, bye_players)
+    leaf_position = {name: i for i, (name, _is_bye) in enumerate(true_bracket_order(leaves_by_slot))}
+    fields = [
+        sorted(field, key=lambda name: leaf_position.get(name, len(leaf_position))) for field in fields
+    ]
 
     # elimination round per player, from real results only (1-indexed)
     eliminated_in_round = {}

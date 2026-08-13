@@ -45,7 +45,8 @@ from elo_ratings import calculate_elo_ratings, load_matches_for_tour  # noqa: E4
 from ev_comparison import implied_probabilities  # noqa: E402
 from hybrid_simulation import (  # noqa: E402
     TOUR_SINGLES_CATEGORY, build_known_pairings_by_round, build_real_results_by_round,
-    known_matchups_for_round, match_espn_name_to_draw, replay_real_rounds,
+    known_matchups_for_round, match_espn_name_to_draw, reconstruct_leaves_by_round2_slot,
+    replay_real_rounds, true_bracket_order,
 )
 from live_scores import LiveScoresError, extract_matches, fetch_scoreboard  # noqa: E402
 from simulate import N_SIMULATIONS, run_simulations_tracking_milestones  # noqa: E402
@@ -80,6 +81,17 @@ def _http_get_json(url, params, timeout=15):
         return json.loads(response.read())
 
 
+# ESPN's tournament name is sometimes a sponsor-branded title that shares no word with The Odds
+# API's own (often older/historical) title for the same event - confirmed for the Canadian Open,
+# which ESPN reports as "National Bank Open presented by Rogers" (current title sponsor) but The
+# Odds API still lists as "WTA/ATP Canadian Open" (the tournament's long-standing name). Checked
+# only as a fallback, after the direct first-word match below finds nothing - real tournaments
+# discovered that way stay untouched by this table.
+TOURNAMENT_NAME_ALIASES = {
+    "national bank open": "canadian open",
+}
+
+
 def discover_odds_sport_key(tour, tournament_name, api_key):
     """The Odds API's tennis sport keys are per-tournament (e.g. 'tennis_atp_cincinnati_open')
     and only exist while that event is currently listed - discovered by title match against
@@ -91,14 +103,25 @@ def discover_odds_sport_key(tour, tournament_name, api_key):
         return None
 
     tour_word = "ATP" if tour == "ATP" else "WTA"
-    first_word = tournament_name.split()[0].lower()
-    candidates = [
-        s for s in sports
-        if s.get("group") == "Tennis" and s.get("title", "").upper().startswith(tour_word)
-        and first_word in s.get("title", "").lower()
-    ]
-    active = [s for s in candidates if s.get("active")]
-    chosen = active[0] if active else (candidates[0] if candidates else None)
+
+    def _find(word):
+        candidates = [
+            s for s in sports
+            if s.get("group") == "Tennis" and s.get("title", "").upper().startswith(tour_word)
+            and word in s.get("title", "").lower()
+        ]
+        active = [s for s in candidates if s.get("active")]
+        return active[0] if active else (candidates[0] if candidates else None)
+
+    chosen = _find(tournament_name.split()[0].lower())
+    if chosen is None:
+        alias_word = next(
+            (alias for espn_prefix, alias in TOURNAMENT_NAME_ALIASES.items()
+             if tournament_name.lower().startswith(espn_prefix)),
+            None,
+        )
+        if alias_word:
+            chosen = _find(alias_word)
     return chosen["key"] if chosen else None
 
 
@@ -174,64 +197,6 @@ def build_round_label_map(round_sequence):
     return label_map
 
 
-def _reconstruct_leaves_by_round2_slot(tournament_matches, non_bye_players, bye_players):
-    """The single structural reconstruction everything else in this module builds on: for each
-    of Round 2's draw_size/2 slots (i = 0..n2-1, ESPN's own stable list order), the ordered list
-    of (draw_name, is_bye) leaves that feed it - either one bye or the two Round 1 match
-    participants that will produce its winner. Fixed at draw time, never dependent on which
-    matches have actually been played: ESPN populates every round's competition list from day
-    one (see espn_bracket.py's own docstring) - Round 2's slots and Round 1's own matches both
-    already exist, stably ordered, before a ball is hit.
-
-    Deliberately does NOT identify a Round 1 match by searching ESPN's live names: a slot whose
-    real opponent is still a genuinely-unresolved qualifying TBD (not uncommon early in a draw)
-    has no resolvable name on the ESPN side at all, and a name-search silently drops it. Instead
-    this walks non_bye_players/bye_players - the bracket's own already-fully-resolved draw
-    (placeholder names included, see bracket.match_draw_to_ratings) - positionally: Round 2's
-    real-name-vs-TBD/bye pattern only decides *whether* a given slot side is a bye or is fed by
-    the next Round 1 match, never *which specific players* - identity always comes from the next
-    unconsumed non_bye_players pair or bye_players entry. This is sound because both draw-order
-    lists are already index-aligned with ESPN's own stable order by construction: non_bye_players'
-    Round 1 pairs come from iterating ESPN's Round 1 competitions in order, and bye_players comes
-    from iterating ESPN's Round 2 competitors in order picking out whichever aren't Round 1
-    participants (see espn_bracket.py's build_bracket_players) - so consuming them in list order
-    here reconstructs the same tree ESPN's own ordering encodes, without ever needing a name to
-    resolve.
-
-    Used for two purposes that must never derive from two different orderings (that's exactly
-    what caused a real, measured miscalibration before this was unified): the Q1-Q4 quarter tag
-    shown to the user, and the TRUE bracket adjacency handed to the simulator so byes land against
-    the correct round-winner in round 2 instead of being pooled separately (see
-    run_simulations_tracking_milestones's docstring)."""
-    round1 = [m for m in tournament_matches if m["round"] == "Round 1"]
-    round2 = [m for m in tournament_matches if m["round"] == "Round 2"]
-
-    round1_names = set()
-    for m in round1:
-        for name in (m["player_1"], m["player_2"]):
-            if name and name != "TBD":
-                round1_names.add(name)
-
-    leaves_by_slot = []
-    r1_pointer = 0  # next unconsumed Round 1 pair: non_bye_players[2p], non_bye_players[2p+1]
-    bye_pointer = 0  # next unconsumed bye_players entry
-    for m in round2:
-        slot_leaves = []
-        for name in (m["player_1"], m["player_2"]):
-            is_bye_slot = bool(name) and name != "TBD" and name not in round1_names
-            if is_bye_slot:
-                slot_leaves.append((bye_players[bye_pointer], True))
-                bye_pointer += 1
-            else:
-                # TBD, or a real name that already won its Round 1 match - either way this slot
-                # is fed by the next Round 1 match
-                slot_leaves.append((non_bye_players[2 * r1_pointer], False))
-                slot_leaves.append((non_bye_players[2 * r1_pointer + 1], False))
-                r1_pointer += 1
-        leaves_by_slot.append(slot_leaves)
-    return leaves_by_slot
-
-
 def tag_halves_and_quarters(leaves_by_slot):
     """Static per-(ESPN name) half (Top/Bottom) + quarter (Q1-Q4) tag, derived from Round 2's
     slot index alone (i = 0..n2-1) - the same stable, structural index _reconstruct_leaves_by_
@@ -253,15 +218,6 @@ def tag_halves_and_quarters(leaves_by_slot):
             quarter_by_name[name] = _quarter(i)
 
     return half_by_name, quarter_by_name
-
-
-def true_bracket_order(leaves_by_slot):
-    """Flattens _reconstruct_leaves_by_round2_slot's per-slot leaves into the single ordered
-    (draw_name, is_bye) list simulate.run_simulations_tracking_milestones needs: real draw
-    adjacency, so consecutive non-bye entries are always an actual Round 1 match and a bye always
-    sits at its true position relative to the Round 1 matches around it - not grouped separately
-    the way a plain 'round winners + byes' concatenation would (see that function's docstring)."""
-    return [leaf for slot_leaves in leaves_by_slot for leaf in slot_leaves]
 
 
 def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATIONS, seed=SEED):
@@ -321,7 +277,7 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
                 espn_to_draw[raw_name] = resolved
                 draw_to_espn.setdefault(resolved, raw_name)
 
-    leaves_by_slot = _reconstruct_leaves_by_round2_slot(tournament_matches, non_bye_players, bye_players)
+    leaves_by_slot = reconstruct_leaves_by_round2_slot(tournament_matches, non_bye_players, bye_players)
     _half_by_draw, quarter_by_draw = tag_halves_and_quarters(leaves_by_slot)
     round_label_map = build_round_label_map(round_sequence)
 

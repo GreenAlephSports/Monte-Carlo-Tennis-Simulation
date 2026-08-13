@@ -71,9 +71,7 @@ def run_simulations_partial_round(starting_field, bye_players, known_results, su
 
 # like run_simulations_partial_round, but also tracks which players reach the semifinal (last 4
 # remaining) and final (last 2 remaining) in each trial, not just the eventual champion - needed
-# for a p_sf/p_final breakdown alongside p_champ. Checks field size at the top of each round
-# (before playing it), so this is correct even when the real starting field is already down to 4
-# or 2 players by itself.
+# for a p_sf/p_final breakdown alongside p_champ.
 #
 # ordered_field/is_bye must be in TRUE bracket order (real draw adjacency), not "plays now" and
 # "joins after" concatenated in bulk - see known_matchups_for_round's docstring in
@@ -87,6 +85,21 @@ def run_simulations_tracking_milestones(ordered_field, is_bye, known_results, su
     semifinal_counts = Counter()
     final_counts = Counter()
     n = len(ordered_field)
+
+    # a player already among the last <=4 (or <=2) real, live entrants has already reached the
+    # semifinal (or final) as a plain fact of the current bracket state, not a simulated outcome -
+    # e.g. once a live draw is down to its own Final, both finalists have certainly already won
+    # their semifinal. The per-trial loop below only ever observes that transition happening
+    # *during* a simulated round, so it can't record a milestone the real field already starts
+    # past - without this, an already-decided finalist would wrongly show p_sf = p_final = 0.
+    if not any(is_bye):
+        if n <= 4:
+            for p in ordered_field:
+                semifinal_counts[p] = n_simulations
+        if n <= 2:
+            for p in ordered_field:
+                final_counts[p] = n_simulations
+
     for _ in range(n_simulations):
         players = []
         i = 0
@@ -125,11 +138,7 @@ def run_simulations(non_bye_players, bye_players, surface, n_simulations, rating
     return champion_counts
 
 
-def simulate_and_report(tour_name, draw, non_bye_players, bye_players, surface, ratings_path, output_path,
-                         n_simulations=N_SIMULATIONS):
-    validate_draw(draw)
-
-    champion_counts = run_simulations(non_bye_players, bye_players, surface, n_simulations, ratings_path)
+def report_results(tour_name, draw, champion_counts, n_simulations, output_path):
     results = pd.DataFrame({
         "player": draw,
         "win_count": [champion_counts.get(player, 0) for player in draw],
@@ -142,3 +151,10 @@ def simulate_and_report(tour_name, draw, non_bye_players, bye_players, surface, 
 
     print(f"\nTop 15 {tour_name} players by tournament-win probability:")
     print(results.head(15).to_string(index=False))
+
+
+def simulate_and_report(tour_name, draw, non_bye_players, bye_players, surface, ratings_path, output_path,
+                         n_simulations=N_SIMULATIONS):
+    validate_draw(draw)
+    champion_counts = run_simulations(non_bye_players, bye_players, surface, n_simulations, ratings_path)
+    report_results(tour_name, draw, champion_counts, n_simulations, output_path)

@@ -17,7 +17,13 @@ from bracket import (  # noqa: E402
 )
 from bracket_schema import BracketValidationError, load_bracket_yaml  # noqa: E402
 from elo_ratings import calculate_elo_ratings, load_matches_for_tour  # noqa: E402
-from simulate import N_SIMULATIONS, simulate_and_report  # noqa: E402
+from hybrid_simulation import (  # noqa: E402
+    TOUR_SINGLES_CATEGORY, reconstruct_leaves_by_round2_slot, true_bracket_order,
+)
+from live_scores import LiveScoresError, extract_matches, fetch_scoreboard  # noqa: E402
+from simulate import (  # noqa: E402
+    N_SIMULATIONS, report_results, run_simulations_tracking_milestones, simulate_and_report,
+)
 
 OUTPUT_DIR = Path(__file__).resolve().parent / "output"
 
@@ -96,10 +102,49 @@ def main():
     output_path.parent.mkdir(parents=True, exist_ok=True)
     print()
     random.seed(args.seed)
-    simulate_and_report(
-        f"{bracket.tournament} {bracket.year} {bracket.tour}", draw, non_bye_players, bye_players, bracket.surface,
-        tour_config.ratings_path, output_path, n_simulations=args.simulations,
-    )
+    tour_name = f"{bracket.tournament} {bracket.year} {bracket.tour}"
+
+    if bye_count == 0:
+        # no byes means "round winners + byes" concatenation and true bracket order are
+        # identical (bye_players is empty) - a no-op case that never needs ESPN, so a bare
+        # bracket YAML (e.g. a PDF-sourced Slam draw) keeps working standalone.
+        simulate_and_report(
+            tour_name, draw, non_bye_players, bye_players, bracket.surface,
+            tour_config.ratings_path, output_path, n_simulations=args.simulations,
+        )
+    else:
+        # with byes present, "round winners + byes" concatenation pairs bye-vs-bye and
+        # winner-vs-winner in Round 2 instead of the bracket's real winner-vs-bye adjacency -
+        # reconstructing true order (as bracket_export.py does) requires ESPN's live Round 1/
+        # Round 2 structure, so a bare bracket YAML is no longer sufficient once byes exist.
+        try:
+            espn_data = fetch_scoreboard(bracket.tour.lower())
+        except LiveScoresError as e:
+            print(f"ERROR: {e}", file=sys.stderr)
+            sys.exit(1)
+        espn_matches, _ = extract_matches(espn_data)
+        category = TOUR_SINGLES_CATEGORY[bracket.tour.lower()]
+        tournament_matches = [
+            m for m in espn_matches if m["tournament"] == bracket.tournament and m["category"] == category
+        ]
+        if not tournament_matches:
+            print(
+                f"ERROR: bracket has {bye_count} bye(s), which requires ESPN's live Round 1/Round 2 "
+                f"structure to interleave correctly, but no live ESPN match data was found for "
+                f"{bracket.tournament!r} ({category}). A bare bracket YAML alone isn't enough once "
+                f"byes are present.", file=sys.stderr,
+            )
+            sys.exit(1)
+
+        leaves_by_slot = reconstruct_leaves_by_round2_slot(tournament_matches, non_bye_players, bye_players)
+        true_order = true_bracket_order(leaves_by_slot)
+        ordered_field = [name for name, _is_bye in true_order]
+        is_bye = [is_bye_flag for _name, is_bye_flag in true_order]
+
+        champion_counts, _sf_counts, _final_counts = run_simulations_tracking_milestones(
+            ordered_field, is_bye, {}, bracket.surface, args.simulations, tour_config.ratings_path
+        )
+        report_results(tour_name, draw, champion_counts, args.simulations, output_path)
 
 
 if __name__ == "__main__":

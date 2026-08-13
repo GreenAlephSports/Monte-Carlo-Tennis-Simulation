@@ -231,6 +231,76 @@ def known_matchups_for_round(round_num, current_field, known_pairings_by_round):
     return [tuple(pair) for pair in known_pairs]
 
 
+def reconstruct_leaves_by_round2_slot(tournament_matches, non_bye_players, bye_players):
+    """The single structural reconstruction the real bracket tree - the one known_matchups_for_
+    round's own docstring says a plain 'winners + byes' concatenation can't reconstruct - is built
+    from: for each of Round 2's draw_size/2 slots (i = 0..n2-1, ESPN's own stable list order), the
+    ordered list of (draw_name, is_bye) leaves that feed it - either one bye or the two Round 1
+    match participants that will produce its winner. Fixed at draw time, never dependent on which
+    matches have actually been played: ESPN populates every round's competition list from day one
+    (see espn_bracket.py's own docstring) - Round 2's slots and Round 1's own matches both already
+    exist, stably ordered, before a ball is hit.
+
+    Deliberately does NOT identify a Round 1 match by searching ESPN's live names: a slot whose
+    real opponent is still a genuinely-unresolved qualifying TBD (not uncommon early in a draw)
+    has no resolvable name on the ESPN side at all, and a name-search silently drops it. Instead
+    this walks non_bye_players/bye_players - the bracket's own already-fully-resolved draw
+    (placeholder names included, see bracket.match_draw_to_ratings) - positionally: Round 2's
+    real-name-vs-TBD/bye pattern only decides *whether* a given slot side is a bye or is fed by
+    the next Round 1 match, never *which specific players* - identity always comes from the next
+    unconsumed non_bye_players pair or bye_players entry. This is sound because both draw-order
+    lists are already index-aligned with ESPN's own stable order by construction: non_bye_players'
+    Round 1 pairs come from iterating ESPN's Round 1 competitions in order, and bye_players comes
+    from iterating ESPN's Round 2 competitors in order picking out whichever aren't Round 1
+    participants (see espn_bracket.py's build_bracket_players) - so consuming them in list order
+    here reconstructs the same tree ESPN's own ordering encodes, without ever needing a name to
+    resolve.
+
+    Used wherever two different callers must never derive bracket adjacency from two different
+    orderings (that already caused one real, measured miscalibration before they were unified on
+    this): bracket_export.py's Q1-Q4 quarter tag and the TRUE order simulate.
+    run_simulations_tracking_milestones needs so byes land against the correct round-winner in
+    round 2 instead of being pooled separately - and, for a tournament simulated forward from an
+    already-real checkpoint (see backtest_hard_court.py), the field order run_simulations_from_
+    field's plain positional pairing relies on for every round after the checkpoint."""
+    round1 = [m for m in tournament_matches if m["round"] == "Round 1"]
+    round2 = [m for m in tournament_matches if m["round"] == "Round 2"]
+
+    round1_names = set()
+    for m in round1:
+        for name in (m["player_1"], m["player_2"]):
+            if name and name != "TBD":
+                round1_names.add(name)
+
+    leaves_by_slot = []
+    r1_pointer = 0  # next unconsumed Round 1 pair: non_bye_players[2p], non_bye_players[2p+1]
+    bye_pointer = 0  # next unconsumed bye_players entry
+    for m in round2:
+        slot_leaves = []
+        for name in (m["player_1"], m["player_2"]):
+            is_bye_slot = bool(name) and name != "TBD" and name not in round1_names
+            if is_bye_slot:
+                slot_leaves.append((bye_players[bye_pointer], True))
+                bye_pointer += 1
+            else:
+                # TBD, or a real name that already won its Round 1 match - either way this slot
+                # is fed by the next Round 1 match
+                slot_leaves.append((non_bye_players[2 * r1_pointer], False))
+                slot_leaves.append((non_bye_players[2 * r1_pointer + 1], False))
+                r1_pointer += 1
+        leaves_by_slot.append(slot_leaves)
+    return leaves_by_slot
+
+
+def true_bracket_order(leaves_by_slot):
+    """Flattens reconstruct_leaves_by_round2_slot's per-slot leaves into the single ordered
+    (draw_name, is_bye) list real draw adjacency requires: consecutive non-bye entries are always
+    an actual Round 1 match, and a bye always sits at its true position relative to the Round 1
+    matches around it - not grouped separately the way a plain 'round winners + byes'
+    concatenation would (see reconstruct_leaves_by_round2_slot's docstring)."""
+    return [leaf for slot_leaves in leaves_by_slot for leaf in slot_leaves]
+
+
 def replay_real_rounds(non_bye_players, bye_players, results_by_round, known_pairings_by_round=None):
     """Replays as many rounds as have a COMPLETE set of real results, starting at round 1 and
     stopping at the first round whose matchup structure isn't fully known (known_matchups_for_round

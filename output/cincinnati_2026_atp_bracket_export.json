@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "cincinnati-open-men-2026",
-    "generated_at": "2026-08-13T20:03:46Z",
+    "generated_at": "2026-08-13T20:50:01Z",
     "iterations": 10000,
     "seed": 42
   },
@@ -578,38 +578,38 @@
     "T-R1-3": {
       "slot_a": "Roman Andres Burruchaga",
       "slot_b": "Jan-Lennard Struff",
-      "p_slot_a": 0.414,
-      "p_slot_b": 0.586
+      "p_slot_a": 0.379,
+      "p_slot_b": 0.621
     },
     "T-R1-4": {
       "slot_a": "Thiago Agustin Tirante",
       "slot_b": "Jan Choinski",
-      "p_slot_a": 0.657,
-      "p_slot_b": 0.343
+      "p_slot_a": 0.661,
+      "p_slot_b": 0.339
     },
     "T-R1-5": {
       "slot_a": "Denis Shapovalov",
       "slot_b": "Adrian Mannarino",
-      "p_slot_a": 0.543,
-      "p_slot_b": 0.457
+      "p_slot_a": 0.666,
+      "p_slot_b": 0.334
     },
     "T-R1-6": {
+      "slot_a": "Camilo Ugo Carabelli",
+      "slot_b": "Miomir Kecmanovic",
+      "p_slot_a": 0.22,
+      "p_slot_b": 0.78
+    },
+    "T-R1-7": {
+      "slot_a": "Mariano Navone",
+      "slot_b": "Raphael Collignon",
+      "p_slot_a": 0.432,
+      "p_slot_b": 0.568
+    },
+    "T-R1-8": {
       "slot_a": "Marton Fucsovics",
       "slot_b": "Terence Atmane",
       "p_slot_a": 0.347,
       "p_slot_b": 0.653
-    },
-    "T-R1-7": {
-      "slot_a": "Camilo Ugo Carabelli",
-      "slot_b": "Miomir Kecmanovic",
-      "p_slot_a": 0.27,
-      "p_slot_b": 0.73
-    },
-    "T-R1-8": {
-      "slot_a": "Mariano Navone",
-      "slot_b": "Raphael Collignon",
-      "p_slot_a": 0.434,
-      "p_slot_b": 0.566
     },
     "T-R1-9": {
       "slot_a": "Rinky Hijikata",
@@ -656,8 +656,8 @@
     "B-R1-11": {
       "slot_a": "Sebastian Baez",
       "slot_b": "Grigor Dimitrov",
-      "p_slot_a": 0.43,
-      "p_slot_b": 0.57
+      "p_slot_a": 0.429,
+      "p_slot_b": 0.571
     },
     "B-R1-12": {
       "slot_a": "Shang Juncheng",
@@ -680,8 +680,8 @@
     "T-R2-11": {
       "slot_a": "Martin Landaluce",
       "slot_b": "Matteo Arnaldi",
-      "p_slot_a": 0.505,
-      "p_slot_b": 0.495
+      "p_slot_a": 0.509,
+      "p_slot_b": 0.491
     },
     "B-R2-4": {
       "slot_a": "Alexander Zverev",

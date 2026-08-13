@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "tournament": "national-bank-open-presented-by-rogers-women-2026",
+    "generated_at": "2026-08-13T20:36:13Z",
+    "iterations": 3000,
+    "seed": 42
+  },
+  "players": [
+    {
+      "player": "Elena Rybakina",
+      "quarter": "Q3",
+      "p_champ": 0.711,
+      "p_sf": 1.0,
+      "p_final": 1.0
+    },
+    {
+      "player": "Iga Swiatek",
+      "quarter": "Q1",
+      "p_champ": 0.289,
+      "p_sf": 1.0,
+      "p_final": 1.0
+    }
+  ],
+  "matchups": {
+    "Final": {
+      "slot_a": "Iga Swiatek",
+      "slot_b": "Elena Rybakina",
+      "p_slot_a": 0.556,
+      "p_slot_b": 0.444
+    }
+  },
+  "head_to_head": {}
+}

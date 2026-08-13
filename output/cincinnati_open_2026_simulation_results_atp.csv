@@ -1,97 +1,97 @@
 player,win_count,tournament_win_probability
-Djokovic N.,1827,0.1827
-Draper J.,1326,0.1326
-Zverev A.,1054,0.1054
-Medvedev D.,661,0.0661
-Auger-Aliassime F.,569,0.0569
-Fritz T.,379,0.0379
-Mensik J.,375,0.0375
-Shelton B.,369,0.0369
-Machac T.,366,0.0366
-Dimitrov G.,322,0.0322
-De Minaur A.,267,0.0267
-Fils A.,194,0.0194
-Michelsen A.,174,0.0174
-Shapovalov D.,136,0.0136
-Paul T.,129,0.0129
-Lehecka J.,111,0.0111
-Tien L.,105,0.0105
-Tiafoe F.,105,0.0105
-Monfils G.,99,0.0099
-Berrettini M.,87,0.0087
-Kokkinakis T.,84,0.0084
-Musetti L.,68,0.0068
-Ruud C.,64,0.0064
-Vacherot V.,58,0.0058
-Griekspoor T.,53,0.0053
-Majchrzak K.,52,0.0052
-Norrie C.,49,0.0049
-Humbert U.,48,0.0048
-Tsitsipas S.,44,0.0044
-Hurkacz H.,44,0.0044
-Khachanov K.,42,0.0042
-Cilic M.,39,0.0039
-Fonseca J.,39,0.0039
-Marozsan F.,37,0.0037
-Collignon R.,36,0.0036
-Cobolli F.,33,0.0033
-Sonego L.,29,0.0029
-Brooksby J.,29,0.0029
-Rublev A.,28,0.0028
-Blockx A.,27,0.0027
-Fucsovics M.,26,0.0026
-Nakashima B.,26,0.0026
-Cerundolo F.,24,0.0024
-Prizmic D.,22,0.0022
-Atmane T.,22,0.0022
-Merida Aguilar D.,21,0.0021
-Jodar R.,19,0.0019
-Buse I.,15,0.0015
-Rinderknech A.,15,0.0015
-Hanfmann Y.,14,0.0014
-Fery A.,14,0.0014
-Burruchaga R.,14,0.0014
-Van De Zandschulp B.,13,0.0013
-Vallejo D.,12,0.0012
-Bergs Z.,10,0.001
-TBD (Qualifier 3),10,0.001
-Shang J.,10,0.001
-Borges N.,10,0.001
-Tabilo A.,10,0.001
-Kecmanovic M.,8,0.0008
-TBD (Qualifier 8),8,0.0008
-Carreno Busta P.,8,0.0008
-TBD (Qualifier 11),7,0.0007
-TBD (Qualifier 12),7,0.0007
-TBD (Qualifier 13),6,0.0006
-Cerundolo J.M.,6,0.0006
-TBD (Qualifier 2),6,0.0006
-TBD (Qualifier 6),6,0.0006
-Medjedovic H.,6,0.0006
-Tirante T.A.,6,0.0006
-TBD (Qualifier 7),5,0.0005
-TBD (Qualifier 10),5,0.0005
-Mannarino A.,5,0.0005
-Baez S.,4,0.0004
-Hijikata R.,4,0.0004
-De Jong J.,4,0.0004
-Bellucci M.,3,0.0003
-TBD (Qualifier 1),3,0.0003
-Altmaier D.,3,0.0003
-TBD (Qualifier 5),3,0.0003
-TBD (Qualifier 4),2,0.0002
-Arnaldi M.,2,0.0002
-TBD (Qualifier 9),2,0.0002
-Kopriva V.,2,0.0002
-Ugo Carabelli C.,2,0.0002
-Kovacevic A.,2,0.0002
-Svajda Z.,2,0.0002
-Landaluce M.,2,0.0002
-Etcheverry T.,2,0.0002
-Royer V.,1,0.0001
-Choinski J.,1,0.0001
-Struff J.L.,1,0.0001
-Duckworth J.,1,0.0001
+Djokovic N.,1098,0.2196
+Zverev A.,627,0.1254
+Auger-Aliassime F.,443,0.0886
+Medvedev D.,387,0.0774
+Fritz T.,297,0.0594
+Draper J.,275,0.055
+Shelton B.,272,0.0544
+De Minaur A.,206,0.0412
+Mensik J.,166,0.0332
+Machac T.,99,0.0198
+Fils A.,96,0.0192
+Dimitrov G.,90,0.018
+Tiafoe F.,85,0.017
+Paul T.,81,0.0162
+Tien L.,76,0.0152
+Lehecka J.,72,0.0144
+Ruud C.,67,0.0134
+Vacherot V.,56,0.0112
+Musetti L.,54,0.0108
+Humbert U.,50,0.01
+Michelsen A.,46,0.0092
+Fonseca J.,41,0.0082
+Jodar R.,38,0.0076
+Shapovalov D.,32,0.0064
+Cobolli F.,31,0.0062
+Nakashima B.,25,0.005
+Cerundolo F.,24,0.0048
+Tabilo A.,22,0.0044
+Monfils G.,16,0.0032
+Rublev A.,13,0.0026
+Rinderknech A.,11,0.0022
+Berrettini M.,10,0.002
+Buse I.,9,0.0018
+Majchrzak K.,8,0.0016
+Griekspoor T.,7,0.0014
+Marozsan F.,7,0.0014
+Cilic M.,6,0.0012
+Fery A.,6,0.0012
+Bergs Z.,5,0.001
+Etcheverry T.,4,0.0008
+Norrie C.,4,0.0008
+Burruchaga R.,3,0.0006
+TBD (Qualifier 6),3,0.0006
+Hurkacz H.,3,0.0006
+Sonego L.,3,0.0006
+Blockx A.,3,0.0006
+Hanfmann Y.,2,0.0004
+Tsitsipas S.,2,0.0004
+Kokkinakis T.,2,0.0004
+TBD (Qualifier 11),2,0.0004
+Medjedovic H.,2,0.0004
+Tirante T.A.,2,0.0004
+Khachanov K.,2,0.0004
+TBD (Qualifier 2),2,0.0004
+Fucsovics M.,2,0.0004
+Hijikata R.,1,0.0002
+Arnaldi M.,1,0.0002
+Mannarino A.,1,0.0002
+Merida Aguilar D.,1,0.0002
+Cerundolo J.M.,1,0.0002
+Landaluce M.,0,0.0
+Atmane T.,0,0.0
 Navone M.,0,0.0
+Collignon R.,0,0.0
+TBD (Qualifier 3),0,0.0
 Walton A.,0,0.0
+Kovacevic A.,0,0.0
+TBD (Qualifier 1),0,0.0
+Bellucci M.,0,0.0
+Svajda Z.,0,0.0
+Carreno Busta P.,0,0.0
+Van De Zandschulp B.,0,0.0
+Struff J.L.,0,0.0
+Prizmic D.,0,0.0
+Kecmanovic M.,0,0.0
+Ugo Carabelli C.,0,0.0
+Choinski J.,0,0.0
+Kopriva V.,0,0.0
+TBD (Qualifier 13),0,0.0
+Vallejo D.,0,0.0
+TBD (Qualifier 4),0,0.0
+TBD (Qualifier 5),0,0.0
+Duckworth J.,0,0.0
+TBD (Qualifier 12),0,0.0
+De Jong J.,0,0.0
+TBD (Qualifier 10),0,0.0
+Baez S.,0,0.0
+Shang J.,0,0.0
+Altmaier D.,0,0.0
+Royer V.,0,0.0
+Brooksby J.,0,0.0
+Borges N.,0,0.0
+TBD (Qualifier 7),0,0.0
+TBD (Qualifier 8),0,0.0
+TBD (Qualifier 9),0,0.0
 Darderi L.,0,0.0
