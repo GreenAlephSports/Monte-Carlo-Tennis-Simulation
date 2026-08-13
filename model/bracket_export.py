@@ -24,9 +24,11 @@ Usage:
     python model/bracket_export.py brackets/cincinnati_2026_atp.yaml --simulations 5000
 """
 import argparse
+import difflib
 import json
 import os
 import random
+import re
 import sys
 import urllib.parse
 from datetime import datetime, timezone
@@ -81,21 +83,75 @@ def _http_get_json(url, params, timeout=15):
         return json.loads(response.read())
 
 
-# ESPN's tournament name is sometimes a sponsor-branded title that shares no word with The Odds
-# API's own (often older/historical) title for the same event - confirmed for the Canadian Open,
-# which ESPN reports as "National Bank Open presented by Rogers" (current title sponsor) but The
-# Odds API still lists as "WTA/ATP Canadian Open" (the tournament's long-standing name). Checked
-# only as a fallback, after the direct first-word match below finds nothing - real tournaments
-# discovered that way stay untouched by this table.
+# ESPN's tournament name is sometimes a sponsor-branded title that shares no meaningful word with
+# The Odds API's own (often older/historical) title for the same event - confirmed for the
+# Canadian Open, which ESPN reports as "National Bank Open presented by Rogers" (current title
+# sponsor) but The Odds API still lists as "WTA/ATP Canadian Open" (the tournament's long-standing
+# name). Measured: fuzzy_similarity("National Bank Open presented by Rogers", "Canadian Open")
+# scores below even unrelated tournaments like "Australian Open"/"Italian Open" (incidental
+# "...ian Open" substring overlap outscores the real match) - a text-similarity match genuinely
+# can't bridge a sponsor-branding swap like this, so it stays a hardcoded, logged last resort
+# rather than something fuzzy matching should be tuned to catch. Checked only after
+# _best_fuzzy_match finds nothing above FUZZY_MATCH_MIN_SCORE - real tournaments discovered by
+# fuzzy matching stay untouched by this table.
 TOURNAMENT_NAME_ALIASES = {
     "national bank open": "canadian open",
 }
 
+FUZZY_MATCH_MIN_SCORE = 0.6
+
+# generic tournament-naming boilerplate that would otherwise inflate token overlap between two
+# unrelated events (nearly every title contains "Open") - stripped before scoring so overlap
+# reflects the tournament's actual identity (city/sponsor/name), not shared filler.
+_TITLE_FILLER_WORDS = {
+    "open", "championship", "championships", "cup", "masters", "the", "of", "and", "club",
+    "presented", "by", "international", "internazionali", "invitational",
+}
+
+
+def _meaningful_tokens(text):
+    return {w for w in re.findall(r"[a-z0-9]+", text.lower()) if w not in _TITLE_FILLER_WORDS}
+
+
+def _fuzzy_similarity(name_a, name_b):
+    """Best of two signals: Jaccard overlap of meaningful tokens (order-independent, catches
+    reordered or partial-name matches, e.g. 'Miami Open' vs 'Miami Masters') and difflib's
+    character-level ratio (catches close spelling variants token overlap alone would miss).
+    Taking the max is deliberately generous - a real match strong on either axis should pass -
+    but still leaves genuinely unrelated names (e.g. a sponsor-branded title with zero token
+    overlap and only incidental character overlap) below FUZZY_MATCH_MIN_SCORE."""
+    tokens_a, tokens_b = _meaningful_tokens(name_a), _meaningful_tokens(name_b)
+    token_overlap = len(tokens_a & tokens_b) / len(tokens_a | tokens_b) if (tokens_a or tokens_b) else 0.0
+    char_ratio = difflib.SequenceMatcher(None, name_a.lower(), name_b.lower()).ratio()
+    return max(token_overlap, char_ratio)
+
+
+def _best_fuzzy_match(query_name, candidates):
+    """candidates: sport dicts already filtered to the right tour. Returns (chosen_sport, score) -
+    the highest-scoring candidate if it clears FUZZY_MATCH_MIN_SCORE, else (None, best_score_seen)
+    so a rejected best-guess can still be logged by the caller."""
+    scored = []
+    for s in candidates:
+        # score against the title with the leading tour word ('ATP '/'WTA ') stripped, so that
+        # shared prefix never inflates the similarity of an otherwise-unrelated tournament.
+        title_body = s.get("title", "").split(" ", 1)[-1]
+        scored.append((_fuzzy_similarity(query_name, title_body), s))
+    if not scored:
+        return None, 0.0
+    scored.sort(key=lambda pair: (pair[0], pair[1].get("active", False)), reverse=True)
+    best_score, best_sport = scored[0]
+    if best_score >= FUZZY_MATCH_MIN_SCORE:
+        return best_sport, best_score
+    return None, best_score
+
 
 def discover_odds_sport_key(tour, tournament_name, api_key):
     """The Odds API's tennis sport keys are per-tournament (e.g. 'tennis_atp_cincinnati_open')
-    and only exist while that event is currently listed - discovered by title match against
-    /v4/sports rather than hardcoded, so this isn't wired to one specific tournament."""
+    and only exist while that event is currently listed - discovered by fuzzy title match against
+    /v4/sports rather than hardcoded, so this isn't wired to one specific tournament. Falls back to
+    TOURNAMENT_NAME_ALIASES, logged loudly, only for the rare sponsor-branded title fuzzy matching
+    can't bridge (see that table's docstring) - every other tournament is resolved by text
+    similarity alone, with no hardcoded name."""
     try:
         sports = _http_get_json(f"{ODDS_API_BASE}/sports/", {"apiKey": api_key, "all": "true"})
     except (HTTPError, URLError) as e:
@@ -103,26 +159,43 @@ def discover_odds_sport_key(tour, tournament_name, api_key):
         return None
 
     tour_word = "ATP" if tour == "ATP" else "WTA"
+    candidates = [
+        s for s in sports if s.get("group") == "Tennis" and s.get("title", "").upper().startswith(tour_word)
+    ]
 
-    def _find(word):
-        candidates = [
-            s for s in sports
-            if s.get("group") == "Tennis" and s.get("title", "").upper().startswith(tour_word)
-            and word in s.get("title", "").lower()
-        ]
-        active = [s for s in candidates if s.get("active")]
-        return active[0] if active else (candidates[0] if candidates else None)
+    chosen, score = _best_fuzzy_match(tournament_name, candidates)
+    if chosen is not None:
+        return chosen["key"]
 
-    chosen = _find(tournament_name.split()[0].lower())
-    if chosen is None:
-        alias_word = next(
-            (alias for espn_prefix, alias in TOURNAMENT_NAME_ALIASES.items()
-             if tournament_name.lower().startswith(espn_prefix)),
-            None,
+    alias_body = next(
+        (alias for espn_prefix, alias in TOURNAMENT_NAME_ALIASES.items()
+         if tournament_name.lower().startswith(espn_prefix)),
+        None,
+    )
+    if alias_body is None:
+        print(
+            f"WARNING: no Odds API tennis sport matched {tournament_name!r} ({tour}) - best fuzzy "
+            f"candidate scored {score:.2f}, below the {FUZZY_MATCH_MIN_SCORE} threshold, and no "
+            f"manual alias is configured for it - odds pricing unavailable", file=sys.stderr,
         )
-        if alias_word:
-            chosen = _find(alias_word)
-    return chosen["key"] if chosen else None
+        return None
+
+    print(
+        f"WARNING: fuzzy matching found no confident Odds API sport for {tournament_name!r} "
+        f"(best candidate scored {score:.2f}, below the {FUZZY_MATCH_MIN_SCORE} threshold) - "
+        f"falling back to the manual alias table (matched alias {alias_body!r}). If this fires for "
+        f"a tournament that ISN'T a known sponsor-branding case, the alias table may be masking a "
+        f"real mismatch - check it.", file=sys.stderr,
+    )
+    aliased_chosen, _alias_score = _best_fuzzy_match(alias_body, candidates)
+    if aliased_chosen is not None:
+        return aliased_chosen["key"]
+
+    print(
+        f"WARNING: manual alias {alias_body!r} for {tournament_name!r} still matched no Odds API "
+        f"tennis sport - odds pricing unavailable", file=sys.stderr,
+    )
+    return None
 
 
 def fetch_devigged_odds(sport_key, api_key):
