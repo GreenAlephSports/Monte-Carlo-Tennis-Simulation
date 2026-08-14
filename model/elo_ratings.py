@@ -62,6 +62,14 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date):
     overall_elo = {}
     surface_elo = {surface: {} for surface in SURFACES}
     surface_matches = {surface: {} for surface in SURFACES}
+    # current ATP/WTA ranking as of the cutoff date, i.e. whatever each player's rank was in their
+    # most recent training-window match - same no-lookahead rule as Elo itself. Only the live
+    # Kaggle pull carries Rank_1/Rank_2 (the local fallback snapshot in data/ doesn't have both
+    # columns for either tour - see load_matches_for_tour's docstring on why that fallback exists
+    # at all); current_rank is just left empty (NaN for every player) when they're absent, so
+    # anything reading it degrades to "no rank data" rather than erroring.
+    current_rank = {}
+    has_rank_columns = {"Rank_1", "Rank_2"}.issubset(df.columns)
 
     for row in df.itertuples(index=False):
         p1, p2, winner, surface = row.Player_1, row.Player_2, row.Winner, row.Surface
@@ -84,12 +92,19 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date):
             counts[p1] = counts.get(p1, 0) + 1
             counts[p2] = counts.get(p2, 0) + 1
 
+        if has_rank_columns:
+            if row.Rank_1 > 0:
+                current_rank[p1] = row.Rank_1
+            if row.Rank_2 > 0:
+                current_rank[p2] = row.Rank_2
+
     players = sorted(overall_elo.keys())
     records = []
     for player in players:
         record = {
             "player": player,
             "overall_elo": overall_elo[player],
+            "current_rank": current_rank.get(player),
         }
         # blend surface_elo toward overall_elo, weighted by how much surface-specific sample size
         # backs it up - a player with few surface matches leans on the more-data-backed overall
@@ -113,6 +128,7 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date):
         "hard_matches",
         "clay_matches",
         "grass_matches",
+        "current_rank",
     ]
     return pd.DataFrame.from_records(records, columns=columns)
 

@@ -53,7 +53,8 @@ TOURNAMENTS = [
 ]
 
 
-def analyze_tournament(bracket_path, pretournament_csv_path, event_id, n_simulations=N_SIMULATIONS):
+def analyze_tournament(bracket_path, pretournament_csv_path, event_id, n_simulations=N_SIMULATIONS,
+                        use_rank_adjustment=False, use_confidence_calibration=False):
     bracket = load_bracket_yaml(bracket_path)
     players = order_by_draw_position(bracket.players)
     byes = [p.bye for p in players]
@@ -80,7 +81,15 @@ def analyze_tournament(bracket_path, pretournament_csv_path, event_id, n_simulat
     validate_draw(draw)
     non_bye_players, bye_players = split_byes(draw, byes)
 
-    espn_data = fetch_scoreboard(bracket.tour.lower())
+    # ESPN's scoreboard endpoint with no ?dates= defaults to "today" server-side, which only finds
+    # a tournament while it's still live/recent - once a later event (e.g. Cincinnati) becomes
+    # "today", an undated fetch stops returning this one at all. A single date ANYWHERE inside the
+    # tournament's own window returns its complete, fully-resolved event regardless of how long ago
+    # it finished (confirmed: every day from Aug 1-11 returned the identical full 222-match National
+    # Bank Open snapshot) - so query at the bracket's own start_date instead of "today". Note this
+    # is unrelated to (and doesn't fix) the separate multi-day ?dates=RANGE-RANGE unreliability
+    # noted in live_scores.py - a single fixed date is simpler and was enough here.
+    espn_data = fetch_scoreboard(bracket.tour.lower(), dates=bracket.start_date.strftime("%Y%m%d"))
     espn_matches, _ = extract_matches(espn_data)
     category = TOUR_SINGLES_CATEGORY[bracket.tour.lower()]
     tournament_matches = [
@@ -150,7 +159,11 @@ def analyze_tournament(bracket_path, pretournament_csv_path, event_id, n_simulat
     for n in range(1, max_known_round + 1):
         for pair, winner in results_by_round.get(n, {}).items():
             a, b = tuple(pair)
-            prob_a = win_probability(a, b, bracket.surface, tour_config.ratings_path)
+            prob_a = win_probability(
+                a, b, bracket.surface, tour_config.ratings_path,
+                use_rank_adjustment=use_rank_adjustment,
+                use_confidence_calibration=use_confidence_calibration,
+            )
             favorite = a if prob_a >= 0.5 else b
             match_rows.append({
                 "round": n, "player_a": a, "player_b": b,
