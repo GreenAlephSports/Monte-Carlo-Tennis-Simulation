@@ -64,6 +64,13 @@ ATP_NAME_ALIASES = {
     "Landaluce M.": "Andaluce M.",
     "Carabelli C.": "Ugocarabelli C.",
     "Minaur A.": "Deminaur A.",
+    # ESPN-match-alias form (see the block above) for two more match_espn_name_to_draw edge cases
+    # the tiered lastname/suffix matcher can't handle on its own: an apostrophe collapses "O'Connell"
+    # into a single ESPN token that can't split into the CSV's two-word lastname ("O Connell C."),
+    # and "J.J." as a dotted-initials *firstname* (not a compound lastname) never gets its dots
+    # stripped before the suffix comparison, so "Wolf J.J." can't be reached from "J.J. Wolf" either.
+    "O'Connell C.": "O Connell C.",
+    "Wolf J.": "Wolf J.J.",
 }
 
 WTA_NAME_ALIASES = {

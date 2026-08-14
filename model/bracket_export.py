@@ -31,6 +31,7 @@ import random
 import re
 import sys
 import urllib.parse
+from dataclasses import replace
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -39,7 +40,7 @@ from urllib.request import Request, urlopen
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from bracket import (  # noqa: E402
-    TOUR_CONFIG, match_draw_to_ratings, order_by_draw_position, split_byes,
+    TOUR_CONFIG, get_matchups, match_draw_to_ratings, order_by_draw_position, split_byes,
     validate_bracket_structure, validate_draw,
 )
 from bracket_schema import BracketValidationError, load_bracket_yaml  # noqa: E402
@@ -293,6 +294,106 @@ def tag_halves_and_quarters(leaves_by_slot):
     return half_by_name, quarter_by_name
 
 
+# bracket YAMLs are built before qualifying wraps up, so a draw-size's worth of Round 1 slots
+# start out as literal placeholders like this rather than a real player name.
+QUALIFIER_PLACEHOLDER_RE = re.compile(r"^TBD \(Qualifier \d+\)$")
+
+
+def resolve_qualifier_placeholders(players, byes, tournament_matches, ratings_df, name_aliases):
+    """Replaces 'TBD (Qualifier N)' bracket-YAML placeholders with the real qualifier's ratings-
+    csv name once qualifying has concluded and ESPN's Round 1 draw shows who actually won that
+    slot. Without this, match_draw_to_ratings has no lastname/initials to work with for these
+    slots and silently manufactures a fake 'TBD (Qualifier N)' player at STARTING_ELO (bracket.py
+    tier 3) - the real qualifier can then never be matched against ESPN's live results and gets
+    silently dropped from the whole export (see the NOTE printed near the end of
+    export_bracket_json).
+
+    Resolution is driven entirely by Round 1 bracket adjacency - each placeholder's Round 1
+    opponent is a real, already-resolvable player (see get_matchups: Round 1 pairs up consecutive
+    non-bye draw slots) - plus the exact same match_espn_name_to_draw lookup used everywhere else
+    in this pipeline, just run against the full ratings table instead of the (still-incomplete)
+    draw. That makes this generalize to any future tournament with unresolved qualifier slots,
+    rather than requiring the bracket YAML to be hand-edited once qualifying finishes.
+
+    A resolved candidate who is *also* recorded as the loser of a separate completed match (e.g.
+    they lost their own qualifying final to someone else already seen elsewhere in the draw) is
+    left unresolved rather than trusted - that pattern means ESPN's Round 1 bracket cell itself is
+    stale (seeded before the qualifying final concluded, not yet refreshed), not that the player
+    is actually alive.
+
+    Returns (players_with_placeholders_resolved, warnings) - warnings is a list of human-readable
+    strings for every placeholder slot that could NOT be resolved, meant to be surfaced in the
+    exported JSON (not just logged) so an alive-but-unresolved player is never silently dropped.
+    """
+    non_bye, _bye_items = split_byes(players, byes)
+    round1_matches = [m for m in tournament_matches if m["round"] == "Round 1"]
+    ratings_names = list(ratings_df["player"])
+
+    resolved_by_id = {}
+    warnings = []
+    for a, b in get_matchups(non_bye):
+        if QUALIFIER_PLACEHOLDER_RE.match(a.name):
+            placeholder, known = a, b
+        elif QUALIFIER_PLACEHOLDER_RE.match(b.name):
+            placeholder, known = b, a
+        else:
+            continue
+
+        def _opponent_is_known(m, known=known):
+            return (
+                match_espn_name_to_draw(m["player_1"], [known.name], name_aliases) == known.name
+                or match_espn_name_to_draw(m["player_2"], [known.name], name_aliases) == known.name
+            )
+
+        match = next((m for m in round1_matches if _opponent_is_known(m)), None)
+        if match is None:
+            warnings.append(
+                f"{placeholder.name}: no Round 1 ESPN match found for its known opponent "
+                f"{known.name!r} - left unresolved"
+            )
+            continue
+
+        qualifier_espn_name = (
+            match["player_2"]
+            if match_espn_name_to_draw(match["player_1"], [known.name], name_aliases) == known.name
+            else match["player_1"]
+        )
+
+        stale_loss = next(
+            (m for m in tournament_matches
+             if m is not match and m["status_state"] == "post" and m["winner"]
+             and qualifier_espn_name in (m["player_1"], m["player_2"]) and m["winner"] != qualifier_espn_name),
+            None,
+        )
+        if stale_loss is not None:
+            warnings.append(
+                f"{placeholder.name}: ESPN Round 1 still lists {qualifier_espn_name!r} opposite "
+                f"{known.name!r}, but {qualifier_espn_name!r} already lost a completed "
+                f"{stale_loss['round']!r} match to {stale_loss['winner']!r} - ESPN's bracket cell "
+                f"looks stale; left unresolved rather than including an eliminated player"
+            )
+            continue
+
+        resolved_csv_name = match_espn_name_to_draw(qualifier_espn_name, ratings_names, name_aliases)
+        if resolved_csv_name is None:
+            warnings.append(
+                f"{placeholder.name}: ESPN shows {qualifier_espn_name!r} as the real qualifier, "
+                f"but that name couldn't be matched to any player in the Elo ratings data - left "
+                f"unresolved"
+            )
+            continue
+
+        resolved_by_id[id(placeholder)] = resolved_csv_name
+
+    if not resolved_by_id:
+        return players, warnings
+
+    updated_players = [
+        replace(p, name=resolved_by_id[id(p)]) if id(p) in resolved_by_id else p for p in players
+    ]
+    return updated_players, warnings
+
+
 def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATIONS, seed=SEED):
     bracket = load_bracket_yaml(bracket_path)
     players = order_by_draw_position(bracket.players)
@@ -303,6 +404,22 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
     matches_history = load_matches_for_tour(bracket.tour)
     ratings_df = calculate_elo_ratings(matches_history, bracket.start_date)
     ratings_df = ratings_df.sort_values("overall_elo", ascending=False).reset_index(drop=True)
+
+    espn_data = fetch_scoreboard(bracket.tour.lower())
+    espn_matches, _ = extract_matches(espn_data)
+    category = TOUR_SINGLES_CATEGORY[bracket.tour.lower()]
+    tournament_matches = [
+        m for m in espn_matches if m["tournament"] == bracket.tournament and m["category"] == category
+    ]
+    if not tournament_matches:
+        raise RuntimeError(f"No live matches found for {bracket.tournament!r} / {category}")
+
+    # must run before match_draw_to_ratings - see resolve_qualifier_placeholders' docstring for
+    # why a literal 'TBD (Qualifier N)' placeholder can never be matched to ESPN's real name later.
+    players, qualifier_warnings = resolve_qualifier_placeholders(
+        players, byes, tournament_matches, ratings_df, tour_config.name_aliases
+    )
+
     draw, resolutions, ratings_df = match_draw_to_ratings(
         players, ratings_df, tour_config.name_aliases, tour_config.match_data_path, bracket.start_date
     )
@@ -316,15 +433,6 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
     validate_draw(draw)
     non_bye_players, bye_players = split_byes(draw, byes)
 
-    espn_data = fetch_scoreboard(bracket.tour.lower())
-    espn_matches, _ = extract_matches(espn_data)
-    category = TOUR_SINGLES_CATEGORY[bracket.tour.lower()]
-    tournament_matches = [
-        m for m in espn_matches if m["tournament"] == bracket.tournament and m["category"] == category
-    ]
-    if not tournament_matches:
-        raise RuntimeError(f"No live matches found for {bracket.tournament!r} / {category}")
-
     results_by_round, round_sequence, unresolved_1 = build_real_results_by_round(
         tournament_matches, draw, tour_config.name_aliases
     )
@@ -332,9 +440,27 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
         tournament_matches, draw, tour_config.name_aliases
     )
     unresolved_names = unresolved_1 | unresolved_2
+    # a name that isn't a confirmed loser of any completed match is presumably still alive - never
+    # drop those silently just because they couldn't be matched (see the module docstring's spec:
+    # players should include everyone still alive).
+    alive_unresolved = sorted(
+        name for name in unresolved_names
+        if not any(
+            m["status_state"] == "post" and m["winner"] and name in (m["player_1"], m["player_2"])
+            and m["winner"] != name
+            for m in tournament_matches
+        )
+    )
+    warnings = qualifier_warnings + [
+        f"{name}: ESPN name could not be matched to the draw and doesn't appear to have lost a "
+        f"completed match - likely still alive but excluded from this export" for name in alive_unresolved
+    ]
     if unresolved_names:
         print(f"NOTE: {len(unresolved_names)} ESPN name(s) unresolved to the draw, excluded "
               f"from output: {sorted(unresolved_names)}", file=sys.stderr)
+    if warnings:
+        print(f"WARNING: {len(warnings)} issue(s) affecting export completeness - see output "
+              f"JSON's 'warnings' field", file=sys.stderr)
 
     fields = replay_real_rounds(non_bye_players, bye_players, results_by_round, known_pairings_by_round)
     max_known_round = len(fields) - 1
@@ -480,6 +606,7 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
         "players": players_out,
         "matchups": matchups,
         "head_to_head": head_to_head,
+        "warnings": warnings,
     }
 
     if output_path is None:
@@ -508,4 +635,4 @@ if __name__ == "__main__":
 
     print(f"\nWrote {output_path}")
     print(f"players: {len(output['players'])} alive, matchups: {len(output['matchups'])}, "
-          f"head_to_head: {len(output['head_to_head'])}")
+          f"head_to_head: {len(output['head_to_head'])}, warnings: {len(output['warnings'])}")
