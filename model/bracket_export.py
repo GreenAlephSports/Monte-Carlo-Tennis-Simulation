@@ -201,12 +201,13 @@ def discover_odds_sport_key(tour, tournament_name, api_key):
 
 def fetch_devigged_odds(sport_key, api_key):
     """Returns odds_lookup: frozenset({espn_name_a, espn_name_b}) -> {espn_name: p_win}, for
-    every event The Odds API currently has bookmaker h2h data for. Averages decimal odds across
-    every bookmaker quoting both sides, then de-vigs via ev_comparison.implied_probabilities -
-    the same de-vig math already used elsewhere in this codebase, not reimplemented here.
-    Cross-referencing against ESPN names is exact-string only (never fuzzy) - a name that
-    doesn't match byte-for-byte just falls back to the model, per the spec's own fallback rule,
-    rather than risking a wrong join."""
+    every event The Odds API currently has bookmaker h2h data for. Prints each bookmaker's raw
+    decimal odds alongside its own de-vigged implied probability, then averages decimal odds
+    across every bookmaker quoting both sides and de-vigs that average via
+    ev_comparison.implied_probabilities - the same de-vig math already used elsewhere in this
+    codebase, not reimplemented here. Cross-referencing against ESPN names is exact-string only
+    (never fuzzy) - a name that doesn't match byte-for-byte just falls back to the model, per the
+    spec's own fallback rule, rather than risking a wrong join."""
     if not sport_key or not api_key:
         return {}
     try:
@@ -225,16 +226,25 @@ def fetch_devigged_odds(sport_key, api_key):
         if not home or not away:
             continue
         home_prices, away_prices = [], []
+        book_rows = []
         for bookmaker in event.get("bookmakers", []):
             for market in bookmaker.get("markets", []):
                 if market.get("key") != "h2h":
                     continue
                 outcomes = {o["name"]: o["price"] for o in market.get("outcomes", [])}
                 if home in outcomes and away in outcomes:
-                    home_prices.append(outcomes[home])
-                    away_prices.append(outcomes[away])
+                    home_odd, away_odd = outcomes[home], outcomes[away]
+                    home_prices.append(home_odd)
+                    away_prices.append(away_odd)
+                    home_pct, away_pct = implied_probabilities(home_odd, away_odd)
+                    book_rows.append((bookmaker.get("title", bookmaker.get("key", "?")),
+                                       home_odd, away_odd, home_pct, away_pct))
         if not home_prices:
             continue
+        print(f"{home} vs {away} - de-vigged odds by bookmaker:")
+        for title, home_odd, away_odd, home_pct, away_pct in book_rows:
+            print(f"  {title:<20} {home}: {home_odd:.2f} -> {home_pct:.1%}    "
+                  f"{away}: {away_odd:.2f} -> {away_pct:.1%}")
         avg_home = sum(home_prices) / len(home_prices)
         avg_away = sum(away_prices) / len(away_prices)
         prob_home, prob_away = implied_probabilities(avg_home, avg_away)

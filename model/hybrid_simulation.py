@@ -359,6 +359,12 @@ def main():
     parser.add_argument("--simulations", type=int, default=N_SIMULATIONS)
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducible Monte Carlo results")
+    parser.add_argument("--use-upset-boost", action="store_true",
+                         help="apply the fitted in-tournament momentum boost (see "
+                              "UPSET_BOOST_LOGIT_SHIFT in win_probability.py) to a player's next "
+                              "match whenever their most recent win THIS tournament beat someone "
+                              ">100 Elo points higher than themselves. Off by default, same as "
+                              "the rank-gap/confidence-calibration adjustments in win_probability.py.")
     args = parser.parse_args()
 
     if not args.all_rounds and args.through_round is None:
@@ -475,7 +481,7 @@ def main():
             extra_after = bye_players if n == 1 else []
             champion_counts = run_simulations_partial_round(
                 partial_field, extra_after, partial_known_results, bracket.surface,
-                args.simulations, tour_config.ratings_path,
+                args.simulations, tour_config.ratings_path, use_upset_boost=args.use_upset_boost,
             )
             output_path = args.output_dir / f"{bracket_stem}_through_round_{n}_partial.csv"
             _report(
@@ -485,7 +491,10 @@ def main():
             )
             return
         starting_field = fields[n]
-        champion_counts = run_simulations_from_field(starting_field, bracket.surface, args.simulations, tour_config.ratings_path)
+        champion_counts = run_simulations_from_field(
+            starting_field, bracket.surface, args.simulations, tour_config.ratings_path,
+            use_upset_boost=args.use_upset_boost,
+        )
         output_path = args.output_dir / f"{bracket_stem}_through_round_{n}.csv"
         _report(f"Through round {n} ({len(starting_field)} players remaining)", draw, champion_counts, args.simulations, output_path)
 

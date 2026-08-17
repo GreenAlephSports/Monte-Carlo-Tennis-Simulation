@@ -108,6 +108,38 @@ def _apply_confidence_calibration(prob_a: float) -> float:
     return 1 / (1 + math.exp(-(PLATT_B * logit_p)))
 
 
+def apply_logit_shift(prob: float, shift: float) -> float:
+    """Additive adjustment in logit space - same pattern as _apply_rank_adjustment/_apply_
+    confidence_calibration above, exposed for callers that need to shift an already-computed
+    probability without recomputing it from raw Elo (e.g. simulate.py's in-tournament upset
+    boost, which needs to combine two independent per-player shifts into one match)."""
+    logit_p = math.log(prob / (1 - prob))
+    return 1 / (1 + math.exp(-(logit_p + shift)))
+
+
+# Empirically-fit in-tournament "beat a big favorite" momentum signal - see the backtest that
+# derived it: model/survivorship_upset_test.py, run on ATP 2000-2026 with the same frozen-per-
+# tournament-edition Elo and chronological 80/20 tournament split as the rank-gap/Platt fits
+# above. Players whose most recent win THIS TOURNAMENT came against an opponent >100 Elo points
+# higher than themselves beat Elo's own prediction in their NEXT match by +3.1pp on average
+# (train era, n=7,696, z=6.32) - real and monotonic in gap size (no_upset -0.3% [n.s.], 0-50
+# +0.6% [n.s.], 50-100 +2.9% [z=4.30], 100+ +3.1%), but the middle tier looked significant in
+# training and didn't hold up out-of-sample (held-out log-loss improvement -0.0001, indistinguishable
+# from zero) - so a single 100+ threshold was kept instead of the full graded scheme. That single
+# threshold captures +0.0006 held-out log-loss improvement (95% player-clustered bootstrap CI
+# [+0.0004, +0.0008], n=27,501 test-era rows) - nearly all of the full 4-bucket model's +0.0007,
+# with one parameter instead of three, and clearly beats a generic "won last round at all" framing
+# (+0.0002, CI barely excluding zero) - this is not the same effect as generic survivorship.
+#
+# Structurally an in-tournament-only signal - "who did they just beat in THIS event" doesn't exist
+# before Round 1 - so unlike the rank-gap/Platt adjustments above, this can never apply to a
+# pre-tournament baseline prediction, only a round-by-round replay that already knows real
+# results. See simulate.py's use_upset_boost plumbing (wired into hybrid_simulation.py's round
+# replay only, same constraint a fatigue adjustment would have).
+UPSET_BOOST_ELO_GAP_THRESHOLD = 100
+UPSET_BOOST_LOGIT_SHIFT = 0.1383
+
+
 # just pulls each player's surface-specific elo and updates ratings
 def win_probability(
     player_a: str, player_b: str, surface: str, ratings_path: Path = ATP_RATINGS_PATH,
