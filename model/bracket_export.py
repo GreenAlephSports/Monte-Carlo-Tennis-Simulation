@@ -21,7 +21,7 @@ draw's fixed Round 1 -> Round 2 bracket tree - never from which matches happen t
 every player's tag is stable from the moment the draw is set, not just once they reach Round 2.
 
 Usage:
-    python model/bracket_export.py brackets/cincinnati_2026_atp.yaml --simulations 5000
+    python model/bracket_export.py brackets/cincinnati_2026_atp.yaml --simulations 10000
 """
 import argparse
 import difflib
@@ -253,13 +253,22 @@ def fetch_devigged_odds(sport_key, api_key):
 
 
 def resolve_probability(espn_name_a, espn_name_b, draw_name_a, draw_name_b, odds_lookup, surface, ratings_path):
-    """P(a beats b) - The Odds API's de-vigged odds when this exact pairing (matched by exact
-    ESPN displayName) has live bookmaker data; otherwise this project's own model. Returns
-    (probability, source) - source is for our own console reporting, not part of Daron's schema."""
+    """P(a beats b), computed TWO independent ways every time (not just whichever one happens to
+    win), so callers can expose both alongside the blended "official" value:
+      - market_prob_a: The Odds API's de-vigged price for this exact pairing (matched by exact
+        ESPN displayName, never fuzzy), or None if no book has posted odds for it yet.
+      - model_prob_a: this project's own Elo-based win_probability(), independent of whether
+        market odds exist - the same computation compare_match.py already does post-hoc, just
+        done inline here instead of requiring a second pass over the export file.
+      - prob_a/source: the existing blended "official" value (market when available, else model)
+        and which one won - source is for our own console reporting, not part of Daron's schema.
+    Returns (prob_a, source, market_prob_a, model_prob_a)."""
     entry = odds_lookup.get(frozenset((espn_name_a, espn_name_b)))
-    if entry is not None and espn_name_a in entry:
-        return entry[espn_name_a], "odds_api"
-    return win_probability(draw_name_a, draw_name_b, surface, ratings_path), "model"
+    market_prob_a = entry[espn_name_a] if entry is not None and espn_name_a in entry else None
+    model_prob_a = win_probability(draw_name_a, draw_name_b, surface, ratings_path)
+    if market_prob_a is not None:
+        return market_prob_a, "odds_api", market_prob_a, model_prob_a
+    return model_prob_a, "model", market_prob_a, model_prob_a
 
 
 def build_round_label_map(round_sequence):
@@ -535,7 +544,7 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
                 half_index = i if i < n / 2 else i - n // 2
                 match_id = f"{half_prefix}-{daron_round}-{half_index + 1}"
 
-            prob_a, source = resolve_probability(
+            prob_a, source, market_prob_a, model_prob_a = resolve_probability(
                 p1_raw, p2_raw, draw_a, draw_b, odds_lookup, bracket.surface, tour_config.ratings_path
             )
             odds_used += source == "odds_api"
@@ -543,7 +552,28 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
             prob_a = round(prob_a, 3)
             matchups[match_id] = {
                 "slot_a": p1_raw, "slot_b": p2_raw,
+                # existing blended "official" value, unchanged - Daron's spec, always market when
+                # available else model, always sums to 1 with its counterpart.
                 "p_slot_a": prob_a, "p_slot_b": round(1 - prob_a, 3),
+                # additive fields: the same two probabilities BEFORE blending, side by side, so a
+                # consumer can see market/model agreement (or disagreement) directly instead of
+                # inferring it from which one "source" happened to be. market_prob_a/b are null
+                # when no book has posted odds for this exact pairing yet.
+                "market_prob_a": round(market_prob_a, 3) if market_prob_a is not None else None,
+                "market_prob_b": round(1 - market_prob_a, 3) if market_prob_a is not None else None,
+                "model_prob_a": round(model_prob_a, 3),
+                "model_prob_b": round(1 - model_prob_a, 3),
+                # how far the model's view of slot_a is from the market's, as a percentage OF the
+                # market's own probability (not a percentage-point gap like market_prob_a -
+                # p_slot_a above) - e.g. market 69%, model 36% is a -47.8% relative change: the
+                # model sees slot_a's chances as ~48% lower than the market does, proportionally.
+                # Computed from the unrounded market/model probabilities, not the already-rounded
+                # display fields above, so this stays accurate rather than compounding rounding
+                # error. Null whenever market_prob_a is null - nothing to compare against.
+                "relative_change_pct": (
+                    round((model_prob_a - market_prob_a) / market_prob_a * 100, 1)
+                    if market_prob_a is not None else None
+                ),
             }
 
     print(f"matchups: {len(matchups)} unsettled ({odds_used} priced via The Odds API, "
@@ -605,7 +635,9 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
             if frozenset((name_a, name_b)) in matchup_pairs:
                 continue
             draw_a, draw_b = espn_to_draw[name_a], espn_to_draw[name_b]
-            prob_a, _ = resolve_probability(
+            # head_to_head stays the existing blended-only schema (Daron's spec, unchanged) -
+            # market_prob/model_prob are only added to "matchups" per this change's scope.
+            prob_a, _source, _market_prob_a, _model_prob_a = resolve_probability(
                 name_a, name_b, draw_a, draw_b, odds_lookup, bracket.surface, tour_config.ratings_path
             )
             head_to_head[f"{name_a}|{name_b}"] = round(prob_a, 3)

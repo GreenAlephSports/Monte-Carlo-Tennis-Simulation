@@ -23,7 +23,8 @@ import argparse
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent))         # sibling research modules
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # production modules in model/
 
 from elite_opponent_residual_test import TRAIN_FRACTION, log_loss, logit, sigmoid  # noqa: E402
 from elo_ratings import load_matches_for_tour  # noqa: E402

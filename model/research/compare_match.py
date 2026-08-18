@@ -15,7 +15,8 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent))         # sibling research modules
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # production modules in model/
 
 from bracket import TOUR_CONFIG  # noqa: E402
 from hybrid_simulation import match_espn_name_to_draw  # noqa: E402

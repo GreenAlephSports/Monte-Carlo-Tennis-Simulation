@@ -20,7 +20,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 ARCHIVE_URL = "https://archive-api.open-meteo.com/v1/archive"
-CACHE_PATH = Path(__file__).resolve().parent.parent / "output" / "weather_cache.json"
+CACHE_PATH = Path(__file__).resolve().parent.parent.parent / "output" / "weather_cache.json"
 DAILY_VARS = "temperature_2m_max,relative_humidity_2m_mean"
 
 

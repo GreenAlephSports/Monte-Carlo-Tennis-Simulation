@@ -28,11 +28,12 @@ from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent))         # sibling research modules
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # production modules in model/
 
 from live_match_watcher import detect_new_finals, snapshot_statuses, watch  # noqa: E402
 
-BRACKET_PATH = Path(__file__).resolve().parent.parent / "brackets" / "cincinnati_2026_atp_demo.yaml"
+BRACKET_PATH = Path(__file__).resolve().parent.parent.parent / "brackets" / "cincinnati_2026_atp_demo.yaml"
 
 FAILURES = []
 

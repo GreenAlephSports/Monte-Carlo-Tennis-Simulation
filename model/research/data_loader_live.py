@@ -5,7 +5,7 @@ import pandas as pd
 
 BASE_URL = "https://raw.githubusercontent.com/JeffSackmann/tennis_atp/master"
 LOOKBACK_BUFFER_YEARS = 6  # a bit more than the 5yr window so nothing gets cut short
-LOCAL_ODDS_PATH = Path(__file__).resolve().parent.parent / "data" / "atp_tennis.csv"
+LOCAL_ODDS_PATH = Path(__file__).resolve().parent.parent.parent / "data" / "atp_tennis.csv"
 
 
 def _fetch_year(year: int) -> pd.DataFrame:

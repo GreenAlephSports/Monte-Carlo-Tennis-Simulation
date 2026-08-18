@@ -39,7 +39,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent))         # sibling research modules
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # production modules in model/
 
 from elo_ratings import K_FACTOR, STARTING_ELO, expected_score, load_matches_for_tour  # noqa: E402
 

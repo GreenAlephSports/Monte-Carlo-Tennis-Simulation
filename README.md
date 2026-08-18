@@ -1,28 +1,44 @@
 # Monte-Carlo-Simulation-Grand-Slam-Model
 
-GreenAleph Sports take-home project. Builds surface-adjusted Elo ratings from historical ATP/WTA match data, feeds them into a Monte Carlo simulation of a 128-player Grand Slam draw to estimate each player's title odds, and compares the model's round-1 win probabilities against real sportsbook odds to see where they disagree.
+GreenAleph Sports take-home project. Builds surface-adjusted Elo ratings from historical ATP/WTA match data, feeds them into a Monte Carlo simulation of a 128-player Grand Slam draw to estimate each player's title odds, and compares the model's round-1 win probabilities against real sportsbook odds to see where they disagree. Has since grown a live layer on top: pulling real ESPN bracket state, pricing unsettled matches against The Odds API alongside the model, auto-rerunning on match completions, and serving the result over HTTP.
+
+## Integration points, for an external consumer
+
+If you're integrating with this system from outside (a bot, a dashboard, another service) rather than reading the code, there are exactly two things to look at:
+
+- **`model/bracket_export.py`** — writes one JSON file per tournament (`output/<bracket>_bracket_export.json`) with the actual data contract: every alive player's `p_champ`/`p_sf`/`p_final`, every unsettled matchup's blended probability (`p_slot_a`/`p_slot_b`, plus the raw `market_prob_a`/`model_prob_a` components and `relative_change_pct` behind it), and pairwise `head_to_head` odds for every remaining pair. Regenerating this file is the only way results change — either run it directly, or let `live_match_watcher.py` (below) trigger it automatically. `players`/`matchups`/`head_to_head` field shapes are the stable spec; treat everything else as informational.
+- **`model/api_server.py`** — a lightweight, **read-only** Flask server that serves whatever `bracket_export.py` (or `live_match_watcher.py`) most recently wrote to disk. `GET /tournaments` lists what's available; `GET /tournament/<tournament_id>` returns that tournament's latest export JSON, byte-identical to the file on disk, with a `Last-Modified` header (and `304` support) so a polling consumer doesn't need to re-fetch an unchanged body. It never triggers a simulation itself — regeneration is always a separate step. See the module docstring for the optional `API_SERVER_API_KEY` auth toggle and LAN-binding notes.
+
+Everything else in `model/` is what produces the file those two endpoints serve, or is historical research (see `model/research/` below) that doesn't run in the live path at all.
 
 ## Folder structure
 
 - **`data/`** — raw inputs
   - `atp_tennis.csv` / `wta_tennis.csv` — historical match results (players, surface, date, round, bookmaker odds, etc.)
   - `wimbledon_2026_atp.yaml` / `wimbledon_2026_wta.yaml` — clean 128-draw bracket files, no byes (see "Bracket YAML format" below)
-- **`brackets/`** — bracket files for events smaller than a clean 128-draw (Masters 1000s etc.), which pad out to 128 slots with byes
+- **`brackets/`** — bracket files for events smaller than a clean 128-draw (Masters 1000s etc.), which pad out to 128 slots with byes, or built live from ESPN via `espn_bracket.py`
   - `montreal_2026.yaml` — a 96-player draw (64 play Round 1, 32 byes), extracted from the official PDF via `model/parse_atp_draw.py`
-- **`model/`** — the pipeline library, driven by `run_tournament.py`
-  - `data_loader.py` — loads match-history CSVs into a DataFrame
+- **`model/`** — the live production pipeline. Every file here is imported (directly or transitively) by `bracket_export.py` and/or `api_server.py`, or is a standalone entry point in the same live path:
+  - `data_loader.py` / `data_loader_kaggle.py` — load match-history CSVs (local file, or pulled fresh via Kaggle) into a DataFrame
   - `elo_ratings.py` — computes overall + per-surface Elo ratings from match history, up to a cutoff date
   - `win_probability.py` — looks up two players' surface Elo and returns a win probability
   - `bracket_schema.py` — YAML bracket schema validation and loading
-  - `bracket.py` — matches bracket player names to Elo ratings (tier-based fallback matching), byes/draw-order helpers
+  - `bracket.py` — matches bracket player names to Elo ratings (tier-based fallback matching), byes/draw-order helpers, draw validation (including the duplicate-player check)
   - `simulate.py` — runs the Monte Carlo tournament simulations over a resolved draw, byes-aware
-  - `ev_comparison.py` — compares model round-1 win probabilities to de-vigged sportsbook odds
-  - `parse_atp_draw.py` — extracts a bracket YAML from an official draw-sheet PDF (position/seed/status/bye per player)
-  - `explore_data.py` — scratch script for poking at the raw data, not part of the pipeline
-- **`run_tournament.py`** — single entry point: takes a bracket YAML path and runs the full pipeline (Elo calculation, name matching, simulation) end to end
+  - `ev_comparison.py` — de-vig math (`implied_probabilities`) shared by `bracket_export.py` and the standalone market-comparison CLI below
+  - `parse_atp_draw.py` — extracts a bracket YAML from an official draw-sheet PDF (position/seed/status/bye per player); also backs `espn_bracket.py`'s name-truncation logic
+  - `espn_bracket.py` — builds a bracket YAML directly from ESPN's live scoreboard for a given tour + event ID, instead of parsing a PDF; also the fix for a bracket YAML gone stale (unresolved `TBD (Qualifier N)` slots) once qualifying has concluded
+  - `live_scores.py` — thin client for ESPN's public (undocumented) live scoreboard API
+  - `hybrid_simulation.py` — replays real ESPN results round-by-round and simulates the rest from the current live state; the shared machinery `bracket_export.py` and the backtest scripts in `research/` both build on
+  - `bracket_export.py` — **integration point**, see above
+  - `live_match_watcher.py` — polls `live_scores.py` for one tournament, detects a real match-completion transition (not just any feed change), and reruns `bracket_export.py` automatically, reporting which players' odds moved and by how much. Fails fast at startup if the bracket YAML still has unresolved `TBD (Qualifier N)` placeholders, rather than polling for a while and crashing once simulation touches the bad data.
+  - `api_server.py` — **integration point**, see above
+  - `research/` — historical validation/backtest work, **not part of the live pipeline** — see `model/research/README.md`
+- **`run_tournament.py`** — original single entry point: takes a bracket YAML path and runs the full pipeline (Elo calculation, name matching, simulation) end to end, writing a CSV. Still works for a static/offline run; `bracket_export.py` is the one that also reads live ESPN/odds state and writes the JSON the live consumers use.
 - **`output/`** — generated results (created by running the scripts below)
   - `player_elo_ratings_atp.csv` / `player_elo_ratings_wta.csv` — Elo ratings per player, from `run_tournament.py` / `elo_ratings.py`
   - `<tournament>_<year>_simulation_results_<tour>.csv` — tournament-win probabilities per player, from `run_tournament.py`
+  - `<bracket>_bracket_export.json` / `<bracket>_watcher_baseline.json` — the live export, from `bracket_export.py` / `live_match_watcher.py` — this is what `api_server.py` serves
   - `wimbledon_2026_ev_comparison.csv` — model vs. market probabilities, from `ev_comparison.py`
 
 ## Bracket YAML format
@@ -76,7 +92,7 @@ Player names in the YAML are expected in the same format as the `player` column 
 
 ## How to run
 
-Requires `pandas` and `pyyaml`. Run the full pipeline for one bracket from the project root:
+Requires `pandas`, `pyyaml`, and `flask` (see `requirements.txt`). Run the full pipeline for one bracket from the project root:
 
 ```
 python run_tournament.py data/wimbledon_2026_atp.yaml
@@ -95,3 +111,27 @@ python model/ev_comparison.py                           # compares model probabi
 ```
 
 `data_loader.py` and `win_probability.py` are shared helpers imported by the scripts above, not meant to be run directly.
+
+### Live pipeline
+
+For a bracket driven by live ESPN state (rather than a static, offline bracket YAML):
+
+```
+# 1. Build (or refresh) a bracket YAML from ESPN's live scoreboard - do this whenever qualifying
+#    has just concluded, or a duplicate-player/unresolved-placeholder error points back here.
+python model/espn_bracket.py brackets/cincinnati_2026_atp.yaml --tour atp --event-id 718-2026 --surface Hard
+
+# 2. Write one export JSON snapshot - the file the two integration points above read.
+python model/bracket_export.py brackets/cincinnati_2026_atp.yaml
+
+# 3. Or, keep it live: poll ESPN, auto-rerun step 2 on every real match completion, and print a
+#    delta report of which players' odds moved. Runs indefinitely (Ctrl-C to stop, or --exit-after N).
+python model/live_match_watcher.py brackets/cincinnati_2026_atp.yaml
+
+# 4. Serve whatever's currently on disk over HTTP, read-only, for an external consumer.
+python model/api_server.py --port 8000
+```
+
+Steps 3 and 4 are independent, long-running processes meant to run side by side (separate terminals) — the watcher only writes files, the API server only reads them.
+
+The Odds API key (`ODDS_API_KEY` in `.env`) is optional — `bracket_export.py` falls back to the pure Elo model for any matchup it can't price, and reports which source (`odds_api` vs `model`) it used for each.

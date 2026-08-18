@@ -26,7 +26,8 @@ from pathlib import Path
 
 import pandas as pd
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent))         # sibling research modules
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # production modules in model/
 
 from bracket import (  # noqa: E402
     TOUR_CONFIG, match_draw_to_ratings, match_name_to_pool, order_by_draw_position, split_byes,
@@ -40,7 +41,7 @@ from hybrid_simulation import (  # noqa: E402
 from simulate import N_SIMULATIONS, run_simulations_from_field, run_simulations_partial_round  # noqa: E402
 from win_probability import win_probability  # noqa: E402
 
-OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+OUTPUT_DIR = Path(__file__).resolve().parent.parent.parent / "output"
 SEED = 42
 
 # Kaggle's Round labels for these datasets ('1st Round', 'Quarterfinals', 'The Final', ...) don't

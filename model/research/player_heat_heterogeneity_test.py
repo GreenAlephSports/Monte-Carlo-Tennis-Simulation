@@ -47,7 +47,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent))         # sibling research modules
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # production modules in model/
 
 from elite_opponent_residual_test import (  # noqa: E402
     EPS, TRAIN_FRACTION, build_frozen_predictions, log_loss, logit, sigmoid,
