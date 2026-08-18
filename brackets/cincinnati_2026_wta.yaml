@@ -54,19 +54,19 @@ players:
   status: null
   bye: false
 - seed: null
-  name: Ruse E.G.
-  status: null
-  bye: false
-- seed: null
-  name: Linette M.
-  status: null
-  bye: false
-- seed: null
   name: Ruzic A.
   status: null
   bye: false
 - seed: null
   name: Frech M.
+  status: null
+  bye: false
+- seed: null
+  name: Ruse E.G.
+  status: null
+  bye: false
+- seed: null
+  name: Linette M.
   status: null
   bye: false
 - seed: null
@@ -78,19 +78,19 @@ players:
   status: null
   bye: false
 - seed: null
-  name: Bucsa C.
-  status: null
-  bye: false
-- seed: null
-  name: Udvardy P.
-  status: null
-  bye: false
-- seed: null
   name: Maria T.
   status: null
   bye: false
 - seed: null
   name: Yastremska D.
+  status: null
+  bye: false
+- seed: null
+  name: Bucsa C.
+  status: null
+  bye: false
+- seed: null
+  name: Udvardy P.
   status: null
   bye: false
 - seed: null
@@ -110,11 +110,83 @@ players:
   status: null
   bye: false
 - seed: null
+  name: Bejlek S.
+  status: null
+  bye: false
+- seed: null
+  name: Pliskova Ka.
+  status: null
+  bye: false
+- seed: null
+  name: Bartunkova N.
+  status: null
+  bye: false
+- seed: null
+  name: Charaeva A.
+  status: null
+  bye: false
+- seed: null
+  name: Bouzas Maneiro J.
+  status: null
+  bye: false
+- seed: null
+  name: Bondar A.
+  status: null
+  bye: false
+- seed: null
+  name: Snigur D.
+  status: null
+  bye: false
+- seed: null
+  name: Starodubtseva Y.
+  status: null
+  bye: false
+- seed: null
+  name: Cocciaretto E.
+  status: null
+  bye: false
+- seed: null
+  name: Stefanini L.
+  status: null
+  bye: false
+- seed: null
+  name: Sawangkaew M.
+  status: null
+  bye: false
+- seed: null
+  name: Blinkova A.
+  status: null
+  bye: false
+- seed: null
   name: Stearns P.
   status: null
   bye: false
 - seed: null
-  name: Day K.
+  name: Dart H.
+  status: null
+  bye: false
+- seed: null
+  name: Joint M.
+  status: null
+  bye: false
+- seed: null
+  name: Korpatsch T.
+  status: null
+  bye: false
+- seed: null
+  name: Arango E.
+  status: null
+  bye: false
+- seed: null
+  name: Williams V.
+  status: null
+  bye: false
+- seed: null
+  name: Tagger L.
+  status: null
+  bye: false
+- seed: null
+  name: Gibson T.
   status: null
   bye: false
 - seed: null
@@ -134,75 +206,11 @@ players:
   status: null
   bye: false
 - seed: null
-  name: Bartunkova N.
-  status: null
-  bye: false
-- seed: null
-  name: Sawangkaew M.
-  status: null
-  bye: false
-- seed: null
-  name: Stefanini L.
-  status: null
-  bye: false
-- seed: null
-  name: Williams V.
-  status: null
-  bye: false
-- seed: null
-  name: Bouzas Maneiro J.
-  status: null
-  bye: false
-- seed: null
-  name: Bondar A.
-  status: null
-  bye: false
-- seed: null
-  name: Stoiana M.
-  status: null
-  bye: false
-- seed: null
-  name: Tagger L.
-  status: null
-  bye: false
-- seed: null
-  name: Snigur D.
-  status: null
-  bye: false
-- seed: null
-  name: Starodubtseva Y.
-  status: null
-  bye: false
-- seed: null
   name: Timofeeva M.
   status: null
   bye: false
 - seed: null
-  name: Kraus S.
-  status: null
-  bye: false
-- seed: null
-  name: Charaeva A.
-  status: null
-  bye: false
-- seed: null
-  name: Valentova T.
-  status: null
-  bye: false
-- seed: null
-  name: Dart H.
-  status: null
-  bye: false
-- seed: null
-  name: Gibson T.
-  status: null
-  bye: false
-- seed: null
-  name: Bejlek S.
-  status: null
-  bye: false
-- seed: null
-  name: Pliskova Ka.
+  name: Wang Xiy.
   status: null
   bye: false
 - seed: null
@@ -210,31 +218,7 @@ players:
   status: null
   bye: false
 - seed: null
-  name: TBD (Qualifier 1)
-  status: null
-  bye: false
-- seed: null
-  name: Kenin S.
-  status: null
-  bye: false
-- seed: null
-  name: TBD (Qualifier 2)
-  status: null
-  bye: false
-- seed: null
-  name: Stephens S.
-  status: null
-  bye: false
-- seed: null
-  name: TBD (Qualifier 3)
-  status: null
-  bye: false
-- seed: null
-  name: Zhang S.
-  status: null
-  bye: false
-- seed: null
-  name: TBD (Qualifier 4)
+  name: Vandewinkel H.
   status: null
   bye: false
 - seed: null
@@ -246,83 +230,91 @@ players:
   status: null
   bye: false
 - seed: null
-  name: Joint M.
+  name: Stoiana M.
   status: null
   bye: false
 - seed: null
-  name: Korpatsch T.
+  name: Valentova T.
   status: null
   bye: false
 - seed: null
-  name: Cocciaretto E.
+  name: Stephens S.
   status: null
   bye: false
 - seed: null
-  name: TBD (Qualifier 5)
+  name: Kraus S.
   status: null
   bye: false
-- seed: 7
-  name: Swiatek I.
+- seed: null
+  name: Kenin S.
+  status: null
+  bye: false
+- seed: null
+  name: Lys E.
+  status: null
+  bye: false
+- seed: null
+  name: Zhang S.
+  status: null
+  bye: false
+- seed: null
+  name: Day K.
+  status: null
+  bye: false
+- seed: 9
+  name: Anisimova A.
   status: null
   bye: true
-- seed: 29
-  name: Sakkari M.
-  status: null
-  bye: true
-- seed: 27
-  name: Tauson C.
-  status: null
-  bye: true
-- seed: 21
-  name: Mertens E.
-  status: null
-  bye: true
-- seed: 6
-  name: Noskova L.
-  status: null
-  bye: true
-- seed: 3
-  name: Pegula J.
-  status: null
-  bye: true
-- seed: 2
-  name: Rybakina E.
-  status: null
-  bye: true
-- seed: 26
-  name: Ostapenko J.
-  status: null
-  bye: true
-- seed: 18
-  name: Kalinskaya A.
-  status: null
-  bye: true
-- seed: 25
-  name: Navarro E.
-  status: null
-  bye: true
-- seed: 12
-  name: Bencic B.
-  status: null
-  bye: true
-- seed: 14
-  name: Shnaider D.
+- seed: 19
+  name: Chwalinska M.
   status: null
   bye: true
 - seed: 17
   name: Eala A.
   status: null
   bye: true
-- seed: 9
-  name: Anisimova A.
+- seed: 18
+  name: Kalinskaya A.
+  status: null
+  bye: true
+- seed: 14
+  name: Shnaider D.
+  status: null
+  bye: true
+- seed: 26
+  name: Ostapenko J.
+  status: null
+  bye: true
+- seed: 6
+  name: Noskova L.
   status: null
   bye: true
 - seed: 15
   name: Cirstea S.
   status: null
   bye: true
-- seed: 19
-  name: Chwalinska M.
+- seed: 3
+  name: Pegula J.
+  status: null
+  bye: true
+- seed: 29
+  name: Sakkari M.
+  status: null
+  bye: true
+- seed: 25
+  name: Navarro E.
+  status: null
+  bye: true
+- seed: 21
+  name: Mertens E.
+  status: null
+  bye: true
+- seed: 27
+  name: Tauson C.
+  status: null
+  bye: true
+- seed: 12
+  name: Bencic B.
   status: null
   bye: true
 - seed: 32
@@ -333,44 +325,8 @@ players:
   name: Andreeva M.
   status: null
   bye: true
-- seed: 13
-  name: Jovic I.
-  status: null
-  bye: true
-- seed: 10
-  name: Kostyuk M.
-  status: null
-  bye: true
-- seed: 24
-  name: Potapova A.
-  status: null
-  bye: true
-- seed: 1
-  name: Sabalenka A.
-  status: null
-  bye: true
-- seed: 30
-  name: Fernandez L.
-  status: null
-  bye: true
-- seed: 20
-  name: Keys M.
-  status: null
-  bye: true
-- seed: 4
-  name: Gauff C.
-  status: null
-  bye: true
-- seed: 8
-  name: Svitolina E.
-  status: null
-  bye: true
-- seed: 22
-  name: Bouzkova M.
-  status: null
-  bye: true
-- seed: 28
-  name: Li A.
+- seed: 2
+  name: Rybakina E.
   status: null
   bye: true
 - seed: 31
@@ -381,11 +337,55 @@ players:
   name: Krejcikova B.
   status: null
   bye: true
+- seed: 20
+  name: Keys M.
+  status: null
+  bye: true
+- seed: 7
+  name: Swiatek I.
+  status: null
+  bye: true
+- seed: 22
+  name: Bouzkova M.
+  status: null
+  bye: true
+- seed: 28
+  name: Li A.
+  status: null
+  bye: true
+- seed: 10
+  name: Kostyuk M.
+  status: null
+  bye: true
+- seed: 1
+  name: Sabalenka A.
+  status: null
+  bye: true
 - seed: 33
   name: Siniakova K.
   status: null
   bye: true
 - seed: 16
   name: Alexandrova E.
+  status: null
+  bye: true
+- seed: 30
+  name: Fernandez L.
+  status: null
+  bye: true
+- seed: 13
+  name: Jovic I.
+  status: null
+  bye: true
+- seed: 24
+  name: Potapova A.
+  status: null
+  bye: true
+- seed: 4
+  name: Gauff C.
+  status: null
+  bye: true
+- seed: 8
+  name: Svitolina E.
   status: null
   bye: true

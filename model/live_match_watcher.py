@@ -24,7 +24,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from bracket_export import OUTPUT_DIR, export_bracket_json  # noqa: E402
+from bracket import DuplicatePlayerDrawError  # noqa: E402
+from bracket_export import OUTPUT_DIR, QUALIFIER_PLACEHOLDER_RE, export_bracket_json  # noqa: E402
 from bracket_schema import BracketValidationError, load_bracket_yaml  # noqa: E402
 from hybrid_simulation import TOUR_SINGLES_CATEGORY  # noqa: E402
 from live_scores import LiveScoresError, extract_matches, fetch_scoreboard, format_match  # noqa: E402
@@ -63,6 +64,31 @@ def detect_new_finals(previous_statuses, current_matches):
         if previous_statuses.get(match_id) != "post":
             newly_final.append(m)
     return newly_final
+
+
+def check_no_tbd_placeholders(bracket, bracket_path):
+    """Fails fast, before any polling starts, if the bracket YAML still has literal
+    'TBD (Qualifier N)' entries - a bracket built before qualifying wrapped up (see
+    espn_bracket.py's module docstring) that was never regenerated once real names were known.
+
+    This exists because a stale placeholder doesn't fail HERE - bracket_export.py happily accepts
+    it (tier-3 STARTING_ELO fallback in match_draw_to_ratings, or resolve_qualifier_placeholders
+    leaving it unresolved) and the watcher can poll cleanly for a while, only for the placeholder
+    to eventually blow up deep in simulation once something touches it (either validate_draw's
+    duplicate check if the same real player also appears elsewhere in a stale draw, or a raw
+    ValueError from win_probability.py's ratings-CSV lookup if the placeholder itself gets fed
+    into a simulated matchup) - both hit in practice, on different bracket files, in the same
+    week. Catching it at startup means a bad bracket file fails immediately and obviously, instead
+    of hours into a poll."""
+    placeholders = [p.name for p in bracket.players if QUALIFIER_PLACEHOLDER_RE.match(p.name)]
+    if placeholders:
+        raise RuntimeError(
+            f"{bracket_path} still has {len(placeholders)} unresolved 'TBD (Qualifier N)' "
+            f"placeholder(s) ({sorted(placeholders)}) - this bracket was likely built before "
+            f"qualifying wrapped up and was never regenerated. Regenerate it against live ESPN "
+            f"data first: python model/espn_bracket.py {bracket_path} --tour {bracket.tour.lower()} "
+            f"--event-id <ESPN event id> --surface {bracket.surface}"
+        )
 
 
 def players_by_espn_name(export_output):
@@ -114,6 +140,7 @@ def print_delta_report(completed_matches, before_players, after_players):
 
 def watch(bracket_path, interval, n_simulations, seed, dates, exit_after):
     bracket = load_bracket_yaml(bracket_path)
+    check_no_tbd_placeholders(bracket, bracket_path)
     tour = bracket.tour.lower()
     category = TOUR_SINGLES_CATEGORY[tour]
 
@@ -121,10 +148,23 @@ def watch(bracket_path, interval, n_simulations, seed, dates, exit_after):
           f"polling every {interval}s")
 
     print("Running initial simulation to establish baseline p_champ/p_sf/p_final...")
-    _out_path, baseline_export = export_bracket_json(
-        bracket_path, output_path=OUTPUT_DIR / f"{Path(bracket_path).stem}_watcher_baseline.json",
-        n_simulations=n_simulations, seed=seed, dates=dates,
-    )
+    baseline_export = None
+    while baseline_export is None:
+        try:
+            _out_path, baseline_export = export_bracket_json(
+                bracket_path, output_path=OUTPUT_DIR / f"{Path(bracket_path).stem}_watcher_baseline.json",
+                n_simulations=n_simulations, seed=seed, dates=dates,
+            )
+        except DuplicatePlayerDrawError as e:
+            print(
+                f"WARNING: {bracket.tournament} ({bracket.tour}) bracket has duplicate player(s) "
+                f"{e.duplicate_names} - likely a stale bracket YAML (e.g. a qualifier slot that "
+                f"resolved to a player who already has a separate literal entry elsewhere in the "
+                f"draw). Can't establish a baseline until this is fixed (regenerate the bracket "
+                f"YAML with espn_bracket.py). Retrying in {interval}s in case the underlying data "
+                f"self-corrects.", file=sys.stderr,
+            )
+            time.sleep(interval)
     current_players = players_by_espn_name(baseline_export)
     print(f"Baseline established: {len(current_players)} players alive.")
 
@@ -156,10 +196,20 @@ def watch(bracket_path, interval, n_simulations, seed, dates, exit_after):
             continue
 
         print(f"[{time.strftime('%H:%M:%S')}] detected {len(newly_final)} new completion(s) - rerunning simulation...")
-        _out_path, new_export = export_bracket_json(
-            bracket_path, output_path=OUTPUT_DIR / f"{Path(bracket_path).stem}_watcher_baseline.json",
-            n_simulations=n_simulations, seed=seed, dates=dates,
-        )
+        try:
+            _out_path, new_export = export_bracket_json(
+                bracket_path, output_path=OUTPUT_DIR / f"{Path(bracket_path).stem}_watcher_baseline.json",
+                n_simulations=n_simulations, seed=seed, dates=dates,
+            )
+        except DuplicatePlayerDrawError as e:
+            print(
+                f"WARNING: {bracket.tournament} ({bracket.tour}) bracket has duplicate player(s) "
+                f"{e.duplicate_names} - likely a stale bracket YAML. Skipping this cycle's delta "
+                f"report (the {len(newly_final)} completion(s) just detected are NOT reflected in "
+                f"current_players) and continuing to poll - fix the bracket YAML (regenerate with "
+                f"espn_bracket.py) for the report to resume.", file=sys.stderr,
+            )
+            continue
         new_players = players_by_espn_name(new_export)
         print_delta_report(newly_final, current_players, new_players)
         current_players = new_players
@@ -171,6 +221,15 @@ def watch(bracket_path, interval, n_simulations, seed, dates, exit_after):
 
 
 def main():
+    # player/tournament names routinely carry non-ASCII characters (e.g. 'Krunić') and Windows'
+    # default console codepage (cp1252) can't encode many of them - without this, a plain print()
+    # of such a name crashes the whole watcher process. UTF-8 covers every name this pipeline
+    # sees; reconfigure() is a no-op on streams that don't support it (e.g. when captured by a
+    # test harness), so this is safe everywhere.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
+
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("bracket_path", type=Path)
     parser.add_argument("--interval", type=int, default=DEFAULT_INTERVAL_SECONDS,

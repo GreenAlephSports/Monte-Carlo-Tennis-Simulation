@@ -339,12 +339,27 @@ def get_matchups(players):
     return list(zip(players[0::2], players[1::2]))
 
 
+class DuplicatePlayerDrawError(ValueError):
+    """Raised when the same resolved player occupies more than one draw slot - e.g. a bracket
+    YAML built before qualifying concluded still has a literal entry for a player who ALSO
+    later resolves (via resolve_qualifier_placeholders) from a separate TBD-qualifier slot, once
+    that player wins through qualifying. A narrower type than a bare ValueError so callers (e.g.
+    live_match_watcher.py) can catch this specific, usually-stale-bracket-data condition without
+    also swallowing an unrelated ValueError that should still crash loudly."""
+
+    def __init__(self, duplicate_names):
+        self.duplicate_names = duplicate_names
+        super().__init__(f"Draw contains duplicate player(s): {sorted(duplicate_names)}")
+
+
 def validate_draw(draw):
     if any(player is None for player in draw):
         missing = sum(1 for player in draw if player is None)
         raise ValueError(f"Draw contains {missing} unresolved slot(s) — fix unmatched names before simulating")
-    if len(set(draw)) != len(draw):
-        raise ValueError("Draw contains duplicate players")
+    counts = Counter(draw)
+    duplicates = [name for name, n in counts.items() if n > 1]
+    if duplicates:
+        raise DuplicatePlayerDrawError(duplicates)
 
 
 def _is_power_of_two(n):
