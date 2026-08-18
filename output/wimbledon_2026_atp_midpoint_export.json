@@ -1,0 +1,134 @@
+{
+  "meta": {
+    "tournament": "wimbledon-men-2026",
+    "generated_at": "2026-08-17T21:45:18Z",
+    "iterations": 500,
+    "seed": 42
+  },
+  "players": [
+    {
+      "player": "Jannik Sinner",
+      "quarter": "Q1",
+      "p_champ": 0.328,
+      "p_sf": 0.826,
+      "p_final": 0.502
+    },
+    {
+      "player": "Novak Djokovic",
+      "quarter": "Q2",
+      "p_champ": 0.242,
+      "p_sf": 0.756,
+      "p_final": 0.402
+    },
+    {
+      "player": "Taylor Fritz",
+      "quarter": "Q3",
+      "p_champ": 0.226,
+      "p_sf": 0.786,
+      "p_final": 0.492
+    },
+    {
+      "player": "Alexander Zverev",
+      "quarter": "Q4",
+      "p_champ": 0.12,
+      "p_sf": 0.624,
+      "p_final": 0.296
+    },
+    {
+      "player": "Flavio Cobolli",
+      "quarter": "Q4",
+      "p_champ": 0.032,
+      "p_sf": 0.376,
+      "p_final": 0.158
+    },
+    {
+      "player": "Felix Auger-Aliassime",
+      "quarter": "Q2",
+      "p_champ": 0.024,
+      "p_sf": 0.244,
+      "p_final": 0.06
+    },
+    {
+      "player": "Jan-Lennard Struff",
+      "quarter": "Q2",
+      "p_champ": 0.016,
+      "p_sf": 0.174,
+      "p_final": 0.036
+    },
+    {
+      "player": "Arthur Fery",
+      "quarter": "Q3",
+      "p_champ": 0.012,
+      "p_sf": 0.214,
+      "p_final": 0.054
+    }
+  ],
+  "matchups": {
+    "T-QF-1": {
+      "slot_a": "Jannik Sinner",
+      "slot_b": "Jan-Lennard Struff",
+      "p_slot_a": 0.809,
+      "p_slot_b": 0.191
+    },
+    "T-QF-2": {
+      "slot_a": "Felix Auger-Aliassime",
+      "slot_b": "Novak Djokovic",
+      "p_slot_a": 0.253,
+      "p_slot_b": 0.747
+    },
+    "B-QF-1": {
+      "slot_a": "Flavio Cobolli",
+      "slot_b": "Arthur Fery",
+      "p_slot_a": 0.628,
+      "p_slot_b": 0.372
+    },
+    "B-QF-2": {
+      "slot_a": "Taylor Fritz",
+      "slot_b": "Alexander Zverev",
+      "p_slot_a": 0.567,
+      "p_slot_b": 0.433
+    },
+    "T-SF-1": {
+      "slot_a": "Arthur Fery",
+      "slot_b": "Alexander Zverev",
+      "p_slot_a": 0.254,
+      "p_slot_b": 0.746
+    },
+    "B-SF-1": {
+      "slot_a": "Jannik Sinner",
+      "slot_b": "Novak Djokovic",
+      "p_slot_a": 0.55,
+      "p_slot_b": 0.45
+    },
+    "Final": {
+      "slot_a": "Jannik Sinner",
+      "slot_b": "Alexander Zverev",
+      "p_slot_a": 0.669,
+      "p_slot_b": 0.331
+    }
+  },
+  "head_to_head": {
+    "Alexander Zverev|Felix Auger-Aliassime": 0.638,
+    "Alexander Zverev|Flavio Cobolli": 0.635,
+    "Alexander Zverev|Jan-Lennard Struff": 0.677,
+    "Alexander Zverev|Novak Djokovic": 0.375,
+    "Arthur Fery|Felix Auger-Aliassime": 0.375,
+    "Arthur Fery|Jan-Lennard Struff": 0.417,
+    "Arthur Fery|Jannik Sinner": 0.144,
+    "Arthur Fery|Novak Djokovic": 0.169,
+    "Arthur Fery|Taylor Fritz": 0.206,
+    "Felix Auger-Aliassime|Flavio Cobolli": 0.502,
+    "Felix Auger-Aliassime|Jan-Lennard Struff": 0.602,
+    "Felix Auger-Aliassime|Jannik Sinner": 0.219,
+    "Felix Auger-Aliassime|Taylor Fritz": 0.302,
+    "Flavio Cobolli|Jan-Lennard Struff": 0.602,
+    "Flavio Cobolli|Jannik Sinner": 0.222,
+    "Flavio Cobolli|Novak Djokovic": 0.256,
+    "Flavio Cobolli|Taylor Fritz": 0.305,
+    "Jan-Lennard Struff|Novak Djokovic": 0.222,
+    "Jan-Lennard Struff|Taylor Fritz": 0.267,
+    "Jannik Sinner|Taylor Fritz": 0.607,
+    "Novak Djokovic|Taylor Fritz": 0.565
+  },
+  "warnings": []
+}

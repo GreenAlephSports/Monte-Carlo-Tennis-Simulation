@@ -140,10 +140,108 @@ UPSET_BOOST_ELO_GAP_THRESHOLD = 100
 UPSET_BOOST_LOGIT_SHIFT = 0.1383
 
 
+# Empirically-fit layoff/rust adjustment - see model/layoff_test.py, run separately on ATP and WTA
+# 2000/2006-2026 with the same frozen-per-tournament-edition Elo and chronological 80/20 tournament
+# split as every other correction above. Bucketed by days since a player's own last recorded match
+# (in EITHER tour history, any earlier tournament - not just this one, so it's known before a draw
+# is even set, unlike upset-boost above): actual win rate diverges from Elo's prediction by bucket,
+# and that divergence held up on a held-out split in BOTH tours - ATP +0.0007 log-loss improvement
+# (95% CI [+0.0001, +0.0013]), WTA +0.0011 (95% CI [+0.0005, +0.0019]).
+#
+# A single-threshold collapse (model/layoff_two_bucket_test.py, mirroring the upset-boost precedent
+# above) was tried first and rejected: collapsing everything under 90 days to "no adjustment"
+# dropped the overall held-out CI back to straddling zero in both tours ([-0.0001,+0.0004] ATP,
+# [-0.0004,+0.0005] WTA), because the 30_60d bucket's own real, individually-significant
+# contribution (ATP test-era log-loss improvement +0.0034 - the largest single bucket after
+# 90d_plus) got thrown away along with the noisier 14_30d/60_90d buckets. Moving the boundary to 60
+# days instead (model/layoff_three_bucket_test.py) didn't rescue it either (60_90d's own
+# contribution is tiny: +0.0011 ATP/+0.0009 WTA), and neither did a targeted 30_60d+90d_plus-only
+# 2-parameter version (ATP CI [-0.0000,+0.0006] - borderline; WTA CI [-0.0004,+0.0005] - still
+# straddling zero) - confirming 30_60d needs to compose with the OTHER buckets, not just 90d_plus,
+# to clear the bar reliably. The full 5-bucket gradient below is what actually does that, even
+# though it isn't strictly monotonic (both tours show 60_90d's residual recovering partway before
+# 90d_plus drops again - a real, tour-consistent bump, not noise, but not explained by the
+# bucketing here).
+#
+# Shifts are the full-dataset refit (train+test combined, same convention as RANK_ADJUSTMENT/
+# PLATT_B/UPSET_BOOST_LOGIT_SHIFT above - the held-out split was for validating the effect exists,
+# not for holding back data from the final production fit).
+#
+# Fit SEPARATELY per tour, unlike RANK_ADJUSTMENT/PLATT_B/UPSET_BOOST (all ATP-only, reused for
+# WTA): the two tours' bucket shifts diverge enough to matter here, not just differ by sampling
+# noise around a shared shape - WTA's 14_30d shift is essentially zero (+0.0043) where ATP's is a
+# real penalty (-0.0841), and WTA's 30_60d penalty (-0.0694) is under half of ATP's (-0.1579).
+# Applying ATP's numbers to WTA would have meant a wrong-signed adjustment for one bucket, not just
+# an imprecise magnitude.
+#
+# no_prior_match (a player's first-ever recorded match in the whole dataset - zero career history,
+# not a known player returning from a break) is deliberately excluded in both tours: it's a
+# different phenomenon, already partly handled by STARTING_ELO's neutral fallback for unrated
+# players, not the layoff/rust mechanism this adjustment targets - layoff_test.py itself treats it
+# as outside the gradient hypothesis. A player with no computable days-since-last-match (either
+# reason) gets zero adjustment.
+LAYOFF_BUCKET_EDGES_ATP = [
+    ("under_14d", lambda d: d < 14, 0.0489),
+    ("14_30d", lambda d: 14 <= d < 30, -0.0841),
+    ("30_60d", lambda d: 30 <= d < 60, -0.1579),
+    ("60_90d", lambda d: 60 <= d < 90, -0.0820),
+    ("90d_plus", lambda d: d >= 90, -0.2145),
+]
+LAYOFF_BUCKET_EDGES_WTA = [
+    ("under_14d", lambda d: d < 14, 0.0346),
+    ("14_30d", lambda d: 14 <= d < 30, 0.0043),
+    ("30_60d", lambda d: 30 <= d < 60, -0.0694),
+    ("60_90d", lambda d: 60 <= d < 90, -0.0530),
+    ("90d_plus", lambda d: d >= 90, -0.2500),
+]
+
+
+def get_days_since_last_match(player: str, ratings_path: Path):
+    """Days between the tournament's cutoff date and this player's last recorded match, frozen the
+    same way current_rank is - None if unknown (player not in the ratings file, or their first-ever
+    recorded match is this tournament itself, i.e. days_since_last_match was NaN when the ratings
+    file was built)."""
+    ratings = _load_ratings(ratings_path)
+    if player not in ratings.index or "days_since_last_match" not in ratings.columns:
+        return None
+    days = ratings.loc[player, "days_since_last_match"]
+    return None if pd.isna(days) else days
+
+
+def _layoff_bucket_edges_for(ratings_path: Path):
+    """Selects the WTA-fit shifts only for the actual WTA ratings file; every other ratings_path
+    (the ATP file, or any custom/backtest path - which in practice is always one tour's real
+    ratings file reused under a different name, e.g. backtest_hard_court.py's per-bracket copies of
+    tour_config.ratings_path) defaults to the ATP fit, same as before this split existed."""
+    return LAYOFF_BUCKET_EDGES_WTA if Path(ratings_path) == WTA_RATINGS_PATH else LAYOFF_BUCKET_EDGES_ATP
+
+
+def _layoff_shift_for_days(days, bucket_edges) -> float:
+    if days is None:
+        return 0.0
+    for _, test, shift in bucket_edges:
+        if test(days):
+            return shift
+    return 0.0  # unreachable - edges are exhaustive over [0, inf)
+
+
+def _apply_layoff_adjustment(prob_a: float, days_a, days_b, bucket_edges) -> float:
+    """Additive correction in logit space, one shift per player based on their OWN days-since-last-
+    match bucket - same per-player-then-combine pattern as the upset-boost shift in simulate.py.
+    A no-op whenever both players land in the same bucket (most commonly: neither has a layoff at
+    all), including when both are unknown."""
+    shift_a = _layoff_shift_for_days(days_a, bucket_edges)
+    shift_b = _layoff_shift_for_days(days_b, bucket_edges)
+    if shift_a == shift_b:
+        return prob_a
+    return apply_logit_shift(prob_a, shift_a - shift_b)
+
+
 # just pulls each player's surface-specific elo and updates ratings
 def win_probability(
     player_a: str, player_b: str, surface: str, ratings_path: Path = ATP_RATINGS_PATH,
-    use_rank_adjustment: bool = False, use_confidence_calibration: bool = False,
+    use_rank_adjustment: bool = True, use_confidence_calibration: bool = True,
+    use_layoff_adjustment: bool = True,
 ) -> float:
     elo_a = get_surface_elo(player_a, surface, ratings_path)
     elo_b = get_surface_elo(player_b, surface, ratings_path)
@@ -153,6 +251,11 @@ def win_probability(
         rank_a = get_current_rank(player_a, ratings_path)
         rank_b = get_current_rank(player_b, ratings_path)
         prob_a = _apply_rank_adjustment(prob_a, rank_a, rank_b)
+
+    if use_layoff_adjustment:
+        days_a = get_days_since_last_match(player_a, ratings_path)
+        days_b = get_days_since_last_match(player_b, ratings_path)
+        prob_a = _apply_layoff_adjustment(prob_a, days_a, days_b, _layoff_bucket_edges_for(ratings_path))
 
     if use_confidence_calibration:
         prob_a = _apply_confidence_calibration(prob_a)

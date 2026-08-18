@@ -71,6 +71,13 @@ ATP_NAME_ALIASES = {
     # stripped before the suffix comparison, so "Wolf J.J." can't be reached from "J.J. Wolf" either.
     "O'Connell C.": "O Connell C.",
     "Wolf J.": "Wolf J.J.",
+    # ESPN glues Kwon Soon-woo's two-part given name into one unspaced token ("SoonWoo Kwon"),
+    # so the tiered matcher's compound-initials check can never recover "S.W." from it - it
+    # falls back to a confident-but-wrong match against the sparse "Kwon S." csv entry instead
+    # of this alias's real, match-history-bearing "Kwon S.W." one. Found via brackets/
+    # wimbledon_2026_atp.yaml, the first true 128-draw/live-replay path this alias mechanism was
+    # exercised against.
+    "Kwon S.": "Kwon S.W.",
 }
 
 WTA_NAME_ALIASES = {
@@ -142,6 +149,77 @@ def _build_first_initial_index(ratings_df):
             continue
         index.setdefault((lastname, initials[0]), []).append((csv_name, matches))
     return index
+
+
+def _build_name_pool_indexes(names):
+    """Tier 1/2 indexes (see match_draw_to_ratings) built over an arbitrary pool of csv-format
+    names rather than a ratings dataframe - lets match_name_to_pool reuse the same lastname+
+    initials matching against e.g. an already-resolved draw, with no match-count tie-break needed
+    since a resolved draw has no duplicate players."""
+    exact_index = {}
+    first_initial_index = {}
+    for name in names:
+        lastname, initials = _split_csv_name(name)
+        exact_index.setdefault((lastname, initials), name)
+        if initials:
+            first_initial_index.setdefault((lastname, initials[0]), []).append(name)
+    return exact_index, first_initial_index
+
+
+def _fuzzy_lastname_match(lastname, first_initial, names, min_len=3):
+    """Tier 3: matches when one side's glued (space-stripped) lastname is a prefix or suffix of
+    the other's, with the same first initial - covers a compound surname truncated to only one of
+    its words (Kaggle sometimes drops "Perricard" from "Mpetshi Perricard"), a leading letter lost
+    to a PDF extraction glitch ("Landaluce" -> "Andaluce"), or the same surname written with vs.
+    without its internal space ("De Minaur" vs. "Deminaur", trivially a prefix of itself once
+    glued). Requires a unique candidate and a minimum length to avoid spurious short-string
+    collisions."""
+    glued = lastname.replace(" ", "")
+    if len(glued) < min_len:
+        return None
+    matches = set()
+    for name in names:
+        candidate_lastname, candidate_initials = _split_csv_name(name)
+        if not candidate_initials or candidate_initials[0] != first_initial:
+            continue
+        candidate_glued = candidate_lastname.replace(" ", "")
+        if len(candidate_glued) < min_len:
+            continue
+        if (glued.startswith(candidate_glued) or candidate_glued.startswith(glued)
+                or glued.endswith(candidate_glued) or candidate_glued.endswith(glued)):
+            matches.add(name)
+    return next(iter(matches)) if len(matches) == 1 else None
+
+
+def match_name_to_pool(raw_name, pool_names, name_aliases=None):
+    """Resolves raw_name (csv 'Lastname I.' shape) against an arbitrary pool of csv-format names,
+    reusing the same tiered fuzzy-matching system match_draw_to_ratings applies against the Elo
+    ratings csv (tier 0 manual alias, tier 1 exact lastname+initials, tier 2 lastname+first-initial
+    unique/compound-initials match), plus a tier 3 glued-lastname prefix/suffix fallback for
+    naming-convention mismatches the other tiers can't bridge (see _fuzzy_lastname_match). Used to
+    match a different data source's names (e.g. a static Kaggle match-history pull) against an
+    already-resolved draw, not just a bracket's raw player names against the ratings csv. Returns
+    the matched pool name, or None if nothing resolves."""
+    pool_names = list(pool_names)
+    alias_target = (name_aliases or {}).get(raw_name)
+    if alias_target in pool_names:
+        return alias_target
+
+    lastname, initials = _split_csv_name(raw_name)
+    first_initial = initials[0] if initials else ""
+
+    exact_index, first_initial_index = _build_name_pool_indexes(pool_names)
+    match = exact_index.get((lastname, initials))
+    if match is not None:
+        return match
+
+    candidates = first_initial_index.get((lastname, first_initial), [])
+    if len(candidates) == 1:
+        return candidates[0]
+    if len(candidates) > 1 and len({_split_csv_name(c)[1] for c in candidates}) == 1:
+        return candidates[0]
+
+    return _fuzzy_lastname_match(lastname, first_initial, pool_names, min_len=3)
 
 
 def _lastnames_in_training_window(match_data_path, cutoff_date):

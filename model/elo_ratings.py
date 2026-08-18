@@ -70,9 +70,17 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date):
     # anything reading it degrades to "no rank data" rather than erroring.
     current_rank = {}
     has_rank_columns = {"Rank_1", "Rank_2"}.issubset(df.columns)
+    # last real match date per player, frozen at cutoff the same no-lookahead way current_rank is -
+    # feeds win_probability.py's layoff adjustment (days since a player's last recorded match,
+    # anywhere, before this tournament started). df is already sorted by Date above, so the last
+    # write for a player during the loop below is their true most recent pre-cutoff match.
+    last_match_date = {}
+    cutoff_ts = pd.Timestamp(cutoff_date)
 
     for row in df.itertuples(index=False):
         p1, p2, winner, surface = row.Player_1, row.Player_2, row.Winner, row.Surface
+        last_match_date[p1] = row.Date
+        last_match_date[p2] = row.Date
 
         overall_elo.setdefault(p1, STARTING_ELO)
         overall_elo.setdefault(p2, STARTING_ELO)
@@ -101,10 +109,12 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date):
     players = sorted(overall_elo.keys())
     records = []
     for player in players:
+        last_date = last_match_date.get(player)
         record = {
             "player": player,
             "overall_elo": overall_elo[player],
             "current_rank": current_rank.get(player),
+            "days_since_last_match": (cutoff_ts - last_date).days if last_date is not None else None,
         }
         # blend surface_elo toward overall_elo, weighted by how much surface-specific sample size
         # backs it up - a player with few surface matches leans on the more-data-backed overall
@@ -129,6 +139,7 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date):
         "clay_matches",
         "grass_matches",
         "current_rank",
+        "days_since_last_match",
     ]
     return pd.DataFrame.from_records(records, columns=columns)
 

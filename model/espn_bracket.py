@@ -142,12 +142,18 @@ def _decided_qualifying_winners(qualifying_final):
     return winners
 
 
-def build_bracket_players(tour, event_id):
+def build_bracket_players(tour, event_id, dates=None):
     """Returns a list of player dicts (seed/name/bye/status) in bracket order, plus the raw
-    ESPN event dict (used by the caller for tournament/date metadata)."""
+    ESPN event dict (used by the caller for tournament/date metadata).
+
+    dates is passed straight through to fetch_scoreboard - ESPN's undated scoreboard defaults
+    to "today" server-side, which only finds a tournament while it's still live/recent (see
+    backtest_hard_court.py's own note on this). A single date anywhere inside the tournament's
+    window returns its complete event regardless of how long ago it finished, so building a
+    bracket for an already-concluded event needs one explicitly."""
     tour = tour.lower()
     category = TOUR_SINGLES_CATEGORY[tour]
-    data = fetch_scoreboard(tour)
+    data = fetch_scoreboard(tour, dates=dates)
 
     event = next((e for e in data.get("events", []) if e.get("id") == event_id), None)
     if event is None:
@@ -252,12 +258,12 @@ def _tournament_start_date(event, round1):
     return date_str[:10] if date_str else None
 
 
-def build_bracket_yaml(tour, event_id, surface):
+def build_bracket_yaml(tour, event_id, surface, dates=None):
     tour = tour.upper()
     if surface not in SURFACES:
         raise ValueError(f"surface must be one of {SURFACES}, got {surface!r}")
 
-    players, event, round1, qualifier_stats = build_bracket_players(tour, event_id)
+    players, event, round1, qualifier_stats = build_bracket_players(tour, event_id, dates=dates)
     start_date = _tournament_start_date(event, round1)
     year = int(start_date[:4]) if start_date else None
 
@@ -280,10 +286,13 @@ if __name__ == "__main__":
     parser.add_argument("--event-id", required=True, help="ESPN event id, e.g. 718-2026")
     parser.add_argument("--surface", required=True, choices=SURFACES,
                          help="ESPN's scoreboard data has no surface field - must be supplied")
+    parser.add_argument("--dates", default=None,
+                         help="YYYYMMDD, passed to ESPN's ?dates= - needed for an already-"
+                              "concluded event, which the undated (\"today\") scoreboard can't find")
     args = parser.parse_args()
 
     try:
-        bracket, qualifier_stats = build_bracket_yaml(args.tour, args.event_id, args.surface)
+        bracket, qualifier_stats = build_bracket_yaml(args.tour, args.event_id, args.surface, dates=args.dates)
     except (LiveScoresError, ValueError) as e:
         print(f"ERROR: {e}", file=sys.stderr)
         sys.exit(1)

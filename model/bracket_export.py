@@ -404,7 +404,7 @@ def resolve_qualifier_placeholders(players, byes, tournament_matches, ratings_df
     return updated_players, warnings
 
 
-def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATIONS, seed=SEED):
+def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATIONS, seed=SEED, dates=None):
     bracket = load_bracket_yaml(bracket_path)
     players = order_by_draw_position(bracket.players)
     byes = [p.bye for p in players]
@@ -415,7 +415,13 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
     ratings_df = calculate_elo_ratings(matches_history, bracket.start_date)
     ratings_df = ratings_df.sort_values("overall_elo", ascending=False).reset_index(drop=True)
 
-    espn_data = fetch_scoreboard(bracket.tour.lower())
+    # dates is passed straight through to fetch_scoreboard - ESPN's undated scoreboard defaults
+    # to "today" server-side, which only finds a tournament while it's still live/recent (see
+    # espn_bracket.py's build_bracket_players and backtest_hard_court.py's own note on this). A
+    # single date anywhere inside the tournament's window returns its complete event regardless
+    # of how long ago it finished, so exporting a checkpoint for an already-concluded event needs
+    # one explicitly.
+    espn_data = fetch_scoreboard(bracket.tour.lower(), dates=dates)
     espn_matches, _ = extract_matches(espn_data)
     category = TOUR_SINGLES_CATEGORY[bracket.tour.lower()]
     tournament_matches = [
@@ -635,10 +641,15 @@ if __name__ == "__main__":
     parser.add_argument("--simulations", type=int, default=N_SIMULATIONS)
     parser.add_argument("--seed", type=int, default=SEED)
     parser.add_argument("--output", type=Path, default=None)
+    parser.add_argument("--dates", default=None,
+                         help="YYYYMMDD, passed to ESPN's ?dates= - needed for an already-"
+                              "concluded event, which the undated (\"today\") scoreboard can't find")
     args = parser.parse_args()
 
     try:
-        output_path, output = export_bracket_json(args.bracket_path, args.output, args.simulations, args.seed)
+        output_path, output = export_bracket_json(
+            args.bracket_path, args.output, args.simulations, args.seed, dates=args.dates
+        )
     except (BracketValidationError, LiveScoresError, RuntimeError) as e:
         print(f"ERROR: {e}", file=sys.stderr)
         sys.exit(1)

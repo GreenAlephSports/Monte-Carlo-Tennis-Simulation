@@ -63,7 +63,7 @@ def _play_round(players, surface, ratings_path, known_results=None, prior_beaten
 # here never has a "most recent win this tournament" to condition on (same structural gap a
 # fatigue adjustment would have at Round 1), so it starts boost-inactive and only turns on for
 # players once they've won a round inside this same replay.
-def simulate_from_field(field, surface, ratings_path, use_upset_boost=False):
+def simulate_from_field(field, surface, ratings_path, use_upset_boost=True):
     players = list(field)
     prior_beaten_elo = {} if use_upset_boost else None
     while len(players) > 1:
@@ -84,7 +84,7 @@ def simulate_tournament(non_bye_players, bye_players, surface, ratings_path):
     return simulate_from_field(winners + bye_players, surface, ratings_path)
 
 
-def run_simulations_from_field(field, surface, n_simulations, ratings_path, use_upset_boost=False):
+def run_simulations_from_field(field, surface, n_simulations, ratings_path, use_upset_boost=True):
     champion_counts = Counter()
     for _ in range(n_simulations):
         champion_counts[simulate_from_field(field, surface, ratings_path, use_upset_boost=use_upset_boost)] += 1
@@ -99,7 +99,7 @@ def run_simulations_from_field(field, surface, n_simulations, ratings_path, use_
 # 1); for any later round they're already folded into starting_field, so pass ().  Every round
 # after this one is always fully simulated, same as run_simulations_from_field.
 def run_simulations_partial_round(starting_field, bye_players, known_results, surface, n_simulations, ratings_path,
-                                   use_upset_boost=False):
+                                   use_upset_boost=True):
     champion_counts = Counter()
     for _ in range(n_simulations):
         prior_beaten_elo = {} if use_upset_boost else None

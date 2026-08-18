@@ -100,13 +100,25 @@ def match_espn_name_to_draw(espn_name, draw_csv_names, name_aliases=None):
     against both the trailing AND leading word(s) of the ESPN name - most names are Western
     order (Firstname Lastname), but ESPN represents some players (seen here: Chinese players
     Wang Xiyu/Wang Xinyu/Zhang Shuai) in native order (Lastname Firstname) instead, and there's
-    no reliable per-player signal for which. Also checks the manual alias table for the small
-    number of players whose ratings-csv name doesn't share an initial with their real first
-    name at all (e.g. 'Osorio M.' for Camila Osorio) - unrecoverable by name similarity alone.
-    Returns None if zero or multiple candidates match, rather than guess."""
+    no reliable per-player signal for which. Checked BEFORE name-similarity matching (not merged
+    into the same candidate set): the manual alias table exists precisely for players name-
+    similarity gets wrong or can't reach at all - e.g. 'Osorio M.' for Camila Osorio (no shared
+    initial at all), or 'SoonWoo Kwon' (ESPN glues a two-part Korean given name into one unspaced
+    word, so the compound-initials check below can never recover 'S.W.' from it - it silently
+    but confidently matches the wrong, sparse 'Kwon S.' csv entry instead of the real
+    'Kwon S.W.' one, which has this player's actual match history). Checking the alias first and
+    returning immediately avoids that: blending it into the same set would just make an
+    already-wrong unique match ambiguous (two candidates) rather than actually correct.
+    Returns None if zero or multiple name-similarity candidates match, rather than guess."""
     espn_words = espn_name.split()
-    candidates = set()
 
+    if name_aliases and len(espn_words) >= 2:
+        alias_key = f"{espn_words[-1].title()} {espn_words[0][0].upper()}."
+        alias_target = name_aliases.get(alias_key)
+        if alias_target in draw_csv_names:
+            return alias_target
+
+    candidates = set()
     for csv_name in draw_csv_names:
         lastname, suffix = _lastname_and_suffix(csv_name)
         if not suffix:
@@ -122,12 +134,6 @@ def match_espn_name_to_draw(espn_name, draw_csv_names, name_aliases=None):
             firstname_part = "".join(espn_words[:-n] if lastname_at_tail else espn_words[n:])
             if _firstname_matches_suffix(firstname_part, suffix):
                 candidates.add(csv_name)
-
-    if name_aliases and len(espn_words) >= 2:
-        alias_key = f"{espn_words[-1].title()} {espn_words[0][0].upper()}."
-        alias_target = name_aliases.get(alias_key)
-        if alias_target in draw_csv_names:
-            candidates.add(alias_target)
 
     return next(iter(candidates)) if len(candidates) == 1 else None
 
@@ -359,12 +365,16 @@ def main():
     parser.add_argument("--simulations", type=int, default=N_SIMULATIONS)
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducible Monte Carlo results")
-    parser.add_argument("--use-upset-boost", action="store_true",
+    parser.add_argument("--use-upset-boost", action=argparse.BooleanOptionalAction, default=True,
                          help="apply the fitted in-tournament momentum boost (see "
                               "UPSET_BOOST_LOGIT_SHIFT in win_probability.py) to a player's next "
                               "match whenever their most recent win THIS tournament beat someone "
-                              ">100 Elo points higher than themselves. Off by default, same as "
-                              "the rank-gap/confidence-calibration adjustments in win_probability.py.")
+                              ">100 Elo points higher than themselves. On by default, same as "
+                              "the rank-gap/confidence-calibration adjustments in win_probability.py; "
+                              "pass --no-use-upset-boost to disable for testing/comparison.")
+    parser.add_argument("--dates", default=None,
+                         help="YYYYMMDD, passed to ESPN's ?dates= - needed for an already-"
+                              "concluded event, which the undated (\"today\") scoreboard can't find")
     args = parser.parse_args()
 
     if not args.all_rounds and args.through_round is None:
@@ -402,7 +412,7 @@ def main():
     non_bye_players, bye_players = split_byes(draw, byes)
 
     try:
-        espn_data = fetch_scoreboard(bracket.tour.lower())
+        espn_data = fetch_scoreboard(bracket.tour.lower(), dates=args.dates)
     except LiveScoresError as e:
         print(f"ERROR fetching live results: {e}", file=sys.stderr)
         sys.exit(1)

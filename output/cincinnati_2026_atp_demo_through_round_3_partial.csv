@@ -1,36 +1,36 @@
 player,win_count,tournament_win_probability
-Auger-Aliassime F.,352,0.176
-Zverev A.,277,0.1385
-Medvedev D.,172,0.086
-Fritz T.,168,0.084
-Mensik J.,151,0.0755
-De Minaur A.,110,0.055
-Tien L.,95,0.0475
-Lehecka J.,92,0.046
-Jodar R.,91,0.0455
-Fils A.,67,0.0335
-Fonseca J.,64,0.032
+Auger-Aliassime F.,327,0.1635
+Zverev A.,270,0.135
+Medvedev D.,183,0.0915
+Fritz T.,172,0.086
+Mensik J.,145,0.0725
+De Minaur A.,114,0.057
+Tien L.,110,0.055
+Jodar R.,104,0.052
+Lehecka J.,94,0.047
+Fils A.,75,0.0375
+Fonseca J.,55,0.0275
 Tiafoe F.,55,0.0275
-Nakashima B.,41,0.0205
-Paul T.,39,0.0195
-Rublev A.,38,0.019
-Merida Aguilar D.,28,0.014
-Cobolli F.,27,0.0135
-Tabilo A.,25,0.0125
-Tirante T.A.,24,0.012
-Musetti L.,24,0.012
-Atmane T.,15,0.0075
-Cerundolo J.M.,10,0.005
+Nakashima B.,44,0.022
+Paul T.,38,0.019
+Musetti L.,32,0.016
+Rublev A.,29,0.0145
+Cobolli F.,20,0.01
+Tabilo A.,19,0.0095
+Borges N.,18,0.009
+Merida Aguilar D.,18,0.009
+Tirante T.A.,16,0.008
+Atmane T.,14,0.007
+Vallejo D.,8,0.004
+Cerundolo J.M.,8,0.004
 O Connell C.,6,0.003
-Zheng M.,5,0.0025
-Borges N.,5,0.0025
 Faria J.,5,0.0025
+Hijikata R.,5,0.0025
 Fery A.,4,0.002
-Walton A.,4,0.002
-Vallejo D.,3,0.0015
-Hijikata R.,2,0.001
-Blockx A.,1,0.0005
-Prizmic D.,0,0.0
+Landaluce M.,4,0.002
+Blockx A.,3,0.0015
+Walton A.,3,0.0015
+Zheng M.,2,0.001
 Dimitrov G.,0,0.0
 Baez S.,0,0.0
 Halys Q.,0,0.0
@@ -55,8 +55,8 @@ Mannarino A.,0,0.0
 Ugo Carabelli C.,0,0.0
 Shapovalov D.,0,0.0
 Choinski J.,0,0.0
-Landaluce M.,0,0.0
 Norrie C.,0,0.0
+Prizmic D.,0,0.0
 Burruchaga R.,0,0.0
 Van Assche L.,0,0.0
 Duckworth J.,0,0.0
