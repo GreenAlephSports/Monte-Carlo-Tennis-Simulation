@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "cincinnati-open-men-2026",
-    "generated_at": "2026-08-18T18:15:27Z",
+    "generated_at": "2026-08-18T21:48:01Z",
     "iterations": 10000,
     "seed": 42
   },
@@ -12,13 +12,6 @@
       "p_champ": 0.16,
       "p_sf": 0.347,
       "p_final": 0.243
-    },
-    {
-      "player": "Daniil Medvedev",
-      "quarter": "Q3",
-      "p_champ": 0.106,
-      "p_sf": 0.262,
-      "p_final": 0.179
     },
     {
       "player": "Felix Auger-Aliassime",
@@ -148,35 +141,29 @@
     }
   ],
   "matchups": {
-    "B-R3-5": {
-      "slot_a": "Brandon Nakashima",
-      "slot_b": "Daniil Medvedev",
-      "p_slot_a": 0.436,
-      "p_slot_b": 0.564
-    },
     "B-R3-6": {
       "slot_a": "Jaime Faria",
       "slot_b": "Adam Walton",
-      "p_slot_a": 0.571,
-      "p_slot_b": 0.429
+      "p_slot_a": 0.335,
+      "p_slot_b": 0.665
     },
     "B-R3-7": {
       "slot_a": "Juan Manuel Cerundolo",
       "slot_b": "Felix Auger-Aliassime",
-      "p_slot_a": 0.201,
-      "p_slot_b": 0.799
+      "p_slot_a": 0.197,
+      "p_slot_b": 0.803
     },
     "B-R3-8": {
       "slot_a": "Learner Tien",
       "slot_b": "Frances Tiafoe",
-      "p_slot_a": 0.529,
-      "p_slot_b": 0.471
+      "p_slot_a": 0.534,
+      "p_slot_b": 0.466
     },
     "T-R16-1": {
       "slot_a": "Arthur Fils",
       "slot_b": "Alex de Minaur",
-      "p_slot_a": 0.617,
-      "p_slot_b": 0.383
+      "p_slot_a": 0.615,
+      "p_slot_b": 0.385
     },
     "T-R16-2": {
       "slot_a": "Thiago Agustin Tirante",
@@ -187,20 +174,26 @@
     "T-R16-3": {
       "slot_a": "Taylor Fritz",
       "slot_b": "Christopher O'Connell",
-      "p_slot_a": 0.819,
-      "p_slot_b": 0.181
+      "p_slot_a": 0.863,
+      "p_slot_b": 0.137
     },
     "T-R16-4": {
       "slot_a": "Alexander Zverev",
       "slot_b": "Tommy Paul",
-      "p_slot_a": 0.686,
-      "p_slot_b": 0.314
+      "p_slot_a": 0.684,
+      "p_slot_b": 0.316
     },
     "B-R16-1": {
       "slot_a": "Rafael Jodar",
       "slot_b": "Flavio Cobolli",
-      "p_slot_a": 0.718,
-      "p_slot_b": 0.282
+      "p_slot_a": 0.725,
+      "p_slot_b": 0.275
+    },
+    "B-R16-2": {
+      "slot_a": "Nuno Borges",
+      "slot_b": "Brandon Nakashima",
+      "p_slot_a": 0.323,
+      "p_slot_b": 0.677
     }
   },
   "head_to_head": {
@@ -209,7 +202,6 @@
     "Adam Walton|Arthur Fils": 0.168,
     "Adam Walton|Brandon Nakashima": 0.198,
     "Adam Walton|Christopher O'Connell": 0.488,
-    "Adam Walton|Daniil Medvedev": 0.121,
     "Adam Walton|Felix Auger-Aliassime": 0.14,
     "Adam Walton|Flavio Cobolli": 0.315,
     "Adam Walton|Frances Tiafoe": 0.207,
@@ -225,7 +217,6 @@
     "Alex de Minaur|Alexander Zverev": 0.377,
     "Alex de Minaur|Brandon Nakashima": 0.582,
     "Alex de Minaur|Christopher O'Connell": 0.813,
-    "Alex de Minaur|Daniil Medvedev": 0.418,
     "Alex de Minaur|Felix Auger-Aliassime": 0.458,
     "Alex de Minaur|Flavio Cobolli": 0.705,
     "Alex de Minaur|Frances Tiafoe": 0.575,
@@ -242,7 +233,6 @@
     "Alexander Zverev|Arthur Fils": 0.635,
     "Alexander Zverev|Brandon Nakashima": 0.679,
     "Alexander Zverev|Christopher O'Connell": 0.878,
-    "Alexander Zverev|Daniil Medvedev": 0.546,
     "Alexander Zverev|Felix Auger-Aliassime": 0.584,
     "Alexander Zverev|Flavio Cobolli": 0.798,
     "Alexander Zverev|Frances Tiafoe": 0.691,
@@ -257,7 +247,6 @@
     "Alexander Zverev|Thiago Agustin Tirante": 0.799,
     "Arthur Fils|Brandon Nakashima": 0.555,
     "Arthur Fils|Christopher O'Connell": 0.806,
-    "Arthur Fils|Daniil Medvedev": 0.406,
     "Arthur Fils|Felix Auger-Aliassime": 0.446,
     "Arthur Fils|Flavio Cobolli": 0.695,
     "Arthur Fils|Frances Tiafoe": 0.559,
@@ -280,12 +269,10 @@
     "Brandon Nakashima|Juan Manuel Cerundolo": 0.723,
     "Brandon Nakashima|Learner Tien": 0.442,
     "Brandon Nakashima|Lorenzo Musetti": 0.504,
-    "Brandon Nakashima|Nuno Borges": 0.677,
     "Brandon Nakashima|Rafael Jodar": 0.506,
     "Brandon Nakashima|Taylor Fritz": 0.43,
     "Brandon Nakashima|Thiago Agustin Tirante": 0.653,
     "Brandon Nakashima|Tommy Paul": 0.517,
-    "Christopher O'Connell|Daniil Medvedev": 0.142,
     "Christopher O'Connell|Felix Auger-Aliassime": 0.162,
     "Christopher O'Connell|Flavio Cobolli": 0.354,
     "Christopher O'Connell|Frances Tiafoe": 0.237,
@@ -298,19 +285,6 @@
     "Christopher O'Connell|Rafael Jodar": 0.241,
     "Christopher O'Connell|Thiago Agustin Tirante": 0.356,
     "Christopher O'Connell|Tommy Paul": 0.246,
-    "Daniil Medvedev|Felix Auger-Aliassime": 0.539,
-    "Daniil Medvedev|Flavio Cobolli": 0.769,
-    "Daniil Medvedev|Frances Tiafoe": 0.653,
-    "Daniil Medvedev|Jaime Faria": 0.836,
-    "Daniil Medvedev|Jakub Mensik": 0.592,
-    "Daniil Medvedev|Juan Manuel Cerundolo": 0.823,
-    "Daniil Medvedev|Learner Tien": 0.596,
-    "Daniil Medvedev|Lorenzo Musetti": 0.659,
-    "Daniil Medvedev|Nuno Borges": 0.788,
-    "Daniil Medvedev|Rafael Jodar": 0.659,
-    "Daniil Medvedev|Taylor Fritz": 0.573,
-    "Daniil Medvedev|Thiago Agustin Tirante": 0.77,
-    "Daniil Medvedev|Tommy Paul": 0.664,
     "Felix Auger-Aliassime|Flavio Cobolli": 0.739,
     "Felix Auger-Aliassime|Frances Tiafoe": 0.616,
     "Felix Auger-Aliassime|Jaime Faria": 0.813,

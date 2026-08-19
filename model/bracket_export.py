@@ -7,19 +7,6 @@
     cross-half match). Each match has slot_a/slot_b, "probability" always meaning P(slot_a wins).
   - player rows are quarter-based (Q1-Q4, per Daron's correction): p_champ, p_sf (wins the
     quarter = reaches the semifinal), p_final (wins the half = reaches the final).
-  - probabilities prefer The Odds API's de-vigged match odds wherever a real matchup is known
-    (even if not yet decided) and priced there; otherwise fall back to this project's own
-    simulated/Elo-based probability.
-
-Reuses hybrid_simulation.py's real-result and known-but-undecided-pairing extraction
-(build_real_results_by_round / build_known_pairings_by_round / known_matchups_for_round /
-replay_real_rounds) rather than re-deriving match state - this module only adds the Daron-shaped
-output layer on top of that.
-
-Quarter/half placement (see tag_halves_and_quarters()) is derived once, structurally, from the
-draw's fixed Round 1 -> Round 2 bracket tree - never from which matches happen to be decided, so
-every player's tag is stable from the moment the draw is set, not just once they reach Round 2.
-
 Usage:
     python model/bracket_export.py brackets/cincinnati_2026_atp.yaml --simulations 10000
 """
