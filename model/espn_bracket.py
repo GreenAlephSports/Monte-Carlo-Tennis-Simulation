@@ -54,18 +54,7 @@ TOUR_SINGLES_CATEGORY = {"atp": "Men's Singles", "wta": "Women's Singles"}
 
 
 def _known_ratings_names(tour):
-    """The existing ratings CSV, if one's already been generated - used as the candidate pool
-    for match_espn_name_to_draw so an already-known player gets their already-correct truncated
-    name reused directly, rather than re-derived (and re-risking the same Western/native
-    name-order ambiguity ESPN's own data has - e.g. 'Wang Xiyu' vs 'Wang Xinyu', where ESPN's
-    own shortName field gets the surname backwards for both).
 
-    Deduped via _build_ratings_index (same logic bracket.py's own tier-1 exact-match index
-    uses), not a raw column dump - the ratings CSV has near-duplicate rows for some players
-    (e.g. 'Ruse E.G.' / 'Ruse E-G.', 'McNally C.' / 'Mcnally C.' - punctuation/case variants of
-    the same person). Handing match_espn_name_to_draw the raw list gives it two equally-valid
-    candidates for such a player and it correctly refuses to guess between them (returns None);
-    deduping upstream to the most-played representative avoids ever creating that ambiguity."""
     ratings_path = TOUR_CONFIG[tour.upper()].ratings_path
     if not ratings_path.exists():
         return []

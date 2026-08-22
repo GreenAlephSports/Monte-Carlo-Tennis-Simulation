@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "tournament": "cincinnati-open-women-2026",
+    "generated_at": "2026-08-20T17:04:44Z",
+    "iterations": 10000,
+    "seed": 42
+  },
+  "players": [
+    {
+      "player": "Elena Rybakina",
+      "quarter": "Q3",
+      "p_champ": 0.208,
+      "p_sf": 0.511,
+      "p_final": 0.279
+    },
+    {
+      "player": "Jessica Pegula",
+      "quarter": "Q2",
+      "p_champ": 0.117,
+      "p_sf": 0.423,
+      "p_final": 0.3
+    },
+    {
+      "player": "Iga Swiatek",
+      "quarter": "Q3",
+      "p_champ": 0.063,
+      "p_sf": 0.257,
+      "p_final": 0.103
+    },
+    {
+      "player": "Amanda Anisimova",
+      "quarter": "Q1",
+      "p_champ": 0.057,
+      "p_sf": 0.317,
+      "p_final": 0.166
+    },
+    {
+      "player": "Coco Gauff",
+      "quarter": "Q4",
+      "p_champ": 0.049,
+      "p_sf": 0.164,
+      "p_final": 0.078
+    },
+    {
+      "player": "Marta Kostyuk",
+      "quarter": "Q3",
+      "p_champ": 0.013,
+      "p_sf": 0.091,
+      "p_final": 0.029
+    },
+    {
+      "player": "Madison Keys",
+      "quarter": "Q3",
+      "p_champ": 0.003,
+      "p_sf": 0.042,
+      "p_final": 0.009
+    },
+    {
+      "player": "Sara Bejlek",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.007,
+      "p_final": 0.001
+    }
+  ],
+  "matchups": {
+    "T-QF-1": {
+      "slot_a": "Amanda Anisimova",
+      "slot_b": "Jessica Pegula",
+      "p_slot_a": 0.445,
+      "p_slot_b": 0.555,
+      "market_prob_a": 0.445,
+      "market_prob_b": 0.555,
+      "model_prob_a": 0.407,
+      "model_prob_b": 0.593,
+      "relative_change_pct": -8.7
+    },
+    "T-QF-2": {
+      "slot_a": "Iga Swiatek",
+      "slot_b": "Elena Rybakina",
+      "p_slot_a": 0.583,
+      "p_slot_b": 0.417,
+      "market_prob_a": 0.583,
+      "market_prob_b": 0.417,
+      "model_prob_a": 0.329,
+      "model_prob_b": 0.671,
+      "relative_change_pct": -43.6
+    },
+    "B-QF-1": {
+      "slot_a": "Sara Bejlek",
+      "slot_b": "Madison Keys",
+      "p_slot_a": 0.336,
+      "p_slot_b": 0.664,
+      "market_prob_a": 0.336,
+      "market_prob_b": 0.664,
+      "model_prob_a": 0.319,
+      "model_prob_b": 0.681,
+      "relative_change_pct": -5.0
+    },
+    "B-QF-2": {
+      "slot_a": "Coco Gauff",
+      "slot_b": "Marta Kostyuk",
+      "p_slot_a": 0.553,
+      "p_slot_b": 0.447,
+      "market_prob_a": 0.553,
+      "market_prob_b": 0.447,
+      "model_prob_a": 0.664,
+      "model_prob_b": 0.336,
+      "relative_change_pct": 20.2
+    }
+  },
+  "head_to_head": {
+    "Amanda Anisimova|Coco Gauff": 0.407,
+    "Amanda Anisimova|Elena Rybakina": 0.26,
+    "Amanda Anisimova|Iga Swiatek": 0.418,
+    "Amanda Anisimova|Madison Keys": 0.624,
+    "Amanda Anisimova|Marta Kostyuk": 0.576,
+    "Amanda Anisimova|Sara Bejlek": 0.779,
+    "Coco Gauff|Elena Rybakina": 0.339,
+    "Coco Gauff|Iga Swiatek": 0.515,
+    "Coco Gauff|Jessica Pegula": 0.499,
+    "Coco Gauff|Madison Keys": 0.707,
+    "Coco Gauff|Sara Bejlek": 0.837,
+    "Elena Rybakina|Jessica Pegula": 0.661,
+    "Elena Rybakina|Madison Keys": 0.825,
+    "Elena Rybakina|Marta Kostyuk": 0.794,
+    "Elena Rybakina|Sara Bejlek": 0.91,
+    "Iga Swiatek|Jessica Pegula": 0.484,
+    "Iga Swiatek|Madison Keys": 0.698,
+    "Iga Swiatek|Marta Kostyuk": 0.654,
+    "Iga Swiatek|Sara Bejlek": 0.831,
+    "Jessica Pegula|Madison Keys": 0.707,
+    "Jessica Pegula|Marta Kostyuk": 0.664,
+    "Jessica Pegula|Sara Bejlek": 0.837,
+    "Madison Keys|Marta Kostyuk": 0.44,
+    "Marta Kostyuk|Sara Bejlek": 0.722
+  },
+  "warnings": []
+}

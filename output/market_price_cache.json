@@ -1,0 +1,56 @@
+{
+  "ATP|Cincinnati Open|2026|Brandon Nakashima::Daniil Medvedev": {
+    "player_a": "Brandon Nakashima",
+    "player_b": "Daniil Medvedev",
+    "market_prob_a": 0.186,
+    "captured_at": "2026-08-18T20:49:07Z"
+  },
+  "ATP|Cincinnati Open|2026|Adam Walton::Jaime Faria": {
+    "player_a": "Jaime Faria",
+    "player_b": "Adam Walton",
+    "market_prob_a": 0.581,
+    "captured_at": "2026-08-18T20:49:07Z"
+  },
+  "ATP|Cincinnati Open|2026|Felix Auger-Aliassime::Juan Manuel Cerundolo": {
+    "player_a": "Juan Manuel Cerundolo",
+    "player_b": "Felix Auger-Aliassime",
+    "market_prob_a": 0.201,
+    "captured_at": "2026-08-18T20:49:07Z"
+  },
+  "ATP|Cincinnati Open|2026|Frances Tiafoe::Learner Tien": {
+    "player_a": "Learner Tien",
+    "player_b": "Frances Tiafoe",
+    "market_prob_a": 0.535,
+    "captured_at": "2026-08-18T20:49:07Z"
+  },
+  "ATP|Cincinnati Open|2026|Alex de Minaur::Arthur Fils": {
+    "player_a": "Arthur Fils",
+    "player_b": "Alex de Minaur",
+    "market_prob_a": 0.615,
+    "captured_at": "2026-08-18T20:49:07Z"
+  },
+  "ATP|Cincinnati Open|2026|Jakub Mensik::Thiago Agustin Tirante": {
+    "player_a": "Thiago Agustin Tirante",
+    "player_b": "Jakub Mensik",
+    "market_prob_a": 0.336,
+    "captured_at": "2026-08-18T20:49:07Z"
+  },
+  "ATP|Cincinnati Open|2026|Christopher O'Connell::Taylor Fritz": {
+    "player_a": "Taylor Fritz",
+    "player_b": "Christopher O'Connell",
+    "market_prob_a": 0.863,
+    "captured_at": "2026-08-18T20:49:07Z"
+  },
+  "ATP|Cincinnati Open|2026|Alexander Zverev::Tommy Paul": {
+    "player_a": "Alexander Zverev",
+    "player_b": "Tommy Paul",
+    "market_prob_a": 0.687,
+    "captured_at": "2026-08-18T20:49:07Z"
+  },
+  "ATP|Cincinnati Open|2026|Flavio Cobolli::Rafael Jodar": {
+    "player_a": "Rafael Jodar",
+    "player_b": "Flavio Cobolli",
+    "market_prob_a": 0.725,
+    "captured_at": "2026-08-18T20:49:07Z"
+  }
+}

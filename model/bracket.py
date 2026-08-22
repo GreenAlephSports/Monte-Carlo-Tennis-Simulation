@@ -61,7 +61,8 @@ ATP_NAME_ALIASES = {
     "Zandschulp B.": "Vandezandschulp B.",
     "Cerundolo J.": "Cerundolo J.M.",
     "Assche L.": "Vanassche L.",
-    "Landaluce M.": "Andaluce M.",
+    "Andaluce M.": "Landaluce M.",  # keyed by the draw's actual (PDF-glitch-truncated) spelling,
+                                    # mapped to the ratings CSV's correct one - see the docstring above
     "Carabelli C.": "Ugocarabelli C.",
     "Minaur A.": "Deminaur A.",
     # ESPN-match-alias form (see the block above) for two more match_espn_name_to_draw edge cases

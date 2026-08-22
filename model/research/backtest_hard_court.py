@@ -243,7 +243,7 @@ def analyze_tournament(bracket_path, pretournament_csv_path, kaggle_tournament_n
                 extra_after = bye_players if target_round == 1 else []
                 champion_counts = run_simulations_partial_round(
                     partial_field, extra_after, partial_known_results, bracket.surface,
-                    n_simulations, tour_config.ratings_path,
+                    n_simulations, tour_config.ratings_path, matchups=partial_matchups,
                 )
                 snapshot_path = OUTPUT_DIR / f"{bracket_stem}_through_round_{target_round}_partial.csv"
                 _report(

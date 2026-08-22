@@ -1,43 +1,4 @@
-"""Lightweight, read-only polling API that serves whatever bracket_export.py (directly, or via
-live_match_watcher.py's baseline re-export) most recently wrote to output/*.json - it never
-triggers a simulation itself, just reads a file off disk on request. Regeneration stays a
-separate process (run bracket_export.py or live_match_watcher.py, as today).
 
-Endpoints:
-    GET /tournaments              - list every tournament this server currently has an export for
-    GET /tournament/<tournament_id> - the latest export JSON for that tournament, byte-identical
-                                       to what bracket_export.py wrote (players/matchups/
-                                       head_to_head/meta, Daron's spec, untouched) - freshness is
-                                       already in that body via meta.generated_at, and also exposed
-                                       as a standard HTTP Last-Modified header (from the file's own
-                                       mtime) so a polling consumer can send If-Modified-Since and
-                                       get a cheap 304 instead of re-downloading an unchanged export.
-
-tournament_id is the bracket YAML's stem (e.g. 'cincinnati_2026_atp' for
-brackets/cincinnati_2026_atp.yaml) - the same name bracket_export.py and live_match_watcher.py
-already derive their output filenames from, so nothing new needs to be invented or configured.
-A tournament can have up to two candidate files on disk (bracket_export.py's own
-'{stem}_bracket_export.json' and live_match_watcher.py's '{stem}_watcher_baseline.json') - "latest"
-means whichever of the two that exist has the newer filesystem mtime, i.e. whichever process ran
-most recently for that tournament.
-
-Binds to 0.0.0.0 by default - reachable from other devices on the same local network (useful for
-testing from a phone/another machine), NOT the public internet. Nothing here does port-forwarding
-or exposes this beyond the LAN; that would be a separate, deliberate decision, not a side effect of
-this default.
-
-Optional API key check, off by default: set API_SERVER_API_KEY (env var or .env, same loader
-bracket_export.py already uses) to require every request to carry a matching 'X-API-Key' header.
-Leave it unset for continued local/LAN testing with no auth friction - it exists now so a real key
-can be turned on later, the moment this ever needs to be exposed more broadly, without a code
-change at that point.
-
-Usage:
-    python model/api_server.py                    # http://0.0.0.0:8000 - reachable on the LAN
-    python model/api_server.py --host 127.0.0.1    # revert to localhost-only
-    python model/api_server.py --port 8080
-    API_SERVER_API_KEY=some-secret python model/api_server.py   # require X-API-Key on every request
-"""
 import argparse
 import json
 import os

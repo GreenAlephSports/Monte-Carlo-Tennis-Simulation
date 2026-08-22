@@ -21,6 +21,20 @@ from urllib.request import Request, urlopen
 BASE_URL = "https://site.api.espn.com/apis/site/v2/sports/tennis/{tour}/scoreboard"
 TOUR_CATEGORY_PREFIX = {"atp": "Men's", "wta": "Women's"}
 
+# ESPN's status.type.name for a match that ended without being played out normally - a real,
+# structured signal (confirmed present on the live scoreboard feed), distinct from status_state's
+# coarse 'pre'/'in'/'post' (a retirement/walkover is 'post' just like a normal completed match).
+# Not present anywhere in the historical Kaggle dataset (checked: its Score field has zero
+# RET/W-O/etc. markers), so this can only be captured going forward from this live feed.
+RETIREMENT_STATUS_NAMES = {"STATUS_RETIRED", "STATUS_WALKOVER"}
+
+
+def ended_by_retirement(m):
+    """True if match dict m (from extract_matches) ended via retirement or walkover rather than
+    being played to completion, per ESPN's own status.type.name (m['status_detail']) - not
+    inferred from the score or the human-readable status text."""
+    return m.get("status_detail") in RETIREMENT_STATUS_NAMES
+
 
 class LiveScoresError(RuntimeError):
     """Raised when the ESPN response can't be parsed or doesn't have the expected shape."""
@@ -106,6 +120,7 @@ def _extract_match(tournament_name, category_name, event_id, competition):
         "round": (competition.get("round") or {}).get("displayName"),
         "status": status_type.get("description"),
         "status_state": status_type.get("state"),  # 'pre' | 'in' | 'post'
+        "status_detail": status_type.get("name"),  # e.g. 'STATUS_FINAL' | 'STATUS_RETIRED' | 'STATUS_WALKOVER'
         "player_1": names[0],
         "player_2": names[1],
         "sets_1": _extract_sets(by_order[0]),

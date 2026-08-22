@@ -2,27 +2,6 @@
 a given round, then Monte Carlo-simulates everything after that - even rounds that have already
 actually happened in reality, if they're past the cutoff.
 
-Round numbering matches the bracket's own round structure (1 = the non-bye Round 1 pairing, then
-2, 3, ... up through the Final), not ESPN's labels directly - those are mapped onto it. Real
-results can only be applied for a *prefix* of rounds starting at 1: if rounds 1..N are all fully
-known, the field entering round N+1 is deterministic (no randomness used yet), so that becomes
-the fixed starting point for Monte Carlo simulation of the rest. There's no such thing as "round 3
-known but round 2 unknown" - the field a simulated round 2 would produce doesn't match reality, so
-round 3 can't be pinned to real results without round 2 having been real too.
-
-A round doesn't have to be fully *decided* to be usable, though - only its matchup structure has
-to be fully *known*, which is a genuinely weaker, separate condition. Round 1's pairing is always
-known (fixed by the bracket itself, via get_matchups - never depends on any match actually being
-played). Round 2+'s pairing is only known once ESPN has published real names on both sides of
-every match in that round - which ESPN does well before those matches are played, since it
-returns every round's competitions upfront and only uses 'TBD' for a slot still waiting on an
-earlier round's real outcome (see build_known_pairings_by_round). Whichever round comes right
-after the last fully-decided one, if its matchups are fully known, can be partially replayed:
-whichever of its pairings already have a real winner are pinned, and the rest are Monte
-Carlo-simulated like any other match. `--through-round N` falls back to this automatically for
-that one round when it isn't fully decided yet but has at least one final result and a fully
-known matchup set.
-
 Usage:
     python model/hybrid_simulation.py brackets/wta_toronto_2026.yaml --through-round 3
     python model/hybrid_simulation.py brackets/wta_toronto_2026.yaml --all-rounds
@@ -46,6 +25,7 @@ from bracket_schema import BracketValidationError, load_bracket_yaml  # noqa: E4
 from elo_ratings import calculate_elo_ratings, load_matches_for_tour  # noqa: E402
 from live_scores import LiveScoresError, extract_matches, fetch_scoreboard  # noqa: E402
 from simulate import N_SIMULATIONS, run_simulations_from_field, run_simulations_partial_round  # noqa: E402
+from win_probability import win_probability  # noqa: E402
 
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
 
@@ -237,49 +217,76 @@ def known_matchups_for_round(round_num, current_field, known_pairings_by_round):
     return [tuple(pair) for pair in known_pairs]
 
 
-def reconstruct_leaves_by_round2_slot(tournament_matches, non_bye_players, bye_players):
+def upcoming_match_info(round_num, field_before_round, known_pairings_by_round, surface, ratings_path):
+    """{player: (opponent, model-predicted P(that player wins their round_num match))}, for every
+    player whose round_num pairing is already known (see known_matchups_for_round) - {} if it
+    isn't. Reports each side of the matchup from win_probability() directly, so it means the same
+    thing whether the match has already been decided (a real, already-known win/loss - e.g. a
+    29.8% underdog who actually won still shows 29.8%, not retroactively adjusted toward 100%) or
+    hasn't been played yet (a genuine forward-looking prediction for an already-known upcoming
+    pairing) - this is always the pre-match prediction, never a retrospective one. Deliberately
+    scoped to exactly ONE real match, unlike tournament_win_probability (which folds in every
+    later round too) - the two together let a viewer separate "this player's own upcoming/just-
+    played match odds" from "the aggregate number moved because the rest of the draw's difficulty
+    became more/less known"."""
+    pairing = known_matchups_for_round(round_num, field_before_round, known_pairings_by_round)
+    if pairing is None:
+        return {}
+    info = {}
+    for player_a, player_b in pairing:
+        p_a = win_probability(player_a, player_b, surface, ratings_path)
+        info[player_a] = (player_b, p_a)
+        info[player_b] = (player_a, 1 - p_a)
+    return info
+
+
+def reconstruct_leaves_by_round2_slot(tournament_matches, non_bye_players, bye_players, results_by_round,
+                                       name_aliases=None):
     """The single structural reconstruction the real bracket tree - the one known_matchups_for_
     round's own docstring says a plain 'winners + byes' concatenation can't reconstruct - is built
     from: for each of Round 2's draw_size/2 slots (i = 0..n2-1, ESPN's own stable list order), the
     ordered list of (draw_name, is_bye) leaves that feed it - either one bye or the two Round 1
-    match participants that will produce its winner. Fixed at draw time, never dependent on which
-    matches have actually been played: ESPN populates every round's competition list from day one
-    (see espn_bracket.py's own docstring) - Round 2's slots and Round 1's own matches both already
-    exist, stably ordered, before a ball is hit.
+    match participants that will produce its winner.
 
-    Deliberately does NOT identify a Round 1 match by searching ESPN's live names: a slot whose
-    real opponent is still a genuinely-unresolved qualifying TBD (not uncommon early in a draw)
-    has no resolvable name on the ESPN side at all, and a name-search silently drops it. Instead
-    this walks non_bye_players/bye_players - the bracket's own already-fully-resolved draw
-    (placeholder names included, see bracket.match_draw_to_ratings) - positionally: Round 2's
-    real-name-vs-TBD/bye pattern only decides *whether* a given slot side is a bye or is fed by
-    the next Round 1 match, never *which specific players* - identity always comes from the next
-    unconsumed non_bye_players pair or bye_players entry. This is sound because both draw-order
-    lists are already index-aligned with ESPN's own stable order by construction: non_bye_players'
-    Round 1 pairs come from iterating ESPN's Round 1 competitions in order, and bye_players comes
-    from iterating ESPN's Round 2 competitors in order picking out whichever aren't Round 1
-    participants (see espn_bracket.py's build_bracket_players) - so consuming them in list order
-    here reconstructs the same tree ESPN's own ordering encodes, without ever needing a name to
-    resolve.
+    Identifies which specific Round 1 match feeds a Round 2 slot by WHO ACTUALLY WON it
+    (results_by_round[1], resolved the same way build_real_results_by_round already resolves
+    everything else), not by position. An earlier version assumed Round 2's list order tracked
+    non_bye_players' own Round 1 pairing order (i.e. "the next unconsumed Round 1 pair, in
+    sequence") - confirmed FALSE by direct empirical trace against a real live draw: Round 1 match
+    index 5's winner (Kecmanovic, beat Ugo Carabelli) fed Round 2 slot index 1, not index 5 - ESPN
+    orders Round 2 by its own seeding-sheet layout, not by Round 1's left-to-right match number,
+    so the two lists are NOT index-aligned the way the sequential-pointer approach required. That
+    silently fed the wrong Round 1 pair into most slots after the first couple, which is how
+    Djokovic (a bye) ended up with a simulated Round 2 opponent of Mensik J. (another bye) instead
+    of his real opponent Tirante T.A.
 
-    Used wherever two different callers must never derive bracket adjacency from two different
-    orderings (that already caused one real, measured miscalibration before they were unified on
-    this): bracket_export.py's Q1-Q4 quarter tag and the TRUE order simulate.
-    run_simulations_tracking_milestones needs so byes land against the correct round-winner in
-    round 2 instead of being pooled separately - and, for a tournament simulated forward from an
-    already-real checkpoint (see backtest_hard_court.py), the field order run_simulations_from_
-    field's plain positional pairing relies on for every round after the checkpoint."""
-    round1 = [m for m in tournament_matches if m["round"] == "Round 1"]
-    round2 = [m for m in tournament_matches if m["round"] == "Round 2"]
-
+    Falls back to the old positional-pointer behavior only for a slot whose Round 1 match hasn't
+    been decided yet (still 'TBD', or a name that resolves to nothing in results_by_round[1] - e.g.
+    ESPN listing a genuine walkover/substitute under a name that doesn't match any recorded Round 1
+    winner) - undecided matches have no "who actually won" signal to key off yet, so the sequential
+    guess is the best available placeholder until a real result exists, same limitation the
+    original implementation always had for this case."""
     round1_names = set()
-    for m in round1:
+    for m in tournament_matches:
+        if m["round"] != "Round 1":
+            continue
         for name in (m["player_1"], m["player_2"]):
             if name and name != "TBD":
                 round1_names.add(name)
 
+    draw_csv_names = non_bye_players + bye_players
+    # winner -> (loser, winner), keyed by the RESOLVED draw-csv name results_by_round already uses
+    # - not the raw ESPN string - so it can be looked up directly against a Round 2 name resolved
+    # the same way.
+    winner_to_pair = {}
+    for pair, winner in results_by_round.get(1, {}).items():
+        loser = next(p for p in pair if p != winner)
+        winner_to_pair[winner] = (loser, winner)
+
+    round2 = [m for m in tournament_matches if m["round"] == "Round 2"]
+
     leaves_by_slot = []
-    r1_pointer = 0  # next unconsumed Round 1 pair: non_bye_players[2p], non_bye_players[2p+1]
+    r1_pointer = 0  # positional fallback only - see docstring
     bye_pointer = 0  # next unconsumed bye_players entry
     for m in round2:
         slot_leaves = []
@@ -288,12 +295,21 @@ def reconstruct_leaves_by_round2_slot(tournament_matches, non_bye_players, bye_p
             if is_bye_slot:
                 slot_leaves.append((bye_players[bye_pointer], True))
                 bye_pointer += 1
+                continue
+
+            resolved = (
+                match_espn_name_to_draw(name, draw_csv_names, name_aliases)
+                if name and name != "TBD" else None
+            )
+            pair = winner_to_pair.get(resolved) if resolved is not None else None
+            if pair is not None:
+                loser, winner = pair
+                slot_leaves.append((loser, False))
+                slot_leaves.append((winner, False))
             else:
-                # TBD, or a real name that already won its Round 1 match - either way this slot
-                # is fed by the next Round 1 match
                 slot_leaves.append((non_bye_players[2 * r1_pointer], False))
                 slot_leaves.append((non_bye_players[2 * r1_pointer + 1], False))
-                r1_pointer += 1
+            r1_pointer += 1
         leaves_by_slot.append(slot_leaves)
     return leaves_by_slot
 
@@ -340,17 +356,26 @@ def replay_real_rounds(non_bye_players, bye_players, results_by_round, known_pai
     return fields
 
 
-def _report(label, draw, champion_counts, n_simulations, output_path):
+def _report(label, draw, champion_counts, n_simulations, output_path, upcoming_match=None, top_n=10):
+    """upcoming_match, if given, is a {player: (opponent, probability)} dict (see
+    upcoming_match_info) - added as two columns (upcoming_opponent, upcoming_match_win_probability),
+    separate from tournament_win_probability, so a reader can tell "this player's own upcoming
+    match odds" apart from "the aggregate number moved because the rest of the draw's difficulty
+    became more/less known". Left NaN/empty for anyone not in the dict (e.g. a bye that round, or
+    a round whose real pairing isn't known yet)."""
     results = pd.DataFrame({
         "player": draw,
         "win_count": [champion_counts.get(player, 0) for player in draw],
     })
     results["tournament_win_probability"] = results["win_count"] / n_simulations
+    if upcoming_match is not None:
+        results["upcoming_opponent"] = results["player"].map(lambda p: upcoming_match.get(p, (None, None))[0])
+        results["upcoming_match_win_probability"] = results["player"].map(lambda p: upcoming_match.get(p, (None, None))[1])
     results = results.sort_values("tournament_win_probability", ascending=False).reset_index(drop=True)
     results.to_csv(output_path, index=False)
 
     print(f"\n=== {label} === (saved to {output_path})")
-    print(results.head(10).to_string(index=False))
+    print(results.head(top_n).to_string(index=False))
 
 
 def main():
@@ -363,6 +388,9 @@ def main():
                          help="generate one snapshot per fully-known real round (1..latest), "
                               "each to its own labeled output file")
     parser.add_argument("--simulations", type=int, default=N_SIMULATIONS)
+    parser.add_argument("--top-n", type=int, default=10,
+                         help="how many players to print to the console per checkpoint (the CSV "
+                              "always has every player - this only limits the printed preview)")
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducible Monte Carlo results")
     parser.add_argument("--use-upset-boost", action=argparse.BooleanOptionalAction, default=True,
@@ -447,6 +475,24 @@ def main():
     print(f"Real results fully known through round {max_known_round} of the main draw "
           f"(then simulated normally from there)")
 
+    # fields[n]'s own order is NOT true bracket adjacency - it's "round-n winners in match order,
+    # then (for n==1 only) every bye appended after them", which pairs winner-vs-winner and
+    # bye-vs-bye in whatever round a checkpoint starts simulating from, exactly the naive
+    # concatenation reconstruct_leaves_by_round2_slot's own docstring warns about (confirmed via a
+    # real case: Djokovic - a bye - was landing a simulated Round 2 opponent of Mensik J., another
+    # bye, instead of his real bracket neighbor Tirante T.A.). bracket_export.py already avoids
+    # this by re-deriving true adjacency via leaves_by_slot before simulating; every checkpoint
+    # here needs the same fix, not just the round-1-to-2 transition, since any --through-round N
+    # starts its first simulated round from fields[N]'s (still potentially wrong) order.
+    leaves_by_slot = reconstruct_leaves_by_round2_slot(
+        tournament_matches, non_bye_players, bye_players, results_by_round, tour_config.name_aliases
+    )
+    true_order = true_bracket_order(leaves_by_slot)
+    leaf_position = {name: i for i, (name, _is_bye) in enumerate(true_order)}
+
+    def true_order_sorted(field):
+        return sorted(field, key=lambda name: leaf_position.get(name, len(leaf_position)))
+
     # the round right after the last fully-decided one may still be partially replayable: its
     # matchup structure might already be fully known (round 1, always; round 2+, only if ESPN
     # has published real names for every pairing) even though not every match in it has been
@@ -489,24 +535,76 @@ def main():
             # byes only join in right after round 1 - for any later partial round they're
             # already folded into partial_field (fields[max_known_round]).
             extra_after = bye_players if n == 1 else []
+            # true bracket order, not fields[]'s own order - see the true_order_sorted comment
+            # above; partial_field is round-N's real field (only non-bye players when n==1, since
+            # byes join separately via extra_after), so sorting it into true adjacency makes
+            # _play_round's own positional get_matchups pair real bracket neighbors correctly.
+            ordered_partial_field = true_order_sorted(partial_field)
             champion_counts = run_simulations_partial_round(
-                partial_field, extra_after, partial_known_results, bracket.surface,
+                ordered_partial_field, extra_after, partial_known_results, bracket.surface,
                 args.simulations, tour_config.ratings_path, use_upset_boost=args.use_upset_boost,
+                matchups=partial_matchups,
             )
-            output_path = args.output_dir / f"{bracket_stem}_through_round_{n}_partial.csv"
+            output_path = args.output_dir / f"{bracket_stem}_round_{n}_of_{len(partial_field)}_players.csv"
+            # partial_field is round-n's real field entering round n itself, so partial_matchups
+            # (already computed above) IS round n's own pairing - covers both the finished matches
+            # (partial_known_results) and the ones still to be played, "about to play" per
+            # upcoming_match_info's docstring. No +1 shift needed here (unlike the non-partial
+            # branch below) - a partial checkpoint's own round IS already the round about to play.
+            upcoming = upcoming_match_info(
+                n, partial_field, known_pairings_by_round, bracket.surface, tour_config.ratings_path)
             _report(
-                f"Through round {n} - PARTIAL ({len(partial_known_results)}/{len(partial_matchups)} "
-                f"round-{n} matches final, rest of round {n} and beyond simulated)",
-                draw, champion_counts, args.simulations, output_path,
+                f"Round {n} - {len(partial_field)} players about to play "
+                f"({len(partial_known_results)}/{len(partial_matchups)} already decided, rest simulated)",
+                draw, champion_counts, args.simulations, output_path, upcoming_match=upcoming,
+                top_n=args.top_n,
             )
             return
-        starting_field = fields[n]
+        starting_field = true_order_sorted(fields[n])
+        # fields[n] is real/deterministic (round n is fully known), so round n+1's real opponent
+        # pairing is itself already fully determined - it only requires round n to be over, not
+        # round n+1 to have been played. true_order_sorted's positional pairing does NOT
+        # reconstruct that real pairing past round 2 (it only reconstructs true round-1-leaf
+        # adjacency, which round n+1's pairing among round-n winners no longer matches for n>1 -
+        # confirmed by a real case: it paired Fils A. against Zverev A., a matchup that never
+        # happened, when Fils A.'s real round-3 opponent was Lehecka J.). And this isn't only a
+        # round n+1 problem: every round through max_known_round is equally real (that's what
+        # "known" means), so the same fix applies at each of them in turn, not just the first -
+        # confirmed_real_pairing_for below maps each real round's starting field (as a frozenset,
+        # order-independent) to that round's real known pairing, for every round from n+1 through
+        # max_known_round. A simulated trial keeps getting the real pairing for as long as its
+        # simulated winners keep landing exactly on the real historical survivors; the moment one
+        # simulated result diverges from reality, the next round's survivor set no longer matches
+        # any key here, and pairing correctly falls back to plain positional (there's no "real"
+        # pairing to substitute for a player who didn't actually make it that far) - same
+        # fallback as when nothing beyond max_known_round is known at all.
+        confirmed_real_pairing_for = {}
+        for r in range(n + 1, max_known_round + 1):
+            round_pairing = known_matchups_for_round(r, fields[r - 1], known_pairings_by_round)
+            if round_pairing is not None:
+                confirmed_real_pairing_for[frozenset(fields[r - 1])] = round_pairing
+
+        def matchups_resolver(players, _real_pairing_for=confirmed_real_pairing_for):
+            return _real_pairing_for.get(frozenset(players))
+
         champion_counts = run_simulations_from_field(
             starting_field, bracket.surface, args.simulations, tour_config.ratings_path,
-            use_upset_boost=args.use_upset_boost,
+            use_upset_boost=args.use_upset_boost, matchups_resolver=matchups_resolver,
         )
-        output_path = args.output_dir / f"{bracket_stem}_through_round_{n}.csv"
-        _report(f"Through round {n} ({len(starting_field)} players remaining)", draw, champion_counts, args.simulations, output_path)
+        # this checkpoint is labeled by the round ABOUT TO BE PLAYED (n+1), not the round that just
+        # finished (n) - fields[n] is the real field entering round n+1, so "Round {n+1} - {count}
+        # players about to play" describes this exact moment: tournament_win_probability here is
+        # the forecast as of right before round n+1 happens, and the upcoming-match column below is
+        # each player's round n+1 opponent and pre-match win probability (forward-looking, never
+        # retroactively adjusted by the real result - see upcoming_match_info's docstring), even
+        # for an n+1 that has, in real time, already been played by now.
+        upcoming_round = n + 1
+        output_path = args.output_dir / f"{bracket_stem}_round_{upcoming_round}_of_{len(starting_field)}_players.csv"
+        upcoming = upcoming_match_info(
+            upcoming_round, fields[n], known_pairings_by_round, bracket.surface, tour_config.ratings_path,
+        )
+        _report(f"Round {upcoming_round} - {len(starting_field)} players about to play", draw, champion_counts,
+                args.simulations, output_path, upcoming_match=upcoming, top_n=args.top_n)
 
     if args.all_rounds:
         for n in range(1, max_known_round + 1):

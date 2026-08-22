@@ -50,15 +50,38 @@ from elo_ratings import calculate_elo_ratings, load_matches_for_tour  # noqa: E4
 from hybrid_simulation import TOUR_SINGLES_CATEGORY, build_round_sequence, match_espn_name_to_draw  # noqa: E402
 from live_calibration_check import TOURNAMENTS as LIVE_TOURNAMENTS  # noqa: E402
 from live_calibration_check import _wilson_ci  # noqa: E402
-from live_scores import LiveScoresError, extract_matches, fetch_scoreboard  # noqa: E402
+from live_match_watcher import _market_price_cache_key, load_market_price_cache  # noqa: E402
+from live_scores import RETIREMENT_STATUS_NAMES, LiveScoresError, extract_matches, fetch_scoreboard  # noqa: E402
 from win_probability import win_probability  # noqa: E402
 
 LOG_PATH = Path(__file__).resolve().parent.parent.parent / "output" / "calibration_log.csv"
 
+# status_detail/ended_by_retirement are pure instrumentation - accumulating which real, decided
+# matches ended via retirement/walkover (ESPN's own status.type.name, not inferred from the
+# score), so that once enough occurrences build up a real held-out test can eventually be run the
+# same way as every other correction in this project (see win_probability.py's fitted constants).
+# No fitted adjustment exists yet - there isn't enough data to validate a magnitude against.
+# live_espn-sourced rows get the real value; kaggle_concluded rows get None/NA (that historical
+# dataset's Score field carries no retirement/walkover marker at all - confirmed empirically, zero
+# RET/W-O tokens in either tour's Kaggle CSV), not False - "unknown" and "confirmed normal finish"
+# must stay distinguishable rather than silently defaulting every historical row to "no".
 LOG_COLUMNS = [
     "match_key", "source", "tour", "tournament", "year", "round_label", "round_num", "date",
-    "player_a", "player_b", "favorite", "favorite_prob", "winner", "favorite_won", "logged_at",
+    "player_a", "player_b", "favorite", "favorite_prob", "winner", "favorite_won",
+    "status_detail", "ended_by_retirement", "market_prob_a", "logged_at",
 ]
+
+
+def _parse_nullable_bool(value):
+    """Handles all three shapes ended_by_retirement can arrive in: a real Python bool (freshly
+    built row, pre-CSV), a CSV-round-tripped 'True'/'False' string, or NaN (kaggle_concluded rows,
+    or an old log written before this column existed) - each maps to True/False/pd.NA respectively,
+    never silently defaulting NA to False."""
+    if pd.isna(value):
+        return pd.NA
+    if isinstance(value, str):
+        return value == "True"
+    return bool(value)
 
 
 def _pair_key(a, b):
@@ -75,7 +98,14 @@ def load_existing_log():
     # dates aren't parsed here via parse_dates - concluded-source rows carry a tz-naive Kaggle
     # date, live-source rows a tz-aware ESPN one, and pandas' CSV date parser can't infer a single
     # format across both; normalize_dtypes below handles the mixed-format parsing instead.
-    return normalize_dtypes(pd.read_csv(LOG_PATH))
+    df = pd.read_csv(LOG_PATH)
+    # backward compat: a log written before status_detail/ended_by_retirement existed won't have
+    # these columns - every pre-existing row's retirement status is genuinely unknown (not "no"),
+    # so backfill with NA rather than erroring or defaulting to False.
+    for col in ("status_detail", "ended_by_retirement", "market_prob_a"):
+        if col not in df.columns:
+            df[col] = pd.NA
+    return normalize_dtypes(df)
 
 
 def normalize_dtypes(df):
@@ -91,6 +121,18 @@ def normalize_dtypes(df):
     df["round_num"] = df["round_num"].astype(int)
     df["favorite_prob"] = df["favorite_prob"].astype(float)
     df["favorite_won"] = df["favorite_won"].astype(bool)
+    # nullable boolean, not plain bool: kaggle_concluded rows have no retirement data at all (see
+    # LOG_COLUMNS comment above), and must round-trip through CSV as real NA, not get coerced to
+    # False (a silent, wrong "confirmed not a retirement") or True (bool(nan) is truthy in Python,
+    # which plain .astype(bool) would do here).
+    df["ended_by_retirement"] = df["ended_by_retirement"].map(_parse_nullable_bool).astype("boolean")
+    # market_prob_a: plain nullable float - NaN round-trips through CSV fine on its own (unlike
+    # bool, NaN is never mistakenly truthy here), so no custom parser is needed. NaN for every
+    # kaggle_concluded row (that source's own market data - Odd_1/Odd_2 - is handled separately, by
+    # model_vs_market_calibration.py, not folded into this log) and for any live_espn row whose
+    # pregame price was never captured by live_match_watcher.py's cache (see that module's
+    # update_market_price_cache) before the match concluded.
+    df["market_prob_a"] = df["market_prob_a"].astype(float)
     # format="mixed" - concluded-source rows have a plain tz-naive Kaggle Date, live-source rows
     # have a tz-aware ESPN start_time; a single strptime format can't parse both, so each row's
     # format is inferred individually instead.
@@ -126,7 +168,8 @@ def _prepare_ratings(bracket):
     return tour_config, draw, matches_history
 
 
-def _row_for_match(tour, tournament, year, round_label, round_num, date, player_a, player_b, winner, surface, ratings_path):
+def _row_for_match(tour, tournament, year, round_label, round_num, date, player_a, player_b, winner,
+                    surface, ratings_path, status_detail=None, market_prob_a=None):
     prob_a = win_probability(player_a, player_b, surface, ratings_path)
     favorite = player_a if prob_a >= 0.5 else player_b
     return {
@@ -137,6 +180,18 @@ def _row_for_match(tour, tournament, year, round_label, round_num, date, player_
         "player_a": player_a, "player_b": player_b,
         "favorite": favorite, "favorite_prob": round(max(prob_a, 1 - prob_a), 4),
         "winner": winner, "favorite_won": favorite == winner,
+        # status_detail is ESPN's raw status.type.name ('STATUS_FINAL'/'STATUS_RETIRED'/
+        # 'STATUS_WALKOVER') for live_espn rows, None for kaggle_concluded rows (no such field
+        # exists in that historical source - see LOG_COLUMNS comment).
+        "status_detail": status_detail,
+        "ended_by_retirement": (
+            status_detail in RETIREMENT_STATUS_NAMES if status_detail is not None else pd.NA
+        ),
+        # relative to player_a, same convention as favorite_prob is relative to whichever side is
+        # "favorite" - None whenever no pregame price was ever cached for this pairing (see
+        # live_match_watcher.update_market_price_cache) or for a kaggle_concluded row (that
+        # source's market data is handled separately - see market_prob_a's own dtype comment).
+        "market_prob_a": market_prob_a,
         "logged_at": datetime.now(timezone.utc),
     }
 
@@ -214,6 +269,9 @@ def collect_live_rows(bracket_path, existing_keys):
     round_sequence = build_round_sequence(round_labels)
     round_index = {label: i + 1 for i, label in enumerate(round_sequence)}
 
+    price_cache = load_market_price_cache()
+    n_market_backfilled = 0
+
     rows, unresolved = [], set()
     for m in tournament_matches:
         round_num = round_index.get(m["round"])
@@ -232,9 +290,27 @@ def collect_live_rows(bracket_path, existing_keys):
         if key in existing_keys:
             continue
         date = pd.to_datetime(m["start_time"]) if m["start_time"] else pd.NaT
+
+        # market_prob_a, relative to p1 (raw ESPN player_1) - looked up by ESPN name, not by the
+        # resolved draw name, since that's what live_match_watcher.py cached it under. The cache
+        # entry itself may have been captured under either raw ESPN ordering (player_1/player_2
+        # can differ poll to poll for the same real match in rare cases), so orient explicitly by
+        # comparing to the cached player_a rather than assuming it matches m["player_1"].
+        cache_entry = price_cache.get(
+            _market_price_cache_key(bracket.tour, bracket.tournament, bracket.year, m["player_1"], m["player_2"])
+        )
+        market_prob_a = None
+        if cache_entry is not None:
+            market_prob_a = (
+                cache_entry["market_prob_a"] if cache_entry["player_a"] == m["player_1"]
+                else 1 - cache_entry["market_prob_a"]
+            )
+            n_market_backfilled += 1
+
         out = _row_for_match(
             bracket.tour, bracket.tournament, bracket.year, m["round"], round_num, date,
             p1, p2, winner, bracket.surface, tour_config.ratings_path,
+            status_detail=m.get("status_detail"), market_prob_a=market_prob_a,
         )
         out["source"] = "live_espn"
         rows.append(out)
@@ -242,6 +318,9 @@ def collect_live_rows(bracket_path, existing_keys):
     if unresolved:
         print(f"WARNING: {len(unresolved)} ESPN player name(s) unresolved for "
               f"{bracket.tournament} - excluded from log: {sorted(unresolved)}", file=sys.stderr)
+    if n_market_backfilled:
+        print(f"NOTE: {n_market_backfilled} of {len(rows)} new {bracket.tournament} row(s) got a "
+              f"pregame market_prob_a from live_match_watcher.py's price cache.", file=sys.stderr)
     return rows
 
 
@@ -270,6 +349,19 @@ def print_calibration_read(log):
           f"{win_rate:.1%} of {n} real matches (model's average assigned favorite probability: "
           f"{avg_prob:.1%})")
     print(f"95% Wilson CI on the actual favorite-win-rate: [{lo:.1%}, {hi:.1%}]")
+
+    # Pure instrumentation, no adjustment yet - accumulating this until there's enough of it
+    # (months, likely) to run a real held-out test the same way as every other correction in this
+    # project. Only live_espn-sourced rows carry a real value; kaggle_concluded rows are excluded
+    # here rather than silently counted as "not a retirement".
+    live_rows = log[log["source"] == "live_espn"]
+    if len(live_rows):
+        n_retirement = int(live_rows["ended_by_retirement"].fillna(False).sum())
+        print(f"\nRetirement/walkover-ended matches accumulated so far (live/ESPN source only - "
+              f"the historical Kaggle data has no equivalent field, so it's excluded from this "
+              f"count): {n_retirement} of {len(live_rows)} live-sourced matches "
+              f"({n_retirement / len(live_rows):.1%}) - instrumentation only, no fitted "
+              f"adjustment yet")
 
 
 def run(report_only=False):

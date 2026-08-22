@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "tournament": "cincinnati-open-women-2026",
+    "generated_at": "2026-08-20T19:58:14Z",
+    "iterations": 5000,
+    "seed": 42
+  },
+  "players": [
+    {
+      "player": "Elena Rybakina",
+      "quarter": "Q3",
+      "p_champ": 0.211,
+      "p_sf": 0.506,
+      "p_final": 0.28
+    },
+    {
+      "player": "Jessica Pegula",
+      "quarter": "Q2",
+      "p_champ": 0.118,
+      "p_sf": 0.422,
+      "p_final": 0.306
+    },
+    {
+      "player": "Iga Swiatek",
+      "quarter": "Q3",
+      "p_champ": 0.064,
+      "p_sf": 0.263,
+      "p_final": 0.102
+    },
+    {
+      "player": "Coco Gauff",
+      "quarter": "Q4",
+      "p_champ": 0.054,
+      "p_sf": 0.168,
+      "p_final": 0.08
+    },
+    {
+      "player": "Marta Kostyuk",
+      "quarter": "Q3",
+      "p_champ": 0.012,
+      "p_sf": 0.091,
+      "p_final": 0.027
+    },
+    {
+      "player": "Madison Keys",
+      "quarter": "Q3",
+      "p_champ": 0.003,
+      "p_sf": 0.044,
+      "p_final": 0.009
+    },
+    {
+      "player": "Sara Bejlek",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.006,
+      "p_final": 0.002
+    }
+  ],
+  "matchups": {
+    "T-QF-2": {
+      "slot_a": "Iga Swiatek",
+      "slot_b": "Elena Rybakina",
+      "p_slot_a": 0.578,
+      "p_slot_b": 0.422,
+      "market_prob_a": 0.578,
+      "market_prob_b": 0.422,
+      "model_prob_a": 0.329,
+      "model_prob_b": 0.671,
+      "relative_change_pct": -43.2
+    },
+    "B-QF-1": {
+      "slot_a": "Sara Bejlek",
+      "slot_b": "Madison Keys",
+      "p_slot_a": 0.343,
+      "p_slot_b": 0.657,
+      "market_prob_a": 0.343,
+      "market_prob_b": 0.657,
+      "model_prob_a": 0.319,
+      "model_prob_b": 0.681,
+      "relative_change_pct": -6.9
+    },
+    "B-QF-2": {
+      "slot_a": "Coco Gauff",
+      "slot_b": "Marta Kostyuk",
+      "p_slot_a": 0.553,
+      "p_slot_b": 0.447,
+      "market_prob_a": 0.553,
+      "market_prob_b": 0.447,
+      "model_prob_a": 0.664,
+      "model_prob_b": 0.336,
+      "relative_change_pct": 20.1
+    }
+  },
+  "head_to_head": {
+    "Coco Gauff|Elena Rybakina": 0.339,
+    "Coco Gauff|Iga Swiatek": 0.515,
+    "Coco Gauff|Jessica Pegula": 0.499,
+    "Coco Gauff|Madison Keys": 0.707,
+    "Coco Gauff|Sara Bejlek": 0.837,
+    "Elena Rybakina|Jessica Pegula": 0.661,
+    "Elena Rybakina|Madison Keys": 0.825,
+    "Elena Rybakina|Marta Kostyuk": 0.794,
+    "Elena Rybakina|Sara Bejlek": 0.91,
+    "Iga Swiatek|Jessica Pegula": 0.484,
+    "Iga Swiatek|Madison Keys": 0.698,
+    "Iga Swiatek|Marta Kostyuk": 0.654,
+    "Iga Swiatek|Sara Bejlek": 0.831,
+    "Jessica Pegula|Madison Keys": 0.707,
+    "Jessica Pegula|Marta Kostyuk": 0.664,
+    "Jessica Pegula|Sara Bejlek": 0.837,
+    "Madison Keys|Marta Kostyuk": 0.44,
+    "Marta Kostyuk|Sara Bejlek": 0.722
+  },
+  "warnings": []
+}

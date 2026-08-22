@@ -16,12 +16,20 @@ def _beat_a_big_favorite(player, player_elo, prior_beaten_elo):
     return beaten_elo is not None and beaten_elo - player_elo > UPSET_BOOST_ELO_GAP_THRESHOLD
 
 
-def _play_round(players, surface, ratings_path, known_results=None, prior_beaten_elo=None):
+def _play_round(players, surface, ratings_path, known_results=None, prior_beaten_elo=None, matchups=None):
     """known_results, if given, maps frozenset({player_a, player_b}) -> real winner for
     pairings already decided in reality - that winner is used as-is (no randomness spent),
     while any pairing missing from known_results is Monte Carlo-simulated as usual. Lets a
     round mix real, already-known results with genuinely undecided matches instead of requiring
     the whole round to be one or the other.
+
+    matchups, if given, is the real [(player_a, player_b), ...] pairing for this round (e.g. from
+    hybrid_simulation.known_matchups_for_round) - used instead of deriving pairs positionally via
+    get_matchups(players). This is for a round whose real opponent pairing is already fully
+    determined (every player's actual next-round opponent is known, even though who WINS isn't) -
+    distinct from known_results, which pins an already-decided winner. players is unused for
+    pairing purposes when matchups is given, but every name in it must appear in matchups exactly
+    once (the caller's responsibility - not re-validated here).
 
     prior_beaten_elo, if given (a dict, possibly empty - not None), turns on the upset-boost
     adjustment: maps player -> the Elo of whoever they beat in the immediately preceding round of
@@ -32,7 +40,7 @@ def _play_round(players, surface, ratings_path, known_results=None, prior_beaten
     track_upsets = prior_beaten_elo is not None
     winners = []
     next_beaten_elo = {} if track_upsets else None
-    for player_a, player_b in get_matchups(players):
+    for player_a, player_b in (matchups if matchups is not None else get_matchups(players)):
         elo_a = elo_b = None
         if track_upsets:
             elo_a = get_surface_elo(player_a, surface, ratings_path)
@@ -63,11 +71,22 @@ def _play_round(players, surface, ratings_path, known_results=None, prior_beaten
 # here never has a "most recent win this tournament" to condition on (same structural gap a
 # fatigue adjustment would have at Round 1), so it starts boost-inactive and only turns on for
 # players once they've won a round inside this same replay.
-def simulate_from_field(field, surface, ratings_path, use_upset_boost=True):
+def simulate_from_field(field, surface, ratings_path, use_upset_boost=True, matchups_resolver=None):
+    """matchups_resolver, if given, is called with the current list of still-alive players before
+    each round and may return that round's real, already-known [(player_a, player_b), ...]
+    pairing (see _play_round's `matchups` param) instead of None - used in place of deriving
+    pairs positionally via get_matchups whenever the round being played is one that actually
+    happened for real. A round's real pairing is only ever knowable for a survivor set that
+    exactly matches a real, historical round's starting field - so as soon as one simulated
+    result diverges from what actually happened (or simulation reaches a round that hasn't
+    really been played yet), the resolver has nothing to return, and every round after that
+    reverts to plain positional pairing, same as when no resolver is given at all."""
     players = list(field)
     prior_beaten_elo = {} if use_upset_boost else None
     while len(players) > 1:
-        players, prior_beaten_elo = _play_round(players, surface, ratings_path, prior_beaten_elo=prior_beaten_elo)
+        matchups = matchups_resolver(players) if matchups_resolver is not None else None
+        players, prior_beaten_elo = _play_round(
+            players, surface, ratings_path, prior_beaten_elo=prior_beaten_elo, matchups=matchups)
     return players[0]
 
 
@@ -84,10 +103,14 @@ def simulate_tournament(non_bye_players, bye_players, surface, ratings_path):
     return simulate_from_field(winners + bye_players, surface, ratings_path)
 
 
-def run_simulations_from_field(field, surface, n_simulations, ratings_path, use_upset_boost=True):
+def run_simulations_from_field(field, surface, n_simulations, ratings_path, use_upset_boost=True,
+                                matchups_resolver=None):
     champion_counts = Counter()
     for _ in range(n_simulations):
-        champion_counts[simulate_from_field(field, surface, ratings_path, use_upset_boost=use_upset_boost)] += 1
+        champion_counts[simulate_from_field(
+            field, surface, ratings_path, use_upset_boost=use_upset_boost,
+            matchups_resolver=matchups_resolver,
+        )] += 1
     return champion_counts
 
 
@@ -98,15 +121,34 @@ def run_simulations_from_field(field, surface, n_simulations, ratings_path, use_
 # is only non-empty when starting_field is the pre-round-1 field (byes join in right after round
 # 1); for any later round they're already folded into starting_field, so pass ().  Every round
 # after this one is always fully simulated, same as run_simulations_from_field.
+#
+# matchups, if given, is this round's real, already-known [(player_a, player_b), ...] pairing (see
+# _play_round's own `matchups` param) - REQUIRED for any round beyond round 1, since starting_field
+# is not guaranteed to be in an order where get_matchups' plain positional pairing reconstructs the
+# real draw (confirmed concretely: for a live round-5 partial checkpoint, get_matchups paired
+# Cobolli F. vs Tirante T.A. and Paul T. vs Fils A. - neither a real match - while the actual real
+# pairing was Paul T. vs Cobolli F. and Nakashima B. vs Fritz T.; since known_results is keyed by
+# the REAL pairs, that mismatch made every known_results lookup miss silently, so already-decided
+# results never got pinned at all). Only omit matchups for a round-1 partial call, where
+# starting_field's own real draw order already IS the real pairing positionally.
+#
+# matchups_resolver, if given, is forwarded to simulate_from_field for every round AFTER this one
+# (see simulate_from_field's own docstring) - without it, any later round that's already real
+# (e.g. calling this for a round-3 forced branch when round 4 also already happened for real) gets
+# paired via plain positional get_matchups once simulated survivors reach it, hitting the exact
+# same mispairing failure this function's own `matchups` param exists to avoid for THIS round -
+# just one round later, where nothing was catching it before.
 def run_simulations_partial_round(starting_field, bye_players, known_results, surface, n_simulations, ratings_path,
-                                   use_upset_boost=True):
+                                   use_upset_boost=True, matchups=None, matchups_resolver=None):
     champion_counts = Counter()
     for _ in range(n_simulations):
         prior_beaten_elo = {} if use_upset_boost else None
         round_winners, prior_beaten_elo = _play_round(
-            starting_field, surface, ratings_path, known_results, prior_beaten_elo)
+            starting_field, surface, ratings_path, known_results, prior_beaten_elo, matchups=matchups)
         field = round_winners + list(bye_players)
-        champion_counts[simulate_from_field(field, surface, ratings_path, use_upset_boost=use_upset_boost)] += 1
+        champion_counts[simulate_from_field(
+            field, surface, ratings_path, use_upset_boost=use_upset_boost, matchups_resolver=matchups_resolver,
+        )] += 1
     return champion_counts
 
 

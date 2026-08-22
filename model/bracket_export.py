@@ -488,7 +488,9 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
                 espn_to_draw[raw_name] = resolved
                 draw_to_espn.setdefault(resolved, raw_name)
 
-    leaves_by_slot = reconstruct_leaves_by_round2_slot(tournament_matches, non_bye_players, bye_players)
+    leaves_by_slot = reconstruct_leaves_by_round2_slot(
+        tournament_matches, non_bye_players, bye_players, results_by_round, tour_config.name_aliases
+    )
     _half_by_draw, quarter_by_draw = tag_halves_and_quarters(leaves_by_slot)
     round_label_map = build_round_label_map(round_sequence)
 
