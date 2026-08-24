@@ -1,94 +1,94 @@
 player,win_count,tournament_win_probability,upcoming_opponent,upcoming_match_win_probability
-Djokovic N.,1984,0.1984,Tirante T.A.,0.8819275739024709
-Zverev A.,1339,0.1339,Norrie C.,0.7623600069292183
-Medvedev D.,869,0.0869,Trungelliti M.,0.8586706660791438
-Fritz T.,618,0.0618,Michelsen A.,0.6397630940823685
-Shelton B.,584,0.0584,Faria J.,0.7766970927503689
-Auger-Aliassime F.,543,0.0543,Tsitsipas S.,0.7290324277673239
-Mensik J.,461,0.0461,Bellucci M.,0.8199892315609381
-Fils A.,401,0.0401,Hanfmann Y.,0.723075552851482
-Musetti L.,258,0.0258,Altmaier D.,0.772569022157612
-Tien L.,246,0.0246,Baez S.,0.7409162888154468
-Lehecka J.,239,0.0239,Berrettini M.,0.6106795149724772
-Paul T.,208,0.0208,Hurkacz H.,0.6915452913280336
-Rublev A.,198,0.0198,Carrenobusta P.,0.6918970797802726
-Nakashima B.,198,0.0198,Kovacevic A.,0.7278755535954138
-Shapovalov D.,181,0.0181,Jodar R.,0.5076846809672395
-Cerundolo F.,179,0.0179,Borges N.,0.6528170628011305
-Humbert U.,159,0.0159,Zheng M.,0.70786913438234
-Jodar R.,151,0.0151,Shapovalov D.,0.4923153190327605
-Ruud C.,148,0.0148,O Connell C.,0.7348219251609609
-Tabilo A.,119,0.0119,Struff J.L.,0.6760778871812055
-Michelsen A.,98,0.0098,Fritz T.,0.36023690591763147
-Tiafoe F.,87,0.0087,Sonego L.,0.6700002299527194
-Vacherot V.,87,0.0087,Vallejo D.,0.6794299441697257
-Cobolli F.,60,0.006,Kecmanovic M.,0.5840275753309292
-Rinderknech A.,59,0.0059,Cerundolo J.M.,0.5888206427166979
-Fonseca J.,48,0.0048,Vandezandschulp B.,0.651045764827298
-Buse I.,44,0.0044,Walton A.,0.6467449960277313
-Berrettini M.,43,0.0043,Lehecka J.,0.3893204850275228
-Norrie C.,42,0.0042,Zverev A.,0.23763999307078165
-Etcheverry T.,38,0.0038,Atmane T.,0.5458042090103443
-Fery A.,28,0.0028,Duckworth J.,0.6239591248276514
-Borges N.,23,0.0023,Cerundolo F.,0.3471829371988695
-Halys Q.,22,0.0022,Deminaur A.,0.5362711674637244
-Tsitsipas S.,17,0.0017,Auger-Aliassime F.,0.2709675722326761
-Bergs Z.,17,0.0017,Merida Aguilar D.,0.5219071368437873
-Kecmanovic M.,16,0.0016,Cobolli F.,0.4159724246690708
-Atmane T.,15,0.0015,Etcheverry T.,0.45419579098965573
-Cerundolo J.M.,13,0.0013,Rinderknech A.,0.4111793572833021
-Hanfmann Y.,13,0.0013,Fils A.,0.27692444714851805
-Carrenobusta P.,13,0.0013,Rublev A.,0.3081029202197274
-Blockx A.,10,0.001,Navone M.,0.6326782025305822
-Landaluce M.,9,0.0009,Arnaldi M.,0.5434304683842093
-Hijikata R.,9,0.0009,Darderi L.,0.49838301261803386
-Walton A.,9,0.0009,Buse I.,0.3532550039722687
-Sonego L.,9,0.0009,Tiafoe F.,0.32999977004728065
-Hurkacz H.,9,0.0009,Paul T.,0.30845470867196645
-Struff J.L.,8,0.0008,Tabilo A.,0.32392211281879446
-Merida Aguilar D.,8,0.0008,Bergs Z.,0.47809286315621274
-Faria J.,7,0.0007,Shelton B.,0.2233029072496311
-Kovacevic A.,7,0.0007,Nakashima B.,0.2721244464045863
-Duckworth J.,6,0.0006,Fery A.,0.37604087517234863
-Baez S.,6,0.0006,Tien L.,0.2590837111845532
-Vallejo D.,5,0.0005,Vacherot V.,0.3205700558302743
-Arnaldi M.,5,0.0005,Landaluce M.,0.4565695316157907
-Deminaur A.,5,0.0005,Halys Q.,0.4637288325362756
-Vandezandschulp B.,5,0.0005,Fonseca J.,0.34895423517270197
-Zheng M.,4,0.0004,Humbert U.,0.29213086561766
-Darderi L.,4,0.0004,Hijikata R.,0.5016169873819661
-Tirante T.A.,4,0.0004,Djokovic N.,0.11807242609752909
-Altmaier D.,2,0.0002,Musetti L.,0.22743097784238797
-O Connell C.,1,0.0001,Ruud C.,0.2651780748390391
-Bellucci M.,1,0.0001,Mensik J.,0.18001076843906194
-Trungelliti M.,1,0.0001,Medvedev D.,0.14132933392085623
-Prizmic D.,0,0.0,,
+Djokovic N.,2002,0.2002,Tirante T.A.,0.8375765934777871
+Zverev A.,1322,0.1322,Norrie C.,0.7327395515935634
+Medvedev D.,906,0.0906,Trungelliti M.,0.8779637710041216
+Auger-Aliassime F.,723,0.0723,Tsitsipas S.,0.7199611854941743
+Shelton B.,707,0.0707,Faria J.,0.8260977434104313
+Mensik J.,436,0.0436,Bellucci M.,0.8119361139565683
+Fritz T.,404,0.0404,Michelsen A.,0.6175824828816768
+Tien L.,390,0.039,Baez S.,0.785378388329164
+Fils A.,384,0.0384,Hanfmann Y.,0.706502227706113
+Nakashima B.,295,0.0295,Kovacevic A.,0.7938188999354705
+Musetti L.,224,0.0224,Altmaier D.,0.7524433965569227
+Paul T.,216,0.0216,Hurkacz H.,0.6230816091955573
+Tiafoe F.,215,0.0215,Sonego L.,0.6743692340304733
+Lehecka J.,169,0.0169,Berrettini M.,0.6059356575410102
+Jodar R.,155,0.0155,Shapovalov D.,0.5855790392086744
+Fonseca J.,139,0.0139,Vandezandschulp B.,0.7141689178564854
+Vacherot V.,121,0.0121,Vallejo D.,0.6671927507139086
+Rublev A.,112,0.0112,Carrenobusta P.,0.6682371748928166
+Ruud C.,106,0.0106,O Connell C.,0.7231146127252678
+Humbert U.,102,0.0102,Zheng M.,0.7000785036254626
+Cerundolo F.,95,0.0095,Borges N.,0.6032320365906133
+Michelsen A.,70,0.007,Fritz T.,0.38241751711832317
+Shapovalov D.,69,0.0069,Jodar R.,0.4144209607913257
+Norrie C.,62,0.0062,Zverev A.,0.2672604484064366
+Tabilo A.,59,0.0059,Struff J.L.,0.6459238176964398
+Cobolli F.,55,0.0055,Kecmanovic M.,0.5892953493734994
+Tsitsipas S.,45,0.0045,Auger-Aliassime F.,0.2800388145058257
+Hurkacz H.,34,0.0034,Paul T.,0.37691839080444267
+Berrettini M.,34,0.0034,Lehecka J.,0.3940643424589898
+Merida Aguilar D.,32,0.0032,Bergs Z.,0.5110785604114658
+Atmane T.,31,0.0031,Etcheverry T.,0.528107850819199
+Rinderknech A.,26,0.0026,Cerundolo J.M.,0.5806469969622327
+Bergs Z.,24,0.0024,Merida Aguilar D.,0.4889214395885342
+Buse I.,20,0.002,Walton A.,0.6334544306260852
+Tirante T.A.,17,0.0017,Djokovic N.,0.16242340652221288
+Fery A.,17,0.0017,Duckworth J.,0.591269702177155
+Borges N.,17,0.0017,Cerundolo F.,0.3967679634093867
+Hanfmann Y.,16,0.0016,Fils A.,0.29349777229388696
+Etcheverry T.,15,0.0015,Atmane T.,0.471892149180801
+Sonego L.,12,0.0012,Tiafoe F.,0.32563076596952667
+Carrenobusta P.,11,0.0011,Rublev A.,0.33176282510718336
+Kecmanovic M.,11,0.0011,Cobolli F.,0.41070465062650063
+Halys Q.,10,0.001,Deminaur A.,0.5051308970748657
+Cerundolo J.M.,9,0.0009,Rinderknech A.,0.41935300303776735
+Deminaur A.,9,0.0009,Halys Q.,0.4948691029251343
+Blockx A.,9,0.0009,Navone M.,0.5751018630450114
+Vallejo D.,9,0.0009,Vacherot V.,0.33280724928609146
+Struff J.L.,8,0.0008,Tabilo A.,0.3540761823035602
+Hijikata R.,8,0.0008,Darderi L.,0.4431191476064883
+Arnaldi M.,5,0.0005,Landaluce M.,0.523681389949457
+Darderi L.,5,0.0005,Hijikata R.,0.5568808523935117
+Vandezandschulp B.,5,0.0005,Fonseca J.,0.28583108214351466
+Landaluce M.,5,0.0005,Arnaldi M.,0.476318610050543
+Duckworth J.,4,0.0004,Fery A.,0.408730297822845
+Altmaier D.,4,0.0004,Musetti L.,0.24755660344307728
+Bellucci M.,2,0.0002,Mensik J.,0.18806388604343172
+O Connell C.,2,0.0002,Ruud C.,0.2768853872747322
+Trungelliti M.,2,0.0002,Medvedev D.,0.1220362289958784
+Faria J.,2,0.0002,Shelton B.,0.17390225658956873
+Navone M.,1,0.0001,Blockx A.,0.42489813695498857
+Kovacevic A.,1,0.0001,Nakashima B.,0.2061811000645295
+Choinski J.,0,0.0,,
+Collignon R.,0,0.0,,
+Fucsovics M.,0,0.0,,
 Dimitrov G.,0,0.0,,
+Baez S.,0,0.0,Tien L.,0.21462161167083604
 Kopriva V.,0,0.0,,
-Royer V.,0,0.0,,
 Shimabukuro S.,0,0.0,,
-Svajda Z.,0,0.0,,
+Royer V.,0,0.0,,
 Monfils G.,0,0.0,,
 Jacquet K.,0,0.0,,
 Wong C.,0,0.0,,
-Choinski J.,0,0.0,,
+Svajda Z.,0,0.0,,
 Burruchaga R.,0,0.0,,
 Draper J.,0,0.0,,
-Mannarino A.,0,0.0,,
+Prizmic D.,0,0.0,,
 Ugocarabelli C.,0,0.0,,
-Navone M.,0,0.0,Blockx A.,0.36732179746941784
-Collignon R.,0,0.0,,
-Fucsovics M.,0,0.0,,
+Mannarino A.,0,0.0,,
 Khachanov K.,0,0.0,,
 Brooksby J.,0,0.0,,
-Marozsan F.,0,0.0,,
+Machac T.,0,0.0,,
+Wolf J.J.,0,0.0,,
+Zheng M.,0,0.0,Humbert U.,0.2999214963745374
 Cilic M.,0,0.0,,
-Mejia N.,0,0.0,,
-Kokkinakis T.,0,0.0,,
+Marozsan F.,0,0.0,,
+Walton A.,0,0.0,Buse I.,0.36654556937391486
 Shang J.,0,0.0,,
 Medjedovic H.,0,0.0,,
-Wolf J.J.,0,0.0,,
-Machac T.,0,0.0,,
+Kokkinakis T.,0,0.0,,
+Mejia N.,0,0.0,,
 Vanassche L.,0,0.0,,
 Droguet T.,0,0.0,,
 Shevchenko A.,0,0.0,,

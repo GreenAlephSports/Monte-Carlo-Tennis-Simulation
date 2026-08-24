@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "cincinnati-open-men-2026",
-    "generated_at": "2026-08-20T22:33:39Z",
+    "generated_at": "2026-08-23T16:17:47Z",
     "iterations": 10000,
     "seed": 42
   },
@@ -9,107 +9,31 @@
     {
       "player": "Arthur Fils",
       "quarter": "Q2",
-      "p_champ": 0.213,
-      "p_sf": 0.579,
-      "p_final": 0.406
-    },
-    {
-      "player": "Taylor Fritz",
-      "quarter": "Q3",
-      "p_champ": 0.205,
-      "p_sf": 0.587,
-      "p_final": 0.338
-    },
-    {
-      "player": "Brandon Nakashima",
-      "quarter": "Q4",
-      "p_champ": 0.124,
-      "p_sf": 0.507,
-      "p_final": 0.232
+      "p_champ": 0.556,
+      "p_sf": 1.0,
+      "p_final": 1.0
     },
     {
       "player": "Frances Tiafoe",
       "quarter": "Q4",
-      "p_champ": 0.121,
-      "p_sf": 0.493,
-      "p_final": 0.227
-    },
-    {
-      "player": "Lorenzo Musetti",
-      "quarter": "Q3",
-      "p_champ": 0.109,
-      "p_sf": 0.413,
-      "p_final": 0.204
-    },
-    {
-      "player": "Flavio Cobolli",
-      "quarter": "Q1",
-      "p_champ": 0.058,
-      "p_sf": 0.55,
-      "p_final": 0.178
-    },
-    {
-      "player": "Thiago Agustin Tirante",
-      "quarter": "Q1",
-      "p_champ": 0.048,
-      "p_sf": 0.45,
-      "p_final": 0.145
+      "p_champ": 0.444,
+      "p_sf": 1.0,
+      "p_final": 1.0
     }
   ],
   "matchups": {
-    "T-QF-2": {
-      "slot_a": "Thiago Agustin Tirante",
-      "slot_b": "Arthur Fils",
-      "p_slot_a": 0.259,
-      "p_slot_b": 0.741,
-      "market_prob_a": 0.259,
-      "market_prob_b": 0.741,
-      "model_prob_a": 0.304,
-      "model_prob_b": 0.696,
-      "relative_change_pct": 17.5
-    },
-    "B-QF-1": {
-      "slot_a": "Taylor Fritz",
-      "slot_b": "Brandon Nakashima",
-      "p_slot_a": 0.625,
-      "p_slot_b": 0.375,
-      "market_prob_a": 0.625,
-      "market_prob_b": 0.375,
-      "model_prob_a": 0.57,
-      "model_prob_b": 0.43,
-      "relative_change_pct": -8.8
-    },
-    "B-QF-2": {
-      "slot_a": "Lorenzo Musetti",
+    "Final": {
+      "slot_a": "Arthur Fils",
       "slot_b": "Frances Tiafoe",
-      "p_slot_a": 0.519,
-      "p_slot_b": 0.481,
-      "market_prob_a": 0.519,
-      "market_prob_b": 0.481,
-      "model_prob_a": 0.501,
-      "model_prob_b": 0.499,
-      "relative_change_pct": -3.5
+      "p_slot_a": 0.658,
+      "p_slot_b": 0.342,
+      "market_prob_a": 0.658,
+      "market_prob_b": 0.342,
+      "model_prob_a": 0.559,
+      "model_prob_b": 0.441,
+      "relative_change_pct": -15.0
     }
   },
-  "head_to_head": {
-    "Arthur Fils|Brandon Nakashima": 0.555,
-    "Arthur Fils|Flavio Cobolli": 0.695,
-    "Arthur Fils|Frances Tiafoe": 0.559,
-    "Arthur Fils|Lorenzo Musetti": 0.569,
-    "Arthur Fils|Taylor Fritz": 0.465,
-    "Brandon Nakashima|Flavio Cobolli": 0.652,
-    "Brandon Nakashima|Frances Tiafoe": 0.504,
-    "Brandon Nakashima|Lorenzo Musetti": 0.504,
-    "Brandon Nakashima|Thiago Agustin Tirante": 0.653,
-    "Flavio Cobolli|Frances Tiafoe": 0.361,
-    "Flavio Cobolli|Lorenzo Musetti": 0.367,
-    "Flavio Cobolli|Taylor Fritz": 0.287,
-    "Flavio Cobolli|Thiago Agustin Tirante": 0.55,
-    "Frances Tiafoe|Taylor Fritz": 0.416,
-    "Frances Tiafoe|Thiago Agustin Tirante": 0.64,
-    "Lorenzo Musetti|Taylor Fritz": 0.41,
-    "Lorenzo Musetti|Thiago Agustin Tirante": 0.634,
-    "Taylor Fritz|Thiago Agustin Tirante": 0.714
-  },
+  "head_to_head": {},
   "warnings": []
 }

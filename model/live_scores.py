@@ -87,6 +87,17 @@ def _extract_sets(competitor):
     return sets
 
 
+def _extract_raw_games(competitor):
+    """Same linescores as _extract_sets, but plain ints (no tiebreak annotation) - for score-state
+    math (live_match_snapshot.py's live-adjusted probability heuristic) rather than display."""
+    games = []
+    for linescore in competitor.get("linescores", []):
+        value = linescore.get("value")
+        if value is not None:
+            games.append(int(value))
+    return games
+
+
 def _is_doubles_shaped(competition):
     """Doubles competitors carry type='team' and a 'roster' of 2 athletes instead of a single
     'athlete' - a different, expected shape, not malformed data."""
@@ -128,6 +139,12 @@ def _extract_match(tournament_name, category_name, event_id, competition):
         "winner": names[winner_index] if winner_index is not None else None,
         "start_time": competition.get("date"),
         "match_id": competition.get("id"),
+        # raw score state for live_match_snapshot.py's score-adjusted probability heuristic - not
+        # used by any of the display-only extraction above, which sticks to the string sets_1/sets_2.
+        "current_period": (competition.get("status") or {}).get("period"),  # 1-indexed set number
+        "best_of": ((competition.get("format") or {}).get("regulation") or {}).get("periods"),  # 3 or 5 sets
+        "games_1": _extract_raw_games(by_order[0]),
+        "games_2": _extract_raw_games(by_order[1]),
     }
 
 

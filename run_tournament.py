@@ -18,7 +18,7 @@ from bracket import (  # noqa: E402
 from bracket_schema import BracketValidationError, load_bracket_yaml  # noqa: E402
 from elo_ratings import calculate_elo_ratings, load_matches_for_tour  # noqa: E402
 from hybrid_simulation import (  # noqa: E402
-    TOUR_SINGLES_CATEGORY, reconstruct_leaves_by_round2_slot, true_bracket_order,
+    TOUR_SINGLES_CATEGORY, build_real_results_by_round, reconstruct_leaves_by_round2_slot, true_bracket_order,
 )
 from live_scores import LiveScoresError, extract_matches, fetch_scoreboard  # noqa: E402
 from simulate import (  # noqa: E402
@@ -136,7 +136,16 @@ def main():
             )
             sys.exit(1)
 
-        leaves_by_slot = reconstruct_leaves_by_round2_slot(tournament_matches, non_bye_players, bye_players)
+        # results_by_round[1] lets reconstruct_leaves_by_round2_slot identify each Round 2 slot's
+        # real Round 1 match by who actually won it (see that function's own docstring) rather than
+        # falling back to a positional guess for every already-decided Round 1 match - the same
+        # results_by_round bracket_export.py/hybrid_simulation.py already build before calling this.
+        results_by_round, _round_sequence, _unresolved = build_real_results_by_round(
+            tournament_matches, draw, tour_config.name_aliases
+        )
+        leaves_by_slot = reconstruct_leaves_by_round2_slot(
+            tournament_matches, non_bye_players, bye_players, results_by_round, tour_config.name_aliases
+        )
         true_order = true_bracket_order(leaves_by_slot)
         ordered_field = [name for name, _is_bye in true_order]
         is_bye = [is_bye_flag for _name, is_bye_flag in true_order]
