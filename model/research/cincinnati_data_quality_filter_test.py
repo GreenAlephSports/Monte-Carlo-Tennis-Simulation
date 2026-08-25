@@ -45,7 +45,10 @@ from ev_comparison import implied_probabilities  # noqa: E402
 from win_probability import win_probability  # noqa: E402
 
 EXTREME_EV_THRESHOLD = 0.50  # +50% EV, matching the user's own "extreme" cutoff
-MIN_HARD_MATCHES_GRID = [10, 20, 30]
+# 0/3/5/8 added below the original grid's 10-match floor specifically to find WHERE in 0-10 the
+# model's numbers stop being usable, rather than just confirming 10 is roughly safe - the original
+# grid never actually tested anything below 10.
+MIN_HARD_MATCHES_GRID = [0, 3, 5, 8, 10, 20, 30]
 MIN_EDGE_PP_GRID = [5.0, 10.0, 15.0]
 
 
