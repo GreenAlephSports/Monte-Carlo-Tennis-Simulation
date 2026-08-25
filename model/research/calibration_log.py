@@ -249,14 +249,20 @@ def collect_concluded_rows(bracket_path, kaggle_tournament_name, existing_keys):
     return rows
 
 
-def collect_live_rows(bracket_path, existing_keys):
+def collect_live_rows(bracket_path, existing_keys, dates=None):
     """ESPN-sourced: only matches already status_state == 'post' with a real winner - identical
     filter to live_calibration_check.analyze_live_tournament, but keeps each match's own
-    start_time instead of collapsing straight to a pair -> winner dict."""
+    start_time instead of collapsing straight to a pair -> winner dict.
+
+    dates: YYYYMMDD passed straight through to fetch_scoreboard - ESPN's undated ("today")
+    scoreboard only finds a tournament while it's still live/recent (same caveat bracket_export.py
+    and hybrid_simulation.py's own --dates flags exist for); a single date anywhere inside the
+    tournament's window returns its complete event regardless of how long ago it actually
+    finished - needed once a "live" tournament in LIVE_TOURNAMENTS above has since concluded."""
     bracket = load_bracket_yaml(bracket_path)
     tour_config, draw, _matches_history = _prepare_ratings(bracket)
 
-    espn_data = fetch_scoreboard(bracket.tour.lower())
+    espn_data = fetch_scoreboard(bracket.tour.lower(), dates=dates)
     espn_matches, _ = extract_matches(espn_data)
     category = TOUR_SINGLES_CATEGORY[bracket.tour.lower()]
     tournament_matches = [
@@ -364,7 +370,7 @@ def print_calibration_read(log):
               f"adjustment yet")
 
 
-def run(report_only=False):
+def run(report_only=False, dates=None):
     existing = load_existing_log()
     existing_keys = set(existing["match_key"])
     new_rows = []
@@ -382,7 +388,7 @@ def run(report_only=False):
 
         for bracket_path in LIVE_TOURNAMENTS:
             try:
-                rows = collect_live_rows(bracket_path, existing_keys)
+                rows = collect_live_rows(bracket_path, existing_keys, dates=dates)
             except (BracketValidationError, RuntimeError, LiveScoresError) as e:
                 print(f"ERROR logging {bracket_path} (live/ESPN): {e}", file=sys.stderr)
                 continue
@@ -409,5 +415,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--report-only", action="store_true",
                          help="skip fetching/appending - just print the current log's calibration read")
+    parser.add_argument("--dates", default=None,
+                         help="YYYYMMDD, passed to ESPN's ?dates= for every LIVE_TOURNAMENTS entry - "
+                              "needed once a 'live' tournament has since concluded and dropped off "
+                              "ESPN's undated ('today') scoreboard")
     args = parser.parse_args()
-    run(report_only=args.report_only)
+    run(report_only=args.report_only, dates=args.dates)
