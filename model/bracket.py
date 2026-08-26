@@ -192,15 +192,36 @@ def _fuzzy_lastname_match(lastname, first_initial, names, min_len=3):
     return next(iter(matches)) if len(matches) == 1 else None
 
 
+def _surname_continuation_match(lastname, first_initial, names):
+    """Tier 4: handles a shorthand where a two-word surname's second word gets abbreviated to its
+    own initial and mistaken (by whatever produced raw_name) for the player's given-name initial -
+    e.g. a withdrawal notice spelling Alejandro Davidovich Fokina as "Davidovich F." (the second
+    surname word "Fokina" truncated to "F.", not Alejandro's real initial "A."), which tiers 0-3
+    can't resolve since they all require the query's initial to agree with the candidate's actual
+    given-name initial. Matches when a pool player's lastname is exactly `lastname` plus one more
+    word starting with first_initial. Unique-candidate-only, same as the other fuzzy tiers."""
+    first_initial = first_initial.lower()
+    matches = set()
+    for name in names:
+        candidate_lastname, _candidate_initials = _split_csv_name(name)
+        words = candidate_lastname.split()
+        if len(words) < 2:
+            continue
+        if " ".join(words[:-1]) == lastname and words[-1].startswith(first_initial):
+            matches.add(name)
+    return next(iter(matches)) if len(matches) == 1 else None
+
+
 def match_name_to_pool(raw_name, pool_names, name_aliases=None):
     """Resolves raw_name (csv 'Lastname I.' shape) against an arbitrary pool of csv-format names,
     reusing the same tiered fuzzy-matching system match_draw_to_ratings applies against the Elo
     ratings csv (tier 0 manual alias, tier 1 exact lastname+initials, tier 2 lastname+first-initial
     unique/compound-initials match), plus a tier 3 glued-lastname prefix/suffix fallback for
-    naming-convention mismatches the other tiers can't bridge (see _fuzzy_lastname_match). Used to
-    match a different data source's names (e.g. a static Kaggle match-history pull) against an
-    already-resolved draw, not just a bracket's raw player names against the ratings csv. Returns
-    the matched pool name, or None if nothing resolves."""
+    naming-convention mismatches the other tiers can't bridge (see _fuzzy_lastname_match), and a
+    tier 4 compound-surname-continuation fallback (see _surname_continuation_match). Used to match
+    a different data source's names (e.g. a static Kaggle match-history pull, or a withdrawal list)
+    against an already-resolved draw or ranked pool, not just a bracket's raw player names against
+    the ratings csv. Returns the matched pool name, or None if nothing resolves."""
     pool_names = list(pool_names)
     alias_target = (name_aliases or {}).get(raw_name)
     if alias_target in pool_names:
@@ -220,7 +241,11 @@ def match_name_to_pool(raw_name, pool_names, name_aliases=None):
     if len(candidates) > 1 and len({_split_csv_name(c)[1] for c in candidates}) == 1:
         return candidates[0]
 
-    return _fuzzy_lastname_match(lastname, first_initial, pool_names, min_len=3)
+    match = _fuzzy_lastname_match(lastname, first_initial, pool_names, min_len=3)
+    if match is not None:
+        return match
+
+    return _surname_continuation_match(lastname, first_initial, pool_names)
 
 
 def _lastnames_in_training_window(match_data_path, cutoff_date):

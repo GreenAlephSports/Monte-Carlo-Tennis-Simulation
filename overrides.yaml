@@ -1,11 +1,21 @@
-name_overrides: {}
-seed_overrides: {}
-withdrawals:
-- Sinner J.
-- Fonseca J.
-- Rune H.
-- Korda S.
-- Quinn E.
-- Nava E.
-- Diallo G.
-- Davidovich F.
+atp:
+  name_overrides: {}
+  seed_overrides: {}
+  health_adjustments: {}
+  withdrawals:
+  - Sinner J.
+  - Fonseca J.
+  - Rune H.
+  - Korda S.
+  - Quinn E.
+  - Nava E.
+  - Diallo G.
+  - Davidovich F.
+wta:
+  name_overrides: {}
+  seed_overrides: {}
+  health_adjustments:
+    Rybakina E.:
+      elo_penalty: -100
+      reason: "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
+  withdrawals: []

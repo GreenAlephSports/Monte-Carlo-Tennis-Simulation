@@ -39,6 +39,23 @@ Methodology (same rigor as every other correction test tonight):
 
 Usage:
     python model/research/thin_history_rank_blend_test.py [--tour ATP|WTA] [--thin-threshold N]
+
+FINAL VERDICT (2026-08-26): REJECTED - not added to production. Held out on the full thin
+population it targets (ATP, n=2998 test-era rows where at least one side has <10 career matches
+and a known rank), the blend shows no significant overall effect: mean log-loss improvement
++0.0027, player-clustered 95% bootstrap CI [-0.0030, +0.0084] - straddles zero. Worse, it is
+actively HARMFUL in the thinnest bucket it was specifically meant to help: for 0-2 career matches
+(n=842, the Fery-A.-style case that motivated this test), log-loss gets WORSE under the blend
+(0.6064 raw -> 0.6103 blended), and the share of predictions that are extreme (|pred-50%| > 30pp)
+roughly DOUBLES (19.2% -> 32.3%) - the blend is making the model more confident in exactly the
+population where it has the least real signal to be confident about. It only shows a (small,
+untested-for-significance) improvement in the 3-9 match range, not the near-zero-match range the
+original Fery-A. motivating case actually lives in. Conclusion: rank is not a safe stand-in for
+missing career Elo history at the thinnest end - the fix this test hypothesized does not work for
+the population it was built for. No production changes made. A related but distinct follow-up
+question - whether the same rank/form-blend idea helps a different population, established players
+whose current Elo lags a real recent trajectory shift rather than players with too little data -
+was tested separately; see rank_trajectory_lag_test.py.
 """
 import argparse
 import sys

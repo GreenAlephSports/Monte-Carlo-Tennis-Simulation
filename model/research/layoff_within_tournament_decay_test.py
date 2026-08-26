@@ -31,6 +31,25 @@ long-layoff returner shouldn't count as N independent data points).
 
 Usage:
     python model/research/layoff_within_tournament_decay_test.py [--tour ATP|WTA]
+
+FINAL VERDICT (2026-08-26): real signal in TRAIN era, underpowered to confirm held-out - NOT added
+to production. Train-era residuals (ATP) show a real, statistically significant effect at match_1
+(-5.2%, 95% CI [-6.5%, -3.9%], z=-7.77, n=4664) and match_2 (-3.3%, CI [-5.4%, -1.2%], z=-3.05,
+n=1557) - the flat shift is measurably too harsh by match 2. But the "rust wears off with time"
+decay hypothesis is NOT monotonic as predicted (residuals: -5.2% -> -3.3% -> -0.7% -> -2.9% - match
+_4_plus is worse than match_3, not better), and held out on 1649 test-era rows (432 players), the
+match-number decay-aware model improves only marginally on the current flat shift (+0.0004 log-loss,
+95% bootstrap CI [-0.0009, +0.0019] - straddles zero) and on raw Elo (+0.0019, CI [-0.0023,
++0.0065] - also straddles zero). Head-to-head, performance-based decay (conditioning on how the
+player has actually performed vs. Elo so far this event, not just which round it is) beats
+match-count decay on match_number>=2 rows (+0.0026 improvement, CI [-0.0005, +0.0057] - just
+touches zero) but neither variant clears held-out significance against raw Elo at this sample size.
+Conclusion: the underlying idea (rust decays as a tournament progresses, and HOW a player is
+performing matters more than which round it is) is plausible and the train-era numbers back it, but
+this dataset doesn't have enough real 90d+-layoff players who go deep in a tournament (n drops to
+193 by match_4_plus) to hold-out-validate a decay model with confidence. No production change made
+- win_probability.py's flat 90d_plus shift stays as-is. Worth revisiting if/when more real
+tournament data accumulates.
 """
 import argparse
 import sys

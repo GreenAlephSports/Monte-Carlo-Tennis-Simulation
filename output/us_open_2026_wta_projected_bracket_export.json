@@ -1,312 +1,330 @@
 {
   "meta": {
     "tournament": "us-open-women-2026",
-    "generated_at": "2026-08-26T16:24:35Z",
-    "iterations": 5000,
+    "generated_at": "2026-08-26T22:34:56Z",
+    "iterations": 10000,
     "seed": null,
     "status": "projected"
   },
   "players": [
     {
       "player": "Sabalenka A.",
-      "quarter": "Q4",
-      "p_champ": 0.243,
-      "p_sf": 0.474,
-      "p_final": 0.367
-    },
-    {
-      "player": "Rybakina E.",
-      "quarter": "Q2",
-      "p_champ": 0.233,
-      "p_sf": 0.501,
-      "p_final": 0.376
+      "quarter": "Q1",
+      "p_champ": 0.248,
+      "p_sf": 0.465,
+      "p_final": 0.348
     },
     {
       "player": "Gauff C.",
-      "quarter": "Q1",
-      "p_champ": 0.104,
+      "quarter": "Q3",
+      "p_champ": 0.136,
+      "p_sf": 0.412,
+      "p_final": 0.265
+    },
+    {
+      "player": "Rybakina E.",
+      "quarter": "Q4",
+      "p_champ": 0.121,
       "p_sf": 0.373,
-      "p_final": 0.199
+      "p_final": 0.234,
+      "health_adjustment": {
+        "elo_penalty": -100,
+        "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
+      }
     },
     {
       "player": "Pegula J.",
-      "quarter": "Q3",
-      "p_champ": 0.104,
-      "p_sf": 0.41,
+      "quarter": "Q2",
+      "p_champ": 0.119,
+      "p_sf": 0.387,
       "p_final": 0.195
     },
     {
       "player": "Swiatek I.",
-      "quarter": "Q4",
-      "p_champ": 0.074,
-      "p_sf": 0.22,
+      "quarter": "Q1",
+      "p_champ": 0.081,
+      "p_sf": 0.221,
       "p_final": 0.143
     },
     {
       "player": "Svitolina E.",
-      "quarter": "Q2",
-      "p_champ": 0.035,
-      "p_sf": 0.165,
-      "p_final": 0.087
+      "quarter": "Q4",
+      "p_champ": 0.038,
+      "p_sf": 0.185,
+      "p_final": 0.095
     },
     {
       "player": "Muchova K.",
-      "quarter": "Q4",
-      "p_champ": 0.031,
-      "p_sf": 0.109,
-      "p_final": 0.064
-    },
-    {
-      "player": "Anisimova A.",
-      "quarter": "Q3",
-      "p_champ": 0.03,
-      "p_sf": 0.199,
+      "quarter": "Q1",
+      "p_champ": 0.036,
+      "p_sf": 0.13,
       "p_final": 0.072
     },
     {
-      "player": "Bencic B.",
+      "player": "Anisimova A.",
       "quarter": "Q2",
-      "p_champ": 0.024,
-      "p_sf": 0.133,
-      "p_final": 0.068
+      "p_champ": 0.036,
+      "p_sf": 0.181,
+      "p_final": 0.071
+    },
+    {
+      "player": "Bencic B.",
+      "quarter": "Q4",
+      "p_champ": 0.032,
+      "p_sf": 0.17,
+      "p_final": 0.085
     },
     {
       "player": "Mboko V.",
-      "quarter": "Q1",
-      "p_champ": 0.021,
-      "p_sf": 0.153,
-      "p_final": 0.064
+      "quarter": "Q3",
+      "p_champ": 0.024,
+      "p_sf": 0.145,
+      "p_final": 0.07
     },
     {
       "player": "Kostyuk M.",
-      "quarter": "Q1",
-      "p_champ": 0.019,
-      "p_sf": 0.124,
-      "p_final": 0.047
-    },
-    {
-      "player": "Andreeva M.",
-      "quarter": "Q2",
-      "p_champ": 0.013,
-      "p_sf": 0.079,
-      "p_final": 0.037
+      "quarter": "Q3",
+      "p_champ": 0.021,
+      "p_sf": 0.129,
+      "p_final": 0.06
     },
     {
       "player": "Osaka N.",
+      "quarter": "Q1",
+      "p_champ": 0.017,
+      "p_sf": 0.089,
+      "p_final": 0.041
+    },
+    {
+      "player": "Andreeva M.",
       "quarter": "Q4",
-      "p_champ": 0.01,
-      "p_sf": 0.066,
-      "p_final": 0.033
+      "p_champ": 0.017,
+      "p_sf": 0.089,
+      "p_final": 0.042
     },
     {
       "player": "Shnaider D.",
-      "quarter": "Q3",
-      "p_champ": 0.008,
-      "p_sf": 0.087,
-      "p_final": 0.025
-    },
-    {
-      "player": "Krejcikova B.",
-      "quarter": "Q1",
-      "p_champ": 0.006,
-      "p_sf": 0.057,
-      "p_final": 0.017
+      "quarter": "Q2",
+      "p_champ": 0.009,
+      "p_sf": 0.08,
+      "p_final": 0.024
     },
     {
       "player": "Keys M.",
-      "quarter": "Q4",
-      "p_champ": 0.006,
-      "p_sf": 0.043,
-      "p_final": 0.02
-    },
-    {
-      "player": "Cirstea S.",
       "quarter": "Q3",
-      "p_champ": 0.005,
-      "p_sf": 0.067,
-      "p_final": 0.019
-    },
-    {
-      "player": "Eala A.",
-      "quarter": "Q1",
-      "p_champ": 0.004,
-      "p_sf": 0.042,
-      "p_final": 0.014
+      "p_champ": 0.009,
+      "p_sf": 0.078,
+      "p_final": 0.03
     },
     {
       "player": "Noskova L.",
-      "quarter": "Q3",
-      "p_champ": 0.004,
-      "p_sf": 0.085,
+      "quarter": "Q2",
+      "p_champ": 0.006,
+      "p_sf": 0.072,
       "p_final": 0.017
     },
     {
-      "player": "Jovic I.",
-      "quarter": "Q1",
-      "p_champ": 0.003,
-      "p_sf": 0.035,
-      "p_final": 0.009
+      "player": "Krejcikova B.",
+      "quarter": "Q2",
+      "p_champ": 0.005,
+      "p_sf": 0.052,
+      "p_final": 0.014
     },
     {
-      "player": "Barty A.",
-      "quarter": "Q1",
-      "p_champ": 0.002,
-      "p_sf": 0.034,
-      "p_final": 0.011
+      "player": "Cirstea S.",
+      "quarter": "Q2",
+      "p_champ": 0.005,
+      "p_sf": 0.045,
+      "p_final": 0.013
     },
     {
-      "player": "Bejlek S.",
+      "player": "Kalinskaya A.",
       "quarter": "Q1",
-      "p_champ": 0.002,
-      "p_sf": 0.043,
+      "p_champ": 0.004,
+      "p_sf": 0.027,
       "p_final": 0.012
     },
     {
+      "player": "Eala A.",
+      "quarter": "Q3",
+      "p_champ": 0.003,
+      "p_sf": 0.036,
+      "p_final": 0.013
+    },
+    {
+      "player": "Jovic I.",
+      "quarter": "Q3",
+      "p_champ": 0.003,
+      "p_sf": 0.041,
+      "p_final": 0.013
+    },
+    {
       "player": "Vondrousova M.",
-      "quarter": "Q1",
+      "quarter": "Q3",
+      "p_champ": 0.003,
+      "p_sf": 0.03,
+      "p_final": 0.01
+    },
+    {
+      "player": "Alexandrova E.",
+      "quarter": "Q4",
+      "p_champ": 0.003,
+      "p_sf": 0.026,
+      "p_final": 0.009
+    },
+    {
+      "player": "Bejlek S.",
+      "quarter": "Q2",
       "p_champ": 0.002,
       "p_sf": 0.024,
       "p_final": 0.006
     },
     {
-      "player": "Kalinskaya A.",
-      "quarter": "Q4",
+      "player": "Badosa P.",
+      "quarter": "Q3",
       "p_champ": 0.002,
-      "p_sf": 0.022,
-      "p_final": 0.008
+      "p_sf": 0.026,
+      "p_final": 0.009
     },
     {
-      "player": "Tauson C.",
-      "quarter": "Q1",
-      "p_champ": 0.001,
+      "player": "Bouzkova M.",
+      "quarter": "Q3",
+      "p_champ": 0.002,
       "p_sf": 0.023,
-      "p_final": 0.005
+      "p_final": 0.007
+    },
+    {
+      "player": "Fernandez L.A.",
+      "quarter": "Q3",
+      "p_champ": 0.002,
+      "p_sf": 0.022,
+      "p_final": 0.006
     },
     {
       "player": "Mertens E.",
-      "quarter": "Q2",
-      "p_champ": 0.001,
-      "p_sf": 0.016,
-      "p_final": 0.004
-    },
-    {
-      "player": "Kasatkina D.",
-      "quarter": "Q2",
-      "p_champ": 0.001,
-      "p_sf": 0.004,
-      "p_final": 0.001
-    },
-    {
-      "player": "Alexandrova E.",
-      "quarter": "Q2",
-      "p_champ": 0.001,
-      "p_sf": 0.011,
-      "p_final": 0.003
-    },
-    {
-      "player": "Sakkari M.",
-      "quarter": "Q2",
-      "p_champ": 0.001,
-      "p_sf": 0.009,
-      "p_final": 0.004
-    },
-    {
-      "player": "Raducanu E.",
-      "quarter": "Q2",
-      "p_champ": 0.001,
-      "p_sf": 0.008,
-      "p_final": 0.003
-    },
-    {
-      "player": "Li A.",
-      "quarter": "Q3",
-      "p_champ": 0.001,
-      "p_sf": 0.014,
-      "p_final": 0.003
-    },
-    {
-      "player": "Gibson T.",
-      "quarter": "Q3",
-      "p_champ": 0.001,
-      "p_sf": 0.014,
-      "p_final": 0.002
-    },
-    {
-      "player": "Cristian J.",
       "quarter": "Q4",
-      "p_champ": 0.001,
-      "p_sf": 0.004,
-      "p_final": 0.001
-    },
-    {
-      "player": "Bartunkova N.",
-      "quarter": "Q4",
-      "p_champ": 0.001,
-      "p_sf": 0.004,
-      "p_final": 0.002
+      "p_champ": 0.002,
+      "p_sf": 0.02,
+      "p_final": 0.006
     },
     {
       "player": "Paolini J.",
-      "quarter": "Q4",
+      "quarter": "Q1",
       "p_champ": 0.001,
       "p_sf": 0.013,
       "p_final": 0.004
     },
     {
+      "player": "Sakkari M.",
+      "quarter": "Q1",
+      "p_champ": 0.001,
+      "p_sf": 0.01,
+      "p_final": 0.004
+    },
+    {
       "player": "Jabeur O.",
+      "quarter": "Q2",
+      "p_champ": 0.001,
+      "p_sf": 0.018,
+      "p_final": 0.003
+    },
+    {
+      "player": "Gibson T.",
+      "quarter": "Q2",
+      "p_champ": 0.001,
+      "p_sf": 0.012,
+      "p_final": 0.001
+    },
+    {
+      "player": "Ostapenko J.",
+      "quarter": "Q2",
+      "p_champ": 0.001,
+      "p_sf": 0.017,
+      "p_final": 0.003
+    },
+    {
+      "player": "Siniakova K.",
+      "quarter": "Q2",
+      "p_champ": 0.001,
+      "p_sf": 0.013,
+      "p_final": 0.002
+    },
+    {
+      "player": "Bartunkova N.",
       "quarter": "Q4",
       "p_champ": 0.001,
-      "p_sf": 0.005,
+      "p_sf": 0.01,
+      "p_final": 0.003
+    },
+    {
+      "player": "Raducanu E.",
+      "quarter": "Q4",
+      "p_champ": 0.001,
+      "p_sf": 0.022,
+      "p_final": 0.006
+    },
+    {
+      "player": "Valentova T.",
+      "quarter": "Q4",
+      "p_champ": 0.001,
+      "p_sf": 0.01,
       "p_final": 0.002
     },
     {
-      "player": "Sonmez Z.",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.006,
-      "p_final": 0.001
+      "player": "Baptiste H.",
+      "quarter": "Q4",
+      "p_champ": 0.001,
+      "p_sf": 0.011,
+      "p_final": 0.003
     },
     {
-      "player": "Wang Xin.",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.006,
-      "p_final": 0.001
-    },
-    {
-      "player": "Bucsa C.",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.004,
-      "p_final": 0.0
-    },
-    {
-      "player": "Cocciaretto E.",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.002
-    },
-    {
-      "player": "Siegemund L.",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.001
-    },
-    {
-      "player": "Hsieh S.W.",
+      "player": "Stearns P.",
       "quarter": "Q1",
       "p_champ": 0.0,
       "p_sf": 0.001,
       "p_final": 0.0
     },
     {
-      "player": "Ostapenko J.",
+      "player": "Bucsa C.",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.013,
-      "p_final": 0.003
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Frech M.",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
+      "p_final": 0.001
+    },
+    {
+      "player": "Tjen J.",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.001
+    },
+    {
+      "player": "Bondar A.",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Tauson C.",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.005,
+      "p_final": 0.001
+    },
+    {
+      "player": "Potapova A.",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
+      "p_final": 0.001
     },
     {
       "player": "Wildcard 1",
@@ -319,189 +337,203 @@
       "player": "Wildcard 4",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.004,
-      "p_final": 0.001
-    },
-    {
-      "player": "Udvardy P.",
-      "quarter": "Q1",
-      "p_champ": 0.0,
       "p_sf": 0.001,
       "p_final": 0.0
     },
     {
-      "player": "Zarazua R.",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.003,
-      "p_final": 0.0
-    },
-    {
-      "player": "Fernandez L.",
+      "player": "Vandewinkel H.",
       "quarter": "Q1",
       "p_champ": 0.0,
       "p_sf": 0.0,
-      "p_final": 0.0
-    },
-    {
-      "player": "Parry D.",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.001
-    },
-    {
-      "player": "Qualifier 7",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
-    },
-    {
-      "player": "Fernandez L.A.",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.014,
-      "p_final": 0.004
-    },
-    {
-      "player": "Boulter K.",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.001
-    },
-    {
-      "player": "Qualifier 13",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.001
-    },
-    {
-      "player": "Qualifier 5",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.001
-    },
-    {
-      "player": "Peterson R.",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
       "p_final": 0.0
     },
     {
       "player": "Snigur D.",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.009,
-      "p_final": 0.002
+      "p_sf": 0.003,
+      "p_final": 0.001
     },
     {
-      "player": "Kalinina A.",
+      "player": "Korneeva A.",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.001
+    },
+    {
+      "player": "Maria T.",
       "quarter": "Q1",
       "p_champ": 0.0,
       "p_sf": 0.0,
       "p_final": 0.0
     },
     {
-      "player": "Tjen J.",
+      "player": "Birrell K.",
       "quarter": "Q1",
       "p_champ": 0.0,
       "p_sf": 0.002,
       "p_final": 0.0
     },
     {
-      "player": "Putintseva Y.",
-      "quarter": "Q2",
+      "player": "Qualifier 7",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Vekic D.",
+      "quarter": "Q1",
       "p_champ": 0.0,
       "p_sf": 0.002,
       "p_final": 0.001
     },
     {
-      "player": "Krueger A.",
-      "quarter": "Q2",
+      "player": "Ruse E.G.",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Qualifier 13",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Navarro E.",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.001
+    },
+    {
+      "player": "Qualifier 5",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Todoni A.",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Tagger L.",
+      "quarter": "Q1",
       "p_champ": 0.0,
       "p_sf": 0.005,
       "p_final": 0.002
     },
     {
-      "player": "Tagger L.",
-      "quarter": "Q2",
+      "player": "Cristian J.",
+      "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.006,
+      "p_sf": 0.004,
+      "p_final": 0.002
+    },
+    {
+      "player": "Kartal S.",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
       "p_final": 0.001
     },
     {
-      "player": "Osorio M.",
+      "player": "Siegemund L.",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Sierra S.",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Golubic V.",
       "quarter": "Q2",
       "p_champ": 0.0,
       "p_sf": 0.004,
-      "p_final": 0.0
+      "p_final": 0.001
+    },
+    {
+      "player": "Kessler M.",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.014,
+      "p_final": 0.002
     },
     {
       "player": "Qualifier 9",
       "quarter": "Q2",
       "p_champ": 0.0,
       "p_sf": 0.003,
-      "p_final": 0.001
+      "p_final": 0.0
     },
     {
-      "player": "Linette M.",
+      "player": "Chwalinska M.",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.004,
-      "p_final": 0.001
-    },
-    {
-      "player": "Navarro E.",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
+      "p_sf": 0.009,
       "p_final": 0.001
     },
     {
       "player": "Wildcard 3",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.003,
-      "p_final": 0.0
+      "p_sf": 0.004,
+      "p_final": 0.001
     },
     {
       "player": "Qualifier 6",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
+      "p_sf": 0.004,
+      "p_final": 0.001
+    },
+    {
+      "player": "Boulter K.",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.009,
+      "p_final": 0.002
     },
     {
       "player": "Wildcard 8",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.001,
+      "p_sf": 0.004,
       "p_final": 0.0
     },
     {
       "player": "Qualifier 12",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.003,
+      "p_sf": 0.004,
       "p_final": 0.0
     },
     {
-      "player": "Zhang S.",
+      "player": "Pliskova Ka.",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.006,
-      "p_final": 0.001
+      "p_sf": 0.013,
+      "p_final": 0.002
     },
     {
-      "player": "Gracheva V.",
+      "player": "Linette M.",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.001,
+      "p_sf": 0.003,
       "p_final": 0.0
     },
     {
@@ -512,18 +544,18 @@
       "p_final": 0.0
     },
     {
-      "player": "Birrell K.",
+      "player": "Cocciaretto E.",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.003,
+      "p_sf": 0.006,
       "p_final": 0.001
     },
     {
-      "player": "Frech M.",
+      "player": "Samsonova L.",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.009,
-      "p_final": 0.003
+      "p_sf": 0.011,
+      "p_final": 0.002
     },
     {
       "player": "Qualifier 10",
@@ -533,39 +565,32 @@
       "p_final": 0.0
     },
     {
-      "player": "Vidmanova D.",
+      "player": "Juvan K.",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.001,
+      "p_sf": 0.0,
       "p_final": 0.0
     },
     {
-      "player": "Potapova A.",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.006,
-      "p_final": 0.002
-    },
-    {
-      "player": "Oliynykova O.",
+      "player": "Sonmez Z.",
       "quarter": "Q2",
       "p_champ": 0.0,
       "p_sf": 0.003,
       "p_final": 0.0
     },
     {
-      "player": "Korpatsch T.",
+      "player": "Kalinina A.",
       "quarter": "Q2",
       "p_champ": 0.0,
       "p_sf": 0.001,
       "p_final": 0.0
     },
     {
-      "player": "Pliskova Ka.",
+      "player": "Gracheva V.",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.003,
-      "p_final": 0.001
+      "p_sf": 0.001,
+      "p_final": 0.0
     },
     {
       "player": "Qualifier 4",
@@ -575,17 +600,17 @@
       "p_final": 0.0
     },
     {
-      "player": "Maria T.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.0,
-      "p_final": 0.0
-    },
-    {
-      "player": "Sierra S.",
+      "player": "Timofeeva M.",
       "quarter": "Q3",
       "p_champ": 0.0,
       "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Selekhmeteva O.",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
       "p_final": 0.0
     },
     {
@@ -593,320 +618,307 @@
       "quarter": "Q3",
       "p_champ": 0.0,
       "p_sf": 0.003,
-      "p_final": 0.0
-    },
-    {
-      "player": "Marcinko P.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
-    },
-    {
-      "player": "Danilovic O.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.003,
-      "p_final": 0.0
-    },
-    {
-      "player": "Golubic V.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
-    },
-    {
-      "player": "Baptiste H.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.013,
-      "p_final": 0.001
-    },
-    {
-      "player": "Wildcard 7",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.004,
-      "p_final": 0.0
-    },
-    {
-      "player": "McNally C.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.007,
-      "p_final": 0.001
-    },
-    {
-      "player": "Wildcard 6",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
-    },
-    {
-      "player": "Riske A.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.004,
-      "p_final": 0.0
-    },
-    {
-      "player": "Korneeva A.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.0
-    },
-    {
-      "player": "Collins D.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.006,
-      "p_final": 0.0
-    },
-    {
-      "player": "Kontaveit A.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.012,
-      "p_final": 0.002
-    },
-    {
-      "player": "Wildcard 2",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.0
-    },
-    {
-      "player": "Kudermetova V.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.011,
-      "p_final": 0.002
-    },
-    {
-      "player": "Wildcard 5",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.0
-    },
-    {
-      "player": "Tararudee L.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.001
-    },
-    {
-      "player": "Qualifier 16",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.001
-    },
-    {
-      "player": "Chwalinska M.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.008,
-      "p_final": 0.0
-    },
-    {
-      "player": "Stearns P.",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.007,
       "p_final": 0.001
     },
     {
       "player": "Starodubtseva Y.",
       "quarter": "Q3",
       "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Zhang S.",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.005,
+      "p_final": 0.001
+    },
+    {
+      "player": "Wildcard 7",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
+      "p_final": 0.001
+    },
+    {
+      "player": "Sherif M.",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Wildcard 6",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.001
+    },
+    {
+      "player": "Kudermetova V.",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.005,
+      "p_final": 0.001
+    },
+    {
+      "player": "Tomljanovic A.",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.005,
+      "p_final": 0.002
+    },
+    {
+      "player": "Parks A.",
+      "quarter": "Q3",
+      "p_champ": 0.0,
       "p_sf": 0.001,
       "p_final": 0.0
     },
     {
-      "player": "Qualifier 15",
+      "player": "Kraus S.",
       "quarter": "Q3",
       "p_champ": 0.0,
-      "p_sf": 0.005,
+      "p_sf": 0.0,
       "p_final": 0.0
     },
     {
-      "player": "Qualifier 14",
+      "player": "Wildcard 2",
       "quarter": "Q3",
       "p_champ": 0.0,
       "p_sf": 0.004,
       "p_final": 0.0
     },
     {
-      "player": "Muguruza G.",
+      "player": "Wildcard 5",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
+      "p_final": 0.001
+    },
+    {
+      "player": "Zarazua R.",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.0
+    },
+    {
+      "player": "Qualifier 16",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
+      "p_final": 0.001
+    },
+    {
+      "player": "Osorio M.",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.005,
+      "p_final": 0.001
+    },
+    {
+      "player": "Kasatkina D.",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.001
+    },
+    {
+      "player": "Rakhimova K.",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Qualifier 15",
       "quarter": "Q3",
       "p_champ": 0.0,
       "p_sf": 0.002,
       "p_final": 0.0
     },
     {
-      "player": "Joint M.",
-      "quarter": "Q4",
+      "player": "Qualifier 14",
+      "quarter": "Q3",
       "p_champ": 0.0,
-      "p_sf": 0.0,
-      "p_final": 0.0
+      "p_sf": 0.002,
+      "p_final": 0.001
     },
     {
-      "player": "Qualifier 8",
-      "quarter": "Q4",
+      "player": "Waltert S.",
+      "quarter": "Q3",
       "p_champ": 0.0,
       "p_sf": 0.001,
       "p_final": 0.0
     },
     {
-      "player": "Valentova T.",
+      "player": "McNally C.",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.006,
+      "p_final": 0.002
+    },
+    {
+      "player": "Qualifier 8",
       "quarter": "Q4",
       "p_champ": 0.0,
       "p_sf": 0.003,
       "p_final": 0.001
     },
     {
-      "player": "Siniakova K.",
+      "player": "Joint M.",
       "quarter": "Q4",
       "p_champ": 0.0,
-      "p_sf": 0.006,
-      "p_final": 0.002
+      "p_sf": 0.005,
+      "p_final": 0.001
     },
     {
-      "player": "Waltert S.",
+      "player": "Korpatsch T.",
       "quarter": "Q4",
       "p_champ": 0.0,
-      "p_sf": 0.0,
+      "p_sf": 0.003,
       "p_final": 0.0
     },
     {
-      "player": "Bouzkova M.",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.006,
-      "p_final": 0.002
-    },
-    {
-      "player": "Kessler M.",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
-    },
-    {
-      "player": "Qualifier 11",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Ruzic A.",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Samsonova L.",
+      "player": "Lys E.",
       "quarter": "Q4",
       "p_champ": 0.0,
       "p_sf": 0.008,
       "p_final": 0.002
     },
     {
-      "player": "Timofeeva M.",
+      "player": "Li A.",
       "quarter": "Q4",
       "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Kartal S.",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.003,
+      "p_sf": 0.006,
       "p_final": 0.001
     },
     {
-      "player": "Qualifier 3",
+      "player": "Collins D.",
       "quarter": "Q4",
       "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
+      "p_sf": 0.008,
+      "p_final": 0.003
     },
     {
-      "player": "Ruse E.G.",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Vandewinkel H.",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.0,
-      "p_final": 0.0
-    },
-    {
-      "player": "Parks A.",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Sherif M.",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.0,
-      "p_final": 0.0
-    },
-    {
-      "player": "Rakhimova K.",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.0,
-      "p_final": 0.0
-    },
-    {
-      "player": "Kraus S.",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.0,
-      "p_final": 0.0
-    },
-    {
-      "player": "Vekic D.",
+      "player": "Qualifier 11",
       "quarter": "Q4",
       "p_champ": 0.0,
       "p_sf": 0.002,
       "p_final": 0.0
     },
     {
-      "player": "Bondar A.",
+      "player": "Oliynykova O.",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.001
+    },
+    {
+      "player": "Volynets K.",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Krueger A.",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.006,
+      "p_final": 0.001
+    },
+    {
+      "player": "Qualifier 3",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Marcinko P.",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Danilovic O.",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.001
+    },
+    {
+      "player": "Parry D.",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.007,
+      "p_final": 0.002
+    },
+    {
+      "player": "Tararudee L.",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.0
+    },
+    {
+      "player": "Vidmanova D.",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Bouzas Maneiro J.",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Ruzic A.",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.005,
+      "p_final": 0.001
+    },
+    {
+      "player": "Wang Xin.",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.005,
+      "p_final": 0.002
+    },
+    {
+      "player": "Putintseva Y.",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.001
+    },
+    {
+      "player": "Udvardy P.",
       "quarter": "Q4",
       "p_champ": 0.0,
       "p_sf": 0.0,
       "p_final": 0.0
-    },
-    {
-      "player": "Wozniacki C.",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.001
     }
   ],
   "matchups": {},
   "head_to_head": {},
+  "health_adjustments": [
+    {
+      "player": "Rybakina E.",
+      "elo_penalty": -100,
+      "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
+    }
+  ],
   "warnings": [
-    "Pre-tournament projection: no real draw/results exist yet, so 'player' is this project's internal ratings-csv name (not an ESPN displayName), and every entrant in the draw is included as alive."
+    "Pre-tournament projection: no real draw/results exist yet, so 'player' is this project's internal ratings-csv name (not an ESPN displayName), and every entrant in the draw is included as alive.",
+    "One or more players carry a manual health_adjustment (see overrides.yaml) - a disclosed human judgment call, not a statistical model output. Affected players are flagged individually under players[].health_adjustment; see also the top-level health_adjustments list."
   ]
 }

@@ -30,6 +30,22 @@ values across the whole train-era dataset (both ATP - the only tour with real ag
 
 Usage:
     python model/research/veteran_decline_test.py [--elo-percentile 90]
+
+FINAL VERDICT (2026-08-26): real effect, but fragile - NOT added to production as a standalone
+correction. At the primary threshold (age >= 33), the effect is genuinely held-out validated:
+train-era residual z = -3.43 (old-and-elite players win 76.4% vs. Elo's predicted 80.6%, a real
+overconfidence Elo has for this group), and a logit shift fitted on train era carries through to
+held-out test-era matches (n=504, 6 players) with a player-clustered bootstrap CI on log-loss
+improvement of [+0.0069, +0.0218] - excludes zero, a real improvement. But it degrades fast moving
+to stricter age cutoffs: age >= 35 (n=403 train / 377 held-out, 6/4 players) and age >= 37 (n=229
+train / 219 held-out, 4 players) both lose train-era significance (|z| = 1.80 and 1.70, under the
+1.96 threshold) even though the held-out CI still happens to exclude zero - a shrinking, noisier
+effect riding on fewer and fewer distinct players (as few as 4), not something to trust as a stable
+production correction. Superseded in practice by elo_lookback_test.py's decay3 variant (recency-
+weighted K-factor, no explicit age term), which was checked for whether it recovers this same
+signal implicitly just by discounting old form - i.e. this test's job became "does a *different*,
+already-justified mechanism absorb the effect" rather than "should this become its own correction."
+No separate age-decline adjustment was added to win_probability.py.
 """
 import argparse
 import math

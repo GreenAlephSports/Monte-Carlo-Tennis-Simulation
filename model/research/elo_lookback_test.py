@@ -43,6 +43,27 @@ names - Agassi, Federer, Nadal - who obviously aren't in a real 2026 draw).
 
 Usage:
     python model/research/elo_lookback_test.py
+
+FINAL VERDICT (2026-08-26): REJECTED - production's 5-year hard cutoff (elo_ratings.LOOKBACK_YEARS)
+stays unchanged. This file's own 2-tournament check (Cincinnati + Canadian Open, n=183) looked
+directionally promising enough to warrant a bigger test - so, applying the same standard that
+governs every correction in this series (a small-sample result doesn't get trusted until it's
+checked at scale), lookback_full_historical_test.py re-ran the same hard3-vs-baseline comparison
+across the FULL Kaggle history instead: ~2,800 tournament editions, both tours, held out on the
+most recent 20% chronologically (561 editions, 46778 player-perspective rows, 2021-2026). At that
+scale the 3yr-cutoff variant is a clean, statistically significant LOSS: combined held-out log-loss
+improvement -0.0007, 95% player-clustered bootstrap CI [-0.0012, -0.0003] (excludes zero, WORSE).
+Per-tour, ATP alone is not distinguishable from baseline but WTA alone is significantly worse
+(-0.0018, CI [-0.0025, -0.0011]). The full-period decade-by-decade breakdown (2000-2029, six eras)
+shows hard3 WORSE than baseline in 4 of 6 eras (2005-2009, 2010-2014, 2015-2019, 2020-2024, all CI
+excludes zero) and not distinguishable in the other 2 (2000-2004, 2025-2029) - never once
+significantly better in any single era. The one genuine nuance: an ATP-only age breakdown on the
+held-out era shows hard3 DOES significantly beat baseline for veteran players (age>=33: +0.0020,
+CI [+0.0001, +0.0038]) even as it loses overall - i.e. shortening the window helps the exact
+veteran-decline signal veteran_decline_test.py investigated directly, but hurts everyone else badly
+enough to be a net loss. Conclusion: the lookback-window mechanism is the wrong lever for that
+veteran-specific signal; see veteran_decline_test.py's own (also fragile) verdict for the direct
+treatment of that question instead. No change to elo_ratings.LOOKBACK_YEARS.
 """
 import math
 import sys
