@@ -1,0 +1,519 @@
+tournament: US Open
+year: 2026
+tour: WTA
+surface: Hard
+start_date: '2026-08-31'
+draw_size: 128
+players:
+- seed: 1
+  name: Barty A.
+  status: null
+  bye: false
+- seed: null
+  name: Sonmez Z.
+  status: null
+  bye: false
+- seed: null
+  name: Wang Xin.
+  status: null
+  bye: false
+- seed: null
+  name: Bucsa C.
+  status: null
+  bye: false
+- seed: null
+  name: Bejlek S.
+  status: null
+  bye: false
+- seed: null
+  name: Cocciaretto E.
+  status: null
+  bye: false
+- seed: null
+  name: Siegemund L.
+  status: null
+  bye: false
+- seed: 17
+  name: Jovic I.
+  status: null
+  bye: false
+- seed: 25
+  name: Hsieh S.W.
+  status: null
+  bye: false
+- seed: null
+  name: Ostapenko J.
+  status: null
+  bye: false
+- seed: null
+  name: Wildcard 1
+  status: WC
+  bye: false
+- seed: null
+  name: Wildcard 4
+  status: WC
+  bye: false
+- seed: null
+  name: Udvardy P.
+  status: null
+  bye: false
+- seed: null
+  name: Tauson C.
+  status: null
+  bye: false
+- seed: null
+  name: Zarazua R.
+  status: null
+  bye: false
+- seed: 9
+  name: Mboko V.
+  status: null
+  bye: false
+- seed: 13
+  name: Kostyuk M.
+  status: null
+  bye: false
+- seed: null
+  name: Fernandez L.
+  status: null
+  bye: false
+- seed: null
+  name: Parry D.
+  status: null
+  bye: false
+- seed: null
+  name: Qualifier 7
+  status: Q
+  bye: false
+- seed: null
+  name: Fernandez L.A.
+  status: null
+  bye: false
+- seed: null
+  name: Boulter K.
+  status: null
+  bye: false
+- seed: null
+  name: Qualifier 13
+  status: Q
+  bye: false
+- seed: 29
+  name: Krejcikova B.
+  status: null
+  bye: false
+- seed: 21
+  name: Eala A.
+  status: null
+  bye: false
+- seed: null
+  name: Qualifier 5
+  status: Q
+  bye: false
+- seed: null
+  name: Peterson R.
+  status: null
+  bye: false
+- seed: null
+  name: Snigur D.
+  status: null
+  bye: false
+- seed: null
+  name: Vondrousova M.
+  status: null
+  bye: false
+- seed: null
+  name: Kalinina A.
+  status: null
+  bye: false
+- seed: null
+  name: Tjen J.
+  status: null
+  bye: false
+- seed: 5
+  name: Gauff C.
+  status: null
+  bye: false
+- seed: 7
+  name: Andreeva M.
+  status: null
+  bye: false
+- seed: null
+  name: Putintseva Y.
+  status: null
+  bye: false
+- seed: null
+  name: Krueger A.
+  status: null
+  bye: false
+- seed: null
+  name: Tagger L.
+  status: null
+  bye: false
+- seed: null
+  name: Osorio M.
+  status: null
+  bye: false
+- seed: null
+  name: Qualifier 9
+  status: Q
+  bye: false
+- seed: null
+  name: Linette M.
+  status: null
+  bye: false
+- seed: 23
+  name: Mertens E.
+  status: null
+  bye: false
+- seed: 31
+  name: Navarro E.
+  status: null
+  bye: false
+- seed: null
+  name: Wildcard 3
+  status: WC
+  bye: false
+- seed: null
+  name: Qualifier 6
+  status: Q
+  bye: false
+- seed: null
+  name: Kasatkina D.
+  status: null
+  bye: false
+- seed: null
+  name: Wildcard 8
+  status: WC
+  bye: false
+- seed: null
+  name: Qualifier 12
+  status: Q
+  bye: false
+- seed: null
+  name: Zhang S.
+  status: null
+  bye: false
+- seed: 15
+  name: Bencic B.
+  status: null
+  bye: false
+- seed: 11
+  name: Svitolina E.
+  status: null
+  bye: false
+- seed: null
+  name: Gracheva V.
+  status: null
+  bye: false
+- seed: null
+  name: Qualifier 2
+  status: Q
+  bye: false
+- seed: null
+  name: Birrell K.
+  status: null
+  bye: false
+- seed: null
+  name: Frech M.
+  status: null
+  bye: false
+- seed: null
+  name: Qualifier 10
+  status: Q
+  bye: false
+- seed: null
+  name: Vidmanova D.
+  status: null
+  bye: false
+- seed: 27
+  name: Potapova A.
+  status: null
+  bye: false
+- seed: 19
+  name: Alexandrova E.
+  status: null
+  bye: false
+- seed: null
+  name: Sakkari M.
+  status: null
+  bye: false
+- seed: null
+  name: Oliynykova O.
+  status: null
+  bye: false
+- seed: null
+  name: Raducanu E.
+  status: null
+  bye: false
+- seed: null
+  name: Korpatsch T.
+  status: null
+  bye: false
+- seed: null
+  name: Pliskova Ka.
+  status: null
+  bye: false
+- seed: null
+  name: Qualifier 4
+  status: Q
+  bye: false
+- seed: 3
+  name: Rybakina E.
+  status: null
+  bye: false
+- seed: 4
+  name: Pegula J.
+  status: null
+  bye: false
+- seed: null
+  name: Maria T.
+  status: null
+  bye: false
+- seed: null
+  name: Sierra S.
+  status: null
+  bye: false
+- seed: null
+  name: Qualifier 1
+  status: Q
+  bye: false
+- seed: null
+  name: Marcinko P.
+  status: null
+  bye: false
+- seed: null
+  name: Danilovic O.
+  status: null
+  bye: false
+- seed: null
+  name: Golubic V.
+  status: null
+  bye: false
+- seed: 20
+  name: Cirstea S.
+  status: null
+  bye: false
+- seed: 28
+  name: Baptiste H.
+  status: null
+  bye: false
+- seed: null
+  name: Wildcard 7
+  status: WC
+  bye: false
+- seed: null
+  name: McNally C.
+  status: null
+  bye: false
+- seed: null
+  name: Wildcard 6
+  status: WC
+  bye: false
+- seed: null
+  name: Riske A.
+  status: null
+  bye: false
+- seed: null
+  name: Korneeva A.
+  status: null
+  bye: false
+- seed: null
+  name: Collins D.
+  status: null
+  bye: false
+- seed: 12
+  name: Anisimova A.
+  status: null
+  bye: false
+- seed: 16
+  name: Shnaider D.
+  status: null
+  bye: false
+- seed: null
+  name: Kontaveit A.
+  status: null
+  bye: false
+- seed: null
+  name: Wildcard 2
+  status: WC
+  bye: false
+- seed: null
+  name: Kudermetova V.
+  status: null
+  bye: false
+- seed: null
+  name: Wildcard 5
+  status: WC
+  bye: false
+- seed: null
+  name: Tararudee L.
+  status: null
+  bye: false
+- seed: null
+  name: Qualifier 16
+  status: Q
+  bye: false
+- seed: 32
+  name: Li A.
+  status: null
+  bye: false
+- seed: 24
+  name: Chwalinska M.
+  status: null
+  bye: false
+- seed: null
+  name: Stearns P.
+  status: null
+  bye: false
+- seed: null
+  name: Gibson T.
+  status: null
+  bye: false
+- seed: null
+  name: Starodubtseva Y.
+  status: null
+  bye: false
+- seed: null
+  name: Qualifier 15
+  status: Q
+  bye: false
+- seed: null
+  name: Qualifier 14
+  status: Q
+  bye: false
+- seed: null
+  name: Muguruza G.
+  status: null
+  bye: false
+- seed: 8
+  name: Noskova L.
+  status: null
+  bye: false
+- seed: 6
+  name: Swiatek I.
+  status: null
+  bye: false
+- seed: null
+  name: Joint M.
+  status: null
+  bye: false
+- seed: null
+  name: Cristian J.
+  status: null
+  bye: false
+- seed: null
+  name: Qualifier 8
+  status: Q
+  bye: false
+- seed: null
+  name: Valentova T.
+  status: null
+  bye: false
+- seed: null
+  name: Siniakova K.
+  status: null
+  bye: false
+- seed: null
+  name: Waltert S.
+  status: null
+  bye: false
+- seed: 22
+  name: Kalinskaya A.
+  status: null
+  bye: false
+- seed: 30
+  name: Bouzkova M.
+  status: null
+  bye: false
+- seed: null
+  name: Kessler M.
+  status: null
+  bye: false
+- seed: null
+  name: Bartunkova N.
+  status: null
+  bye: false
+- seed: null
+  name: Qualifier 11
+  status: Q
+  bye: false
+- seed: null
+  name: Ruzic A.
+  status: null
+  bye: false
+- seed: null
+  name: Samsonova L.
+  status: null
+  bye: false
+- seed: null
+  name: Timofeeva M.
+  status: null
+  bye: false
+- seed: 14
+  name: Osaka N.
+  status: null
+  bye: false
+- seed: 10
+  name: Muchova K.
+  status: null
+  bye: false
+- seed: null
+  name: Kartal S.
+  status: null
+  bye: false
+- seed: null
+  name: Qualifier 3
+  status: Q
+  bye: false
+- seed: null
+  name: Ruse E-G.
+  status: null
+  bye: false
+- seed: null
+  name: Vandewinkel H.
+  status: null
+  bye: false
+- seed: null
+  name: Parks A.
+  status: null
+  bye: false
+- seed: null
+  name: Sherif M.
+  status: null
+  bye: false
+- seed: 26
+  name: Keys M.
+  status: null
+  bye: false
+- seed: 18
+  name: Paolini J.
+  status: null
+  bye: false
+- seed: null
+  name: Rakhimova K.
+  status: null
+  bye: false
+- seed: null
+  name: Kraus S.
+  status: null
+  bye: false
+- seed: null
+  name: Jabeur O.
+  status: null
+  bye: false
+- seed: null
+  name: Vekic D.
+  status: null
+  bye: false
+- seed: null
+  name: Bondar A.
+  status: null
+  bye: false
+- seed: null
+  name: Wozniacki C.
+  status: null
+  bye: false
+- seed: 2
+  name: Sabalenka A.
+  status: null
+  bye: false

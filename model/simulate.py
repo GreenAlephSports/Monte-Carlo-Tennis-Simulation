@@ -163,7 +163,16 @@ def run_simulations_partial_round(starting_field, bye_players, known_results, su
 # of winner-vs-bye). A bye (is_bye[i] True) passes straight through to the next round unplayed;
 # two consecutive non-bye entries are this round's real match. For a round with no byes joining
 # (i.e. every round after byes have already been absorbed), pass is_bye as all False.
-def run_simulations_tracking_milestones(ordered_field, is_bye, known_results, surface, n_simulations, ratings_path):
+def run_simulations_tracking_milestones(ordered_field, is_bye, known_results, surface, n_simulations, ratings_path,
+                                         use_upset_boost=True):
+    """use_upset_boost defaults on, same as simulate_from_field/run_simulations_from_field - this
+    function used to build its own round loop from scratch instead of delegating to _play_round
+    with prior_beaten_elo threaded through, so the in-tournament upset-boost signal (see
+    UPSET_BOOST_ELO_GAP_THRESHOLD in win_probability.py) silently never applied to the p_champ/
+    p_sf/p_final probabilities bracket_export.py reports, even though every other simulation path
+    in this module (simulate_from_field and friends) has always carried it. Fixed by routing the
+    starting round through _play_round (which returns next_beaten_elo) and threading that same
+    dict into every subsequent round, exactly like simulate_from_field does."""
     champion_counts = Counter()
     semifinal_counts = Counter()
     final_counts = Counter()
@@ -184,6 +193,7 @@ def run_simulations_tracking_milestones(ordered_field, is_bye, known_results, su
                 final_counts[p] = n_simulations
 
     for _ in range(n_simulations):
+        prior_beaten_elo = {} if use_upset_boost else None
         players = []
         i = 0
         while i < n:
@@ -195,9 +205,26 @@ def run_simulations_tracking_milestones(ordered_field, is_bye, known_results, su
             known_winner = (known_results or {}).get(frozenset((player_a, player_b)))
             if known_winner is not None:
                 winner = known_winner
+                # a pinned real result still needs to seed prior_beaten_elo for later rounds -
+                # otherwise a real upset that already happened this tournament would never boost
+                # the winner's NEXT simulated match, same gap this whole fix closes for simulated
+                # rounds.
+                if use_upset_boost:
+                    elo_a = get_surface_elo(player_a, surface, ratings_path)
+                    elo_b = get_surface_elo(player_b, surface, ratings_path)
+                    prior_beaten_elo[winner] = elo_b if winner == player_a else elo_a
             else:
                 prob_a = win_probability(player_a, player_b, surface, ratings_path)
+                if use_upset_boost:
+                    elo_a = get_surface_elo(player_a, surface, ratings_path)
+                    elo_b = get_surface_elo(player_b, surface, ratings_path)
+                    boost_a = UPSET_BOOST_LOGIT_SHIFT if _beat_a_big_favorite(player_a, elo_a, prior_beaten_elo) else 0.0
+                    boost_b = UPSET_BOOST_LOGIT_SHIFT if _beat_a_big_favorite(player_b, elo_b, prior_beaten_elo) else 0.0
+                    if boost_a != boost_b:
+                        prob_a = apply_logit_shift(prob_a, boost_a - boost_b)
                 winner = player_a if random.random() < prob_a else player_b
+                if use_upset_boost:
+                    prior_beaten_elo[winner] = elo_b if winner == player_a else elo_a
             players.append(winner)
             i += 2
         while True:
@@ -210,7 +237,8 @@ def run_simulations_tracking_milestones(ordered_field, is_bye, known_results, su
             if len(players) == 1:
                 champion_counts[players[0]] += 1
                 break
-            players, _ = _play_round(players, surface, ratings_path)
+            players, prior_beaten_elo = _play_round(
+                players, surface, ratings_path, prior_beaten_elo=prior_beaten_elo)
     return champion_counts, semifinal_counts, final_counts
 
 
