@@ -10,7 +10,11 @@ players:
   status: null
   bye: false
 - seed: null
-  name: Etcheverry T. M.
+  name: Van Assche L.
+  status: null
+  bye: false
+- seed: null
+  name: Merida Aguilar D.
   status: null
   bye: false
 - seed: null
@@ -18,31 +22,27 @@ players:
   status: null
   bye: false
 - seed: null
-  name: Munar J.
+  name: Khachanov K.
   status: null
   bye: false
 - seed: null
-  name: Berrettini M.
+  name: Choinski J.
   status: null
   bye: false
 - seed: null
-  name: Bellucci M.
-  status: null
-  bye: false
-- seed: null
-  name: Shapovalov D.
+  name: Atmane T.
   status: null
   bye: false
 - seed: 17
-  name: Rublev A.
+  name: Mensik J.
   status: null
   bye: false
 - seed: 25
-  name: Cerundolo F.
+  name: Paul T.
   status: null
   bye: false
 - seed: null
-  name: Buse I.
+  name: Arnaldi M.
   status: null
   bye: false
 - seed: null
@@ -54,15 +54,15 @@ players:
   status: WC
   bye: false
 - seed: null
-  name: Svajda Z.
+  name: Molcan A.
   status: null
   bye: false
 - seed: null
-  name: Cerundolo J.M.
+  name: Quinn E.
   status: null
   bye: false
 - seed: null
-  name: Wong C.
+  name: Shimabukuro S.
   status: null
   bye: false
 - seed: 9
@@ -70,15 +70,15 @@ players:
   status: null
   bye: false
 - seed: 13
-  name: Lehecka J.
+  name: Tien L.
   status: null
   bye: false
 - seed: null
-  name: Fucsovics M.
+  name: Bellucci M.
   status: null
   bye: false
 - seed: null
-  name: Brooksby J.
+  name: Kopriva V.
   status: null
   bye: false
 - seed: null
@@ -86,11 +86,11 @@ players:
   status: Q
   bye: false
 - seed: null
-  name: Fery A.
+  name: Norrie C.
   status: null
   bye: false
 - seed: null
-  name: Cilic M.
+  name: Ugo Carabelli C.
   status: null
   bye: false
 - seed: null
@@ -98,11 +98,11 @@ players:
   status: Q
   bye: false
 - seed: 29
-  name: Etcheverry T.
+  name: Tabilo A.
   status: null
   bye: false
 - seed: 21
-  name: Fils A.
+  name: Davidovich Fokina A.
   status: null
   bye: false
 - seed: null
@@ -110,23 +110,23 @@ players:
   status: Q
   bye: false
 - seed: null
-  name: Purcell M.
+  name: Trungelliti M.
   status: null
   bye: false
 - seed: null
-  name: Van Assche L.
+  name: Tirante T.A.
   status: null
   bye: false
 - seed: null
-  name: Michelsen A.
+  name: Collignon R.
   status: null
   bye: false
 - seed: null
-  name: Moutet C.
+  name: Hanfmann Y.
   status: null
   bye: false
 - seed: null
-  name: Atmane T.
+  name: Berrettini M.
   status: null
   bye: false
 - seed: 5
@@ -138,19 +138,19 @@ players:
   status: null
   bye: false
 - seed: null
-  name: Mpetshi G.
+  name: Duckworth J.
   status: null
   bye: false
 - seed: null
-  name: Kecmanovic M.
+  name: Burruchaga R.
   status: null
   bye: false
 - seed: null
-  name: Halys Q.
+  name: Baez S.
   status: null
   bye: false
 - seed: null
-  name: Altmaier D.
+  name: Van De Zandschulp B.
   status: null
   bye: false
 - seed: null
@@ -158,15 +158,15 @@ players:
   status: Q
   bye: false
 - seed: null
-  name: Kopriva V.
+  name: Majchrzak K.
   status: null
   bye: false
 - seed: 23
-  name: Tiafoe F.
+  name: Nakashima B.
   status: null
   bye: false
 - seed: 31
-  name: Bergs Z.
+  name: Etcheverry T.
   status: null
   bye: false
 - seed: null
@@ -178,7 +178,7 @@ players:
   status: Q
   bye: false
 - seed: null
-  name: Ugo Carabelli C.
+  name: Cazaux A.
   status: null
   bye: false
 - seed: null
@@ -190,11 +190,11 @@ players:
   status: Q
   bye: false
 - seed: null
-  name: Marozsan F.
+  name: Moutet C.
   status: null
   bye: false
 - seed: 15
-  name: Musetti L.
+  name: Ruud C.
   status: null
   bye: false
 - seed: 11
@@ -202,7 +202,7 @@ players:
   status: null
   bye: false
 - seed: null
-  name: Griekspoor T.
+  name: Kecmanovic M.
   status: null
   bye: false
 - seed: null
@@ -210,11 +210,11 @@ players:
   status: Q
   bye: false
 - seed: null
-  name: Choinski J.
+  name: Medjedovic H.
   status: null
   bye: false
 - seed: null
-  name: Tsitsipas S.
+  name: Munar J.
   status: null
   bye: false
 - seed: null
@@ -222,35 +222,35 @@ players:
   status: Q
   bye: false
 - seed: null
-  name: Prizmic D.
+  name: Kovacevic A.
   status: null
   bye: false
 - seed: 27
-  name: Tabilo A.
+  name: Fonseca J.
   status: null
   bye: false
 - seed: 19
-  name: Darderi L.
+  name: Vacherot V.
   status: null
   bye: false
 - seed: null
-  name: Khachanov K.
+  name: Korda S.
   status: null
   bye: false
 - seed: null
-  name: Hanfmann Y.
+  name: Cerundolo J.M.
   status: null
   bye: false
 - seed: null
-  name: Tirante T.A.
+  name: Borges N.
   status: null
   bye: false
 - seed: null
-  name: Mpetshi Perricard G.
+  name: Mannarino A.
   status: null
   bye: false
 - seed: null
-  name: Landaluce M.
+  name: Machac T.
   status: null
   bye: false
 - seed: null
@@ -266,11 +266,11 @@ players:
   status: null
   bye: false
 - seed: null
-  name: Shevchenko A.
+  name: Misolic F.
   status: null
   bye: false
 - seed: null
-  name: Walton A.
+  name: Krajinovic F.
   status: null
   bye: false
 - seed: null
@@ -278,23 +278,23 @@ players:
   status: Q
   bye: false
 - seed: null
-  name: Molcan A.
+  name: Faria J.
   status: null
   bye: false
 - seed: null
-  name: Damm M.
+  name: Hijikata R.
   status: null
   bye: false
 - seed: null
-  name: Van De Zandschulp B.
+  name: Mpetshi Perricard G.
   status: null
   bye: false
 - seed: 20
-  name: Davidovich Fokina A.
+  name: Darderi L.
   status: null
   bye: false
 - seed: 28
-  name: Humbert U.
+  name: Rinderknech A.
   status: null
   bye: false
 - seed: null
@@ -302,7 +302,7 @@ players:
   status: WC
   bye: false
 - seed: null
-  name: Faria J.
+  name: Opelka R.
   status: null
   bye: false
 - seed: null
@@ -310,27 +310,27 @@ players:
   status: WC
   bye: false
 - seed: null
-  name: Norrie C.
+  name: Bergs Z.
   status: null
   bye: false
 - seed: null
-  name: Vukic A.
+  name: Purcell M.
   status: null
   bye: false
 - seed: null
-  name: Hurkacz H.
+  name: Landaluce M.
   status: null
   bye: false
 - seed: 12
-  name: Tien L.
+  name: Rune H.
   status: null
   bye: false
 - seed: 16
-  name: Mensik J.
+  name: Musetti L.
   status: null
   bye: false
 - seed: null
-  name: Shimabukuro S.
+  name: Svajda Z.
   status: null
   bye: false
 - seed: null
@@ -338,7 +338,7 @@ players:
   status: WC
   bye: false
 - seed: null
-  name: Collignon R.
+  name: Buse I.
   status: null
   bye: false
 - seed: null
@@ -346,7 +346,7 @@ players:
   status: WC
   bye: false
 - seed: null
-  name: Sonego L.
+  name: Fucsovics M.
   status: null
   bye: false
 - seed: null
@@ -354,23 +354,23 @@ players:
   status: Q
   bye: false
 - seed: 32
-  name: Arnaldi M.
+  name: Blockx A.
   status: null
   bye: false
 - seed: 24
-  name: Paul T.
+  name: Tiafoe F.
   status: null
   bye: false
 - seed: null
-  name: Burruchaga R.
+  name: Halys Q.
   status: null
   bye: false
 - seed: null
-  name: Medjedovic H.
+  name: Vallejo D.
   status: null
   bye: false
 - seed: null
-  name: Duckworth J.
+  name: Varillas J. P.
   status: null
   bye: false
 - seed: null
@@ -382,7 +382,7 @@ players:
   status: Q
   bye: false
 - seed: null
-  name: Spizzirri E.
+  name: Nava E.
   status: null
   bye: false
 - seed: 8
@@ -394,11 +394,11 @@ players:
   status: null
   bye: false
 - seed: null
-  name: Opelka R.
+  name: Carreno Busta P.
   status: null
   bye: false
 - seed: null
-  name: Navone M.
+  name: Michelsen A.
   status: null
   bye: false
 - seed: null
@@ -406,31 +406,31 @@ players:
   status: Q
   bye: false
 - seed: null
-  name: Cazaux A.
+  name: Hurkacz H.
   status: null
   bye: false
 - seed: null
-  name: Baez S.
+  name: Tsitsipas S.
   status: null
   bye: false
 - seed: null
-  name: Taberner C.
+  name: Wong C.
   status: null
   bye: false
 - seed: 22
-  name: Nakashima B.
+  name: Fils A.
   status: null
   bye: false
 - seed: 30
-  name: Blockx A.
+  name: Humbert U.
   status: null
   bye: false
 - seed: null
-  name: Mager G.
+  name: Marozsan F.
   status: null
   bye: false
 - seed: null
-  name: Borges N.
+  name: Navone M.
   status: null
   bye: false
 - seed: null
@@ -438,19 +438,19 @@ players:
   status: Q
   bye: false
 - seed: null
-  name: Vallejo D.
+  name: Mager G.
   status: null
   bye: false
 - seed: null
-  name: Mannarino A.
+  name: Shapovalov D.
   status: null
   bye: false
 - seed: null
-  name: Hijikata R.
+  name: Mpetshi G.
   status: null
   bye: false
 - seed: 14
-  name: Ruud C.
+  name: Lehecka J.
   status: null
   bye: false
 - seed: 10
@@ -458,7 +458,7 @@ players:
   status: null
   bye: false
 - seed: null
-  name: Machac T.
+  name: Etcheverry T. M.
   status: null
   bye: false
 - seed: null
@@ -466,51 +466,51 @@ players:
   status: Q
   bye: false
 - seed: null
-  name: Royer V.
+  name: Brooksby J.
   status: null
   bye: false
 - seed: null
-  name: Trungelliti M.
+  name: Sonego L.
   status: null
   bye: false
 - seed: null
-  name: Carreno Busta P.
+  name: Griekspoor T.
   status: null
   bye: false
 - seed: null
-  name: Varillas J. P.
+  name: Cilic M.
   status: null
   bye: false
 - seed: 26
-  name: Rinderknech A.
+  name: Cerundolo F.
   status: null
   bye: false
 - seed: 18
-  name: Vacherot V.
+  name: Rublev A.
   status: null
   bye: false
 - seed: null
-  name: Krajinovic F.
+  name: Shevchenko A.
   status: null
   bye: false
 - seed: null
-  name: Kovacevic A.
+  name: Spizzirri E.
   status: null
   bye: false
 - seed: null
-  name: Majchrzak K.
+  name: Altmaier D.
   status: null
   bye: false
 - seed: null
-  name: Merida Aguilar D.
-  status: null
-  bye: false
-- seed: null
-  name: Misolic F.
+  name: Fery A.
   status: null
   bye: false
 - seed: null
   name: Giron M.
+  status: null
+  bye: false
+- seed: null
+  name: Royer V.
   status: null
   bye: false
 - seed: 2
