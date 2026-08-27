@@ -89,6 +89,11 @@ WTA_NAME_ALIASES = {
     "Wang X.": "Wang Xin.",
     "Pliskova K.": "Pliskova Ka.",
     "Osorio C.": "Osorio M.",
+    # self-alias: "Maria Timofeeva" is otherwise ambiguous against a separate real player whose
+    # ratings-csv entry is "Maria T." (lastname "Maria", first-initial "T.") - the same surname/
+    # given-name string read the other way round. Without this, match_espn_name_to_draw finds two
+    # candidates and correctly refuses to guess.
+    "Timofeeva M.": "Timofeeva M.",
 }
 
 

@@ -25,6 +25,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent / "research"))  # projected_draw_builder's overrides machinery
 
 from bracket import (  # noqa: E402
     TOUR_CONFIG, get_matchups, match_draw_to_ratings, order_by_draw_position, split_byes,
@@ -45,6 +46,10 @@ from win_probability import win_probability  # noqa: E402
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
 ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
 SEED = 42
+# same path projected_draw_builder.DEFAULT_OVERRIDES_PATH resolves to - redefined here (rather
+# than imported) because that module can't be imported at module load time, see the comment on
+# the lazy import inside export_bracket_json below.
+DEFAULT_OVERRIDES_PATH = Path(__file__).resolve().parent.parent / "overrides.yaml"
 ODDS_API_BASE = "https://api.the-odds-api.com/v4"
 
 
@@ -400,7 +405,15 @@ def resolve_qualifier_placeholders(players, byes, tournament_matches, ratings_df
     return updated_players, warnings
 
 
-def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATIONS, seed=SEED, dates=None):
+def export_bracket_json(
+    bracket_path, output_path=None, n_simulations=N_SIMULATIONS, seed=SEED, dates=None,
+    overrides_path=DEFAULT_OVERRIDES_PATH,
+):
+    # lazy import: projected_draw_builder.py -> calibration_log.py -> live_calibration_check.py
+    # -> `from bracket_export import resolve_qualifier_placeholders` - a real circular import if
+    # this were a top-level import in this module instead.
+    from projected_draw_builder import apply_health_adjustments, health_check_top_seeds, load_overrides
+
     bracket = load_bracket_yaml(bracket_path)
     players = order_by_draw_position(bracket.players)
     byes = [p.bye for p in players]
@@ -410,6 +423,18 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
     matches_history = load_matches_for_tour(bracket.tour)
     ratings_df = calculate_elo_ratings(matches_history, bracket.start_date)
     ratings_df = ratings_df.sort_values("overall_elo", ascending=False).reset_index(drop=True)
+
+    # manual, disclosed judgment-call adjustments (e.g. a known injury Elo structurally can't see -
+    # see load_overrides/apply_health_adjustments docstrings) - same mechanism
+    # simulate_projected_draw already applies for a pre-tournament projection, wired in here too so
+    # a REAL/live bracket export doesn't silently ignore it. Resolved through the same fuzzy
+    # tiered matcher withdrawals use, errors loudly on an unresolved name rather than no-op'ing.
+    overrides = load_overrides(overrides_path, bracket.tour)
+    ratings_df, health_adjustments_applied = apply_health_adjustments(ratings_df, overrides["health_adjustments"])
+    if health_adjustments_applied:
+        print(f"\nHealth adjustment(s) applied ({len(health_adjustments_applied)}):")
+        for adj in health_adjustments_applied:
+            print(f"  {adj['player']}: {adj['elo_penalty']:+.0f} Elo - {adj['reason']}")
 
     # dates is passed straight through to fetch_scoreboard - ESPN's undated scoreboard defaults
     # to "today" server-side, which only finds a tournament while it's still live/recent (see
@@ -438,6 +463,14 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
     unmatched = [r for r in resolutions if r["tier"] is None]
     if unmatched:
         raise RuntimeError(f"Unmatched bracket names: {[r['name'] for r in unmatched]}")
+
+    # pre-draw health check: top 20 seeds, flagged if their most recent TRACKED match ended in a
+    # retirement/walkover - visibility only (see health_check_top_seeds docstring), same check
+    # simulate_projected_draw already runs for a projected bracket, now run here too so a real/live
+    # bracket surfaces the same signal the moment it's built, not just a pre-tournament projection.
+    seeded_players = [(p.seed, name) for p, name in zip(players, draw)]
+    health_check_top_seeds(seeded_players, top_n=20)
+
     # win_probability() reads Elo from this file, not from ratings_df in memory.
     tour_config.ratings_path.parent.mkdir(parents=True, exist_ok=True)
     ratings_df.to_csv(tour_config.ratings_path, index=False)
@@ -598,6 +631,7 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
         ordered_field, is_bye, partial_known_results, bracket.surface, n_simulations, tour_config.ratings_path
     )
 
+    health_adjustment_by_player = {adj["player"]: adj for adj in health_adjustments_applied}
     players_out = []
     for draw_name in alive_draw_names:
         espn_name = draw_to_espn[draw_name]
@@ -610,6 +644,12 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
             "p_champ": round(champ_counts.get(draw_name, 0) / n_simulations, 3),
             "p_sf": round(sf_counts.get(draw_name, 0) / n_simulations, 3),
             "p_final": round(final_counts.get(draw_name, 0) / n_simulations, 3),
+            # present ONLY for a player with an active manual override, so this is never silently
+            # indistinguishable from an unadjusted model output - see apply_health_adjustments.
+            **({"health_adjustment": {
+                "elo_penalty": health_adjustment_by_player[draw_name]["elo_penalty"],
+                "reason": health_adjustment_by_player[draw_name]["reason"],
+            }} if draw_name in health_adjustment_by_player else {}),
         })
     players_out.sort(key=lambda r: -r["p_champ"])
 
@@ -631,6 +671,14 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
             )
             head_to_head[f"{name_a}|{name_b}"] = round(prob_a, 3)
 
+    if health_adjustments_applied:
+        warnings = warnings + [
+            "One or more players carry a manual health_adjustment (see overrides.yaml) - a "
+            "disclosed human judgment call, not a statistical model output. Affected players are "
+            "flagged individually under players[].health_adjustment; see also the top-level "
+            "health_adjustments list."
+        ]
+
     tour_word = "men" if bracket.tour == "ATP" else "women"
     tournament_slug = bracket.tournament.lower().replace(" ", "-")
     output = {
@@ -643,6 +691,7 @@ def export_bracket_json(bracket_path, output_path=None, n_simulations=N_SIMULATI
         "players": players_out,
         "matchups": matchups,
         "head_to_head": head_to_head,
+        "health_adjustments": health_adjustments_applied,
         "warnings": warnings,
     }
 
@@ -665,11 +714,17 @@ if __name__ == "__main__":
     parser.add_argument("--dates", default=None,
                          help="YYYYMMDD, passed to ESPN's ?dates= - needed for an already-"
                               "concluded event, which the undated (\"today\") scoreboard can't find")
+    parser.add_argument(
+        "--overrides", type=Path, default=DEFAULT_OVERRIDES_PATH,
+        help="overrides YAML for manual health_adjustments (withdrawals/seed/name overrides don't "
+             "apply here - those are build-time only, see espn_bracket.py) - see load_overrides "
+             "docstring; pass a nonexistent path to skip")
     args = parser.parse_args()
 
     try:
         output_path, output = export_bracket_json(
-            args.bracket_path, args.output, args.simulations, args.seed, dates=args.dates
+            args.bracket_path, args.output, args.simulations, args.seed, dates=args.dates,
+            overrides_path=args.overrides,
         )
     except (BracketValidationError, LiveScoresError, RuntimeError) as e:
         print(f"ERROR: {e}", file=sys.stderr)

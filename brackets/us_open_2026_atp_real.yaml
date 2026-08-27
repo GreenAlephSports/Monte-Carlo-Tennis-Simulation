@@ -1,0 +1,519 @@
+tournament: US Open
+year: 2026
+tour: ATP
+surface: Hard
+start_date: '2026-08-30'
+draw_size: 128
+players:
+- seed: 1
+  name: Zverev A.
+  status: null
+  bye: false
+- seed: null
+  name: Sonego L.
+  status: null
+  bye: false
+- seed: null
+  name: Halys Q.
+  status: null
+  bye: false
+- seed: null
+  name: Diaz Acosta F.
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 1)
+  status: null
+  bye: false
+- seed: null
+  name: Popyrin A.
+  status: null
+  bye: false
+- seed: null
+  name: Hanfmann Y.
+  status: null
+  bye: false
+- seed: 25
+  name: Tabilo A.
+  status: null
+  bye: false
+- seed: 21
+  name: Darderi L.
+  status: null
+  bye: false
+- seed: null
+  name: Guerrieri A.
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 6)
+  status: null
+  bye: false
+- seed: null
+  name: Royer V.
+  status: null
+  bye: false
+- seed: null
+  name: Sweeny D.
+  status: null
+  bye: false
+- seed: null
+  name: Moutet C.
+  status: null
+  bye: false
+- seed: null
+  name: Fery A.
+  status: null
+  bye: false
+- seed: 13
+  name: Musetti L.
+  status: null
+  bye: false
+- seed: 12
+  name: Jodar R.
+  status: null
+  bye: false
+- seed: null
+  name: Kokkinakis T.
+  status: null
+  bye: false
+- seed: null
+  name: Marozsan F.
+  status: null
+  bye: false
+- seed: null
+  name: Zheng M.
+  status: null
+  bye: false
+- seed: null
+  name: Svajda Z.
+  status: null
+  bye: false
+- seed: null
+  name: Altmaier D.
+  status: null
+  bye: false
+- seed: null
+  name: Cerundolo J.M.
+  status: null
+  bye: false
+- seed: 19
+  name: Ruud C.
+  status: null
+  bye: false
+- seed: 31
+  name: Bergs Z.
+  status: null
+  bye: false
+- seed: null
+  name: Taberner C.
+  status: null
+  bye: false
+- seed: null
+  name: De Jong J.
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 3)
+  status: null
+  bye: false
+- seed: null
+  name: Choinski J.
+  status: null
+  bye: false
+- seed: null
+  name: Van De Zandschulp B.
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 5)
+  status: null
+  bye: false
+- seed: 6
+  name: De Minaur A.
+  status: null
+  bye: false
+- seed: 3
+  name: Auger-Aliassime F.
+  status: null
+  bye: false
+- seed: null
+  name: Hijikata R.
+  status: null
+  bye: false
+- seed: null
+  name: Burruchaga R.
+  status: null
+  bye: false
+- seed: null
+  name: Khachanov K.
+  status: null
+  bye: false
+- seed: null
+  name: Molcan A.
+  status: null
+  bye: false
+- seed: null
+  name: Bonzi B.
+  status: null
+  bye: false
+- seed: null
+  name: Giron M.
+  status: null
+  bye: false
+- seed: 32
+  name: Buse I.
+  status: null
+  bye: false
+- seed: 17
+  name: Mensik J.
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 12)
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 9)
+  status: null
+  bye: false
+- seed: null
+  name: Mpetshi Perricard G.
+  status: null
+  bye: false
+- seed: null
+  name: Vallejo D.
+  status: null
+  bye: false
+- seed: null
+  name: Monfils G.
+  status: null
+  bye: false
+- seed: null
+  name: Borges N.
+  status: null
+  bye: false
+- seed: 14
+  name: Tien L.
+  status: null
+  bye: false
+- seed: 9
+  name: Fritz T.
+  status: null
+  bye: false
+- seed: null
+  name: Blanch D.
+  status: null
+  bye: false
+- seed: null
+  name: Bellucci M.
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 4)
+  status: null
+  bye: false
+- seed: null
+  name: Ugo Carabelli C.
+  status: null
+  bye: false
+- seed: null
+  name: Struff J.L.
+  status: null
+  bye: false
+- seed: null
+  name: Misolic F.
+  status: null
+  bye: false
+- seed: 24
+  name: Cerundolo F.
+  status: null
+  bye: false
+- seed: 28
+  name: Blockx A.
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 11)
+  status: null
+  bye: false
+- seed: null
+  name: Shang J.
+  status: null
+  bye: false
+- seed: null
+  name: Trungelliti M.
+  status: null
+  bye: false
+- seed: null
+  name: Comesana F.
+  status: null
+  bye: false
+- seed: 5
+  name: Cobolli F.
+  status: null
+  bye: false
+- seed: 7
+  name: Medvedev D.
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 10)
+  status: null
+  bye: false
+- seed: null
+  name: Gorzny S.
+  status: null
+  bye: false
+- seed: null
+  name: Collignon R.
+  status: null
+  bye: false
+- seed: null
+  name: Munar J.
+  status: null
+  bye: false
+- seed: null
+  name: Atmane T.
+  status: null
+  bye: false
+- seed: null
+  name: Shimabukuro S.
+  status: null
+  bye: false
+- seed: 26
+  name: Rinderknech A.
+  status: null
+  bye: false
+- seed: 22
+  name: Vacherot V.
+  status: null
+  bye: false
+- seed: null
+  name: Kovacevic A.
+  status: null
+  bye: false
+- seed: null
+  name: Majchrzak K.
+  status: null
+  bye: false
+- seed: null
+  name: Medjedovic H.
+  status: null
+  bye: false
+- seed: null
+  name: Vukic A.
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 13)
+  status: null
+  bye: false
+- seed: null
+  name: Damm M.
+  status: null
+  bye: false
+- seed: 11
+  name: Tiafoe F.
+  status: null
+  bye: false
+- seed: 16
+  name: Nakashima B.
+  status: null
+  bye: false
+- seed: null
+  name: Baez S.
+  status: null
+  bye: false
+- seed: null
+  name: Michelsen A.
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 14)
+  status: null
+  bye: false
+- seed: null
+  name: Merida Aguilar D.
+  status: null
+  bye: false
+- seed: null
+  name: Fucsovics M.
+  status: null
+  bye: false
+- seed: null
+  name: Cilic M.
+  status: null
+  bye: false
+- seed: 23
+  name: Rublev A.
+  status: null
+  bye: false
+- seed: 27
+  name: Etcheverry T.
+  status: null
+  bye: false
+- seed: null
+  name: Kopriva V.
+  status: null
+  bye: false
+- seed: null
+  name: Landaluce M.
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 2)
+  status: null
+  bye: false
+- seed: null
+  name: Berrettini M.
+  status: null
+  bye: false
+- seed: null
+  name: Wawrinka S.
+  status: null
+  bye: false
+- seed: null
+  name: Navone M.
+  status: null
+  bye: false
+- seed: 4
+  name: Djokovic N.
+  status: null
+  bye: false
+- seed: 8
+  name: Shelton B.
+  status: null
+  bye: false
+- seed: null
+  name: Griekspoor T.
+  status: null
+  bye: false
+- seed: null
+  name: Dzumhur D.
+  status: null
+  bye: false
+- seed: null
+  name: Hurkacz H.
+  status: null
+  bye: false
+- seed: null
+  name: Kecmanovic M.
+  status: null
+  bye: false
+- seed: null
+  name: Shapovalov D.
+  status: null
+  bye: false
+- seed: null
+  name: Van Assche L.
+  status: null
+  bye: false
+- seed: 29
+  name: Norrie C.
+  status: null
+  bye: false
+- seed: 18
+  name: Lehecka J.
+  status: null
+  bye: false
+- seed: null
+  name: Carreno Busta P.
+  status: null
+  bye: false
+- seed: null
+  name: Barrios Vera T.
+  status: null
+  bye: false
+- seed: null
+  name: Machac T.
+  status: null
+  bye: false
+- seed: null
+  name: Wong C.
+  status: null
+  bye: false
+- seed: null
+  name: Kennedy J.
+  status: null
+  bye: false
+- seed: null
+  name: Tsitsipas S.
+  status: null
+  bye: false
+- seed: 10
+  name: Fils A.
+  status: null
+  bye: false
+- seed: 15
+  name: Bublik A.
+  status: null
+  bye: false
+- seed: null
+  name: Wolf J.J.
+  status: null
+  bye: false
+- seed: null
+  name: Tirante T.A.
+  status: null
+  bye: false
+- seed: null
+  name: Mannarino A.
+  status: null
+  bye: false
+- seed: null
+  name: Prizmic D.
+  status: null
+  bye: false
+- seed: null
+  name: Shevchenko A.
+  status: null
+  bye: false
+- seed: null
+  name: Dimitrov G.
+  status: null
+  bye: false
+- seed: 20
+  name: Paul T.
+  status: null
+  bye: false
+- seed: 30
+  name: Arnaldi M.
+  status: null
+  bye: false
+- seed: null
+  name: Duckworth J.
+  status: null
+  bye: false
+- seed: null
+  name: Wu Y.
+  status: null
+  bye: false
+- seed: null
+  name: Walton A.
+  status: null
+  bye: false
+- seed: null
+  name: Faria J.
+  status: null
+  bye: false
+- seed: null
+  name: Brooksby J.
+  status: null
+  bye: false
+- seed: null
+  name: Safiullin R.
+  status: null
+  bye: false
+- seed: 2
+  name: Alcaraz C.
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 7)
+  status: null
+  bye: false
+- seed: null
+  name: TBD (Qualifier 8)
+  status: null
+  bye: false
