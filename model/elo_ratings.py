@@ -127,6 +127,48 @@ DECAY3_FULL_WEIGHT_YEARS = 3.0
 DECAY3_HALF_LIFE_YEARS = 2.0
 
 
+# Empirically-fit surface-mismatch damping - see model/research/surface_mismatch_damping_fit.py's
+# FINAL VERDICT: a player's blended surface_elo (above) can diverge sharply from their overall_elo
+# even after the SURFACE_BLEND_K blend, and tonight's real-market tests (surface_mismatch_market_
+# test.py / surface_mismatch_raw_elo_test.py, 1,749 real 2026-season matches against real closing
+# odds) found that divergence is systematically MISCALIBRATED in both directions once
+# |surface_elo - overall_elo| clears SURFACE_MISMATCH_THRESHOLD: the model is overconfident about
+# "surface specialists" (actual win rate well below assigned probability) and underconfident about
+# players with a surface-specific weakness (actual well above assigned) - and this is a raw-Elo/
+# blend property, not something the rank-gap/layoff/recent-form/Platt correction stack creates
+# (confirmed by rerunning with every correction disabled: nearly identical -13.2%/+9.8% gaps).
+#
+# A magnitude-scaled correction was tested and NOT supported: regressing the miscalibration size on
+# |mismatch| itself gave a non-significant slope (z=+0.98, n=772) - real data doesn't back a
+# proportional damping function, only a flat one past the threshold. Fit via the same full-historical
+# (both tours, ~177k train-era player-perspective rows), frozen-per-tournament-edition-Elo,
+# chronological 80/20 split convention as every other correction here - a grid search over flat
+# SURFACE_MISMATCH_DAMP_POINTS values (pulling any excess above the threshold back toward overall_elo
+# by a fixed number of points, floored so it never crosses back under the threshold) minimized
+# train-era log-loss at 90. Held out (test era, both tours): affected-subset (|mismatch|>=50, n=17,479)
+# log-loss improvement +0.0083 (95% player-clustered bootstrap CI [+0.0062,+0.0103]) - excludes zero
+# in both tours individually (ATP +0.0086 CI[+0.0056,+0.0116], WTA +0.0078 CI[+0.0052,+0.0104]).
+# Calibration gap in the specialist direction shrank from -9.2% (CI[-12.3%,-6.3%]) to -4.6%
+# (CI[-7.7%,-1.9%]) - improved, not fully closed, an expected tradeoff of a flat (not magnitude-
+# scaled) correction; the mismatch-weakness direction closed cleanly, from +2.7% (CI[+1.9%,+3.4%])
+# to -0.3% (CI[-1.1%,+0.4%], no longer significant). The unaffected population (|mismatch|<50) also
+# showed a small but real log-loss gain in this backtest - NOT a bug: a match's predicted probability
+# depends on BOTH players' elo, so even a player with a small mismatch of their own benefits when
+# their OPPONENT'S large mismatch gets damped.
+SURFACE_MISMATCH_THRESHOLD = 50.0
+SURFACE_MISMATCH_DAMP_POINTS = 90.0
+
+
+def _damp_surface_mismatch(surface_elo: float, overall_elo: float) -> float:
+    mismatch = surface_elo - overall_elo
+    abs_mismatch = abs(mismatch)
+    if abs_mismatch <= SURFACE_MISMATCH_THRESHOLD:
+        return surface_elo
+    damped_abs = max(abs_mismatch - SURFACE_MISMATCH_DAMP_POINTS, SURFACE_MISMATCH_THRESHOLD)
+    sign = 1.0 if mismatch > 0 else -1.0
+    return overall_elo + sign * damped_abs
+
+
 def _decay3_weighted_window(df: pd.DataFrame, cutoff_date):
     """decay3's mechanism, ported unchanged from model/research/elo_lookback_test.py's validated
     calculate_elo_variant (lookback_years=None, decay_half_life_years=DECAY3_HALF_LIFE_YEARS,
@@ -226,6 +268,7 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date, tour: str = None):
             raw_elo = surface_elo[surface].get(player, STARTING_ELO)
             surface_weight = match_count / (match_count + SURFACE_BLEND_K)
             final_elo = surface_weight * raw_elo + (1 - surface_weight) * overall_elo[player]
+            final_elo = _damp_surface_mismatch(final_elo, overall_elo[player])
             record[f"{surface.lower()}_elo"] = final_elo
             record[f"{surface.lower()}_matches"] = match_count
         records.append(record)
