@@ -41,11 +41,16 @@ to stricter age cutoffs: age >= 35 (n=403 train / 377 held-out, 6/4 players) and
 train / 219 held-out, 4 players) both lose train-era significance (|z| = 1.80 and 1.70, under the
 1.96 threshold) even though the held-out CI still happens to exclude zero - a shrinking, noisier
 effect riding on fewer and fewer distinct players (as few as 4), not something to trust as a stable
-production correction. Superseded in practice by elo_lookback_test.py's decay3 variant (recency-
-weighted K-factor, no explicit age term), which was checked for whether it recovers this same
-signal implicitly just by discounting old form - i.e. this test's job became "does a *different*,
-already-justified mechanism absorb the effect" rather than "should this become its own correction."
-No separate age-decline adjustment was added to win_probability.py.
+production correction. NOT superseded by decay3 after all: elo_lookback_test.py's decay3 variant
+(recency-weighted K-factor, no explicit age term) was checked for whether it recovers this same
+signal implicitly just by discounting old form, and decay3_full_historical_test.py's full-scale
+ATP age breakdown (2026-08-27) answers that directly - it does not. Veteran (age>=33) improvement
+under decay3 is -0.0004, 95% CI [-0.0008, +0.0000] (not distinguishable from baseline, and if
+anything slightly the wrong sign), prime-age is +0.0001 CI [-0.0001, +0.0003] (also not
+distinguishable) - decay3's real, validated effect (see that file's own FINAL VERDICT) is
+concentrated in WTA, not an implicit ATP veteran correction. This test's fragile, standalone
+veteran-decline signal remains real but unaddressed by any production mechanism. No separate
+age-decline adjustment was added to win_probability.py.
 """
 import argparse
 import math

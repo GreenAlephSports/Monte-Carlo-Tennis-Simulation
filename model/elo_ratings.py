@@ -1,4 +1,6 @@
+import math
 import sys
+from collections import deque
 from pathlib import Path
 
 import pandas as pd
@@ -38,11 +40,58 @@ K_FACTOR = 32
 # SURFACE_BLEND_K matches, and approaches (but never fully reaches) 100% as matches grow.
 SURFACE_BLEND_K = 7
 LOOKBACK_YEARS = 5
+# window size for compute_recent_form_residuals - see win_probability.RECENT_FORM_BETA's docstring
+# for the held-out validation this was fit against (model/research/recent_form_test.py). The
+# window=15 robustness check did NOT hold up out-of-sample and is not used here.
+RECENT_FORM_WINDOW = 10
 
 
 # standard logistic Elo formula - 400 pt gap = ~91% win chance for the higher rated player to winn
 def expected_score(rating_a: float, rating_b: float) -> float:
     return 1 / (1 + 10 ** ((rating_b - rating_a) / 400))
+
+
+def compute_recent_form_residuals(df: pd.DataFrame, cutoff_date, window: int = RECENT_FORM_WINDOW):
+    """Per-player recent_form_residual as of cutoff_date: that player's own (actual win rate minus
+    Elo-predicted win rate) averaged over their most recent `window` real matches strictly before
+    cutoff_date. Absent from the returned dict until a player has at least `window` such matches -
+    same "missing means no adjustment" convention win_probability.py already uses for current_rank/
+    days_since_last_match.
+
+    Deliberately mirrors model/research/recent_form_test.py's validated methodology exactly: a
+    single continuously-updated, UNWINDOWED, overall-Elo-only replay across the FULL match history
+    (df here must be the raw, unwindowed history - the caller passes it before apply_training_window
+    runs - not production's windowed/surface-blended rating). The validated beta (win_probability.
+    RECENT_FORM_BETA) was fit against this exact convention, not the 5yr-windowed one calculate_
+    elo_ratings otherwise uses, so reusing calculate_elo_ratings' own windowed overall_elo here
+    would silently apply a coefficient to a differently-distributed input than the one it was
+    validated on."""
+    cutoff_ts = pd.Timestamp(cutoff_date)
+    df = df[df["Date"] < cutoff_ts].sort_values("Date", kind="stable")
+
+    elo = {}
+    history = {}  # player -> deque[(actual_win, pred_win)], maxlen=window
+    for row in df.itertuples(index=False):
+        p1, p2, winner = row.Player_1, row.Player_2, row.Winner
+        e1 = elo.setdefault(p1, STARTING_ELO)
+        e2 = elo.setdefault(p2, STARTING_ELO)
+        pred1 = expected_score(e1, e2)
+        win1 = 1.0 if winner == p1 else 0.0
+
+        history.setdefault(p1, deque(maxlen=window)).append((win1, pred1))
+        history.setdefault(p2, deque(maxlen=window)).append((1 - win1, 1 - pred1))
+
+        elo[p1] = e1 + K_FACTOR * (win1 - pred1)
+        elo[p2] = e2 + K_FACTOR * ((1 - win1) - (1 - pred1))
+
+    residuals = {}
+    for player, h in history.items():
+        if len(h) < window:
+            continue
+        actual_mean = sum(a for a, _ in h) / window
+        pred_mean = sum(p for _, p in h) / window
+        residuals[player] = actual_mean - pred_mean
+    return residuals
 
 
 # track current form instead of dragging in ancient match history
@@ -55,9 +104,59 @@ def apply_training_window(df: pd.DataFrame, cutoff_date) -> pd.DataFrame:
     return df[df["Date"] >= lookback_start]
 
 
-def calculate_elo_ratings(df: pd.DataFrame, cutoff_date):
-    df = apply_training_window(df, cutoff_date)
-    df = df.sort_values("Date", kind="stable")  # elo is path dependent, gotta process in date order
+# Empirically-fit recency-decay lookback variant ("decay3") - see model/research/
+# decay3_full_historical_test.py's FINAL VERDICT: at full historical scale (both tours, ~2,800
+# tournament editions), replacing the hard 5-year cutoff above with NO cutoff at all - full weight
+# on any match within DECAY3_FULL_WEIGHT_YEARS of the training data's own most recent match,
+# exponentially decaying with a DECAY3_HALF_LIFE_YEARS half-life beyond that - beats the hard-cutoff
+# baseline: +0.0002 combined held-out log-loss improvement, 95% player-clustered bootstrap CI
+# [+0.0000,+0.0003], no decade where it's worse.
+#
+# WTA-ONLY: the same full-scale test's per-tour-decade breakdown found this benefit is not uniform.
+# ATP shows a real, individually-significant effect in 2005-2019 (as large as +0.0006 in a single
+# decade) but is flat in 2020-2029 - and the held-out test window (most recent tournament editions)
+# falls almost entirely in that flat recent era, so decay3 is NOT currently demonstrated for the
+# ATP population any live prediction actually draws from. WTA's effect is the mirror image: flat
+# through 2014, significant from 2015 on (+0.0008 in 2020-2024, the single largest decade effect in
+# either tour) - i.e. current, not historical. Same tour-specific-gating precedent as win_
+# probability.LAYOFF_BUCKET_EDGES_ATP/WTA (separately fit constants, applied only to their own
+# tour) - here the gate is coarser (on/off, not separately-fit constants) since ATP's own
+# equivalent constants are simply "unchanged production behavior," not a second fitted variant.
+DECAY3_TOURS = {"WTA"}
+DECAY3_FULL_WEIGHT_YEARS = 3.0
+DECAY3_HALF_LIFE_YEARS = 2.0
+
+
+def _decay3_weighted_window(df: pd.DataFrame, cutoff_date):
+    """decay3's mechanism, ported unchanged from model/research/elo_lookback_test.py's validated
+    calculate_elo_variant (lookback_years=None, decay_half_life_years=DECAY3_HALF_LIFE_YEARS,
+    full_weight_years=DECAY3_FULL_WEIGHT_YEARS) - no hard cutoff, every match kept, weighted by
+    recency instead. Returns (windowed_df, per-row weight Series aligned to it) rather than a
+    DataFrame alone, since the weight multiplies K_FACTOR per-match rather than excluding rows."""
+    cutoff_ts = pd.Timestamp(cutoff_date)
+    windowed = df[df["Date"] < cutoff_ts]
+    max_date = windowed["Date"].max()
+    decay_rate = math.log(2) / DECAY3_HALF_LIFE_YEARS
+    age_years = (max_date - windowed["Date"]).dt.days / 365.25
+    weights = age_years.apply(
+        lambda a: 1.0 if a <= DECAY3_FULL_WEIGHT_YEARS else math.exp(-decay_rate * (a - DECAY3_FULL_WEIGHT_YEARS))
+    )
+    return windowed, weights
+
+
+def calculate_elo_ratings(df: pd.DataFrame, cutoff_date, tour: str = None):
+    # computed on the RAW (unwindowed) df, before windowing below overwrites it - see
+    # compute_recent_form_residuals' own docstring for why it needs the unwindowed history.
+    recent_form = compute_recent_form_residuals(df, cutoff_date)
+
+    if tour is not None and tour.upper() in DECAY3_TOURS:
+        windowed, weights = _decay3_weighted_window(df, cutoff_date)
+    else:
+        windowed = apply_training_window(df, cutoff_date)
+        weights = pd.Series(1.0, index=windowed.index)
+
+    df = windowed.sort_values("Date", kind="stable")  # elo is path dependent, gotta process in date order
+    weights = weights.reindex(df.index)
 
     overall_elo = {}
     surface_elo = {surface: {} for surface in SURFACES}
@@ -77,17 +176,18 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date):
     last_match_date = {}
     cutoff_ts = pd.Timestamp(cutoff_date)
 
-    for row in df.itertuples(index=False):
+    for row, weight in zip(df.itertuples(index=False), weights):
         p1, p2, winner, surface = row.Player_1, row.Player_2, row.Winner, row.Surface
         last_match_date[p1] = row.Date
         last_match_date[p2] = row.Date
+        k_eff = K_FACTOR * weight
 
         overall_elo.setdefault(p1, STARTING_ELO)
         overall_elo.setdefault(p2, STARTING_ELO)
         score_p1 = 1.0 if winner == p1 else 0.0
         expected_p1 = expected_score(overall_elo[p1], overall_elo[p2])
-        overall_elo[p1] += K_FACTOR * (score_p1 - expected_p1)
-        overall_elo[p2] += K_FACTOR * ((1 - score_p1) - (1 - expected_p1))
+        overall_elo[p1] += k_eff * (score_p1 - expected_p1)
+        overall_elo[p2] += k_eff * ((1 - score_p1) - (1 - expected_p1))
 
         if surface in SURFACES:
             ratings = surface_elo[surface]
@@ -95,8 +195,8 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date):
             ratings.setdefault(p1, STARTING_ELO)
             ratings.setdefault(p2, STARTING_ELO)
             expected_p1_surface = expected_score(ratings[p1], ratings[p2])
-            ratings[p1] += K_FACTOR * (score_p1 - expected_p1_surface)
-            ratings[p2] += K_FACTOR * ((1 - score_p1) - (1 - expected_p1_surface))
+            ratings[p1] += k_eff * (score_p1 - expected_p1_surface)
+            ratings[p2] += k_eff * ((1 - score_p1) - (1 - expected_p1_surface))
             counts[p1] = counts.get(p1, 0) + 1
             counts[p2] = counts.get(p2, 0) + 1
 
@@ -115,6 +215,7 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date):
             "overall_elo": overall_elo[player],
             "current_rank": current_rank.get(player),
             "days_since_last_match": (cutoff_ts - last_date).days if last_date is not None else None,
+            "recent_form_residual": recent_form.get(player),
         }
         # blend surface_elo toward overall_elo, weighted by how much surface-specific sample size
         # backs it up - a player with few surface matches leans on the more-data-backed overall
@@ -140,6 +241,7 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date):
         "grass_matches",
         "current_rank",
         "days_since_last_match",
+        "recent_form_residual",
     ]
     return pd.DataFrame.from_records(records, columns=columns)
 
@@ -159,7 +261,7 @@ if __name__ == "__main__":
 
     for tour, output_path in [("ATP", ATP_OUTPUT_PATH), ("WTA", WTA_OUTPUT_PATH)]:
         matches = load_matches_for_tour(tour)
-        ratings = calculate_elo_ratings(matches, cutoff_date)
+        ratings = calculate_elo_ratings(matches, cutoff_date, tour=tour)
         ratings = ratings.sort_values("overall_elo", ascending=False).reset_index(drop=True)
 
         output_path.parent.mkdir(parents=True, exist_ok=True)

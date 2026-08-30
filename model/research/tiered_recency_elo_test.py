@@ -56,14 +56,20 @@ breakdown: worse than baseline in EVERY SINGLE ONE of 6 decades (2000-2029) for 
 the 3 schemes - 18 of 18 decade x scheme cells, zero exceptions, zero cells even reaching "not
 distinguishable." No other test tonight produced a result this uniform in either direction.
 
-This closes the "faster-reacting Elo" hypothesis family for good, not just this one variant. Six
-distinct mechanisms were tested tonight, all aimed at the same underlying idea (make Elo react
-faster to recent form/experience/stakes), all independently rejected at full historical, held-out,
-player-clustered-bootstrap rigor:
+UPDATE (2026-08-27): this no longer closes the family for good - decay3 (item 2 below) was
+escalated to full historical scale after this file was written and ACCEPTED, not rejected. Six
+distinct mechanisms were tested aimed at the same underlying idea (make Elo react faster to recent
+form/experience/stakes); five were independently rejected at full historical, held-out,
+player-clustered-bootstrap rigor, and one (decay3) was not:
   1. 3-year hard lookback cutoff (elo_lookback_test.py / lookback_full_historical_test.py) -
      worse in 4/6 decades.
-  2. Smooth exponential recency decay, small-sample only (elo_lookback_test.py variant C) -
-     directionally inconclusive at 2-tournament scale, never escalated (see below for why).
+  2. Smooth exponential recency decay (elo_lookback_test.py variant C / "decay3") - directionally
+     inconclusive at 2-tournament scale; UPDATE (2026-08-27): escalated to full historical scale in
+     decay3_full_historical_test.py and, unlike every other mechanism in this list, ACCEPTED -
+     +0.0002 combined held-out log-loss improvement, CI [+0.0000,+0.0003], no decade where it's
+     worse. Not yet merged (bigger structural change than an additive correction) - see that file's
+     own FINAL VERDICT for the full breakdown. This is the one exception to the "closes the family
+     for good" conclusion below.
   3. Experience-based adaptive K, K=250/(5+n)^0.4 (elo_k_factor_full_historical_test.py) - worse
      in 6/6 decades, worst for thin-history players specifically.
   4. Result-significance-based K boost (signature_win_boost_test.py) - worse everywhere, worst on
@@ -80,14 +86,16 @@ Abstract) reports testing K-factor tweaks for "important" matches and finding no
 predictive improvement either - the same conclusion, reached independently, by the person who
 originated this style of Elo.
 
-Conclusion: production's flat K_FACTOR=32 over a flat 5-year hard lookback window is not just
-un-beaten tonight, it is now a well-stress-tested design choice - six different angles of attack on
-the same "make Elo faster/more responsive" idea, all failing, several decisively. No seventh variant
-of this family should be pursued without a genuinely new mechanism, not another parameterization of
-"weight recent/significant/experienced matches more." No production change made. The one still-open,
-not-yet-closed avenue for the Osaka/Andreeva/Zverev-style market gaps remains
-rank_trajectory_lag_test.py's blend, which is mechanistically distinct from all six rejected here.
+Conclusion (superseded 2026-08-27 by decay3's full-scale acceptance - kept for the historical
+record, not corrected in place): production's flat K_FACTOR=32 was well-stress-tested by five
+different angles of attack on "make Elo faster/more responsive," all failing, several decisively -
+but the sixth, decay3, held up. No seventh variant of this family should be pursued without a
+genuinely new mechanism. No production change made for K_FACTOR itself or the hard lookback cutoff;
+decay3's smooth-decay alternative to the lookback window is a validated, not-yet-merged candidate
+(see decay3_full_historical_test.py). The other still-open, not-yet-closed avenue for the
+Osaka/Andreeva/Zverev-style market gaps remains rank_trajectory_lag_test.py's blend.
 """
+import argparse
 import sys
 import time
 from pathlib import Path
@@ -121,12 +129,18 @@ def tiered_weight(age_years, tiers):
     return tiers[-1][1]
 
 
-def build_windowed_predictions(df, tiers, tour_label):
+def build_windowed_predictions(df, tiers, tour_label, max_editions=None):
     """Per-edition, REAL windowed Elo replay (same expensive-but-faithful mechanism
     lookback_full_historical_test.build_windowed_predictions uses) - tiers=None means flat K_FACTOR
     (the baseline); otherwise K_FACTOR is scaled by tiered_weight(age_years, tiers) for every match,
     age computed relative to THIS window's own most recent match (same reference point
-    elo_lookback_test.calculate_elo_variant's decay used), recomputed fresh at every edition."""
+    elo_lookback_test.calculate_elo_variant's decay used), recomputed fresh at every edition.
+
+    max_editions: quick-check mode - only replay the most recent max_editions editions (each
+    edition's own window_df rebuild still reaches back the full LOOKBACK_YEARS into real history,
+    so per-edition ratings are not degraded the way a naive df truncation would; this only cuts how
+    many EDITIONS get replayed). Not a substitute for the full-historical run - label any such
+    result as a quick check, same discipline as everywhere else in this project."""
     df = df.sort_values("Date", kind="stable").copy()
     df["edition_id"] = df["Tournament"] + " " + df["Date"].dt.year.astype(str)
     edition_start = df.groupby("edition_id")["Date"].transform("min")
@@ -134,6 +148,8 @@ def build_windowed_predictions(df, tiers, tour_label):
         df.assign(edition_start=edition_start)[["edition_id", "edition_start"]]
         .drop_duplicates().sort_values("edition_start").reset_index(drop=True)
     )
+    if max_editions is not None:
+        editions = editions.tail(max_editions).reset_index(drop=True)
 
     rows = []
     t0 = time.time()
@@ -196,18 +212,21 @@ def bootstrap_verdict(long_baseline, long_variant, merge_keys=("tour", "edition_
     return merged, observed, lo, hi, verdict
 
 
-def run():
+def run(max_editions=None):
+    if max_editions is not None:
+        print(f"*** QUICK CHECK ON RECENT DATA ONLY (--max-editions {max_editions}) - NOT the "
+              f"full-historical verdict. Rerun without --max-editions before trusting this. ***\n")
     tours = ["ATP", "WTA"]
     all_preds, all_editions = {}, {}
 
     for tour in tours:
         matches = load_matches_for_tour(tour)
         print(f"\n{'#' * 90}\n{tour}: {len(matches)} total matches\n{'#' * 90}")
-        preds, editions = build_windowed_predictions(matches, None, tour)
+        preds, editions = build_windowed_predictions(matches, None, tour, max_editions=max_editions)
         all_preds[(tour, BASELINE_LABEL)] = preds
         all_editions[tour] = editions
         for label, tiers in TIER_SCHEMES.items():
-            preds, _ = build_windowed_predictions(matches, tiers, tour)
+            preds, _ = build_windowed_predictions(matches, tiers, tour, max_editions=max_editions)
             all_preds[(tour, label)] = preds
 
     test_edition_ids = {}
@@ -282,4 +301,9 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--max-editions", type=int, default=None,
+                         help="quick-check mode: only replay the most recent N tournament editions "
+                              "per tour (before the 80/20 split), instead of full 5-year history")
+    args = parser.parse_args()
+    run(max_editions=args.max_editions)

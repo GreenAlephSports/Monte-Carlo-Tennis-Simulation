@@ -36,6 +36,7 @@ Usage:
 import argparse
 import re
 import sys
+import time
 import unicodedata
 from collections import defaultdict
 from pathlib import Path
@@ -206,11 +207,53 @@ def _reorder_by_standard_seeding(raw_records):
     return [record for pair in ordered_pairs for record in pair]
 
 
+# Latin letters NFKD does NOT decompose into base+combining-mark (unlike most accented vowels,
+# e.g. 'ú' -> 'u' + combining acute) - these are distinct code points with no ASCII decomposition
+# at all, so unicodedata.normalize alone silently leaves them untouched. Confirmed by a real crash:
+# 'Laslo Đere' (Serbian, stroke-D) stayed 'Đere' through _strip_diacritics, never matched the
+# ratings pool's 'Dere L.', and fell all the way through to an unresolved player_2 that win_
+# probability() then couldn't look up at all. Small, explicit map - not exhaustive, extend as new
+# real cases surface (same "disclosed, not silently wrong" convention as everything else here).
+_NON_DECOMPOSING_LETTERS = str.maketrans({
+    "Đ": "D", "đ": "d", "Ł": "L", "ł": "l", "Ø": "O", "ø": "o", "Æ": "AE", "æ": "ae", "ß": "ss",
+})
+
+
 def _strip_diacritics(text):
     """The ratings-csv name pool is ASCII-normalized (e.g. 'Zarazua R.', 'Bondar A.' - no accents),
     but Wikipedia draw names carry real diacritics ('Renata Zarazúa', 'Anna Bondár') - normalize
     before matching so accented names aren't spuriously left unmatched."""
+    text = text.translate(_NON_DECOMPOSING_LETTERS)
     return "".join(c for c in unicodedata.normalize("NFKD", text) if not unicodedata.combining(c))
+
+
+def _fetch_wikipedia_wikitext(title):
+    response = None
+    for attempt in range(4):
+        response = requests.get(
+            "https://en.wikipedia.org/w/api.php",
+            params={"action": "parse", "page": title, "prop": "wikitext", "format": "json"},
+            headers={"User-Agent": "Mozilla/5.0"},
+            timeout=15,
+        )
+        if response.status_code != 429:
+            break
+        wait = int(response.headers.get("Retry-After", 30)) * (attempt + 1)
+        print(f"  (Wikipedia rate limit hit fetching {title!r}, waiting {wait}s before retry)")
+        time.sleep(wait)
+    response.raise_for_status()
+    data = response.json()
+    if "error" in data:
+        raise ValueError(f"Wikipedia page {title!r} not found: {data['error']}")
+    return data["parse"]["wikitext"]["*"]
+
+
+def _extract_wiki_name(raw_value):
+    value = raw_value.strip()
+    link = re.search(r"\[\[([^\]|]+)(?:\|[^\]]*)?\]\]", value)
+    name = link.group(1) if link else ""
+    name = re.sub(r"\s*\([^)]*\)\s*$", "", name)  # strip Wikipedia disambiguators, e.g. "Ann Li (tennis)"
+    return _strip_diacritics(name)
 
 
 def _fetch_wikipedia_draw_order(title):
@@ -224,27 +267,80 @@ def _fetch_wikipedia_draw_order(title):
     this is the actual published draw, not schedule/court order like ESPN's own feed. The
     top-of-page "Finals" summary template uses single-digit 'RD1-team1'..'RD1-team8' keys (always
     blank placeholders) - the two-digit-only regex below skips it automatically, no special-casing
-    needed."""
-    response = requests.get(
-        "https://en.wikipedia.org/w/api.php",
-        params={"action": "parse", "page": title, "prop": "wikitext", "format": "json"},
-        headers={"User-Agent": "Mozilla/5.0"},
-        timeout=15,
-    )
-    response.raise_for_status()
-    data = response.json()
-    if "error" in data:
-        raise ValueError(f"Wikipedia page {title!r} not found: {data['error']}")
-    wikitext = data["parse"]["wikitext"]["*"]
+    needed.
 
-    names = []
-    for match in re.finditer(r"RD1-team\d{2}=(.*)", wikitext):
-        value = match.group(1).strip()
-        link = re.search(r"\[\[([^\]|]+)(?:\|[^\]]*)?\]\]", value)
-        name = link.group(1) if link else ""
-        name = re.sub(r"\s*\([^)]*\)\s*$", "", name)  # strip Wikipedia disambiguators, e.g. "Ann Li (tennis)"
-        names.append(_strip_diacritics(name))
-    return names
+    Bye-free only (every Slam/combined-draw article this is used for is a clean 128 with no
+    byes) - see _fetch_wikipedia_draw_order_with_byes for the Masters-1000-shaped case, which
+    needs real bye reconstruction this function deliberately doesn't attempt."""
+    wikitext = _fetch_wikipedia_wikitext(title)
+    return [_extract_wiki_name(m.group(1)) for m in re.finditer(r"RD1-team\d{2}=(.*)", wikitext)]
+
+
+def _fetch_wikipedia_draw_order_with_byes(title):
+    """Like _fetch_wikipedia_draw_order, but reconstructs real byes too - needed for Masters
+    1000-shaped draws (56/96 players in a 64/128-slot bracket), which use a DIFFERENT Wikipedia
+    template ('...-Byes' suffix, confirmed by inspection: '2022 Mutua Madrid Open' uses
+    '16TeamBracket-Compact-Tennis3-Byes') with a real structural difference, not just a naming
+    one: a bye player gets NO 'RD1-teamNN' entry at all (both slots of their would-be Round-1
+    pair are simply absent from the wikitext) - they appear for the first time directly as an
+    'RD2-teamNN' entry. A plain RD1-only scan (what _fetch_wikipedia_draw_order does) silently
+    undercounts these draws by exactly the bye count, which is the real bug this fixes (confirmed
+    directly: a 64-slot Masters draw with 16 byes came back as "48 non-bye players, 0 byes
+    detected" - not a valid bracket size, since 24 Round-1 matchups is not a power of two on its
+    own without the missing 16 byes accounted for).
+
+    Reconstruction: for each RD2 slot k, its two corresponding RD1 slots are (2k-1, 2k). If BOTH
+    are present in RD1, that's a normal real Round-1 match (both non-bye). If BOTH are absent,
+    the RD2-team(k) entry IS the bye player (real player, no Round-1 opponent) - confirmed this
+    is always a same-section-boundary numbering: sections restart their local slot count for
+    each RD2 group, so RD1 slot numbers are read as (section_offset + local_slot) using the same
+    16-slots-per-RD1-section grouping the plain templates use.
+
+    Returns (names, is_bye) - two parallel lists in true bracket-adjacent order (byes occupy a
+    single slot at their true position, non-bye Round-1 pairs occupy two adjacent slots each,
+    same convention this project's own bracket schema already uses elsewhere).
+
+    IMPORTANT: RD1/RD2 slot NUMBERS restart at 01 independently in EACH {{...Bracket...}}
+    template on the page (one template per ~16-player section) - only the numbers are local, the
+    real draw order is the sequence of templates themselves (document order). So gap-detection
+    has to run separately per template block, never against one page-wide slot-number dict (that
+    would silently collide/overwrite same-numbered slots from different sections)."""
+    wikitext = _fetch_wikipedia_wikitext(title)
+    block_starts = [m.start() for m in re.finditer(r"\{\{\d*TeamBracket", wikitext)]
+    blocks = [
+        wikitext[start: block_starts[i + 1] if i + 1 < len(block_starts) else len(wikitext)]
+        for i, start in enumerate(block_starts)
+    ]
+
+    names, is_bye = [], []
+    for block in blocks:
+        rd1 = {int(m.group(1)): _extract_wiki_name(m.group(2))
+               for m in re.finditer(r"RD1-team(\d{2})=(.*)", block)}
+        rd2 = {int(m.group(1)): _extract_wiki_name(m.group(2))
+               for m in re.finditer(r"RD2-team(\d{2})=(.*)", block)}
+        if not rd2:
+            continue  # a non-draw template (e.g. the top-of-page "Finals" summary) - skip
+        for k in range(1, max(rd2) + 1):
+            slot_a, slot_b = 2 * k - 1, 2 * k
+            a_present, b_present = slot_a in rd1, slot_b in rd1
+            if a_present and b_present:
+                names.append(rd1[slot_a]); is_bye.append(False)
+                names.append(rd1[slot_b]); is_bye.append(False)
+            elif not a_present and not b_present:
+                # neither Round-1 slot exists at all - the RD2 entry itself is the real bye
+                # player, if this Wikipedia edition actually recorded one for this slot (an
+                # as-yet-undecided qualifier slot can also be legitimately blank here - "" is
+                # kept, not skipped, same "disclosed missing" convention the bye-free fetcher
+                # already uses).
+                names.append(rd2.get(k, "")); is_bye.append(True)
+            else:
+                # exactly one Round-1 slot present, the other absent - not a shape this
+                # reconstruction handles with confidence (never observed in inspection); keep the
+                # present player as non-bye and drop the absent slot rather than guessing at a
+                # bye that may not be real.
+                present_slot = slot_a if a_present else slot_b
+                names.append(rd1[present_slot]); is_bye.append(False)
+    return names, is_bye
 
 
 def _reorder_by_wikipedia_draw(raw_records, wiki_title, name_aliases):
@@ -445,6 +541,91 @@ def build_bracket_players(tour, event_id, dates=None, wiki_title=None):
         })
     qualifier_stats = {"resolved": qualifiers_resolved, "unresolved": tbd_counter}
     return players, event, round1, qualifier_stats
+
+
+def build_historical_bracket_players(wiki_title, ratings_names, name_aliases):
+    """Builds a bracket player list directly from a CONCLUDED tournament's Wikipedia draw
+    article - no ESPN dependency at all, unlike build_bracket_players (the live path). A
+    historical Wikipedia draw page already has the complete, final, correctly-ordered real
+    bracket, so there's nothing left for ESPN to contribute - ESPN exists in the live path only
+    to supply real names before Wikipedia's own page is filled in for a still-upcoming
+    tournament. Real ordered names come from _fetch_wikipedia_draw_order, unchanged.
+
+    Byes: two real, distinct shapes seen in practice, both handled here. (1) A literal 'Bye'
+    opponent text in an otherwise-normal Round-1 pair (checked directly, case-insensitive). (2) A
+    Masters-1000-shaped draw (a DIFFERENT Wikipedia template, '...-Byes' suffix), where a bye
+    player gets NO Round-1 entry at all - not even a literal 'Bye' placeholder - and only
+    appears for the first time in Round 2. That shape needs real reconstruction
+    (_fetch_wikipedia_draw_order_with_byes) - a plain Round-1-only scan silently undercounts
+    these draws by exactly the bye count (confirmed: this is what caused real "not a valid
+    bracket size" failures on Masters 1000 editions before this was added). Always uses the
+    byes-aware fetch now, not just as a fallback - confirmed (direct comparison against a known
+    bye-free Slam draw) it returns identical output when there's nothing to reconstruct, so
+    there's no separate bye-free code path to keep in sync.
+
+    Name resolution mirrors _resolve_player_name/_resolve_fallback_collisions (no ESPN
+    shortName available from Wikipedia, so the fallback splits on the raw display name alone).
+
+    Returns (players, unmatched_names) - unmatched_names lists any real Wikipedia name that
+    fell through to the fallback splitter without a matching prior ratings-csv entry (a genuine
+    name-matching gap - printed by the caller, never silently dropped)."""
+    # always the byes-aware fetch, never the plain one - confirmed (by direct comparison against
+    # a known bye-free Slam draw) it returns IDENTICAL output when there are no real byes to
+    # reconstruct, so there's no bye-free-case regression risk, and it avoids the wrong signal a
+    # length-parity check on the PLAIN fetch would give: a byes draw's plain (Round-1-only) scan
+    # can still come back an EVEN count (e.g. 48, 8 byes silently missing) since the byes just
+    # never appear there at all rather than leaving a visible odd-length gap.
+    wiki_names, wiki_is_bye = _fetch_wikipedia_draw_order_with_byes(wiki_title)
+    if not wiki_names or len(wiki_names) % 2 != 0:
+        raise ValueError(f"{wiki_title!r}: couldn't reconstruct a clean, even-length draw "
+                          f"({len(wiki_names)} slots)")
+
+    raw_records = []  # each: dict(name=resolved_or_None, bye=bool)
+    fallback_players = {}  # index into raw_records -> (lastname, firstname), for collision pass
+    unmatched = []
+
+    def add(name, bye):
+        matched, fallback_key = _resolve_player_name(name, None, ratings_names, name_aliases)
+        record = {"name": matched, "bye": bye}
+        if fallback_key is not None:
+            fallback_players[len(raw_records)] = fallback_key
+            unmatched.append(name)
+        raw_records.append(record)
+
+    i = 0
+    while i < len(wiki_names):
+        if wiki_is_bye[i]:
+            # a real bye reconstructed by _fetch_wikipedia_draw_order_with_byes - occupies a
+            # single slot on its own, no pairing with the next entry.
+            name = wiki_names[i]
+            if name:
+                add(name, bye=True)
+            i += 1
+            continue
+        a, b = wiki_names[i], wiki_names[i + 1]
+        a_bye, b_bye = a.strip().lower() == "bye", b.strip().lower() == "bye"
+        if a_bye and b_bye:
+            i += 2
+            continue  # no real player on either side (an undecided qualifier slot) - skip
+        if a_bye or b_bye:
+            real_name = b if a_bye else a
+            if real_name:
+                add(real_name, bye=True)
+            i += 2
+            continue
+        for name in (a, b):
+            if name:
+                add(name, bye=False)
+            else:
+                raw_records.append({"name": None, "bye": False})  # undecided qualifier slot
+        i += 2
+
+    resolved_fallbacks = _resolve_fallback_collisions(fallback_players)
+    for index, name in resolved_fallbacks.items():
+        raw_records[index]["name"] = name
+
+    players = [{"seed": None, "name": r["name"], "status": None, "bye": r["bye"]} for r in raw_records]
+    return players, unmatched
 
 
 def _tournament_start_date(event, round1):

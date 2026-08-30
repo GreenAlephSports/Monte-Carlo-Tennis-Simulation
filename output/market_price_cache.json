@@ -52,5 +52,329 @@
     "player_b": "Flavio Cobolli",
     "market_prob_a": 0.725,
     "captured_at": "2026-08-18T20:49:07Z"
+  },
+  "WTA|US Open|2026|Barbora Krejcikova::Kamilla Rakhimova": {
+    "player_a": "Kamilla Rakhimova",
+    "player_b": "Barbora Krejcikova",
+    "market_prob_a": 0.267,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Polina Iatcenko::Renata Zarazua": {
+    "player_a": "Renata Zarazua",
+    "player_b": "Polina Iatcenko",
+    "market_prob_a": 0.537,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Donna Vekic::Talia Gibson": {
+    "player_a": "Talia Gibson",
+    "player_b": "Donna Vekic",
+    "market_prob_a": 0.496,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Jasmine Paolini::Veronika Erjavec": {
+    "player_a": "Jasmine Paolini",
+    "player_b": "Veronika Erjavec",
+    "market_prob_a": 0.843,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Marta Kostyuk::Storm Hunter": {
+    "player_a": "Marta Kostyuk",
+    "player_b": "Storm Hunter",
+    "market_prob_a": 0.867,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Elvina Kalieva::Lanlana Tararudee": {
+    "player_a": "Elvina Kalieva",
+    "player_b": "Lanlana Tararudee",
+    "market_prob_a": 0.331,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Dayana Yastremska::Lucrezia Stefanini": {
+    "player_a": "Lucrezia Stefanini",
+    "player_b": "Dayana Yastremska",
+    "market_prob_a": 0.41,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Ekaterina Alexandrova::McCartney Kessler": {
+    "player_a": "McCartney Kessler",
+    "player_b": "Ekaterina Alexandrova",
+    "market_prob_a": 0.401,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Hanne Vandewinkel::Karolina Pliskova": {
+    "player_a": "Hanne Vandewinkel",
+    "player_b": "Karolina Pliskova",
+    "market_prob_a": 0.506,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Alycia Parks::Taylah Preston": {
+    "player_a": "Taylah Preston",
+    "player_b": "Alycia Parks",
+    "market_prob_a": 0.498,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Kimberly Birrell::Petra Marcinko": {
+    "player_a": "Kimberly Birrell",
+    "player_b": "Petra Marcinko",
+    "market_prob_a": 0.519,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Emma Navarro::Lois Boisson": {
+    "player_a": "Emma Navarro",
+    "player_b": "Lois Boisson",
+    "market_prob_a": 0.713,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Elina Svitolina::Solana Sierra": {
+    "player_a": "Elina Svitolina",
+    "player_b": "Solana Sierra",
+    "market_prob_a": 0.893,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Sofia Kenin::Venus Williams": {
+    "player_a": "Venus Williams",
+    "player_b": "Sofia Kenin",
+    "market_prob_a": 0.157,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Harriet Dart::Peyton Stearns": {
+    "player_a": "Harriet Dart",
+    "player_b": "Peyton Stearns",
+    "market_prob_a": 0.292,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Elsa Jacquemot::Marie Bouzkova": {
+    "player_a": "Elsa Jacquemot",
+    "player_b": "Marie Bouzkova",
+    "market_prob_a": 0.127,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Mananchaya Sawangkaew::Panna Udvardy": {
+    "player_a": "Mananchaya Sawangkaew",
+    "player_b": "Panna Udvardy",
+    "market_prob_a": 0.603,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Karolina Muchova::Sinja Kraus": {
+    "player_a": "Sinja Kraus",
+    "player_b": "Karolina Muchova",
+    "market_prob_a": 0.13,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Cristina Bucsa::Sara Bejlek": {
+    "player_a": "Sara Bejlek",
+    "player_b": "Cristina Bucsa",
+    "market_prob_a": 0.758,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Anhelina Kalinina::Himeno Sakatsume": {
+    "player_a": "Anhelina Kalinina",
+    "player_b": "Himeno Sakatsume",
+    "market_prob_a": 0.725,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Lilli Tagger::Tamara Korpatsch": {
+    "player_a": "Lilli Tagger",
+    "player_b": "Tamara Korpatsch",
+    "market_prob_a": 0.782,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Aoi Ito::Oksana Selekhmeteva": {
+    "player_a": "Aoi Ito",
+    "player_b": "Oksana Selekhmeteva",
+    "market_prob_a": 0.408,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Maja Chwalinska::Taylor Townsend": {
+    "player_a": "Maja Chwalinska",
+    "player_b": "Taylor Townsend",
+    "market_prob_a": 0.329,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Nadia Podoroska::Simona Waltert": {
+    "player_a": "Nadia Podoroska",
+    "player_b": "Simona Waltert",
+    "market_prob_a": 0.366,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Anna Blinkova::Anna Kalinskaya": {
+    "player_a": "Anna Blinkova",
+    "player_b": "Anna Kalinskaya",
+    "market_prob_a": 0.272,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Maria Timofeeva::Tamara Zidansek": {
+    "player_a": "Tamara Zidansek",
+    "player_b": "Maria Timofeeva",
+    "market_prob_a": 0.333,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Daria Snigur::Diana Shnaider": {
+    "player_a": "Daria Snigur",
+    "player_b": "Diana Shnaider",
+    "market_prob_a": 0.283,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Amanda Anisimova::Ashlyn Krueger": {
+    "player_a": "Ashlyn Krueger",
+    "player_b": "Amanda Anisimova",
+    "market_prob_a": 0.176,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Clara Tauson::Sloane Stephens": {
+    "player_a": "Sloane Stephens",
+    "player_b": "Clara Tauson",
+    "market_prob_a": 0.296,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Ann Li::Antonia Ruzic": {
+    "player_a": "Ann Li",
+    "player_b": "Antonia Ruzic",
+    "market_prob_a": 0.731,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Katie Volynets::Linda Noskova": {
+    "player_a": "Katie Volynets",
+    "player_b": "Linda Noskova",
+    "market_prob_a": 0.269,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Julia Grabher::Sorana Cirstea": {
+    "player_a": "Julia Grabher",
+    "player_b": "Sorana Cirstea",
+    "market_prob_a": 0.115,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Diane Parry::Viktorija Golubic": {
+    "player_a": "Viktorija Golubic",
+    "player_b": "Diane Parry",
+    "market_prob_a": 0.458,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Elisabetta Cocciaretto::Katerina Siniakova": {
+    "player_a": "Elisabetta Cocciaretto",
+    "player_b": "Katerina Siniakova",
+    "market_prob_a": 0.371,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Liudmila Samsonova::Maya Joint": {
+    "player_a": "Maya Joint",
+    "player_b": "Liudmila Samsonova",
+    "market_prob_a": 0.3,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Anastasia Zakharova::Naomi Osaka": {
+    "player_a": "Naomi Osaka",
+    "player_b": "Anastasia Zakharova",
+    "market_prob_a": 0.872,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Maria Sakkari::Robin Montgomery": {
+    "player_a": "Maria Sakkari",
+    "player_b": "Robin Montgomery",
+    "market_prob_a": 0.565,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Ella Seidel::Yuliia Starodubtseva": {
+    "player_a": "Yuliia Starodubtseva",
+    "player_b": "Ella Seidel",
+    "market_prob_a": 0.691,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Elise Mertens::Kaitlin Quevedo": {
+    "player_a": "Kaitlin Quevedo",
+    "player_b": "Elise Mertens",
+    "market_prob_a": 0.17,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Darja Vidmanova::Jessica Bouzas Maneiro": {
+    "player_a": "Darja Vidmanova",
+    "player_b": "Jessica Bouzas Maneiro",
+    "market_prob_a": 0.489,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Belinda Bencic::Yulia Putintseva": {
+    "player_a": "Yulia Putintseva",
+    "player_b": "Belinda Bencic",
+    "market_prob_a": 0.206,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Eva Lys::Gabriela Knutson": {
+    "player_a": "Gabriela Knutson",
+    "player_b": "Eva Lys",
+    "market_prob_a": 0.374,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Francesca Jones::Magda Linette": {
+    "player_a": "Magda Linette",
+    "player_b": "Francesca Jones",
+    "market_prob_a": 0.522,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Oleksandra Oliynykova::Reese Brantmeier": {
+    "player_a": "Oleksandra Oliynykova",
+    "player_b": "Reese Brantmeier",
+    "market_prob_a": 0.5,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Daria Kasatkina::Paula Badosa": {
+    "player_a": "Daria Kasatkina",
+    "player_b": "Paula Badosa",
+    "market_prob_a": 0.45,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Jelena Ostapenko::Tatjana Maria": {
+    "player_a": "Tatjana Maria",
+    "player_b": "Jelena Ostapenko",
+    "market_prob_a": 0.397,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Arantxa Rus::Leolia Jeanjean": {
+    "player_a": "Arantxa Rus",
+    "player_b": "Leolia Jeanjean",
+    "market_prob_a": 0.353,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Anastasia Potapova::Tereza Valentova": {
+    "player_a": "Anastasia Potapova",
+    "player_b": "Tereza Valentova",
+    "market_prob_a": 0.344,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Alina Korneeva::Madison Keys": {
+    "player_a": "Madison Keys",
+    "player_b": "Alina Korneeva",
+    "market_prob_a": 0.703,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Janice Tjen::Mirra Andreeva": {
+    "player_a": "Mirra Andreeva",
+    "player_b": "Janice Tjen",
+    "market_prob_a": 0.85,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Coco Gauff::Zeynep Sonmez": {
+    "player_a": "Zeynep Sonmez",
+    "player_b": "Coco Gauff",
+    "market_prob_a": 0.076,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Alexandra Eala::Mary Stoiana": {
+    "player_a": "Mary Stoiana",
+    "player_b": "Alexandra Eala",
+    "market_prob_a": 0.235,
+    "captured_at": "2026-08-29T22:59:00Z"
+  },
+  "WTA|US Open|2026|Elena Rybakina::Thea Frodin": {
+    "player_a": "Thea Frodin",
+    "player_b": "Elena Rybakina",
+    "market_prob_a": 0.072,
+    "captured_at": "2026-08-30T00:10:44Z"
+  },
+  "WTA|US Open|2026|Mayar Sherif::Nikola Bartunkova": {
+    "player_a": "Nikola Bartunkova",
+    "player_b": "Mayar Sherif",
+    "market_prob_a": 0.783,
+    "captured_at": "2026-08-30T00:10:44Z"
   }
 }

@@ -256,15 +256,28 @@ def match_name_to_pool(raw_name, pool_names, name_aliases=None):
 def _lastnames_in_training_window(match_data_path, cutoff_date):
     df = apply_training_window(load_matches(match_data_path), cutoff_date)
     player_names = pd.concat([df["Player_1"], df["Player_2"]]).unique()
-    return {_split_csv_name(name.strip())[0] for name in player_names}
+    return {_split_csv_name(name.strip()) for name in player_names}
 
 
-def _has_training_history(lastname, known_lastnames):
-    #true if lastname matches a known one exactly, or is a prefix/suffix of one
-    return any(
-        known == lastname or known.startswith(lastname + " ") or lastname.startswith(known + " ")
-        for known in known_lastnames
-    )
+def _has_training_history(lastname, first_initial, known_pairs):
+    """True if (lastname, first_initial) matches a known training-window player exactly, or is a
+    prefix/suffix compound-surname variant of one (e.g. bracket has "Ruse E.G." but the training
+    data only ever wrote her as "Ruse" - same real person, dataset just dropped a surname word).
+
+    The prefix/suffix branch requires the first initial to also agree - without that, a genuinely
+    different player whose surname happens to be a literal word-prefix of this one (e.g. "Barrios
+    M." - a real, unrelated, currently-active player - vs. this player's own two-word surname
+    "Barrios Vera") would falsely count as "has history", permanently blocking the tier-3 fresh-
+    rating fallback for a player who in fact has none in the training window at all. An exact
+    lastname match needs no such guard - two truly different players essentially never share both
+    an identical full multi-word surname AND overlap in this draw."""
+    for known_lastname, known_initials in known_pairs:
+        if known_lastname == lastname:
+            return True
+        initials_agree = not first_initial or not known_initials or known_initials[0] == first_initial
+        if initials_agree and (known_lastname.startswith(lastname + " ") or lastname.startswith(known_lastname + " ")):
+            return True
+    return False
 
 
 def match_draw_to_ratings(players, ratings_df, name_aliases, match_data_path, cutoff_date):
@@ -322,7 +335,7 @@ def match_draw_to_ratings(players, ratings_df, name_aliases, match_data_path, cu
         if csv_name is None:
             if known_lastnames is None:
                 known_lastnames = _lastnames_in_training_window(match_data_path, cutoff_date)
-            if not _has_training_history(lastname, known_lastnames):
+            if not _has_training_history(lastname, first_initial, known_lastnames):
                 csv_name = raw_name
                 tier = 3
                 if csv_name not in existing_names:

@@ -63,12 +63,27 @@ def log_loss(actual, pred):
     return -(actual * np.log(pred) + (1 - actual) * np.log(1 - pred))
 
 
-def build_frozen_predictions(df):
+def build_frozen_predictions(df, max_editions=None):
     """One player-perspective row per (match, player). player_elo/opponent_elo/pred_win are
     frozen at the tournament EDITION's start - identical for every round of that edition, exactly
     like win_probability() sees a fixed pre-tournament rating for every simulated round. Elo/rank
     are then updated with the edition's real results before moving to the next (chronologically
-    later) edition."""
+    later) edition.
+
+    max_editions: if set, restricts the RETURNED population to the most recent max_editions
+    editions (chronologically last) - a QUICK-CHECK mode for fast iteration while developing a new
+    test, not a substitute for a full-historical run. The warm-up walk-forward still replays the
+    FULL history first (this function's own loop is cheap regardless of max_editions - the real
+    per-edition cost lives in windowed-rebuild-style builds like tiered_recency_elo_test.py's, not
+    here), so player_elo/matches_played/current_rank at the start of the kept window are exactly
+    what a full run would show, not reset to STARTING_ELO/zero. Truncating the INPUT df instead
+    (an earlier version of this parameter did that) silently breaks any population defined by
+    accumulated history - e.g. a "solid player, >=30 career matches" filter can never be satisfied
+    inside a small recent-only window built from a cold start, a real failure caught while quick-
+    checking rank_trajectory_lag_test.py (0 solid-player rows at max_editions=20 under the old
+    truncate-first design). Never use a max_editions result as a final verdict; see this project's
+    own K-factor small-scale-vs-full-scale history (Cincinnati-alone) for why a small, recent-only
+    sample has fooled this project before."""
     df = df.copy()
     df["edition_id"] = df["Tournament"] + " " + df["Date"].dt.year.astype(str)
     edition_start = df.groupby("edition_id")["Date"].transform("min")
@@ -112,12 +127,19 @@ def build_frozen_predictions(df):
         "edition_id", "date", "round", "player", "opponent", "player_elo", "opponent_elo",
         "pred_win", "actual_win", "opponent_rank",
     ])
+    if max_editions is not None:
+        editions = editions.tail(max_editions).reset_index(drop=True)
+        keep = set(editions["edition_id"])
+        preds = preds[preds["edition_id"].isin(keep)].reset_index(drop=True)
     return preds, editions
 
 
-def run(tour, elite_rank_threshold, min_train_matches):
+def run(tour, elite_rank_threshold, min_train_matches, max_editions=None):
+    if max_editions is not None:
+        print(f"*** QUICK CHECK ON RECENT DATA ONLY (--max-editions {max_editions}) - NOT the "
+              f"full-historical verdict. Rerun without --max-editions before trusting this. ***\n")
     matches = load_matches_for_tour(tour)
-    preds, editions = build_frozen_predictions(matches)
+    preds, editions = build_frozen_predictions(matches, max_editions=max_editions)
 
     split_idx = int(len(editions) * TRAIN_FRACTION)
     train_editions = set(editions["edition_id"].iloc[:split_idx])
@@ -240,5 +262,8 @@ if __name__ == "__main__":
     parser.add_argument("--tour", default="ATP", choices=["ATP", "WTA"])
     parser.add_argument("--elite-rank", type=int, default=20, help="opponent rank threshold defining 'elite'")
     parser.add_argument("--min-train", type=int, default=15, help="min train-era elite-opponent matches to estimate a per-player residual at all")
+    parser.add_argument("--max-editions", type=int, default=None,
+                         help="quick-check mode: only replay the most recent N tournament editions "
+                              "(before the 80/20 split), instead of the full lookback window")
     args = parser.parse_args()
-    run(args.tour, args.elite_rank, args.min_train)
+    run(args.tour, args.elite_rank, args.min_train, max_editions=args.max_editions)

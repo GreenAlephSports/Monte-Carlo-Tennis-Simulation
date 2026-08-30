@@ -77,10 +77,17 @@ DEFAULT_THIN_THRESHOLD = 10  # matches the Cincinnati filter grid's original flo
 BLEND_K = SURFACE_BLEND_K    # reuse the pipeline's own constant, not a freshly-tuned one
 
 
-def build_dataset(df):
+def build_dataset(df, max_editions=None):
     """Same frozen-per-edition online-Elo construction as elite_opponent_residual_test.
     build_frozen_predictions, extended to also carry each side's own career match count so far
-    (matches_before) and each side's own current_rank (not just the opponent's)."""
+    (matches_before) and each side's own current_rank (not just the opponent's).
+
+    max_editions: quick-check mode - restricts the RETURNED population to the most recent
+    max_editions editions; the warm-up walk-forward still replays the FULL history first, so
+    matches_played/player_elo at the start of the kept window match a full run, not a cold start.
+    See elite_opponent_residual_test.build_frozen_predictions' docstring for why this matters: an
+    earlier version truncated the input df BEFORE replaying, which reset everyone's matches_played
+    to 0 and made a "solid player, >=30 matches" population unreachable inside a small window."""
     df = df.copy()
     df["edition_id"] = df["Tournament"] + " " + df["Date"].dt.year.astype(str)
     edition_start = df.groupby("edition_id")["Date"].transform("min")
@@ -125,6 +132,10 @@ def build_dataset(df):
         "pred_win", "actual_win", "player_matches_before", "opponent_matches_before",
         "player_rank", "opponent_rank",
     ])
+    if max_editions is not None:
+        editions = editions.tail(max_editions).reset_index(drop=True)
+        keep = set(editions["edition_id"])
+        preds = preds[preds["edition_id"].isin(keep)].reset_index(drop=True)
     return preds, editions
 
 

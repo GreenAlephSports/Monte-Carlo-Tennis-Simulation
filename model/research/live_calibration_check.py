@@ -43,6 +43,7 @@ MIN_SAMPLE_FOR_ANY_CONFIDENCE = 30  # below this, a CI is printed but flagged as
 TOURNAMENTS = [
     Path("brackets/cincinnati_2026_atp_demo.yaml"),
     Path("brackets/cincinnati_2026_wta.yaml"),
+    Path("brackets/us_open_2026_wta_real.yaml"),
 ]
 
 

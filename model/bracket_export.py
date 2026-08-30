@@ -421,7 +421,7 @@ def export_bracket_json(
 
     tour_config = TOUR_CONFIG[bracket.tour]
     matches_history = load_matches_for_tour(bracket.tour)
-    ratings_df = calculate_elo_ratings(matches_history, bracket.start_date)
+    ratings_df = calculate_elo_ratings(matches_history, bracket.start_date, tour=bracket.tour)
     ratings_df = ratings_df.sort_values("overall_elo", ascending=False).reset_index(drop=True)
 
     # manual, disclosed judgment-call adjustments (e.g. a known injury Elo structurally can't see -

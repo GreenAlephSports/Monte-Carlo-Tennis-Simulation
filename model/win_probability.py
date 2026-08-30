@@ -56,10 +56,24 @@ RANK_ADJUSTMENT_ELO_WINDOW = 50
 PLATT_B = 0.9205
 
 
-# cache so we're not re-reading the csv on every single matchup lookup during a sim run
+# cache so we're not re-reading the csv on every single matchup lookup during a sim run. Keyed on
+# (path, mtime) - not path alone - because a real bug surfaced here: every normal invocation of
+# this project writes a ratings CSV exactly once per process (bracket_export.py, simulate_
+# projected_draw, etc.), so a path-only cache never had a chance to go stale. But
+# historical_bracket_calibration.py's sweep runs many editions in one long-lived process, each
+# overwriting the SAME shared per-tour ratings_path with a freshly-recomputed snapshot - a
+# path-only cache would keep serving the FIRST edition's frozen ratings forever, silently
+# simulating every later edition against the wrong (stale) Elo. Including mtime makes a fresh
+# write bust the cache automatically, with zero behavior change for the single-write-per-process
+# case every other caller already is.
 @lru_cache(maxsize=None)
-def _load_ratings(ratings_path: Path) -> pd.DataFrame:
+def _load_ratings_cached(ratings_path: Path, _mtime_ns: int) -> pd.DataFrame:
     return pd.read_csv(ratings_path).set_index("player")
+
+
+def _load_ratings(ratings_path: Path) -> pd.DataFrame:
+    ratings_path = Path(ratings_path)
+    return _load_ratings_cached(ratings_path, ratings_path.stat().st_mtime_ns)
 
 
 def get_surface_elo(player: str, surface: str, ratings_path: Path) -> float:
@@ -196,6 +210,52 @@ LAYOFF_BUCKET_EDGES_WTA = [
 ]
 
 
+# Empirically-fit recent-form residual correction - see model/research/recent_form_test.py: run at
+# full historical scale (both tours, ~2,800 tournament editions, 46778+186893 combined train+test
+# player-perspective rows), a player's own (actual win rate - Elo-predicted win rate) over their
+# most recent 10 real matches (elo_ratings.RECENT_FORM_WINDOW) carries real, held-out-validated
+# signal beyond a stable Elo rating alone - a short-term hot/cold wobble Elo itself doesn't react to.
+# Single continuous logistic coefficient, same "fit on train, validate held-out" shape as
+# RANK_ADJUSTMENT_C/D and PLATT_B above: train-era beta +0.2021 (SE=0.0364, z=+5.55). Held out:
+# +0.0002 log-loss improvement, 95% player-clustered bootstrap CI [+0.0000, +0.0003] - excludes
+# zero, a real but small effect. The window=15 robustness check did NOT hold up out-of-sample (CI
+# straddled zero) and was not used - only the window=10 result is live here.
+#
+# Fit against RAW Elo predictions (elo_ratings.expected_score, no windowing, no surface split,
+# no rank/layoff/confidence-calibration already applied) - same convention every other correction
+# in this file was originally fit against, so it composes the same way: applied here, after layoff
+# and before confidence-calibration (which must stay last, since Platt-scaling corrects whatever
+# overconfidence remains after every other shift).
+RECENT_FORM_BETA = 0.2021
+
+
+def get_recent_form_residual(player: str, ratings_path: Path):
+    """Recent-form residual as of the ratings file's cutoff date - see elo_ratings.
+    compute_recent_form_residuals. None if unknown: the player isn't in the ratings file, the
+    column is missing (an older ratings file built before this correction existed), or they had
+    fewer than elo_ratings.RECENT_FORM_WINDOW real matches in the full match history (a brand-new
+    or very sparse player) - same "unknown means no-op" convention as current_rank/days_since_
+    last_match."""
+    ratings = _load_ratings(ratings_path)
+    if player not in ratings.index or "recent_form_residual" not in ratings.columns:
+        return None
+    residual = ratings.loc[player, "recent_form_residual"]
+    return None if pd.isna(residual) else residual
+
+
+def _apply_recent_form_adjustment(prob_a: float, residual_a, residual_b) -> float:
+    """Additive correction in logit space, one shift per player based on their OWN recent-form
+    residual - same per-player-then-combine pattern as _apply_layoff_adjustment. A no-op whenever
+    either player's residual is unknown, or the two shifts are equal (including both zero)."""
+    if residual_a is None or residual_b is None:
+        return prob_a
+    shift_a = RECENT_FORM_BETA * residual_a
+    shift_b = RECENT_FORM_BETA * residual_b
+    if shift_a == shift_b:
+        return prob_a
+    return apply_logit_shift(prob_a, shift_a - shift_b)
+
+
 def get_days_since_last_match(player: str, ratings_path: Path):
     """Days between the tournament's cutoff date and this player's last recorded match, frozen the
     same way current_rank is - None if unknown (player not in the ratings file, or their first-ever
@@ -241,7 +301,7 @@ def _apply_layoff_adjustment(prob_a: float, days_a, days_b, bucket_edges) -> flo
 def win_probability(
     player_a: str, player_b: str, surface: str, ratings_path: Path = ATP_RATINGS_PATH,
     use_rank_adjustment: bool = True, use_confidence_calibration: bool = True,
-    use_layoff_adjustment: bool = True,
+    use_layoff_adjustment: bool = True, use_recent_form_adjustment: bool = True,
 ) -> float:
     elo_a = get_surface_elo(player_a, surface, ratings_path)
     elo_b = get_surface_elo(player_b, surface, ratings_path)
@@ -256,6 +316,11 @@ def win_probability(
         days_a = get_days_since_last_match(player_a, ratings_path)
         days_b = get_days_since_last_match(player_b, ratings_path)
         prob_a = _apply_layoff_adjustment(prob_a, days_a, days_b, _layoff_bucket_edges_for(ratings_path))
+
+    if use_recent_form_adjustment:
+        residual_a = get_recent_form_residual(player_a, ratings_path)
+        residual_b = get_recent_form_residual(player_b, ratings_path)
+        prob_a = _apply_recent_form_adjustment(prob_a, residual_a, residual_b)
 
     if use_confidence_calibration:
         prob_a = _apply_confidence_calibration(prob_a)

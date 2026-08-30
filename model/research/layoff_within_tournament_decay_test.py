@@ -146,9 +146,14 @@ def score(df, bucket_col, shift_by_bucket, flat_shift=None):
     return out
 
 
-def run(tour):
+def run(tour, max_editions=None):
+    if max_editions is not None:
+        print(f"*** QUICK CHECK ON RECENT DATA ONLY (--max-editions {max_editions}) - NOT the "
+              f"full-historical verdict. This population is already rare in the FULL dataset, so a "
+              f"recent-only window may leave too few rows to mean anything - read the n's below "
+              f"before trusting any number here. ***\n")
     matches = load_matches_for_tour(tour)
-    preds, editions = build_frozen_predictions(matches)
+    preds, editions = build_frozen_predictions(matches, max_editions=max_editions)
     layoff_df = build_layoff_dataset(matches, preds)
     seq = build_within_tournament_sequences(layoff_df)
 
@@ -287,5 +292,8 @@ def run(tour):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--tour", default="ATP", choices=["ATP", "WTA"])
+    parser.add_argument("--max-editions", type=int, default=None,
+                         help="quick-check mode: only replay the most recent N tournament editions "
+                              "(before the 80/20 split), instead of the full lookback window")
     args = parser.parse_args()
-    run(args.tour)
+    run(args.tour, max_editions=args.max_editions)

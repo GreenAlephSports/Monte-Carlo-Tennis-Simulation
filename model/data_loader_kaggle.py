@@ -25,6 +25,15 @@ def load_matches(tour: str = "ATP") -> pd.DataFrame:
     df = pd.read_csv(csv_files[0], parse_dates=["Date"], dtype={"Odd_1": str, "Odd_2": str})
     df["Odd_1"] = pd.to_numeric(df["Odd_1"], errors="coerce")
     df["Odd_2"] = pd.to_numeric(df["Odd_2"], errors="coerce")
+    # raw CSV has stray leading/trailing whitespace on some player names (confirmed: 69 of 1827
+    # distinct ATP names, e.g. "Djokovic N. " vs "Djokovic N.") - left unstripped, these silently
+    # fragment one real player's match history into two separate Elo identities (exact-name
+    # lookups treat them as different players), which also breaks name-matching against any
+    # externally-sourced draw (Wikipedia, ESPN) that doesn't happen to reproduce the same stray
+    # space. Stripped at the single load choke point every downstream caller shares.
+    for col in ("Player_1", "Player_2", "Winner"):
+        if col in df.columns:
+            df[col] = df[col].str.strip()
     return df
 
 

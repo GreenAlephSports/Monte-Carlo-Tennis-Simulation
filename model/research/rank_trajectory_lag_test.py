@@ -101,9 +101,14 @@ def apply_blend(df, weight):
     return df
 
 
-def run(tour):
+def run(tour, max_editions=None):
+    if max_editions is not None:
+        print(f"*** QUICK CHECK ON RECENT DATA ONLY (--max-editions {max_editions}) - NOT the "
+              f"full-historical verdict. A different (smaller, more recent) editions pool than the "
+              f"full-scale run, with its own fresh train/test split and its own fresh weight grid "
+              f"search - a rough out-of-sample consistency check, not a replacement. ***\n")
     matches = load_matches_for_tour(tour)
-    preds, editions = build_dataset(matches)
+    preds, editions = build_dataset(matches, max_editions=max_editions)
 
     split_idx = int(len(editions) * TRAIN_FRACTION)
     train_editions = set(editions["edition_id"].iloc[:split_idx])
@@ -192,5 +197,8 @@ def run(tour):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--tour", default="WTA", choices=["ATP", "WTA"])
+    parser.add_argument("--max-editions", type=int, default=None,
+                         help="quick-check mode: only replay the most recent N tournament editions "
+                              "(before the 80/20 split), instead of the full lookback window")
     args = parser.parse_args()
-    run(args.tour)
+    run(args.tour, max_editions=args.max_editions)

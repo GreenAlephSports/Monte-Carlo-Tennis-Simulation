@@ -16,7 +16,8 @@ def _beat_a_big_favorite(player, player_elo, prior_beaten_elo):
     return beaten_elo is not None and beaten_elo - player_elo > UPSET_BOOST_ELO_GAP_THRESHOLD
 
 
-def _play_round(players, surface, ratings_path, known_results=None, prior_beaten_elo=None, matchups=None):
+def _play_round(players, surface, ratings_path, known_results=None, prior_beaten_elo=None, matchups=None,
+                 win_probability_kwargs=None):
     """known_results, if given, maps frozenset({player_a, player_b}) -> real winner for
     pairings already decided in reality - that winner is used as-is (no randomness spent),
     while any pairing missing from known_results is Monte Carlo-simulated as usual. Lets a
@@ -36,7 +37,13 @@ def _play_round(players, surface, ratings_path, known_results=None, prior_beaten
     THIS SAME call chain (see UPSET_BOOST_ELO_GAP_THRESHOLD's docstring in win_probability.py for
     where the threshold/shift come from). Returns (winners, next_prior_beaten_elo) - the second
     element is None when prior_beaten_elo was None (feature off), otherwise a fresh dict mapping
-    this round's winners to the Elo of whoever they just beat, ready to feed the next round."""
+    this round's winners to the Elo of whoever they just beat, ready to feed the next round.
+
+    win_probability_kwargs, if given, is forwarded as-is to every win_probability() call this
+    round (e.g. {"use_rank_adjustment": False, ...}) - lets a caller run an ablation (production
+    corrections off) through the EXACT same simulation mechanics as a normal run, rather than a
+    separate reimplementation that could quietly drift from it. None (the default) forwards
+    nothing, identical to every existing caller's current behavior."""
     track_upsets = prior_beaten_elo is not None
     winners = []
     next_beaten_elo = {} if track_upsets else None
@@ -50,7 +57,7 @@ def _play_round(players, surface, ratings_path, known_results=None, prior_beaten
         if known_winner is not None:
             winner = known_winner
         else:
-            prob_a = win_probability(player_a, player_b, surface, ratings_path)
+            prob_a = win_probability(player_a, player_b, surface, ratings_path, **(win_probability_kwargs or {}))
             if track_upsets:
                 boost_a = UPSET_BOOST_LOGIT_SHIFT if _beat_a_big_favorite(player_a, elo_a, prior_beaten_elo) else 0.0
                 boost_b = UPSET_BOOST_LOGIT_SHIFT if _beat_a_big_favorite(player_b, elo_b, prior_beaten_elo) else 0.0
@@ -71,7 +78,8 @@ def _play_round(players, surface, ratings_path, known_results=None, prior_beaten
 # here never has a "most recent win this tournament" to condition on (same structural gap a
 # fatigue adjustment would have at Round 1), so it starts boost-inactive and only turns on for
 # players once they've won a round inside this same replay.
-def simulate_from_field(field, surface, ratings_path, use_upset_boost=True, matchups_resolver=None):
+def simulate_from_field(field, surface, ratings_path, use_upset_boost=True, matchups_resolver=None,
+                         win_probability_kwargs=None):
     """matchups_resolver, if given, is called with the current list of still-alive players before
     each round and may return that round's real, already-known [(player_a, player_b), ...]
     pairing (see _play_round's `matchups` param) instead of None - used in place of deriving
@@ -80,13 +88,16 @@ def simulate_from_field(field, surface, ratings_path, use_upset_boost=True, matc
     exactly matches a real, historical round's starting field - so as soon as one simulated
     result diverges from what actually happened (or simulation reaches a round that hasn't
     really been played yet), the resolver has nothing to return, and every round after that
-    reverts to plain positional pairing, same as when no resolver is given at all."""
+    reverts to plain positional pairing, same as when no resolver is given at all.
+
+    win_probability_kwargs: see _play_round's docstring - forwarded unchanged every round."""
     players = list(field)
     prior_beaten_elo = {} if use_upset_boost else None
     while len(players) > 1:
         matchups = matchups_resolver(players) if matchups_resolver is not None else None
         players, prior_beaten_elo = _play_round(
-            players, surface, ratings_path, prior_beaten_elo=prior_beaten_elo, matchups=matchups)
+            players, surface, ratings_path, prior_beaten_elo=prior_beaten_elo, matchups=matchups,
+            win_probability_kwargs=win_probability_kwargs)
     return players[0]
 
 
@@ -240,6 +251,62 @@ def run_simulations_tracking_milestones(ordered_field, is_bye, known_results, su
             players, prior_beaten_elo = _play_round(
                 players, surface, ratings_path, prior_beaten_elo=prior_beaten_elo)
     return champion_counts, semifinal_counts, final_counts
+
+
+# Generalizes run_simulations_tracking_milestones from 3 fixed milestones (semifinal/final/
+# champion) to EVERY round depth - needed to test whether calibration drifts as a real tournament
+# narrows round by round, not just at 3 fixed checkpoints. Depth is measured as "rounds remaining
+# until the final" (0 = won the title, 1 = reached the final, 2 = reached the semifinal, ...) -
+# not an absolute round number - so it's directly comparable across draw sizes (a 56-draw Masters
+# and a 128-draw Slam both have a depth-0/1/2 final/semifinal/quarterfinal, they just differ in
+# how many EARLIER depths exist below that). win_probability_kwargs, if given, is forwarded to
+# every win_probability() call for the whole run (e.g. {"use_rank_adjustment": False} for a
+# corrections-off ablation) - same mechanism _play_round's own kwarg already documents.
+def run_simulations_tracking_all_rounds(ordered_field, is_bye, surface, n_simulations, ratings_path,
+                                         use_upset_boost=True, win_probability_kwargs=None):
+    n = len(ordered_field)
+    # depth_counts[d] = Counter of players who reached depth d (rounds remaining until final)
+    # across all trials - depth range is discovered per-trial from how many rounds actually get
+    # played (byes fold into round 2, so the real round count isn't a fixed function of n alone).
+    depth_counts = {}
+
+    for _ in range(n_simulations):
+        prior_beaten_elo = {} if use_upset_boost else None
+        players = []
+        i = 0
+        while i < n:
+            if is_bye[i]:
+                players.append(ordered_field[i])
+                i += 1
+                continue
+            player_a, player_b = ordered_field[i], ordered_field[i + 1]
+            players_pair, next_beaten_elo = _play_round(
+                [player_a, player_b], surface, ratings_path, prior_beaten_elo=prior_beaten_elo,
+                win_probability_kwargs=win_probability_kwargs,
+            )
+            players.append(players_pair[0])
+            if use_upset_boost:
+                prior_beaten_elo.update(next_beaten_elo)
+            i += 2
+
+        rounds_played = []  # list of survivor-lists, one per round, starting with this round's winners
+        rounds_played.append(list(players))
+        while len(players) > 1:
+            players, prior_beaten_elo = _play_round(
+                players, surface, ratings_path, prior_beaten_elo=prior_beaten_elo,
+                win_probability_kwargs=win_probability_kwargs,
+            )
+            rounds_played.append(list(players))
+
+        # rounds_played[-1] is the champion (depth 0), rounds_played[-2] is the 2 finalists
+        # (depth 1), etc. - walk backward so depth is always "rounds remaining until final"
+        # regardless of how many total rounds this particular trial/draw-size had.
+        for depth, survivors in enumerate(reversed(rounds_played)):
+            counts = depth_counts.setdefault(depth, Counter())
+            for p in survivors:
+                counts[p] += 1
+
+    return depth_counts
 
 
 def run_simulations(non_bye_players, bye_players, surface, n_simulations, ratings_path):
