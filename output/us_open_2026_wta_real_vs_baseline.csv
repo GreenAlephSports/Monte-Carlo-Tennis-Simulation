@@ -1,197 +1,130 @@
 player,p_champ_baseline,p_champ_current,diff,pct_change,note
-Aryna Sabalenka,0.0,0.298,0.298,,not in baseline (unresolved/qualifier slot at snapshot time)
-Sabalenka A.,0.25,0.0,-0.25,-100.0,eliminated
-Coco Gauff,0.0,0.128,0.128,,not in baseline (unresolved/qualifier slot at snapshot time)
-Gauff C.,0.117,0.0,-0.117,-100.0,eliminated
-Jessica Pegula,0.0,0.112,0.112,,not in baseline (unresolved/qualifier slot at snapshot time)
-Rybakina E.,0.11,0.0,-0.11,-100.0,eliminated
-Swiatek I.,0.105,0.0,-0.105,-100.0,eliminated
-Iga Swiatek,0.0,0.097,0.097,,not in baseline (unresolved/qualifier slot at snapshot time)
-Elena Rybakina,0.0,0.096,0.096,,not in baseline (unresolved/qualifier slot at snapshot time)
-Pegula J.,0.092,0.0,-0.092,-100.0,eliminated
-Muchova K.,0.06,0.0,-0.06,-100.0,eliminated
-Marta Kostyuk,0.0,0.045,0.045,,not in baseline (unresolved/qualifier slot at snapshot time)
-Karolina Muchova,0.0,0.041,0.041,,not in baseline (unresolved/qualifier slot at snapshot time)
-Kostyuk M.,0.04,0.0,-0.04,-100.0,eliminated
-Amanda Anisimova,0.0,0.033,0.033,,not in baseline (unresolved/qualifier slot at snapshot time)
-Elina Svitolina,0.0,0.032,0.032,,not in baseline (unresolved/qualifier slot at snapshot time)
-Svitolina E.,0.032,0.0,-0.032,-100.0,eliminated
-Anisimova A.,0.031,0.0,-0.031,-100.0,eliminated
-Noskova L.,0.026,0.0,-0.026,-100.0,eliminated
-Osaka N.,0.025,0.0,-0.025,-100.0,eliminated
-Bencic B.,0.023,0.0,-0.023,-100.0,eliminated
-Mirra Andreeva,0.0,0.023,0.023,,not in baseline (unresolved/qualifier slot at snapshot time)
-Linda Noskova,0.0,0.021,0.021,,not in baseline (unresolved/qualifier slot at snapshot time)
-Andreeva M.,0.019,0.0,-0.019,-100.0,eliminated
-Naomi Osaka,0.0,0.018,0.018,,not in baseline (unresolved/qualifier slot at snapshot time)
-Cirstea S.,0.009,0.0,-0.009,-100.0,eliminated
-Keys M.,0.009,0.0,-0.009,-100.0,eliminated
-Madison Keys,0.0,0.009,0.009,,not in baseline (unresolved/qualifier slot at snapshot time)
-Alexandra Eala,0.0,0.007,0.007,,not in baseline (unresolved/qualifier slot at snapshot time)
-Shnaider D.,0.006,0.0,-0.006,-100.0,eliminated
-Sorana Cirstea,0.0,0.006,0.006,,not in baseline (unresolved/qualifier slot at snapshot time)
-Diana Shnaider,0.0,0.005,0.005,,not in baseline (unresolved/qualifier slot at snapshot time)
-Krejcikova B.,0.005,0.0,-0.005,-100.0,eliminated
-Anna Kalinskaya,0.0,0.004,0.004,,not in baseline (unresolved/qualifier slot at snapshot time)
-Jovic I.,0.004,0.0,-0.004,-100.0,eliminated
-Kalinskaya A.,0.004,0.0,-0.004,-100.0,eliminated
-Zheng Q.,0.004,0.0,-0.004,-100.0,eliminated
-Anastasia Potapova,0.0,0.003,0.003,,not in baseline (unresolved/qualifier slot at snapshot time)
-Badosa P.,0.003,0.0,-0.003,-100.0,eliminated
-Bejlek S.,0.003,0.0,-0.003,-100.0,eliminated
-Eala A.,0.003,0.0,-0.003,-100.0,eliminated
-Elise Mertens,0.0,0.003,0.003,,not in baseline (unresolved/qualifier slot at snapshot time)
-Zheng Qinwen,0.0,0.003,0.003,,not in baseline (unresolved/qualifier slot at snapshot time)
-Bouzkova M.,0.002,0.0,-0.002,-100.0,eliminated
-Iva Jovic,0.0,0.002,0.002,,not in baseline (unresolved/qualifier slot at snapshot time)
-Marie Bouzkova,0.0,0.002,0.002,,not in baseline (unresolved/qualifier slot at snapshot time)
-Ostapenko J.,0.002,0.0,-0.002,-100.0,eliminated
-Paula Badosa,0.0,0.002,0.002,,not in baseline (unresolved/qualifier slot at snapshot time)
-Taylor Townsend,0.0,0.002,0.002,,not in baseline (unresolved/qualifier slot at snapshot time)
-Alexandrova E.,0.001,0.0,-0.001,-100.0,eliminated
-Bartunkova N.,0.001,0.0,-0.001,-100.0,eliminated
-Diane Parry,0.0,0.001,0.001,,not in baseline (unresolved/qualifier slot at snapshot time)
-Ekaterina Alexandrova,0.0,0.001,0.001,,not in baseline (unresolved/qualifier slot at snapshot time)
-Emma Navarro,0.0,0.001,0.001,,not in baseline (unresolved/qualifier slot at snapshot time)
-Frech M.,0.001,0.0,-0.001,-100.0,eliminated
-Jasmine Paolini,0.0,0.001,0.001,,not in baseline (unresolved/qualifier slot at snapshot time)
-Jelena Ostapenko,0.0,0.001,0.001,,not in baseline (unresolved/qualifier slot at snapshot time)
-Katerina Siniakova,0.0,0.001,0.001,,not in baseline (unresolved/qualifier slot at snapshot time)
-Korneeva A.,0.001,0.0,-0.001,-100.0,eliminated
-Mananchaya Sawangkaew,0.0,0.001,0.001,,not in baseline (unresolved/qualifier slot at snapshot time)
-Maria Sakkari,0.0,0.001,0.001,,not in baseline (unresolved/qualifier slot at snapshot time)
-Mertens E.,0.001,0.0,-0.001,-100.0,eliminated
-Navarro E.,0.001,0.0,-0.001,-100.0,eliminated
-Nikola Bartunkova,0.0,0.001,0.001,,not in baseline (unresolved/qualifier slot at snapshot time)
-Paolini J.,0.001,0.0,-0.001,-100.0,eliminated
-Pliskova Ka.,0.001,0.0,-0.001,-100.0,eliminated
-Potapova A.,0.001,0.0,-0.001,-100.0,eliminated
-Sakkari M.,0.001,0.0,-0.001,-100.0,eliminated
-Siniakova K.,0.001,0.0,-0.001,-100.0,eliminated
-Tagger L.,0.001,0.0,-0.001,-100.0,eliminated
-Townsend T.,0.001,0.0,-0.001,-100.0,eliminated
-Ann Li,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Anna Bondar,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Arango E.,0.0,0.0,0.0,,eliminated
-Birrell K.,0.0,0.0,0.0,,eliminated
-Blinkova A.,0.0,0.0,0.0,,eliminated
-Boisson L.,0.0,0.0,0.0,,eliminated
-Bondar A.,0.0,0.0,0.0,,eliminated
-Boulter K.,0.0,0.0,0.0,,eliminated
-Bouzas Maneiro J.,0.0,0.0,0.0,,eliminated
-Brantmeier R.,0.0,0.0,0.0,,eliminated
-Bucsa C.,0.0,0.0,0.0,,eliminated
+Aryna Sabalenka,0.25,0.294,0.044,17.6,
+Belinda Bencic,0.023,0.0,-0.023,-100.0,eliminated
+Elena Rybakina,0.11,0.091,-0.019,-17.3,
+Jessica Pegula,0.092,0.11,0.018,19.6,
+Karolina Muchova,0.06,0.044,-0.016,-26.7,
+Coco Gauff,0.117,0.126,0.009,7.7,
+Naomi Osaka,0.025,0.017,-0.008,-32.0,
+Linda Noskova,0.026,0.019,-0.007,-26.9,
+Alexandra Eala,0.003,0.008,0.005,166.7,
+Barbora Krejcikova,0.005,0.0,-0.005,-100.0,eliminated
+Marta Kostyuk,0.04,0.045,0.005,12.5,
+Mirra Andreeva,0.019,0.024,0.005,26.3,
+Sorana Cirstea,0.009,0.005,-0.004,-44.4,
+Amanda Anisimova,0.031,0.034,0.003,9.7,
+Iga Swiatek,0.105,0.102,-0.003,-2.9,
+Sara Bejlek,0.003,0.0,-0.003,-100.0,eliminated
+Anastasia Potapova,0.001,0.003,0.002,200.0,
+Elise Mertens,0.001,0.003,0.002,200.0,
+Jasmine Paolini,0.001,0.003,0.002,200.0,
+Alina Korneeva,0.001,0.0,-0.001,-100.0,eliminated
+Elina Svitolina,0.032,0.031,-0.001,-3.1,
+Iva Jovic,0.004,0.003,-0.001,-25.0,
+Jelena Ostapenko,0.002,0.001,-0.001,-50.0,
+Karolina Pliskova,0.001,0.0,-0.001,-100.0,eliminated
+Madison Keys,0.009,0.01,0.001,11.1,
+Magdalena Frech,0.001,0.0,-0.001,-100.0,
+Marie Bouzkova,0.002,0.001,-0.001,-50.0,
+Paula Badosa,0.003,0.002,-0.001,-33.3,
+Taylor Townsend,0.001,0.002,0.001,100.0,
+Alycia Parks,0.0,0.0,0.0,,eliminated
+Anastasia Zakharova,0.0,0.0,0.0,,eliminated
+Anhelina Kalinina,0.0,0.0,0.0,,eliminated
+Ann Li,0.0,0.0,0.0,,
+Anna Blinkova,0.0,0.0,0.0,,eliminated
+Anna Bondar,0.0,0.0,0.0,,
+Anna Kalinskaya,0.004,0.004,0.0,0.0,
+Anouk Koevermans,0.0,0.0,0.0,,eliminated
+Antonia Ruzic,0.0,0.0,0.0,,eliminated
+Aoi Ito,0.0,0.0,0.0,,eliminated
+Arantxa Rus,0.0,0.0,0.0,,eliminated
+Ashlyn Krueger,0.0,0.0,0.0,,eliminated
+Camila Osorio,0.0,0.0,0.0,,eliminated
 Catherine McNally,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Chwalinska M.,0.0,0.0,0.0,,eliminated
-Cocciaretto E.,0.0,0.0,0.0,,eliminated
-Cristina Bucsa,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Daria Kasatkina,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Dart H.,0.0,0.0,0.0,,eliminated
-Donna Vekic,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Erjavec V.,0.0,0.0,0.0,,eliminated
-Eva Lys,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Fernandez L.,0.0,0.0,0.0,,eliminated
-Francesca Jones,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Frodin T.,0.0,0.0,0.0,,eliminated
-Gibson T.,0.0,0.0,0.0,,eliminated
-Golubic V.,0.0,0.0,0.0,,eliminated
-Grabher J.,0.0,0.0,0.0,,eliminated
-Harriet Dart,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Havlickova L.,0.0,0.0,0.0,,eliminated
-Himeno Sakatsume,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Hunter S.,0.0,0.0,0.0,,eliminated
-Iatcenko P.,0.0,0.0,0.0,,eliminated
-Ito A.,0.0,0.0,0.0,,eliminated
-Jacquemot E.,0.0,0.0,0.0,,eliminated
-Jeanjean L.,0.0,0.0,0.0,,eliminated
-Jessica Bouzas Maneiro,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Joint M.,0.0,0.0,0.0,,eliminated
-Jones F.,0.0,0.0,0.0,,eliminated
-Kalieva E.,0.0,0.0,0.0,,eliminated
-Kalinina A.,0.0,0.0,0.0,,eliminated
-Kamilla Rakhimova,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Karolina Pliskova,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Kasatkina D.,0.0,0.0,0.0,,eliminated
-Katie Boulter,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Kenin S.,0.0,0.0,0.0,,eliminated
-Kessler M.,0.0,0.0,0.0,,eliminated
-Kimberly Birrell,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Knutson G.,0.0,0.0,0.0,,eliminated
-Koevermans A.,0.0,0.0,0.0,,eliminated
-Korpatsch T.,0.0,0.0,0.0,,eliminated
-Kraus S.,0.0,0.0,0.0,,eliminated
-Krueger A.,0.0,0.0,0.0,,eliminated
-Lanlana Tararudee,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
+Clara Tauson,0.0,0.0,0.0,,eliminated
+Cristina Bucsa,0.0,0.0,0.0,,
+Daria Kasatkina,0.0,0.0,0.0,,eliminated
+Daria Snigur,0.0,0.0,0.0,,eliminated
+Darja Vidmanova,0.0,0.0,0.0,,eliminated
+Dayana Yastremska,0.0,0.0,0.0,,eliminated
+Diana Shnaider,0.006,0.006,0.0,0.0,
+Diane Parry,0.0,0.0,0.0,,eliminated
+Donna Vekic,0.0,0.0,0.0,,
+Ekaterina Alexandrova,0.001,0.001,0.0,0.0,
+Elena-Gabriela Ruse,0.0,0.0,0.0,,eliminated
+Elisabetta Cocciaretto,0.0,0.0,0.0,,eliminated
+Ella Seidel,0.0,0.0,0.0,,eliminated
+Elsa Jacquemot,0.0,0.0,0.0,,eliminated
+Elvina Kalieva,0.0,0.0,0.0,,eliminated
+Emiliana Arango,0.0,0.0,0.0,,eliminated
+Emma Navarro,0.001,0.001,0.0,0.0,
+Eva Lys,0.0,0.0,0.0,,
+Francesca Jones,0.0,0.0,0.0,,
+Gabriela Knutson,0.0,0.0,0.0,,eliminated
+Hanne Vandewinkel,0.0,0.0,0.0,,eliminated
+Harriet Dart,0.0,0.0,0.0,,
+Himeno Sakatsume,0.0,0.0,0.0,,
+Janice Tjen,0.0,0.0,0.0,,eliminated
+Jessica Bouzas Maneiro,0.0,0.0,0.0,,
+Julia Grabher,0.0,0.0,0.0,,eliminated
+Kaitlin Quevedo,0.0,0.0,0.0,,eliminated
+Kamilla Rakhimova,0.0,0.0,0.0,,
+Katerina Siniakova,0.001,0.001,0.0,0.0,
+Katie Boulter,0.0,0.0,0.0,,
+Katie Volynets,0.0,0.0,0.0,,eliminated
+Kimberly Birrell,0.0,0.0,0.0,,
+Kristina Liutova,0.0,0.0,0.0,,eliminated
+Lanlana Tararudee,0.0,0.0,0.0,,
 Lee C.Y.,0.0,0.0,0.0,,eliminated
-Leolia Jeanjean,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Leylah Fernandez,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Li A.,0.0,0.0,0.0,,eliminated
-Lilli Tagger,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Linette M.,0.0,0.0,0.0,,eliminated
-Liutova K.,0.0,0.0,0.0,,eliminated
-Lucrezia Stefanini,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Lys E.,0.0,0.0,0.0,,eliminated
-Magda Linette,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Magdalena Frech,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Marcinko P.,0.0,0.0,0.0,,eliminated
-Maria T.,0.0,0.0,0.0,,eliminated
-Maria Timofeeva,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Maya Joint,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Mayar Sherif,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
+Leolia Jeanjean,0.0,0.0,0.0,,
+Leylah Fernandez,0.0,0.0,0.0,,
+Lilli Tagger,0.001,0.001,0.0,0.0,
+Liudmila Samsonova,0.0,0.0,0.0,,eliminated
+Lois Boisson,0.0,0.0,0.0,,eliminated
+Lucie Havlickova,0.0,0.0,0.0,,eliminated
+Lucrezia Stefanini,0.0,0.0,0.0,,eliminated
+Magda Linette,0.0,0.0,0.0,,
+Maja Chwalinska,0.0,0.0,0.0,,eliminated
+Mananchaya Sawangkaew,0.0,0.0,0.0,,eliminated
+Maria Sakkari,0.001,0.001,0.0,0.0,
+Maria Timofeeva,0.0,0.0,0.0,,
+Mary Stoiana,0.0,0.0,0.0,,eliminated
+Maya Joint,0.0,0.0,0.0,,
+Mayar Sherif,0.0,0.0,0.0,,
+McCartney Kessler,0.0,0.0,0.0,,eliminated
 McNally C.,0.0,0.0,0.0,,eliminated
-Montgomery R.,0.0,0.0,0.0,,eliminated
-Nadia Podoroska,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Oksana Selekhmeteva,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Oleksandra Oliynykova,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Oliynykova O.,0.0,0.0,0.0,,eliminated
-Osorio M.,0.0,0.0,0.0,,eliminated
-Parks A.,0.0,0.0,0.0,,eliminated
-Parry D.,0.0,0.0,0.0,,eliminated
-Podoroska N.,0.0,0.0,0.0,,eliminated
-Polina Iatcenko,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Preston T.,0.0,0.0,0.0,,eliminated
-Putintseva Y.,0.0,0.0,0.0,,eliminated
-Quevedo K.,0.0,0.0,0.0,,eliminated
-Rakhimova K.,0.0,0.0,0.0,,eliminated
-Rus A.,0.0,0.0,0.0,,eliminated
-Ruse E.G.,0.0,0.0,0.0,,eliminated
-Ruzic A.,0.0,0.0,0.0,,eliminated
-Sakatsume H.,0.0,0.0,0.0,,eliminated
-Samsonova L.,0.0,0.0,0.0,,eliminated
-Sawangkaew M.,0.0,0.0,0.0,,eliminated
-Seidel E.,0.0,0.0,0.0,,eliminated
-Selekhmeteva O.,0.0,0.0,0.0,,eliminated
-Sherif M.,0.0,0.0,0.0,,eliminated
-Sierra S.,0.0,0.0,0.0,,eliminated
-Sloane Stephens,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Snigur D.,0.0,0.0,0.0,,eliminated
-Sofia Kenin,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Sonmez Z.,0.0,0.0,0.0,,eliminated
-Starodubtseva Y.,0.0,0.0,0.0,,eliminated
-Stearns P.,0.0,0.0,0.0,,eliminated
-Stefanini L.,0.0,0.0,0.0,,eliminated
-Stephens S.,0.0,0.0,0.0,,eliminated
-Stoiana M.,0.0,0.0,0.0,,eliminated
-Tararudee L.,0.0,0.0,0.0,,eliminated
-Tatjana Maria,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Tauson C.,0.0,0.0,0.0,,eliminated
-Timofeeva M.,0.0,0.0,0.0,,eliminated
-Tjen J.,0.0,0.0,0.0,,eliminated
-Udvardy P.,0.0,0.0,0.0,,eliminated
+Nadia Podoroska,0.0,0.0,0.0,,
+Nikola Bartunkova,0.001,0.001,0.0,0.0,
+Oksana Selekhmeteva,0.0,0.0,0.0,,
+Oleksandra Oliynykova,0.0,0.0,0.0,,
+Panna Udvardy,0.0,0.0,0.0,,eliminated
+Petra Marcinko,0.0,0.0,0.0,,eliminated
+Peyton Stearns,0.0,0.0,0.0,,eliminated
+Polina Iatcenko,0.0,0.0,0.0,,
+Reese Brantmeier,0.0,0.0,0.0,,eliminated
+Renata Zarazua,0.0,0.0,0.0,,eliminated
+Robin Montgomery,0.0,0.0,0.0,,eliminated
+Simona Waltert,0.0,0.0,0.0,,eliminated
+Sinja Kraus,0.0,0.0,0.0,,eliminated
+Sloane Stephens,0.0,0.0,0.0,,
+Sofia Kenin,0.0,0.0,0.0,,eliminated
+Solana Sierra,0.0,0.0,0.0,,eliminated
+Storm Hunter,0.0,0.0,0.0,,eliminated
+Talia Gibson,0.0,0.0,0.0,,eliminated
+Tamara Korpatsch,0.0,0.0,0.0,,eliminated
+Tamara Zidansek,0.0,0.0,0.0,,eliminated
+Tatjana Maria,0.0,0.0,0.0,,
+Taylah Preston,0.0,0.0,0.0,,eliminated
+Thea Frodin,0.0,0.0,0.0,,eliminated
 Valentova T.,0.0,0.0,0.0,,eliminated
-Vandewinkel H.,0.0,0.0,0.0,,eliminated
-Vekic D.,0.0,0.0,0.0,,eliminated
-Vidmanova D.,0.0,0.0,0.0,,eliminated
-Volynets K.,0.0,0.0,0.0,,eliminated
-Waltert S.,0.0,0.0,0.0,,eliminated
-Wang Xinyu,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Williams V.,0.0,0.0,0.0,,eliminated
-Xinyu W.,0.0,0.0,0.0,,eliminated
-Xiyu W.,0.0,0.0,0.0,,eliminated
-Yastremska D.,0.0,0.0,0.0,,eliminated
-Yulia Putintseva,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Yuliia Starodubtseva,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
-Zakharova A.,0.0,0.0,0.0,,eliminated
-Zarazua R.,0.0,0.0,0.0,,eliminated
-Zhang S.,0.0,0.0,0.0,,eliminated
-Zidansek T.,0.0,0.0,0.0,,eliminated
+Venus Williams,0.0,0.0,0.0,,eliminated
+Veronika Erjavec,0.0,0.0,0.0,,eliminated
+Viktorija Golubic,0.0,0.0,0.0,,eliminated
+Wang Xinyu,0.0,0.0,0.0,,
+Wang Xiyu,0.0,0.0,0.0,,eliminated
+Yulia Putintseva,0.0,0.0,0.0,,
+Yuliia Starodubtseva,0.0,0.0,0.0,,
+Zeynep Sonmez,0.0,0.0,0.0,,eliminated
+Zhang Shuai,0.0,0.0,0.0,,eliminated
+Zheng Qinwen,0.004,0.004,0.0,0.0,

@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "us-open-men-2026",
-    "generated_at": "2026-09-02T16:04:00Z",
+    "generated_at": "2026-09-02T17:02:40Z",
     "iterations": 10000,
     "seed": 42
   },
@@ -519,17 +519,6 @@
     }
   ],
   "matchups": {
-    "T-R1-16": {
-      "slot_a": "Andrea Guerrieri",
-      "slot_b": "Alex de Minaur",
-      "p_slot_a": 0.072,
-      "p_slot_b": 0.928,
-      "market_prob_a": 0.072,
-      "market_prob_b": 0.928,
-      "model_prob_a": 0.207,
-      "model_prob_b": 0.793,
-      "relative_change_pct": 187.0
-    },
     "T-R1-15": {
       "slot_a": "Jan Choinski",
       "slot_b": "Botic Van De Zandschulp",
@@ -541,38 +530,16 @@
       "model_prob_b": 0.733,
       "relative_change_pct": null
     },
-    "T-R1-10": {
-      "slot_a": "Fabian Marozsan",
-      "slot_b": "Michael Zheng",
-      "p_slot_a": 0.4,
-      "p_slot_b": 0.6,
-      "market_prob_a": 0.4,
-      "market_prob_b": 0.6,
-      "model_prob_a": 0.591,
-      "model_prob_b": 0.409,
-      "relative_change_pct": 47.8
-    },
     "T-R1-11": {
       "slot_a": "Zachary Svajda",
       "slot_b": "Daniel Altmaier",
-      "p_slot_a": 0.588,
-      "p_slot_b": 0.412,
-      "market_prob_a": 0.588,
-      "market_prob_b": 0.412,
+      "p_slot_a": 0.622,
+      "p_slot_b": 0.378,
+      "market_prob_a": 0.622,
+      "market_prob_b": 0.378,
       "model_prob_a": 0.383,
       "model_prob_b": 0.617,
-      "relative_change_pct": -34.9
-    },
-    "T-R1-20": {
-      "slot_a": "Marcos Giron",
-      "slot_b": "Ignacio Buse",
-      "p_slot_a": 0.401,
-      "p_slot_b": 0.599,
-      "market_prob_a": 0.401,
-      "market_prob_b": 0.599,
-      "model_prob_a": 0.344,
-      "model_prob_b": 0.656,
-      "relative_change_pct": -14.2
+      "relative_change_pct": -38.4
     },
     "T-R1-19": {
       "slot_a": "Alex Molcan",
@@ -585,27 +552,49 @@
       "model_prob_b": 0.577,
       "relative_change_pct": null
     },
+    "T-R1-20": {
+      "slot_a": "Marcos Giron",
+      "slot_b": "Ignacio Buse",
+      "p_slot_a": 0.455,
+      "p_slot_b": 0.545,
+      "market_prob_a": 0.455,
+      "market_prob_b": 0.545,
+      "model_prob_a": 0.344,
+      "model_prob_b": 0.656,
+      "relative_change_pct": -24.2
+    },
     "T-R1-9": {
       "slot_a": "Rafael Jodar",
       "slot_b": "Bu Yunchaokete",
-      "p_slot_a": 0.889,
-      "p_slot_b": 0.111,
-      "market_prob_a": 0.889,
-      "market_prob_b": 0.111,
+      "p_slot_a": 0.887,
+      "p_slot_b": 0.113,
+      "market_prob_a": 0.887,
+      "market_prob_b": 0.113,
       "model_prob_a": 0.837,
       "model_prob_b": 0.163,
-      "relative_change_pct": -5.8
+      "relative_change_pct": -5.6
     },
-    "T-R1-14": {
-      "slot_a": "Jesper de Jong",
-      "slot_b": "Francesco Passaro",
-      "p_slot_a": 0.662,
-      "p_slot_b": 0.338,
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "model_prob_a": 0.662,
-      "model_prob_b": 0.338,
-      "relative_change_pct": null
+    "T-R1-16": {
+      "slot_a": "Andrea Guerrieri",
+      "slot_b": "Alex de Minaur",
+      "p_slot_a": 0.076,
+      "p_slot_b": 0.924,
+      "market_prob_a": 0.076,
+      "market_prob_b": 0.924,
+      "model_prob_a": 0.207,
+      "model_prob_b": 0.793,
+      "relative_change_pct": 172.0
+    },
+    "T-R1-10": {
+      "slot_a": "Fabian Marozsan",
+      "slot_b": "Michael Zheng",
+      "p_slot_a": 0.399,
+      "p_slot_b": 0.601,
+      "market_prob_a": 0.399,
+      "market_prob_b": 0.601,
+      "model_prob_a": 0.591,
+      "model_prob_b": 0.409,
+      "relative_change_pct": 48.1
     },
     "T-R1-13": {
       "slot_a": "Zizou Bergs",
@@ -616,6 +605,17 @@
       "market_prob_b": null,
       "model_prob_a": 0.642,
       "model_prob_b": 0.358,
+      "relative_change_pct": null
+    },
+    "T-R1-14": {
+      "slot_a": "Jesper de Jong",
+      "slot_b": "Francesco Passaro",
+      "p_slot_a": 0.662,
+      "p_slot_b": 0.338,
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "model_prob_a": 0.662,
+      "model_prob_b": 0.338,
       "relative_change_pct": null
     },
     "B-R2-6": {
@@ -632,79 +632,79 @@
     "B-R2-2": {
       "slot_a": "Jaume Munar",
       "slot_b": "Arthur Rinderknech",
-      "p_slot_a": 0.53,
-      "p_slot_b": 0.47,
-      "market_prob_a": 0.53,
-      "market_prob_b": 0.47,
+      "p_slot_a": 0.142,
+      "p_slot_b": 0.858,
+      "market_prob_a": 0.142,
+      "market_prob_b": 0.858,
       "model_prob_a": 0.576,
       "model_prob_b": 0.424,
-      "relative_change_pct": 8.6
+      "relative_change_pct": 304.9
     },
     "B-R2-5": {
       "slot_a": "Brandon Nakashima",
       "slot_b": "Alex Michelsen",
-      "p_slot_a": 0.451,
-      "p_slot_b": 0.549,
-      "market_prob_a": 0.451,
-      "market_prob_b": 0.549,
+      "p_slot_a": 0.053,
+      "p_slot_b": 0.947,
+      "market_prob_a": 0.053,
+      "market_prob_b": 0.947,
       "model_prob_a": 0.637,
       "model_prob_b": 0.363,
-      "relative_change_pct": 41.2
+      "relative_change_pct": 1107.8
     },
     "B-R2-1": {
       "slot_a": "Daniil Medvedev",
       "slot_b": "Sebastian Gorzny",
-      "p_slot_a": 0.983,
-      "p_slot_b": 0.017,
-      "market_prob_a": 0.983,
-      "market_prob_b": 0.017,
+      "p_slot_a": 0.974,
+      "p_slot_b": 0.026,
+      "market_prob_a": 0.974,
+      "market_prob_b": 0.026,
       "model_prob_a": 0.814,
       "model_prob_b": 0.186,
-      "relative_change_pct": -17.2
-    },
-    "B-R2-7": {
-      "slot_a": "Tomas Martin Etcheverry",
-      "slot_b": "Jacob Fearnley",
-      "p_slot_a": 0.56,
-      "p_slot_b": 0.44,
-      "market_prob_a": 0.56,
-      "market_prob_b": 0.44,
-      "model_prob_a": 0.594,
-      "model_prob_b": 0.406,
-      "relative_change_pct": 6.1
+      "relative_change_pct": -16.5
     },
     "B-R2-9": {
       "slot_a": "Ben Shelton",
       "slot_b": "Hubert Hurkacz",
-      "p_slot_a": 0.676,
-      "p_slot_b": 0.324,
-      "market_prob_a": 0.676,
-      "market_prob_b": 0.324,
+      "p_slot_a": 0.678,
+      "p_slot_b": 0.322,
+      "market_prob_a": 0.678,
+      "market_prob_b": 0.322,
       "model_prob_a": 0.751,
       "model_prob_b": 0.249,
-      "relative_change_pct": 11.0
+      "relative_change_pct": 10.7
     },
-    "B-R2-15": {
-      "slot_a": "James Duckworth",
-      "slot_b": "Wu Yibing",
-      "p_slot_a": 0.419,
-      "p_slot_b": 0.581,
-      "market_prob_a": 0.419,
-      "market_prob_b": 0.581,
-      "model_prob_a": 0.456,
-      "model_prob_b": 0.544,
-      "relative_change_pct": 8.8
-    },
-    "B-R2-10": {
-      "slot_a": "Denis Shapovalov",
-      "slot_b": "Luca Van Assche",
+    "B-R2-7": {
+      "slot_a": "Tomas Martin Etcheverry",
+      "slot_b": "Jacob Fearnley",
       "p_slot_a": 0.576,
       "p_slot_b": 0.424,
       "market_prob_a": 0.576,
       "market_prob_b": 0.424,
+      "model_prob_a": 0.594,
+      "model_prob_b": 0.406,
+      "relative_change_pct": 3.3
+    },
+    "B-R2-15": {
+      "slot_a": "James Duckworth",
+      "slot_b": "Wu Yibing",
+      "p_slot_a": 0.42,
+      "p_slot_b": 0.58,
+      "market_prob_a": 0.42,
+      "market_prob_b": 0.58,
+      "model_prob_a": 0.456,
+      "model_prob_b": 0.544,
+      "relative_change_pct": 8.6
+    },
+    "B-R2-10": {
+      "slot_a": "Denis Shapovalov",
+      "slot_b": "Luca Van Assche",
+      "p_slot_a": 0.581,
+      "p_slot_b": 0.419,
+      "market_prob_a": 0.581,
+      "market_prob_b": 0.419,
       "model_prob_a": 0.695,
       "model_prob_b": 0.305,
-      "relative_change_pct": 20.7
+      "relative_change_pct": 19.7
     },
     "B-R2-14": {
       "slot_a": "Dino Prizmic",
@@ -720,13 +720,13 @@
     "B-R2-11": {
       "slot_a": "Jiri Lehecka",
       "slot_b": "Toby Samuel",
-      "p_slot_a": 0.713,
-      "p_slot_b": 0.287,
-      "market_prob_a": 0.713,
-      "market_prob_b": 0.287,
+      "p_slot_a": 0.708,
+      "p_slot_b": 0.292,
+      "market_prob_a": 0.708,
+      "market_prob_b": 0.292,
       "model_prob_a": 0.763,
       "model_prob_b": 0.237,
-      "relative_change_pct": 6.9
+      "relative_change_pct": 7.7
     },
     "B-R2-8": {
       "slot_a": "Matteo Berrettini",
@@ -808,13 +808,13 @@
     "T-R2-1": {
       "slot_a": "Alexander Zverev",
       "slot_b": "Quentin Halys",
-      "p_slot_a": 0.818,
-      "p_slot_b": 0.182,
-      "market_prob_a": 0.818,
-      "market_prob_b": 0.182,
+      "p_slot_a": 0.82,
+      "p_slot_b": 0.18,
+      "market_prob_a": 0.82,
+      "market_prob_b": 0.18,
       "model_prob_a": 0.818,
       "model_prob_b": 0.182,
-      "relative_change_pct": -0.0
+      "relative_change_pct": -0.2
     },
     "T-R2-2": {
       "slot_a": "Alexei Popyrin",
@@ -830,35 +830,35 @@
     "T-R2-4": {
       "slot_a": "Dane Sweeny",
       "slot_b": "Lorenzo Musetti",
-      "p_slot_a": 0.082,
-      "p_slot_b": 0.918,
-      "market_prob_a": 0.082,
-      "market_prob_b": 0.918,
+      "p_slot_a": 0.081,
+      "p_slot_b": 0.919,
+      "market_prob_a": 0.081,
+      "market_prob_b": 0.919,
       "model_prob_a": 0.204,
       "model_prob_b": 0.796,
-      "relative_change_pct": 149.1
+      "relative_change_pct": 152.2
     },
     "T-R2-3": {
       "slot_a": "Luciano Darderi",
       "slot_b": "Dalibor Svrcina",
-      "p_slot_a": 0.573,
-      "p_slot_b": 0.427,
-      "market_prob_a": 0.573,
-      "market_prob_b": 0.427,
+      "p_slot_a": 0.571,
+      "p_slot_b": 0.429,
+      "market_prob_a": 0.571,
+      "market_prob_b": 0.429,
       "model_prob_a": 0.635,
       "model_prob_b": 0.365,
-      "relative_change_pct": 10.8
+      "relative_change_pct": 11.2
     },
     "T-R2-14": {
       "slot_a": "Jan-Lennard Struff",
       "slot_b": "Francisco Cerundolo",
-      "p_slot_a": 0.394,
-      "p_slot_b": 0.606,
-      "market_prob_a": 0.394,
-      "market_prob_b": 0.606,
+      "p_slot_a": 0.393,
+      "p_slot_b": 0.607,
+      "market_prob_a": 0.393,
+      "market_prob_b": 0.607,
       "model_prob_a": 0.386,
       "model_prob_b": 0.614,
-      "relative_change_pct": -2.0
+      "relative_change_pct": -1.8
     },
     "T-R2-15": {
       "slot_a": "Alexander Blockx",
@@ -880,7 +880,7 @@
       "market_prob_b": 0.816,
       "model_prob_a": 0.158,
       "model_prob_b": 0.842,
-      "relative_change_pct": -13.7
+      "relative_change_pct": -14.0
     },
     "T-R2-11": {
       "slot_a": "Jakub Mensik",
@@ -913,7 +913,7 @@
       "market_prob_b": 0.788,
       "model_prob_a": 0.304,
       "model_prob_b": 0.696,
-      "relative_change_pct": 43.4
+      "relative_change_pct": 43.0
     }
   },
   "head_to_head": {
