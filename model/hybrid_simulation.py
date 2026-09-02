@@ -436,6 +436,15 @@ def main():
         for entry in unmatched:
             print(f"  {entry['name']}", file=sys.stderr)
         sys.exit(1)
+    # match_draw_to_ratings may have appended tier-3 STARTING_ELO placeholder rows (a genuinely
+    # new player with no training-window history - see its own docstring) to its own in-memory
+    # copy of ratings_df. Every simulation call below reads ratings from tour_config.ratings_path
+    # on disk, not this DataFrame directly, so without writing it back out, a tier-3 player's
+    # placeholder never actually reaches win_probability() - it silently raises "Unknown player"
+    # the first time that player's own match is simulated instead. bracket_export.py already does
+    # this write-out (see its own ratings_df.to_csv call); this was just missing here.
+    tour_config.ratings_path.parent.mkdir(parents=True, exist_ok=True)
+    ratings_df.to_csv(tour_config.ratings_path, index=False)
     validate_draw(draw)
     non_bye_players, bye_players = split_byes(draw, byes)
 

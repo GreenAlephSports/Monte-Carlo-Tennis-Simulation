@@ -5,7 +5,8 @@ import pandas as pd
 
 from bracket import get_matchups, validate_draw
 from win_probability import (
-    UPSET_BOOST_ELO_GAP_THRESHOLD, UPSET_BOOST_LOGIT_SHIFT, apply_logit_shift, get_surface_elo, win_probability,
+    UPSET_BOOST_ELO_GAP_THRESHOLD, UPSET_BOOST_LOGIT_SHIFT, apply_logit_shift, get_surface_elo, load_ratings,
+    win_probability,
 )
 
 N_SIMULATIONS = 10000
@@ -17,7 +18,7 @@ def _beat_a_big_favorite(player, player_elo, prior_beaten_elo):
 
 
 def _play_round(players, surface, ratings_path, known_results=None, prior_beaten_elo=None, matchups=None,
-                 win_probability_kwargs=None):
+                 win_probability_kwargs=None, _ratings=None):
     """known_results, if given, maps frozenset({player_a, player_b}) -> real winner for
     pairings already decided in reality - that winner is used as-is (no randomness spent),
     while any pairing missing from known_results is Monte Carlo-simulated as usual. Lets a
@@ -43,21 +44,29 @@ def _play_round(players, surface, ratings_path, known_results=None, prior_beaten
     round (e.g. {"use_rank_adjustment": False, ...}) - lets a caller run an ablation (production
     corrections off) through the EXACT same simulation mechanics as a normal run, rather than a
     separate reimplementation that could quietly drift from it. None (the default) forwards
-    nothing, identical to every existing caller's current behavior."""
+    nothing, identical to every existing caller's current behavior.
+
+    _ratings, if given, is an already-loaded ratings DataFrame (win_probability.load_ratings) -
+    every top-level simulate.py entry point below loads it once and threads it all the way down
+    to here and into win_probability() itself, instead of this function's own get_surface_elo
+    calls (needed for upset-boost tracking, on EVERY match, known results included) each paying
+    their own fresh ratings_path.stat() call - see win_probability.load_ratings' docstring for the
+    profiled cost this closes."""
     track_upsets = prior_beaten_elo is not None
     winners = []
     next_beaten_elo = {} if track_upsets else None
     for player_a, player_b in (matchups if matchups is not None else get_matchups(players)):
         elo_a = elo_b = None
         if track_upsets:
-            elo_a = get_surface_elo(player_a, surface, ratings_path)
-            elo_b = get_surface_elo(player_b, surface, ratings_path)
+            elo_a = get_surface_elo(player_a, surface, ratings_path, _ratings=_ratings)
+            elo_b = get_surface_elo(player_b, surface, ratings_path, _ratings=_ratings)
 
         known_winner = (known_results or {}).get(frozenset((player_a, player_b)))
         if known_winner is not None:
             winner = known_winner
         else:
-            prob_a = win_probability(player_a, player_b, surface, ratings_path, **(win_probability_kwargs or {}))
+            prob_a = win_probability(player_a, player_b, surface, ratings_path, _ratings=_ratings,
+                                      **(win_probability_kwargs or {}))
             if track_upsets:
                 boost_a = UPSET_BOOST_LOGIT_SHIFT if _beat_a_big_favorite(player_a, elo_a, prior_beaten_elo) else 0.0
                 boost_b = UPSET_BOOST_LOGIT_SHIFT if _beat_a_big_favorite(player_b, elo_b, prior_beaten_elo) else 0.0
@@ -79,7 +88,7 @@ def _play_round(players, surface, ratings_path, known_results=None, prior_beaten
 # fatigue adjustment would have at Round 1), so it starts boost-inactive and only turns on for
 # players once they've won a round inside this same replay.
 def simulate_from_field(field, surface, ratings_path, use_upset_boost=True, matchups_resolver=None,
-                         win_probability_kwargs=None):
+                         win_probability_kwargs=None, _ratings=None):
     """matchups_resolver, if given, is called with the current list of still-alive players before
     each round and may return that round's real, already-known [(player_a, player_b), ...]
     pairing (see _play_round's `matchups` param) instead of None - used in place of deriving
@@ -90,14 +99,15 @@ def simulate_from_field(field, surface, ratings_path, use_upset_boost=True, matc
     really been played yet), the resolver has nothing to return, and every round after that
     reverts to plain positional pairing, same as when no resolver is given at all.
 
-    win_probability_kwargs: see _play_round's docstring - forwarded unchanged every round."""
+    win_probability_kwargs: see _play_round's docstring - forwarded unchanged every round.
+    _ratings: see _play_round's docstring - forwarded unchanged every round."""
     players = list(field)
     prior_beaten_elo = {} if use_upset_boost else None
     while len(players) > 1:
         matchups = matchups_resolver(players) if matchups_resolver is not None else None
         players, prior_beaten_elo = _play_round(
             players, surface, ratings_path, prior_beaten_elo=prior_beaten_elo, matchups=matchups,
-            win_probability_kwargs=win_probability_kwargs)
+            win_probability_kwargs=win_probability_kwargs, _ratings=_ratings)
     return players[0]
 
 
@@ -109,18 +119,22 @@ def simulate_from_field(field, surface, ratings_path, use_upset_boost=True, matc
 #
 # This is always the pre-tournament baseline (no real results exist yet) - never takes an
 # upset-boost flag, since the signal it needs (a real win already on the board) can't exist here.
-def simulate_tournament(non_bye_players, bye_players, surface, ratings_path):
-    winners, _ = _play_round(non_bye_players, surface, ratings_path)
-    return simulate_from_field(winners + bye_players, surface, ratings_path)
+def simulate_tournament(non_bye_players, bye_players, surface, ratings_path, _ratings=None):
+    ratings = _ratings if _ratings is not None else load_ratings(ratings_path)
+    winners, _ = _play_round(non_bye_players, surface, ratings_path, _ratings=ratings)
+    return simulate_from_field(winners + bye_players, surface, ratings_path, _ratings=ratings)
 
 
 def run_simulations_from_field(field, surface, n_simulations, ratings_path, use_upset_boost=True,
                                 matchups_resolver=None):
+    # loaded ONCE for the whole n_simulations loop, not once per sim/match - see win_probability.
+    # load_ratings' docstring for the profiled cost this avoids re-paying every simulation.
+    ratings = load_ratings(ratings_path)
     champion_counts = Counter()
     for _ in range(n_simulations):
         champion_counts[simulate_from_field(
             field, surface, ratings_path, use_upset_boost=use_upset_boost,
-            matchups_resolver=matchups_resolver,
+            matchups_resolver=matchups_resolver, _ratings=ratings,
         )] += 1
     return champion_counts
 
@@ -151,14 +165,18 @@ def run_simulations_from_field(field, surface, n_simulations, ratings_path, use_
 # just one round later, where nothing was catching it before.
 def run_simulations_partial_round(starting_field, bye_players, known_results, surface, n_simulations, ratings_path,
                                    use_upset_boost=True, matchups=None, matchups_resolver=None):
+    # loaded ONCE for the whole n_simulations loop - see win_probability.load_ratings' docstring.
+    ratings = load_ratings(ratings_path)
     champion_counts = Counter()
     for _ in range(n_simulations):
         prior_beaten_elo = {} if use_upset_boost else None
         round_winners, prior_beaten_elo = _play_round(
-            starting_field, surface, ratings_path, known_results, prior_beaten_elo, matchups=matchups)
+            starting_field, surface, ratings_path, known_results, prior_beaten_elo, matchups=matchups,
+            _ratings=ratings)
         field = round_winners + list(bye_players)
         champion_counts[simulate_from_field(
             field, surface, ratings_path, use_upset_boost=use_upset_boost, matchups_resolver=matchups_resolver,
+            _ratings=ratings,
         )] += 1
     return champion_counts
 
@@ -184,6 +202,8 @@ def run_simulations_tracking_milestones(ordered_field, is_bye, known_results, su
     in this module (simulate_from_field and friends) has always carried it. Fixed by routing the
     starting round through _play_round (which returns next_beaten_elo) and threading that same
     dict into every subsequent round, exactly like simulate_from_field does."""
+    # loaded ONCE for the whole n_simulations loop - see win_probability.load_ratings' docstring.
+    ratings = load_ratings(ratings_path)
     champion_counts = Counter()
     semifinal_counts = Counter()
     final_counts = Counter()
@@ -221,14 +241,14 @@ def run_simulations_tracking_milestones(ordered_field, is_bye, known_results, su
                 # the winner's NEXT simulated match, same gap this whole fix closes for simulated
                 # rounds.
                 if use_upset_boost:
-                    elo_a = get_surface_elo(player_a, surface, ratings_path)
-                    elo_b = get_surface_elo(player_b, surface, ratings_path)
+                    elo_a = get_surface_elo(player_a, surface, ratings_path, _ratings=ratings)
+                    elo_b = get_surface_elo(player_b, surface, ratings_path, _ratings=ratings)
                     prior_beaten_elo[winner] = elo_b if winner == player_a else elo_a
             else:
-                prob_a = win_probability(player_a, player_b, surface, ratings_path)
+                prob_a = win_probability(player_a, player_b, surface, ratings_path, _ratings=ratings)
                 if use_upset_boost:
-                    elo_a = get_surface_elo(player_a, surface, ratings_path)
-                    elo_b = get_surface_elo(player_b, surface, ratings_path)
+                    elo_a = get_surface_elo(player_a, surface, ratings_path, _ratings=ratings)
+                    elo_b = get_surface_elo(player_b, surface, ratings_path, _ratings=ratings)
                     boost_a = UPSET_BOOST_LOGIT_SHIFT if _beat_a_big_favorite(player_a, elo_a, prior_beaten_elo) else 0.0
                     boost_b = UPSET_BOOST_LOGIT_SHIFT if _beat_a_big_favorite(player_b, elo_b, prior_beaten_elo) else 0.0
                     if boost_a != boost_b:
@@ -249,7 +269,7 @@ def run_simulations_tracking_milestones(ordered_field, is_bye, known_results, su
                 champion_counts[players[0]] += 1
                 break
             players, prior_beaten_elo = _play_round(
-                players, surface, ratings_path, prior_beaten_elo=prior_beaten_elo)
+                players, surface, ratings_path, prior_beaten_elo=prior_beaten_elo, _ratings=ratings)
     return champion_counts, semifinal_counts, final_counts
 
 
@@ -265,6 +285,8 @@ def run_simulations_tracking_milestones(ordered_field, is_bye, known_results, su
 def run_simulations_tracking_all_rounds(ordered_field, is_bye, surface, n_simulations, ratings_path,
                                          use_upset_boost=True, win_probability_kwargs=None):
     n = len(ordered_field)
+    # loaded ONCE for the whole n_simulations loop - see win_probability.load_ratings' docstring.
+    ratings = load_ratings(ratings_path)
     # depth_counts[d] = Counter of players who reached depth d (rounds remaining until final)
     # across all trials - depth range is discovered per-trial from how many rounds actually get
     # played (byes fold into round 2, so the real round count isn't a fixed function of n alone).
@@ -282,7 +304,7 @@ def run_simulations_tracking_all_rounds(ordered_field, is_bye, surface, n_simula
             player_a, player_b = ordered_field[i], ordered_field[i + 1]
             players_pair, next_beaten_elo = _play_round(
                 [player_a, player_b], surface, ratings_path, prior_beaten_elo=prior_beaten_elo,
-                win_probability_kwargs=win_probability_kwargs,
+                win_probability_kwargs=win_probability_kwargs, _ratings=ratings,
             )
             players.append(players_pair[0])
             if use_upset_boost:
@@ -294,7 +316,7 @@ def run_simulations_tracking_all_rounds(ordered_field, is_bye, surface, n_simula
         while len(players) > 1:
             players, prior_beaten_elo = _play_round(
                 players, surface, ratings_path, prior_beaten_elo=prior_beaten_elo,
-                win_probability_kwargs=win_probability_kwargs,
+                win_probability_kwargs=win_probability_kwargs, _ratings=ratings,
             )
             rounds_played.append(list(players))
 
@@ -310,9 +332,12 @@ def run_simulations_tracking_all_rounds(ordered_field, is_bye, surface, n_simula
 
 
 def run_simulations(non_bye_players, bye_players, surface, n_simulations, ratings_path):
+    # loaded ONCE for the whole n_simulations loop - see win_probability.load_ratings' docstring.
+    ratings = load_ratings(ratings_path)
     champion_counts = Counter()
     for _ in range(n_simulations):
-        champion_counts[simulate_tournament(non_bye_players, bye_players, surface, ratings_path)] += 1
+        champion_counts[simulate_tournament(
+            non_bye_players, bye_players, surface, ratings_path, _ratings=ratings)] += 1
     return champion_counts
 
 

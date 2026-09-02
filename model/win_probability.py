@@ -11,6 +11,11 @@ SURFACE_COLUMNS = {
     "Clay": "clay_elo",
     "Grass": "grass_elo",
 }
+SURFACE_COLUMNS_UNDAMPED = {
+    "Hard": "hard_elo_undamped",
+    "Clay": "clay_elo_undamped",
+    "Grass": "grass_elo_undamped",
+}
 
 ATP_RATINGS_PATH = Path(__file__).resolve().parent.parent / "output" / "player_elo_ratings_atp.csv"
 WTA_RATINGS_PATH = Path(__file__).resolve().parent.parent / "output" / "player_elo_ratings_wta.csv"
@@ -76,24 +81,58 @@ def _load_ratings(ratings_path: Path) -> pd.DataFrame:
     return _load_ratings_cached(ratings_path, ratings_path.stat().st_mtime_ns)
 
 
-def get_surface_elo(player: str, surface: str, ratings_path: Path) -> float:
+def load_ratings(ratings_path: Path) -> pd.DataFrame:
+    """Public accessor for _load_ratings - lets a caller that's about to make MANY win_probability
+    (or get_surface_elo/get_current_rank/etc.) calls against the same ratings_path load it ONCE
+    and pass the result as those functions' _ratings= param, instead of paying _load_ratings' own
+    cache-freshness check (a real stat() syscall - profiled 2026-08-31 at ~70-90us here, plausibly
+    antivirus real-time scanning on this drive) on every single call. See simulate.py's callers for
+    the pattern: load once per top-level entry point (not once per simulation, and never once per
+    match), thread the result down through every _play_round/win_probability call underneath."""
+    return _load_ratings(ratings_path)
+
+
+def get_surface_elo(player: str, surface: str, ratings_path: Path, use_surface_mismatch_damping: bool = True,
+                     _ratings: pd.DataFrame = None) -> float:
+    """use_surface_mismatch_damping=False reads the pre-damping blended column
+    (see elo_ratings._damp_surface_mismatch) instead of the damped one - a real column lookup,
+    same cost as the default path, not a per-call recomputation. Falls back to the damped column
+    if an older ratings CSV (written before this flag existed) doesn't have the undamped columns
+    yet, rather than raising.
+
+    _ratings, if given, is an already-loaded ratings DataFrame (from _load_ratings) - lets a caller
+    that needs several of this module's get_* lookups for the same ratings_path (win_probability()
+    itself, chiefly) pay _load_ratings' cache-freshness check (a real stat() syscall - see
+    _load_ratings' docstring) once per match instead of once per lookup. Profiled 2026-08-31: this
+    stat() call was 38% of total win_probability() time on this machine (cProfile, 20,000 calls,
+    ~71us/stat - elevated, plausibly antivirus real-time scanning on this drive) despite every
+    lookup only ever reading an in-process-cached, immutable-for-the-run DataFrame - not a real
+    per-call cost, just an avoidable repeated freshness check. External callers are unaffected:
+    omitting _ratings (the default) loads normally, identical to before this existed."""
     if surface not in SURFACE_COLUMNS:
         raise ValueError(f"Unsupported surface: {surface!r}. Expected one of {list(SURFACE_COLUMNS)}")
 
-    ratings = _load_ratings(ratings_path)
+    ratings = _ratings if _ratings is not None else _load_ratings(ratings_path)
     if player not in ratings.index:
         raise ValueError(f"Unknown player: {player!r}")
 
-    return ratings.loc[player, SURFACE_COLUMNS[surface]]
+    column = SURFACE_COLUMNS[surface]
+    if not use_surface_mismatch_damping:
+        undamped_column = SURFACE_COLUMNS_UNDAMPED[surface]
+        if undamped_column in ratings.columns:
+            column = undamped_column
+    return ratings.loc[player, column]
 
 
-def get_current_rank(player: str, ratings_path: Path):
+def get_current_rank(player: str, ratings_path: Path, _ratings: pd.DataFrame = None):
     """Current ranking as of the ratings file's cutoff date, or None if unknown - either because
     this player never appeared with a valid Rank_1/Rank_2 in the training window (e.g. a brand-new
     tier-3 placeholder - see bracket.match_draw_to_ratings), or because the ratings file was built
     from the local Kaggle fallback snapshot, which doesn't carry ranking columns at all (see
-    calculate_elo_ratings' current_rank comment)."""
-    ratings = _load_ratings(ratings_path)
+    calculate_elo_ratings' current_rank comment).
+
+    _ratings: see get_surface_elo's docstring - same optional preloaded-DataFrame passthrough."""
+    ratings = _ratings if _ratings is not None else _load_ratings(ratings_path)
     if player not in ratings.index or "current_rank" not in ratings.columns:
         return None
     rank = ratings.loc[player, "current_rank"]
@@ -194,6 +233,23 @@ UPSET_BOOST_LOGIT_SHIFT = 0.1383
 # players, not the layoff/rust mechanism this adjustment targets - layoff_test.py itself treats it
 # as outside the gradient hypothesis. A player with no computable days-since-last-match (either
 # reason) gets zero adjustment.
+# KNOWN LIMITATION, confirmed 2026-08-31 (see model/research/layoff_under14_cross_tournament_
+# refit.py): the under_14d bucket's fitted shift below is a POOLED average over two populations
+# with genuinely different effect sizes that the original fit never separated - ~64-65% of the
+# validated under_14d rows are a player who just won an earlier ROUND OF THE SAME TOURNAMENT (a
+# near-universal, mostly uninformative "still competing" signal), not a player arriving fresh
+# within 2 weeks of a NEW tournament (the ~35% remainder, and the only case that's actually
+# relevant to a pre-tournament baseline prediction like this file computes). Isolating the two:
+# ATP's genuine cross-tournament effect is +0.0184 (same-tournament alone is +0.0731, LARGER than
+# the pooled +0.0489 below) - WTA's is +0.0711 (same-tournament alone is +0.0181, smaller than the
+# pooled +0.0346) - i.e. the two tours are biased in OPPOSITE directions by the same pooling
+# artifact. Neither isolated cross-tournament estimate reached held-out significance on its own
+# (splitting the bucket roughly halves the per-side sample), so the pooled numbers below are left
+# unchanged rather than swapped for an under-powered replacement - but treat any single
+# pre-tournament under_14d comparison (e.g. two players with a 6-day vs 8-day gap) as resting on a
+# softer empirical footing than the other buckets, which don't have this same-tournament
+# contamination (a same-tournament round gap essentially never exceeds 14 days in single-
+# elimination play).
 LAYOFF_BUCKET_EDGES_ATP = [
     ("under_14d", lambda d: d < 14, 0.0489),
     ("14_30d", lambda d: 14 <= d < 30, -0.0841),
@@ -229,14 +285,16 @@ LAYOFF_BUCKET_EDGES_WTA = [
 RECENT_FORM_BETA = 0.2021
 
 
-def get_recent_form_residual(player: str, ratings_path: Path):
+def get_recent_form_residual(player: str, ratings_path: Path, _ratings: pd.DataFrame = None):
     """Recent-form residual as of the ratings file's cutoff date - see elo_ratings.
     compute_recent_form_residuals. None if unknown: the player isn't in the ratings file, the
     column is missing (an older ratings file built before this correction existed), or they had
     fewer than elo_ratings.RECENT_FORM_WINDOW real matches in the full match history (a brand-new
     or very sparse player) - same "unknown means no-op" convention as current_rank/days_since_
-    last_match."""
-    ratings = _load_ratings(ratings_path)
+    last_match.
+
+    _ratings: see get_surface_elo's docstring - same optional preloaded-DataFrame passthrough."""
+    ratings = _ratings if _ratings is not None else _load_ratings(ratings_path)
     if player not in ratings.index or "recent_form_residual" not in ratings.columns:
         return None
     residual = ratings.loc[player, "recent_form_residual"]
@@ -256,12 +314,14 @@ def _apply_recent_form_adjustment(prob_a: float, residual_a, residual_b) -> floa
     return apply_logit_shift(prob_a, shift_a - shift_b)
 
 
-def get_days_since_last_match(player: str, ratings_path: Path):
+def get_days_since_last_match(player: str, ratings_path: Path, _ratings: pd.DataFrame = None):
     """Days between the tournament's cutoff date and this player's last recorded match, frozen the
     same way current_rank is - None if unknown (player not in the ratings file, or their first-ever
     recorded match is this tournament itself, i.e. days_since_last_match was NaN when the ratings
-    file was built)."""
-    ratings = _load_ratings(ratings_path)
+    file was built).
+
+    _ratings: see get_surface_elo's docstring - same optional preloaded-DataFrame passthrough."""
+    ratings = _ratings if _ratings is not None else _load_ratings(ratings_path)
     if player not in ratings.index or "days_since_last_match" not in ratings.columns:
         return None
     days = ratings.loc[player, "days_since_last_match"]
@@ -302,24 +362,39 @@ def win_probability(
     player_a: str, player_b: str, surface: str, ratings_path: Path = ATP_RATINGS_PATH,
     use_rank_adjustment: bool = True, use_confidence_calibration: bool = True,
     use_layoff_adjustment: bool = True, use_recent_form_adjustment: bool = True,
+    use_surface_mismatch_damping: bool = True, _ratings: pd.DataFrame = None,
 ) -> float:
-    elo_a = get_surface_elo(player_a, surface, ratings_path)
-    elo_b = get_surface_elo(player_b, surface, ratings_path)
+    # loaded once and threaded through every get_* call below instead of each one reloading
+    # independently - see get_surface_elo's _ratings docstring for why (a real, profiled cost:
+    # _load_ratings' cache-freshness stat() call was 38% of this function's total time before this
+    # change, from up to 8 redundant stat()s per match instead of 1).
+    #
+    # _ratings, if given by the caller (see load_ratings' docstring), skips this function's own
+    # load too - added 2026-08-31 after profiling a LIVE run found simulate.py's _play_round was
+    # calling get_surface_elo directly (for its own upset-boost tracking) on every match BEFORE
+    # ever reaching win_probability, so this function's own single _load_ratings call was only
+    # ever removing HALF the redundancy - _play_round's direct calls were still paying a fresh
+    # stat() apiece. Passing _ratings all the way down from a single top-level load closes the
+    # other half.
+    ratings = _ratings if _ratings is not None else _load_ratings(ratings_path)
+
+    elo_a = get_surface_elo(player_a, surface, ratings_path, use_surface_mismatch_damping, _ratings=ratings)
+    elo_b = get_surface_elo(player_b, surface, ratings_path, use_surface_mismatch_damping, _ratings=ratings)
     prob_a = expected_score(elo_a, elo_b)
 
     if use_rank_adjustment and abs(elo_a - elo_b) <= RANK_ADJUSTMENT_ELO_WINDOW:
-        rank_a = get_current_rank(player_a, ratings_path)
-        rank_b = get_current_rank(player_b, ratings_path)
+        rank_a = get_current_rank(player_a, ratings_path, _ratings=ratings)
+        rank_b = get_current_rank(player_b, ratings_path, _ratings=ratings)
         prob_a = _apply_rank_adjustment(prob_a, rank_a, rank_b)
 
     if use_layoff_adjustment:
-        days_a = get_days_since_last_match(player_a, ratings_path)
-        days_b = get_days_since_last_match(player_b, ratings_path)
+        days_a = get_days_since_last_match(player_a, ratings_path, _ratings=ratings)
+        days_b = get_days_since_last_match(player_b, ratings_path, _ratings=ratings)
         prob_a = _apply_layoff_adjustment(prob_a, days_a, days_b, _layoff_bucket_edges_for(ratings_path))
 
     if use_recent_form_adjustment:
-        residual_a = get_recent_form_residual(player_a, ratings_path)
-        residual_b = get_recent_form_residual(player_b, ratings_path)
+        residual_a = get_recent_form_residual(player_a, ratings_path, _ratings=ratings)
+        residual_b = get_recent_form_residual(player_b, ratings_path, _ratings=ratings)
         prob_a = _apply_recent_form_adjustment(prob_a, residual_a, residual_b)
 
     if use_confidence_calibration:

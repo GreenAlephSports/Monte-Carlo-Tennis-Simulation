@@ -267,9 +267,15 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date, tour: str = None):
             match_count = surface_matches[surface].get(player, 0)
             raw_elo = surface_elo[surface].get(player, STARTING_ELO)
             surface_weight = match_count / (match_count + SURFACE_BLEND_K)
-            final_elo = surface_weight * raw_elo + (1 - surface_weight) * overall_elo[player]
-            final_elo = _damp_surface_mismatch(final_elo, overall_elo[player])
+            blended_elo = surface_weight * raw_elo + (1 - surface_weight) * overall_elo[player]
+            final_elo = _damp_surface_mismatch(blended_elo, overall_elo[player])
             record[f"{surface.lower()}_elo"] = final_elo
+            # pre-damping blend, kept alongside the damped column so win_probability.py's
+            # use_surface_mismatch_damping=False path can read a real column (fast lookup, same
+            # pattern as every other correction) instead of re-deriving it - the damping formula
+            # isn't invertible from the damped value alone (it clamps abs_mismatch in (50,140] to
+            # exactly 50, a many-to-one region), so this has to be stored, not reconstructed.
+            record[f"{surface.lower()}_elo_undamped"] = blended_elo
             record[f"{surface.lower()}_matches"] = match_count
         records.append(record)
 
@@ -278,6 +284,9 @@ def calculate_elo_ratings(df: pd.DataFrame, cutoff_date, tour: str = None):
         "hard_elo",
         "clay_elo",
         "grass_elo",
+        "hard_elo_undamped",
+        "clay_elo_undamped",
+        "grass_elo_undamped",
         "overall_elo",
         "hard_matches",
         "clay_matches",
