@@ -1,0 +1,3737 @@
+{
+  "meta": {
+    "tournament": "us-open-men-2026",
+    "generated_at": "2026-09-02T19:23:42Z",
+    "current_iterations": 10000,
+    "current_seed": 42,
+    "round_history_iterations": 2000,
+    "pretournament_baseline_path": "X:\\idanh\\Documents\\VS Code Projects\\Monte-Carlo-Simulation-Grand-Slam-Model-\\output\\us_open_2026_atp_real_pretournament_baseline.json"
+  },
+  "draw_size": 128,
+  "players": [
+    {
+      "position": 1,
+      "quarter": "Q1",
+      "seed": 1,
+      "draw_name": "Zverev A.",
+      "player": "Alexander Zverev",
+      "bye": false,
+      "pretournament": {
+        "player": "Alexander Zverev",
+        "quarter": "Q1",
+        "p_champ": 0.102,
+        "p_sf": 0.319,
+        "p_final": 0.2
+      },
+      "current": {
+        "player": "Alexander Zverev",
+        "quarter": "Q1",
+        "p_champ": 0.124,
+        "p_sf": 0.378,
+        "p_final": 0.243
+      },
+      "alive": true
+    },
+    {
+      "position": 2,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Sonego L.",
+      "player": "Lorenzo Sonego",
+      "bye": false,
+      "pretournament": {
+        "player": "Lorenzo Sonego",
+        "quarter": "Q1",
+        "p_champ": 0.001,
+        "p_sf": 0.012,
+        "p_final": 0.003
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 3,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Halys Q.",
+      "player": "Quentin Halys",
+      "bye": false,
+      "pretournament": {
+        "player": "Quentin Halys",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.01,
+        "p_final": 0.003
+      },
+      "current": {
+        "player": "Quentin Halys",
+        "quarter": "Q1",
+        "p_champ": 0.001,
+        "p_sf": 0.016,
+        "p_final": 0.005
+      },
+      "alive": true
+    },
+    {
+      "position": 4,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Diaz Acosta F.",
+      "player": "Facundo Diaz Acosta",
+      "bye": false,
+      "pretournament": {
+        "player": "Facundo Diaz Acosta",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 5,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Dimitrov G.",
+      "player": "Grigor Dimitrov",
+      "bye": false,
+      "pretournament": {
+        "player": "Grigor Dimitrov",
+        "quarter": "Q4",
+        "p_champ": 0.003,
+        "p_sf": 0.016,
+        "p_final": 0.006
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 6,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Popyrin A.",
+      "player": "Alexei Popyrin",
+      "bye": false,
+      "pretournament": {
+        "player": "Alexei Popyrin",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Alexei Popyrin",
+        "quarter": "Q1",
+        "p_champ": 0.001,
+        "p_sf": 0.006,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 7,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Hanfmann Y.",
+      "player": "Yannick Hanfmann",
+      "bye": false,
+      "pretournament": {
+        "player": "Yannick Hanfmann",
+        "quarter": "Q1",
+        "p_champ": 0.001,
+        "p_sf": 0.014,
+        "p_final": 0.004
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 8,
+      "quarter": "Q1",
+      "seed": 25,
+      "draw_name": "Tabilo A.",
+      "player": "Alejandro Tabilo",
+      "bye": false,
+      "pretournament": {
+        "player": "Alejandro Tabilo",
+        "quarter": "Q1",
+        "p_champ": 0.002,
+        "p_sf": 0.026,
+        "p_final": 0.008
+      },
+      "current": {
+        "player": "Alejandro Tabilo",
+        "quarter": "Q1",
+        "p_champ": 0.003,
+        "p_sf": 0.027,
+        "p_final": 0.01
+      },
+      "alive": true
+    },
+    {
+      "position": 9,
+      "quarter": "Q1",
+      "seed": 21,
+      "draw_name": "Darderi L.",
+      "player": "Luciano Darderi",
+      "bye": false,
+      "pretournament": {
+        "player": "Luciano Darderi",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.007,
+        "p_final": 0.002
+      },
+      "current": {
+        "player": "Luciano Darderi",
+        "quarter": "Q1",
+        "p_champ": 0.003,
+        "p_sf": 0.029,
+        "p_final": 0.011
+      },
+      "alive": true
+    },
+    {
+      "position": 10,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Wendelken H.",
+      "player": "Harry Wendelken",
+      "bye": false,
+      "pretournament": null,
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 11,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Svrcina D.",
+      "player": "Dalibor Svrcina",
+      "bye": false,
+      "pretournament": null,
+      "current": {
+        "player": "Dalibor Svrcina",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.005,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 12,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Royer V.",
+      "player": "Valentin Royer",
+      "bye": false,
+      "pretournament": {
+        "player": "Valentin Royer",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 13,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Sweeny D.",
+      "player": "Dane Sweeny",
+      "bye": false,
+      "pretournament": {
+        "player": "Dane Sweeny",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Dane Sweeny",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.005,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 14,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Moutet C.",
+      "player": "Corentin Moutet",
+      "bye": false,
+      "pretournament": {
+        "player": "Corentin Moutet",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.01,
+        "p_final": 0.003
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 15,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Fery A.",
+      "player": "Arthur Fery",
+      "bye": false,
+      "pretournament": {
+        "player": "Arthur Fery",
+        "quarter": "Q1",
+        "p_champ": 0.002,
+        "p_sf": 0.017,
+        "p_final": 0.006
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 16,
+      "quarter": "Q1",
+      "seed": 13,
+      "draw_name": "Musetti L.",
+      "player": "Lorenzo Musetti",
+      "bye": false,
+      "pretournament": {
+        "player": "Lorenzo Musetti",
+        "quarter": "Q1",
+        "p_champ": 0.018,
+        "p_sf": 0.11,
+        "p_final": 0.05
+      },
+      "current": {
+        "player": "Lorenzo Musetti",
+        "quarter": "Q1",
+        "p_champ": 0.024,
+        "p_sf": 0.138,
+        "p_final": 0.065
+      },
+      "alive": true
+    },
+    {
+      "position": 17,
+      "quarter": "Q1",
+      "seed": 12,
+      "draw_name": "Jodar R.",
+      "player": "Rafael Jodar",
+      "bye": false,
+      "pretournament": {
+        "player": "Rafael Jodar",
+        "quarter": "Q1",
+        "p_champ": 0.012,
+        "p_sf": 0.08,
+        "p_final": 0.035
+      },
+      "current": {
+        "player": "Rafael Jodar",
+        "quarter": "Q1",
+        "p_champ": 0.033,
+        "p_sf": 0.152,
+        "p_final": 0.084
+      },
+      "alive": true
+    },
+    {
+      "position": 18,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Bu Y.",
+      "player": "Bu Yunchaokete",
+      "bye": false,
+      "pretournament": null,
+      "current": {
+        "player": "Bu Yunchaokete",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 19,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Marozsan F.",
+      "player": "Fabian Marozsan",
+      "bye": false,
+      "pretournament": {
+        "player": "Fabian Marozsan",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.015,
+        "p_final": 0.003
+      },
+      "current": {
+        "player": "Fabian Marozsan",
+        "quarter": "Q1",
+        "p_champ": 0.001,
+        "p_sf": 0.014,
+        "p_final": 0.004
+      },
+      "alive": true
+    },
+    {
+      "position": 20,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Zheng M.",
+      "player": "Michael Zheng",
+      "bye": false,
+      "pretournament": {
+        "player": "Michael Zheng",
+        "quarter": "Q1",
+        "p_champ": 0.001,
+        "p_sf": 0.009,
+        "p_final": 0.003
+      },
+      "current": {
+        "player": "Michael Zheng",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.006,
+        "p_final": 0.002
+      },
+      "alive": true
+    },
+    {
+      "position": 21,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Svajda Z.",
+      "player": "Zachary Svajda",
+      "bye": false,
+      "pretournament": {
+        "player": "Zachary Svajda",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Zachary Svajda",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 22,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Altmaier D.",
+      "player": "Daniel Altmaier",
+      "bye": false,
+      "pretournament": {
+        "player": "Daniel Altmaier",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.006,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Daniel Altmaier",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.006,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 23,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Cerundolo J.M.",
+      "player": "Juan Manuel Cerundolo",
+      "bye": false,
+      "pretournament": {
+        "player": "Juan Manuel Cerundolo",
+        "quarter": "Q1",
+        "p_champ": 0.001,
+        "p_sf": 0.017,
+        "p_final": 0.005
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 24,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Gea A.",
+      "player": "Arthur Gea",
+      "bye": false,
+      "pretournament": null,
+      "current": {
+        "player": "Arthur Gea",
+        "quarter": "Q1",
+        "p_champ": 0.001,
+        "p_sf": 0.019,
+        "p_final": 0.006
+      },
+      "alive": true
+    },
+    {
+      "position": 25,
+      "quarter": "Q1",
+      "seed": 31,
+      "draw_name": "Bergs Z.",
+      "player": "Zizou Bergs",
+      "bye": false,
+      "pretournament": {
+        "player": "Zizou Bergs",
+        "quarter": "Q1",
+        "p_champ": 0.001,
+        "p_sf": 0.016,
+        "p_final": 0.004
+      },
+      "current": {
+        "player": "Zizou Bergs",
+        "quarter": "Q1",
+        "p_champ": 0.001,
+        "p_sf": 0.013,
+        "p_final": 0.003
+      },
+      "alive": true
+    },
+    {
+      "position": 26,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Taberner C.",
+      "player": "Carlos Taberner",
+      "bye": false,
+      "pretournament": {
+        "player": "Carlos Taberner",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Carlos Taberner",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 27,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "De Jong J.",
+      "player": "Jesper de Jong",
+      "bye": false,
+      "pretournament": {
+        "player": "Jesper de Jong",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.006,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Jesper de Jong",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.006,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 28,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Passaro F.",
+      "player": "Francesco Passaro",
+      "bye": false,
+      "pretournament": null,
+      "current": {
+        "player": "Francesco Passaro",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 29,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Choinski J.",
+      "player": "Jan Choinski",
+      "bye": false,
+      "pretournament": {
+        "player": "Jan Choinski",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 30,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Van De Zandschulp B.",
+      "player": "Botic Van De Zandschulp",
+      "bye": false,
+      "pretournament": {
+        "player": "Botic Van De Zandschulp",
+        "quarter": "Q1",
+        "p_champ": 0.002,
+        "p_sf": 0.025,
+        "p_final": 0.009
+      },
+      "current": {
+        "player": "Botic Van De Zandschulp",
+        "quarter": "Q1",
+        "p_champ": 0.004,
+        "p_sf": 0.044,
+        "p_final": 0.016
+      },
+      "alive": true
+    },
+    {
+      "position": 31,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Guerrieri A.",
+      "player": "Andrea Guerrieri",
+      "bye": false,
+      "pretournament": {
+        "player": "Andrea Guerrieri",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.01,
+        "p_final": 0.002
+      },
+      "current": {
+        "player": "Andrea Guerrieri",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 32,
+      "quarter": "Q1",
+      "seed": 6,
+      "draw_name": "De Minaur A.",
+      "player": "Alex de Minaur",
+      "bye": false,
+      "pretournament": {
+        "player": "Alex de Minaur",
+        "quarter": "Q1",
+        "p_champ": 0.036,
+        "p_sf": 0.183,
+        "p_final": 0.094
+      },
+      "current": {
+        "player": "Alex de Minaur",
+        "quarter": "Q1",
+        "p_champ": 0.025,
+        "p_sf": 0.128,
+        "p_final": 0.066
+      },
+      "alive": true
+    },
+    {
+      "position": 33,
+      "quarter": "Q2",
+      "seed": 3,
+      "draw_name": "Auger-Aliassime F.",
+      "player": "Felix Auger-Aliassime",
+      "bye": false,
+      "pretournament": {
+        "player": "Felix Auger-Aliassime",
+        "quarter": "Q2",
+        "p_champ": 0.069,
+        "p_sf": 0.242,
+        "p_final": 0.152
+      },
+      "current": {
+        "player": "Felix Auger-Aliassime",
+        "quarter": "Q2",
+        "p_champ": 0.062,
+        "p_sf": 0.268,
+        "p_final": 0.149
+      },
+      "alive": true
+    },
+    {
+      "position": 34,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Hijikata R.",
+      "player": "Rinky Hijikata",
+      "bye": false,
+      "pretournament": {
+        "player": "Rinky Hijikata",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.006,
+        "p_final": 0.002
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 35,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Burruchaga R.",
+      "player": "Roman Andres Burruchaga",
+      "bye": false,
+      "pretournament": {
+        "player": "Roman Andres Burruchaga",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 36,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Khachanov K.",
+      "player": "Karen Khachanov",
+      "bye": false,
+      "pretournament": {
+        "player": "Karen Khachanov",
+        "quarter": "Q2",
+        "p_champ": 0.001,
+        "p_sf": 0.006,
+        "p_final": 0.002
+      },
+      "current": {
+        "player": "Karen Khachanov",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.007,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 37,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Molcan A.",
+      "player": "Alex Molcan",
+      "bye": false,
+      "pretournament": {
+        "player": "Alex Molcan",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 38,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Bonzi B.",
+      "player": "Benjamin Bonzi",
+      "bye": false,
+      "pretournament": {
+        "player": "Benjamin Bonzi",
+        "quarter": "Q2",
+        "p_champ": 0.001,
+        "p_sf": 0.007,
+        "p_final": 0.002
+      },
+      "current": {
+        "player": "Benjamin Bonzi",
+        "quarter": "Q2",
+        "p_champ": 0.001,
+        "p_sf": 0.023,
+        "p_final": 0.006
+      },
+      "alive": true
+    },
+    {
+      "position": 39,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Giron M.",
+      "player": "Marcos Giron",
+      "bye": false,
+      "pretournament": {
+        "player": "Marcos Giron",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Marcos Giron",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 40,
+      "quarter": "Q2",
+      "seed": 32,
+      "draw_name": "Buse I.",
+      "player": "Ignacio Buse",
+      "bye": false,
+      "pretournament": {
+        "player": "Ignacio Buse",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.007,
+        "p_final": 0.002
+      },
+      "current": {
+        "player": "Ignacio Buse",
+        "quarter": "Q2",
+        "p_champ": 0.002,
+        "p_sf": 0.02,
+        "p_final": 0.007
+      },
+      "alive": true
+    },
+    {
+      "position": 41,
+      "quarter": "Q2",
+      "seed": 17,
+      "draw_name": "Mensik J.",
+      "player": "Jakub Mensik",
+      "bye": false,
+      "pretournament": {
+        "player": "Jakub Mensik",
+        "quarter": "Q2",
+        "p_champ": 0.021,
+        "p_sf": 0.109,
+        "p_final": 0.058
+      },
+      "current": {
+        "player": "Jakub Mensik",
+        "quarter": "Q2",
+        "p_champ": 0.02,
+        "p_sf": 0.127,
+        "p_final": 0.059
+      },
+      "alive": true
+    },
+    {
+      "position": 42,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Mochizuki S.",
+      "player": "Shintaro Mochizuki",
+      "bye": false,
+      "pretournament": null,
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 43,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Rodionov J.",
+      "player": "Jurij Rodionov",
+      "bye": false,
+      "pretournament": null,
+      "current": {
+        "player": "Jurij Rodionov",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 44,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Mpetshi Perricard G.",
+      "player": "Giovanni Mpetshi Perricard",
+      "bye": false,
+      "pretournament": {
+        "player": "Giovanni Mpetshi Perricard",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 45,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Vallejo D.",
+      "player": "Adolfo Daniel Vallejo",
+      "bye": false,
+      "pretournament": {
+        "player": "Adolfo Daniel Vallejo",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.006,
+        "p_final": 0.002
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 46,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Monfils G.",
+      "player": "Gael Monfils",
+      "bye": false,
+      "pretournament": {
+        "player": "Gael Monfils",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.011,
+        "p_final": 0.003
+      },
+      "current": {
+        "player": "Gael Monfils",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.009,
+        "p_final": 0.002
+      },
+      "alive": true
+    },
+    {
+      "position": 47,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Borges N.",
+      "player": "Nuno Borges",
+      "bye": false,
+      "pretournament": {
+        "player": "Nuno Borges",
+        "quarter": "Q2",
+        "p_champ": 0.002,
+        "p_sf": 0.02,
+        "p_final": 0.008
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 48,
+      "quarter": "Q2",
+      "seed": 14,
+      "draw_name": "Tien L.",
+      "player": "Learner Tien",
+      "bye": false,
+      "pretournament": {
+        "player": "Learner Tien",
+        "quarter": "Q2",
+        "p_champ": 0.014,
+        "p_sf": 0.071,
+        "p_final": 0.038
+      },
+      "current": {
+        "player": "Learner Tien",
+        "quarter": "Q2",
+        "p_champ": 0.014,
+        "p_sf": 0.096,
+        "p_final": 0.042
+      },
+      "alive": true
+    },
+    {
+      "position": 49,
+      "quarter": "Q2",
+      "seed": 9,
+      "draw_name": "Fritz T.",
+      "player": "Taylor Fritz",
+      "bye": false,
+      "pretournament": {
+        "player": "Taylor Fritz",
+        "quarter": "Q2",
+        "p_champ": 0.046,
+        "p_sf": 0.19,
+        "p_final": 0.108
+      },
+      "current": {
+        "player": "Taylor Fritz",
+        "quarter": "Q2",
+        "p_champ": 0.051,
+        "p_sf": 0.23,
+        "p_final": 0.122
+      },
+      "alive": true
+    },
+    {
+      "position": 50,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Blanch D.",
+      "player": "Darwin Blanch",
+      "bye": false,
+      "pretournament": {
+        "player": "Darwin Blanch",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 51,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Bellucci M.",
+      "player": "Mattia Bellucci",
+      "bye": false,
+      "pretournament": {
+        "player": "Mattia Bellucci",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Mattia Bellucci",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.006,
+        "p_final": 0.002
+      },
+      "alive": true
+    },
+    {
+      "position": 52,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Piros Z.",
+      "player": "Zsombor Piros",
+      "bye": false,
+      "pretournament": null,
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 53,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Ugo Carabelli C.",
+      "player": "Camilo Ugo Carabelli",
+      "bye": false,
+      "pretournament": {
+        "player": "Camilo Ugo Carabelli",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 54,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Struff J.L.",
+      "player": "Jan-Lennard Struff",
+      "bye": false,
+      "pretournament": {
+        "player": "Jan-Lennard Struff",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Jan-Lennard Struff",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.009,
+        "p_final": 0.002
+      },
+      "alive": true
+    },
+    {
+      "position": 55,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Misolic F.",
+      "player": "Filip Misolic",
+      "bye": false,
+      "pretournament": {
+        "player": "Filip Misolic",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 56,
+      "quarter": "Q2",
+      "seed": 24,
+      "draw_name": "Cerundolo F.",
+      "player": "Francisco Cerundolo",
+      "bye": false,
+      "pretournament": {
+        "player": "Francisco Cerundolo",
+        "quarter": "Q2",
+        "p_champ": 0.002,
+        "p_sf": 0.032,
+        "p_final": 0.012
+      },
+      "current": {
+        "player": "Francisco Cerundolo",
+        "quarter": "Q2",
+        "p_champ": 0.003,
+        "p_sf": 0.031,
+        "p_final": 0.01
+      },
+      "alive": true
+    },
+    {
+      "position": 57,
+      "quarter": "Q2",
+      "seed": 28,
+      "draw_name": "Blockx A.",
+      "player": "Alexander Blockx",
+      "bye": false,
+      "pretournament": {
+        "player": "Alexander Blockx",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.008,
+        "p_final": 0.002
+      },
+      "current": {
+        "player": "Alexander Blockx",
+        "quarter": "Q2",
+        "p_champ": 0.003,
+        "p_sf": 0.031,
+        "p_final": 0.009
+      },
+      "alive": true
+    },
+    {
+      "position": 58,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Barrios Vera T.",
+      "player": "Tomas Barrios Vera",
+      "bye": false,
+      "pretournament": {
+        "player": "Tomas Barrios Vera",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 59,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Shang J.",
+      "player": "Shang Juncheng",
+      "bye": false,
+      "pretournament": {
+        "player": "Shang Juncheng",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.007,
+        "p_final": 0.002
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 60,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Trungelliti M.",
+      "player": "Marco Trungelliti",
+      "bye": false,
+      "pretournament": {
+        "player": "Marco Trungelliti",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Marco Trungelliti",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.005,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 61,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Basavareddy N.",
+      "player": "Nishesh Basavareddy",
+      "bye": false,
+      "pretournament": null,
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 62,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Schoolkate T.",
+      "player": "Tristan Schoolkate",
+      "bye": false,
+      "pretournament": null,
+      "current": {
+        "player": "Tristan Schoolkate",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 63,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Comesana F.",
+      "player": "Francisco Comesana",
+      "bye": false,
+      "pretournament": {
+        "player": "Francisco Comesana",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 64,
+      "quarter": "Q2",
+      "seed": 5,
+      "draw_name": "Cobolli F.",
+      "player": "Flavio Cobolli",
+      "bye": false,
+      "pretournament": {
+        "player": "Flavio Cobolli",
+        "quarter": "Q2",
+        "p_champ": 0.005,
+        "p_sf": 0.04,
+        "p_final": 0.016
+      },
+      "current": {
+        "player": "Flavio Cobolli",
+        "quarter": "Q2",
+        "p_champ": 0.02,
+        "p_sf": 0.133,
+        "p_final": 0.064
+      },
+      "alive": true
+    },
+    {
+      "position": 65,
+      "quarter": "Q3",
+      "seed": 7,
+      "draw_name": "Medvedev D.",
+      "player": "Daniil Medvedev",
+      "bye": false,
+      "pretournament": {
+        "player": "Daniil Medvedev",
+        "quarter": "Q2",
+        "p_champ": 0.05,
+        "p_sf": 0.19,
+        "p_final": 0.112
+      },
+      "current": {
+        "player": "Daniil Medvedev",
+        "quarter": "Q3",
+        "p_champ": 0.038,
+        "p_sf": 0.219,
+        "p_final": 0.077
+      },
+      "alive": true
+    },
+    {
+      "position": 66,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Gaston H.",
+      "player": "Hugo Gaston",
+      "bye": false,
+      "pretournament": null,
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 67,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Gorzny S.",
+      "player": "Sebastian Gorzny",
+      "bye": false,
+      "pretournament": {
+        "player": "Sebastian Gorzny",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.005,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 68,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Collignon R.",
+      "player": "Raphael Collignon",
+      "bye": false,
+      "pretournament": {
+        "player": "Raphael Collignon",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.008,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 69,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Munar J.",
+      "player": "Jaume Munar",
+      "bye": false,
+      "pretournament": {
+        "player": "Jaume Munar",
+        "quarter": "Q3",
+        "p_champ": 0.002,
+        "p_sf": 0.026,
+        "p_final": 0.007
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 70,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Atmane T.",
+      "player": "Terence Atmane",
+      "bye": false,
+      "pretournament": {
+        "player": "Terence Atmane",
+        "quarter": "Q3",
+        "p_champ": 0.002,
+        "p_sf": 0.023,
+        "p_final": 0.005
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 71,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Shimabukuro S.",
+      "player": "Sho Shimabukuro",
+      "bye": false,
+      "pretournament": {
+        "player": "Sho Shimabukuro",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 72,
+      "quarter": "Q3",
+      "seed": 26,
+      "draw_name": "Rinderknech A.",
+      "player": "Arthur Rinderknech",
+      "bye": false,
+      "pretournament": {
+        "player": "Arthur Rinderknech",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.016,
+        "p_final": 0.003
+      },
+      "current": {
+        "player": "Arthur Rinderknech",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.017,
+        "p_final": 0.003
+      },
+      "alive": true
+    },
+    {
+      "position": 73,
+      "quarter": "Q3",
+      "seed": 22,
+      "draw_name": "Vacherot V.",
+      "player": "Valentin Vacherot",
+      "bye": false,
+      "pretournament": {
+        "player": "Valentin Vacherot",
+        "quarter": "Q3",
+        "p_champ": 0.002,
+        "p_sf": 0.025,
+        "p_final": 0.006
+      },
+      "current": {
+        "player": "Valentin Vacherot",
+        "quarter": "Q3",
+        "p_champ": 0.002,
+        "p_sf": 0.033,
+        "p_final": 0.006
+      },
+      "alive": true
+    },
+    {
+      "position": 74,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Kovacevic A.",
+      "player": "Aleksandar Kovacevic",
+      "bye": false,
+      "pretournament": {
+        "player": "Aleksandar Kovacevic",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 75,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Majchrzak K.",
+      "player": "Kamil Majchrzak",
+      "bye": false,
+      "pretournament": {
+        "player": "Kamil Majchrzak",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.011,
+        "p_final": 0.002
+      },
+      "current": {
+        "player": "Kamil Majchrzak",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.015,
+        "p_final": 0.003
+      },
+      "alive": true
+    },
+    {
+      "position": 76,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Medjedovic H.",
+      "player": "Hamad Medjedovic",
+      "bye": false,
+      "pretournament": {
+        "player": "Hamad Medjedovic",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 77,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Vukic A.",
+      "player": "Aleksandar Vukic",
+      "bye": false,
+      "pretournament": {
+        "player": "Aleksandar Vukic",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 78,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Sakamoto R.",
+      "player": "Rei Sakamoto",
+      "bye": false,
+      "pretournament": null,
+      "current": {
+        "player": "Rei Sakamoto",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 79,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Damm M.",
+      "player": "Martin Damm",
+      "bye": false,
+      "pretournament": {
+        "player": "Martin Damm",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 80,
+      "quarter": "Q3",
+      "seed": 11,
+      "draw_name": "Tiafoe F.",
+      "player": "Frances Tiafoe",
+      "bye": false,
+      "pretournament": {
+        "player": "Frances Tiafoe",
+        "quarter": "Q3",
+        "p_champ": 0.034,
+        "p_sf": 0.147,
+        "p_final": 0.064
+      },
+      "current": {
+        "player": "Frances Tiafoe",
+        "quarter": "Q3",
+        "p_champ": 0.045,
+        "p_sf": 0.247,
+        "p_final": 0.087
+      },
+      "alive": true
+    },
+    {
+      "position": 81,
+      "quarter": "Q3",
+      "seed": 16,
+      "draw_name": "Nakashima B.",
+      "player": "Brandon Nakashima",
+      "bye": false,
+      "pretournament": {
+        "player": "Brandon Nakashima",
+        "quarter": "Q3",
+        "p_champ": 0.025,
+        "p_sf": 0.12,
+        "p_final": 0.048
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 82,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Baez S.",
+      "player": "Sebastian Baez",
+      "bye": false,
+      "pretournament": {
+        "player": "Sebastian Baez",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 83,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Michelsen A.",
+      "player": "Alex Michelsen",
+      "bye": false,
+      "pretournament": {
+        "player": "Alex Michelsen",
+        "quarter": "Q3",
+        "p_champ": 0.005,
+        "p_sf": 0.041,
+        "p_final": 0.013
+      },
+      "current": {
+        "player": "Alex Michelsen",
+        "quarter": "Q3",
+        "p_champ": 0.004,
+        "p_sf": 0.052,
+        "p_final": 0.013
+      },
+      "alive": true
+    },
+    {
+      "position": 84,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Cina F.",
+      "player": "Federico Cina",
+      "bye": false,
+      "pretournament": null,
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 85,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Merida Aguilar D.",
+      "player": "Daniel Merida",
+      "bye": false,
+      "pretournament": {
+        "player": "Daniel Merida",
+        "quarter": "Q3",
+        "p_champ": 0.003,
+        "p_sf": 0.028,
+        "p_final": 0.008
+      },
+      "current": {
+        "player": "Daniel Merida",
+        "quarter": "Q3",
+        "p_champ": 0.004,
+        "p_sf": 0.046,
+        "p_final": 0.012
+      },
+      "alive": true
+    },
+    {
+      "position": 86,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Fucsovics M.",
+      "player": "Marton Fucsovics",
+      "bye": false,
+      "pretournament": {
+        "player": "Marton Fucsovics",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.005,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 87,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Virtanen O.",
+      "player": "Otto Virtanen",
+      "bye": false,
+      "pretournament": null,
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 88,
+      "quarter": "Q3",
+      "seed": 23,
+      "draw_name": "Rublev A.",
+      "player": "Andrey Rublev",
+      "bye": false,
+      "pretournament": {
+        "player": "Andrey Rublev",
+        "quarter": "Q3",
+        "p_champ": 0.002,
+        "p_sf": 0.033,
+        "p_final": 0.009
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 89,
+      "quarter": "Q3",
+      "seed": 27,
+      "draw_name": "Etcheverry T.",
+      "player": "Tomas Martin Etcheverry",
+      "bye": false,
+      "pretournament": {
+        "player": "Tomas Martin Etcheverry",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.006,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Tomas Martin Etcheverry",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.02,
+        "p_final": 0.003
+      },
+      "alive": true
+    },
+    {
+      "position": 90,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Kopriva V.",
+      "player": "Vit Kopriva",
+      "bye": false,
+      "pretournament": {
+        "player": "Vit Kopriva",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 91,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Landaluce M.",
+      "player": "Martin Landaluce",
+      "bye": false,
+      "pretournament": {
+        "player": "Martin Landaluce",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.008,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 92,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Fearnley J.",
+      "player": "Jacob Fearnley",
+      "bye": false,
+      "pretournament": null,
+      "current": {
+        "player": "Jacob Fearnley",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.007,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 93,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Berrettini M.",
+      "player": "Matteo Berrettini",
+      "bye": false,
+      "pretournament": {
+        "player": "Matteo Berrettini",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.018,
+        "p_final": 0.003
+      },
+      "current": {
+        "player": "Matteo Berrettini",
+        "quarter": "Q3",
+        "p_champ": 0.003,
+        "p_sf": 0.052,
+        "p_final": 0.012
+      },
+      "alive": true
+    },
+    {
+      "position": 94,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Wawrinka S.",
+      "player": "Stan Wawrinka",
+      "bye": false,
+      "pretournament": {
+        "player": "Stan Wawrinka",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 95,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Navone M.",
+      "player": "Mariano Navone",
+      "bye": false,
+      "pretournament": {
+        "player": "Mariano Navone",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Mariano Navone",
+        "quarter": "Q3",
+        "p_champ": 0.002,
+        "p_sf": 0.025,
+        "p_final": 0.005
+      },
+      "alive": true
+    },
+    {
+      "position": 96,
+      "quarter": "Q3",
+      "seed": 4,
+      "draw_name": "Djokovic N.",
+      "player": "Novak Djokovic",
+      "bye": false,
+      "pretournament": {
+        "player": "Novak Djokovic",
+        "quarter": "Q3",
+        "p_champ": 0.108,
+        "p_sf": 0.296,
+        "p_final": 0.167
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 97,
+      "quarter": "Q4",
+      "seed": 8,
+      "draw_name": "Shelton B.",
+      "player": "Ben Shelton",
+      "bye": false,
+      "pretournament": {
+        "player": "Ben Shelton",
+        "quarter": "Q3",
+        "p_champ": 0.036,
+        "p_sf": 0.132,
+        "p_final": 0.062
+      },
+      "current": {
+        "player": "Ben Shelton",
+        "quarter": "Q4",
+        "p_champ": 0.054,
+        "p_sf": 0.159,
+        "p_final": 0.104
+      },
+      "alive": true
+    },
+    {
+      "position": 98,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Griekspoor T.",
+      "player": "Tallon Griekspoor",
+      "bye": false,
+      "pretournament": {
+        "player": "Tallon Griekspoor",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.01,
+        "p_final": 0.002
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 99,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Dzumhur D.",
+      "player": "Damir Dzumhur",
+      "bye": false,
+      "pretournament": {
+        "player": "Damir Dzumhur",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 100,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Hurkacz H.",
+      "player": "Hubert Hurkacz",
+      "bye": false,
+      "pretournament": {
+        "player": "Hubert Hurkacz",
+        "quarter": "Q4",
+        "p_champ": 0.001,
+        "p_sf": 0.011,
+        "p_final": 0.005
+      },
+      "current": {
+        "player": "Hubert Hurkacz",
+        "quarter": "Q4",
+        "p_champ": 0.001,
+        "p_sf": 0.012,
+        "p_final": 0.003
+      },
+      "alive": true
+    },
+    {
+      "position": 101,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Kecmanovic M.",
+      "player": "Miomir Kecmanovic",
+      "bye": false,
+      "pretournament": {
+        "player": "Miomir Kecmanovic",
+        "quarter": "Q4",
+        "p_champ": 0.001,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 102,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Shapovalov D.",
+      "player": "Denis Shapovalov",
+      "bye": false,
+      "pretournament": {
+        "player": "Denis Shapovalov",
+        "quarter": "Q4",
+        "p_champ": 0.004,
+        "p_sf": 0.024,
+        "p_final": 0.011
+      },
+      "current": {
+        "player": "Denis Shapovalov",
+        "quarter": "Q4",
+        "p_champ": 0.004,
+        "p_sf": 0.029,
+        "p_final": 0.011
+      },
+      "alive": true
+    },
+    {
+      "position": 103,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Van Assche L.",
+      "player": "Luca Van Assche",
+      "bye": false,
+      "pretournament": {
+        "player": "Luca Van Assche",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Luca Van Assche",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 104,
+      "quarter": "Q4",
+      "seed": 29,
+      "draw_name": "Norrie C.",
+      "player": "Cameron Norrie",
+      "bye": false,
+      "pretournament": {
+        "player": "Cameron Norrie",
+        "quarter": "Q4",
+        "p_champ": 0.004,
+        "p_sf": 0.025,
+        "p_final": 0.009
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 105,
+      "quarter": "Q4",
+      "seed": 18,
+      "draw_name": "Lehecka J.",
+      "player": "Jiri Lehecka",
+      "bye": false,
+      "pretournament": {
+        "player": "Jiri Lehecka",
+        "quarter": "Q4",
+        "p_champ": 0.01,
+        "p_sf": 0.053,
+        "p_final": 0.022
+      },
+      "current": {
+        "player": "Jiri Lehecka",
+        "quarter": "Q4",
+        "p_champ": 0.012,
+        "p_sf": 0.06,
+        "p_final": 0.029
+      },
+      "alive": true
+    },
+    {
+      "position": 106,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Carreno Busta P.",
+      "player": "Pablo Carreno Busta",
+      "bye": false,
+      "pretournament": {
+        "player": "Pablo Carreno Busta",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 107,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Samuel T.",
+      "player": "Toby Samuel",
+      "bye": false,
+      "pretournament": null,
+      "current": {
+        "player": "Toby Samuel",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 108,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Machac T.",
+      "player": "Tomas Machac",
+      "bye": false,
+      "pretournament": {
+        "player": "Tomas Machac",
+        "quarter": "Q4",
+        "p_champ": 0.006,
+        "p_sf": 0.034,
+        "p_final": 0.014
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 109,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Harris L.",
+      "player": "Lloyd Harris",
+      "bye": false,
+      "pretournament": null,
+      "current": {
+        "player": "Lloyd Harris",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 110,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Kennedy J.",
+      "player": "Jack Kennedy",
+      "bye": false,
+      "pretournament": {
+        "player": "Jack Kennedy",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 111,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Tsitsipas S.",
+      "player": "Stefanos Tsitsipas",
+      "bye": false,
+      "pretournament": {
+        "player": "Stefanos Tsitsipas",
+        "quarter": "Q4",
+        "p_champ": 0.001,
+        "p_sf": 0.007,
+        "p_final": 0.002
+      },
+      "current": {
+        "player": "Stefanos Tsitsipas",
+        "quarter": "Q4",
+        "p_champ": 0.003,
+        "p_sf": 0.025,
+        "p_final": 0.01
+      },
+      "alive": true
+    },
+    {
+      "position": 112,
+      "quarter": "Q4",
+      "seed": 10,
+      "draw_name": "Fils A.",
+      "player": "Arthur Fils",
+      "bye": false,
+      "pretournament": {
+        "player": "Arthur Fils",
+        "quarter": "Q4",
+        "p_champ": 0.055,
+        "p_sf": 0.163,
+        "p_final": 0.096
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 113,
+      "quarter": "Q4",
+      "seed": 15,
+      "draw_name": "Bublik A.",
+      "player": "Alexander Bublik",
+      "bye": false,
+      "pretournament": {
+        "player": "Alexander Bublik",
+        "quarter": "Q4",
+        "p_champ": 0.003,
+        "p_sf": 0.028,
+        "p_final": 0.011
+      },
+      "current": {
+        "player": "Alexander Bublik",
+        "quarter": "Q4",
+        "p_champ": 0.005,
+        "p_sf": 0.032,
+        "p_final": 0.015
+      },
+      "alive": true
+    },
+    {
+      "position": 114,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Wolf J.J.",
+      "player": "J.J. Wolf",
+      "bye": false,
+      "pretournament": {
+        "player": "J.J. Wolf",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 115,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Tirante T.A.",
+      "player": "Thiago Agustin Tirante",
+      "bye": false,
+      "pretournament": {
+        "player": "Thiago Agustin Tirante",
+        "quarter": "Q4",
+        "p_champ": 0.005,
+        "p_sf": 0.035,
+        "p_final": 0.013
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 116,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Mannarino A.",
+      "player": "Adrian Mannarino",
+      "bye": false,
+      "pretournament": {
+        "player": "Adrian Mannarino",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Adrian Mannarino",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 117,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Prizmic D.",
+      "player": "Dino Prizmic",
+      "bye": false,
+      "pretournament": {
+        "player": "Dino Prizmic",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Dino Prizmic",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.002
+      },
+      "alive": true
+    },
+    {
+      "position": 118,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Shevchenko A.",
+      "player": "Aleksandr Shevchenko",
+      "bye": false,
+      "pretournament": {
+        "player": "Aleksandr Shevchenko",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 119,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Wong C.",
+      "player": "Chak Lam Coleman Wong",
+      "bye": false,
+      "pretournament": {
+        "player": "Chak Lam Coleman Wong",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 120,
+      "quarter": "Q4",
+      "seed": 20,
+      "draw_name": "Paul T.",
+      "player": "Tommy Paul",
+      "bye": false,
+      "pretournament": {
+        "player": "Tommy Paul",
+        "quarter": "Q4",
+        "p_champ": 0.011,
+        "p_sf": 0.058,
+        "p_final": 0.025
+      },
+      "current": {
+        "player": "Tommy Paul",
+        "quarter": "Q4",
+        "p_champ": 0.013,
+        "p_sf": 0.065,
+        "p_final": 0.033
+      },
+      "alive": true
+    },
+    {
+      "position": 121,
+      "quarter": "Q4",
+      "seed": 30,
+      "draw_name": "Arnaldi M.",
+      "player": "Matteo Arnaldi",
+      "bye": false,
+      "pretournament": {
+        "player": "Matteo Arnaldi",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 122,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Duckworth J.",
+      "player": "James Duckworth",
+      "bye": false,
+      "pretournament": {
+        "player": "James Duckworth",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "James Duckworth",
+        "quarter": "Q4",
+        "p_champ": 0.001,
+        "p_sf": 0.007,
+        "p_final": 0.002
+      },
+      "alive": true
+    },
+    {
+      "position": 123,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Wu Y.",
+      "player": "Wu Yibing",
+      "bye": false,
+      "pretournament": {
+        "player": "Wu Yibing",
+        "quarter": "Q4",
+        "p_champ": 0.001,
+        "p_sf": 0.01,
+        "p_final": 0.003
+      },
+      "current": {
+        "player": "Wu Yibing",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.007,
+        "p_final": 0.002
+      },
+      "alive": true
+    },
+    {
+      "position": 124,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Walton A.",
+      "player": "Adam Walton",
+      "bye": false,
+      "pretournament": {
+        "player": "Adam Walton",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 125,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Faria J.",
+      "player": "Jaime Faria",
+      "bye": false,
+      "pretournament": {
+        "player": "Jaime Faria",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.009,
+        "p_final": 0.003
+      },
+      "current": {
+        "player": "Jaime Faria",
+        "quarter": "Q4",
+        "p_champ": 0.001,
+        "p_sf": 0.007,
+        "p_final": 0.003
+      },
+      "alive": true
+    },
+    {
+      "position": 126,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Brooksby J.",
+      "player": "Jenson Brooksby",
+      "bye": false,
+      "pretournament": {
+        "player": "Jenson Brooksby",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.005,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 127,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Safiullin R.",
+      "player": "Roman Safiullin",
+      "bye": false,
+      "pretournament": {
+        "player": "Roman Safiullin",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 128,
+      "quarter": "Q4",
+      "seed": 2,
+      "draw_name": "Alcaraz C.",
+      "player": "Carlos Alcaraz",
+      "bye": false,
+      "pretournament": {
+        "player": "Carlos Alcaraz",
+        "quarter": "Q4",
+        "p_champ": 0.266,
+        "p_sf": 0.487,
+        "p_final": 0.359
+      },
+      "current": {
+        "player": "Carlos Alcaraz",
+        "quarter": "Q4",
+        "p_champ": 0.367,
+        "p_sf": 0.581,
+        "p_final": 0.478
+      },
+      "alive": true
+    }
+  ],
+  "matches": [
+    {
+      "player_a": "Rafael Jodar",
+      "player_b": "Bu Yunchaokete",
+      "model_prob_a": 0.837,
+      "market_prob_a": 0.098,
+      "gap_pct_points": 73.9,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "in",
+      "status_text": "In Progress",
+      "score": "2-6, 1-6, 1-5"
+    },
+    {
+      "player_a": "Zachary Svajda",
+      "player_b": "Daniel Altmaier",
+      "model_prob_a": 0.383,
+      "market_prob_a": 0.796,
+      "gap_pct_points": 41.3,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "in",
+      "status_text": "In Progress",
+      "score": "6-3, 6-1, 6(5)-7(7), 2-1"
+    },
+    {
+      "player_a": "Tomas Martin Etcheverry",
+      "player_b": "Jacob Fearnley",
+      "model_prob_a": 0.594,
+      "market_prob_a": 0.901,
+      "gap_pct_points": 30.7,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "in",
+      "status_text": "In Progress",
+      "score": "6-3, 5-3"
+    },
+    {
+      "player_a": "Fabian Marozsan",
+      "player_b": "Michael Zheng",
+      "model_prob_a": 0.591,
+      "market_prob_a": 0.378,
+      "gap_pct_points": 21.3,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "in",
+      "status_text": "In Progress",
+      "score": "4-6, 0-0"
+    },
+    {
+      "player_a": "Andrea Guerrieri",
+      "player_b": "Alex de Minaur",
+      "model_prob_a": 0.207,
+      "market_prob_a": 0.028,
+      "gap_pct_points": 17.9,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "in",
+      "status_text": "In Progress",
+      "score": "2-6, 2-6"
+    },
+    {
+      "player_a": "Alexander Blockx",
+      "player_b": "Marco Trungelliti",
+      "model_prob_a": 0.646,
+      "market_prob_a": 0.811,
+      "gap_pct_points": 16.5,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Marcos Giron",
+      "player_b": "Ignacio Buse",
+      "model_prob_a": 0.344,
+      "market_prob_a": 0.211,
+      "gap_pct_points": 13.3,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "in",
+      "status_text": "In Progress",
+      "score": "6-3, 3-6, 3-6, 0-0"
+    },
+    {
+      "player_a": "Felix Auger-Aliassime",
+      "player_b": "Karen Khachanov",
+      "model_prob_a": 0.833,
+      "market_prob_a": 0.703,
+      "gap_pct_points": 13.0,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Dane Sweeny",
+      "player_b": "Lorenzo Musetti",
+      "model_prob_a": 0.204,
+      "market_prob_a": 0.081,
+      "gap_pct_points": 12.3,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Denis Shapovalov",
+      "player_b": "Luca Van Assche",
+      "model_prob_a": 0.695,
+      "market_prob_a": 0.576,
+      "gap_pct_points": 11.9,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "in",
+      "status_text": "In Progress",
+      "score": "0-0"
+    },
+    {
+      "player_a": "Rei Sakamoto",
+      "player_b": "Frances Tiafoe",
+      "model_prob_a": 0.142,
+      "market_prob_a": 0.242,
+      "gap_pct_points": 10.0,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Gael Monfils",
+      "player_b": "Learner Tien",
+      "model_prob_a": 0.304,
+      "market_prob_a": 0.21,
+      "gap_pct_points": 9.4,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Dino Prizmic",
+      "player_b": "Tommy Paul",
+      "model_prob_a": 0.266,
+      "market_prob_a": 0.191,
+      "gap_pct_points": 7.5,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Luciano Darderi",
+      "player_b": "Dalibor Svrcina",
+      "model_prob_a": 0.635,
+      "market_prob_a": 0.571,
+      "gap_pct_points": 6.4,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Jiri Lehecka",
+      "player_b": "Toby Samuel",
+      "model_prob_a": 0.763,
+      "market_prob_a": 0.702,
+      "gap_pct_points": 6.1,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Alexander Bublik",
+      "player_b": "Adrian Mannarino",
+      "model_prob_a": 0.688,
+      "market_prob_a": 0.749,
+      "gap_pct_points": 6.1,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Ben Shelton",
+      "player_b": "Hubert Hurkacz",
+      "model_prob_a": 0.751,
+      "market_prob_a": 0.697,
+      "gap_pct_points": 5.4,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 5-7, 7(7)-6(3), 7-5"
+    },
+    {
+      "player_a": "Alexei Popyrin",
+      "player_b": "Alejandro Tabilo",
+      "model_prob_a": 0.378,
+      "market_prob_a": 0.432,
+      "gap_pct_points": 5.4,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Lloyd Harris",
+      "player_b": "Stefanos Tsitsipas",
+      "model_prob_a": 0.275,
+      "market_prob_a": 0.32,
+      "gap_pct_points": 4.5,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Taylor Fritz",
+      "player_b": "Mattia Bellucci",
+      "model_prob_a": 0.827,
+      "market_prob_a": 0.871,
+      "gap_pct_points": 4.4,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Matteo Berrettini",
+      "player_b": "Mariano Navone",
+      "model_prob_a": 0.579,
+      "market_prob_a": 0.608,
+      "gap_pct_points": 2.9,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Jakub Mensik",
+      "player_b": "Jurij Rodionov",
+      "model_prob_a": 0.83,
+      "market_prob_a": 0.858,
+      "gap_pct_points": 2.8,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Tristan Schoolkate",
+      "player_b": "Flavio Cobolli",
+      "model_prob_a": 0.158,
+      "market_prob_a": 0.184,
+      "gap_pct_points": 2.6,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "James Duckworth",
+      "player_b": "Wu Yibing",
+      "model_prob_a": 0.456,
+      "market_prob_a": 0.432,
+      "gap_pct_points": 2.4,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Jaime Faria",
+      "player_b": "Carlos Alcaraz",
+      "model_prob_a": 0.088,
+      "market_prob_a": 0.112,
+      "gap_pct_points": 2.4,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Jan-Lennard Struff",
+      "player_b": "Francisco Cerundolo",
+      "model_prob_a": 0.386,
+      "market_prob_a": 0.393,
+      "gap_pct_points": 0.7,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Valentin Vacherot",
+      "player_b": "Kamil Majchrzak",
+      "model_prob_a": 0.547,
+      "market_prob_a": 0.544,
+      "gap_pct_points": 0.3,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Alexander Zverev",
+      "player_b": "Quentin Halys",
+      "model_prob_a": 0.818,
+      "market_prob_a": 0.82,
+      "gap_pct_points": 0.2,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Alexander Zverev",
+      "player_b": "Lorenzo Sonego",
+      "model_prob_a": 0.826,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Alexander Zverev",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 3-6, 6(7)-7(9), 7-5, 6-4"
+    },
+    {
+      "player_a": "Quentin Halys",
+      "player_b": "Facundo Diaz Acosta",
+      "model_prob_a": 0.682,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Quentin Halys",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 7-5, 6(7)-7(9), 6-1"
+    },
+    {
+      "player_a": "Grigor Dimitrov",
+      "player_b": "Alexei Popyrin",
+      "model_prob_a": 0.705,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Alexei Popyrin",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 3-6, 2-6, 4-6"
+    },
+    {
+      "player_a": "Yannick Hanfmann",
+      "player_b": "Alejandro Tabilo",
+      "model_prob_a": 0.454,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Alejandro Tabilo",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 2-6, 7(9)-6(7), 3-6"
+    },
+    {
+      "player_a": "Luciano Darderi",
+      "player_b": "Harry Wendelken",
+      "model_prob_a": 0.666,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Luciano Darderi",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 3-6, 6-2, 7-5"
+    },
+    {
+      "player_a": "Dalibor Svrcina",
+      "player_b": "Valentin Royer",
+      "model_prob_a": 0.555,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Dalibor Svrcina",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 6-3, 5-7, 5-7, 6-2"
+    },
+    {
+      "player_a": "Dane Sweeny",
+      "player_b": "Corentin Moutet",
+      "model_prob_a": 0.407,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Dane Sweeny",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Retired",
+      "score": "7(7)-6(4), 6-4, 3-0"
+    },
+    {
+      "player_a": "Arthur Fery",
+      "player_b": "Lorenzo Musetti",
+      "model_prob_a": 0.327,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Lorenzo Musetti",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 3-6, 5-7"
+    },
+    {
+      "player_a": "Juan Manuel Cerundolo",
+      "player_b": "Arthur Gea",
+      "model_prob_a": 0.556,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Arthur Gea",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 6-2, 6-3, 3-6, 1-6"
+    },
+    {
+      "player_a": "Zizou Bergs",
+      "player_b": "Carlos Taberner",
+      "model_prob_a": 0.642,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": "6-3, 3-6, 6-2, 2-1"
+    },
+    {
+      "player_a": "Jesper de Jong",
+      "player_b": "Francesco Passaro",
+      "model_prob_a": 0.662,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": "2-6, 6-2, 4-6, 1-1"
+    },
+    {
+      "player_a": "Jan Choinski",
+      "player_b": "Botic Van De Zandschulp",
+      "model_prob_a": 0.267,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Botic Van De Zandschulp",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 1-6, 6(5)-7(7)"
+    },
+    {
+      "player_a": "Felix Auger-Aliassime",
+      "player_b": "Rinky Hijikata",
+      "model_prob_a": 0.807,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Felix Auger-Aliassime",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7-5, 4-6, 6-3, 7-5"
+    },
+    {
+      "player_a": "Roman Andres Burruchaga",
+      "player_b": "Karen Khachanov",
+      "model_prob_a": 0.449,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Karen Khachanov",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 0-6, 1-6"
+    },
+    {
+      "player_a": "Alex Molcan",
+      "player_b": "Benjamin Bonzi",
+      "model_prob_a": 0.423,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Benjamin Bonzi",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 6-3, 3-6, 2-6"
+    },
+    {
+      "player_a": "Jakub Mensik",
+      "player_b": "Shintaro Mochizuki",
+      "model_prob_a": 0.837,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Jakub Mensik",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-1, 6-4, 7-5"
+    },
+    {
+      "player_a": "Jurij Rodionov",
+      "player_b": "Giovanni Mpetshi Perricard",
+      "model_prob_a": 0.409,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Jurij Rodionov",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7(7)-6(2), 6-0, 7(7)-6(4)"
+    },
+    {
+      "player_a": "Adolfo Daniel Vallejo",
+      "player_b": "Gael Monfils",
+      "model_prob_a": 0.437,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Gael Monfils",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 1-6, 2-6, 0-6"
+    },
+    {
+      "player_a": "Nuno Borges",
+      "player_b": "Learner Tien",
+      "model_prob_a": 0.381,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Learner Tien",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 1-6, 2-6"
+    },
+    {
+      "player_a": "Taylor Fritz",
+      "player_b": "Darwin Blanch",
+      "model_prob_a": 0.856,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Taylor Fritz",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 6-2, 6-4"
+    },
+    {
+      "player_a": "Mattia Bellucci",
+      "player_b": "Zsombor Piros",
+      "model_prob_a": 0.619,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Mattia Bellucci",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 6-2, 6-0"
+    },
+    {
+      "player_a": "Camilo Ugo Carabelli",
+      "player_b": "Jan-Lennard Struff",
+      "model_prob_a": 0.395,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Jan-Lennard Struff",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 3-6, 3-6"
+    },
+    {
+      "player_a": "Filip Misolic",
+      "player_b": "Francisco Cerundolo",
+      "model_prob_a": 0.281,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Francisco Cerundolo",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 3-6, 5-7"
+    },
+    {
+      "player_a": "Alexander Blockx",
+      "player_b": "Tomas Barrios Vera",
+      "model_prob_a": 0.601,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Alexander Blockx",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 6-4, 6-2"
+    },
+    {
+      "player_a": "Shang Juncheng",
+      "player_b": "Marco Trungelliti",
+      "model_prob_a": 0.571,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Marco Trungelliti",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-0, 6(5)-7(7), 6-1, 3-6, 4-6"
+    },
+    {
+      "player_a": "Nishesh Basavareddy",
+      "player_b": "Tristan Schoolkate",
+      "model_prob_a": 0.639,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Tristan Schoolkate",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6(4)-7(7), 6-3, 3-6, 4-6"
+    },
+    {
+      "player_a": "Francisco Comesana",
+      "player_b": "Flavio Cobolli",
+      "model_prob_a": 0.252,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Flavio Cobolli",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 6-2, 3-6, 4-6, 4-6"
+    },
+    {
+      "player_a": "Daniil Medvedev",
+      "player_b": "Hugo Gaston",
+      "model_prob_a": 0.876,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Daniil Medvedev",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 6-2, 6-4"
+    },
+    {
+      "player_a": "Sebastian Gorzny",
+      "player_b": "Raphael Collignon",
+      "model_prob_a": 0.18,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Sebastian Gorzny",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 6-3, 3-6, 6-3, 7(11)-6(9)"
+    },
+    {
+      "player_a": "Jaume Munar",
+      "player_b": "Terence Atmane",
+      "model_prob_a": 0.502,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Jaume Munar",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6(5)-7(7), 3-6, 6-1, 7(7)-6(4), 7-5"
+    },
+    {
+      "player_a": "Sho Shimabukuro",
+      "player_b": "Arthur Rinderknech",
+      "model_prob_a": 0.326,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Arthur Rinderknech",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7(7)-6(4), 2-6, 6(4)-7(7), 2-6"
+    },
+    {
+      "player_a": "Valentin Vacherot",
+      "player_b": "Aleksandar Kovacevic",
+      "model_prob_a": 0.589,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Valentin Vacherot",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 6-3, 7-5"
+    },
+    {
+      "player_a": "Kamil Majchrzak",
+      "player_b": "Hamad Medjedovic",
+      "model_prob_a": 0.581,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Kamil Majchrzak",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 6-3, 6-3"
+    },
+    {
+      "player_a": "Aleksandar Vukic",
+      "player_b": "Rei Sakamoto",
+      "model_prob_a": 0.59,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Rei Sakamoto",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 7(7)-6(5), 4-6, 6-3, 4-6"
+    },
+    {
+      "player_a": "Martin Damm",
+      "player_b": "Frances Tiafoe",
+      "model_prob_a": 0.221,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Frances Tiafoe",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 6-4, 6-3, 3-6, 4-6"
+    },
+    {
+      "player_a": "Brandon Nakashima",
+      "player_b": "Sebastian Baez",
+      "model_prob_a": 0.747,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Brandon Nakashima",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 6-1, 6-0"
+    },
+    {
+      "player_a": "Alex Michelsen",
+      "player_b": "Federico Cina",
+      "model_prob_a": 0.781,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Alex Michelsen",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 6-1, 6-0"
+    },
+    {
+      "player_a": "Daniel Merida",
+      "player_b": "Marton Fucsovics",
+      "model_prob_a": 0.642,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Daniel Merida",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 6-4, 6-2"
+    },
+    {
+      "player_a": "Otto Virtanen",
+      "player_b": "Andrey Rublev",
+      "model_prob_a": 0.262,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Andrey Rublev",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7(7)-6(5), 7(7)-6(0), 0-6, 2-6, 6(5)-7(10)"
+    },
+    {
+      "player_a": "Tomas Martin Etcheverry",
+      "player_b": "Vit Kopriva",
+      "model_prob_a": 0.562,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Tomas Martin Etcheverry",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 6-4, 6-0"
+    },
+    {
+      "player_a": "Martin Landaluce",
+      "player_b": "Jacob Fearnley",
+      "model_prob_a": 0.603,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Jacob Fearnley",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 2-6, 6-4, 5-7, 3-6"
+    },
+    {
+      "player_a": "Matteo Berrettini",
+      "player_b": "Stan Wawrinka",
+      "model_prob_a": 0.679,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Matteo Berrettini",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7(7)-6(4), 7(7)-6(3), 6-0"
+    },
+    {
+      "player_a": "Mariano Navone",
+      "player_b": "Novak Djokovic",
+      "model_prob_a": 0.142,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Mariano Navone",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7(7)-6(5), 5-7, 4-6, 6-2, 6-1"
+    },
+    {
+      "player_a": "Ben Shelton",
+      "player_b": "Tallon Griekspoor",
+      "model_prob_a": 0.759,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Ben Shelton",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "1-6, 6-1, 7(7)-6(3), 6-2"
+    },
+    {
+      "player_a": "Damir Dzumhur",
+      "player_b": "Hubert Hurkacz",
+      "model_prob_a": 0.285,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Hubert Hurkacz",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 6-4, 1-6, 1-6"
+    },
+    {
+      "player_a": "Miomir Kecmanovic",
+      "player_b": "Denis Shapovalov",
+      "model_prob_a": 0.359,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Denis Shapovalov",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 6-4, 4-6, 1-6"
+    },
+    {
+      "player_a": "Luca Van Assche",
+      "player_b": "Cameron Norrie",
+      "model_prob_a": 0.286,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Luca Van Assche",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6(6)-7(8), 6-2, 6-2, 6-3"
+    },
+    {
+      "player_a": "Jiri Lehecka",
+      "player_b": "Pablo Carreno Busta",
+      "model_prob_a": 0.732,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Jiri Lehecka",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-1, 7(7)-6(5), 4-6, 6-2"
+    },
+    {
+      "player_a": "Toby Samuel",
+      "player_b": "Tomas Machac",
+      "model_prob_a": 0.264,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Toby Samuel",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 6-3, 6-2"
+    },
+    {
+      "player_a": "Lloyd Harris",
+      "player_b": "Jack Kennedy",
+      "model_prob_a": 0.403,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Lloyd Harris",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 6-2, 6-2"
+    },
+    {
+      "player_a": "Stefanos Tsitsipas",
+      "player_b": "Arthur Fils",
+      "model_prob_a": 0.201,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Stefanos Tsitsipas",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 7(7)-6(3), 6-1, 6-4"
+    },
+    {
+      "player_a": "Alexander Bublik",
+      "player_b": "J.J. Wolf",
+      "model_prob_a": 0.781,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Alexander Bublik",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 6-2, 3-6, 6-1"
+    },
+    {
+      "player_a": "Thiago Agustin Tirante",
+      "player_b": "Adrian Mannarino",
+      "model_prob_a": 0.72,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Adrian Mannarino",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 6-3, 3-6, 3-6, 3-6"
+    },
+    {
+      "player_a": "Dino Prizmic",
+      "player_b": "Aleksandr Shevchenko",
+      "model_prob_a": 0.498,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Dino Prizmic",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "2-6, 6-3, 6-3, 5-7, 7-5"
+    },
+    {
+      "player_a": "Chak Lam Coleman Wong",
+      "player_b": "Tommy Paul",
+      "model_prob_a": 0.254,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Tommy Paul",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7(7)-6(3), 1-6, 3-6, 3-6"
+    },
+    {
+      "player_a": "Matteo Arnaldi",
+      "player_b": "James Duckworth",
+      "model_prob_a": 0.444,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "James Duckworth",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7-5, 3-6, 2-6, 6(8)-7(10)"
+    },
+    {
+      "player_a": "Wu Yibing",
+      "player_b": "Adam Walton",
+      "model_prob_a": 0.637,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Wu Yibing",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7(7)-6(2), 6-2, 7-5"
+    },
+    {
+      "player_a": "Jaime Faria",
+      "player_b": "Jenson Brooksby",
+      "model_prob_a": 0.503,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Jaime Faria",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 7(7)-6(4), 4-6, 1-6, 6-2"
+    },
+    {
+      "player_a": "Roman Safiullin",
+      "player_b": "Carlos Alcaraz",
+      "model_prob_a": 0.071,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Carlos Alcaraz",
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 4-6, 4-6"
+    },
+    {
+      "player_a": "Daniil Medvedev",
+      "player_b": "Arthur Rinderknech",
+      "model_prob_a": 0.76,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Alex Michelsen",
+      "player_b": "Daniel Merida",
+      "model_prob_a": 0.525,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 67 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    }
+  ]
+}

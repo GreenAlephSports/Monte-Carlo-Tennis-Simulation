@@ -1,0 +1,3801 @@
+{
+  "meta": {
+    "tournament": "us-open-women-2026",
+    "generated_at": "2026-09-02T19:17:45Z",
+    "current_iterations": 10000,
+    "current_seed": 42,
+    "round_history_iterations": 2000,
+    "pretournament_baseline_path": "X:\\idanh\\Documents\\VS Code Projects\\Monte-Carlo-Simulation-Grand-Slam-Model-\\output\\us_open_2026_wta_real_pretournament_baseline.json"
+  },
+  "draw_size": 128,
+  "players": [
+    {
+      "position": 1,
+      "quarter": "Q1",
+      "seed": 1,
+      "draw_name": "Sabalenka A.",
+      "player": "Aryna Sabalenka",
+      "bye": false,
+      "pretournament": {
+        "player": "Aryna Sabalenka",
+        "quarter": "Q1",
+        "p_champ": 0.25,
+        "p_sf": 0.5,
+        "p_final": 0.36
+      },
+      "current": {
+        "player": "Aryna Sabalenka",
+        "quarter": "Q1",
+        "p_champ": 0.294,
+        "p_sf": 0.605,
+        "p_final": 0.424
+      },
+      "alive": true
+    },
+    {
+      "position": 2,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Osorio M.",
+      "player": "Camila Osorio",
+      "bye": false,
+      "pretournament": {
+        "player": "Camila Osorio",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 3,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Zarazua R.",
+      "player": "Renata Zarazua",
+      "bye": false,
+      "pretournament": {
+        "player": "Renata Zarazua",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 4,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Iatcenko P.",
+      "player": "Polina Iatcenko",
+      "bye": false,
+      "pretournament": {
+        "player": "Polina Iatcenko",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Polina Iatcenko",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 5,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Ito A.",
+      "player": "Aoi Ito",
+      "bye": false,
+      "pretournament": {
+        "player": "Aoi Ito",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 6,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Selekhmeteva O.",
+      "player": "Oksana Selekhmeteva",
+      "bye": false,
+      "pretournament": {
+        "player": "Oksana Selekhmeteva",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Oksana Selekhmeteva",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 7,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Rakhimova K.",
+      "player": "Kamilla Rakhimova",
+      "bye": false,
+      "pretournament": {
+        "player": "Kamilla Rakhimova",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Kamilla Rakhimova",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 8,
+      "quarter": "Q1",
+      "seed": 27,
+      "draw_name": "Krejcikova B.",
+      "player": "Barbora Krejcikova",
+      "bye": false,
+      "pretournament": {
+        "player": "Barbora Krejcikova",
+        "quarter": "Q2",
+        "p_champ": 0.005,
+        "p_sf": 0.045,
+        "p_final": 0.013
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 9,
+      "quarter": "Q1",
+      "seed": 20,
+      "draw_name": "Chwalinska M.",
+      "player": "Maja Chwalinska",
+      "bye": false,
+      "pretournament": {
+        "player": "Maja Chwalinska",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 10,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Townsend T.",
+      "player": "Taylor Townsend",
+      "bye": false,
+      "pretournament": {
+        "player": "Taylor Townsend",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.02,
+        "p_final": 0.006
+      },
+      "current": {
+        "player": "Taylor Townsend",
+        "quarter": "Q1",
+        "p_champ": 0.002,
+        "p_sf": 0.02,
+        "p_final": 0.006
+      },
+      "alive": true
+    },
+    {
+      "position": 11,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Preston T.",
+      "player": "Taylah Preston",
+      "bye": false,
+      "pretournament": {
+        "player": "Taylah Preston",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 12,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Parks A.",
+      "player": "Alycia Parks",
+      "bye": false,
+      "pretournament": {
+        "player": "Alycia Parks",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 13,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Vandewinkel H.",
+      "player": "Hanne Vandewinkel",
+      "bye": false,
+      "pretournament": {
+        "player": "Hanne Vandewinkel",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 14,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Pliskova Ka.",
+      "player": "Karolina Pliskova",
+      "bye": false,
+      "pretournament": {
+        "player": "Karolina Pliskova",
+        "quarter": "Q1",
+        "p_champ": 0.001,
+        "p_sf": 0.011,
+        "p_final": 0.003
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 15,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Snigur D.",
+      "player": "Daria Snigur",
+      "bye": false,
+      "pretournament": {
+        "player": "Daria Snigur",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.005,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 16,
+      "quarter": "Q1",
+      "seed": 15,
+      "draw_name": "Shnaider D.",
+      "player": "Diana Shnaider",
+      "bye": false,
+      "pretournament": {
+        "player": "Diana Shnaider",
+        "quarter": "Q2",
+        "p_champ": 0.006,
+        "p_sf": 0.051,
+        "p_final": 0.018
+      },
+      "current": {
+        "player": "Diana Shnaider",
+        "quarter": "Q1",
+        "p_champ": 0.005,
+        "p_sf": 0.043,
+        "p_final": 0.016
+      },
+      "alive": true
+    },
+    {
+      "position": 17,
+      "quarter": "Q1",
+      "seed": 11,
+      "draw_name": "Kostyuk M.",
+      "player": "Marta Kostyuk",
+      "bye": false,
+      "pretournament": {
+        "player": "Marta Kostyuk",
+        "quarter": "Q2",
+        "p_champ": 0.04,
+        "p_sf": 0.189,
+        "p_final": 0.082
+      },
+      "current": {
+        "player": "Marta Kostyuk",
+        "quarter": "Q1",
+        "p_champ": 0.047,
+        "p_sf": 0.186,
+        "p_final": 0.1
+      },
+      "alive": true
+    },
+    {
+      "position": 18,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Hunter S.",
+      "player": "Storm Hunter",
+      "bye": false,
+      "pretournament": {
+        "player": "Storm Hunter",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 19,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Stephens S.",
+      "player": "Sloane Stephens",
+      "bye": false,
+      "pretournament": {
+        "player": "Sloane Stephens",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 20,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Tauson C.",
+      "player": "Clara Tauson",
+      "bye": false,
+      "pretournament": {
+        "player": "Clara Tauson",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.011,
+        "p_final": 0.003
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 21,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Birrell K.",
+      "player": "Kimberly Birrell",
+      "bye": false,
+      "pretournament": {
+        "player": "Kimberly Birrell",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Kimberly Birrell",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 22,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Marcinko P.",
+      "player": "Petra Marcinko",
+      "bye": false,
+      "pretournament": {
+        "player": "Petra Marcinko",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 23,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Kessler M.",
+      "player": "McCartney Kessler",
+      "bye": false,
+      "pretournament": {
+        "player": "McCartney Kessler",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.005,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 24,
+      "quarter": "Q1",
+      "seed": 18,
+      "draw_name": "Alexandrova E.",
+      "player": "Ekaterina Alexandrova",
+      "bye": false,
+      "pretournament": {
+        "player": "Ekaterina Alexandrova",
+        "quarter": "Q4",
+        "p_champ": 0.001,
+        "p_sf": 0.015,
+        "p_final": 0.004
+      },
+      "current": {
+        "player": "Ekaterina Alexandrova",
+        "quarter": "Q1",
+        "p_champ": 0.001,
+        "p_sf": 0.014,
+        "p_final": 0.003
+      },
+      "alive": true
+    },
+    {
+      "position": 25,
+      "quarter": "Q1",
+      "seed": 29,
+      "draw_name": "Li A.",
+      "player": "Ann Li",
+      "bye": false,
+      "pretournament": {
+        "player": "Ann Li",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.006,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Ann Li",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.009,
+        "p_final": 0.002
+      },
+      "alive": true
+    },
+    {
+      "position": 26,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Ruzic A.",
+      "player": "Antonia Ruzic",
+      "bye": false,
+      "pretournament": {
+        "player": "Antonia Ruzic",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 27,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Gibson T.",
+      "player": "Talia Gibson",
+      "bye": false,
+      "pretournament": {
+        "player": "Talia Gibson",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 28,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Vekic D.",
+      "player": "Donna Vekic",
+      "bye": false,
+      "pretournament": {
+        "player": "Donna Vekic",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Donna Vekic",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 29,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Kalieva E.",
+      "player": "Elvina Kalieva",
+      "bye": false,
+      "pretournament": {
+        "player": "Elvina Kalieva",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 30,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Tararudee L.",
+      "player": "Lanlana Tararudee",
+      "bye": false,
+      "pretournament": {
+        "player": "Lanlana Tararudee",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Lanlana Tararudee",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 31,
+      "quarter": "Q1",
+      "seed": null,
+      "draw_name": "Volynets K.",
+      "player": "Katie Volynets",
+      "bye": false,
+      "pretournament": {
+        "player": "Katie Volynets",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 32,
+      "quarter": "Q1",
+      "seed": 6,
+      "draw_name": "Noskova L.",
+      "player": "Linda Noskova",
+      "bye": false,
+      "pretournament": {
+        "player": "Linda Noskova",
+        "quarter": "Q4",
+        "p_champ": 0.026,
+        "p_sf": 0.158,
+        "p_final": 0.069
+      },
+      "current": {
+        "player": "Linda Noskova",
+        "quarter": "Q1",
+        "p_champ": 0.018,
+        "p_sf": 0.097,
+        "p_final": 0.042
+      },
+      "alive": true
+    },
+    {
+      "position": 33,
+      "quarter": "Q2",
+      "seed": 3,
+      "draw_name": "Pegula J.",
+      "player": "Jessica Pegula",
+      "bye": false,
+      "pretournament": {
+        "player": "Jessica Pegula",
+        "quarter": "Q2",
+        "p_champ": 0.092,
+        "p_sf": 0.304,
+        "p_final": 0.163
+      },
+      "current": {
+        "player": "Jessica Pegula",
+        "quarter": "Q2",
+        "p_champ": 0.115,
+        "p_sf": 0.41,
+        "p_final": 0.195
+      },
+      "alive": true
+    },
+    {
+      "position": 34,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Ruse E.G.",
+      "player": "Elena-Gabriela Ruse",
+      "bye": false,
+      "pretournament": {
+        "player": "Elena-Gabriela Ruse",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 35,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Williams V.",
+      "player": "Venus Williams",
+      "bye": false,
+      "pretournament": {
+        "player": "Venus Williams",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 36,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Kenin S.",
+      "player": "Sofia Kenin",
+      "bye": false,
+      "pretournament": {
+        "player": "Sofia Kenin",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 37,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Sawangkaew M.",
+      "player": "Mananchaya Sawangkaew",
+      "bye": false,
+      "pretournament": {
+        "player": "Mananchaya Sawangkaew",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 38,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Udvardy P.",
+      "player": "Panna Udvardy",
+      "bye": false,
+      "pretournament": {
+        "player": "Panna Udvardy",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 39,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Zhang S.",
+      "player": "Zhang Shuai",
+      "bye": false,
+      "pretournament": {
+        "player": "Zhang Shuai",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.009,
+        "p_final": 0.002
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 40,
+      "quarter": "Q2",
+      "seed": 31,
+      "draw_name": "Fernandez L.",
+      "player": "Leylah Fernandez",
+      "bye": false,
+      "pretournament": {
+        "player": "Leylah Fernandez",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Leylah Fernandez",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 41,
+      "quarter": "Q2",
+      "seed": 19,
+      "draw_name": "Paolini J.",
+      "player": "Jasmine Paolini",
+      "bye": false,
+      "pretournament": {
+        "player": "Jasmine Paolini",
+        "quarter": "Q2",
+        "p_champ": 0.001,
+        "p_sf": 0.023,
+        "p_final": 0.006
+      },
+      "current": {
+        "player": "Jasmine Paolini",
+        "quarter": "Q2",
+        "p_champ": 0.002,
+        "p_sf": 0.034,
+        "p_final": 0.007
+      },
+      "alive": true
+    },
+    {
+      "position": 42,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Erjavec V.",
+      "player": "Veronika Erjavec",
+      "bye": false,
+      "pretournament": {
+        "player": "Veronika Erjavec",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 43,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Stefanini L.",
+      "player": "Lucrezia Stefanini",
+      "bye": false,
+      "pretournament": {
+        "player": "Lucrezia Stefanini",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 44,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Yastremska D.",
+      "player": "Dayana Yastremska",
+      "bye": false,
+      "pretournament": {
+        "player": "Dayana Yastremska",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 45,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Golubic V.",
+      "player": "Viktorija Golubic",
+      "bye": false,
+      "pretournament": {
+        "player": "Viktorija Golubic",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 46,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Parry D.",
+      "player": "Diane Parry",
+      "bye": false,
+      "pretournament": {
+        "player": "Diane Parry",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 47,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Grabher J.",
+      "player": "Julia Grabher",
+      "bye": false,
+      "pretournament": {
+        "player": "Julia Grabher",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 48,
+      "quarter": "Q2",
+      "seed": 16,
+      "draw_name": "Cirstea S.",
+      "player": "Sorana Cirstea",
+      "bye": false,
+      "pretournament": {
+        "player": "Sorana Cirstea",
+        "quarter": "Q3",
+        "p_champ": 0.009,
+        "p_sf": 0.064,
+        "p_final": 0.027
+      },
+      "current": {
+        "player": "Sorana Cirstea",
+        "quarter": "Q2",
+        "p_champ": 0.006,
+        "p_sf": 0.065,
+        "p_final": 0.017
+      },
+      "alive": true
+    },
+    {
+      "position": 49,
+      "quarter": "Q2",
+      "seed": 9,
+      "draw_name": "Svitolina E.",
+      "player": "Elina Svitolina",
+      "bye": false,
+      "pretournament": {
+        "player": "Elina Svitolina",
+        "quarter": "Q1",
+        "p_champ": 0.032,
+        "p_sf": 0.14,
+        "p_final": 0.071
+      },
+      "current": {
+        "player": "Elina Svitolina",
+        "quarter": "Q2",
+        "p_champ": 0.03,
+        "p_sf": 0.171,
+        "p_final": 0.066
+      },
+      "alive": true
+    },
+    {
+      "position": 50,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Sierra S.",
+      "player": "Solana Sierra",
+      "bye": false,
+      "pretournament": {
+        "player": "Solana Sierra",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 51,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Joint M.",
+      "player": "Maya Joint",
+      "bye": false,
+      "pretournament": {
+        "player": "Maya Joint",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Maya Joint",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 52,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Samsonova L.",
+      "player": "Liudmila Samsonova",
+      "bye": false,
+      "pretournament": {
+        "player": "Liudmila Samsonova",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.01,
+        "p_final": 0.003
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 53,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Arango E.",
+      "player": "Emiliana Arango",
+      "bye": false,
+      "pretournament": {
+        "player": "Emiliana Arango",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 54,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Xinyu W.",
+      "player": "Wang Xinyu",
+      "bye": false,
+      "pretournament": {
+        "player": "Wang Xinyu",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Wang Xinyu",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 55,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Blinkova A.",
+      "player": "Anna Blinkova",
+      "bye": false,
+      "pretournament": {
+        "player": "Anna Blinkova",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 56,
+      "quarter": "Q2",
+      "seed": 21,
+      "draw_name": "Kalinskaya A.",
+      "player": "Anna Kalinskaya",
+      "bye": false,
+      "pretournament": {
+        "player": "Anna Kalinskaya",
+        "quarter": "Q1",
+        "p_champ": 0.004,
+        "p_sf": 0.033,
+        "p_final": 0.013
+      },
+      "current": {
+        "player": "Anna Kalinskaya",
+        "quarter": "Q2",
+        "p_champ": 0.005,
+        "p_sf": 0.049,
+        "p_final": 0.013
+      },
+      "alive": true
+    },
+    {
+      "position": 57,
+      "quarter": "Q2",
+      "seed": 26,
+      "draw_name": "Navarro E.",
+      "player": "Emma Navarro",
+      "bye": false,
+      "pretournament": {
+        "player": "Emma Navarro",
+        "quarter": "Q4",
+        "p_champ": 0.001,
+        "p_sf": 0.016,
+        "p_final": 0.003
+      },
+      "current": {
+        "player": "Emma Navarro",
+        "quarter": "Q2",
+        "p_champ": 0.001,
+        "p_sf": 0.019,
+        "p_final": 0.004
+      },
+      "alive": true
+    },
+    {
+      "position": 58,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Boisson L.",
+      "player": "Lois Boisson",
+      "bye": false,
+      "pretournament": {
+        "player": "Lois Boisson",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 59,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Koevermans A.",
+      "player": "Anouk Koevermans",
+      "bye": false,
+      "pretournament": {
+        "player": "Anouk Koevermans",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 60,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "McNally C.",
+      "player": "Catherine McNally",
+      "bye": false,
+      "pretournament": null,
+      "current": {
+        "player": "Catherine McNally",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 61,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Lee C.Y.",
+      "player": "Carol Young Suh Lee",
+      "bye": false,
+      "pretournament": null,
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 62,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Boulter K.",
+      "player": "Katie Boulter",
+      "bye": false,
+      "pretournament": {
+        "player": "Katie Boulter",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.005,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Katie Boulter",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.005,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 63,
+      "quarter": "Q2",
+      "seed": null,
+      "draw_name": "Kraus S.",
+      "player": "Sinja Kraus",
+      "bye": false,
+      "pretournament": {
+        "player": "Sinja Kraus",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 64,
+      "quarter": "Q2",
+      "seed": 7,
+      "draw_name": "Muchova K.",
+      "player": "Karolina Muchova",
+      "bye": false,
+      "pretournament": {
+        "player": "Karolina Muchova",
+        "quarter": "Q2",
+        "p_champ": 0.06,
+        "p_sf": 0.266,
+        "p_final": 0.118
+      },
+      "current": {
+        "player": "Karolina Muchova",
+        "quarter": "Q2",
+        "p_champ": 0.044,
+        "p_sf": 0.216,
+        "p_final": 0.093
+      },
+      "alive": true
+    },
+    {
+      "position": 65,
+      "quarter": "Q3",
+      "seed": 5,
+      "draw_name": "Andreeva M.",
+      "player": "Mirra Andreeva",
+      "bye": false,
+      "pretournament": {
+        "player": "Mirra Andreeva",
+        "quarter": "Q1",
+        "p_champ": 0.019,
+        "p_sf": 0.098,
+        "p_final": 0.045
+      },
+      "current": {
+        "player": "Mirra Andreeva",
+        "quarter": "Q3",
+        "p_champ": 0.024,
+        "p_sf": 0.144,
+        "p_final": 0.062
+      },
+      "alive": true
+    },
+    {
+      "position": 66,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Tjen J.",
+      "player": "Janice Tjen",
+      "bye": false,
+      "pretournament": {
+        "player": "Janice Tjen",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 67,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Knutson G.",
+      "player": "Gabriela Knutson",
+      "bye": false,
+      "pretournament": {
+        "player": "Gabriela Knutson",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 68,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Lys E.",
+      "player": "Eva Lys",
+      "bye": false,
+      "pretournament": {
+        "player": "Eva Lys",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.011,
+        "p_final": 0.002
+      },
+      "current": {
+        "player": "Eva Lys",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.008,
+        "p_final": 0.002
+      },
+      "alive": true
+    },
+    {
+      "position": 69,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Bartunkova N.",
+      "player": "Nikola Bartunkova",
+      "bye": false,
+      "pretournament": {
+        "player": "Nikola Bartunkova",
+        "quarter": "Q4",
+        "p_champ": 0.001,
+        "p_sf": 0.014,
+        "p_final": 0.003
+      },
+      "current": {
+        "player": "Nikola Bartunkova",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.015,
+        "p_final": 0.004
+      },
+      "alive": true
+    },
+    {
+      "position": 70,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Sherif M.",
+      "player": "Mayar Sherif",
+      "bye": false,
+      "pretournament": {
+        "player": "Mayar Sherif",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 71,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Maria T.",
+      "player": "Tatjana Maria",
+      "bye": false,
+      "pretournament": {
+        "player": "Tatjana Maria",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Tatjana Maria",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 72,
+      "quarter": "Q3",
+      "seed": 30,
+      "draw_name": "Ostapenko J.",
+      "player": "Jelena Ostapenko",
+      "bye": false,
+      "pretournament": {
+        "player": "Jelena Ostapenko",
+        "quarter": "Q4",
+        "p_champ": 0.002,
+        "p_sf": 0.03,
+        "p_final": 0.008
+      },
+      "current": {
+        "player": "Jelena Ostapenko",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.017,
+        "p_final": 0.004
+      },
+      "alive": true
+    },
+    {
+      "position": 73,
+      "quarter": "Q3",
+      "seed": 24,
+      "draw_name": "Potapova A.",
+      "player": "Anastasia Potapova",
+      "bye": false,
+      "pretournament": {
+        "player": "Anastasia Potapova",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.018,
+        "p_final": 0.007
+      },
+      "current": {
+        "player": "Anastasia Potapova",
+        "quarter": "Q3",
+        "p_champ": 0.003,
+        "p_sf": 0.044,
+        "p_final": 0.011
+      },
+      "alive": true
+    },
+    {
+      "position": 74,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Semenistaja D.",
+      "player": "Darja Semenistaja",
+      "bye": false,
+      "pretournament": null,
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 75,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Rus A.",
+      "player": "Arantxa Rus",
+      "bye": false,
+      "pretournament": {
+        "player": "Arantxa Rus",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 76,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Jeanjean L.",
+      "player": "Leolia Jeanjean",
+      "bye": false,
+      "pretournament": {
+        "player": "Leolia Jeanjean",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Leolia Jeanjean",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 77,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Tagger L.",
+      "player": "Lilli Tagger",
+      "bye": false,
+      "pretournament": {
+        "player": "Lilli Tagger",
+        "quarter": "Q2",
+        "p_champ": 0.001,
+        "p_sf": 0.008,
+        "p_final": 0.002
+      },
+      "current": {
+        "player": "Lilli Tagger",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.008,
+        "p_final": 0.002
+      },
+      "alive": true
+    },
+    {
+      "position": 78,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Korpatsch T.",
+      "player": "Tamara Korpatsch",
+      "bye": false,
+      "pretournament": {
+        "player": "Tamara Korpatsch",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 79,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Krueger A.",
+      "player": "Ashlyn Krueger",
+      "bye": false,
+      "pretournament": {
+        "player": "Ashlyn Krueger",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 80,
+      "quarter": "Q3",
+      "seed": 10,
+      "draw_name": "Anisimova A.",
+      "player": "Amanda Anisimova",
+      "bye": false,
+      "pretournament": {
+        "player": "Amanda Anisimova",
+        "quarter": "Q4",
+        "p_champ": 0.031,
+        "p_sf": 0.172,
+        "p_final": 0.075
+      },
+      "current": {
+        "player": "Amanda Anisimova",
+        "quarter": "Q3",
+        "p_champ": 0.032,
+        "p_sf": 0.187,
+        "p_final": 0.087
+      },
+      "alive": true
+    },
+    {
+      "position": 81,
+      "quarter": "Q3",
+      "seed": 14,
+      "draw_name": "Jovic I.",
+      "player": "Iva Jovic",
+      "bye": false,
+      "pretournament": {
+        "player": "Iva Jovic",
+        "quarter": "Q4",
+        "p_champ": 0.004,
+        "p_sf": 0.042,
+        "p_final": 0.013
+      },
+      "current": {
+        "player": "Iva Jovic",
+        "quarter": "Q3",
+        "p_champ": 0.003,
+        "p_sf": 0.033,
+        "p_final": 0.012
+      },
+      "alive": true
+    },
+    {
+      "position": 82,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Frech M.",
+      "player": "Magdalena Frech",
+      "bye": false,
+      "pretournament": {
+        "player": "Magdalena Frech",
+        "quarter": "Q4",
+        "p_champ": 0.001,
+        "p_sf": 0.013,
+        "p_final": 0.002
+      },
+      "current": {
+        "player": "Magdalena Frech",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.008,
+        "p_final": 0.002
+      },
+      "alive": true
+    },
+    {
+      "position": 83,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Linette M.",
+      "player": "Magda Linette",
+      "bye": false,
+      "pretournament": {
+        "player": "Magda Linette",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.005,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Magda Linette",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 84,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Jones F.",
+      "player": "Francesca Jones",
+      "bye": false,
+      "pretournament": {
+        "player": "Francesca Jones",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Francesca Jones",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 85,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Oliynykova O.",
+      "player": "Oleksandra Oliynykova",
+      "bye": false,
+      "pretournament": {
+        "player": "Oleksandra Oliynykova",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.006,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Oleksandra Oliynykova",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.008,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 86,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Brantmeier R.",
+      "player": "Reese Brantmeier",
+      "bye": false,
+      "pretournament": {
+        "player": "Reese Brantmeier",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 87,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Stoiana M.",
+      "player": "Mary Stoiana",
+      "bye": false,
+      "pretournament": {
+        "player": "Mary Stoiana",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 88,
+      "quarter": "Q3",
+      "seed": 17,
+      "draw_name": "Eala A.",
+      "player": "Alexandra Eala",
+      "bye": false,
+      "pretournament": {
+        "player": "Alexandra Eala",
+        "quarter": "Q1",
+        "p_champ": 0.003,
+        "p_sf": 0.035,
+        "p_final": 0.012
+      },
+      "current": {
+        "player": "Alexandra Eala",
+        "quarter": "Q3",
+        "p_champ": 0.007,
+        "p_sf": 0.074,
+        "p_final": 0.026
+      },
+      "alive": true
+    },
+    {
+      "position": 89,
+      "quarter": "Q3",
+      "seed": 28,
+      "draw_name": "Bejlek S.",
+      "player": "Sara Bejlek",
+      "bye": false,
+      "pretournament": {
+        "player": "Sara Bejlek",
+        "quarter": "Q3",
+        "p_champ": 0.003,
+        "p_sf": 0.027,
+        "p_final": 0.01
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 90,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Bucsa C.",
+      "player": "Cristina Bucsa",
+      "bye": false,
+      "pretournament": {
+        "player": "Cristina Bucsa",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Cristina Bucsa",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.007,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 91,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Kalinina A.",
+      "player": "Anhelina Kalinina",
+      "bye": false,
+      "pretournament": {
+        "player": "Anhelina Kalinina",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 92,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Sakatsume H.",
+      "player": "Himeno Sakatsume",
+      "bye": false,
+      "pretournament": {
+        "player": "Himeno Sakatsume",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Himeno Sakatsume",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 93,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Kasatkina D.",
+      "player": "Daria Kasatkina",
+      "bye": false,
+      "pretournament": {
+        "player": "Daria Kasatkina",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 94,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Badosa P.",
+      "player": "Paula Badosa",
+      "bye": false,
+      "pretournament": {
+        "player": "Paula Badosa",
+        "quarter": "Q4",
+        "p_champ": 0.003,
+        "p_sf": 0.027,
+        "p_final": 0.009
+      },
+      "current": {
+        "player": "Paula Badosa",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.023,
+        "p_final": 0.005
+      },
+      "alive": true
+    },
+    {
+      "position": 95,
+      "quarter": "Q3",
+      "seed": null,
+      "draw_name": "Sonmez Z.",
+      "player": "Zeynep Sonmez",
+      "bye": false,
+      "pretournament": {
+        "player": "Zeynep Sonmez",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 96,
+      "quarter": "Q3",
+      "seed": 4,
+      "draw_name": "Gauff C.",
+      "player": "Coco Gauff",
+      "bye": false,
+      "pretournament": {
+        "player": "Coco Gauff",
+        "quarter": "Q3",
+        "p_champ": 0.117,
+        "p_sf": 0.337,
+        "p_final": 0.222
+      },
+      "current": {
+        "player": "Coco Gauff",
+        "quarter": "Q3",
+        "p_champ": 0.123,
+        "p_sf": 0.416,
+        "p_final": 0.242
+      },
+      "alive": true
+    },
+    {
+      "position": 97,
+      "quarter": "Q4",
+      "seed": 8,
+      "draw_name": "Swiatek I.",
+      "player": "Iga Swiatek",
+      "bye": false,
+      "pretournament": {
+        "player": "Iga Swiatek",
+        "quarter": "Q3",
+        "p_champ": 0.105,
+        "p_sf": 0.332,
+        "p_final": 0.209
+      },
+      "current": {
+        "player": "Iga Swiatek",
+        "quarter": "Q4",
+        "p_champ": 0.103,
+        "p_sf": 0.352,
+        "p_final": 0.212
+      },
+      "alive": true
+    },
+    {
+      "position": 98,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Xiyu W.",
+      "player": "Wang Xiyu",
+      "bye": false,
+      "pretournament": {
+        "player": "Wang Xiyu",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 99,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Podoroska N.",
+      "player": "Nadia Podoroska",
+      "bye": false,
+      "pretournament": {
+        "player": "Nadia Podoroska",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Nadia Podoroska",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 100,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Waltert S.",
+      "player": "Simona Waltert",
+      "bye": false,
+      "pretournament": {
+        "player": "Simona Waltert",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 101,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Dart H.",
+      "player": "Harriet Dart",
+      "bye": false,
+      "pretournament": {
+        "player": "Harriet Dart",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Harriet Dart",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 102,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Stearns P.",
+      "player": "Peyton Stearns",
+      "bye": false,
+      "pretournament": {
+        "player": "Peyton Stearns",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.006,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 103,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Jacquemot E.",
+      "player": "Elsa Jacquemot",
+      "bye": false,
+      "pretournament": {
+        "player": "Elsa Jacquemot",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 104,
+      "quarter": "Q4",
+      "seed": 25,
+      "draw_name": "Bouzkova M.",
+      "player": "Marie Bouzkova",
+      "bye": false,
+      "pretournament": {
+        "player": "Marie Bouzkova",
+        "quarter": "Q1",
+        "p_champ": 0.002,
+        "p_sf": 0.02,
+        "p_final": 0.006
+      },
+      "current": {
+        "player": "Marie Bouzkova",
+        "quarter": "Q4",
+        "p_champ": 0.002,
+        "p_sf": 0.025,
+        "p_final": 0.008
+      },
+      "alive": true
+    },
+    {
+      "position": 105,
+      "quarter": "Q4",
+      "seed": 22,
+      "draw_name": "Keys M.",
+      "player": "Madison Keys",
+      "bye": false,
+      "pretournament": {
+        "player": "Madison Keys",
+        "quarter": "Q4",
+        "p_champ": 0.009,
+        "p_sf": 0.075,
+        "p_final": 0.027
+      },
+      "current": {
+        "player": "Madison Keys",
+        "quarter": "Q4",
+        "p_champ": 0.009,
+        "p_sf": 0.074,
+        "p_final": 0.031
+      },
+      "alive": true
+    },
+    {
+      "position": 106,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Korneeva A.",
+      "player": "Alina Korneeva",
+      "bye": false,
+      "pretournament": {
+        "player": "Alina Korneeva",
+        "quarter": "Q4",
+        "p_champ": 0.001,
+        "p_sf": 0.005,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 107,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Havlickova L.",
+      "player": "Lucie Havlickova",
+      "bye": false,
+      "pretournament": {
+        "player": "Lucie Havlickova",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 108,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Bondar A.",
+      "player": "Anna Bondar",
+      "bye": false,
+      "pretournament": {
+        "player": "Anna Bondar",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Anna Bondar",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 109,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Zheng Q.",
+      "player": "Zheng Qinwen",
+      "bye": false,
+      "pretournament": {
+        "player": "Zheng Qinwen",
+        "quarter": "Q2",
+        "p_champ": 0.004,
+        "p_sf": 0.038,
+        "p_final": 0.012
+      },
+      "current": {
+        "player": "Zheng Qinwen",
+        "quarter": "Q4",
+        "p_champ": 0.004,
+        "p_sf": 0.04,
+        "p_final": 0.015
+      },
+      "alive": true
+    },
+    {
+      "position": 110,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Liutova K.",
+      "player": "Kristina Liutova",
+      "bye": false,
+      "pretournament": {
+        "player": "Kristina Liutova",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 111,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Putintseva Y.",
+      "player": "Yulia Putintseva",
+      "bye": false,
+      "pretournament": {
+        "player": "Yulia Putintseva",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Yulia Putintseva",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 112,
+      "quarter": "Q4",
+      "seed": 12,
+      "draw_name": "Bencic B.",
+      "player": "Belinda Bencic",
+      "bye": false,
+      "pretournament": {
+        "player": "Belinda Bencic",
+        "quarter": "Q3",
+        "p_champ": 0.023,
+        "p_sf": 0.108,
+        "p_final": 0.054
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 113,
+      "quarter": "Q4",
+      "seed": 13,
+      "draw_name": "Osaka N.",
+      "player": "Naomi Osaka",
+      "bye": false,
+      "pretournament": {
+        "player": "Naomi Osaka",
+        "quarter": "Q1",
+        "p_champ": 0.025,
+        "p_sf": 0.123,
+        "p_final": 0.057
+      },
+      "current": {
+        "player": "Naomi Osaka",
+        "quarter": "Q4",
+        "p_champ": 0.019,
+        "p_sf": 0.112,
+        "p_final": 0.053
+      },
+      "alive": true
+    },
+    {
+      "position": 114,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Zakharova A.",
+      "player": "Anastasia Zakharova",
+      "bye": false,
+      "pretournament": {
+        "player": "Anastasia Zakharova",
+        "quarter": "Q1",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 115,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Cocciaretto E.",
+      "player": "Elisabetta Cocciaretto",
+      "bye": false,
+      "pretournament": {
+        "player": "Elisabetta Cocciaretto",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.003,
+        "p_final": 0.001
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 116,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Siniakova K.",
+      "player": "Katerina Siniakova",
+      "bye": false,
+      "pretournament": {
+        "player": "Katerina Siniakova",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.012,
+        "p_final": 0.004
+      },
+      "current": {
+        "player": "Katerina Siniakova",
+        "quarter": "Q4",
+        "p_champ": 0.001,
+        "p_sf": 0.01,
+        "p_final": 0.004
+      },
+      "alive": true
+    },
+    {
+      "position": 117,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Zidansek T.",
+      "player": "Tamara Zidansek",
+      "bye": false,
+      "pretournament": {
+        "player": "Tamara Zidansek",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 118,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Timofeeva M.",
+      "player": "Maria Timofeeva",
+      "bye": false,
+      "pretournament": {
+        "player": "Maria Timofeeva",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Maria Timofeeva",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.001
+      },
+      "alive": true
+    },
+    {
+      "position": 119,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Quevedo K.",
+      "player": "Kaitlin Quevedo",
+      "bye": false,
+      "pretournament": {
+        "player": "Kaitlin Quevedo",
+        "quarter": "Q2",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 120,
+      "quarter": "Q4",
+      "seed": 23,
+      "draw_name": "Mertens E.",
+      "player": "Elise Mertens",
+      "bye": false,
+      "pretournament": {
+        "player": "Elise Mertens",
+        "quarter": "Q2",
+        "p_champ": 0.001,
+        "p_sf": 0.026,
+        "p_final": 0.007
+      },
+      "current": {
+        "player": "Elise Mertens",
+        "quarter": "Q4",
+        "p_champ": 0.003,
+        "p_sf": 0.035,
+        "p_final": 0.013
+      },
+      "alive": true
+    },
+    {
+      "position": 121,
+      "quarter": "Q4",
+      "seed": 32,
+      "draw_name": "Sakkari M.",
+      "player": "Maria Sakkari",
+      "bye": false,
+      "pretournament": {
+        "player": "Maria Sakkari",
+        "quarter": "Q3",
+        "p_champ": 0.001,
+        "p_sf": 0.018,
+        "p_final": 0.006
+      },
+      "current": {
+        "player": "Maria Sakkari",
+        "quarter": "Q4",
+        "p_champ": 0.002,
+        "p_sf": 0.022,
+        "p_final": 0.006
+      },
+      "alive": true
+    },
+    {
+      "position": 122,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Montgomery R.",
+      "player": "Robin Montgomery",
+      "bye": false,
+      "pretournament": {
+        "player": "Robin Montgomery",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 123,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Starodubtseva Y.",
+      "player": "Yuliia Starodubtseva",
+      "bye": false,
+      "pretournament": {
+        "player": "Yuliia Starodubtseva",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": {
+        "player": "Yuliia Starodubtseva",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.001,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 124,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Seidel E.",
+      "player": "Ella Seidel",
+      "bye": false,
+      "pretournament": {
+        "player": "Ella Seidel",
+        "quarter": "Q3",
+        "p_champ": 0.0,
+        "p_sf": 0.0,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 125,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Vidmanova D.",
+      "player": "Darja Vidmanova",
+      "bye": false,
+      "pretournament": {
+        "player": "Darja Vidmanova",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 126,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Bouzas Maneiro J.",
+      "player": "Jessica Bouzas Maneiro",
+      "bye": false,
+      "pretournament": {
+        "player": "Jessica Bouzas Maneiro",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.004,
+        "p_final": 0.001
+      },
+      "current": {
+        "player": "Jessica Bouzas Maneiro",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "alive": true
+    },
+    {
+      "position": 127,
+      "quarter": "Q4",
+      "seed": null,
+      "draw_name": "Frodin T.",
+      "player": "Thea Frodin",
+      "bye": false,
+      "pretournament": {
+        "player": "Thea Frodin",
+        "quarter": "Q4",
+        "p_champ": 0.0,
+        "p_sf": 0.002,
+        "p_final": 0.0
+      },
+      "current": null,
+      "alive": false
+    },
+    {
+      "position": 128,
+      "quarter": "Q4",
+      "seed": 2,
+      "draw_name": "Rybakina E.",
+      "player": "Elena Rybakina",
+      "bye": false,
+      "pretournament": {
+        "player": "Elena Rybakina",
+        "quarter": "Q4",
+        "p_champ": 0.11,
+        "p_sf": 0.38,
+        "p_final": 0.215,
+        "health_adjustment": {
+          "elo_penalty": -100,
+          "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
+        }
+      },
+      "current": {
+        "player": "Elena Rybakina",
+        "quarter": "Q4",
+        "p_champ": 0.09,
+        "p_sf": 0.321,
+        "p_final": 0.193,
+        "health_adjustment": {
+          "elo_penalty": -100,
+          "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
+        }
+      },
+      "alive": true
+    }
+  ],
+  "matches": [
+    {
+      "player_a": "Arantxa Rus",
+      "player_b": "Leolia Jeanjean",
+      "model_prob_a": 0.571,
+      "market_prob_a": 0.353,
+      "gap_pct_points": 21.8,
+      "decided": true,
+      "winner": "Leolia Jeanjean",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6(6)-7(8), 2-6"
+    },
+    {
+      "player_a": "Lilli Tagger",
+      "player_b": "Tamara Korpatsch",
+      "model_prob_a": 0.585,
+      "market_prob_a": 0.782,
+      "gap_pct_points": 19.7,
+      "decided": true,
+      "winner": "Lilli Tagger",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-0, 7(7)-6(4)"
+    },
+    {
+      "player_a": "Hanne Vandewinkel",
+      "player_b": "Karolina Pliskova",
+      "model_prob_a": 0.312,
+      "market_prob_a": 0.506,
+      "gap_pct_points": 19.4,
+      "decided": true,
+      "winner": "Karolina Pliskova",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 5-7, 3-6"
+    },
+    {
+      "player_a": "Oksana Selekhmeteva",
+      "player_b": "Kamilla Rakhimova",
+      "model_prob_a": 0.498,
+      "market_prob_a": 0.312,
+      "gap_pct_points": 18.6,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "in",
+      "status_text": "In Progress",
+      "score": "1-2"
+    },
+    {
+      "player_a": "Anhelina Kalinina",
+      "player_b": "Himeno Sakatsume",
+      "model_prob_a": 0.547,
+      "market_prob_a": 0.725,
+      "gap_pct_points": 17.8,
+      "decided": true,
+      "winner": "Himeno Sakatsume",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 3-6"
+    },
+    {
+      "player_a": "Oleksandra Oliynykova",
+      "player_b": "Alexandra Eala",
+      "model_prob_a": 0.281,
+      "market_prob_a": 0.116,
+      "gap_pct_points": 16.5,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Ann Li",
+      "player_b": "Antonia Ruzic",
+      "model_prob_a": 0.58,
+      "market_prob_a": 0.731,
+      "gap_pct_points": 15.1,
+      "decided": true,
+      "winner": "Ann Li",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7-5, 6-1"
+    },
+    {
+      "player_a": "Maria Sakkari",
+      "player_b": "Robin Montgomery",
+      "model_prob_a": 0.709,
+      "market_prob_a": 0.565,
+      "gap_pct_points": 14.4,
+      "decided": true,
+      "winner": "Maria Sakkari",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "2-6, 7-5, 6-2"
+    },
+    {
+      "player_a": "Katie Volynets",
+      "player_b": "Linda Noskova",
+      "model_prob_a": 0.129,
+      "market_prob_a": 0.269,
+      "gap_pct_points": 14.0,
+      "decided": true,
+      "winner": "Linda Noskova",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "5-7, 1-6"
+    },
+    {
+      "player_a": "Maria Sakkari",
+      "player_b": "Yuliia Starodubtseva",
+      "model_prob_a": 0.726,
+      "market_prob_a": 0.59,
+      "gap_pct_points": 13.6,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Daria Kasatkina",
+      "player_b": "Paula Badosa",
+      "model_prob_a": 0.318,
+      "market_prob_a": 0.45,
+      "gap_pct_points": 13.2,
+      "decided": true,
+      "winner": "Paula Badosa",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "1-6, 4-6"
+    },
+    {
+      "player_a": "Venus Williams",
+      "player_b": "Sofia Kenin",
+      "model_prob_a": 0.285,
+      "market_prob_a": 0.157,
+      "gap_pct_points": 12.8,
+      "decided": true,
+      "winner": "Sofia Kenin",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "2-6, 6(6)-7(8)"
+    },
+    {
+      "player_a": "Mirra Andreeva",
+      "player_b": "Eva Lys",
+      "model_prob_a": 0.754,
+      "market_prob_a": 0.881,
+      "gap_pct_points": 12.7,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Yuliia Starodubtseva",
+      "player_b": "Ella Seidel",
+      "model_prob_a": 0.565,
+      "market_prob_a": 0.691,
+      "gap_pct_points": 12.6,
+      "decided": true,
+      "winner": "Yuliia Starodubtseva",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 6-2"
+    },
+    {
+      "player_a": "Jessica Pegula",
+      "player_b": "Leylah Fernandez",
+      "model_prob_a": 0.927,
+      "market_prob_a": 0.801,
+      "gap_pct_points": 12.6,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Nadia Podoroska",
+      "player_b": "Simona Waltert",
+      "model_prob_a": 0.247,
+      "market_prob_a": 0.366,
+      "gap_pct_points": 11.9,
+      "decided": true,
+      "winner": "Nadia Podoroska",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 7(7)-6(5), 6-3"
+    },
+    {
+      "player_a": "Renata Zarazua",
+      "player_b": "Polina Iatcenko",
+      "model_prob_a": 0.647,
+      "market_prob_a": 0.537,
+      "gap_pct_points": 11.0,
+      "decided": true,
+      "winner": "Polina Iatcenko",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 4-6, 6(7)-7(10)"
+    },
+    {
+      "player_a": "Elsa Jacquemot",
+      "player_b": "Marie Bouzkova",
+      "model_prob_a": 0.235,
+      "market_prob_a": 0.127,
+      "gap_pct_points": 10.8,
+      "decided": true,
+      "winner": "Marie Bouzkova",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "2-6, 2-6"
+    },
+    {
+      "player_a": "Emma Navarro",
+      "player_b": "Lois Boisson",
+      "model_prob_a": 0.62,
+      "market_prob_a": 0.713,
+      "gap_pct_points": 9.3,
+      "decided": true,
+      "winner": "Emma Navarro",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7(8)-6(6), 6(1)-7(7), 6-3"
+    },
+    {
+      "player_a": "Gabriela Knutson",
+      "player_b": "Eva Lys",
+      "model_prob_a": 0.281,
+      "market_prob_a": 0.374,
+      "gap_pct_points": 9.3,
+      "decided": true,
+      "winner": "Eva Lys",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 3-6"
+    },
+    {
+      "player_a": "Oleksandra Oliynykova",
+      "player_b": "Reese Brantmeier",
+      "model_prob_a": 0.592,
+      "market_prob_a": 0.5,
+      "gap_pct_points": 9.2,
+      "decided": true,
+      "winner": "Oleksandra Oliynykova",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 6-4"
+    },
+    {
+      "player_a": "Anastasia Potapova",
+      "player_b": "Leolia Jeanjean",
+      "model_prob_a": 0.841,
+      "market_prob_a": 0.754,
+      "gap_pct_points": 8.7,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Kimberly Birrell",
+      "player_b": "Ekaterina Alexandrova",
+      "model_prob_a": 0.315,
+      "market_prob_a": 0.233,
+      "gap_pct_points": 8.2,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Viktorija Golubic",
+      "player_b": "Diane Parry",
+      "model_prob_a": 0.379,
+      "market_prob_a": 0.458,
+      "gap_pct_points": 7.9,
+      "decided": true,
+      "winner": "Diane Parry",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "5-7, 4-6"
+    },
+    {
+      "player_a": "Kaitlin Quevedo",
+      "player_b": "Elise Mertens",
+      "model_prob_a": 0.246,
+      "market_prob_a": 0.17,
+      "gap_pct_points": 7.6,
+      "decided": true,
+      "winner": "Elise Mertens",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 4-6"
+    },
+    {
+      "player_a": "Tamara Zidansek",
+      "player_b": "Maria Timofeeva",
+      "model_prob_a": 0.408,
+      "market_prob_a": 0.333,
+      "gap_pct_points": 7.5,
+      "decided": true,
+      "winner": "Maria Timofeeva",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 5-7"
+    },
+    {
+      "player_a": "Talia Gibson",
+      "player_b": "Donna Vekic",
+      "model_prob_a": 0.568,
+      "market_prob_a": 0.496,
+      "gap_pct_points": 7.2,
+      "decided": true,
+      "winner": "Donna Vekic",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "2-6, 6-4, 3-6"
+    },
+    {
+      "player_a": "Elvina Kalieva",
+      "player_b": "Lanlana Tararudee",
+      "model_prob_a": 0.4,
+      "market_prob_a": 0.331,
+      "gap_pct_points": 6.9,
+      "decided": true,
+      "winner": "Lanlana Tararudee",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 7(7)-6(4), 2-6"
+    },
+    {
+      "player_a": "Paula Badosa",
+      "player_b": "Coco Gauff",
+      "model_prob_a": 0.203,
+      "market_prob_a": 0.137,
+      "gap_pct_points": 6.6,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Sinja Kraus",
+      "player_b": "Karolina Muchova",
+      "model_prob_a": 0.071,
+      "market_prob_a": 0.13,
+      "gap_pct_points": 5.9,
+      "decided": true,
+      "winner": "Karolina Muchova",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 0-6"
+    },
+    {
+      "player_a": "Jessica Bouzas Maneiro",
+      "player_b": "Elena Rybakina",
+      "model_prob_a": 0.103,
+      "market_prob_a": 0.161,
+      "gap_pct_points": 5.8,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Mirra Andreeva",
+      "player_b": "Janice Tjen",
+      "model_prob_a": 0.794,
+      "market_prob_a": 0.85,
+      "gap_pct_points": 5.6,
+      "decided": true,
+      "winner": "Mirra Andreeva",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 6-2"
+    },
+    {
+      "player_a": "Cristina Bucsa",
+      "player_b": "Himeno Sakatsume",
+      "model_prob_a": 0.603,
+      "market_prob_a": 0.658,
+      "gap_pct_points": 5.5,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Maya Joint",
+      "player_b": "Liudmila Samsonova",
+      "model_prob_a": 0.351,
+      "market_prob_a": 0.3,
+      "gap_pct_points": 5.1,
+      "decided": true,
+      "winner": "Maya Joint",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 6-2, 6-2"
+    },
+    {
+      "player_a": "Jasmine Paolini",
+      "player_b": "Veronika Erjavec",
+      "model_prob_a": 0.797,
+      "market_prob_a": 0.843,
+      "gap_pct_points": 4.6,
+      "decided": true,
+      "winner": "Jasmine Paolini",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 3-6, 6-4"
+    },
+    {
+      "player_a": "Kamilla Rakhimova",
+      "player_b": "Barbora Krejcikova",
+      "model_prob_a": 0.222,
+      "market_prob_a": 0.267,
+      "gap_pct_points": 4.5,
+      "decided": true,
+      "winner": "Kamilla Rakhimova",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7(7)-6(4), 6-2"
+    },
+    {
+      "player_a": "Anna Blinkova",
+      "player_b": "Anna Kalinskaya",
+      "model_prob_a": 0.227,
+      "market_prob_a": 0.272,
+      "gap_pct_points": 4.5,
+      "decided": true,
+      "winner": "Anna Kalinskaya",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 3-6"
+    },
+    {
+      "player_a": "Harriet Dart",
+      "player_b": "Peyton Stearns",
+      "model_prob_a": 0.337,
+      "market_prob_a": 0.292,
+      "gap_pct_points": 4.5,
+      "decided": true,
+      "winner": "Harriet Dart",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 6-3, 6-2"
+    },
+    {
+      "player_a": "Naomi Osaka",
+      "player_b": "Anastasia Zakharova",
+      "model_prob_a": 0.829,
+      "market_prob_a": 0.872,
+      "gap_pct_points": 4.3,
+      "decided": true,
+      "winner": "Naomi Osaka",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7(8)-6(6), 7(7)-6(3)"
+    },
+    {
+      "player_a": "Elisabetta Cocciaretto",
+      "player_b": "Katerina Siniakova",
+      "model_prob_a": 0.41,
+      "market_prob_a": 0.371,
+      "gap_pct_points": 3.9,
+      "decided": true,
+      "winner": "Katerina Siniakova",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 2-6"
+    },
+    {
+      "player_a": "Harriet Dart",
+      "player_b": "Marie Bouzkova",
+      "model_prob_a": 0.217,
+      "market_prob_a": 0.181,
+      "gap_pct_points": 3.6,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Daria Snigur",
+      "player_b": "Diana Shnaider",
+      "model_prob_a": 0.317,
+      "market_prob_a": 0.283,
+      "gap_pct_points": 3.4,
+      "decided": true,
+      "winner": "Diana Shnaider",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "0-6, 4-6"
+    },
+    {
+      "player_a": "Nikola Bartunkova",
+      "player_b": "Mayar Sherif",
+      "model_prob_a": 0.751,
+      "market_prob_a": 0.783,
+      "gap_pct_points": 3.2,
+      "decided": true,
+      "winner": "Nikola Bartunkova",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-1, 6-2"
+    },
+    {
+      "player_a": "Mary Stoiana",
+      "player_b": "Alexandra Eala",
+      "model_prob_a": 0.203,
+      "market_prob_a": 0.235,
+      "gap_pct_points": 3.2,
+      "decided": true,
+      "winner": "Alexandra Eala",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "1-6, 2-6"
+    },
+    {
+      "player_a": "Sara Bejlek",
+      "player_b": "Cristina Bucsa",
+      "model_prob_a": 0.726,
+      "market_prob_a": 0.758,
+      "gap_pct_points": 3.2,
+      "decided": true,
+      "winner": "Cristina Bucsa",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "5-7, 6-4, 1-6"
+    },
+    {
+      "player_a": "Zeynep Sonmez",
+      "player_b": "Coco Gauff",
+      "model_prob_a": 0.108,
+      "market_prob_a": 0.076,
+      "gap_pct_points": 3.2,
+      "decided": true,
+      "winner": "Coco Gauff",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 4-6"
+    },
+    {
+      "player_a": "Jasmine Paolini",
+      "player_b": "Sorana Cirstea",
+      "model_prob_a": 0.421,
+      "market_prob_a": 0.389,
+      "gap_pct_points": 3.2,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Ann Li",
+      "player_b": "Donna Vekic",
+      "model_prob_a": 0.566,
+      "market_prob_a": 0.597,
+      "gap_pct_points": 3.1,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Naomi Osaka",
+      "player_b": "Katerina Siniakova",
+      "model_prob_a": 0.72,
+      "market_prob_a": 0.751,
+      "gap_pct_points": 3.1,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Elina Svitolina",
+      "player_b": "Solana Sierra",
+      "model_prob_a": 0.864,
+      "market_prob_a": 0.893,
+      "gap_pct_points": 2.9,
+      "decided": true,
+      "winner": "Elina Svitolina",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-1, 6-2"
+    },
+    {
+      "player_a": "Yulia Putintseva",
+      "player_b": "Belinda Bencic",
+      "model_prob_a": 0.185,
+      "market_prob_a": 0.206,
+      "gap_pct_points": 2.1,
+      "decided": true,
+      "winner": "Yulia Putintseva",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 7-5, 6-3"
+    },
+    {
+      "player_a": "Lanlana Tararudee",
+      "player_b": "Linda Noskova",
+      "model_prob_a": 0.191,
+      "market_prob_a": 0.212,
+      "gap_pct_points": 2.1,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Mananchaya Sawangkaew",
+      "player_b": "Panna Udvardy",
+      "model_prob_a": 0.585,
+      "market_prob_a": 0.603,
+      "gap_pct_points": 1.8,
+      "decided": true,
+      "winner": "Mananchaya Sawangkaew",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 6-3"
+    },
+    {
+      "player_a": "Ashlyn Krueger",
+      "player_b": "Amanda Anisimova",
+      "model_prob_a": 0.194,
+      "market_prob_a": 0.176,
+      "gap_pct_points": 1.8,
+      "decided": true,
+      "winner": "Amanda Anisimova",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "1-6, 3-6"
+    },
+    {
+      "player_a": "Iga Swiatek",
+      "player_b": "Nadia Podoroska",
+      "model_prob_a": 0.927,
+      "market_prob_a": 0.945,
+      "gap_pct_points": 1.8,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Aryna Sabalenka",
+      "player_b": "Polina Iatcenko",
+      "model_prob_a": 0.956,
+      "market_prob_a": 0.939,
+      "gap_pct_points": 1.7,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Kimberly Birrell",
+      "player_b": "Petra Marcinko",
+      "model_prob_a": 0.534,
+      "market_prob_a": 0.519,
+      "gap_pct_points": 1.5,
+      "decided": true,
+      "winner": "Kimberly Birrell",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 7(7)-6(4), 6-3"
+    },
+    {
+      "player_a": "Darja Vidmanova",
+      "player_b": "Jessica Bouzas Maneiro",
+      "model_prob_a": 0.504,
+      "market_prob_a": 0.489,
+      "gap_pct_points": 1.5,
+      "decided": true,
+      "winner": "Jessica Bouzas Maneiro",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 4-6"
+    },
+    {
+      "player_a": "Elina Svitolina",
+      "player_b": "Maya Joint",
+      "model_prob_a": 0.851,
+      "market_prob_a": 0.866,
+      "gap_pct_points": 1.5,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Taylor Townsend",
+      "player_b": "Diana Shnaider",
+      "model_prob_a": 0.36,
+      "market_prob_a": 0.375,
+      "gap_pct_points": 1.5,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Taylah Preston",
+      "player_b": "Alycia Parks",
+      "model_prob_a": 0.484,
+      "market_prob_a": 0.498,
+      "gap_pct_points": 1.4,
+      "decided": true,
+      "winner": "Taylah Preston",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 6-3"
+    },
+    {
+      "player_a": "Marta Kostyuk",
+      "player_b": "Storm Hunter",
+      "model_prob_a": 0.879,
+      "market_prob_a": 0.867,
+      "gap_pct_points": 1.2,
+      "decided": true,
+      "winner": "Marta Kostyuk",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 6-1"
+    },
+    {
+      "player_a": "Thea Frodin",
+      "player_b": "Elena Rybakina",
+      "model_prob_a": 0.06,
+      "market_prob_a": 0.072,
+      "gap_pct_points": 1.2,
+      "decided": true,
+      "winner": "Elena Rybakina",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 2-6"
+    },
+    {
+      "player_a": "Sloane Stephens",
+      "player_b": "Clara Tauson",
+      "model_prob_a": 0.285,
+      "market_prob_a": 0.296,
+      "gap_pct_points": 1.1,
+      "decided": true,
+      "winner": "Sloane Stephens",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 6-1"
+    },
+    {
+      "player_a": "Lucrezia Stefanini",
+      "player_b": "Dayana Yastremska",
+      "model_prob_a": 0.399,
+      "market_prob_a": 0.41,
+      "gap_pct_points": 1.1,
+      "decided": true,
+      "winner": "Lucrezia Stefanini",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 4-6, 6-1"
+    },
+    {
+      "player_a": "Maria Timofeeva",
+      "player_b": "Elise Mertens",
+      "model_prob_a": 0.286,
+      "market_prob_a": 0.276,
+      "gap_pct_points": 1.0,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "McCartney Kessler",
+      "player_b": "Ekaterina Alexandrova",
+      "model_prob_a": 0.393,
+      "market_prob_a": 0.401,
+      "gap_pct_points": 0.8,
+      "decided": true,
+      "winner": "Ekaterina Alexandrova",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "2-6, 2-6"
+    },
+    {
+      "player_a": "Katie Boulter",
+      "player_b": "Karolina Muchova",
+      "model_prob_a": 0.165,
+      "market_prob_a": 0.157,
+      "gap_pct_points": 0.8,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "1-6, 0-6"
+    },
+    {
+      "player_a": "Maja Chwalinska",
+      "player_b": "Taylor Townsend",
+      "model_prob_a": 0.323,
+      "market_prob_a": 0.329,
+      "gap_pct_points": 0.6,
+      "decided": true,
+      "winner": "Taylor Townsend",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "2-6, 3-6"
+    },
+    {
+      "player_a": "Julia Grabher",
+      "player_b": "Sorana Cirstea",
+      "model_prob_a": 0.12,
+      "market_prob_a": 0.115,
+      "gap_pct_points": 0.5,
+      "decided": true,
+      "winner": "Sorana Cirstea",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 0-6"
+    },
+    {
+      "player_a": "Madison Keys",
+      "player_b": "Alina Korneeva",
+      "model_prob_a": 0.708,
+      "market_prob_a": 0.703,
+      "gap_pct_points": 0.5,
+      "decided": true,
+      "winner": "Madison Keys",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7-5, 6-4"
+    },
+    {
+      "player_a": "Aoi Ito",
+      "player_b": "Oksana Selekhmeteva",
+      "model_prob_a": 0.404,
+      "market_prob_a": 0.408,
+      "gap_pct_points": 0.4,
+      "decided": true,
+      "winner": "Oksana Selekhmeteva",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "2-6, 4-6"
+    },
+    {
+      "player_a": "Lilli Tagger",
+      "player_b": "Amanda Anisimova",
+      "model_prob_a": 0.207,
+      "market_prob_a": 0.206,
+      "gap_pct_points": 0.1,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Aryna Sabalenka",
+      "player_b": "Camila Osorio",
+      "model_prob_a": 0.932,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Aryna Sabalenka",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 6-4"
+    },
+    {
+      "player_a": "Jessica Pegula",
+      "player_b": "Elena-Gabriela Ruse",
+      "model_prob_a": 0.851,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Jessica Pegula",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 6-2"
+    },
+    {
+      "player_a": "Zhang Shuai",
+      "player_b": "Leylah Fernandez",
+      "model_prob_a": 0.648,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Leylah Fernandez",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 2-6"
+    },
+    {
+      "player_a": "Emiliana Arango",
+      "player_b": "Wang Xinyu",
+      "model_prob_a": 0.458,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Wang Xinyu",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 2-6"
+    },
+    {
+      "player_a": "Anouk Koevermans",
+      "player_b": "Catherine McNally",
+      "model_prob_a": 0.302,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Catherine McNally",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "5-7, 1-6"
+    },
+    {
+      "player_a": "Carol Young Suh Lee",
+      "player_b": "Katie Boulter",
+      "model_prob_a": 0.34,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Katie Boulter",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 6-3, 0-6"
+    },
+    {
+      "player_a": "Tatjana Maria",
+      "player_b": "Jelena Ostapenko",
+      "model_prob_a": 0.28,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": "4-6, 6-1, 0-0"
+    },
+    {
+      "player_a": "Anastasia Potapova",
+      "player_b": "Darja Semenistaja",
+      "model_prob_a": 0.78,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Anastasia Potapova",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 6-2"
+    },
+    {
+      "player_a": "Iva Jovic",
+      "player_b": "Magdalena Frech",
+      "model_prob_a": 0.619,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": "4-4"
+    },
+    {
+      "player_a": "Magda Linette",
+      "player_b": "Francesca Jones",
+      "model_prob_a": 0.61,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "in",
+      "status_text": "In Progress",
+      "score": "4-6, 3-0"
+    },
+    {
+      "player_a": "Iga Swiatek",
+      "player_b": "Wang Xiyu",
+      "model_prob_a": 0.9,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Iga Swiatek",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 6-3"
+    },
+    {
+      "player_a": "Lucie Havlickova",
+      "player_b": "Anna Bondar",
+      "model_prob_a": 0.376,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Anna Bondar",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "3-6, 3-6"
+    },
+    {
+      "player_a": "Zheng Qinwen",
+      "player_b": "Kristina Liutova",
+      "model_prob_a": 0.702,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": true,
+      "winner": "Zheng Qinwen",
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 6-3, 6-1"
+    },
+    {
+      "player_a": "Emma Navarro",
+      "player_b": "Catherine McNally",
+      "model_prob_a": 0.759,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "in",
+      "status_text": "In Progress",
+      "score": "3-6, 6-2, 1-0"
+    },
+    {
+      "player_a": "Wang Xinyu",
+      "player_b": "Anna Kalinskaya",
+      "model_prob_a": 0.242,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Madison Keys",
+      "player_b": "Anna Bondar",
+      "model_prob_a": 0.795,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    },
+    {
+      "player_a": "Zheng Qinwen",
+      "player_b": "Yulia Putintseva",
+      "model_prob_a": 0.731,
+      "market_prob_a": null,
+      "gap_pct_points": null,
+      "decided": false,
+      "winner": null,
+      "round": 1,
+      "round_label": "Current - 60 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null
+    }
+  ]
+}

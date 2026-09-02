@@ -1,0 +1,825 @@
+<title>Model vs Market Draw</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #F3F5F3;
+    --surface: #FFFFFF;
+    --surface-2: #EAF0EC;
+    --ink: #132019;
+    --ink-dim: #5B6B62;
+    --ink-faint: #8B9C92;
+    --rule: #D8E1DB;
+    --accent: #1E7A4C;
+    --accent-soft: #DFF0E6;
+    --model: #2A6FB0;
+    --model-soft: #DCEAF6;
+    --market: #B4790A;
+    --market-soft: #F5E6C9;
+    --elim: #A84343;
+    --elim-soft: #F3E3E3;
+    --shadow: 0 10px 30px -12px rgba(19,32,25,0.28);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F1613;
+      --surface: #161F1B;
+      --surface-2: #1C2822;
+      --ink: #E7EFEA;
+      --ink-dim: #94A69C;
+      --ink-faint: #61726A;
+      --rule: #2A3A33;
+      --accent: #4FB884;
+      --accent-soft: #17332A;
+      --model: #6FA9E0;
+      --model-soft: #17293A;
+      --market: #E0AA55;
+      --market-soft: #362A14;
+      --elim: #D07B7B;
+      --elim-soft: #331F1F;
+      --shadow: 0 10px 30px -12px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F1613;
+    --surface: #161F1B;
+    --surface-2: #1C2822;
+    --ink: #E7EFEA;
+    --ink-dim: #94A69C;
+    --ink-faint: #61726A;
+    --rule: #2A3A33;
+    --accent: #4FB884;
+    --accent-soft: #17332A;
+    --model: #6FA9E0;
+    --model-soft: #17293A;
+    --market: #E0AA55;
+    --market-soft: #362A14;
+    --elim: #D07B7B;
+    --elim-soft: #331F1F;
+    --shadow: 0 10px 30px -12px rgba(0,0,0,0.55);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    padding: 22px clamp(14px, 3vw, 36px) 60px;
+  }
+  h1, h2, h3 { text-wrap: balance; font-family: "Big Shoulders Display", "Arial Narrow", sans-serif; margin: 0; }
+  .num { font-family: "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; }
+
+  header.page-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 16px;
+  }
+  .head-text h1 { font-size: clamp(24px, 3.4vw, 34px); font-weight: 700; letter-spacing: 0.3px; line-height: 1; margin-bottom: 6px; }
+  .head-text p { margin: 0; color: var(--ink-dim); font-size: 13px; max-width: 68ch; }
+  .head-text code { font-family: "IBM Plex Mono", monospace; background: var(--surface-2); border: 1px solid var(--rule); border-radius: 3px; padding: 1px 5px; font-size: 11.5px; }
+  .head-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; font-size: 11.5px; color: var(--ink-faint); }
+  .head-meta span.hl { color: var(--ink); font-weight: 600; }
+
+  .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-bottom: 18px; }
+  .tabs { display: inline-flex; gap: 3px; background: var(--surface-2); border: 1px solid var(--rule); border-radius: 8px; padding: 3px; }
+  .tabs button {
+    font-family: "IBM Plex Mono", monospace; font-size: 12.5px; font-weight: 500;
+    border: none; background: transparent; color: var(--ink-dim);
+    padding: 7px 14px; border-radius: 6px; cursor: pointer; letter-spacing: 0.3px;
+  }
+  .tabs button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+  .tabs button:hover { color: var(--ink); }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 18px; font-size: 11.5px; color: var(--ink-dim); margin-left: auto; }
+  .legend .dot { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* ---- Draw: connected bracket tree ---- */
+  .bracket-scroll { overflow-x: auto; overflow-y: visible; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); padding: 4px 0 10px; }
+  .bracket-tree { position: relative; }
+  .round-head {
+    position: absolute; top: 8px; display: flex; flex-direction: column; align-items: flex-start;
+    font-family: "Big Shoulders Display", sans-serif; font-size: 13px; font-weight: 700;
+    color: var(--accent); letter-spacing: 0.8px; text-transform: uppercase;
+  }
+  .round-head span { font-family: "IBM Plex Mono", monospace; font-size: 10px; color: var(--ink-faint); font-weight: 400; letter-spacing: 0.3px; text-transform: none; margin-top: 1px; }
+  .connectors { position: absolute; top: 0; left: 0; }
+  .connectors line { stroke: var(--rule); stroke-width: 1.4; }
+  .connectors line.seam { stroke-dasharray: 3 4; }
+  .quarter-tag {
+    position: absolute; left: 6px; font-family: "Big Shoulders Display", sans-serif;
+    font-size: 12px; font-weight: 700; color: var(--ink-faint); letter-spacing: 1px;
+    writing-mode: vertical-rl; text-orientation: mixed;
+  }
+  .cell {
+    position: absolute; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+    overflow: hidden; cursor: pointer; transition: border-color 0.12s, box-shadow 0.12s;
+  }
+  .cell:hover { border-color: var(--accent); box-shadow: 0 2px 8px -2px rgba(0,0,0,0.18); z-index: 5; }
+  .cell.has-match { border-left: 3px solid var(--model); }
+  .cell.live { border: 2px solid var(--elim) !important; animation: live-box-pulse 1.8s ease-in-out infinite; }
+  @keyframes live-box-pulse { 0%, 100% { box-shadow: 0 0 0 0 var(--elim-soft); } 50% { box-shadow: 0 0 7px 1.5px var(--elim-soft); } }
+  @media (prefers-reduced-motion: reduce) { .cell.live { animation: none; box-shadow: 0 0 0 2px var(--elim-soft); } }
+  .cell.tbd { opacity: 0.55; cursor: default; }
+  .cell.tbd:hover { border-color: var(--rule); box-shadow: none; }
+  .leaf-row { display: flex; flex-direction: column; justify-content: center; padding: 2px 8px; height: 50%; }
+  .leaf-row + .leaf-row { border-top: 1px dashed var(--rule); }
+  .leaf-row.winner { background: var(--accent-soft); }
+  .leaf-row.loser .leaf-name { color: var(--ink-faint); text-decoration: line-through; text-decoration-color: var(--elim); text-decoration-thickness: 1.4px; }
+  .leaf-top { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; }
+  .leaf-name-wrap { display: flex; align-items: baseline; gap: 5px; min-width: 0; }
+  .leaf-seed { font-size: 9.5px; color: var(--ink-faint); font-family: "IBM Plex Mono", monospace; flex-shrink: 0; }
+  .leaf-name { font-size: 12px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .leaf-champ { font-size: 12.5px; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+  .leaf-odds { font-size: 9.5px; color: var(--ink-faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
+  .leaf-odds .m { color: var(--model); font-weight: 600; }
+  .leaf-odds .k { color: var(--market); font-weight: 600; }
+  .live-dot {
+    display: inline-block; width: 6.5px; height: 6.5px; border-radius: 50%; background: var(--elim);
+    margin-right: 4px; vertical-align: 1px; animation: live-pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes live-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
+  .live-tag { color: var(--elim); font-weight: 700; letter-spacing: 0.3px; }
+  .score-text { color: var(--ink-dim); }
+  .adv-cell { display: flex; flex-direction: column; justify-content: center; padding: 3px 9px; height: 100%; gap: 1px; }
+  .adv-top { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; }
+  .adv-name { font-size: 11.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .adv-champ { font-size: 11.5px; font-weight: 600; flex-shrink: 0; }
+  .adv-odds { font-size: 9px; color: var(--ink-faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .adv-tbd { font-size: 10.5px; color: var(--ink-faint); font-style: italic; }
+  .final-cell { border: 1.4px solid var(--accent) !important; background: var(--accent-soft) !important; }
+  .final-cell .adv-name, .final-cell .leaf-name { color: var(--accent); }
+
+  /* ---- Matches view ---- */
+  .filter-bar {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+    padding: 12px 14px; margin-bottom: 14px;
+  }
+  .filter-bar input[type="search"] {
+    font-family: "IBM Plex Sans", sans-serif; font-size: 13px; border: 1px solid var(--rule);
+    background: var(--bg); color: var(--ink); border-radius: 6px; padding: 7px 10px; min-width: 200px;
+  }
+  .chip-group { display: inline-flex; gap: 3px; background: var(--surface-2); border: 1px solid var(--rule); border-radius: 7px; padding: 3px; }
+  .chip-group button {
+    font-family: "IBM Plex Mono", monospace; font-size: 11.5px; border: none; background: transparent;
+    color: var(--ink-dim); padding: 5px 10px; border-radius: 5px; cursor: pointer;
+  }
+  .chip-group button[aria-pressed="true"] { background: var(--surface); color: var(--ink); font-weight: 600; }
+  .result-count { font-size: 11.5px; color: var(--ink-faint); margin-left: auto; }
+
+  table.matches { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+  table.matches thead th {
+    text-align: left; font-size: 10.5px; letter-spacing: 0.6px; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 600; padding: 9px 12px; background: var(--surface-2);
+    border-bottom: 1px solid var(--rule); cursor: pointer; user-select: none; white-space: nowrap;
+  }
+  table.matches thead th.sorted { color: var(--ink); }
+  table.matches thead th .arrow { font-size: 9px; margin-left: 3px; opacity: 0.7; }
+  table.matches tbody tr { border-bottom: 1px solid var(--rule); cursor: pointer; }
+  table.matches tbody tr:last-child { border-bottom: none; }
+  table.matches tbody tr:hover { background: var(--surface-2); }
+  table.matches td { padding: 8px 12px; font-size: 13px; vertical-align: middle; }
+  td.mono { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; text-align: right; white-space: nowrap; }
+  .status-pill {
+    display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase;
+    padding: 2px 7px; border-radius: 20px;
+  }
+  .status-pill.decided { background: var(--accent-soft); color: var(--accent); }
+  .status-pill.live { background: var(--elim-soft); color: var(--elim); }
+  .status-pill.not_started { background: var(--surface-2); color: var(--ink-faint); border: 1px solid var(--rule); }
+  .gap-bar-wrap { display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
+  .gap-bar { height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--market), var(--elim)); }
+  .no-mkt { color: var(--ink-faint); font-style: italic; font-size: 11.5px; }
+
+  /* ---- Detail modal ---- */
+  .backdrop {
+    position: fixed; inset: 0; background: rgba(10,16,13,0.5); backdrop-filter: blur(2px);
+    display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 50;
+  }
+  .backdrop[hidden] { display: none; }
+  .detail-card {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 14px;
+    box-shadow: var(--shadow); width: 100%; max-width: 480px; padding: 22px 24px 20px;
+  }
+  .detail-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 4px; }
+  .detail-head h3 { font-size: 20px; letter-spacing: 0.3px; }
+  .detail-close { background: none; border: none; color: var(--ink-faint); font-size: 20px; cursor: pointer; line-height: 1; padding: 2px 4px; }
+  .detail-close:hover { color: var(--ink); }
+  .detail-sub { font-size: 11.5px; color: var(--ink-faint); margin-bottom: 16px; }
+  .compare-row { margin-bottom: 12px; }
+  .compare-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; }
+  .compare-label .who { font-weight: 500; }
+  .compare-track { height: 22px; background: var(--surface-2); border-radius: 5px; overflow: hidden; display: flex; border: 1px solid var(--rule); }
+  .compare-fill { display: flex; align-items: center; padding-left: 6px; font-size: 10.5px; font-weight: 600; color: #fff; white-space: nowrap; }
+  .compare-fill.model { background: var(--model); }
+  .compare-fill.market { background: var(--market); }
+  .detail-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule); }
+  .detail-stat .k { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.4px; color: var(--ink-faint); margin-bottom: 2px; }
+  .detail-stat .v { font-size: 14px; font-weight: 600; }
+  .detail-empty { font-size: 13px; color: var(--ink-dim); padding: 6px 0 2px; }
+
+  footer { margin-top: 22px; font-size: 11.5px; color: var(--ink-faint); max-width: 80ch; }
+  footer code { font-family: "IBM Plex Mono", monospace; font-size: 11px; }
+
+  @media (max-width: 640px) {
+    .p-row { grid-template-columns: 1fr auto; }
+    .p-delta { display: none; }
+  }
+</style>
+
+<header class="page-head">
+  <div class="head-text">
+    <h1>Model vs Market Draw</h1>
+    <p>Every player's live title odds and every real match played so far, model probability against
+      the sportsbook price, built off <code>*_consolidated.json</code>. Click any match box or table
+      row for the full de-vigged comparison.</p>
+  </div>
+  <div class="head-meta" id="head-meta"></div>
+</header>
+
+<div class="toolbar">
+  <div class="tabs" role="tablist" aria-label="Tour">
+    <button type="button" role="tab" id="tab-atp" aria-selected="true" data-tour="atp">ATP · MEN'S</button>
+    <button type="button" role="tab" id="tab-wta" aria-selected="false" data-tour="wta">WTA · WOMEN'S</button>
+  </div>
+  <div class="tabs" role="tablist" aria-label="View">
+    <button type="button" role="tab" id="tab-draw" aria-selected="true" data-view="draw">Draw</button>
+    <button type="button" role="tab" id="tab-matches" aria-selected="false" data-view="matches">Matches</button>
+  </div>
+  <div class="legend" id="legend-draw">
+    <span><span class="dot" style="background:var(--model)"></span>real match on record (click for detail)</span>
+    <span><span class="dot" style="background:var(--accent-soft);border:1px solid var(--accent)"></span>winner</span>
+    <span><span class="live-dot" style="animation:none;"></span><b class="live-tag">LIVE</b> + score = match in progress right now</span>
+    <span><span class="m" style="color:var(--model);font-weight:600;">M</span> model win% (frozen pre-match, not updated live) · <span class="k" style="color:var(--market);font-weight:600;">Mk</span> market win% · big number is title-odds (p_champ) at that round</span>
+  </div>
+</div>
+
+<section id="view-draw" class="view active">
+  <div class="bracket-scroll">
+    <div class="bracket-tree" id="bracket-tree"></div>
+  </div>
+</section>
+
+<section id="view-matches" class="view">
+  <div class="filter-bar">
+    <input type="search" id="match-search" placeholder="Search player…">
+    <div class="chip-group" id="status-filter">
+      <button type="button" data-status="all" aria-pressed="true">All</button>
+      <button type="button" data-status="decided" aria-pressed="false">Decided</button>
+      <button type="button" data-status="live" aria-pressed="false">Live</button>
+      <button type="button" data-status="not_started" aria-pressed="false">Not started</button>
+    </div>
+    <div class="chip-group" id="mkt-filter">
+      <button type="button" data-mkt="all" aria-pressed="true">All</button>
+      <button type="button" data-mkt="priced" aria-pressed="false">Has market price</button>
+    </div>
+    <span class="result-count" id="match-count"></span>
+  </div>
+  <div style="overflow-x:auto;">
+    <table class="matches">
+      <thead>
+        <tr>
+          <th data-key="player_a">Player A</th>
+          <th data-key="player_b">Player B</th>
+          <th data-key="model_prob_a">Model % (A)</th>
+          <th data-key="market_prob_a">Market % (A)</th>
+          <th data-key="rel_diff_abs">Diff (%)</th>
+          <th data-key="decided">Status</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody id="matches-body"></tbody>
+    </table>
+  </div>
+</section>
+
+<div class="backdrop" id="backdrop" hidden>
+  <div class="detail-card" id="detail-card"></div>
+</div>
+
+<footer>
+  Draw position order and p_champ come straight from each tour's <code>*_artifact_data.json</code>
+  (built off <code>bracket_export.py</code> + <code>consolidated_export.py</code>, no odds
+  recomputed here). "Diff (%)" is the model's win probability relative to the best available
+  de-vigged market price at the time it was captured - (model − market) / market - not a flat
+  percentage-point gap, so a given swing means more on a near-lock than on a coin-flip match;
+  matches already final source their market price from a persisted pregame cache, since the odds
+  feed drops an event once it ends.
+</footer>
+
+<script id="data-atp" type="application/json">__ATP_JSON__</script>
+<script id="data-wta" type="application/json">__WTA_JSON__</script>
+<script>
+(function () {
+  "use strict";
+  const DATA = {
+    atp: JSON.parse(document.getElementById("data-atp").textContent),
+    wta: JSON.parse(document.getElementById("data-wta").textContent),
+  };
+
+  // How far the model sits from the market, relative to the market's own price - e.g. model 40%
+  // vs market 20% is "+100%", not "+20 points" - rather than the flat percentage-point gap, which
+  // treats a 20pt swing on a coin-flip match the same as a 20pt swing on a near-lock.
+  [DATA.atp, DATA.wta].forEach((d) => {
+    d.matches.forEach((m) => {
+      const rel = m.market_prob_a ? ((m.model_prob_a - m.market_prob_a) / m.market_prob_a) * 100 : null;
+      m.rel_diff_pct = rel === null ? null : rel;
+      m.rel_diff_abs = rel === null ? -1 : Math.abs(rel);
+    });
+  });
+
+  let state = { tour: "atp", view: "draw", sortKey: "rel_diff_abs", sortDir: "desc", search: "", status: "all", mkt: "all" };
+
+  const pct = (x) => x === null || x === undefined ? null : (x * 100);
+  const fmtPct = (x, digits) => x === null || x === undefined ? "—" : x.toFixed(digits === undefined ? 1 : digits) + "%";
+  const esc = (s) => (s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  function findMatch(data, nameA, nameB) {
+    return data.matches.find((m) =>
+      (m.player_a === nameA && m.player_b === nameB) || (m.player_a === nameB && m.player_b === nameA)
+    ) || null;
+  }
+
+  function renderMeta() {
+    const d = DATA[state.tour];
+    const el = document.getElementById("head-meta");
+    el.innerHTML =
+      `<span>generated <span class="hl">${esc(d.meta.generated_at)}</span></span>` +
+      `<span>${d.meta.current_iterations.toLocaleString()} sims · seed ${d.meta.current_seed}</span>` +
+      `<span>${d.players.filter(p => p.alive).length} of ${d.draw_size} still alive</span>`;
+  }
+
+  // Named by true tournament round (r counts from Round 1 of the whole draw), never by a side's
+  // own local match count - a 128-draw's Round 1 has 64 matches total but only 32 per side, so
+  // naming off the local count mislabeled every round (e.g. Round 1 read "Round 6").
+  const ROUND_NAME = (r, numRounds) => {
+    if (r === numRounds) return "Final";
+    if (r === numRounds - 1) return "Semifinals";
+    if (r === numRounds - 2) return "Quarterfinals";
+    return `Round ${r}`;
+  };
+
+  function matchProbsFor(match, playerName) {
+    if (!match) return { model: null, market: null };
+    const isA = match.player_a === playerName;
+    const model = match.model_prob_a === null || match.model_prob_a === undefined ? null : (isA ? match.model_prob_a : 1 - match.model_prob_a);
+    const market = match.market_prob_a === null || match.market_prob_a === undefined ? null : (isA ? match.market_prob_a : 1 - match.market_prob_a);
+    return { model: model === null ? null : model * 100, market: market === null ? null : market * 100 };
+  }
+
+  function matchStatus(m) {
+    if (!m) return "not_started";
+    if (m.decided) return "decided";
+    if (m.live_state === "in") return "live";
+    return "not_started";
+  }
+
+  function liveBadge(match) {
+    if (!match || match.live_state !== "in") return "";
+    return `<span class="live-dot"></span><span class="live-tag">LIVE</span>${match.score ? " " + esc(match.score) : ""} · `;
+  }
+
+  function oddsLine(model, market, match) {
+    const badge = liveBadge(match);
+    if (model === null && market === null) return badge;
+    const parts = [];
+    if (model !== null) parts.push(`<span class="m">M</span> ${model.toFixed(1)}%`);
+    if (market !== null) parts.push(`<span class="k">Mk</span> ${market.toFixed(1)}%`);
+    else parts.push(`<span class="k">Mk</span> —`);
+    return badge + parts.join(" · ");
+  }
+
+  // Round-1 leaves feed forward round by round; a real match for any cell is found purely by
+  // name-pair lookup (draw position determines the pairing exactly, independent of the
+  // "which round is this checkpoint" label the underlying data can mis-tag - see the artifact's
+  // footer note), so this recursion is correct even before every earlier round is fully decided.
+  // `leaves` is one half of the draw (32 players -> 5 rounds) when building a mirrored side-tree,
+  // or the whole draw when there's only one round left (the Final, built separately - see below).
+  function buildRounds(d, leaves) {
+    const numRounds = Math.round(Math.log2(leaves.length));
+    let prevWinners = leaves.map((p) => ({ name: p.player, bye: p.bye }));
+    const rounds = [];
+    for (let r = 1; r <= numRounds; r++) {
+      const count = prevWinners.length / 2;
+      const cells = [];
+      for (let i = 0; i < count; i++) {
+        const a = prevWinners[2 * i], b = prevWinners[2 * i + 1];
+        let match = null, winnerName = null, decided = false, isBye = false;
+        if (a && a.bye && a.name && !(b && b.bye)) { winnerName = b ? b.name : null; decided = !!winnerName; isBye = true; }
+        else if (b && b.bye && b.name && !(a && a.bye)) { winnerName = a ? a.name : null; decided = !!winnerName; isBye = true; }
+        else if (a && b && a.name && b.name) {
+          match = findMatch(d, a.name, b.name);
+          if (match && match.decided) { winnerName = match.winner; decided = true; }
+        }
+        cells.push({ a, b, match, winnerName, decided, isBye });
+      }
+      rounds.push(cells);
+      prevWinners = cells.map((c) => ({ name: c.winnerName, bye: false }));
+    }
+    return rounds;
+  }
+
+  const LEAF_H = 40, BOX_W = 182, COL_GAP = 44, COL_STEP = BOX_W + COL_GAP;
+
+  function makeRound1Cell(cell, x, top, byName) {
+    const box = document.createElement("div");
+    box.className = "cell" + (cell.match ? " has-match" : "") + (cell.match && cell.match.live_state === "in" ? " live" : "");
+    box.style.left = x + "px";
+    box.style.top = top + "px";
+    box.style.width = BOX_W + "px";
+    box.style.height = (2 * LEAF_H - 4) + "px";
+    [cell.a, cell.b].forEach((leaf) => {
+      if (!leaf || !leaf.name) {
+        const row = document.createElement("div");
+        row.className = "leaf-row";
+        row.innerHTML = `<span class="leaf-name" style="color:var(--ink-faint);">—</span>`;
+        box.appendChild(row);
+        return;
+      }
+      const p = byName[leaf.name] || { player: leaf.name, seed: null, current: null, alive: true };
+      const isWinner = cell.decided && cell.winnerName === leaf.name;
+      const isLoser = cell.decided && cell.winnerName !== leaf.name;
+      const row = document.createElement("div");
+      row.className = "leaf-row" + (isWinner ? " winner" : "") + (isLoser ? " loser" : "");
+      const champ = p.current ? pct(p.current.p_champ) : (p.pretournament ? pct(p.pretournament.p_champ) : null);
+      const { model, market } = matchProbsFor(cell.match, leaf.name);
+      const oddsHtml = cell.isBye ? `<span style="font-style:italic;">bye</span>` : oddsLine(model, market, cell.match);
+      row.innerHTML =
+        `<div class="leaf-top"><div class="leaf-name-wrap"><span class="leaf-seed">${p.seed ? "#" + p.seed : ""}</span>` +
+        `<span class="leaf-name">${esc(leaf.name)}</span></div>` +
+        `<span class="leaf-champ num">${champ !== null ? champ.toFixed(1) + "%" : "—"}</span></div>` +
+        `<div class="leaf-odds num">${oddsHtml}</div>`;
+      box.appendChild(row);
+    });
+    box.addEventListener("click", () => {
+      if (!cell.a || !cell.b || !cell.a.name || !cell.b.name) return;
+      const pa = byName[cell.a.name] || { player: cell.a.name };
+      const pb = byName[cell.b.name] || { player: cell.b.name };
+      openDetail(pa, pb, cell.match);
+    });
+    return box;
+  }
+
+  function makeAdvCell(cell, x, top, isFinal, byName) {
+    const box = document.createElement("div");
+    box.className = "cell" + (cell.match ? " has-match" : "") + (!cell.decided && !cell.match ? " tbd" : "") +
+      (isFinal && cell.decided ? " final-cell" : "") + (cell.match && cell.match.live_state === "in" ? " live" : "");
+    box.style.left = x + "px";
+    box.style.top = top + "px";
+    box.style.width = BOX_W + "px";
+    box.style.height = (LEAF_H - 6) + "px";
+
+    if (cell.decided && cell.winnerName) {
+      const p = byName[cell.winnerName] || { player: cell.winnerName, current: null };
+      const champ = p.current ? pct(p.current.p_champ) : (p.pretournament ? pct(p.pretournament.p_champ) : null);
+      const { model, market } = matchProbsFor(cell.match, cell.winnerName);
+      box.innerHTML =
+        `<div class="adv-cell"><div class="adv-top"><span class="adv-name">${esc(cell.winnerName)}</span>` +
+        `<span class="adv-champ num">${champ !== null ? champ.toFixed(1) + "%" : "—"}</span></div>` +
+        `<div class="adv-odds num">${oddsLine(model, market, cell.match)}</div></div>`;
+      box.addEventListener("click", () => {
+        const pa = byName[cell.match.player_a] || { player: cell.match.player_a };
+        const pb = byName[cell.match.player_b] || { player: cell.match.player_b };
+        openDetail(pa, pb, cell.match);
+      });
+    } else if (cell.match && cell.a && cell.b) {
+      const { model } = matchProbsFor(cell.match, cell.a.name);
+      const favName = model !== null && model >= 50 ? cell.a.name : cell.b.name;
+      const statusLine = cell.match.live_state === "in"
+        ? `${liveBadge(cell.match)}fav ${esc(favName)}`
+        : `pending · fav ${esc(favName)}`;
+      box.innerHTML =
+        `<div class="adv-cell"><div class="adv-top"><span class="adv-name">${esc(cell.a.name)} / ${esc(cell.b.name)}</span></div>` +
+        `<div class="adv-odds num">${statusLine}</div></div>`;
+      box.addEventListener("click", () => {
+        const pa = byName[cell.a.name] || { player: cell.a.name };
+        const pb = byName[cell.b.name] || { player: cell.b.name };
+        openDetail(pa, pb, cell.match);
+      });
+    } else {
+      box.innerHTML = `<div class="adv-cell"><span class="adv-tbd">TBD</span></div>`;
+    }
+    return box;
+  }
+
+  function drawConnectorSet(svg, sideRounds, xOf, centerYFn, mirrored) {
+    for (let r = 2; r <= sideRounds.length; r++) {
+      const prevCount = sideRounds[r - 2].length;
+      for (let i = 0; i < prevCount / 2; i++) {
+        const yA = centerYFn(r - 1, 2 * i), yB = centerYFn(r - 1, 2 * i + 1), yM = centerYFn(r, i);
+        const feederAnchorX = mirrored ? xOf(r - 1) : xOf(r - 1) + BOX_W;
+        const cellAnchorX = mirrored ? xOf(r) + BOX_W : xOf(r);
+        const midX = (feederAnchorX + cellAnchorX) / 2;
+        [[feederAnchorX, yA, midX, yA], [feederAnchorX, yB, midX, yB], [midX, yA, midX, yB], [midX, yM, cellAnchorX, yM]]
+          .forEach(([x1, y1, x2, y2]) => {
+            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            line.setAttribute("x1", x1); line.setAttribute("y1", y1);
+            line.setAttribute("x2", x2); line.setAttribute("y2", y2);
+            svg.appendChild(line);
+          });
+      }
+    }
+  }
+
+  // Two mirrored half-trees (left = quarters 1-2, right = quarters 3-4) grow toward the center and
+  // meet at a single Final cell - the standard two-sided draw-sheet layout, rather than one long
+  // single-direction ladder.
+  function renderDraw() {
+    const d = DATA[state.tour];
+    const byName = {}; d.players.forEach((p) => { byName[p.player] = p; });
+    const sorted = d.players.slice().sort((a, b) => a.position - b.position);
+    const half = d.draw_size / 2;
+    const leftLeaves = sorted.slice(0, half);
+    const rightLeaves = sorted.slice(half);
+    const leftRounds = buildRounds(d, leftLeaves);
+    const rightRounds = buildRounds(d, rightLeaves);
+    const sideRounds = leftRounds.length; // == rightRounds.length
+    const totalRounds = sideRounds + 1; // + the Final
+
+    const headerH = 34;
+    const totalH = half * LEAF_H + headerH + 8;
+    const leftX = (r) => (r - 1) * COL_STEP;
+    const finalX = leftX(sideRounds) + BOX_W + COL_GAP;
+    const rightX = (r) => finalX + BOX_W + COL_GAP + (sideRounds - r) * COL_STEP;
+    const totalW = rightX(1) + BOX_W + 12;
+
+    const root = document.getElementById("bracket-tree");
+    root.style.width = totalW + "px";
+    root.style.height = totalH + "px";
+    root.innerHTML = "";
+
+    const centerY = (r, i) => headerH + (i + 0.5) * Math.pow(2, r) * LEAF_H;
+
+    // quarter tags + seam, one per side (each side is exactly 2 quarters)
+    [["Q1", "Q2", -2, "left"], ["Q3", "Q4", totalW - 14, "right"]].forEach(([topLabel, bottomLabel, tagX]) => {
+      [topLabel, bottomLabel].forEach((label, qi) => {
+        const tag = document.createElement("div");
+        tag.className = "quarter-tag";
+        tag.style.left = tagX + "px";
+        tag.style.top = (headerH + qi * (half / 2) * LEAF_H + (half / 2) * LEAF_H / 2 - 30) + "px";
+        tag.textContent = label;
+        root.appendChild(tag);
+      });
+    });
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "connectors");
+    svg.setAttribute("width", totalW);
+    svg.setAttribute("height", totalH);
+    drawConnectorSet(svg, leftRounds, leftX, centerY, false);
+    drawConnectorSet(svg, rightRounds, rightX, centerY, true);
+    // both semifinal winners into the Final, dead center
+    const midY = centerY(sideRounds, 0);
+    [[leftX(sideRounds) + BOX_W, midY, finalX, midY], [rightX(sideRounds), midY, finalX + BOX_W, midY]]
+      .forEach(([x1, y1, x2, y2]) => {
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", x1); line.setAttribute("y1", y1);
+        line.setAttribute("x2", x2); line.setAttribute("y2", y2);
+        svg.appendChild(line);
+      });
+    // quarter seam dashed dividers, over each side's round-1 column only
+    [[0, BOX_W], [rightX(1), rightX(1) + BOX_W]].forEach(([x1, x2]) => {
+      const y = headerH + (half / 2) * LEAF_H;
+      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      line.setAttribute("class", "seam");
+      line.setAttribute("x1", x1); line.setAttribute("y1", y);
+      line.setAttribute("x2", x2); line.setAttribute("y2", y);
+      svg.appendChild(line);
+    });
+    root.appendChild(svg);
+
+    // round headers: left grows 1..sideRounds rightward, right grows 1..sideRounds leftward, Final centered
+    for (let r = 1; r <= sideRounds; r++) {
+      const headL = document.createElement("div");
+      headL.className = "round-head";
+      headL.style.left = leftX(r) + "px";
+      headL.innerHTML = `${ROUND_NAME(r, totalRounds)}<span>${leftRounds[r - 1].length} match${leftRounds[r - 1].length === 1 ? "" : "es"}</span>`;
+      root.appendChild(headL);
+
+      const headR = document.createElement("div");
+      headR.className = "round-head";
+      headR.style.left = rightX(r) + "px";
+      headR.innerHTML = `${ROUND_NAME(r, totalRounds)}<span>${rightRounds[r - 1].length} match${rightRounds[r - 1].length === 1 ? "" : "es"}</span>`;
+      root.appendChild(headR);
+    }
+    const headF = document.createElement("div");
+    headF.className = "round-head";
+    headF.style.left = finalX + "px";
+    headF.innerHTML = `${ROUND_NAME(totalRounds, totalRounds)}<span>1 match</span>`;
+    root.appendChild(headF);
+
+    // round 1 cells (both sides)
+    leftRounds[0].forEach((cell, i) => root.appendChild(makeRound1Cell(cell, leftX(1), centerY(1, i) - LEAF_H, byName)));
+    rightRounds[0].forEach((cell, i) => root.appendChild(makeRound1Cell(cell, rightX(1), centerY(1, i) - LEAF_H, byName)));
+
+    // round 2..sideRounds cells (both sides)
+    for (let r = 2; r <= sideRounds; r++) {
+      leftRounds[r - 1].forEach((cell, i) => root.appendChild(makeAdvCell(cell, leftX(r), centerY(r, i) - (LEAF_H - 6) / 2, false, byName)));
+      rightRounds[r - 1].forEach((cell, i) => root.appendChild(makeAdvCell(cell, rightX(r), centerY(r, i) - (LEAF_H - 6) / 2, false, byName)));
+    }
+
+    // the Final itself - fed by each side's own last-round winner
+    const leftWinner = leftRounds[sideRounds - 1][0];
+    const rightWinner = rightRounds[sideRounds - 1][0];
+    let finalCell = { a: null, b: null, match: null, winnerName: null, decided: false };
+    if (leftWinner.winnerName && rightWinner.winnerName) {
+      const a = { name: leftWinner.winnerName, bye: false }, b = { name: rightWinner.winnerName, bye: false };
+      const match = findMatch(d, a.name, b.name);
+      finalCell = { a, b, match, winnerName: match && match.decided ? match.winner : null, decided: !!(match && match.decided) };
+    }
+    root.appendChild(makeAdvCell(finalCell, finalX, midY - (LEAF_H - 6) / 2, true, byName));
+  }
+
+  function renderMatches() {
+    const d = DATA[state.tour];
+    let rows = d.matches.slice();
+
+    if (state.search) {
+      const s = state.search.toLowerCase();
+      rows = rows.filter((m) => m.player_a.toLowerCase().includes(s) || m.player_b.toLowerCase().includes(s));
+    }
+    if (state.status !== "all") rows = rows.filter((m) => matchStatus(m) === state.status);
+    if (state.mkt === "priced") rows = rows.filter((m) => m.market_prob_a !== null);
+
+    const key = state.sortKey;
+    const dir = state.sortDir === "asc" ? 1 : -1;
+    rows.sort((x, y) => {
+      let vx = x[key], vy = y[key];
+      if (key === "decided") { vx = vx ? 1 : 0; vy = vy ? 1 : 0; }
+      if (typeof vx === "string") return vx.localeCompare(vy) * dir;
+      vx = vx === null || vx === undefined ? -Infinity : vx;
+      vy = vy === null || vy === undefined ? -Infinity : vy;
+      return (vx - vy) * dir;
+    });
+
+    document.getElementById("match-count").textContent = `${rows.length} of ${d.matches.length} matches`;
+
+    const tbody = document.getElementById("matches-body");
+    tbody.innerHTML = "";
+    const maxGap = Math.max(1, ...d.matches.map((m) => m.rel_diff_abs > 0 ? m.rel_diff_abs : 0));
+
+    rows.forEach((m) => {
+      const tr = document.createElement("tr");
+      const hasRel = m.rel_diff_pct !== null;
+      const gapWidth = hasRel ? Math.max(4, (Math.abs(m.rel_diff_pct) / maxGap) * 60) : 0;
+      const st = matchStatus(m);
+      const pillLabel = st === "decided" ? "Final" : st === "live" ? "Live" : "Not started";
+      tr.innerHTML =
+        `<td>${esc(m.player_a)}${m.decided && m.winner === m.player_a ? " ✓" : ""}</td>` +
+        `<td>${esc(m.player_b)}${m.decided && m.winner === m.player_b ? " ✓" : ""}</td>` +
+        `<td class="mono">${fmtPct(pct(m.model_prob_a))}</td>` +
+        `<td class="mono">${m.market_prob_a !== null ? fmtPct(pct(m.market_prob_a)) : '<span class="no-mkt">no price</span>'}</td>` +
+        `<td class="mono"><div class="gap-bar-wrap">${hasRel ? `<span>${m.rel_diff_pct > 0 ? "+" : ""}${m.rel_diff_pct.toFixed(1)}%</span><span class="gap-bar" style="width:${gapWidth}px"></span>` : "—"}</div></td>` +
+        `<td><span class="status-pill ${st}">${st === "live" ? '<span class="live-dot"></span>' : ""}${pillLabel}</span></td>` +
+        `<td class="mono score-text">${m.score ? esc(m.score) : "—"}</td>`;
+      tr.addEventListener("click", () => {
+        const pa = d.players.find((p) => p.player === m.player_a) || { player: m.player_a };
+        const pb = d.players.find((p) => p.player === m.player_b) || { player: m.player_b };
+        openDetail(pa, pb, m);
+      });
+      tbody.appendChild(tr);
+    });
+  }
+
+  function updateSortHeaders() {
+    document.querySelectorAll("table.matches th[data-key]").forEach((th) => {
+      const active = th.dataset.key === state.sortKey;
+      th.classList.toggle("sorted", active);
+      th.innerHTML = th.textContent.replace(/\s*[▲▼]$/, "") + (active ? `<span class="arrow">${state.sortDir === "asc" ? "▲" : "▼"}</span>` : "");
+    });
+  }
+
+  function openDetail(pa, pb, match) {
+    const card = document.getElementById("detail-card");
+    const modelA = match ? pct(match.model_prob_a) : (pa.current ? pct(pa.current.p_champ) : null);
+    const mktA = match ? pct(match.market_prob_a) : null;
+    const modelPct = modelA !== null ? modelA : 50;
+    const mktPct = mktA !== null ? mktA : null;
+
+    let compareHtml = "";
+    if (match) {
+      compareHtml = `
+        <div class="compare-row">
+          <div class="compare-label"><span class="who">${esc(pa.player)}</span><span>${esc(pb.player)}</span></div>
+          <div class="compare-track">
+            <div class="compare-fill model" style="width:${modelPct}%">${modelPct.toFixed(1)}%</div>
+            <div class="compare-fill" style="width:${100 - modelPct}%;background:var(--surface-2);color:var(--ink-faint);justify-content:flex-end;padding-right:6px;">${(100 - modelPct).toFixed(1)}%</div>
+          </div>
+          <div style="font-size:10px;color:var(--ink-faint);margin-top:2px;">MODEL · pre-match, not updated live</div>
+        </div>`;
+      if (mktPct !== null) {
+        compareHtml += `
+        <div class="compare-row">
+          <div class="compare-label"><span class="who">${esc(pa.player)}</span><span>${esc(pb.player)}</span></div>
+          <div class="compare-track">
+            <div class="compare-fill market" style="width:${mktPct}%">${mktPct.toFixed(1)}%</div>
+            <div class="compare-fill" style="width:${100 - mktPct}%;background:var(--surface-2);color:var(--ink-faint);justify-content:flex-end;padding-right:6px;">${(100 - mktPct).toFixed(1)}%</div>
+          </div>
+          <div style="font-size:10px;color:var(--ink-faint);margin-top:2px;">MARKET · live price when unsettled</div>
+        </div>`;
+      } else {
+        compareHtml += `<div class="detail-empty">No market price on record for this match (never captured pregame).</div>`;
+      }
+      if (match.live_state === "in") {
+        compareHtml += `<div class="detail-empty" style="color:var(--elim);"><span class="live-dot"></span><b class="live-tag">LIVE NOW</b>${match.score ? " — " + esc(match.score) : ""} — model above is frozen from before the match started.</div>`;
+      }
+    } else {
+      compareHtml = `<div class="detail-empty">No real match on record yet for this pairing — showing current tournament-win odds only.</div>`;
+    }
+
+    const stats = [];
+    if (match) {
+      const st = matchStatus(match);
+      stats.push(["Diff vs market", match.rel_diff_pct !== null ? (match.rel_diff_pct > 0 ? "+" : "") + match.rel_diff_pct.toFixed(1) + "%" : "—"]);
+      stats.push(["Status", st === "decided" ? "Final" : st === "live" ? "Live" : "Not started"]);
+      if (match.score) stats.push(["Score", esc(match.score)]);
+      stats.push(["Winner", match.winner ? esc(match.winner) : "—"]);
+      stats.push(["Round context", esc(match.round_label || "—")]);
+    }
+    [[pa, "A"], [pb, "B"]].forEach(([p]) => {
+      if (p.current) stats.push([`${p.player} — title odds now`, pct(p.current.p_champ).toFixed(1) + "%"]);
+      if (p.pretournament) stats.push([`${p.player} — pre-tournament`, pct(p.pretournament.p_champ).toFixed(1) + "%"]);
+    });
+
+    card.innerHTML = `
+      <div class="detail-head">
+        <div>
+          <h3>${esc(pa.player)} vs ${esc(pb.player)}</h3>
+        </div>
+        <button class="detail-close" id="detail-close" aria-label="Close">×</button>
+      </div>
+      <div class="detail-sub">${match ? esc(match.round_label || "") : "No match played yet"}</div>
+      ${compareHtml}
+      <div class="detail-stats">
+        ${stats.map(([k, v]) => `<div class="detail-stat"><div class="k">${esc(k)}</div><div class="v num">${v}</div></div>`).join("")}
+      </div>
+    `;
+    document.getElementById("backdrop").hidden = false;
+    document.getElementById("detail-close").addEventListener("click", closeDetail);
+  }
+
+  function closeDetail() { document.getElementById("backdrop").hidden = true; }
+
+  function renderAll() {
+    renderMeta();
+    if (state.view === "draw") renderDraw(); else { renderMatches(); updateSortHeaders(); }
+  }
+
+  document.getElementById("tab-atp").addEventListener("click", () => setTour("atp"));
+  document.getElementById("tab-wta").addEventListener("click", () => setTour("wta"));
+  document.getElementById("tab-draw").addEventListener("click", () => setView("draw"));
+  document.getElementById("tab-matches").addEventListener("click", () => setView("matches"));
+
+  function setTour(tour) {
+    state.tour = tour;
+    document.getElementById("tab-atp").setAttribute("aria-selected", String(tour === "atp"));
+    document.getElementById("tab-wta").setAttribute("aria-selected", String(tour === "wta"));
+    renderAll();
+  }
+  function setView(view) {
+    state.view = view;
+    document.getElementById("tab-draw").setAttribute("aria-selected", String(view === "draw"));
+    document.getElementById("tab-matches").setAttribute("aria-selected", String(view === "matches"));
+    document.getElementById("view-draw").classList.toggle("active", view === "draw");
+    document.getElementById("view-matches").classList.toggle("active", view === "matches");
+    document.getElementById("legend-draw").style.display = view === "draw" ? "flex" : "none";
+    renderAll();
+  }
+
+  document.getElementById("match-search").addEventListener("input", (e) => { state.search = e.target.value; renderMatches(); });
+  document.getElementById("status-filter").addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-status]");
+    if (!btn) return;
+    state.status = btn.dataset.status;
+    document.querySelectorAll("#status-filter button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    renderMatches();
+  });
+  document.getElementById("mkt-filter").addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-mkt]");
+    if (!btn) return;
+    state.mkt = btn.dataset.mkt;
+    document.querySelectorAll("#mkt-filter button").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    renderMatches();
+  });
+  document.querySelectorAll("table.matches th[data-key]").forEach((th) => {
+    th.addEventListener("click", () => {
+      if (state.sortKey === th.dataset.key) state.sortDir = state.sortDir === "asc" ? "desc" : "asc";
+      else { state.sortKey = th.dataset.key; state.sortDir = "desc"; }
+      renderMatches();
+      updateSortHeaders();
+    });
+  });
+  document.getElementById("backdrop").addEventListener("click", (e) => { if (e.target.id === "backdrop") closeDetail(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDetail(); });
+
+  renderAll();
+})();
+</script>

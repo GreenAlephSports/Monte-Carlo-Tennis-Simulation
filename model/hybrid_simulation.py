@@ -471,7 +471,7 @@ def load_hybrid_state(bracket_path, dates=None):
         true_order=true_order, leaf_position=leaf_position, target_round=target_round,
         partial_field=partial_field, partial_matchups=partial_matchups,
         partial_known_results=partial_known_results, unresolved_names=unresolved_names,
-        draw_to_espn=draw_to_espn,
+        draw_to_espn=draw_to_espn, tournament_matches=tournament_matches,
     )
 
 
