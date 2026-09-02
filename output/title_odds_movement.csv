@@ -1,0 +1,125 @@
+player,p_champ_baseline,p_champ_current,diff,pct_change,note
+Novak Djokovic,0.108,0.0,-0.108,-100.0,eliminated
+Carlos Alcaraz,0.266,0.365,0.099,37.2,
+Arthur Fils,0.055,0.0,-0.055,-100.0,eliminated
+Alexander Zverev,0.102,0.121,0.019,18.6,
+Rafael Jodar,0.012,0.03,0.018,150.0,
+Ben Shelton,0.036,0.053,0.017,47.2,
+Flavio Cobolli,0.005,0.02,0.015,300.0,
+Alex de Minaur,0.036,0.025,-0.011,-30.6,
+Frances Tiafoe,0.034,0.045,0.011,32.4,
+Daniil Medvedev,0.05,0.041,-0.009,-18.0,
+Casper Ruud,0.006,0.0,-0.006,-100.0,eliminated
+Taylor Fritz,0.046,0.052,0.006,13.0,
+Tomas Machac,0.006,0.0,-0.006,-100.0,eliminated
+Brandon Nakashima,0.025,0.03,0.005,20.0,
+Jiri Lehecka,0.01,0.015,0.005,50.0,
+Thiago Agustin Tirante,0.005,0.0,-0.005,-100.0,eliminated
+Cameron Norrie,0.004,0.0,-0.004,-100.0,eliminated
+Tommy Paul,0.011,0.015,0.004,36.4,
+Andrey Rublev,0.002,0.005,0.003,150.0,
+Grigor Dimitrov,0.003,0.0,-0.003,-100.0,eliminated
+Lorenzo Musetti,0.018,0.021,0.003,16.7,
+Stefanos Tsitsipas,0.001,0.004,0.003,300.0,
+Alexander Blockx,0.0,0.002,0.002,,
+Arthur Fery,0.002,0.0,-0.002,-100.0,eliminated
+Arthur Gea,0.0,0.002,0.002,,not in baseline (unresolved/qualifier slot at snapshot time)
+Luciano Darderi,0.0,0.002,0.002,,
+Matteo Berrettini,0.001,0.003,0.002,200.0,
+Nuno Borges,0.002,0.0,-0.002,-100.0,eliminated
+Terence Atmane,0.002,0.0,-0.002,-100.0,eliminated
+Alexander Bublik,0.003,0.004,0.001,33.3,
+Andrea Guerrieri,0.0,0.001,0.001,,
+Fabian Marozsan,0.0,0.001,0.001,,
+Ignacio Buse,0.0,0.001,0.001,,
+Jaime Faria,0.0,0.001,0.001,,
+James Duckworth,0.0,0.001,0.001,,
+Juan Manuel Cerundolo,0.001,0.0,-0.001,-100.0,eliminated
+Karen Khachanov,0.001,0.0,-0.001,-100.0,
+Lorenzo Sonego,0.001,0.0,-0.001,-100.0,eliminated
+Mariano Navone,0.0,0.001,0.001,,
+Marin Cilic,0.001,0.0,-0.001,-100.0,eliminated
+Martin Landaluce,0.001,0.0,-0.001,-100.0,eliminated
+Michael Zheng,0.001,0.0,-0.001,-100.0,
+Miomir Kecmanovic,0.001,0.0,-0.001,-100.0,eliminated
+Quentin Halys,0.0,0.001,0.001,,
+Raphael Collignon,0.001,0.0,-0.001,-100.0,eliminated
+Tallon Griekspoor,0.001,0.0,-0.001,-100.0,eliminated
+Thanasi Kokkinakis,0.001,0.0,-0.001,-100.0,eliminated
+Tomas Martin Etcheverry,0.0,0.001,0.001,,
+Yannick Hanfmann,0.001,0.0,-0.001,-100.0,eliminated
+Adam Walton,0.0,0.0,0.0,,eliminated
+Adolfo Daniel Vallejo,0.0,0.0,0.0,,eliminated
+Adrian Mannarino,0.0,0.0,0.0,,
+Alejandro Tabilo,0.002,0.002,0.0,0.0,
+Aleksandar Kovacevic,0.0,0.0,0.0,,eliminated
+Aleksandar Vukic,0.0,0.0,0.0,,eliminated
+Aleksandr Shevchenko,0.0,0.0,0.0,,eliminated
+Alex Michelsen,0.005,0.005,0.0,0.0,
+Alex Molcan,0.0,0.0,0.0,,
+Alexei Popyrin,0.0,0.0,0.0,,
+Arthur Rinderknech,0.001,0.001,0.0,0.0,
+Benjamin Bonzi,0.001,0.001,0.0,0.0,
+Botic Van De Zandschulp,0.002,0.002,0.0,0.0,
+Bu Yunchaokete,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
+Camilo Ugo Carabelli,0.0,0.0,0.0,,eliminated
+Carlos Taberner,0.0,0.0,0.0,,
+Chak Lam Coleman Wong,0.0,0.0,0.0,,eliminated
+Corentin Moutet,0.0,0.0,0.0,,eliminated
+Dalibor Svrcina,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
+Damir Dzumhur,0.0,0.0,0.0,,eliminated
+Dane Sweeny,0.0,0.0,0.0,,
+Daniel Altmaier,0.0,0.0,0.0,,
+Daniel Merida,0.003,0.003,0.0,0.0,
+Darwin Blanch,0.0,0.0,0.0,,eliminated
+Denis Shapovalov,0.004,0.004,0.0,0.0,
+Dino Prizmic,0.0,0.0,0.0,,
+Facundo Diaz Acosta,0.0,0.0,0.0,,eliminated
+Felix Auger-Aliassime,0.069,0.069,0.0,0.0,
+Filip Misolic,0.0,0.0,0.0,,eliminated
+Francesco Passaro,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
+Francisco Cerundolo,0.002,0.002,0.0,0.0,
+Francisco Comesana,0.0,0.0,0.0,,eliminated
+Gael Monfils,0.0,0.0,0.0,,
+Giovanni Mpetshi Perricard,0.0,0.0,0.0,,eliminated
+Hamad Medjedovic,0.0,0.0,0.0,,eliminated
+Hubert Hurkacz,0.001,0.001,0.0,0.0,
+J.J. Wolf,0.0,0.0,0.0,,eliminated
+Jack Kennedy,0.0,0.0,0.0,,eliminated
+Jacob Fearnley,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
+Jakub Mensik,0.021,0.021,0.0,0.0,
+Jan Choinski,0.0,0.0,0.0,,
+Jan-Lennard Struff,0.0,0.0,0.0,,
+Jaume Munar,0.002,0.002,0.0,0.0,
+Jenson Brooksby,0.0,0.0,0.0,,eliminated
+Jesper de Jong,0.0,0.0,0.0,,
+Jurij Rodionov,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
+Kamil Majchrzak,0.001,0.001,0.0,0.0,
+Learner Tien,0.014,0.014,0.0,0.0,
+Lloyd Harris,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
+Luca Van Assche,0.0,0.0,0.0,,
+Marco Trungelliti,0.0,0.0,0.0,,
+Marcos Giron,0.0,0.0,0.0,,
+Martin Damm,0.0,0.0,0.0,,eliminated
+Marton Fucsovics,0.0,0.0,0.0,,eliminated
+Matteo Arnaldi,0.0,0.0,0.0,,eliminated
+Mattia Bellucci,0.0,0.0,0.0,,
+Pablo Carreno Busta,0.0,0.0,0.0,,eliminated
+Rei Sakamoto,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
+Rinky Hijikata,0.0,0.0,0.0,,eliminated
+Roman Andres Burruchaga,0.0,0.0,0.0,,eliminated
+Roman Safiullin,0.0,0.0,0.0,,eliminated
+Sebastian Baez,0.0,0.0,0.0,,eliminated
+Sebastian Gorzny,0.0,0.0,0.0,,
+Shang Juncheng,0.0,0.0,0.0,,eliminated
+Sho Shimabukuro,0.0,0.0,0.0,,eliminated
+Stan Wawrinka,0.0,0.0,0.0,,eliminated
+Toby Samuel,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
+Tomas Barrios Vera,0.0,0.0,0.0,,eliminated
+Tristan Schoolkate,0.0,0.0,0.0,,not in baseline (unresolved/qualifier slot at snapshot time)
+Valentin Royer,0.0,0.0,0.0,,eliminated
+Valentin Vacherot,0.002,0.002,0.0,0.0,
+Vit Kopriva,0.0,0.0,0.0,,eliminated
+Wu Yibing,0.001,0.001,0.0,0.0,
+Zachary Svajda,0.0,0.0,0.0,,
+Zizou Bergs,0.001,0.001,0.0,0.0,

@@ -40,6 +40,7 @@ from hybrid_simulation import (  # noqa: E402
 )
 from live_scores import LiveScoresError, extract_matches, fetch_scoreboard  # noqa: E402
 from simulate import N_SIMULATIONS, run_simulations_tracking_milestones  # noqa: E402
+from title_odds_movement import build_comparison, print_table, write_csv  # noqa: E402
 from win_probability import win_probability  # noqa: E402
 
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
@@ -407,6 +408,39 @@ def resolve_qualifier_placeholders(players, byes, tournament_matches, ratings_df
     return updated_players, warnings
 
 
+def pretournament_baseline_path(bracket_path, output_dir=OUTPUT_DIR):
+    """Fixed, predictable filename for a bracket's locked pre-tournament reference snapshot -
+    always under OUTPUT_DIR (not wherever --output happens to point for the regular/live export),
+    so it can be found later without having to remember or pass around a path. Deliberately a
+    different name from the regular '<stem>_bracket_export.json' - that filename gets overwritten
+    on every run once real results exist, which is exactly the problem this file exists to avoid."""
+    return Path(output_dir) / f"{Path(bracket_path).stem}_pretournament_baseline.json"
+
+
+def ensure_pretournament_baseline(bracket_path, output, results_by_round, output_dir=OUTPUT_DIR):
+    """Locks `output` in as the permanent 'before any real match happened' reference point, the
+    first time (and only the first time) this bracket is ever exported with zero real results
+    anywhere in results_by_round - i.e. genuinely pre-tournament, not just early-tournament. Once
+    written, this file is never touched again by this function (or anything else in this module) -
+    a later call, even from a run with a full live draw, always finds the file already there and
+    leaves it alone, so --through-round/--all-rounds-style callers can diff against the exact same
+    starting point no matter how far the tournament has since progressed.
+
+    Deliberately does NOT try to retroactively reconstruct a baseline once real results already
+    exist by the time this bracket is first exported (e.g. someone starts running this mid-Round-1)
+    - there's no real 'before' state left to capture at that point; see the CLI's own warning for
+    that case. Returns (baseline_path, was_just_created)."""
+    baseline_path = pretournament_baseline_path(bracket_path, output_dir)
+    if any(results_by_round.values()):
+        return baseline_path, False
+    if baseline_path.exists():
+        return baseline_path, False
+    baseline_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(baseline_path, "w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2)
+    return baseline_path, True
+
+
 def export_bracket_json(
     bracket_path, output_path=None, n_simulations=N_SIMULATIONS, seed=SEED, dates=None,
     overrides_path=DEFAULT_OVERRIDES_PATH,
@@ -719,6 +753,11 @@ def export_bracket_json(
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2)
 
+    baseline_path, baseline_created = ensure_pretournament_baseline(bracket_path, output, results_by_round)
+    if baseline_created:
+        print(f"Locked new pre-tournament baseline: {baseline_path} (zero real results existed yet - "
+              f"this file is now permanent and will never be overwritten by a future run)")
+
     return output_path, output
 
 
@@ -736,6 +775,14 @@ if __name__ == "__main__":
         help="overrides YAML for manual health_adjustments (withdrawals/seed/name overrides don't "
              "apply here - those are build-time only, see espn_bracket.py) - see load_overrides "
              "docstring; pass a nonexistent path to skip")
+    parser.add_argument(
+        "--baseline", type=Path, default=None,
+        help="pre-tournament baseline JSON to diff this export against (default: this bracket's "
+             "auto-locked <stem>_pretournament_baseline.json, if one exists - see "
+             "ensure_pretournament_baseline)")
+    parser.add_argument(
+        "--no-compare", action="store_true",
+        help="skip printing/writing the pre-tournament-vs-current comparison table")
     args = parser.parse_args()
 
     try:
@@ -750,3 +797,18 @@ if __name__ == "__main__":
     print(f"\nWrote {output_path}")
     print(f"players: {len(output['players'])} alive, matchups: {len(output['matchups'])}, "
           f"head_to_head: {len(output['head_to_head'])}, warnings: {len(output['warnings'])}")
+
+    if not args.no_compare:
+        baseline_path = args.baseline or pretournament_baseline_path(args.bracket_path)
+        if baseline_path.exists() and baseline_path.resolve() != output_path.resolve():
+            rows, baseline_meta, current_meta = build_comparison(baseline_path, output_path)
+            print(f"\n=== Pre-tournament vs current (baseline: {baseline_path}) ===")
+            print_table(rows, baseline_meta, current_meta, top_n=len(rows))
+            comparison_csv = OUTPUT_DIR / f"{args.bracket_path.stem}_vs_baseline.csv"
+            write_csv(rows, comparison_csv)
+            print(f"Wrote full pre-tournament-vs-current comparison ({len(rows)} players) to {comparison_csv}")
+        elif not baseline_path.exists():
+            print(f"\n(no pre-tournament baseline available at {baseline_path} - either this bracket "
+                  f"already had real results the first time it was ever exported (nothing genuinely "
+                  f"'pre-tournament' left to compare against), or this is that first, baseline-"
+                  f"defining run itself - pass --baseline to point at a specific file instead)")

@@ -1,0 +1,924 @@
+{
+  "meta": {
+    "tournament": "us-open-women-2026",
+    "generated_at": "2026-08-30T18:04:32Z",
+    "iterations": 10000,
+    "seed": null,
+    "status": "projected"
+  },
+  "players": [
+    {
+      "player": "Aryna Sabalenka",
+      "quarter": "Q1",
+      "p_champ": 0.25,
+      "p_sf": 0.5,
+      "p_final": 0.36
+    },
+    {
+      "player": "Coco Gauff",
+      "quarter": "Q3",
+      "p_champ": 0.117,
+      "p_sf": 0.337,
+      "p_final": 0.222
+    },
+    {
+      "player": "Elena Rybakina",
+      "quarter": "Q4",
+      "p_champ": 0.11,
+      "p_sf": 0.38,
+      "p_final": 0.215,
+      "health_adjustment": {
+        "elo_penalty": -100,
+        "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
+      }
+    },
+    {
+      "player": "Iga Swiatek",
+      "quarter": "Q3",
+      "p_champ": 0.105,
+      "p_sf": 0.332,
+      "p_final": 0.209
+    },
+    {
+      "player": "Jessica Pegula",
+      "quarter": "Q2",
+      "p_champ": 0.092,
+      "p_sf": 0.304,
+      "p_final": 0.163
+    },
+    {
+      "player": "Karolina Muchova",
+      "quarter": "Q2",
+      "p_champ": 0.06,
+      "p_sf": 0.266,
+      "p_final": 0.118
+    },
+    {
+      "player": "Marta Kostyuk",
+      "quarter": "Q2",
+      "p_champ": 0.04,
+      "p_sf": 0.189,
+      "p_final": 0.082
+    },
+    {
+      "player": "Elina Svitolina",
+      "quarter": "Q1",
+      "p_champ": 0.032,
+      "p_sf": 0.14,
+      "p_final": 0.071
+    },
+    {
+      "player": "Amanda Anisimova",
+      "quarter": "Q4",
+      "p_champ": 0.031,
+      "p_sf": 0.172,
+      "p_final": 0.075
+    },
+    {
+      "player": "Linda Noskova",
+      "quarter": "Q4",
+      "p_champ": 0.026,
+      "p_sf": 0.158,
+      "p_final": 0.069
+    },
+    {
+      "player": "Naomi Osaka",
+      "quarter": "Q1",
+      "p_champ": 0.025,
+      "p_sf": 0.123,
+      "p_final": 0.057
+    },
+    {
+      "player": "Belinda Bencic",
+      "quarter": "Q3",
+      "p_champ": 0.023,
+      "p_sf": 0.108,
+      "p_final": 0.054
+    },
+    {
+      "player": "Mirra Andreeva",
+      "quarter": "Q1",
+      "p_champ": 0.019,
+      "p_sf": 0.098,
+      "p_final": 0.045
+    },
+    {
+      "player": "Sorana Cirstea",
+      "quarter": "Q3",
+      "p_champ": 0.009,
+      "p_sf": 0.064,
+      "p_final": 0.027
+    },
+    {
+      "player": "Madison Keys",
+      "quarter": "Q4",
+      "p_champ": 0.009,
+      "p_sf": 0.075,
+      "p_final": 0.027
+    },
+    {
+      "player": "Diana Shnaider",
+      "quarter": "Q2",
+      "p_champ": 0.006,
+      "p_sf": 0.051,
+      "p_final": 0.018
+    },
+    {
+      "player": "Barbora Krejcikova",
+      "quarter": "Q2",
+      "p_champ": 0.005,
+      "p_sf": 0.045,
+      "p_final": 0.013
+    },
+    {
+      "player": "Anna Kalinskaya",
+      "quarter": "Q1",
+      "p_champ": 0.004,
+      "p_sf": 0.033,
+      "p_final": 0.013
+    },
+    {
+      "player": "Zheng Qinwen",
+      "quarter": "Q2",
+      "p_champ": 0.004,
+      "p_sf": 0.038,
+      "p_final": 0.012
+    },
+    {
+      "player": "Iva Jovic",
+      "quarter": "Q4",
+      "p_champ": 0.004,
+      "p_sf": 0.042,
+      "p_final": 0.013
+    },
+    {
+      "player": "Alexandra Eala",
+      "quarter": "Q1",
+      "p_champ": 0.003,
+      "p_sf": 0.035,
+      "p_final": 0.012
+    },
+    {
+      "player": "Sara Bejlek",
+      "quarter": "Q3",
+      "p_champ": 0.003,
+      "p_sf": 0.027,
+      "p_final": 0.01
+    },
+    {
+      "player": "Paula Badosa",
+      "quarter": "Q4",
+      "p_champ": 0.003,
+      "p_sf": 0.027,
+      "p_final": 0.009
+    },
+    {
+      "player": "Marie Bouzkova",
+      "quarter": "Q1",
+      "p_champ": 0.002,
+      "p_sf": 0.02,
+      "p_final": 0.006
+    },
+    {
+      "player": "Jelena Ostapenko",
+      "quarter": "Q4",
+      "p_champ": 0.002,
+      "p_sf": 0.03,
+      "p_final": 0.008
+    },
+    {
+      "player": "Karolina Pliskova",
+      "quarter": "Q1",
+      "p_champ": 0.001,
+      "p_sf": 0.011,
+      "p_final": 0.003
+    },
+    {
+      "player": "Elise Mertens",
+      "quarter": "Q2",
+      "p_champ": 0.001,
+      "p_sf": 0.026,
+      "p_final": 0.007
+    },
+    {
+      "player": "Jasmine Paolini",
+      "quarter": "Q2",
+      "p_champ": 0.001,
+      "p_sf": 0.023,
+      "p_final": 0.006
+    },
+    {
+      "player": "Lilli Tagger",
+      "quarter": "Q2",
+      "p_champ": 0.001,
+      "p_sf": 0.008,
+      "p_final": 0.002
+    },
+    {
+      "player": "Taylor Townsend",
+      "quarter": "Q3",
+      "p_champ": 0.001,
+      "p_sf": 0.02,
+      "p_final": 0.006
+    },
+    {
+      "player": "Maria Sakkari",
+      "quarter": "Q3",
+      "p_champ": 0.001,
+      "p_sf": 0.018,
+      "p_final": 0.006
+    },
+    {
+      "player": "Katerina Siniakova",
+      "quarter": "Q3",
+      "p_champ": 0.001,
+      "p_sf": 0.012,
+      "p_final": 0.004
+    },
+    {
+      "player": "Anastasia Potapova",
+      "quarter": "Q3",
+      "p_champ": 0.001,
+      "p_sf": 0.018,
+      "p_final": 0.007
+    },
+    {
+      "player": "Alina Korneeva",
+      "quarter": "Q4",
+      "p_champ": 0.001,
+      "p_sf": 0.005,
+      "p_final": 0.001
+    },
+    {
+      "player": "Magdalena Frech",
+      "quarter": "Q4",
+      "p_champ": 0.001,
+      "p_sf": 0.013,
+      "p_final": 0.002
+    },
+    {
+      "player": "Nikola Bartunkova",
+      "quarter": "Q4",
+      "p_champ": 0.001,
+      "p_sf": 0.014,
+      "p_final": 0.003
+    },
+    {
+      "player": "Emma Navarro",
+      "quarter": "Q4",
+      "p_champ": 0.001,
+      "p_sf": 0.016,
+      "p_final": 0.003
+    },
+    {
+      "player": "Ekaterina Alexandrova",
+      "quarter": "Q4",
+      "p_champ": 0.001,
+      "p_sf": 0.015,
+      "p_final": 0.004
+    },
+    {
+      "player": "Camila Osorio",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Renata Zarazua",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Polina Iatcenko",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Mary Stoiana",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Talia Gibson",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
+      "p_final": 0.001
+    },
+    {
+      "player": "Donna Vekic",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Elsa Jacquemot",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Emiliana Arango",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Wang Xinyu",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Solana Sierra",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Elvina Kalieva",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Lanlana Tararudee",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.001
+    },
+    {
+      "player": "Anastasia Zakharova",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Lucrezia Stefanini",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Dayana Yastremska",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Ann Li",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.006,
+      "p_final": 0.001
+    },
+    {
+      "player": "Antonia Ruzic",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.001
+    },
+    {
+      "player": "Lee C.Y.",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Katie Boulter",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.005,
+      "p_final": 0.0
+    },
+    {
+      "player": "Anna Blinkova",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Hanne Vandewinkel",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Janice Tjen",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Taylah Preston",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Alycia Parks",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Sinja Kraus",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Kimberly Birrell",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Petra Marcinko",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Kaitlin Quevedo",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Venus Williams",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Sofia Kenin",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Zhang Shuai",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.009,
+      "p_final": 0.002
+    },
+    {
+      "player": "Leylah Fernandez",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Harriet Dart",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Peyton Stearns",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.006,
+      "p_final": 0.001
+    },
+    {
+      "player": "Daria Snigur",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.005,
+      "p_final": 0.001
+    },
+    {
+      "player": "Kristina Liutova",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
+      "p_final": 0.001
+    },
+    {
+      "player": "Storm Hunter",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Mananchaya Sawangkaew",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
+      "p_final": 0.0
+    },
+    {
+      "player": "Panna Udvardy",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Kamilla Rakhimova",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Anhelina Kalinina",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Himeno Sakatsume",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Veronika Erjavec",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Tamara Korpatsch",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Elena-Gabriela Ruse",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.001
+    },
+    {
+      "player": "Aoi Ito",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Oksana Selekhmeteva",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Zeynep Sonmez",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Nadia Podoroska",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Simona Waltert",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Maja Chwalinska",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.001
+    },
+    {
+      "player": "Tamara Zidansek",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Maria Timofeeva",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Cristina Bucsa",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Anouk Koevermans",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "McNally C.",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.01,
+      "p_final": 0.003
+    },
+    {
+      "player": "Yulia Putintseva",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Sloane Stephens",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Clara Tauson",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.011,
+      "p_final": 0.003
+    },
+    {
+      "player": "Julia Grabher",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Viktorija Golubic",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.001
+    },
+    {
+      "player": "Diane Parry",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.0
+    },
+    {
+      "player": "Robin Montgomery",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Elisabetta Cocciaretto",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
+      "p_final": 0.001
+    },
+    {
+      "player": "Valentova T.",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.005,
+      "p_final": 0.002
+    },
+    {
+      "player": "Maya Joint",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
+      "p_final": 0.001
+    },
+    {
+      "player": "Liudmila Samsonova",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.01,
+      "p_final": 0.003
+    },
+    {
+      "player": "Wang Xiyu",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Yuliia Starodubtseva",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Ella Seidel",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    },
+    {
+      "player": "Katie Volynets",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Darja Vidmanova",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Jessica Bouzas Maneiro",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.001
+    },
+    {
+      "player": "Lucie Havlickova",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Anna Bondar",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.001
+    },
+    {
+      "player": "Tatjana Maria",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Gabriela Knutson",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Eva Lys",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.011,
+      "p_final": 0.002
+    },
+    {
+      "player": "Mayar Sherif",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Ashlyn Krueger",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.004,
+      "p_final": 0.001
+    },
+    {
+      "player": "Magda Linette",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.005,
+      "p_final": 0.001
+    },
+    {
+      "player": "Francesca Jones",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Lois Boisson",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
+      "p_final": 0.001
+    },
+    {
+      "player": "Oleksandra Oliynykova",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.006,
+      "p_final": 0.001
+    },
+    {
+      "player": "Reese Brantmeier",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "McCartney Kessler",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.005,
+      "p_final": 0.001
+    },
+    {
+      "player": "Daria Kasatkina",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
+      "p_final": 0.001
+    },
+    {
+      "player": "Thea Frodin",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    },
+    {
+      "player": "Arantxa Rus",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.001,
+      "p_final": 0.0
+    },
+    {
+      "player": "Leolia Jeanjean",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.0,
+      "p_final": 0.0
+    }
+  ],
+  "matchups": {},
+  "head_to_head": {},
+  "health_adjustments": [
+    {
+      "player": "Rybakina E.",
+      "elo_penalty": -100,
+      "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
+    }
+  ],
+  "warnings": [
+    "Pre-tournament projection: no real draw/results exist yet, so 'player' is this project's internal ratings-csv name (not an ESPN displayName), and every entrant in the draw is included as alive.",
+    "One or more players carry a manual health_adjustment (see overrides.yaml) - a disclosed human judgment call, not a statistical model output. Affected players are flagged individually under players[].health_adjustment; see also the top-level health_adjustments list."
+  ]
+}
