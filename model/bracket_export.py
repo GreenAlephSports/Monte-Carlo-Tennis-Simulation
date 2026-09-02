@@ -36,8 +36,7 @@ from elo_ratings import calculate_elo_ratings, load_matches_for_tour  # noqa: E4
 from ev_comparison import implied_probabilities  # noqa: E402
 from hybrid_simulation import (  # noqa: E402
     TOUR_SINGLES_CATEGORY, build_known_pairings_by_round, build_real_results_by_round,
-    known_matchups_for_round, match_espn_name_to_draw, reconstruct_leaves_by_round2_slot,
-    replay_real_rounds, true_bracket_order,
+    known_matchups_for_round, match_espn_name_to_draw, replay_real_rounds,
 )
 from live_scores import LiveScoresError, extract_matches, fetch_scoreboard  # noqa: E402
 from simulate import N_SIMULATIONS, run_simulations_tracking_milestones  # noqa: E402
@@ -282,26 +281,29 @@ def build_round_label_map(round_sequence):
     return label_map
 
 
-def tag_halves_and_quarters(leaves_by_slot):
-    """Static per-(ESPN name) half (Top/Bottom) + quarter (Q1-Q4) tag, derived from Round 2's
-    slot index alone (i = 0..n2-1) - the same stable, structural index _reconstruct_leaves_by_
-    round2_slot uses, just split 2 ways (half) or 4 ways (quarter) instead of kept per-slot. No
-    live result or decided-status is consulted - a player's quarter is identical whether their
-    Round 1 match is 'pre', 'in', or 'post'."""
-    n2 = len(leaves_by_slot)
+def tag_halves_and_quarters(draw):
+    """Static per-(draw name) half (Top/Bottom) + quarter (Q1-Q4) tag, derived directly from each
+    player's index in `draw` - the original bracket-YAML draw-position order (order_by_draw_
+    position / match_draw_to_ratings), fixed before any live result is known. A player's quarter
+    is a pre-tournament fact that never changes as the draw plays out, so this needs no ESPN data
+    and can never disagree with a player's real matches later. Deliberately NOT derived from
+    reconstruct_leaves_by_round2_slot's ESPN-Round-2 traversal (see that function's own docstring
+    for the adjacency problem it was built to solve) - that reconstruction turned out to have its
+    own latent bug (confirmed empirically: with several Round 1 matches still undecided, its
+    r1_pointer fallback silently produced 14 missing + 14 duplicated leaves out of 128 in a live
+    US Open ATP draw, which would have dropped those live-match players from the exported title
+    odds entirely, not just mislabeled a match id) - `draw`'s own order already IS true position,
+    with no ESPN parsing needed to recover it."""
+    draw_size = len(draw)
 
     def _half(i):
-        return "Top" if i < n2 / 2 else "Bottom"
+        return "Top" if i < draw_size / 2 else "Bottom"
 
     def _quarter(i):
-        return f"Q{int(i // (n2 / 4)) + 1}"
+        return f"Q{int(i // (draw_size / 4)) + 1}"
 
-    half_by_name, quarter_by_name = {}, {}
-    for i, slot_leaves in enumerate(leaves_by_slot):
-        for name, _is_bye in slot_leaves:
-            half_by_name[name] = _half(i)
-            quarter_by_name[name] = _quarter(i)
-
+    half_by_name = {name: _half(i) for i, name in enumerate(draw)}
+    quarter_by_name = {name: _quarter(i) for i, name in enumerate(draw)}
     return half_by_name, quarter_by_name
 
 
@@ -521,11 +523,17 @@ def export_bracket_json(
                 espn_to_draw[raw_name] = resolved
                 draw_to_espn.setdefault(resolved, raw_name)
 
-    leaves_by_slot = reconstruct_leaves_by_round2_slot(
-        tournament_matches, non_bye_players, bye_players, results_by_round, tour_config.name_aliases
-    )
-    _half_by_draw, quarter_by_draw = tag_halves_and_quarters(leaves_by_slot)
+    _half_by_draw, quarter_by_draw = tag_halves_and_quarters(draw)
     round_label_map = build_round_label_map(round_sequence)
+
+    # true_order/leaf_position: TRUE draw-position order and each player's index in it, used by
+    # the matchups loop below (match_id), simulation seeding, and (via tag_halves_and_quarters
+    # above) quarter tags - all three must agree, and `draw` already IS true position order (see
+    # tag_halves_and_quarters' docstring for why this replaced the older ESPN-Round-2-based
+    # reconstruction), so no further reconstruction is needed here.
+    true_order = list(zip(draw, byes))
+    draw_size = len(draw)
+    leaf_position = {name: i for i, name in enumerate(draw)}
 
     # alive = every player we have a real ESPN name for, minus anyone already lost in a decided match
     losers = set()
@@ -545,11 +553,14 @@ def export_bracket_json(
     for round_label in round_sequence:
         round_num = round_sequence.index(round_label) + 1
         round_matches = [m for m in tournament_matches if m["round"] == round_label]
-        n = len(round_matches)
         daron_round = round_label_map[round_label]
         decided = results_by_round.get(round_num, {})
+        # total matches this round has by TRUE bracket structure (draw_size halves each round) -
+        # deliberately NOT len(round_matches), which is just however many ESPN currently lists for
+        # this round and carries no adjacency guarantee (see leaf_position's own comment above).
+        matches_this_round = draw_size // (2 ** round_num)
 
-        for i, m in enumerate(round_matches):
+        for m in round_matches:
             p1_raw, p2_raw = m["player_1"], m["player_2"]
             if not p1_raw or not p2_raw or p1_raw == "TBD" or p2_raw == "TBD":
                 continue
@@ -562,8 +573,15 @@ def export_bracket_json(
             if daron_round == "F":
                 match_id = "Final"
             else:
-                half_prefix = "T" if i < n / 2 else "B"
-                half_index = i if i < n / 2 else i - n // 2
+                # true_index: this match's 0-based position within the round, derived from where
+                # its players actually sit in the original draw (leaf_position), not from ESPN's
+                # list order - the same fix already applied to quarters/simulation seeding above.
+                true_index = min(leaf_position[draw_a], leaf_position[draw_b]) // (2 ** round_num)
+                half_prefix = "T" if true_index < matches_this_round / 2 else "B"
+                half_index = (
+                    true_index if true_index < matches_this_round / 2
+                    else true_index - matches_this_round // 2
+                )
                 match_id = f"{half_prefix}-{daron_round}-{half_index + 1}"
 
             prob_a, source, market_prob_a, model_prob_a = resolve_probability(
@@ -613,16 +631,15 @@ def export_bracket_json(
             for pair in partial_matchups if frozenset(pair) in round_results
         }
     # ordered_field/is_bye must reflect TRUE bracket adjacency (see run_simulations_tracking_
-    # milestones's docstring) - reusing leaves_by_slot, the exact same reconstruction the quarter
-    # tags above come from, guarantees the simulated bracket tree and the displayed quarters can
-    # never disagree. fields[]'s own "round winners then byes appended" concatenation is only
-    # good enough for pinning known results (frozenset-keyed, order-independent) - not for this.
-    true_order = true_bracket_order(leaves_by_slot)
+    # milestones's docstring) - reusing true_order/leaf_position (computed above from
+    # leaves_by_slot, the same reconstruction the quarter tags and matchups match_ids come from)
+    # guarantees the simulated bracket tree, the displayed quarters, and the match ids can never
+    # disagree. fields[]'s own "round winners then byes appended" concatenation is only good
+    # enough for pinning known results (frozenset-keyed, order-independent) - not for this.
     if target_round == 1:
         ordered_field = [name for name, _is_bye in true_order]
         is_bye = [is_bye_flag for _name, is_bye_flag in true_order]
     else:
-        leaf_position = {name: i for i, (name, _is_bye) in enumerate(true_order)}
         ordered_field = sorted(partial_field, key=lambda draw_name: leaf_position.get(draw_name, len(true_order)))
         is_bye = [False] * len(ordered_field)
 

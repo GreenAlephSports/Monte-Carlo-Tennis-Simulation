@@ -9,511 +9,639 @@ players:
   name: Sabalenka A.
   status: null
   bye: false
+  position: 1
 - seed: null
   name: Osorio M.
   status: null
   bye: false
+  position: 2
 - seed: null
   name: Zarazua R.
   status: null
   bye: false
+  position: 3
 - seed: null
   name: Iatcenko P.
   status: null
   bye: false
+  position: 4
 - seed: null
   name: Stoiana M.
   status: null
   bye: false
+  position: 87
 - seed: 17
   name: Eala A.
   status: null
   bye: false
+  position: 88
 - seed: null
   name: Gibson T.
   status: null
   bye: false
+  position: 27
 - seed: null
   name: Vekic D.
   status: null
   bye: false
+  position: 28
 - seed: null
   name: Jacquemot E.
   status: null
   bye: false
+  position: 103
 - seed: 25
   name: Bouzkova M.
   status: null
   bye: false
-- seed: null
-  name: Arango E.
-  status: null
-  bye: false
-- seed: null
-  name: Xinyu W.
-  status: null
-  bye: false
-- seed: 9
-  name: Svitolina E.
-  status: null
-  bye: false
-- seed: null
-  name: Sierra S.
-  status: null
-  bye: false
+  position: 104
 - seed: null
   name: Kalieva E.
   status: null
   bye: false
+  position: 29
 - seed: null
   name: Tararudee L.
   status: null
   bye: false
-- seed: 13
-  name: Osaka N.
+  position: 30
+- seed: 9
+  name: Svitolina E.
   status: null
   bye: false
+  position: 49
 - seed: null
-  name: Zakharova A.
+  name: Sierra S.
   status: null
   bye: false
+  position: 50
 - seed: null
   name: Stefanini L.
   status: null
   bye: false
+  position: 43
 - seed: null
   name: Yastremska D.
   status: null
   bye: false
+  position: 44
+- seed: 13
+  name: Osaka N.
+  status: null
+  bye: false
+  position: 113
+- seed: null
+  name: Zakharova A.
+  status: null
+  bye: false
+  position: 114
+- seed: null
+  name: Arango E.
+  status: null
+  bye: false
+  position: 53
+- seed: null
+  name: Xinyu W.
+  status: null
+  bye: false
+  position: 54
 - seed: 29
   name: Li A.
   status: null
   bye: false
+  position: 25
 - seed: null
   name: Ruzic A.
   status: null
   bye: false
-- seed: null
-  name: Lee C.
-  status: null
-  bye: false
-- seed: null
-  name: Boulter K.
-  status: null
-  bye: false
-- seed: null
-  name: Blinkova A.
-  status: null
-  bye: false
-- seed: 21
-  name: Kalinskaya A.
-  status: null
-  bye: false
+  position: 26
 - seed: null
   name: Vandewinkel H.
   status: null
   bye: false
+  position: 13
 - seed: null
   name: Pliskova Ka.
   status: null
   bye: false
+  position: 14
+- seed: null
+  name: Blinkova A.
+  status: null
+  bye: false
+  position: 55
+- seed: 21
+  name: Kalinskaya A.
+  status: null
+  bye: false
+  position: 56
+- seed: null
+  name: Lee C.
+  status: null
+  bye: false
+  position: 61
+- seed: null
+  name: Boulter K.
+  status: null
+  bye: false
+  position: 62
 - seed: 5
   name: Andreeva M.
   status: null
   bye: false
+  position: 65
 - seed: null
   name: Tjen J.
   status: null
   bye: false
+  position: 66
 - seed: null
   name: Preston T.
   status: null
   bye: false
+  position: 11
 - seed: null
   name: Parks A.
   status: null
   bye: false
+  position: 12
 - seed: null
   name: Kraus S.
   status: null
   bye: false
+  position: 63
 - seed: 7
   name: Muchova K.
   status: null
   bye: false
-- seed: null
-  name: Birrell K.
-  status: null
-  bye: false
-- seed: null
-  name: Marcinko P.
-  status: null
-  bye: false
-- seed: null
-  name: Quevedo K.
-  status: null
-  bye: false
-- seed: 23
-  name: Mertens E.
-  status: null
-  bye: false
+  position: 64
 - seed: null
   name: Williams V.
   status: null
   bye: false
+  position: 35
 - seed: null
   name: Kenin S.
   status: null
   bye: false
+  position: 36
 - seed: null
-  name: Zhang S.
+  name: Quevedo K.
   status: null
   bye: false
-- seed: 31
-  name: Fernandez L.
+  position: 119
+- seed: 23
+  name: Mertens E.
   status: null
   bye: false
-- seed: null
-  name: Dart H.
-  status: null
-  bye: false
-- seed: null
-  name: Stearns P.
-  status: null
-  bye: false
-- seed: null
-  name: Snigur D.
-  status: null
-  bye: false
-- seed: 15
-  name: Shnaider D.
-  status: null
-  bye: false
-- seed: null
-  name: Zheng Q.
-  status: null
-  bye: false
-- seed: null
-  name: Liutova K.
-  status: null
-  bye: false
-- seed: 11
-  name: Kostyuk M.
-  status: null
-  bye: false
-- seed: null
-  name: Hunter S.
-  status: null
-  bye: false
+  position: 120
 - seed: null
   name: Sawangkaew M.
   status: null
   bye: false
+  position: 37
 - seed: null
   name: Udvardy P.
   status: null
   bye: false
+  position: 38
 - seed: null
-  name: Rakhimova K.
+  name: Zhang S.
   status: null
   bye: false
-- seed: 27
-  name: Krejcikova B.
+  position: 39
+- seed: 31
+  name: Fernandez L.
   status: null
   bye: false
+  position: 40
 - seed: null
   name: Kalinina A.
   status: null
   bye: false
+  position: 91
 - seed: null
   name: Sakatsume H.
   status: null
   bye: false
-- seed: 19
-  name: Paolini J.
-  status: null
-  bye: false
+  position: 92
 - seed: null
-  name: Erjavec V.
+  name: Snigur D.
   status: null
   bye: false
+  position: 15
+- seed: 15
+  name: Shnaider D.
+  status: null
+  bye: false
+  position: 16
+- seed: null
+  name: Dart H.
+  status: null
+  bye: false
+  position: 101
+- seed: null
+  name: Stearns P.
+  status: null
+  bye: false
+  position: 102
+- seed: 11
+  name: Kostyuk M.
+  status: null
+  bye: false
+  position: 17
+- seed: null
+  name: Hunter S.
+  status: null
+  bye: false
+  position: 18
+- seed: null
+  name: Zheng Q.
+  status: null
+  bye: false
+  position: 109
+- seed: null
+  name: Liutova K.
+  status: null
+  bye: false
+  position: 110
+- seed: null
+  name: Rakhimova K.
+  status: null
+  bye: false
+  position: 7
+- seed: 27
+  name: Krejcikova B.
+  status: null
+  bye: false
+  position: 8
 - seed: null
   name: Tagger L.
   status: null
   bye: false
+  position: 77
 - seed: null
   name: Korpatsch T.
   status: null
   bye: false
-- seed: 3
-  name: Pegula J.
+  position: 78
+- seed: 19
+  name: Paolini J.
   status: null
   bye: false
+  position: 41
 - seed: null
-  name: Ruse E.G.
+  name: Erjavec V.
   status: null
   bye: false
+  position: 42
 - seed: null
   name: Ito A.
   status: null
   bye: false
+  position: 5
 - seed: null
   name: Selekhmeteva O.
   status: null
   bye: false
+  position: 6
+- seed: 3
+  name: Pegula J.
+  status: null
+  bye: false
+  position: 33
 - seed: null
-  name: Sonmez Z.
+  name: Ruse E.G.
   status: null
   bye: false
-- seed: 4
-  name: Gauff C.
-  status: null
-  bye: false
-- seed: null
-  name: Podoroska N.
-  status: null
-  bye: false
-- seed: null
-  name: Waltert S.
-  status: null
-  bye: false
-- seed: 20
-  name: Chwalinska M.
-  status: null
-  bye: false
-- seed: null
-  name: Townsend T.
-  status: null
-  bye: false
+  position: 34
 - seed: null
   name: Zidansek T.
   status: null
   bye: false
+  position: 117
 - seed: null
   name: Timofeeva M.
   status: null
   bye: false
+  position: 118
+- seed: null
+  name: Sonmez Z.
+  status: null
+  bye: false
+  position: 95
+- seed: 4
+  name: Gauff C.
+  status: null
+  bye: false
+  position: 96
+- seed: null
+  name: Birrell K.
+  status: null
+  bye: false
+  position: 21
+- seed: null
+  name: Marcinko P.
+  status: null
+  bye: false
+  position: 22
+- seed: 20
+  name: Chwalinska M.
+  status: null
+  bye: false
+  position: 9
+- seed: null
+  name: Townsend T.
+  status: null
+  bye: false
+  position: 10
+- seed: null
+  name: Podoroska N.
+  status: null
+  bye: false
+  position: 99
+- seed: null
+  name: Waltert S.
+  status: null
+  bye: false
+  position: 100
 - seed: 28
   name: Bejlek S.
   status: null
   bye: false
+  position: 89
 - seed: null
   name: Bucsa C.
   status: null
   bye: false
-- seed: null
-  name: Koevermans A.
-  status: null
-  bye: false
-- seed: null
-  name: Mcnally C.
-  status: null
-  bye: false
-- seed: null
-  name: Putintseva Y.
-  status: null
-  bye: false
-- seed: 12
-  name: Bencic B.
-  status: null
-  bye: false
-- seed: null
-  name: Stephens S.
-  status: null
-  bye: false
-- seed: null
-  name: Tauson C.
-  status: null
-  bye: false
-- seed: null
-  name: Grabher J.
-  status: null
-  bye: false
-- seed: 16
-  name: Cirstea S.
-  status: null
-  bye: false
+  position: 90
 - seed: null
   name: Golubic V.
   status: null
   bye: false
+  position: 45
 - seed: null
   name: Parry D.
   status: null
   bye: false
+  position: 46
+- seed: null
+  name: Putintseva Y.
+  status: null
+  bye: false
+  position: 111
+- seed: 12
+  name: Bencic B.
+  status: null
+  bye: false
+  position: 112
+- seed: null
+  name: Koevermans A.
+  status: null
+  bye: false
+  position: 59
+- seed: null
+  name: Mcnally C.
+  status: null
+  bye: false
+  position: 60
+- seed: null
+  name: Grabher J.
+  status: null
+  bye: false
+  position: 47
+- seed: 16
+  name: Cirstea S.
+  status: null
+  bye: false
+  position: 48
+- seed: null
+  name: Stephens S.
+  status: null
+  bye: false
+  position: 19
+- seed: null
+  name: Tauson C.
+  status: null
+  bye: false
+  position: 20
 - seed: 32
   name: Sakkari M.
   status: null
   bye: false
+  position: 121
 - seed: null
   name: Montgomery R.
   status: null
   bye: false
-- seed: null
-  name: Cocciaretto E.
-  status: null
-  bye: false
-- seed: null
-  name: Siniakova K.
-  status: null
-  bye: false
-- seed: 24
-  name: Potapova A.
-  status: null
-  bye: false
-- seed: null
-  name: Valentova T.
-  status: null
-  bye: false
+  position: 122
 - seed: null
   name: Joint M.
   status: null
   bye: false
+  position: 51
 - seed: null
   name: Samsonova L.
   status: null
   bye: false
+  position: 52
+- seed: 24
+  name: Potapova A.
+  status: null
+  bye: false
+  position: 73
+- seed: null
+  name: Semenistaja D.
+  status: null
+  bye: false
+  position: 74
+- seed: null
+  name: Cocciaretto E.
+  status: null
+  bye: false
+  position: 115
+- seed: null
+  name: Siniakova K.
+  status: null
+  bye: false
+  position: 116
 - seed: 8
   name: Swiatek I.
   status: null
   bye: false
+  position: 97
 - seed: null
   name: Xiyu W.
   status: null
   bye: false
+  position: 98
 - seed: null
   name: Starodubtseva Y.
   status: null
   bye: false
+  position: 123
 - seed: null
   name: Seidel E.
   status: null
   bye: false
+  position: 124
 - seed: null
   name: Volynets K.
   status: null
   bye: false
+  position: 31
 - seed: 6
   name: Noskova L.
   status: null
   bye: false
-- seed: null
-  name: Vidmanova D.
-  status: null
-  bye: false
-- seed: null
-  name: Bouzas Maneiro J.
-  status: null
-  bye: false
-- seed: 22
-  name: Keys M.
-  status: null
-  bye: false
-- seed: null
-  name: Korneeva A.
-  status: null
-  bye: false
+  position: 32
 - seed: null
   name: Havlickova L.
   status: null
   bye: false
+  position: 107
 - seed: null
   name: Bondar A.
   status: null
   bye: false
+  position: 108
+- seed: 22
+  name: Keys M.
+  status: null
+  bye: false
+  position: 105
 - seed: null
-  name: Maria T.
+  name: Korneeva A.
   status: null
   bye: false
-- seed: 30
-  name: Ostapenko J.
-  status: null
-  bye: false
+  position: 106
 - seed: null
   name: Knutson G.
   status: null
   bye: false
+  position: 67
 - seed: null
   name: Lys E.
   status: null
   bye: false
-- seed: 14
-  name: Jovic I.
-  status: null
-  bye: false
+  position: 68
 - seed: null
-  name: Frech M.
+  name: Maria T.
   status: null
   bye: false
-- seed: null
-  name: Bartunkova N.
+  position: 71
+- seed: 30
+  name: Ostapenko J.
   status: null
   bye: false
-- seed: null
-  name: Sherif M.
-  status: null
-  bye: false
-- seed: null
-  name: Krueger A.
-  status: null
-  bye: false
-- seed: 10
-  name: Anisimova A.
-  status: null
-  bye: false
-- seed: null
-  name: Linette M.
-  status: null
-  bye: false
-- seed: null
-  name: Jones F.
-  status: null
-  bye: false
-- seed: 26
-  name: Navarro E.
-  status: null
-  bye: false
-- seed: null
-  name: Boisson L.
-  status: null
-  bye: false
+  position: 72
 - seed: null
   name: Oliynykova O.
   status: null
   bye: false
+  position: 85
 - seed: null
   name: Brantmeier R.
   status: null
   bye: false
+  position: 86
+- seed: 14
+  name: Jovic I.
+  status: null
+  bye: false
+  position: 81
 - seed: null
-  name: Kessler M.
+  name: Frech M.
   status: null
   bye: false
-- seed: 18
-  name: Alexandrova E.
-  status: null
-  bye: false
+  position: 82
 - seed: null
-  name: Kasatkina D.
+  name: Vidmanova D.
   status: null
   bye: false
+  position: 125
 - seed: null
-  name: Badosa P.
+  name: Bouzas Maneiro J.
   status: null
   bye: false
+  position: 126
 - seed: null
-  name: Frodin T.
+  name: Krueger A.
   status: null
   bye: false
-- seed: 2
-  name: Rybakina E.
+  position: 79
+- seed: 10
+  name: Anisimova A.
   status: null
   bye: false
+  position: 80
 - seed: null
   name: Rus A.
   status: null
   bye: false
+  position: 75
 - seed: null
   name: Jeanjean L.
   status: null
   bye: false
+  position: 76
+- seed: 26
+  name: Navarro E.
+  status: null
+  bye: false
+  position: 57
+- seed: null
+  name: Boisson L.
+  status: null
+  bye: false
+  position: 58
+- seed: null
+  name: Kasatkina D.
+  status: null
+  bye: false
+  position: 93
+- seed: null
+  name: Badosa P.
+  status: null
+  bye: false
+  position: 94
+- seed: null
+  name: Kessler M.
+  status: null
+  bye: false
+  position: 23
+- seed: 18
+  name: Alexandrova E.
+  status: null
+  bye: false
+  position: 24
+- seed: null
+  name: Bartunkova N.
+  status: null
+  bye: false
+  position: 69
+- seed: null
+  name: Sherif M.
+  status: null
+  bye: false
+  position: 70
+- seed: null
+  name: Frodin T.
+  status: null
+  bye: false
+  position: 127
+- seed: 2
+  name: Rybakina E.
+  status: null
+  bye: false
+  position: 128
+- seed: null
+  name: Linette M.
+  status: null
+  bye: false
+  position: 83
+- seed: null
+  name: Jones F.
+  status: null
+  bye: false
+  position: 84

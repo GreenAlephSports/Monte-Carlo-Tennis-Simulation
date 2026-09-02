@@ -135,7 +135,19 @@ def _standard_seed_regions(num_seeds):
     return positions
 
 
-def _reorder_by_standard_seeding(raw_records):
+class StandardSeedingReorderError(ValueError):
+    """Raised when _reorder_by_standard_seeding can't confidently reorder a draw - e.g. ESPN's
+    seed data is missing/duplicated a rank (confirmed real case: the 2026 US Open ATP draw was
+    missing seed 19's curatedRank entirely, ESPN-side). Deliberately a hard failure rather than
+    the old behavior (print a warning, silently return raw_records - ESPN's schedule/court-order,
+    NOT bracket order - unchanged) - that silent path is exactly what produced two real, wrong
+    bracket YAMLs (us_open_2026_{atp,wta}_real.yaml) that nobody caught until a downstream match_id
+    bug investigation traced back to it. A caller that genuinely wants ESPN's raw order anyway
+    (e.g. exploratory/dev use where exact position doesn't matter) must now opt in explicitly via
+    allow_unordered=True - never the silent default."""
+
+
+def _reorder_by_standard_seeding(raw_records, allow_unordered=False):
     """Fixes a real structural bug: ESPN's scoreboard gives real Round-1 pairings correctly but
     in NO reliable bracket order (confirmed by inspection - e.g. the 2026 US Open WTA draw had
     seed 2 landing inside seed 1's own half of the raw list, seeds 5/6/7 clustered a few matches
@@ -152,19 +164,30 @@ def _reorder_by_standard_seeding(raw_records):
     unseeded-vs-unseeded pairs that share a region with a seed can't be placed with certainty this
     way (their exact position isn't recoverable from ESPN's data at all - only the official draw
     sheet has it) - they're distributed into the remaining region slots in their original relative
-    ESPN order, a disclosed limitation. This does not affect the specific bug being fixed (top
-    seeds ending up in the wrong quarter/section), since only one seed exists per region by
-    construction and unseeded players essentially never contest the parts of tournament_win_
-    probability this matters for.
+    ESPN order, a disclosed limitation: even a fully successful reorder here only guarantees the 32
+    seeds' own regions are correct, NOT the true position of every unseeded player within them (an
+    unseeded-vs-unseeded Round 1 pair can still land in the wrong region-relative slot) - a caller
+    that needs full 128-player positional accuracy, not just correct seed regions, should still
+    prefer real ground truth (e.g. the tournament's own official draw feed) over this function.
 
     Only applies to a bye-free draw (every record is a real Round-1 pairing, e.g. a Grand Slam's
-    128-draw) where the seed count is a power of two and every rank 1..num_seeds is present -
-    returns raw_records unchanged (with a printed warning) if those preconditions don't hold,
-    rather than silently producing a wrong reorder."""
+    128-draw) where the seed count is a power of two and every rank 1..num_seeds is present - raises
+    StandardSeedingReorderError if those preconditions don't hold, UNLESS allow_unordered=True, in
+    which case it falls back to the old behavior (print a warning, return raw_records unchanged)."""
+    def _skip(reason):
+        if allow_unordered:
+            print(f"  (skipping standard-seeding reorder: {reason} - leaving ESPN's original "
+                  f"order, --allow-unordered was passed)")
+            return raw_records
+        raise StandardSeedingReorderError(
+            f"cannot reorder by standard seeding: {reason}. ESPN's own list order is schedule/"
+            f"court-driven, NOT bracket order - refusing to write a bracket YAML with unverified "
+            f"player order. Pass --wiki-title for a real, fully-accurate reorder, or "
+            f"--allow-unordered to proceed anyway with ESPN's raw (likely wrong) order."
+        )
+
     if any(r["kind"] != "round1" for r in raw_records) or len(raw_records) % 2 != 0:
-        print("  (skipping standard-seeding reorder: draw has byes/non-round1 entries - untested "
-              "for that shape, leaving ESPN's original order)")
-        return raw_records
+        return _skip("draw has byes/non-round1 entries - untested for that shape")
 
     pairs = [(raw_records[i], raw_records[i + 1]) for i in range(0, len(raw_records), 2)]
     seeded_pairs = {}
@@ -176,19 +199,14 @@ def _reorder_by_standard_seeding(raw_records):
         elif len(seeds_in_pair) == 0:
             unseeded_pairs.append(pair)
         else:
-            print(f"  (skipping standard-seeding reorder: two seeded players drawn together in "
-                  f"Round 1 - unexpected, leaving ESPN's original order)")
-            return raw_records
+            return _skip("two seeded players drawn together in Round 1 - unexpected")
 
     num_seeds = len(seeded_pairs)
     if num_seeds == 0 or (num_seeds & (num_seeds - 1)) != 0 or set(seeded_pairs) != set(range(1, num_seeds + 1)):
-        print(f"  (skipping standard-seeding reorder: {num_seeds} seeded pairs found, not a clean "
-              f"1..N power-of-two seed list - leaving ESPN's original order)")
-        return raw_records
+        return _skip(f"{num_seeds} seeded pairs found, not a clean 1..N power-of-two seed list "
+                     f"(missing rank(s): {sorted(set(range(1, max(num_seeds, 1) + 1)) - set(seeded_pairs))})")
     if len(pairs) % num_seeds != 0:
-        print(f"  (skipping standard-seeding reorder: {len(pairs)} Round-1 pairs doesn't divide "
-              f"evenly by {num_seeds} seeds - leaving ESPN's original order)")
-        return raw_records
+        return _skip(f"{len(pairs)} Round-1 pairs doesn't divide evenly by {num_seeds} seeds")
 
     pairs_per_region = len(pairs) // num_seeds
     regions = _standard_seed_regions(num_seeds)  # regions[i] = region (1-indexed) for seed i+1
@@ -423,7 +441,7 @@ def _decided_qualifying_winners(qualifying_final):
     return winners
 
 
-def build_bracket_players(tour, event_id, dates=None, wiki_title=None):
+def build_bracket_players(tour, event_id, dates=None, wiki_title=None, allow_unordered=False):
     """Returns a list of player dicts (seed/name/bye/status) in bracket order, plus the raw
     ESPN event dict (used by the caller for tournament/date metadata).
 
@@ -436,7 +454,13 @@ def build_bracket_players(tour, event_id, dates=None, wiki_title=None):
     wiki_title, if given (e.g. "2026 US Open - Women's singles"), uses that Wikipedia article's
     draw as the true bracket-order ground truth (_reorder_by_wikipedia_draw) - strictly more
     accurate than the standard-seeding fallback since it positions every player correctly, not
-    just the 32 seeds. Falls back to _standard_seed_regions (seeds only) when omitted."""
+    just the 32 seeds. Never used unless explicitly passed - the default (wiki_title=None) is
+    always _reorder_by_standard_seeding, never an automatic/silent Wikipedia fallback.
+
+    allow_unordered, if True, lets _reorder_by_standard_seeding fall back to ESPN's raw (likely
+    wrong) list order when it can't confidently reorder, instead of raising
+    StandardSeedingReorderError - see that exception's docstring for why the default is to raise.
+    Ignored when wiki_title is given (Wikipedia's reorder has its own, separate failure mode)."""
     tour = tour.lower()
     category = TOUR_SINGLES_CATEGORY[tour]
     data = fetch_scoreboard(tour, dates=dates)
@@ -529,7 +553,7 @@ def build_bracket_players(tour, event_id, dates=None, wiki_title=None):
     if wiki_title:
         raw_records = _reorder_by_wikipedia_draw(raw_records, wiki_title, name_aliases)
     else:
-        raw_records = _reorder_by_standard_seeding(raw_records)
+        raw_records = _reorder_by_standard_seeding(raw_records, allow_unordered=allow_unordered)
 
     players = []
     for record in raw_records:
@@ -634,12 +658,14 @@ def _tournament_start_date(event, round1):
     return date_str[:10] if date_str else None
 
 
-def build_bracket_yaml(tour, event_id, surface, dates=None, wiki_title=None):
+def build_bracket_yaml(tour, event_id, surface, dates=None, wiki_title=None, allow_unordered=False):
     tour = tour.upper()
     if surface not in SURFACES:
         raise ValueError(f"surface must be one of {SURFACES}, got {surface!r}")
 
-    players, event, round1, qualifier_stats = build_bracket_players(tour, event_id, dates=dates, wiki_title=wiki_title)
+    players, event, round1, qualifier_stats = build_bracket_players(
+        tour, event_id, dates=dates, wiki_title=wiki_title, allow_unordered=allow_unordered
+    )
     start_date = _tournament_start_date(event, round1)
     year = int(start_date[:4]) if start_date else None
 
@@ -669,12 +695,24 @@ if __name__ == "__main__":
                          help="Wikipedia article title for this draw (e.g. \"2026 US Open - "
                               "Women's singles\") - if given, corrects the real bracket position "
                               "of every player (seeded or not) using that article's draw as "
-                              "ground truth, instead of the seeds-only standard-seeding fallback")
+                              "ground truth, instead of the seeds-only standard-seeding default. "
+                              "Never used automatically - omitting this always means standard-"
+                              "seeding, never a silent Wikipedia fallback.")
+    parser.add_argument(
+        "--allow-unordered", action="store_true",
+        help="proceed with ESPN's raw (schedule/court-driven, NOT bracket-position) order when "
+             "standard-seeding reorder can't confidently run (e.g. ESPN is missing a seed rank) "
+             "instead of refusing to write the file. Off by default - a bracket YAML with "
+             "unverified player order is exactly what produced two real, silently-wrong US Open "
+             "2026 bracket files; use --wiki-title for a real fix instead of this escape hatch "
+             "whenever the draw actually matters."
+    )
     args = parser.parse_args()
 
     try:
         bracket, qualifier_stats = build_bracket_yaml(args.tour, args.event_id, args.surface, dates=args.dates,
-                                                        wiki_title=args.wiki_title)
+                                                        wiki_title=args.wiki_title,
+                                                        allow_unordered=args.allow_unordered)
     except (LiveScoresError, ValueError) as e:
         print(f"ERROR: {e}", file=sys.stderr)
         sys.exit(1)
