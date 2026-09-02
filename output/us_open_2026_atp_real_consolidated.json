@@ -1,835 +1,2101 @@
 {
   "meta": {
     "tournament": "us-open-men-2026",
-    "generated_at": "2026-09-02T19:23:06Z",
-    "iterations": 10000,
-    "seed": 42
+    "generated_at": "2026-09-02T19:23:42Z",
+    "current_iterations": 10000,
+    "current_seed": 42,
+    "round_history_iterations": 2000,
+    "pretournament_baseline_path": "X:\\idanh\\Documents\\VS Code Projects\\Monte-Carlo-Simulation-Grand-Slam-Model-\\output\\us_open_2026_atp_real_pretournament_baseline.json"
   },
-  "players": [
-    {
-      "player": "Carlos Alcaraz",
-      "quarter": "Q4",
-      "p_champ": 0.367,
-      "p_sf": 0.581,
-      "p_final": 0.478
-    },
-    {
-      "player": "Alexander Zverev",
-      "quarter": "Q1",
-      "p_champ": 0.124,
-      "p_sf": 0.378,
-      "p_final": 0.243
-    },
-    {
-      "player": "Felix Auger-Aliassime",
-      "quarter": "Q2",
-      "p_champ": 0.062,
-      "p_sf": 0.268,
-      "p_final": 0.149
-    },
-    {
-      "player": "Ben Shelton",
-      "quarter": "Q4",
-      "p_champ": 0.054,
-      "p_sf": 0.159,
-      "p_final": 0.104
-    },
-    {
-      "player": "Taylor Fritz",
-      "quarter": "Q2",
-      "p_champ": 0.051,
-      "p_sf": 0.23,
-      "p_final": 0.122
-    },
-    {
-      "player": "Frances Tiafoe",
-      "quarter": "Q3",
-      "p_champ": 0.045,
-      "p_sf": 0.247,
-      "p_final": 0.087
-    },
-    {
-      "player": "Daniil Medvedev",
-      "quarter": "Q3",
-      "p_champ": 0.038,
-      "p_sf": 0.219,
-      "p_final": 0.077
-    },
-    {
-      "player": "Rafael Jodar",
-      "quarter": "Q1",
-      "p_champ": 0.033,
-      "p_sf": 0.152,
-      "p_final": 0.084
-    },
-    {
-      "player": "Alex de Minaur",
-      "quarter": "Q1",
-      "p_champ": 0.025,
-      "p_sf": 0.128,
-      "p_final": 0.066
-    },
-    {
-      "player": "Lorenzo Musetti",
-      "quarter": "Q1",
-      "p_champ": 0.024,
-      "p_sf": 0.138,
-      "p_final": 0.065
-    },
-    {
-      "player": "Jakub Mensik",
-      "quarter": "Q2",
-      "p_champ": 0.02,
-      "p_sf": 0.127,
-      "p_final": 0.059
-    },
-    {
-      "player": "Flavio Cobolli",
-      "quarter": "Q2",
-      "p_champ": 0.02,
-      "p_sf": 0.133,
-      "p_final": 0.064
-    },
-    {
-      "player": "Learner Tien",
-      "quarter": "Q2",
-      "p_champ": 0.014,
-      "p_sf": 0.096,
-      "p_final": 0.042
-    },
-    {
-      "player": "Tommy Paul",
-      "quarter": "Q4",
-      "p_champ": 0.013,
-      "p_sf": 0.065,
-      "p_final": 0.033
-    },
-    {
-      "player": "Jiri Lehecka",
-      "quarter": "Q4",
-      "p_champ": 0.012,
-      "p_sf": 0.06,
-      "p_final": 0.029
-    },
-    {
-      "player": "Alexander Bublik",
-      "quarter": "Q4",
-      "p_champ": 0.005,
-      "p_sf": 0.032,
-      "p_final": 0.015
-    },
-    {
-      "player": "Botic Van De Zandschulp",
-      "quarter": "Q1",
-      "p_champ": 0.004,
-      "p_sf": 0.044,
-      "p_final": 0.016
-    },
-    {
-      "player": "Alex Michelsen",
-      "quarter": "Q3",
-      "p_champ": 0.004,
-      "p_sf": 0.052,
-      "p_final": 0.013
-    },
-    {
-      "player": "Daniel Merida",
-      "quarter": "Q3",
-      "p_champ": 0.004,
-      "p_sf": 0.046,
-      "p_final": 0.012
-    },
-    {
-      "player": "Denis Shapovalov",
-      "quarter": "Q4",
-      "p_champ": 0.004,
-      "p_sf": 0.029,
-      "p_final": 0.011
-    },
-    {
-      "player": "Alejandro Tabilo",
-      "quarter": "Q1",
-      "p_champ": 0.003,
-      "p_sf": 0.027,
-      "p_final": 0.01
-    },
-    {
-      "player": "Luciano Darderi",
-      "quarter": "Q1",
-      "p_champ": 0.003,
-      "p_sf": 0.029,
-      "p_final": 0.011
-    },
-    {
-      "player": "Francisco Cerundolo",
-      "quarter": "Q2",
-      "p_champ": 0.003,
-      "p_sf": 0.031,
-      "p_final": 0.01
-    },
-    {
-      "player": "Alexander Blockx",
-      "quarter": "Q2",
-      "p_champ": 0.003,
-      "p_sf": 0.031,
-      "p_final": 0.009
-    },
-    {
-      "player": "Matteo Berrettini",
-      "quarter": "Q3",
-      "p_champ": 0.003,
-      "p_sf": 0.052,
-      "p_final": 0.012
-    },
-    {
-      "player": "Stefanos Tsitsipas",
-      "quarter": "Q4",
-      "p_champ": 0.003,
-      "p_sf": 0.025,
-      "p_final": 0.01
-    },
-    {
-      "player": "Ignacio Buse",
-      "quarter": "Q2",
-      "p_champ": 0.002,
-      "p_sf": 0.02,
-      "p_final": 0.007
-    },
-    {
-      "player": "Valentin Vacherot",
-      "quarter": "Q3",
-      "p_champ": 0.002,
-      "p_sf": 0.033,
-      "p_final": 0.006
-    },
-    {
-      "player": "Mariano Navone",
-      "quarter": "Q3",
-      "p_champ": 0.002,
-      "p_sf": 0.025,
-      "p_final": 0.005
-    },
-    {
-      "player": "Quentin Halys",
-      "quarter": "Q1",
-      "p_champ": 0.001,
-      "p_sf": 0.016,
-      "p_final": 0.005
-    },
-    {
-      "player": "Alexei Popyrin",
-      "quarter": "Q1",
-      "p_champ": 0.001,
-      "p_sf": 0.006,
-      "p_final": 0.001
-    },
-    {
-      "player": "Fabian Marozsan",
-      "quarter": "Q1",
-      "p_champ": 0.001,
-      "p_sf": 0.014,
-      "p_final": 0.004
-    },
-    {
-      "player": "Arthur Gea",
-      "quarter": "Q1",
-      "p_champ": 0.001,
-      "p_sf": 0.019,
-      "p_final": 0.006
-    },
-    {
-      "player": "Zizou Bergs",
-      "quarter": "Q1",
-      "p_champ": 0.001,
-      "p_sf": 0.013,
-      "p_final": 0.003
-    },
-    {
-      "player": "Benjamin Bonzi",
-      "quarter": "Q2",
-      "p_champ": 0.001,
-      "p_sf": 0.023,
-      "p_final": 0.006
-    },
-    {
-      "player": "Kamil Majchrzak",
-      "quarter": "Q3",
-      "p_champ": 0.001,
-      "p_sf": 0.015,
-      "p_final": 0.003
-    },
-    {
-      "player": "Tomas Martin Etcheverry",
-      "quarter": "Q3",
-      "p_champ": 0.001,
-      "p_sf": 0.02,
-      "p_final": 0.003
-    },
-    {
-      "player": "Hubert Hurkacz",
-      "quarter": "Q4",
-      "p_champ": 0.001,
-      "p_sf": 0.012,
-      "p_final": 0.003
-    },
-    {
-      "player": "James Duckworth",
-      "quarter": "Q4",
-      "p_champ": 0.001,
-      "p_sf": 0.007,
-      "p_final": 0.002
-    },
-    {
-      "player": "Jaime Faria",
-      "quarter": "Q4",
-      "p_champ": 0.001,
-      "p_sf": 0.007,
-      "p_final": 0.003
-    },
-    {
-      "player": "Dalibor Svrcina",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.001
-    },
-    {
-      "player": "Dane Sweeny",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.001
-    },
-    {
-      "player": "Bu Yunchaokete",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Michael Zheng",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.006,
-      "p_final": 0.002
-    },
-    {
-      "player": "Zachary Svajda",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
-    },
-    {
-      "player": "Daniel Altmaier",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.006,
-      "p_final": 0.001
-    },
-    {
-      "player": "Carlos Taberner",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.001
-    },
-    {
-      "player": "Jesper de Jong",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.006,
-      "p_final": 0.001
-    },
-    {
-      "player": "Francesco Passaro",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Andrea Guerrieri",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.003,
-      "p_final": 0.001
-    },
-    {
-      "player": "Karen Khachanov",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.007,
-      "p_final": 0.001
-    },
-    {
-      "player": "Marcos Giron",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.003,
-      "p_final": 0.0
-    },
-    {
-      "player": "Jurij Rodionov",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Gael Monfils",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.009,
-      "p_final": 0.002
-    },
-    {
-      "player": "Mattia Bellucci",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.006,
-      "p_final": 0.002
-    },
-    {
-      "player": "Jan-Lennard Struff",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.009,
-      "p_final": 0.002
-    },
-    {
-      "player": "Marco Trungelliti",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.001
-    },
-    {
-      "player": "Tristan Schoolkate",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
-    },
-    {
-      "player": "Arthur Rinderknech",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.017,
-      "p_final": 0.003
-    },
-    {
-      "player": "Rei Sakamoto",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.004,
-      "p_final": 0.0
-    },
-    {
-      "player": "Jacob Fearnley",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.007,
-      "p_final": 0.001
-    },
-    {
-      "player": "Luca Van Assche",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.003,
-      "p_final": 0.0
-    },
-    {
-      "player": "Toby Samuel",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.004,
-      "p_final": 0.001
-    },
-    {
-      "player": "Lloyd Harris",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
-    },
-    {
-      "player": "Adrian Mannarino",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.003,
-      "p_final": 0.001
-    },
-    {
-      "player": "Dino Prizmic",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.004,
-      "p_final": 0.002
-    },
-    {
-      "player": "Wu Yibing",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.007,
-      "p_final": 0.002
+  "round_history": [
+    {
+      "checkpoint": "pretournament",
+      "round": 0,
+      "label": "Pre-tournament",
+      "generated_at": "2026-08-27T21:54:42Z",
+      "players": [
+        {
+          "player": "Carlos Alcaraz",
+          "quarter": "Q4",
+          "p_champ": 0.266,
+          "p_sf": 0.487,
+          "p_final": 0.359
+        },
+        {
+          "player": "Novak Djokovic",
+          "quarter": "Q3",
+          "p_champ": 0.108,
+          "p_sf": 0.296,
+          "p_final": 0.167
+        },
+        {
+          "player": "Alexander Zverev",
+          "quarter": "Q1",
+          "p_champ": 0.102,
+          "p_sf": 0.319,
+          "p_final": 0.2
+        },
+        {
+          "player": "Felix Auger-Aliassime",
+          "quarter": "Q2",
+          "p_champ": 0.069,
+          "p_sf": 0.242,
+          "p_final": 0.152
+        },
+        {
+          "player": "Arthur Fils",
+          "quarter": "Q4",
+          "p_champ": 0.055,
+          "p_sf": 0.163,
+          "p_final": 0.096
+        },
+        {
+          "player": "Daniil Medvedev",
+          "quarter": "Q2",
+          "p_champ": 0.05,
+          "p_sf": 0.19,
+          "p_final": 0.112
+        },
+        {
+          "player": "Taylor Fritz",
+          "quarter": "Q2",
+          "p_champ": 0.046,
+          "p_sf": 0.19,
+          "p_final": 0.108
+        },
+        {
+          "player": "Alex de Minaur",
+          "quarter": "Q1",
+          "p_champ": 0.036,
+          "p_sf": 0.183,
+          "p_final": 0.094
+        },
+        {
+          "player": "Ben Shelton",
+          "quarter": "Q3",
+          "p_champ": 0.036,
+          "p_sf": 0.132,
+          "p_final": 0.062
+        },
+        {
+          "player": "Frances Tiafoe",
+          "quarter": "Q3",
+          "p_champ": 0.034,
+          "p_sf": 0.147,
+          "p_final": 0.064
+        },
+        {
+          "player": "Brandon Nakashima",
+          "quarter": "Q3",
+          "p_champ": 0.025,
+          "p_sf": 0.12,
+          "p_final": 0.048
+        },
+        {
+          "player": "Jakub Mensik",
+          "quarter": "Q2",
+          "p_champ": 0.021,
+          "p_sf": 0.109,
+          "p_final": 0.058
+        },
+        {
+          "player": "Lorenzo Musetti",
+          "quarter": "Q1",
+          "p_champ": 0.018,
+          "p_sf": 0.11,
+          "p_final": 0.05
+        },
+        {
+          "player": "Learner Tien",
+          "quarter": "Q2",
+          "p_champ": 0.014,
+          "p_sf": 0.071,
+          "p_final": 0.038
+        },
+        {
+          "player": "Rafael Jodar",
+          "quarter": "Q1",
+          "p_champ": 0.012,
+          "p_sf": 0.08,
+          "p_final": 0.035
+        },
+        {
+          "player": "Tommy Paul",
+          "quarter": "Q4",
+          "p_champ": 0.011,
+          "p_sf": 0.058,
+          "p_final": 0.025
+        },
+        {
+          "player": "Jiri Lehecka",
+          "quarter": "Q4",
+          "p_champ": 0.01,
+          "p_sf": 0.053,
+          "p_final": 0.022
+        },
+        {
+          "player": "Casper Ruud",
+          "quarter": "Q1",
+          "p_champ": 0.006,
+          "p_sf": 0.047,
+          "p_final": 0.018
+        },
+        {
+          "player": "Tomas Machac",
+          "quarter": "Q4",
+          "p_champ": 0.006,
+          "p_sf": 0.034,
+          "p_final": 0.014
+        },
+        {
+          "player": "Flavio Cobolli",
+          "quarter": "Q2",
+          "p_champ": 0.005,
+          "p_sf": 0.04,
+          "p_final": 0.016
+        },
+        {
+          "player": "Alex Michelsen",
+          "quarter": "Q3",
+          "p_champ": 0.005,
+          "p_sf": 0.041,
+          "p_final": 0.013
+        },
+        {
+          "player": "Thiago Agustin Tirante",
+          "quarter": "Q4",
+          "p_champ": 0.005,
+          "p_sf": 0.035,
+          "p_final": 0.013
+        },
+        {
+          "player": "Denis Shapovalov",
+          "quarter": "Q4",
+          "p_champ": 0.004,
+          "p_sf": 0.024,
+          "p_final": 0.011
+        },
+        {
+          "player": "Cameron Norrie",
+          "quarter": "Q4",
+          "p_champ": 0.004,
+          "p_sf": 0.025,
+          "p_final": 0.009
+        },
+        {
+          "player": "Daniel Merida",
+          "quarter": "Q3",
+          "p_champ": 0.003,
+          "p_sf": 0.028,
+          "p_final": 0.008
+        },
+        {
+          "player": "Alexander Bublik",
+          "quarter": "Q4",
+          "p_champ": 0.003,
+          "p_sf": 0.028,
+          "p_final": 0.011
+        },
+        {
+          "player": "Grigor Dimitrov",
+          "quarter": "Q4",
+          "p_champ": 0.003,
+          "p_sf": 0.016,
+          "p_final": 0.006
+        },
+        {
+          "player": "Alejandro Tabilo",
+          "quarter": "Q1",
+          "p_champ": 0.002,
+          "p_sf": 0.026,
+          "p_final": 0.008
+        },
+        {
+          "player": "Arthur Fery",
+          "quarter": "Q1",
+          "p_champ": 0.002,
+          "p_sf": 0.017,
+          "p_final": 0.006
+        },
+        {
+          "player": "Botic Van De Zandschulp",
+          "quarter": "Q1",
+          "p_champ": 0.002,
+          "p_sf": 0.025,
+          "p_final": 0.009
+        },
+        {
+          "player": "Nuno Borges",
+          "quarter": "Q2",
+          "p_champ": 0.002,
+          "p_sf": 0.02,
+          "p_final": 0.008
+        },
+        {
+          "player": "Francisco Cerundolo",
+          "quarter": "Q2",
+          "p_champ": 0.002,
+          "p_sf": 0.032,
+          "p_final": 0.012
+        },
+        {
+          "player": "Jaume Munar",
+          "quarter": "Q3",
+          "p_champ": 0.002,
+          "p_sf": 0.026,
+          "p_final": 0.007
+        },
+        {
+          "player": "Terence Atmane",
+          "quarter": "Q3",
+          "p_champ": 0.002,
+          "p_sf": 0.023,
+          "p_final": 0.005
+        },
+        {
+          "player": "Valentin Vacherot",
+          "quarter": "Q3",
+          "p_champ": 0.002,
+          "p_sf": 0.025,
+          "p_final": 0.006
+        },
+        {
+          "player": "Andrey Rublev",
+          "quarter": "Q3",
+          "p_champ": 0.002,
+          "p_sf": 0.033,
+          "p_final": 0.009
+        },
+        {
+          "player": "Lorenzo Sonego",
+          "quarter": "Q1",
+          "p_champ": 0.001,
+          "p_sf": 0.012,
+          "p_final": 0.003
+        },
+        {
+          "player": "Yannick Hanfmann",
+          "quarter": "Q1",
+          "p_champ": 0.001,
+          "p_sf": 0.014,
+          "p_final": 0.004
+        },
+        {
+          "player": "Thanasi Kokkinakis",
+          "quarter": "Q1",
+          "p_champ": 0.001,
+          "p_sf": 0.012,
+          "p_final": 0.003
+        },
+        {
+          "player": "Michael Zheng",
+          "quarter": "Q1",
+          "p_champ": 0.001,
+          "p_sf": 0.009,
+          "p_final": 0.003
+        },
+        {
+          "player": "Juan Manuel Cerundolo",
+          "quarter": "Q1",
+          "p_champ": 0.001,
+          "p_sf": 0.017,
+          "p_final": 0.005
+        },
+        {
+          "player": "Zizou Bergs",
+          "quarter": "Q1",
+          "p_champ": 0.001,
+          "p_sf": 0.016,
+          "p_final": 0.004
+        },
+        {
+          "player": "Karen Khachanov",
+          "quarter": "Q2",
+          "p_champ": 0.001,
+          "p_sf": 0.006,
+          "p_final": 0.002
+        },
+        {
+          "player": "Benjamin Bonzi",
+          "quarter": "Q2",
+          "p_champ": 0.001,
+          "p_sf": 0.007,
+          "p_final": 0.002
+        },
+        {
+          "player": "Raphael Collignon",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.008,
+          "p_final": 0.001
+        },
+        {
+          "player": "Arthur Rinderknech",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.016,
+          "p_final": 0.003
+        },
+        {
+          "player": "Kamil Majchrzak",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.011,
+          "p_final": 0.002
+        },
+        {
+          "player": "Marin Cilic",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.007,
+          "p_final": 0.002
+        },
+        {
+          "player": "Martin Landaluce",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.008,
+          "p_final": 0.001
+        },
+        {
+          "player": "Matteo Berrettini",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.018,
+          "p_final": 0.003
+        },
+        {
+          "player": "Tallon Griekspoor",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.01,
+          "p_final": 0.002
+        },
+        {
+          "player": "Hubert Hurkacz",
+          "quarter": "Q4",
+          "p_champ": 0.001,
+          "p_sf": 0.011,
+          "p_final": 0.005
+        },
+        {
+          "player": "Miomir Kecmanovic",
+          "quarter": "Q4",
+          "p_champ": 0.001,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Stefanos Tsitsipas",
+          "quarter": "Q4",
+          "p_champ": 0.001,
+          "p_sf": 0.007,
+          "p_final": 0.002
+        },
+        {
+          "player": "Wu Yibing",
+          "quarter": "Q4",
+          "p_champ": 0.001,
+          "p_sf": 0.01,
+          "p_final": 0.003
+        },
+        {
+          "player": "Quentin Halys",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.01,
+          "p_final": 0.003
+        },
+        {
+          "player": "Facundo Diaz Acosta",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Alexei Popyrin",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Luciano Darderi",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.007,
+          "p_final": 0.002
+        },
+        {
+          "player": "Andrea Guerrieri",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.01,
+          "p_final": 0.002
+        },
+        {
+          "player": "Valentin Royer",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Dane Sweeny",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Corentin Moutet",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.01,
+          "p_final": 0.003
+        },
+        {
+          "player": "Fabian Marozsan",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.015,
+          "p_final": 0.003
+        },
+        {
+          "player": "Zachary Svajda",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Daniel Altmaier",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.006,
+          "p_final": 0.001
+        },
+        {
+          "player": "Carlos Taberner",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Jesper de Jong",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.006,
+          "p_final": 0.001
+        },
+        {
+          "player": "Jan Choinski",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Rinky Hijikata",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.006,
+          "p_final": 0.002
+        },
+        {
+          "player": "Roman Andres Burruchaga",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Alex Molcan",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Marcos Giron",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Ignacio Buse",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.007,
+          "p_final": 0.002
+        },
+        {
+          "player": "Giovanni Mpetshi Perricard",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Adolfo Daniel Vallejo",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.006,
+          "p_final": 0.002
+        },
+        {
+          "player": "Gael Monfils",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.011,
+          "p_final": 0.003
+        },
+        {
+          "player": "Darwin Blanch",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Mattia Bellucci",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Camilo Ugo Carabelli",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.001
+        },
+        {
+          "player": "Jan-Lennard Struff",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Filip Misolic",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Alexander Blockx",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.008,
+          "p_final": 0.002
+        },
+        {
+          "player": "Shang Juncheng",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.007,
+          "p_final": 0.002
+        },
+        {
+          "player": "Marco Trungelliti",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Francisco Comesana",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Sebastian Gorzny",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.005,
+          "p_final": 0.001
+        },
+        {
+          "player": "Sho Shimabukuro",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Aleksandar Kovacevic",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Hamad Medjedovic",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Aleksandar Vukic",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Martin Damm",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Sebastian Baez",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Marton Fucsovics",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.005,
+          "p_final": 0.001
+        },
+        {
+          "player": "Tomas Martin Etcheverry",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.006,
+          "p_final": 0.001
+        },
+        {
+          "player": "Vit Kopriva",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Stan Wawrinka",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.0
+        },
+        {
+          "player": "Mariano Navone",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Damir Dzumhur",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Luca Van Assche",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Pablo Carreno Busta",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Tomas Barrios Vera",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Chak Lam Coleman Wong",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Jack Kennedy",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "J.J. Wolf",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Adrian Mannarino",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.001
+        },
+        {
+          "player": "Dino Prizmic",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Aleksandr Shevchenko",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Matteo Arnaldi",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.001
+        },
+        {
+          "player": "James Duckworth",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Adam Walton",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Jaime Faria",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.009,
+          "p_final": 0.003
+        },
+        {
+          "player": "Jenson Brooksby",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.005,
+          "p_final": 0.001
+        },
+        {
+          "player": "Roman Safiullin",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.001
+        }
+      ],
+      "matches": []
+    },
+    {
+      "checkpoint": "current",
+      "round": 1,
+      "label": "Current - 67 players alive",
+      "generated_at": "2026-09-02T19:23:06Z",
+      "players": [
+        {
+          "player": "Carlos Alcaraz",
+          "quarter": "Q4",
+          "p_champ": 0.367,
+          "p_sf": 0.581,
+          "p_final": 0.478
+        },
+        {
+          "player": "Alexander Zverev",
+          "quarter": "Q1",
+          "p_champ": 0.124,
+          "p_sf": 0.378,
+          "p_final": 0.243
+        },
+        {
+          "player": "Felix Auger-Aliassime",
+          "quarter": "Q2",
+          "p_champ": 0.062,
+          "p_sf": 0.268,
+          "p_final": 0.149
+        },
+        {
+          "player": "Ben Shelton",
+          "quarter": "Q4",
+          "p_champ": 0.054,
+          "p_sf": 0.159,
+          "p_final": 0.104
+        },
+        {
+          "player": "Taylor Fritz",
+          "quarter": "Q2",
+          "p_champ": 0.051,
+          "p_sf": 0.23,
+          "p_final": 0.122
+        },
+        {
+          "player": "Frances Tiafoe",
+          "quarter": "Q3",
+          "p_champ": 0.045,
+          "p_sf": 0.247,
+          "p_final": 0.087
+        },
+        {
+          "player": "Daniil Medvedev",
+          "quarter": "Q3",
+          "p_champ": 0.038,
+          "p_sf": 0.219,
+          "p_final": 0.077
+        },
+        {
+          "player": "Rafael Jodar",
+          "quarter": "Q1",
+          "p_champ": 0.033,
+          "p_sf": 0.152,
+          "p_final": 0.084
+        },
+        {
+          "player": "Alex de Minaur",
+          "quarter": "Q1",
+          "p_champ": 0.025,
+          "p_sf": 0.128,
+          "p_final": 0.066
+        },
+        {
+          "player": "Lorenzo Musetti",
+          "quarter": "Q1",
+          "p_champ": 0.024,
+          "p_sf": 0.138,
+          "p_final": 0.065
+        },
+        {
+          "player": "Jakub Mensik",
+          "quarter": "Q2",
+          "p_champ": 0.02,
+          "p_sf": 0.127,
+          "p_final": 0.059
+        },
+        {
+          "player": "Flavio Cobolli",
+          "quarter": "Q2",
+          "p_champ": 0.02,
+          "p_sf": 0.133,
+          "p_final": 0.064
+        },
+        {
+          "player": "Learner Tien",
+          "quarter": "Q2",
+          "p_champ": 0.014,
+          "p_sf": 0.096,
+          "p_final": 0.042
+        },
+        {
+          "player": "Tommy Paul",
+          "quarter": "Q4",
+          "p_champ": 0.013,
+          "p_sf": 0.065,
+          "p_final": 0.033
+        },
+        {
+          "player": "Jiri Lehecka",
+          "quarter": "Q4",
+          "p_champ": 0.012,
+          "p_sf": 0.06,
+          "p_final": 0.029
+        },
+        {
+          "player": "Alexander Bublik",
+          "quarter": "Q4",
+          "p_champ": 0.005,
+          "p_sf": 0.032,
+          "p_final": 0.015
+        },
+        {
+          "player": "Botic Van De Zandschulp",
+          "quarter": "Q1",
+          "p_champ": 0.004,
+          "p_sf": 0.044,
+          "p_final": 0.016
+        },
+        {
+          "player": "Alex Michelsen",
+          "quarter": "Q3",
+          "p_champ": 0.004,
+          "p_sf": 0.052,
+          "p_final": 0.013
+        },
+        {
+          "player": "Daniel Merida",
+          "quarter": "Q3",
+          "p_champ": 0.004,
+          "p_sf": 0.046,
+          "p_final": 0.012
+        },
+        {
+          "player": "Denis Shapovalov",
+          "quarter": "Q4",
+          "p_champ": 0.004,
+          "p_sf": 0.029,
+          "p_final": 0.011
+        },
+        {
+          "player": "Alejandro Tabilo",
+          "quarter": "Q1",
+          "p_champ": 0.003,
+          "p_sf": 0.027,
+          "p_final": 0.01
+        },
+        {
+          "player": "Luciano Darderi",
+          "quarter": "Q1",
+          "p_champ": 0.003,
+          "p_sf": 0.029,
+          "p_final": 0.011
+        },
+        {
+          "player": "Francisco Cerundolo",
+          "quarter": "Q2",
+          "p_champ": 0.003,
+          "p_sf": 0.031,
+          "p_final": 0.01
+        },
+        {
+          "player": "Alexander Blockx",
+          "quarter": "Q2",
+          "p_champ": 0.003,
+          "p_sf": 0.031,
+          "p_final": 0.009
+        },
+        {
+          "player": "Matteo Berrettini",
+          "quarter": "Q3",
+          "p_champ": 0.003,
+          "p_sf": 0.052,
+          "p_final": 0.012
+        },
+        {
+          "player": "Stefanos Tsitsipas",
+          "quarter": "Q4",
+          "p_champ": 0.003,
+          "p_sf": 0.025,
+          "p_final": 0.01
+        },
+        {
+          "player": "Ignacio Buse",
+          "quarter": "Q2",
+          "p_champ": 0.002,
+          "p_sf": 0.02,
+          "p_final": 0.007
+        },
+        {
+          "player": "Valentin Vacherot",
+          "quarter": "Q3",
+          "p_champ": 0.002,
+          "p_sf": 0.033,
+          "p_final": 0.006
+        },
+        {
+          "player": "Mariano Navone",
+          "quarter": "Q3",
+          "p_champ": 0.002,
+          "p_sf": 0.025,
+          "p_final": 0.005
+        },
+        {
+          "player": "Quentin Halys",
+          "quarter": "Q1",
+          "p_champ": 0.001,
+          "p_sf": 0.016,
+          "p_final": 0.005
+        },
+        {
+          "player": "Alexei Popyrin",
+          "quarter": "Q1",
+          "p_champ": 0.001,
+          "p_sf": 0.006,
+          "p_final": 0.001
+        },
+        {
+          "player": "Fabian Marozsan",
+          "quarter": "Q1",
+          "p_champ": 0.001,
+          "p_sf": 0.014,
+          "p_final": 0.004
+        },
+        {
+          "player": "Arthur Gea",
+          "quarter": "Q1",
+          "p_champ": 0.001,
+          "p_sf": 0.019,
+          "p_final": 0.006
+        },
+        {
+          "player": "Zizou Bergs",
+          "quarter": "Q1",
+          "p_champ": 0.001,
+          "p_sf": 0.013,
+          "p_final": 0.003
+        },
+        {
+          "player": "Benjamin Bonzi",
+          "quarter": "Q2",
+          "p_champ": 0.001,
+          "p_sf": 0.023,
+          "p_final": 0.006
+        },
+        {
+          "player": "Kamil Majchrzak",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.015,
+          "p_final": 0.003
+        },
+        {
+          "player": "Tomas Martin Etcheverry",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.02,
+          "p_final": 0.003
+        },
+        {
+          "player": "Hubert Hurkacz",
+          "quarter": "Q4",
+          "p_champ": 0.001,
+          "p_sf": 0.012,
+          "p_final": 0.003
+        },
+        {
+          "player": "James Duckworth",
+          "quarter": "Q4",
+          "p_champ": 0.001,
+          "p_sf": 0.007,
+          "p_final": 0.002
+        },
+        {
+          "player": "Jaime Faria",
+          "quarter": "Q4",
+          "p_champ": 0.001,
+          "p_sf": 0.007,
+          "p_final": 0.003
+        },
+        {
+          "player": "Dalibor Svrcina",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.005,
+          "p_final": 0.001
+        },
+        {
+          "player": "Dane Sweeny",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.005,
+          "p_final": 0.001
+        },
+        {
+          "player": "Bu Yunchaokete",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Michael Zheng",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.006,
+          "p_final": 0.002
+        },
+        {
+          "player": "Zachary Svajda",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Daniel Altmaier",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.006,
+          "p_final": 0.001
+        },
+        {
+          "player": "Carlos Taberner",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.001
+        },
+        {
+          "player": "Jesper de Jong",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.006,
+          "p_final": 0.001
+        },
+        {
+          "player": "Francesco Passaro",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Andrea Guerrieri",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Karen Khachanov",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.007,
+          "p_final": 0.001
+        },
+        {
+          "player": "Marcos Giron",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.0
+        },
+        {
+          "player": "Jurij Rodionov",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Gael Monfils",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.009,
+          "p_final": 0.002
+        },
+        {
+          "player": "Mattia Bellucci",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.006,
+          "p_final": 0.002
+        },
+        {
+          "player": "Jan-Lennard Struff",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.009,
+          "p_final": 0.002
+        },
+        {
+          "player": "Marco Trungelliti",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.005,
+          "p_final": 0.001
+        },
+        {
+          "player": "Tristan Schoolkate",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Arthur Rinderknech",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.017,
+          "p_final": 0.003
+        },
+        {
+          "player": "Rei Sakamoto",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.0
+        },
+        {
+          "player": "Jacob Fearnley",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.007,
+          "p_final": 0.001
+        },
+        {
+          "player": "Luca Van Assche",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.0
+        },
+        {
+          "player": "Toby Samuel",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Lloyd Harris",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Adrian Mannarino",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Dino Prizmic",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.002
+        },
+        {
+          "player": "Wu Yibing",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.007,
+          "p_final": 0.002
+        }
+      ],
+      "matches": [
+        {
+          "player_a": "Rafael Jodar",
+          "player_b": "Bu Yunchaokete",
+          "model_prob_a": 0.837,
+          "market_prob_a": 0.098,
+          "gap_pct_points": 73.9,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Zachary Svajda",
+          "player_b": "Daniel Altmaier",
+          "model_prob_a": 0.383,
+          "market_prob_a": 0.796,
+          "gap_pct_points": 41.3,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Tomas Martin Etcheverry",
+          "player_b": "Jacob Fearnley",
+          "model_prob_a": 0.594,
+          "market_prob_a": 0.901,
+          "gap_pct_points": 30.7,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Fabian Marozsan",
+          "player_b": "Michael Zheng",
+          "model_prob_a": 0.591,
+          "market_prob_a": 0.378,
+          "gap_pct_points": 21.3,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Andrea Guerrieri",
+          "player_b": "Alex de Minaur",
+          "model_prob_a": 0.207,
+          "market_prob_a": 0.028,
+          "gap_pct_points": 17.9,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Alexander Blockx",
+          "player_b": "Marco Trungelliti",
+          "model_prob_a": 0.646,
+          "market_prob_a": 0.811,
+          "gap_pct_points": 16.5,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Marcos Giron",
+          "player_b": "Ignacio Buse",
+          "model_prob_a": 0.344,
+          "market_prob_a": 0.211,
+          "gap_pct_points": 13.3,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Felix Auger-Aliassime",
+          "player_b": "Karen Khachanov",
+          "model_prob_a": 0.833,
+          "market_prob_a": 0.703,
+          "gap_pct_points": 13.0,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Dane Sweeny",
+          "player_b": "Lorenzo Musetti",
+          "model_prob_a": 0.204,
+          "market_prob_a": 0.081,
+          "gap_pct_points": 12.3,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Denis Shapovalov",
+          "player_b": "Luca Van Assche",
+          "model_prob_a": 0.695,
+          "market_prob_a": 0.576,
+          "gap_pct_points": 11.9,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Rei Sakamoto",
+          "player_b": "Frances Tiafoe",
+          "model_prob_a": 0.142,
+          "market_prob_a": 0.242,
+          "gap_pct_points": 10.0,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Gael Monfils",
+          "player_b": "Learner Tien",
+          "model_prob_a": 0.304,
+          "market_prob_a": 0.21,
+          "gap_pct_points": 9.4,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Dino Prizmic",
+          "player_b": "Tommy Paul",
+          "model_prob_a": 0.266,
+          "market_prob_a": 0.191,
+          "gap_pct_points": 7.5,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Luciano Darderi",
+          "player_b": "Dalibor Svrcina",
+          "model_prob_a": 0.635,
+          "market_prob_a": 0.571,
+          "gap_pct_points": 6.4,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Jiri Lehecka",
+          "player_b": "Toby Samuel",
+          "model_prob_a": 0.763,
+          "market_prob_a": 0.702,
+          "gap_pct_points": 6.1,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Alexander Bublik",
+          "player_b": "Adrian Mannarino",
+          "model_prob_a": 0.688,
+          "market_prob_a": 0.749,
+          "gap_pct_points": 6.1,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Ben Shelton",
+          "player_b": "Hubert Hurkacz",
+          "model_prob_a": 0.751,
+          "market_prob_a": 0.697,
+          "gap_pct_points": 5.4,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Alexei Popyrin",
+          "player_b": "Alejandro Tabilo",
+          "model_prob_a": 0.378,
+          "market_prob_a": 0.432,
+          "gap_pct_points": 5.4,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Lloyd Harris",
+          "player_b": "Stefanos Tsitsipas",
+          "model_prob_a": 0.275,
+          "market_prob_a": 0.32,
+          "gap_pct_points": 4.5,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Taylor Fritz",
+          "player_b": "Mattia Bellucci",
+          "model_prob_a": 0.827,
+          "market_prob_a": 0.871,
+          "gap_pct_points": 4.4,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Matteo Berrettini",
+          "player_b": "Mariano Navone",
+          "model_prob_a": 0.579,
+          "market_prob_a": 0.608,
+          "gap_pct_points": 2.9,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Jakub Mensik",
+          "player_b": "Jurij Rodionov",
+          "model_prob_a": 0.83,
+          "market_prob_a": 0.858,
+          "gap_pct_points": 2.8,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Tristan Schoolkate",
+          "player_b": "Flavio Cobolli",
+          "model_prob_a": 0.158,
+          "market_prob_a": 0.184,
+          "gap_pct_points": 2.6,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "James Duckworth",
+          "player_b": "Wu Yibing",
+          "model_prob_a": 0.456,
+          "market_prob_a": 0.432,
+          "gap_pct_points": 2.4,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Jaime Faria",
+          "player_b": "Carlos Alcaraz",
+          "model_prob_a": 0.088,
+          "market_prob_a": 0.112,
+          "gap_pct_points": 2.4,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Jan-Lennard Struff",
+          "player_b": "Francisco Cerundolo",
+          "model_prob_a": 0.386,
+          "market_prob_a": 0.393,
+          "gap_pct_points": 0.7,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Valentin Vacherot",
+          "player_b": "Kamil Majchrzak",
+          "model_prob_a": 0.547,
+          "market_prob_a": 0.544,
+          "gap_pct_points": 0.3,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Alexander Zverev",
+          "player_b": "Quentin Halys",
+          "model_prob_a": 0.818,
+          "market_prob_a": 0.82,
+          "gap_pct_points": 0.2,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Alexander Zverev",
+          "player_b": "Lorenzo Sonego",
+          "model_prob_a": 0.826,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Alexander Zverev"
+        },
+        {
+          "player_a": "Quentin Halys",
+          "player_b": "Facundo Diaz Acosta",
+          "model_prob_a": 0.682,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Quentin Halys"
+        },
+        {
+          "player_a": "Grigor Dimitrov",
+          "player_b": "Alexei Popyrin",
+          "model_prob_a": 0.705,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Alexei Popyrin"
+        },
+        {
+          "player_a": "Yannick Hanfmann",
+          "player_b": "Alejandro Tabilo",
+          "model_prob_a": 0.454,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Alejandro Tabilo"
+        },
+        {
+          "player_a": "Luciano Darderi",
+          "player_b": "Harry Wendelken",
+          "model_prob_a": 0.666,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Luciano Darderi"
+        },
+        {
+          "player_a": "Dalibor Svrcina",
+          "player_b": "Valentin Royer",
+          "model_prob_a": 0.555,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Dalibor Svrcina"
+        },
+        {
+          "player_a": "Dane Sweeny",
+          "player_b": "Corentin Moutet",
+          "model_prob_a": 0.407,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Dane Sweeny"
+        },
+        {
+          "player_a": "Arthur Fery",
+          "player_b": "Lorenzo Musetti",
+          "model_prob_a": 0.327,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Lorenzo Musetti"
+        },
+        {
+          "player_a": "Juan Manuel Cerundolo",
+          "player_b": "Arthur Gea",
+          "model_prob_a": 0.556,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Arthur Gea"
+        },
+        {
+          "player_a": "Zizou Bergs",
+          "player_b": "Carlos Taberner",
+          "model_prob_a": 0.642,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Jesper de Jong",
+          "player_b": "Francesco Passaro",
+          "model_prob_a": 0.662,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Jan Choinski",
+          "player_b": "Botic Van De Zandschulp",
+          "model_prob_a": 0.267,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Botic Van De Zandschulp"
+        },
+        {
+          "player_a": "Felix Auger-Aliassime",
+          "player_b": "Rinky Hijikata",
+          "model_prob_a": 0.807,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Felix Auger-Aliassime"
+        },
+        {
+          "player_a": "Roman Andres Burruchaga",
+          "player_b": "Karen Khachanov",
+          "model_prob_a": 0.449,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Karen Khachanov"
+        },
+        {
+          "player_a": "Alex Molcan",
+          "player_b": "Benjamin Bonzi",
+          "model_prob_a": 0.423,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Benjamin Bonzi"
+        },
+        {
+          "player_a": "Jakub Mensik",
+          "player_b": "Shintaro Mochizuki",
+          "model_prob_a": 0.837,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Jakub Mensik"
+        },
+        {
+          "player_a": "Jurij Rodionov",
+          "player_b": "Giovanni Mpetshi Perricard",
+          "model_prob_a": 0.409,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Jurij Rodionov"
+        },
+        {
+          "player_a": "Adolfo Daniel Vallejo",
+          "player_b": "Gael Monfils",
+          "model_prob_a": 0.437,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Gael Monfils"
+        },
+        {
+          "player_a": "Nuno Borges",
+          "player_b": "Learner Tien",
+          "model_prob_a": 0.381,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Learner Tien"
+        },
+        {
+          "player_a": "Taylor Fritz",
+          "player_b": "Darwin Blanch",
+          "model_prob_a": 0.856,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Taylor Fritz"
+        },
+        {
+          "player_a": "Mattia Bellucci",
+          "player_b": "Zsombor Piros",
+          "model_prob_a": 0.619,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Mattia Bellucci"
+        },
+        {
+          "player_a": "Camilo Ugo Carabelli",
+          "player_b": "Jan-Lennard Struff",
+          "model_prob_a": 0.395,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Jan-Lennard Struff"
+        },
+        {
+          "player_a": "Filip Misolic",
+          "player_b": "Francisco Cerundolo",
+          "model_prob_a": 0.281,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Francisco Cerundolo"
+        },
+        {
+          "player_a": "Alexander Blockx",
+          "player_b": "Tomas Barrios Vera",
+          "model_prob_a": 0.601,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Alexander Blockx"
+        },
+        {
+          "player_a": "Shang Juncheng",
+          "player_b": "Marco Trungelliti",
+          "model_prob_a": 0.571,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Marco Trungelliti"
+        },
+        {
+          "player_a": "Nishesh Basavareddy",
+          "player_b": "Tristan Schoolkate",
+          "model_prob_a": 0.639,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Tristan Schoolkate"
+        },
+        {
+          "player_a": "Francisco Comesana",
+          "player_b": "Flavio Cobolli",
+          "model_prob_a": 0.252,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Flavio Cobolli"
+        },
+        {
+          "player_a": "Daniil Medvedev",
+          "player_b": "Hugo Gaston",
+          "model_prob_a": 0.876,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Daniil Medvedev"
+        },
+        {
+          "player_a": "Sebastian Gorzny",
+          "player_b": "Raphael Collignon",
+          "model_prob_a": 0.18,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Sebastian Gorzny"
+        },
+        {
+          "player_a": "Jaume Munar",
+          "player_b": "Terence Atmane",
+          "model_prob_a": 0.502,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Jaume Munar"
+        },
+        {
+          "player_a": "Sho Shimabukuro",
+          "player_b": "Arthur Rinderknech",
+          "model_prob_a": 0.326,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Arthur Rinderknech"
+        },
+        {
+          "player_a": "Valentin Vacherot",
+          "player_b": "Aleksandar Kovacevic",
+          "model_prob_a": 0.589,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Valentin Vacherot"
+        },
+        {
+          "player_a": "Kamil Majchrzak",
+          "player_b": "Hamad Medjedovic",
+          "model_prob_a": 0.581,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Kamil Majchrzak"
+        },
+        {
+          "player_a": "Aleksandar Vukic",
+          "player_b": "Rei Sakamoto",
+          "model_prob_a": 0.59,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Rei Sakamoto"
+        },
+        {
+          "player_a": "Martin Damm",
+          "player_b": "Frances Tiafoe",
+          "model_prob_a": 0.221,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Frances Tiafoe"
+        },
+        {
+          "player_a": "Brandon Nakashima",
+          "player_b": "Sebastian Baez",
+          "model_prob_a": 0.747,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Brandon Nakashima"
+        },
+        {
+          "player_a": "Alex Michelsen",
+          "player_b": "Federico Cina",
+          "model_prob_a": 0.781,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Alex Michelsen"
+        },
+        {
+          "player_a": "Daniel Merida",
+          "player_b": "Marton Fucsovics",
+          "model_prob_a": 0.642,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Daniel Merida"
+        },
+        {
+          "player_a": "Otto Virtanen",
+          "player_b": "Andrey Rublev",
+          "model_prob_a": 0.262,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Andrey Rublev"
+        },
+        {
+          "player_a": "Tomas Martin Etcheverry",
+          "player_b": "Vit Kopriva",
+          "model_prob_a": 0.562,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Tomas Martin Etcheverry"
+        },
+        {
+          "player_a": "Martin Landaluce",
+          "player_b": "Jacob Fearnley",
+          "model_prob_a": 0.603,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Jacob Fearnley"
+        },
+        {
+          "player_a": "Matteo Berrettini",
+          "player_b": "Stan Wawrinka",
+          "model_prob_a": 0.679,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Matteo Berrettini"
+        },
+        {
+          "player_a": "Mariano Navone",
+          "player_b": "Novak Djokovic",
+          "model_prob_a": 0.142,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Mariano Navone"
+        },
+        {
+          "player_a": "Ben Shelton",
+          "player_b": "Tallon Griekspoor",
+          "model_prob_a": 0.759,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Ben Shelton"
+        },
+        {
+          "player_a": "Damir Dzumhur",
+          "player_b": "Hubert Hurkacz",
+          "model_prob_a": 0.285,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Hubert Hurkacz"
+        },
+        {
+          "player_a": "Miomir Kecmanovic",
+          "player_b": "Denis Shapovalov",
+          "model_prob_a": 0.359,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Denis Shapovalov"
+        },
+        {
+          "player_a": "Luca Van Assche",
+          "player_b": "Cameron Norrie",
+          "model_prob_a": 0.286,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Luca Van Assche"
+        },
+        {
+          "player_a": "Jiri Lehecka",
+          "player_b": "Pablo Carreno Busta",
+          "model_prob_a": 0.732,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Jiri Lehecka"
+        },
+        {
+          "player_a": "Toby Samuel",
+          "player_b": "Tomas Machac",
+          "model_prob_a": 0.264,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Toby Samuel"
+        },
+        {
+          "player_a": "Lloyd Harris",
+          "player_b": "Jack Kennedy",
+          "model_prob_a": 0.403,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Lloyd Harris"
+        },
+        {
+          "player_a": "Stefanos Tsitsipas",
+          "player_b": "Arthur Fils",
+          "model_prob_a": 0.201,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Stefanos Tsitsipas"
+        },
+        {
+          "player_a": "Alexander Bublik",
+          "player_b": "J.J. Wolf",
+          "model_prob_a": 0.781,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Alexander Bublik"
+        },
+        {
+          "player_a": "Thiago Agustin Tirante",
+          "player_b": "Adrian Mannarino",
+          "model_prob_a": 0.72,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Adrian Mannarino"
+        },
+        {
+          "player_a": "Dino Prizmic",
+          "player_b": "Aleksandr Shevchenko",
+          "model_prob_a": 0.498,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Dino Prizmic"
+        },
+        {
+          "player_a": "Chak Lam Coleman Wong",
+          "player_b": "Tommy Paul",
+          "model_prob_a": 0.254,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Tommy Paul"
+        },
+        {
+          "player_a": "Matteo Arnaldi",
+          "player_b": "James Duckworth",
+          "model_prob_a": 0.444,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "James Duckworth"
+        },
+        {
+          "player_a": "Wu Yibing",
+          "player_b": "Adam Walton",
+          "model_prob_a": 0.637,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Wu Yibing"
+        },
+        {
+          "player_a": "Jaime Faria",
+          "player_b": "Jenson Brooksby",
+          "model_prob_a": 0.503,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Jaime Faria"
+        },
+        {
+          "player_a": "Roman Safiullin",
+          "player_b": "Carlos Alcaraz",
+          "model_prob_a": 0.071,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Carlos Alcaraz"
+        },
+        {
+          "player_a": "Daniil Medvedev",
+          "player_b": "Arthur Rinderknech",
+          "model_prob_a": 0.76,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Alex Michelsen",
+          "player_b": "Daniel Merida",
+          "model_prob_a": 0.525,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": false,
+          "winner": null
+        }
+      ]
     }
   ],
-  "matchups": {
-    "T-R1-11": {
-      "slot_a": "Zachary Svajda",
-      "slot_b": "Daniel Altmaier",
-      "p_slot_a": 0.796,
-      "p_slot_b": 0.204,
-      "market_prob_a": 0.796,
-      "market_prob_b": 0.204,
-      "model_prob_a": 0.383,
-      "model_prob_b": 0.617,
-      "relative_change_pct": -51.9
-    },
-    "T-R1-20": {
-      "slot_a": "Marcos Giron",
-      "slot_b": "Ignacio Buse",
-      "p_slot_a": 0.211,
-      "p_slot_b": 0.789,
-      "market_prob_a": 0.211,
-      "market_prob_b": 0.789,
-      "model_prob_a": 0.344,
-      "model_prob_b": 0.656,
-      "relative_change_pct": 62.9
-    },
-    "T-R1-9": {
-      "slot_a": "Rafael Jodar",
-      "slot_b": "Bu Yunchaokete",
-      "p_slot_a": 0.098,
-      "p_slot_b": 0.902,
-      "market_prob_a": 0.098,
-      "market_prob_b": 0.902,
-      "model_prob_a": 0.837,
-      "model_prob_b": 0.163,
-      "relative_change_pct": 757.7
-    },
-    "T-R1-16": {
-      "slot_a": "Andrea Guerrieri",
-      "slot_b": "Alex de Minaur",
-      "p_slot_a": 0.028,
-      "p_slot_b": 0.972,
-      "market_prob_a": 0.028,
-      "market_prob_b": 0.972,
-      "model_prob_a": 0.207,
-      "model_prob_b": 0.793,
-      "relative_change_pct": 630.1
-    },
-    "T-R1-10": {
-      "slot_a": "Fabian Marozsan",
-      "slot_b": "Michael Zheng",
-      "p_slot_a": 0.378,
-      "p_slot_b": 0.622,
-      "market_prob_a": 0.378,
-      "market_prob_b": 0.622,
-      "model_prob_a": 0.591,
-      "model_prob_b": 0.409,
-      "relative_change_pct": 56.1
-    },
-    "T-R1-14": {
-      "slot_a": "Jesper de Jong",
-      "slot_b": "Francesco Passaro",
-      "p_slot_a": 0.662,
-      "p_slot_b": 0.338,
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "model_prob_a": 0.662,
-      "model_prob_b": 0.338,
-      "relative_change_pct": null
-    },
-    "T-R1-13": {
-      "slot_a": "Zizou Bergs",
-      "slot_b": "Carlos Taberner",
-      "p_slot_a": 0.642,
-      "p_slot_b": 0.358,
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "model_prob_a": 0.642,
-      "model_prob_b": 0.358,
-      "relative_change_pct": null
-    },
-    "B-R2-9": {
-      "slot_a": "Ben Shelton",
-      "slot_b": "Hubert Hurkacz",
-      "p_slot_a": 0.697,
-      "p_slot_b": 0.303,
-      "market_prob_a": 0.697,
-      "market_prob_b": 0.303,
-      "model_prob_a": 0.751,
-      "model_prob_b": 0.249,
-      "relative_change_pct": 7.7
-    },
-    "B-R2-7": {
-      "slot_a": "Tomas Martin Etcheverry",
-      "slot_b": "Jacob Fearnley",
-      "p_slot_a": 0.901,
-      "p_slot_b": 0.099,
-      "market_prob_a": 0.901,
-      "market_prob_b": 0.099,
-      "model_prob_a": 0.594,
-      "model_prob_b": 0.406,
-      "relative_change_pct": -34.0
-    },
-    "B-R2-10": {
-      "slot_a": "Denis Shapovalov",
-      "slot_b": "Luca Van Assche",
-      "p_slot_a": 0.576,
-      "p_slot_b": 0.424,
-      "market_prob_a": 0.576,
-      "market_prob_b": 0.424,
-      "model_prob_a": 0.695,
-      "model_prob_b": 0.305,
-      "relative_change_pct": 20.7
-    },
-    "B-R2-15": {
-      "slot_a": "James Duckworth",
-      "slot_b": "Wu Yibing",
-      "p_slot_a": 0.432,
-      "p_slot_b": 0.568,
-      "market_prob_a": 0.432,
-      "market_prob_b": 0.568,
-      "model_prob_a": 0.456,
-      "model_prob_b": 0.544,
-      "relative_change_pct": 5.4
-    },
-    "B-R2-12": {
-      "slot_a": "Lloyd Harris",
-      "slot_b": "Stefanos Tsitsipas",
-      "p_slot_a": 0.32,
-      "p_slot_b": 0.68,
-      "market_prob_a": 0.32,
-      "market_prob_b": 0.68,
-      "model_prob_a": 0.275,
-      "model_prob_b": 0.725,
-      "relative_change_pct": -14.2
-    },
-    "B-R2-14": {
-      "slot_a": "Dino Prizmic",
-      "slot_b": "Tommy Paul",
-      "p_slot_a": 0.191,
-      "p_slot_b": 0.809,
-      "market_prob_a": 0.191,
-      "market_prob_b": 0.809,
-      "model_prob_a": 0.266,
-      "model_prob_b": 0.734,
-      "relative_change_pct": 39.2
-    },
-    "B-R2-8": {
-      "slot_a": "Matteo Berrettini",
-      "slot_b": "Mariano Navone",
-      "p_slot_a": 0.608,
-      "p_slot_b": 0.392,
-      "market_prob_a": 0.608,
-      "market_prob_b": 0.392,
-      "model_prob_a": 0.579,
-      "model_prob_b": 0.421,
-      "relative_change_pct": -4.7
-    },
-    "B-R2-11": {
-      "slot_a": "Jiri Lehecka",
-      "slot_b": "Toby Samuel",
-      "p_slot_a": 0.702,
-      "p_slot_b": 0.298,
-      "market_prob_a": 0.702,
-      "market_prob_b": 0.298,
-      "model_prob_a": 0.763,
-      "model_prob_b": 0.237,
-      "relative_change_pct": 8.7
-    },
-    "B-R2-13": {
-      "slot_a": "Alexander Bublik",
-      "slot_b": "Adrian Mannarino",
-      "p_slot_a": 0.749,
-      "p_slot_b": 0.251,
-      "market_prob_a": 0.749,
-      "market_prob_b": 0.251,
-      "model_prob_a": 0.688,
-      "model_prob_b": 0.312,
-      "relative_change_pct": -8.2
-    },
-    "B-R2-3": {
-      "slot_a": "Valentin Vacherot",
-      "slot_b": "Kamil Majchrzak",
-      "p_slot_a": 0.544,
-      "p_slot_b": 0.456,
-      "market_prob_a": 0.544,
-      "market_prob_b": 0.456,
-      "model_prob_a": 0.547,
-      "model_prob_b": 0.453,
-      "relative_change_pct": 0.5
-    },
-    "B-R2-4": {
-      "slot_a": "Rei Sakamoto",
-      "slot_b": "Frances Tiafoe",
-      "p_slot_a": 0.242,
-      "p_slot_b": 0.758,
-      "market_prob_a": 0.242,
-      "market_prob_b": 0.758,
-      "model_prob_a": 0.142,
-      "model_prob_b": 0.858,
-      "relative_change_pct": -41.6
-    },
-    "B-R2-16": {
-      "slot_a": "Jaime Faria",
-      "slot_b": "Carlos Alcaraz",
-      "p_slot_a": 0.112,
-      "p_slot_b": 0.888,
-      "market_prob_a": 0.112,
-      "market_prob_b": 0.888,
-      "model_prob_a": 0.088,
-      "model_prob_b": 0.912,
-      "relative_change_pct": -20.9
-    },
-    "T-R2-2": {
-      "slot_a": "Alexei Popyrin",
-      "slot_b": "Alejandro Tabilo",
-      "p_slot_a": 0.432,
-      "p_slot_b": 0.568,
-      "market_prob_a": 0.432,
-      "market_prob_b": 0.568,
-      "model_prob_a": 0.378,
-      "model_prob_b": 0.622,
-      "relative_change_pct": -12.4
-    },
-    "T-R2-4": {
-      "slot_a": "Dane Sweeny",
-      "slot_b": "Lorenzo Musetti",
-      "p_slot_a": 0.081,
-      "p_slot_b": 0.919,
-      "market_prob_a": 0.081,
-      "market_prob_b": 0.919,
-      "model_prob_a": 0.204,
-      "model_prob_b": 0.796,
-      "relative_change_pct": 152.2
-    },
-    "T-R2-3": {
-      "slot_a": "Luciano Darderi",
-      "slot_b": "Dalibor Svrcina",
-      "p_slot_a": 0.571,
-      "p_slot_b": 0.429,
-      "market_prob_a": 0.571,
-      "market_prob_b": 0.429,
-      "model_prob_a": 0.635,
-      "model_prob_b": 0.365,
-      "relative_change_pct": 11.2
-    },
-    "T-R2-14": {
-      "slot_a": "Jan-Lennard Struff",
-      "slot_b": "Francisco Cerundolo",
-      "p_slot_a": 0.393,
-      "p_slot_b": 0.607,
-      "market_prob_a": 0.393,
-      "market_prob_b": 0.607,
-      "model_prob_a": 0.386,
-      "model_prob_b": 0.614,
-      "relative_change_pct": -1.8
-    },
-    "T-R2-15": {
-      "slot_a": "Alexander Blockx",
-      "slot_b": "Marco Trungelliti",
-      "p_slot_a": 0.811,
-      "p_slot_b": 0.189,
-      "market_prob_a": 0.811,
-      "market_prob_b": 0.189,
-      "model_prob_a": 0.646,
-      "model_prob_b": 0.354,
-      "relative_change_pct": -20.3
-    },
-    "T-R2-16": {
-      "slot_a": "Tristan Schoolkate",
-      "slot_b": "Flavio Cobolli",
-      "p_slot_a": 0.184,
-      "p_slot_b": 0.816,
-      "market_prob_a": 0.184,
-      "market_prob_b": 0.816,
-      "model_prob_a": 0.158,
-      "model_prob_b": 0.842,
-      "relative_change_pct": -14.0
-    },
-    "T-R2-11": {
-      "slot_a": "Jakub Mensik",
-      "slot_b": "Jurij Rodionov",
-      "p_slot_a": 0.858,
-      "p_slot_b": 0.142,
-      "market_prob_a": 0.858,
-      "market_prob_b": 0.142,
-      "model_prob_a": 0.83,
-      "model_prob_b": 0.17,
-      "relative_change_pct": -3.3
-    },
-    "T-R2-9": {
-      "slot_a": "Felix Auger-Aliassime",
-      "slot_b": "Karen Khachanov",
-      "p_slot_a": 0.703,
-      "p_slot_b": 0.297,
-      "market_prob_a": 0.703,
-      "market_prob_b": 0.297,
-      "model_prob_a": 0.833,
-      "model_prob_b": 0.167,
-      "relative_change_pct": 18.5
-    },
-    "T-R2-13": {
-      "slot_a": "Taylor Fritz",
-      "slot_b": "Mattia Bellucci",
-      "p_slot_a": 0.871,
-      "p_slot_b": 0.129,
-      "market_prob_a": 0.871,
-      "market_prob_b": 0.129,
-      "model_prob_a": 0.827,
-      "model_prob_b": 0.173,
-      "relative_change_pct": -5.0
-    },
-    "T-R2-12": {
-      "slot_a": "Gael Monfils",
-      "slot_b": "Learner Tien",
-      "p_slot_a": 0.21,
-      "p_slot_b": 0.79,
-      "market_prob_a": 0.21,
-      "market_prob_b": 0.79,
-      "model_prob_a": 0.304,
-      "model_prob_b": 0.696,
-      "relative_change_pct": 44.5
-    },
-    "T-R2-1": {
-      "slot_a": "Alexander Zverev",
-      "slot_b": "Quentin Halys",
-      "p_slot_a": 0.82,
-      "p_slot_b": 0.18,
-      "market_prob_a": 0.82,
-      "market_prob_b": 0.18,
-      "model_prob_a": 0.818,
-      "model_prob_b": 0.182,
-      "relative_change_pct": -0.2
-    },
-    "B-R3-1": {
-      "slot_a": "Daniil Medvedev",
-      "slot_b": "Arthur Rinderknech",
-      "p_slot_a": 0.76,
-      "p_slot_b": 0.24,
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "model_prob_a": 0.76,
-      "model_prob_b": 0.24,
-      "relative_change_pct": null
-    },
-    "B-R3-3": {
-      "slot_a": "Alex Michelsen",
-      "slot_b": "Daniel Merida",
-      "p_slot_a": 0.525,
-      "p_slot_b": 0.475,
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "model_prob_a": 0.525,
-      "model_prob_b": 0.475,
-      "relative_change_pct": null
-    }
-  },
   "head_to_head": {
     "Adrian Mannarino|Alejandro Tabilo": 0.384,
     "Adrian Mannarino|Alex Michelsen": 0.314,

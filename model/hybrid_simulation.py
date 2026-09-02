@@ -12,6 +12,7 @@ import re
 import sys
 from collections import defaultdict
 from pathlib import Path
+from types import SimpleNamespace
 
 import pandas as pd
 
@@ -111,7 +112,15 @@ def match_espn_name_to_draw(espn_name, draw_csv_names, name_aliases=None):
             candidate_lastname = [w.lower() for w in (espn_words[-n:] if lastname_at_tail else espn_words[:n])]
             if candidate_lastname != lastname_words:
                 continue
-            firstname_part = "".join(espn_words[:-n] if lastname_at_tail else espn_words[n:])
+            # " ".join, not "": _firstname_matches_suffix re-splits this on whitespace/hyphen to
+            # recover compound initials (e.g. "Carol Young Suh" -> "cys") - "".join collapsed a
+            # genuinely space-separated multi-word given name into one unsplittable token before
+            # that regex ever ran, so a 3+-word given name could never match its own suffix
+            # (confirmed: 'Carol Young Suh Lee' failed to resolve to draw name 'Lee C.Y.', silently
+            # dropping her already-decided Round 1 result). A hyphenated compound (e.g.
+            # "Elena-Gabriela") is unaffected either way - the hyphen is preserved inside a single
+            # espn_words token, not lost at a join boundary.
+            firstname_part = " ".join(espn_words[:-n] if lastname_at_tail else espn_words[n:])
             if _firstname_matches_suffix(firstname_part, suffix):
                 candidates.add(csv_name)
 
@@ -356,26 +365,312 @@ def replay_real_rounds(non_bye_players, bye_players, results_by_round, known_pai
     return fields
 
 
-def _report(label, draw, champion_counts, n_simulations, output_path, upcoming_match=None, top_n=10):
-    """upcoming_match, if given, is a {player: (opponent, probability)} dict (see
-    upcoming_match_info) - added as two columns (upcoming_opponent, upcoming_match_win_probability),
-    separate from tournament_win_probability, so a reader can tell "this player's own upcoming
-    match odds" apart from "the aggregate number moved because the rest of the draw's difficulty
-    became more/less known". Left NaN/empty for anyone not in the dict (e.g. a bye that round, or
-    a round whose real pairing isn't known yet)."""
-    results = pd.DataFrame({
-        "player": draw,
-        "win_count": [champion_counts.get(player, 0) for player in draw],
-    })
-    results["tournament_win_probability"] = results["win_count"] / n_simulations
-    if upcoming_match is not None:
-        results["upcoming_opponent"] = results["player"].map(lambda p: upcoming_match.get(p, (None, None))[0])
-        results["upcoming_match_win_probability"] = results["player"].map(lambda p: upcoming_match.get(p, (None, None))[1])
-    results = results.sort_values("tournament_win_probability", ascending=False).reset_index(drop=True)
+def _report(label, rows, output_path, top_n=10):
+    """rows: compute_round_snapshot's own per-player dicts (player, win_count,
+    tournament_win_probability, upcoming_opponent, upcoming_match_win_probability), already
+    sorted - written to CSV as-is and the top_n printed to the console."""
+    results = pd.DataFrame(rows)
     results.to_csv(output_path, index=False)
 
     print(f"\n=== {label} === (saved to {output_path})")
     print(results.head(top_n).to_string(index=False))
+
+
+def load_hybrid_state(bracket_path, dates=None):
+    """Loads and prepares everything compute_round_snapshot needs to simulate any known (or the
+    next partial) round of `bracket_path` - the setup previously duplicated inline at the top of
+    main(), now split out so a caller that wants EVERY round (build_round_history) can do one load
+    instead of reloading ratings/live-scores data per round.
+
+    true_order/leaf_position come directly from `draw` - already true bracket-position order (see
+    bracket_export.tag_halves_and_quarters' docstring for why) - NOT from
+    reconstruct_leaves_by_round2_slot's ESPN-Round-2 reconstruction. That reconstruction has its
+    own latent bug (confirmed: 14 missing + 14 duplicated leaves out of 128 on a real live draw
+    with mixed decided/undecided Round 1 matches - see that function's own docstring) which every
+    caller of this file's --all-rounds output was silently exposed to until now. This is the exact
+    fix bracket_export.py's matchups loop already applies; porting it here fixes it at the source
+    for every caller of compute_round_snapshot (the CLI and build_round_history alike), not just
+    bracket_export.py's own separate copy of the same fix."""
+    bracket = load_bracket_yaml(bracket_path)
+    players = order_by_draw_position(bracket.players)
+    byes = [p.bye for p in players]
+    validate_bracket_structure(byes)
+
+    tour_config = TOUR_CONFIG[bracket.tour]
+    matches_history = load_matches_for_tour(bracket.tour)
+    ratings_df = calculate_elo_ratings(matches_history, bracket.start_date)
+    ratings_df = ratings_df.sort_values("overall_elo", ascending=False).reset_index(drop=True)
+
+    draw, resolutions, ratings_df = match_draw_to_ratings(
+        players, ratings_df, tour_config.name_aliases, tour_config.match_data_path, bracket.start_date
+    )
+    unmatched = [r for r in resolutions if r["tier"] is None]
+    if unmatched:
+        raise RuntimeError(
+            f"Unmatched bracket names, fix before running a hybrid simulation: "
+            f"{[r['name'] for r in unmatched]}"
+        )
+    tour_config.ratings_path.parent.mkdir(parents=True, exist_ok=True)
+    ratings_df.to_csv(tour_config.ratings_path, index=False)
+    validate_draw(draw)
+    non_bye_players, bye_players = split_byes(draw, byes)
+
+    espn_data = fetch_scoreboard(bracket.tour.lower(), dates=dates)
+    espn_matches, _stats = extract_matches(espn_data)
+    category = TOUR_SINGLES_CATEGORY[bracket.tour.lower()]
+    tournament_matches = [
+        m for m in espn_matches if m["tournament"] == bracket.tournament and m["category"] == category
+    ]
+    if not tournament_matches:
+        raise RuntimeError(f"No live matches found for tournament {bracket.tournament!r} / {category}")
+
+    results_by_round, round_sequence, unresolved_names = build_real_results_by_round(
+        tournament_matches, draw, tour_config.name_aliases
+    )
+    known_pairings_by_round, _round_sequence_2, unresolved_names_2 = build_known_pairings_by_round(
+        tournament_matches, draw, tour_config.name_aliases
+    )
+    unresolved_names = unresolved_names | unresolved_names_2
+
+    # ESPN displayName <-> internal draw (ratings-csv-style) name - same mapping bracket_export.py
+    # builds for its own output, needed here too so a consumer of build_round_history's output
+    # sees the same player-naming convention as bracket_export.py's futures odds, instead of two
+    # different name formats for the same person across one consolidated file (confirmed as a real
+    # bug when an early draft of the consolidated-export work reused a name-mismatched baseline).
+    espn_to_draw, draw_to_espn = {}, {}
+    for m in tournament_matches:
+        for raw_name in (m["player_1"], m["player_2"]):
+            if not raw_name or raw_name == "TBD" or raw_name in espn_to_draw:
+                continue
+            resolved = match_espn_name_to_draw(raw_name, draw, tour_config.name_aliases)
+            if resolved is not None:
+                espn_to_draw[raw_name] = resolved
+                draw_to_espn.setdefault(resolved, raw_name)
+
+    fields = replay_real_rounds(non_bye_players, bye_players, results_by_round, known_pairings_by_round)
+    max_known_round = len(fields) - 1
+
+    true_order = list(zip(draw, byes))
+    leaf_position = {name: i for i, name in enumerate(draw)}
+
+    target_round = max_known_round + 1
+    partial_field = fields[max_known_round]
+    partial_matchups = known_matchups_for_round(target_round, partial_field, known_pairings_by_round)
+    partial_known_results = {}
+    if partial_matchups is not None:
+        round_results = results_by_round.get(target_round, {})
+        partial_known_results = {
+            frozenset(pair): round_results[frozenset(pair)]
+            for pair in partial_matchups if frozenset(pair) in round_results
+        }
+
+    return SimpleNamespace(
+        bracket=bracket, tour_config=tour_config, draw=draw, bye_players=bye_players,
+        fields=fields, max_known_round=max_known_round, round_sequence=round_sequence,
+        known_pairings_by_round=known_pairings_by_round, results_by_round=results_by_round,
+        true_order=true_order, leaf_position=leaf_position, target_round=target_round,
+        partial_field=partial_field, partial_matchups=partial_matchups,
+        partial_known_results=partial_known_results, unresolved_names=unresolved_names,
+        draw_to_espn=draw_to_espn,
+    )
+
+
+def _round_matches(state, n):
+    """Round n's own real matchup pairing (via known_matchups_for_round, the same mechanism
+    everything else in this module uses - not a positional reconstruction), each with the model's
+    pregame win probability for player_a and the real result if round n is already decided. This
+    is the MODEL-only half of a match-level model-vs-market comparison for round n specifically -
+    a caller that also has market data (bracket_export.py's live Odds API fetch, for a still-
+    unsettled match; or a persisted pregame-price cache, for an already-decided one, since The
+    Odds API drops an event once it's Final) attaches that separately - see
+    consolidated_export.build_match_checkpoints.
+
+    state.fields[n - 1] is round n's real starting field for every n this is actually called with
+    (both a fully-known round and the one partial round - state.partial_field IS
+    state.fields[state.max_known_round] = state.fields[state.target_round - 1], so this same
+    lookup is correct for n == state.target_round too, no special-casing needed)."""
+    pairing = known_matchups_for_round(n, state.fields[n - 1], state.known_pairings_by_round)
+    if pairing is None:
+        return []
+    decided = state.results_by_round.get(n, {})
+    matches = []
+    for player_a, player_b in pairing:
+        model_prob_a = win_probability(player_a, player_b, state.bracket.surface, state.tour_config.ratings_path)
+        winner_draw = decided.get(frozenset((player_a, player_b)))
+        matches.append({
+            "player_a": state.draw_to_espn.get(player_a, player_a),
+            "player_b": state.draw_to_espn.get(player_b, player_b),
+            "model_prob_a": round(model_prob_a, 3),
+            "decided": winner_draw is not None,
+            "winner": state.draw_to_espn.get(winner_draw, winner_draw) if winner_draw is not None else None,
+        })
+    return matches
+
+
+def _true_order_sorted(leaf_position, field):
+    return sorted(field, key=lambda name: leaf_position.get(name, len(leaf_position)))
+
+
+def compute_round_snapshot(state, n, n_simulations, seed, use_upset_boost=True):
+    """Runs round n's snapshot (or, if n == state.target_round and it's a partial/about-to-play
+    round, that partial round) against a state already loaded by load_hybrid_state. Returns
+    (upcoming_round_num, field_size, label, rows) - rows is a list of {"player", "win_count",
+    "tournament_win_probability", "upcoming_opponent", "upcoming_match_win_probability"} dicts for
+    EVERY player in state.draw (win_count 0 for anyone not alive at this checkpoint), sorted by
+    tournament_win_probability descending - the same content main()'s CLI writes to a per-round
+    CSV, just returned in memory so a caller (build_round_history) isn't forced to round-trip
+    through disk for every round.
+
+    Raises ValueError if n is out of range (0..state.max_known_round, or state.target_round when
+    a partial round is available) - the caller decides how to report that (CLI exits, a library
+    caller can let it propagate)."""
+    partial = (
+        n == state.target_round and state.partial_matchups is not None and state.partial_known_results
+    )
+    if not partial and not (0 <= n <= state.max_known_round):
+        raise ValueError(f"round {n} is out of range (0..{state.max_known_round} known)")
+
+    # reseeded per-round (not once for the whole run) so a standalone single-round call always
+    # reproduces exactly the same snapshot as round N within a build_round_history/--all-rounds
+    # run - neither draws from wherever the global random stream happened to be left by whatever
+    # ran before it.
+    random.seed(seed + n)
+    tour_config = state.tour_config
+    bracket = state.bracket
+    leaf_position = state.leaf_position
+
+    if partial:
+        # byes only join in right after round 1 - for any later partial round they're already
+        # folded into partial_field (state.fields[max_known_round]).
+        extra_after = state.bye_players if n == 1 else []
+        ordered_partial_field = _true_order_sorted(leaf_position, state.partial_field)
+        champion_counts = run_simulations_partial_round(
+            ordered_partial_field, extra_after, state.partial_known_results, bracket.surface,
+            n_simulations, tour_config.ratings_path, use_upset_boost=use_upset_boost,
+            matchups=state.partial_matchups,
+        )
+        upcoming = upcoming_match_info(
+            n, state.partial_field, state.known_pairings_by_round, bracket.surface, tour_config.ratings_path)
+        label = (
+            f"Round {n} - {len(state.partial_field)} players about to play "
+            f"({len(state.partial_known_results)}/{len(state.partial_matchups)} already decided, "
+            f"rest simulated)"
+        )
+        upcoming_round_num, field_size = n, len(state.partial_field)
+    else:
+        starting_field = _true_order_sorted(leaf_position, state.fields[n])
+        confirmed_real_pairing_for = {}
+        for r in range(n + 1, state.max_known_round + 1):
+            round_pairing = known_matchups_for_round(r, state.fields[r - 1], state.known_pairings_by_round)
+            if round_pairing is not None:
+                confirmed_real_pairing_for[frozenset(state.fields[r - 1])] = round_pairing
+
+        def matchups_resolver(players, _real_pairing_for=confirmed_real_pairing_for):
+            return _real_pairing_for.get(frozenset(players))
+
+        champion_counts = run_simulations_from_field(
+            starting_field, bracket.surface, n_simulations, tour_config.ratings_path,
+            use_upset_boost=use_upset_boost, matchups_resolver=matchups_resolver,
+        )
+        upcoming_round = n + 1
+        upcoming = upcoming_match_info(
+            upcoming_round, state.fields[n], state.known_pairings_by_round, bracket.surface, tour_config.ratings_path)
+        label = f"Round {upcoming_round} - {len(starting_field)} players about to play"
+        upcoming_round_num, field_size = upcoming_round, len(starting_field)
+
+    rows = []
+    for player in state.draw:
+        opp, prob = upcoming.get(player, (None, None))
+        rows.append({
+            "player": player,
+            "win_count": champion_counts.get(player, 0),
+            "tournament_win_probability": champion_counts.get(player, 0) / n_simulations,
+            "upcoming_opponent": opp,
+            "upcoming_match_win_probability": prob,
+        })
+    rows.sort(key=lambda r: -r["tournament_win_probability"])
+    return upcoming_round_num, field_size, label, rows
+
+
+def build_round_history(bracket_path, n_simulations=2000, seed=42, dates=None, use_upset_boost=True,
+                         previous_history=None):
+    """Every fully-known round (1..max_known_round) plus the next partial/about-to-play round (if
+    its matchups and at least one result are already known) - the same per-round champion-
+    probability computation --all-rounds already writes to CSV, just collected here as one ordered
+    list in memory for a consolidated-export-style caller. Players are keyed by ESPN displayName
+    (via state.draw_to_espn), matching bracket_export.py's own player-naming convention, and any
+    player with a 0.0 tournament_win_probability at a given checkpoint is dropped from that
+    checkpoint's list (already eliminated by then - keeping 100+ zero rows per round would bloat
+    the output for no signal). Each entry also carries "matches" - round n's own real matchup
+    pairing with the model's pregame probability and real result if decided (see _round_matches) -
+    the model-only half of a match-level model-vs-market comparison scoped to that specific round;
+    a caller with market data (consolidated_export.py) attaches that separately per round.
+
+    n_simulations defaults lower than a futures export's own (2000 vs 10000) - this runs one full
+    Monte Carlo simulation per historical round (up to 6-7 of them deep into a Slam), and
+    round-by-round HISTORY doesn't need the same precision a single current snapshot does to still
+    show the right shape of how a player's odds moved round to round.
+
+    previous_history, if given, is a prior call's own return value (or the "round_history" field
+    of a consolidated export built from one) - any of its entries for a round that is (a) not
+    partial and (b) still <= the currently known round is reused as-is instead of rerun, since a
+    round's own result never changes once it's fully decided (fields[n] is locked in by
+    replay_real_rounds at that point - rerunning it would only spend simulation budget to
+    reproduce the same distribution, not learn anything new). Only a round that just became fully
+    known for the FIRST time this call, or the still-in-progress partial round (which by
+    definition changes every time a match completes within it, so it is NEVER cached), triggers an
+    actual new simulation - this is what lets a caller like live_match_watcher.py refresh the
+    round history on every match completion without resimulating the whole tournament's history
+    each time."""
+    state = load_hybrid_state(bracket_path, dates=dates)
+    round_numbers = list(range(1, state.max_known_round + 1))
+    is_partial_available = state.partial_matchups is not None and bool(state.partial_known_results)
+    if is_partial_available:
+        round_numbers.append(state.target_round)
+
+    # cached_by_n: n -> that round's own previously-computed, non-partial history entry, keyed by
+    # the INPUT round n (not the output "round" field) - a non-partial compute_round_snapshot(state,
+    # n, ...) always labels its output "round" as n+1 (see its own docstring), so entry["round"] - 1
+    # recovers n. Filtering to non-partial entries first means a round that was still the partial
+    # "about to play" checkpoint last time this was called is correctly excluded here and gets a
+    # real (non-partial) computation below now that it's finished, instead of reusing its stale
+    # partial snapshot.
+    cached_by_n = {
+        entry["round"] - 1: entry
+        for entry in (previous_history or [])
+        if not entry["partial"] and entry["round"] - 1 <= state.max_known_round
+    }
+
+    history = []
+    for n in round_numbers:
+        if n in cached_by_n:
+            history.append(cached_by_n[n])
+            continue
+        upcoming_round_num, field_size, label, rows = compute_round_snapshot(
+            state, n, n_simulations, seed, use_upset_boost=use_upset_boost)
+        history.append({
+            "round": upcoming_round_num,
+            "players_about_to_play": field_size,
+            "label": label,
+            "partial": n == state.target_round and is_partial_available,
+            "players": [
+                {
+                    "player": state.draw_to_espn.get(r["player"], r["player"]),
+                    "tournament_win_probability": round(r["tournament_win_probability"], 4),
+                    "upcoming_opponent": (
+                        state.draw_to_espn.get(r["upcoming_opponent"], r["upcoming_opponent"])
+                        if r["upcoming_opponent"] is not None else None
+                    ),
+                    "upcoming_match_win_probability": (
+                        round(r["upcoming_match_win_probability"], 4)
+                        if r["upcoming_match_win_probability"] is not None else None
+                    ),
+                }
+                for r in rows if r["tournament_win_probability"] > 0
+            ],
+            "matches": _round_matches(state, n),
+        })
+    return history
 
 
 def main():
@@ -409,120 +704,25 @@ def main():
         parser.error("pass --through-round N or --all-rounds")
 
     try:
-        bracket = load_bracket_yaml(args.bracket_path)
-    except BracketValidationError as e:
-        print(e, file=sys.stderr)
-        sys.exit(1)
-
-    players = order_by_draw_position(bracket.players)
-    byes = [p.bye for p in players]
-    try:
-        validate_bracket_structure(byes)
-    except ValueError as e:
+        state = load_hybrid_state(args.bracket_path, dates=args.dates)
+    except (BracketValidationError, LiveScoresError, RuntimeError) as e:
         print(f"{args.bracket_path}: {e}", file=sys.stderr)
         sys.exit(1)
 
-    tour_config = TOUR_CONFIG[bracket.tour]
-    matches_history = load_matches_for_tour(bracket.tour)
-    ratings_df = calculate_elo_ratings(matches_history, bracket.start_date)
-    ratings_df = ratings_df.sort_values("overall_elo", ascending=False).reset_index(drop=True)
-
-    draw, resolutions, ratings_df = match_draw_to_ratings(
-        players, ratings_df, tour_config.name_aliases, tour_config.match_data_path, bracket.start_date
-    )
-    unmatched = [r for r in resolutions if r["tier"] is None]
-    if unmatched:
-        print("Unmatched bracket names, fix before running a hybrid simulation:", file=sys.stderr)
-        for entry in unmatched:
-            print(f"  {entry['name']}", file=sys.stderr)
-        sys.exit(1)
-    # match_draw_to_ratings may have appended tier-3 STARTING_ELO placeholder rows (a genuinely
-    # new player with no training-window history - see its own docstring) to its own in-memory
-    # copy of ratings_df. Every simulation call below reads ratings from tour_config.ratings_path
-    # on disk, not this DataFrame directly, so without writing it back out, a tier-3 player's
-    # placeholder never actually reaches win_probability() - it silently raises "Unknown player"
-    # the first time that player's own match is simulated instead. bracket_export.py already does
-    # this write-out (see its own ratings_df.to_csv call); this was just missing here.
-    tour_config.ratings_path.parent.mkdir(parents=True, exist_ok=True)
-    ratings_df.to_csv(tour_config.ratings_path, index=False)
-    validate_draw(draw)
-    non_bye_players, bye_players = split_byes(draw, byes)
-
-    try:
-        espn_data = fetch_scoreboard(bracket.tour.lower(), dates=args.dates)
-    except LiveScoresError as e:
-        print(f"ERROR fetching live results: {e}", file=sys.stderr)
-        sys.exit(1)
-    espn_matches, stats = extract_matches(espn_data)
-    category = TOUR_SINGLES_CATEGORY[bracket.tour.lower()]
-    tournament_matches = [
-        m for m in espn_matches if m["tournament"] == bracket.tournament and m["category"] == category
-    ]
-    if not tournament_matches:
-        print(
-            f"ERROR: no live matches found for tournament {bracket.tournament!r} / {category} - "
-            f"check the tournament name matches ESPN's exactly.",
-            file=sys.stderr,
-        )
-        sys.exit(1)
-
-    results_by_round, round_sequence, unresolved_names = build_real_results_by_round(
-        tournament_matches, draw, tour_config.name_aliases
-    )
-    known_pairings_by_round, _round_sequence_2, unresolved_names_2 = build_known_pairings_by_round(
-        tournament_matches, draw, tour_config.name_aliases
-    )
-    unresolved_names = unresolved_names | unresolved_names_2
-    if unresolved_names:
-        print(f"WARNING: {len(unresolved_names)} ESPN player name(s) could not be matched to the "
-              f"draw (their matches are excluded from real results): {sorted(unresolved_names)}",
+    print(f"Round sequence observed: {state.round_sequence}")
+    print(f"Real results fully known through round {state.max_known_round} of the main draw "
+          f"(then simulated normally from there)")
+    if state.unresolved_names:
+        print(f"WARNING: {len(state.unresolved_names)} ESPN player name(s) could not be matched to "
+              f"the draw (their matches are excluded from real results): {sorted(state.unresolved_names)}",
               file=sys.stderr)
 
-    fields = replay_real_rounds(non_bye_players, bye_players, results_by_round, known_pairings_by_round)
-    max_known_round = len(fields) - 1
-    print(f"Round sequence observed: {round_sequence}")
-    print(f"Real results fully known through round {max_known_round} of the main draw "
-          f"(then simulated normally from there)")
-
-    # fields[n]'s own order is NOT true bracket adjacency - it's "round-n winners in match order,
-    # then (for n==1 only) every bye appended after them", which pairs winner-vs-winner and
-    # bye-vs-bye in whatever round a checkpoint starts simulating from, exactly the naive
-    # concatenation reconstruct_leaves_by_round2_slot's own docstring warns about (confirmed via a
-    # real case: Djokovic - a bye - was landing a simulated Round 2 opponent of Mensik J., another
-    # bye, instead of his real bracket neighbor Tirante T.A.). bracket_export.py already avoids
-    # this by re-deriving true adjacency via leaves_by_slot before simulating; every checkpoint
-    # here needs the same fix, not just the round-1-to-2 transition, since any --through-round N
-    # starts its first simulated round from fields[N]'s (still potentially wrong) order.
-    leaves_by_slot = reconstruct_leaves_by_round2_slot(
-        tournament_matches, non_bye_players, bye_players, results_by_round, tour_config.name_aliases
-    )
-    true_order = true_bracket_order(leaves_by_slot)
-    leaf_position = {name: i for i, (name, _is_bye) in enumerate(true_order)}
-
-    def true_order_sorted(field):
-        return sorted(field, key=lambda name: leaf_position.get(name, len(leaf_position)))
-
-    # the round right after the last fully-decided one may still be partially replayable: its
-    # matchup structure might already be fully known (round 1, always; round 2+, only if ESPN
-    # has published real names for every pairing) even though not every match in it has been
-    # played yet. Not a round-1 special case - round 1 is just the instance of this that's
-    # always available, since its matchups never depend on ESPN reporting anything.
-    target_round = max_known_round + 1
-    partial_field = fields[max_known_round]
-    partial_matchups = known_matchups_for_round(target_round, partial_field, known_pairings_by_round)
-    partial_known_results = {}
-    if partial_matchups is not None:
-        round_results = results_by_round.get(target_round, {})
-        partial_known_results = {
-            frozenset(pair): round_results[frozenset(pair)]
-            for pair in partial_matchups if frozenset(pair) in round_results
-        }
-
-    if partial_matchups is not None and partial_known_results:
-        print(f"Round {target_round} matchups are fully known ({len(partial_field)} players) - "
-              f"{len(partial_known_results)}/{len(partial_matchups)} already final - "
-              f"--through-round {target_round} will pin those and simulate the rest.")
-    elif max_known_round == 0:
+    is_partial_available = state.partial_matchups is not None and bool(state.partial_known_results)
+    if is_partial_available:
+        print(f"Round {state.target_round} matchups are fully known ({len(state.partial_field)} players) - "
+              f"{len(state.partial_known_results)}/{len(state.partial_matchups)} already final - "
+              f"--through-round {state.target_round} will pin those and simulate the rest.")
+    elif state.max_known_round == 0:
         print("No fully-known real round available, and the next round's matchups and/or "
               "results aren't usable yet either - nothing to replay yet.", file=sys.stderr)
         sys.exit(1)
@@ -531,95 +731,20 @@ def main():
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     def run_snapshot(n):
-        partial = n == target_round and partial_matchups is not None and partial_known_results
-        if not partial and not (0 <= n <= max_known_round):
-            print(f"ERROR: --through-round {n} is out of range (0..{max_known_round} known)", file=sys.stderr)
+        try:
+            upcoming_round_num, field_size, label, rows = compute_round_snapshot(
+                state, n, args.simulations, args.seed, use_upset_boost=args.use_upset_boost)
+        except ValueError as e:
+            print(f"ERROR: {e}", file=sys.stderr)
             sys.exit(1)
-        # reseeded per-round (not once for the whole run) so a standalone --through-round N
-        # always reproduces exactly the same snapshot as round N within an --all-rounds run -
-        # neither draws from wherever the global random stream happened to be left by whatever
-        # ran before it.
-        random.seed(args.seed + n)
-        if partial:
-            # byes only join in right after round 1 - for any later partial round they're
-            # already folded into partial_field (fields[max_known_round]).
-            extra_after = bye_players if n == 1 else []
-            # true bracket order, not fields[]'s own order - see the true_order_sorted comment
-            # above; partial_field is round-N's real field (only non-bye players when n==1, since
-            # byes join separately via extra_after), so sorting it into true adjacency makes
-            # _play_round's own positional get_matchups pair real bracket neighbors correctly.
-            ordered_partial_field = true_order_sorted(partial_field)
-            champion_counts = run_simulations_partial_round(
-                ordered_partial_field, extra_after, partial_known_results, bracket.surface,
-                args.simulations, tour_config.ratings_path, use_upset_boost=args.use_upset_boost,
-                matchups=partial_matchups,
-            )
-            output_path = args.output_dir / f"{bracket_stem}_round_{n}_of_{len(partial_field)}_players.csv"
-            # partial_field is round-n's real field entering round n itself, so partial_matchups
-            # (already computed above) IS round n's own pairing - covers both the finished matches
-            # (partial_known_results) and the ones still to be played, "about to play" per
-            # upcoming_match_info's docstring. No +1 shift needed here (unlike the non-partial
-            # branch below) - a partial checkpoint's own round IS already the round about to play.
-            upcoming = upcoming_match_info(
-                n, partial_field, known_pairings_by_round, bracket.surface, tour_config.ratings_path)
-            _report(
-                f"Round {n} - {len(partial_field)} players about to play "
-                f"({len(partial_known_results)}/{len(partial_matchups)} already decided, rest simulated)",
-                draw, champion_counts, args.simulations, output_path, upcoming_match=upcoming,
-                top_n=args.top_n,
-            )
-            return
-        starting_field = true_order_sorted(fields[n])
-        # fields[n] is real/deterministic (round n is fully known), so round n+1's real opponent
-        # pairing is itself already fully determined - it only requires round n to be over, not
-        # round n+1 to have been played. true_order_sorted's positional pairing does NOT
-        # reconstruct that real pairing past round 2 (it only reconstructs true round-1-leaf
-        # adjacency, which round n+1's pairing among round-n winners no longer matches for n>1 -
-        # confirmed by a real case: it paired Fils A. against Zverev A., a matchup that never
-        # happened, when Fils A.'s real round-3 opponent was Lehecka J.). And this isn't only a
-        # round n+1 problem: every round through max_known_round is equally real (that's what
-        # "known" means), so the same fix applies at each of them in turn, not just the first -
-        # confirmed_real_pairing_for below maps each real round's starting field (as a frozenset,
-        # order-independent) to that round's real known pairing, for every round from n+1 through
-        # max_known_round. A simulated trial keeps getting the real pairing for as long as its
-        # simulated winners keep landing exactly on the real historical survivors; the moment one
-        # simulated result diverges from reality, the next round's survivor set no longer matches
-        # any key here, and pairing correctly falls back to plain positional (there's no "real"
-        # pairing to substitute for a player who didn't actually make it that far) - same
-        # fallback as when nothing beyond max_known_round is known at all.
-        confirmed_real_pairing_for = {}
-        for r in range(n + 1, max_known_round + 1):
-            round_pairing = known_matchups_for_round(r, fields[r - 1], known_pairings_by_round)
-            if round_pairing is not None:
-                confirmed_real_pairing_for[frozenset(fields[r - 1])] = round_pairing
-
-        def matchups_resolver(players, _real_pairing_for=confirmed_real_pairing_for):
-            return _real_pairing_for.get(frozenset(players))
-
-        champion_counts = run_simulations_from_field(
-            starting_field, bracket.surface, args.simulations, tour_config.ratings_path,
-            use_upset_boost=args.use_upset_boost, matchups_resolver=matchups_resolver,
-        )
-        # this checkpoint is labeled by the round ABOUT TO BE PLAYED (n+1), not the round that just
-        # finished (n) - fields[n] is the real field entering round n+1, so "Round {n+1} - {count}
-        # players about to play" describes this exact moment: tournament_win_probability here is
-        # the forecast as of right before round n+1 happens, and the upcoming-match column below is
-        # each player's round n+1 opponent and pre-match win probability (forward-looking, never
-        # retroactively adjusted by the real result - see upcoming_match_info's docstring), even
-        # for an n+1 that has, in real time, already been played by now.
-        upcoming_round = n + 1
-        output_path = args.output_dir / f"{bracket_stem}_round_{upcoming_round}_of_{len(starting_field)}_players.csv"
-        upcoming = upcoming_match_info(
-            upcoming_round, fields[n], known_pairings_by_round, bracket.surface, tour_config.ratings_path,
-        )
-        _report(f"Round {upcoming_round} - {len(starting_field)} players about to play", draw, champion_counts,
-                args.simulations, output_path, upcoming_match=upcoming, top_n=args.top_n)
+        output_path = args.output_dir / f"{bracket_stem}_round_{upcoming_round_num}_of_{field_size}_players.csv"
+        _report(label, rows, output_path, top_n=args.top_n)
 
     if args.all_rounds:
-        for n in range(1, max_known_round + 1):
+        for n in range(1, state.max_known_round + 1):
             run_snapshot(n)
-        if partial_matchups is not None and partial_known_results:
-            run_snapshot(target_round)
+        if is_partial_available:
+            run_snapshot(state.target_round)
     else:
         run_snapshot(args.through_round)
 

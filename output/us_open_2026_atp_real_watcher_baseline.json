@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "us-open-men-2026",
-    "generated_at": "2026-09-02T19:23:06Z",
+    "generated_at": "2026-09-02T18:41:08Z",
     "iterations": 10000,
     "seed": 42
   },
@@ -9,219 +9,205 @@
     {
       "player": "Carlos Alcaraz",
       "quarter": "Q4",
-      "p_champ": 0.367,
-      "p_sf": 0.581,
-      "p_final": 0.478
+      "p_champ": 0.365,
+      "p_sf": 0.578,
+      "p_final": 0.475
     },
     {
       "player": "Alexander Zverev",
       "quarter": "Q1",
-      "p_champ": 0.124,
-      "p_sf": 0.378,
-      "p_final": 0.243
+      "p_champ": 0.121,
+      "p_sf": 0.373,
+      "p_final": 0.244
     },
     {
       "player": "Felix Auger-Aliassime",
       "quarter": "Q2",
-      "p_champ": 0.062,
-      "p_sf": 0.268,
-      "p_final": 0.149
+      "p_champ": 0.069,
+      "p_sf": 0.269,
+      "p_final": 0.158
     },
     {
       "player": "Ben Shelton",
       "quarter": "Q4",
-      "p_champ": 0.054,
-      "p_sf": 0.159,
-      "p_final": 0.104
+      "p_champ": 0.053,
+      "p_sf": 0.156,
+      "p_final": 0.103
     },
     {
       "player": "Taylor Fritz",
       "quarter": "Q2",
-      "p_champ": 0.051,
-      "p_sf": 0.23,
-      "p_final": 0.122
+      "p_champ": 0.052,
+      "p_sf": 0.237,
+      "p_final": 0.125
     },
     {
       "player": "Frances Tiafoe",
       "quarter": "Q3",
       "p_champ": 0.045,
-      "p_sf": 0.247,
-      "p_final": 0.087
+      "p_sf": 0.252,
+      "p_final": 0.089
     },
     {
       "player": "Daniil Medvedev",
       "quarter": "Q3",
-      "p_champ": 0.038,
-      "p_sf": 0.219,
-      "p_final": 0.077
+      "p_champ": 0.041,
+      "p_sf": 0.227,
+      "p_final": 0.08
     },
     {
       "player": "Rafael Jodar",
       "quarter": "Q1",
-      "p_champ": 0.033,
-      "p_sf": 0.152,
-      "p_final": 0.084
+      "p_champ": 0.03,
+      "p_sf": 0.147,
+      "p_final": 0.077
     },
     {
       "player": "Alex de Minaur",
       "quarter": "Q1",
       "p_champ": 0.025,
-      "p_sf": 0.128,
-      "p_final": 0.066
+      "p_sf": 0.132,
+      "p_final": 0.067
     },
     {
       "player": "Lorenzo Musetti",
       "quarter": "Q1",
-      "p_champ": 0.024,
+      "p_champ": 0.021,
       "p_sf": 0.138,
-      "p_final": 0.065
+      "p_final": 0.064
     },
     {
       "player": "Jakub Mensik",
       "quarter": "Q2",
-      "p_champ": 0.02,
-      "p_sf": 0.127,
+      "p_champ": 0.021,
+      "p_sf": 0.13,
       "p_final": 0.059
     },
     {
       "player": "Flavio Cobolli",
       "quarter": "Q2",
       "p_champ": 0.02,
-      "p_sf": 0.133,
-      "p_final": 0.064
+      "p_sf": 0.13,
+      "p_final": 0.058
+    },
+    {
+      "player": "Jiri Lehecka",
+      "quarter": "Q4",
+      "p_champ": 0.015,
+      "p_sf": 0.068,
+      "p_final": 0.035
+    },
+    {
+      "player": "Tommy Paul",
+      "quarter": "Q4",
+      "p_champ": 0.015,
+      "p_sf": 0.065,
+      "p_final": 0.035
     },
     {
       "player": "Learner Tien",
       "quarter": "Q2",
       "p_champ": 0.014,
-      "p_sf": 0.096,
-      "p_final": 0.042
-    },
-    {
-      "player": "Tommy Paul",
-      "quarter": "Q4",
-      "p_champ": 0.013,
-      "p_sf": 0.065,
-      "p_final": 0.033
-    },
-    {
-      "player": "Jiri Lehecka",
-      "quarter": "Q4",
-      "p_champ": 0.012,
-      "p_sf": 0.06,
-      "p_final": 0.029
-    },
-    {
-      "player": "Alexander Bublik",
-      "quarter": "Q4",
-      "p_champ": 0.005,
-      "p_sf": 0.032,
-      "p_final": 0.015
-    },
-    {
-      "player": "Botic Van De Zandschulp",
-      "quarter": "Q1",
-      "p_champ": 0.004,
-      "p_sf": 0.044,
-      "p_final": 0.016
+      "p_sf": 0.093,
+      "p_final": 0.041
     },
     {
       "player": "Alex Michelsen",
       "quarter": "Q3",
-      "p_champ": 0.004,
-      "p_sf": 0.052,
-      "p_final": 0.013
-    },
-    {
-      "player": "Daniel Merida",
-      "quarter": "Q3",
-      "p_champ": 0.004,
-      "p_sf": 0.046,
+      "p_champ": 0.005,
+      "p_sf": 0.047,
       "p_final": 0.012
     },
     {
       "player": "Denis Shapovalov",
       "quarter": "Q4",
       "p_champ": 0.004,
-      "p_sf": 0.029,
-      "p_final": 0.011
-    },
-    {
-      "player": "Alejandro Tabilo",
-      "quarter": "Q1",
-      "p_champ": 0.003,
-      "p_sf": 0.027,
+      "p_sf": 0.023,
       "p_final": 0.01
     },
     {
-      "player": "Luciano Darderi",
-      "quarter": "Q1",
-      "p_champ": 0.003,
-      "p_sf": 0.029,
+      "player": "Stefanos Tsitsipas",
+      "quarter": "Q4",
+      "p_champ": 0.004,
+      "p_sf": 0.026,
       "p_final": 0.011
     },
     {
-      "player": "Francisco Cerundolo",
-      "quarter": "Q2",
-      "p_champ": 0.003,
-      "p_sf": 0.031,
-      "p_final": 0.01
+      "player": "Alexander Bublik",
+      "quarter": "Q4",
+      "p_champ": 0.004,
+      "p_sf": 0.028,
+      "p_final": 0.013
     },
     {
-      "player": "Alexander Blockx",
-      "quarter": "Q2",
+      "player": "Daniel Merida",
+      "quarter": "Q3",
       "p_champ": 0.003,
-      "p_sf": 0.031,
+      "p_sf": 0.043,
       "p_final": 0.009
     },
     {
       "player": "Matteo Berrettini",
       "quarter": "Q3",
       "p_champ": 0.003,
-      "p_sf": 0.052,
-      "p_final": 0.012
+      "p_sf": 0.049,
+      "p_final": 0.011
     },
     {
-      "player": "Stefanos Tsitsipas",
-      "quarter": "Q4",
-      "p_champ": 0.003,
-      "p_sf": 0.025,
+      "player": "Alejandro Tabilo",
+      "quarter": "Q1",
+      "p_champ": 0.002,
+      "p_sf": 0.029,
+      "p_final": 0.009
+    },
+    {
+      "player": "Luciano Darderi",
+      "quarter": "Q1",
+      "p_champ": 0.002,
+      "p_sf": 0.032,
       "p_final": 0.01
     },
     {
-      "player": "Ignacio Buse",
+      "player": "Arthur Gea",
+      "quarter": "Q1",
+      "p_champ": 0.002,
+      "p_sf": 0.022,
+      "p_final": 0.005
+    },
+    {
+      "player": "Botic Van De Zandschulp",
+      "quarter": "Q1",
+      "p_champ": 0.002,
+      "p_sf": 0.031,
+      "p_final": 0.009
+    },
+    {
+      "player": "Francisco Cerundolo",
       "quarter": "Q2",
       "p_champ": 0.002,
-      "p_sf": 0.02,
-      "p_final": 0.007
+      "p_sf": 0.033,
+      "p_final": 0.011
+    },
+    {
+      "player": "Alexander Blockx",
+      "quarter": "Q2",
+      "p_champ": 0.002,
+      "p_sf": 0.029,
+      "p_final": 0.01
     },
     {
       "player": "Valentin Vacherot",
       "quarter": "Q3",
       "p_champ": 0.002,
-      "p_sf": 0.033,
-      "p_final": 0.006
-    },
-    {
-      "player": "Mariano Navone",
-      "quarter": "Q3",
-      "p_champ": 0.002,
-      "p_sf": 0.025,
+      "p_sf": 0.031,
       "p_final": 0.005
     },
     {
       "player": "Quentin Halys",
       "quarter": "Q1",
       "p_champ": 0.001,
-      "p_sf": 0.016,
-      "p_final": 0.005
-    },
-    {
-      "player": "Alexei Popyrin",
-      "quarter": "Q1",
-      "p_champ": 0.001,
-      "p_sf": 0.006,
-      "p_final": 0.001
+      "p_sf": 0.018,
+      "p_final": 0.006
     },
     {
       "player": "Fabian Marozsan",
@@ -231,25 +217,39 @@
       "p_final": 0.004
     },
     {
-      "player": "Arthur Gea",
-      "quarter": "Q1",
-      "p_champ": 0.001,
-      "p_sf": 0.019,
-      "p_final": 0.006
-    },
-    {
       "player": "Zizou Bergs",
       "quarter": "Q1",
       "p_champ": 0.001,
-      "p_sf": 0.013,
-      "p_final": 0.003
+      "p_sf": 0.016,
+      "p_final": 0.005
+    },
+    {
+      "player": "Andrea Guerrieri",
+      "quarter": "Q1",
+      "p_champ": 0.001,
+      "p_sf": 0.005,
+      "p_final": 0.001
     },
     {
       "player": "Benjamin Bonzi",
       "quarter": "Q2",
       "p_champ": 0.001,
-      "p_sf": 0.023,
-      "p_final": 0.006
+      "p_sf": 0.013,
+      "p_final": 0.005
+    },
+    {
+      "player": "Ignacio Buse",
+      "quarter": "Q2",
+      "p_champ": 0.001,
+      "p_sf": 0.02,
+      "p_final": 0.007
+    },
+    {
+      "player": "Arthur Rinderknech",
+      "quarter": "Q3",
+      "p_champ": 0.001,
+      "p_sf": 0.014,
+      "p_final": 0.002
     },
     {
       "player": "Kamil Majchrzak",
@@ -262,56 +262,77 @@
       "player": "Tomas Martin Etcheverry",
       "quarter": "Q3",
       "p_champ": 0.001,
-      "p_sf": 0.02,
+      "p_sf": 0.021,
       "p_final": 0.003
+    },
+    {
+      "player": "Mariano Navone",
+      "quarter": "Q3",
+      "p_champ": 0.001,
+      "p_sf": 0.024,
+      "p_final": 0.005
     },
     {
       "player": "Hubert Hurkacz",
       "quarter": "Q4",
       "p_champ": 0.001,
       "p_sf": 0.012,
-      "p_final": 0.003
+      "p_final": 0.004
     },
     {
       "player": "James Duckworth",
       "quarter": "Q4",
       "p_champ": 0.001,
       "p_sf": 0.007,
-      "p_final": 0.002
+      "p_final": 0.001
+    },
+    {
+      "player": "Wu Yibing",
+      "quarter": "Q4",
+      "p_champ": 0.001,
+      "p_sf": 0.01,
+      "p_final": 0.004
     },
     {
       "player": "Jaime Faria",
       "quarter": "Q4",
       "p_champ": 0.001,
       "p_sf": 0.007,
-      "p_final": 0.003
+      "p_final": 0.002
+    },
+    {
+      "player": "Alexei Popyrin",
+      "quarter": "Q1",
+      "p_champ": 0.0,
+      "p_sf": 0.008,
+      "p_final": 0.002
     },
     {
       "player": "Dalibor Svrcina",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.001
+      "p_sf": 0.006,
+      "p_final": 0.002
     },
     {
       "player": "Dane Sweeny",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.005,
+      "p_sf": 0.003,
       "p_final": 0.001
     },
     {
       "player": "Bu Yunchaokete",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.001,
+      "p_sf": 0.002,
       "p_final": 0.0
     },
     {
       "player": "Michael Zheng",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.006,
+      "p_sf": 0.005,
       "p_final": 0.002
     },
     {
@@ -325,8 +346,8 @@
       "player": "Daniel Altmaier",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.006,
-      "p_final": 0.001
+      "p_sf": 0.009,
+      "p_final": 0.002
     },
     {
       "player": "Carlos Taberner",
@@ -350,46 +371,53 @@
       "p_final": 0.0
     },
     {
-      "player": "Andrea Guerrieri",
+      "player": "Jan Choinski",
       "quarter": "Q1",
       "p_champ": 0.0,
-      "p_sf": 0.003,
-      "p_final": 0.001
+      "p_sf": 0.001,
+      "p_final": 0.0
     },
     {
       "player": "Karen Khachanov",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.007,
+      "p_sf": 0.008,
+      "p_final": 0.003
+    },
+    {
+      "player": "Alex Molcan",
+      "quarter": "Q2",
+      "p_champ": 0.0,
+      "p_sf": 0.003,
       "p_final": 0.001
     },
     {
       "player": "Marcos Giron",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.003,
+      "p_sf": 0.002,
       "p_final": 0.0
     },
     {
       "player": "Jurij Rodionov",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
+      "p_sf": 0.002,
+      "p_final": 0.001
     },
     {
       "player": "Gael Monfils",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.009,
-      "p_final": 0.002
+      "p_sf": 0.011,
+      "p_final": 0.003
     },
     {
       "player": "Mattia Bellucci",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.006,
-      "p_final": 0.002
+      "p_sf": 0.004,
+      "p_final": 0.001
     },
     {
       "player": "Jan-Lennard Struff",
@@ -402,28 +430,21 @@
       "player": "Marco Trungelliti",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.001
+      "p_sf": 0.006,
+      "p_final": 0.002
     },
     {
       "player": "Tristan Schoolkate",
       "quarter": "Q2",
       "p_champ": 0.0,
-      "p_sf": 0.002,
+      "p_sf": 0.001,
       "p_final": 0.0
-    },
-    {
-      "player": "Arthur Rinderknech",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.017,
-      "p_final": 0.003
     },
     {
       "player": "Rei Sakamoto",
       "quarter": "Q3",
       "p_champ": 0.0,
-      "p_sf": 0.004,
+      "p_sf": 0.003,
       "p_final": 0.0
     },
     {
@@ -438,7 +459,7 @@
       "quarter": "Q4",
       "p_champ": 0.0,
       "p_sf": 0.003,
-      "p_final": 0.0
+      "p_final": 0.001
     },
     {
       "player": "Toby Samuel",
@@ -451,97 +472,101 @@
       "player": "Lloyd Harris",
       "quarter": "Q4",
       "p_champ": 0.0,
-      "p_sf": 0.002,
+      "p_sf": 0.001,
       "p_final": 0.0
     },
     {
       "player": "Adrian Mannarino",
       "quarter": "Q4",
       "p_champ": 0.0,
-      "p_sf": 0.003,
+      "p_sf": 0.004,
       "p_final": 0.001
     },
     {
       "player": "Dino Prizmic",
       "quarter": "Q4",
       "p_champ": 0.0,
-      "p_sf": 0.004,
-      "p_final": 0.002
-    },
-    {
-      "player": "Wu Yibing",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.007,
+      "p_sf": 0.005,
       "p_final": 0.002
     }
   ],
   "matchups": {
+    "T-R1-15": {
+      "slot_a": "Jan Choinski",
+      "slot_b": "Botic Van De Zandschulp",
+      "p_slot_a": 0.267,
+      "p_slot_b": 0.733,
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "model_prob_a": 0.267,
+      "model_prob_b": 0.733,
+      "relative_change_pct": null
+    },
     "T-R1-11": {
       "slot_a": "Zachary Svajda",
       "slot_b": "Daniel Altmaier",
-      "p_slot_a": 0.796,
-      "p_slot_b": 0.204,
-      "market_prob_a": 0.796,
-      "market_prob_b": 0.204,
+      "p_slot_a": 0.916,
+      "p_slot_b": 0.084,
+      "market_prob_a": 0.916,
+      "market_prob_b": 0.084,
       "model_prob_a": 0.383,
       "model_prob_b": 0.617,
-      "relative_change_pct": -51.9
+      "relative_change_pct": -58.2
+    },
+    "T-R1-19": {
+      "slot_a": "Alex Molcan",
+      "slot_b": "Benjamin Bonzi",
+      "p_slot_a": 0.423,
+      "p_slot_b": 0.577,
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "model_prob_a": 0.423,
+      "model_prob_b": 0.577,
+      "relative_change_pct": null
     },
     "T-R1-20": {
       "slot_a": "Marcos Giron",
       "slot_b": "Ignacio Buse",
-      "p_slot_a": 0.211,
-      "p_slot_b": 0.789,
-      "market_prob_a": 0.211,
-      "market_prob_b": 0.789,
+      "p_slot_a": 0.412,
+      "p_slot_b": 0.588,
+      "market_prob_a": 0.412,
+      "market_prob_b": 0.588,
       "model_prob_a": 0.344,
       "model_prob_b": 0.656,
-      "relative_change_pct": 62.9
+      "relative_change_pct": -16.5
     },
     "T-R1-9": {
       "slot_a": "Rafael Jodar",
       "slot_b": "Bu Yunchaokete",
-      "p_slot_a": 0.098,
-      "p_slot_b": 0.902,
-      "market_prob_a": 0.098,
-      "market_prob_b": 0.902,
+      "p_slot_a": 0.308,
+      "p_slot_b": 0.692,
+      "market_prob_a": 0.308,
+      "market_prob_b": 0.692,
       "model_prob_a": 0.837,
       "model_prob_b": 0.163,
-      "relative_change_pct": 757.7
+      "relative_change_pct": 171.5
     },
     "T-R1-16": {
       "slot_a": "Andrea Guerrieri",
       "slot_b": "Alex de Minaur",
-      "p_slot_a": 0.028,
-      "p_slot_b": 0.972,
-      "market_prob_a": 0.028,
-      "market_prob_b": 0.972,
+      "p_slot_a": 0.049,
+      "p_slot_b": 0.951,
+      "market_prob_a": 0.049,
+      "market_prob_b": 0.951,
       "model_prob_a": 0.207,
       "model_prob_b": 0.793,
-      "relative_change_pct": 630.1
+      "relative_change_pct": 318.2
     },
     "T-R1-10": {
       "slot_a": "Fabian Marozsan",
       "slot_b": "Michael Zheng",
-      "p_slot_a": 0.378,
-      "p_slot_b": 0.622,
-      "market_prob_a": 0.378,
-      "market_prob_b": 0.622,
+      "p_slot_a": 0.416,
+      "p_slot_b": 0.584,
+      "market_prob_a": 0.416,
+      "market_prob_b": 0.584,
       "model_prob_a": 0.591,
       "model_prob_b": 0.409,
-      "relative_change_pct": 56.1
-    },
-    "T-R1-14": {
-      "slot_a": "Jesper de Jong",
-      "slot_b": "Francesco Passaro",
-      "p_slot_a": 0.662,
-      "p_slot_b": 0.338,
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "model_prob_a": 0.662,
-      "model_prob_b": 0.338,
-      "relative_change_pct": null
+      "relative_change_pct": 42.1
     },
     "T-R1-13": {
       "slot_a": "Zizou Bergs",
@@ -554,60 +579,82 @@
       "model_prob_b": 0.358,
       "relative_change_pct": null
     },
+    "T-R1-14": {
+      "slot_a": "Jesper de Jong",
+      "slot_b": "Francesco Passaro",
+      "p_slot_a": 0.662,
+      "p_slot_b": 0.338,
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "model_prob_a": 0.662,
+      "model_prob_b": 0.338,
+      "relative_change_pct": null
+    },
     "B-R2-9": {
       "slot_a": "Ben Shelton",
       "slot_b": "Hubert Hurkacz",
-      "p_slot_a": 0.697,
-      "p_slot_b": 0.303,
-      "market_prob_a": 0.697,
-      "market_prob_b": 0.303,
+      "p_slot_a": 0.764,
+      "p_slot_b": 0.236,
+      "market_prob_a": 0.764,
+      "market_prob_b": 0.236,
       "model_prob_a": 0.751,
       "model_prob_b": 0.249,
-      "relative_change_pct": 7.7
+      "relative_change_pct": -1.7
     },
     "B-R2-7": {
       "slot_a": "Tomas Martin Etcheverry",
       "slot_b": "Jacob Fearnley",
-      "p_slot_a": 0.901,
-      "p_slot_b": 0.099,
-      "market_prob_a": 0.901,
-      "market_prob_b": 0.099,
+      "p_slot_a": 0.888,
+      "p_slot_b": 0.112,
+      "market_prob_a": 0.888,
+      "market_prob_b": 0.112,
       "model_prob_a": 0.594,
       "model_prob_b": 0.406,
-      "relative_change_pct": -34.0
+      "relative_change_pct": -33.1
     },
     "B-R2-10": {
       "slot_a": "Denis Shapovalov",
       "slot_b": "Luca Van Assche",
-      "p_slot_a": 0.576,
-      "p_slot_b": 0.424,
-      "market_prob_a": 0.576,
-      "market_prob_b": 0.424,
+      "p_slot_a": 0.582,
+      "p_slot_b": 0.418,
+      "market_prob_a": 0.582,
+      "market_prob_b": 0.418,
       "model_prob_a": 0.695,
       "model_prob_b": 0.305,
-      "relative_change_pct": 20.7
+      "relative_change_pct": 19.5
     },
     "B-R2-15": {
       "slot_a": "James Duckworth",
       "slot_b": "Wu Yibing",
-      "p_slot_a": 0.432,
-      "p_slot_b": 0.568,
-      "market_prob_a": 0.432,
-      "market_prob_b": 0.568,
+      "p_slot_a": 0.43,
+      "p_slot_b": 0.57,
+      "market_prob_a": 0.43,
+      "market_prob_b": 0.57,
       "model_prob_a": 0.456,
       "model_prob_b": 0.544,
-      "relative_change_pct": 5.4
+      "relative_change_pct": 5.9
     },
-    "B-R2-12": {
-      "slot_a": "Lloyd Harris",
-      "slot_b": "Stefanos Tsitsipas",
-      "p_slot_a": 0.32,
-      "p_slot_b": 0.68,
-      "market_prob_a": 0.32,
-      "market_prob_b": 0.68,
-      "model_prob_a": 0.275,
-      "model_prob_b": 0.725,
-      "relative_change_pct": -14.2
+    "B-R2-11": {
+      "slot_a": "Jiri Lehecka",
+      "slot_b": "Toby Samuel",
+      "p_slot_a": 0.703,
+      "p_slot_b": 0.297,
+      "market_prob_a": 0.703,
+      "market_prob_b": 0.297,
+      "model_prob_a": 0.763,
+      "model_prob_b": 0.237,
+      "relative_change_pct": 8.5
+    },
+    "B-R2-8": {
+      "slot_a": "Matteo Berrettini",
+      "slot_b": "Mariano Navone",
+      "p_slot_a": 0.62,
+      "p_slot_b": 0.38,
+      "market_prob_a": 0.62,
+      "market_prob_b": 0.38,
+      "model_prob_a": 0.579,
+      "model_prob_b": 0.421,
+      "relative_change_pct": -6.5
     },
     "B-R2-14": {
       "slot_a": "Dino Prizmic",
@@ -620,28 +667,6 @@
       "model_prob_b": 0.734,
       "relative_change_pct": 39.2
     },
-    "B-R2-8": {
-      "slot_a": "Matteo Berrettini",
-      "slot_b": "Mariano Navone",
-      "p_slot_a": 0.608,
-      "p_slot_b": 0.392,
-      "market_prob_a": 0.608,
-      "market_prob_b": 0.392,
-      "model_prob_a": 0.579,
-      "model_prob_b": 0.421,
-      "relative_change_pct": -4.7
-    },
-    "B-R2-11": {
-      "slot_a": "Jiri Lehecka",
-      "slot_b": "Toby Samuel",
-      "p_slot_a": 0.702,
-      "p_slot_b": 0.298,
-      "market_prob_a": 0.702,
-      "market_prob_b": 0.298,
-      "model_prob_a": 0.763,
-      "model_prob_b": 0.237,
-      "relative_change_pct": 8.7
-    },
     "B-R2-13": {
       "slot_a": "Alexander Bublik",
       "slot_b": "Adrian Mannarino",
@@ -653,16 +678,27 @@
       "model_prob_b": 0.312,
       "relative_change_pct": -8.2
     },
+    "B-R2-12": {
+      "slot_a": "Lloyd Harris",
+      "slot_b": "Stefanos Tsitsipas",
+      "p_slot_a": 0.321,
+      "p_slot_b": 0.679,
+      "market_prob_a": 0.321,
+      "market_prob_b": 0.679,
+      "model_prob_a": 0.275,
+      "model_prob_b": 0.725,
+      "relative_change_pct": -14.4
+    },
     "B-R2-3": {
       "slot_a": "Valentin Vacherot",
       "slot_b": "Kamil Majchrzak",
-      "p_slot_a": 0.544,
-      "p_slot_b": 0.456,
-      "market_prob_a": 0.544,
-      "market_prob_b": 0.456,
+      "p_slot_a": 0.542,
+      "p_slot_b": 0.458,
+      "market_prob_a": 0.542,
+      "market_prob_b": 0.458,
       "model_prob_a": 0.547,
       "model_prob_b": 0.453,
-      "relative_change_pct": 0.5
+      "relative_change_pct": 0.9
     },
     "B-R2-4": {
       "slot_a": "Rei Sakamoto",
@@ -673,18 +709,18 @@
       "market_prob_b": 0.758,
       "model_prob_a": 0.142,
       "model_prob_b": 0.858,
-      "relative_change_pct": -41.6
+      "relative_change_pct": -41.4
     },
     "B-R2-16": {
       "slot_a": "Jaime Faria",
       "slot_b": "Carlos Alcaraz",
-      "p_slot_a": 0.112,
-      "p_slot_b": 0.888,
-      "market_prob_a": 0.112,
-      "market_prob_b": 0.888,
+      "p_slot_a": 0.113,
+      "p_slot_b": 0.887,
+      "market_prob_a": 0.113,
+      "market_prob_b": 0.887,
       "model_prob_a": 0.088,
       "model_prob_b": 0.912,
-      "relative_change_pct": -20.9
+      "relative_change_pct": -22.1
     },
     "T-R2-2": {
       "slot_a": "Alexei Popyrin",
@@ -733,13 +769,13 @@
     "T-R2-15": {
       "slot_a": "Alexander Blockx",
       "slot_b": "Marco Trungelliti",
-      "p_slot_a": 0.811,
-      "p_slot_b": 0.189,
-      "market_prob_a": 0.811,
-      "market_prob_b": 0.189,
+      "p_slot_a": 0.808,
+      "p_slot_b": 0.192,
+      "market_prob_a": 0.808,
+      "market_prob_b": 0.192,
       "model_prob_a": 0.646,
       "model_prob_b": 0.354,
-      "relative_change_pct": -20.3
+      "relative_change_pct": -20.0
     },
     "T-R2-16": {
       "slot_a": "Tristan Schoolkate",
@@ -794,15 +830,15 @@
       "market_prob_b": 0.79,
       "model_prob_a": 0.304,
       "model_prob_b": 0.696,
-      "relative_change_pct": 44.5
+      "relative_change_pct": 44.6
     },
     "T-R2-1": {
       "slot_a": "Alexander Zverev",
       "slot_b": "Quentin Halys",
-      "p_slot_a": 0.82,
-      "p_slot_b": 0.18,
-      "market_prob_a": 0.82,
-      "market_prob_b": 0.18,
+      "p_slot_a": 0.819,
+      "p_slot_b": 0.181,
+      "market_prob_a": 0.819,
+      "market_prob_b": 0.181,
       "model_prob_a": 0.818,
       "model_prob_b": 0.182,
       "relative_change_pct": -0.2
@@ -833,6 +869,7 @@
   "head_to_head": {
     "Adrian Mannarino|Alejandro Tabilo": 0.384,
     "Adrian Mannarino|Alex Michelsen": 0.314,
+    "Adrian Mannarino|Alex Molcan": 0.473,
     "Adrian Mannarino|Alex de Minaur": 0.207,
     "Adrian Mannarino|Alexander Blockx": 0.396,
     "Adrian Mannarino|Alexander Zverev": 0.124,
@@ -866,6 +903,7 @@
     "Adrian Mannarino|Jaime Faria": 0.411,
     "Adrian Mannarino|Jakub Mensik": 0.22,
     "Adrian Mannarino|James Duckworth": 0.454,
+    "Adrian Mannarino|Jan Choinski": 0.591,
     "Adrian Mannarino|Jan-Lennard Struff": 0.457,
     "Adrian Mannarino|Jesper de Jong": 0.572,
     "Adrian Mannarino|Jiri Lehecka": 0.256,
@@ -897,6 +935,7 @@
     "Adrian Mannarino|Zachary Svajda": 0.596,
     "Adrian Mannarino|Zizou Bergs": 0.446,
     "Alejandro Tabilo|Alex Michelsen": 0.424,
+    "Alejandro Tabilo|Alex Molcan": 0.633,
     "Alejandro Tabilo|Alex de Minaur": 0.295,
     "Alejandro Tabilo|Alexander Blockx": 0.516,
     "Alejandro Tabilo|Alexander Bublik": 0.421,
@@ -930,6 +969,7 @@
     "Alejandro Tabilo|Jaime Faria": 0.571,
     "Alejandro Tabilo|Jakub Mensik": 0.311,
     "Alejandro Tabilo|James Duckworth": 0.561,
+    "Alejandro Tabilo|Jan Choinski": 0.698,
     "Alejandro Tabilo|Jan-Lennard Struff": 0.596,
     "Alejandro Tabilo|Jesper de Jong": 0.657,
     "Alejandro Tabilo|Jiri Lehecka": 0.355,
@@ -960,6 +1000,7 @@
     "Alejandro Tabilo|Wu Yibing": 0.585,
     "Alejandro Tabilo|Zachary Svajda": 0.703,
     "Alejandro Tabilo|Zizou Bergs": 0.568,
+    "Alex Michelsen|Alex Molcan": 0.662,
     "Alex Michelsen|Alex de Minaur": 0.362,
     "Alex Michelsen|Alexander Blockx": 0.588,
     "Alex Michelsen|Alexander Bublik": 0.471,
@@ -993,6 +1034,7 @@
     "Alex Michelsen|Jaime Faria": 0.604,
     "Alex Michelsen|Jakub Mensik": 0.381,
     "Alex Michelsen|James Duckworth": 0.635,
+    "Alex Michelsen|Jan Choinski": 0.759,
     "Alex Michelsen|Jan-Lennard Struff": 0.667,
     "Alex Michelsen|Jesper de Jong": 0.723,
     "Alex Michelsen|Jiri Lehecka": 0.405,
@@ -1023,6 +1065,70 @@
     "Alex Michelsen|Wu Yibing": 0.593,
     "Alex Michelsen|Zachary Svajda": 0.763,
     "Alex Michelsen|Zizou Bergs": 0.638,
+    "Alex Molcan|Alex de Minaur": 0.225,
+    "Alex Molcan|Alexander Blockx": 0.381,
+    "Alex Molcan|Alexander Bublik": 0.335,
+    "Alex Molcan|Alexander Zverev": 0.136,
+    "Alex Molcan|Alexei Popyrin": 0.581,
+    "Alex Molcan|Andrea Guerrieri": 0.525,
+    "Alex Molcan|Arthur Gea": 0.49,
+    "Alex Molcan|Arthur Rinderknech": 0.421,
+    "Alex Molcan|Ben Shelton": 0.177,
+    "Alex Molcan|Botic Van De Zandschulp": 0.369,
+    "Alex Molcan|Bu Yunchaokete": 0.594,
+    "Alex Molcan|Carlos Alcaraz": 0.07,
+    "Alex Molcan|Carlos Taberner": 0.617,
+    "Alex Molcan|Dalibor Svrcina": 0.585,
+    "Alex Molcan|Dane Sweeny": 0.577,
+    "Alex Molcan|Daniel Altmaier": 0.483,
+    "Alex Molcan|Daniel Merida": 0.361,
+    "Alex Molcan|Daniil Medvedev": 0.216,
+    "Alex Molcan|Denis Shapovalov": 0.357,
+    "Alex Molcan|Dino Prizmic": 0.51,
+    "Alex Molcan|Fabian Marozsan": 0.414,
+    "Alex Molcan|Felix Auger-Aliassime": 0.169,
+    "Alex Molcan|Flavio Cobolli": 0.275,
+    "Alex Molcan|Frances Tiafoe": 0.21,
+    "Alex Molcan|Francesco Passaro": 0.678,
+    "Alex Molcan|Francisco Cerundolo": 0.391,
+    "Alex Molcan|Gael Monfils": 0.588,
+    "Alex Molcan|Hubert Hurkacz": 0.393,
+    "Alex Molcan|Ignacio Buse": 0.358,
+    "Alex Molcan|Jacob Fearnley": 0.607,
+    "Alex Molcan|Jaime Faria": 0.435,
+    "Alex Molcan|Jakub Mensik": 0.239,
+    "Alex Molcan|James Duckworth": 0.468,
+    "Alex Molcan|Jan Choinski": 0.616,
+    "Alex Molcan|Jan-Lennard Struff": 0.472,
+    "Alex Molcan|Jesper de Jong": 0.571,
+    "Alex Molcan|Jiri Lehecka": 0.276,
+    "Alex Molcan|Jurij Rodionov": 0.604,
+    "Alex Molcan|Kamil Majchrzak": 0.458,
+    "Alex Molcan|Karen Khachanov": 0.468,
+    "Alex Molcan|Learner Tien": 0.253,
+    "Alex Molcan|Lloyd Harris": 0.623,
+    "Alex Molcan|Lorenzo Musetti": 0.259,
+    "Alex Molcan|Luca Van Assche": 0.559,
+    "Alex Molcan|Luciano Darderi": 0.37,
+    "Alex Molcan|Marco Trungelliti": 0.571,
+    "Alex Molcan|Marcos Giron": 0.553,
+    "Alex Molcan|Mariano Navone": 0.44,
+    "Alex Molcan|Matteo Berrettini": 0.39,
+    "Alex Molcan|Mattia Bellucci": 0.543,
+    "Alex Molcan|Michael Zheng": 0.506,
+    "Alex Molcan|Quentin Halys": 0.389,
+    "Alex Molcan|Rafael Jodar": 0.221,
+    "Alex Molcan|Rei Sakamoto": 0.622,
+    "Alex Molcan|Stefanos Tsitsipas": 0.385,
+    "Alex Molcan|Taylor Fritz": 0.199,
+    "Alex Molcan|Toby Samuel": 0.552,
+    "Alex Molcan|Tomas Martin Etcheverry": 0.47,
+    "Alex Molcan|Tommy Paul": 0.26,
+    "Alex Molcan|Tristan Schoolkate": 0.668,
+    "Alex Molcan|Valentin Vacherot": 0.42,
+    "Alex Molcan|Wu Yibing": 0.454,
+    "Alex Molcan|Zachary Svajda": 0.622,
+    "Alex Molcan|Zizou Bergs": 0.432,
     "Alex de Minaur|Alexander Blockx": 0.716,
     "Alex de Minaur|Alexander Bublik": 0.635,
     "Alex de Minaur|Alexander Zverev": 0.352,
@@ -1055,6 +1161,7 @@
     "Alex de Minaur|Jaime Faria": 0.728,
     "Alex de Minaur|Jakub Mensik": 0.527,
     "Alex de Minaur|James Duckworth": 0.754,
+    "Alex de Minaur|Jan Choinski": 0.847,
     "Alex de Minaur|Jan-Lennard Struff": 0.779,
     "Alex de Minaur|Jesper de Jong": 0.821,
     "Alex de Minaur|Jiri Lehecka": 0.569,
@@ -1117,6 +1224,7 @@
     "Alexander Blockx|Jaime Faria": 0.556,
     "Alexander Blockx|Jakub Mensik": 0.301,
     "Alexander Blockx|James Duckworth": 0.588,
+    "Alexander Blockx|Jan Choinski": 0.687,
     "Alexander Blockx|Jan-Lennard Struff": 0.593,
     "Alexander Blockx|Jesper de Jong": 0.646,
     "Alexander Blockx|Jiri Lehecka": 0.344,
@@ -1177,6 +1285,7 @@
     "Alexander Bublik|Jaime Faria": 0.606,
     "Alexander Bublik|Jakub Mensik": 0.383,
     "Alexander Bublik|James Duckworth": 0.637,
+    "Alexander Bublik|Jan Choinski": 0.761,
     "Alexander Bublik|Jan-Lennard Struff": 0.669,
     "Alexander Bublik|Jesper de Jong": 0.725,
     "Alexander Bublik|Jiri Lehecka": 0.434,
@@ -1237,6 +1346,7 @@
     "Alexander Zverev|Jaime Faria": 0.832,
     "Alexander Zverev|Jakub Mensik": 0.666,
     "Alexander Zverev|James Duckworth": 0.849,
+    "Alexander Zverev|Jan Choinski": 0.911,
     "Alexander Zverev|Jan-Lennard Struff": 0.867,
     "Alexander Zverev|Jesper de Jong": 0.894,
     "Alexander Zverev|Jiri Lehecka": 0.708,
@@ -1295,6 +1405,7 @@
     "Alexei Popyrin|Jaime Faria": 0.358,
     "Alexei Popyrin|Jakub Mensik": 0.216,
     "Alexei Popyrin|James Duckworth": 0.389,
+    "Alexei Popyrin|Jan Choinski": 0.585,
     "Alexei Popyrin|Jan-Lennard Struff": 0.398,
     "Alexei Popyrin|Jesper de Jong": 0.539,
     "Alexei Popyrin|Jiri Lehecka": 0.251,
@@ -1353,6 +1464,7 @@
     "Andrea Guerrieri|Jaime Faria": 0.424,
     "Andrea Guerrieri|Jakub Mensik": 0.219,
     "Andrea Guerrieri|James Duckworth": 0.46,
+    "Andrea Guerrieri|Jan Choinski": 0.592,
     "Andrea Guerrieri|Jan-Lennard Struff": 0.485,
     "Andrea Guerrieri|Jesper de Jong": 0.545,
     "Andrea Guerrieri|Jiri Lehecka": 0.257,
@@ -1410,6 +1522,7 @@
     "Arthur Gea|Jaime Faria": 0.446,
     "Arthur Gea|Jakub Mensik": 0.277,
     "Arthur Gea|James Duckworth": 0.479,
+    "Arthur Gea|Jan Choinski": 0.662,
     "Arthur Gea|Jan-Lennard Struff": 0.487,
     "Arthur Gea|Jesper de Jong": 0.619,
     "Arthur Gea|Jiri Lehecka": 0.318,
@@ -1465,6 +1578,7 @@
     "Arthur Rinderknech|Jaime Faria": 0.515,
     "Arthur Rinderknech|Jakub Mensik": 0.265,
     "Arthur Rinderknech|James Duckworth": 0.548,
+    "Arthur Rinderknech|Jan Choinski": 0.648,
     "Arthur Rinderknech|Jan-Lennard Struff": 0.553,
     "Arthur Rinderknech|Jesper de Jong": 0.604,
     "Arthur Rinderknech|Jiri Lehecka": 0.305,
@@ -1519,6 +1633,7 @@
     "Ben Shelton|Jaime Faria": 0.783,
     "Ben Shelton|Jakub Mensik": 0.593,
     "Ben Shelton|James Duckworth": 0.805,
+    "Ben Shelton|Jan Choinski": 0.882,
     "Ben Shelton|Jan-Lennard Struff": 0.826,
     "Ben Shelton|Jesper de Jong": 0.86,
     "Ben Shelton|Jiri Lehecka": 0.639,
@@ -1573,6 +1688,7 @@
     "Benjamin Bonzi|Jaime Faria": 0.512,
     "Benjamin Bonzi|Jakub Mensik": 0.321,
     "Benjamin Bonzi|James Duckworth": 0.572,
+    "Benjamin Bonzi|Jan Choinski": 0.707,
     "Benjamin Bonzi|Jan-Lennard Struff": 0.606,
     "Benjamin Bonzi|Jesper de Jong": 0.667,
     "Benjamin Bonzi|Jiri Lehecka": 0.365,
@@ -1678,6 +1794,7 @@
     "Bu Yunchaokete|Jaime Faria": 0.347,
     "Bu Yunchaokete|Jakub Mensik": 0.177,
     "Bu Yunchaokete|James Duckworth": 0.345,
+    "Bu Yunchaokete|Jan Choinski": 0.524,
     "Bu Yunchaokete|Jan-Lennard Struff": 0.352,
     "Bu Yunchaokete|Jesper de Jong": 0.458,
     "Bu Yunchaokete|Jiri Lehecka": 0.207,
@@ -1727,6 +1844,7 @@
     "Carlos Alcaraz|Jacob Fearnley": 0.954,
     "Carlos Alcaraz|Jakub Mensik": 0.807,
     "Carlos Alcaraz|James Duckworth": 0.922,
+    "Carlos Alcaraz|Jan Choinski": 0.955,
     "Carlos Alcaraz|Jan-Lennard Struff": 0.932,
     "Carlos Alcaraz|Jesper de Jong": 0.947,
     "Carlos Alcaraz|Jiri Lehecka": 0.836,
@@ -1777,6 +1895,7 @@
     "Carlos Taberner|Jaime Faria": 0.326,
     "Carlos Taberner|Jakub Mensik": 0.163,
     "Carlos Taberner|James Duckworth": 0.355,
+    "Carlos Taberner|Jan Choinski": 0.478,
     "Carlos Taberner|Jan-Lennard Struff": 0.389,
     "Carlos Taberner|Jesper de Jong": 0.452,
     "Carlos Taberner|Jiri Lehecka": 0.192,
@@ -1825,6 +1944,7 @@
     "Dalibor Svrcina|Jaime Faria": 0.353,
     "Dalibor Svrcina|Jakub Mensik": 0.201,
     "Dalibor Svrcina|James Duckworth": 0.384,
+    "Dalibor Svrcina|Jan Choinski": 0.562,
     "Dalibor Svrcina|Jan-Lennard Struff": 0.391,
     "Dalibor Svrcina|Jesper de Jong": 0.5,
     "Dalibor Svrcina|Jiri Lehecka": 0.234,
@@ -1872,6 +1992,7 @@
     "Dane Sweeny|Jaime Faria": 0.363,
     "Dane Sweeny|Jakub Mensik": 0.187,
     "Dane Sweeny|James Duckworth": 0.355,
+    "Dane Sweeny|Jan Choinski": 0.54,
     "Dane Sweeny|Jan-Lennard Struff": 0.428,
     "Dane Sweeny|Jesper de Jong": 0.468,
     "Dane Sweeny|Jiri Lehecka": 0.219,
@@ -1918,6 +2039,7 @@
     "Daniel Altmaier|Jaime Faria": 0.452,
     "Daniel Altmaier|Jakub Mensik": 0.235,
     "Daniel Altmaier|James Duckworth": 0.485,
+    "Daniel Altmaier|Jan Choinski": 0.611,
     "Daniel Altmaier|Jan-Lennard Struff": 0.488,
     "Daniel Altmaier|Jesper de Jong": 0.601,
     "Daniel Altmaier|Jiri Lehecka": 0.273,
@@ -1963,6 +2085,7 @@
     "Daniel Merida|Jaime Faria": 0.579,
     "Daniel Merida|Jakub Mensik": 0.357,
     "Daniel Merida|James Duckworth": 0.611,
+    "Daniel Merida|Jan Choinski": 0.74,
     "Daniel Merida|Jan-Lennard Struff": 0.644,
     "Daniel Merida|Jesper de Jong": 0.702,
     "Daniel Merida|Jiri Lehecka": 0.403,
@@ -2008,6 +2131,7 @@
     "Daniil Medvedev|Jaime Faria": 0.738,
     "Daniil Medvedev|Jakub Mensik": 0.539,
     "Daniil Medvedev|James Duckworth": 0.763,
+    "Daniil Medvedev|Jan Choinski": 0.853,
     "Daniil Medvedev|Jan-Lennard Struff": 0.788,
     "Daniil Medvedev|Jesper de Jong": 0.828,
     "Daniil Medvedev|Jiri Lehecka": 0.581,
@@ -2052,6 +2176,7 @@
     "Denis Shapovalov|Jaime Faria": 0.583,
     "Denis Shapovalov|Jakub Mensik": 0.361,
     "Denis Shapovalov|James Duckworth": 0.615,
+    "Denis Shapovalov|Jan Choinski": 0.743,
     "Denis Shapovalov|Jan-Lennard Struff": 0.648,
     "Denis Shapovalov|Jesper de Jong": 0.705,
     "Denis Shapovalov|Jiri Lehecka": 0.407,
@@ -2094,6 +2219,7 @@
     "Dino Prizmic|Jaime Faria": 0.425,
     "Dino Prizmic|Jakub Mensik": 0.244,
     "Dino Prizmic|James Duckworth": 0.458,
+    "Dino Prizmic|Jan Choinski": 0.623,
     "Dino Prizmic|Jan-Lennard Struff": 0.464,
     "Dino Prizmic|Jesper de Jong": 0.578,
     "Dino Prizmic|Jiri Lehecka": 0.283,
@@ -2135,6 +2261,7 @@
     "Fabian Marozsan|Jaime Faria": 0.522,
     "Fabian Marozsan|Jakub Mensik": 0.294,
     "Fabian Marozsan|James Duckworth": 0.555,
+    "Fabian Marozsan|Jan Choinski": 0.681,
     "Fabian Marozsan|Jan-Lennard Struff": 0.558,
     "Fabian Marozsan|Jesper de Jong": 0.638,
     "Fabian Marozsan|Jiri Lehecka": 0.337,
@@ -2175,6 +2302,7 @@
     "Felix Auger-Aliassime|Jaime Faria": 0.792,
     "Felix Auger-Aliassime|Jakub Mensik": 0.606,
     "Felix Auger-Aliassime|James Duckworth": 0.813,
+    "Felix Auger-Aliassime|Jan Choinski": 0.887,
     "Felix Auger-Aliassime|Jan-Lennard Struff": 0.834,
     "Felix Auger-Aliassime|Jesper de Jong": 0.867,
     "Felix Auger-Aliassime|Jiri Lehecka": 0.652,
@@ -2214,6 +2342,7 @@
     "Flavio Cobolli|Jaime Faria": 0.672,
     "Flavio Cobolli|Jakub Mensik": 0.458,
     "Flavio Cobolli|James Duckworth": 0.701,
+    "Flavio Cobolli|Jan Choinski": 0.809,
     "Flavio Cobolli|Jan-Lennard Struff": 0.73,
     "Flavio Cobolli|Jesper de Jong": 0.778,
     "Flavio Cobolli|Jiri Lehecka": 0.506,
@@ -2252,6 +2381,7 @@
     "Frances Tiafoe|Jaime Faria": 0.745,
     "Frances Tiafoe|Jakub Mensik": 0.534,
     "Frances Tiafoe|James Duckworth": 0.769,
+    "Frances Tiafoe|Jan Choinski": 0.858,
     "Frances Tiafoe|Jan-Lennard Struff": 0.793,
     "Frances Tiafoe|Jesper de Jong": 0.833,
     "Frances Tiafoe|Jiri Lehecka": 0.589,
@@ -2289,6 +2419,7 @@
     "Francesco Passaro|Jaime Faria": 0.27,
     "Francesco Passaro|Jakub Mensik": 0.13,
     "Francesco Passaro|James Duckworth": 0.297,
+    "Francesco Passaro|Jan Choinski": 0.365,
     "Francesco Passaro|Jan-Lennard Struff": 0.327,
     "Francesco Passaro|Jiri Lehecka": 0.154,
     "Francesco Passaro|Jurij Rodionov": 0.421,
@@ -2325,6 +2456,7 @@
     "Francisco Cerundolo|Jaime Faria": 0.547,
     "Francisco Cerundolo|Jakub Mensik": 0.328,
     "Francisco Cerundolo|James Duckworth": 0.58,
+    "Francisco Cerundolo|Jan Choinski": 0.714,
     "Francisco Cerundolo|Jesper de Jong": 0.674,
     "Francisco Cerundolo|Jiri Lehecka": 0.373,
     "Francisco Cerundolo|Jurij Rodionov": 0.704,
@@ -2360,6 +2492,7 @@
     "Gael Monfils|Jaime Faria": 0.352,
     "Gael Monfils|Jakub Mensik": 0.287,
     "Gael Monfils|James Duckworth": 0.533,
+    "Gael Monfils|Jan Choinski": 0.673,
     "Gael Monfils|Jan-Lennard Struff": 0.568,
     "Gael Monfils|Jesper de Jong": 0.631,
     "Gael Monfils|Jiri Lehecka": 0.329,
@@ -2394,6 +2527,7 @@
     "Hubert Hurkacz|Jaime Faria": 0.545,
     "Hubert Hurkacz|Jakub Mensik": 0.326,
     "Hubert Hurkacz|James Duckworth": 0.578,
+    "Hubert Hurkacz|Jan Choinski": 0.712,
     "Hubert Hurkacz|Jan-Lennard Struff": 0.612,
     "Hubert Hurkacz|Jesper de Jong": 0.672,
     "Hubert Hurkacz|Jiri Lehecka": 0.371,
@@ -2428,6 +2562,7 @@
     "Ignacio Buse|Jaime Faria": 0.581,
     "Ignacio Buse|Jakub Mensik": 0.325,
     "Ignacio Buse|James Duckworth": 0.577,
+    "Ignacio Buse|Jan Choinski": 0.711,
     "Ignacio Buse|Jan-Lennard Struff": 0.611,
     "Ignacio Buse|Jesper de Jong": 0.671,
     "Ignacio Buse|Jiri Lehecka": 0.37,
@@ -2460,6 +2595,7 @@
     "Jacob Fearnley|Jaime Faria": 0.335,
     "Jacob Fearnley|Jakub Mensik": 0.169,
     "Jacob Fearnley|James Duckworth": 0.365,
+    "Jacob Fearnley|Jan Choinski": 0.479,
     "Jacob Fearnley|Jan-Lennard Struff": 0.398,
     "Jacob Fearnley|Jesper de Jong": 0.453,
     "Jacob Fearnley|Jiri Lehecka": 0.198,
@@ -2491,6 +2627,7 @@
     "Jacob Fearnley|Zizou Bergs": 0.368,
     "Jaime Faria|Jakub Mensik": 0.288,
     "Jaime Faria|James Duckworth": 0.533,
+    "Jaime Faria|Jan Choinski": 0.674,
     "Jaime Faria|Jan-Lennard Struff": 0.537,
     "Jaime Faria|Jesper de Jong": 0.631,
     "Jaime Faria|Jiri Lehecka": 0.33,
@@ -2522,6 +2659,7 @@
     "Jaime Faria|Zachary Svajda": 0.679,
     "Jaime Faria|Zizou Bergs": 0.496,
     "Jakub Mensik|James Duckworth": 0.739,
+    "Jakub Mensik|Jan Choinski": 0.837,
     "Jakub Mensik|Jan-Lennard Struff": 0.765,
     "Jakub Mensik|Jesper de Jong": 0.809,
     "Jakub Mensik|Jiri Lehecka": 0.547,
@@ -2551,6 +2689,7 @@
     "Jakub Mensik|Wu Yibing": 0.703,
     "Jakub Mensik|Zachary Svajda": 0.84,
     "Jakub Mensik|Zizou Bergs": 0.741,
+    "James Duckworth|Jan Choinski": 0.644,
     "James Duckworth|Jan-Lennard Struff": 0.504,
     "James Duckworth|Jesper de Jong": 0.6,
     "James Duckworth|Jiri Lehecka": 0.301,
@@ -2580,6 +2719,36 @@
     "James Duckworth|Valentin Vacherot": 0.449,
     "James Duckworth|Zachary Svajda": 0.65,
     "James Duckworth|Zizou Bergs": 0.463,
+    "Jan Choinski|Jan-Lennard Struff": 0.389,
+    "Jan Choinski|Jesper de Jong": 0.475,
+    "Jan Choinski|Jiri Lehecka": 0.192,
+    "Jan Choinski|Jurij Rodionov": 0.546,
+    "Jan Choinski|Kamil Majchrzak": 0.352,
+    "Jan Choinski|Karen Khachanov": 0.388,
+    "Jan Choinski|Learner Tien": 0.175,
+    "Jan Choinski|Lloyd Harris": 0.676,
+    "Jan Choinski|Lorenzo Musetti": 0.179,
+    "Jan Choinski|Luca Van Assche": 0.411,
+    "Jan Choinski|Luciano Darderi": 0.309,
+    "Jan Choinski|Marco Trungelliti": 0.453,
+    "Jan Choinski|Marcos Giron": 0.436,
+    "Jan Choinski|Mariano Navone": 0.355,
+    "Jan Choinski|Matteo Berrettini": 0.285,
+    "Jan Choinski|Mattia Bellucci": 0.425,
+    "Jan Choinski|Michael Zheng": 0.365,
+    "Jan Choinski|Quentin Halys": 0.305,
+    "Jan Choinski|Rafael Jodar": 0.15,
+    "Jan Choinski|Rei Sakamoto": 0.578,
+    "Jan Choinski|Stefanos Tsitsipas": 0.28,
+    "Jan Choinski|Taylor Fritz": 0.134,
+    "Jan Choinski|Toby Samuel": 0.434,
+    "Jan Choinski|Tomas Martin Etcheverry": 0.396,
+    "Jan Choinski|Tommy Paul": 0.18,
+    "Jan Choinski|Tristan Schoolkate": 0.593,
+    "Jan Choinski|Valentin Vacherot": 0.311,
+    "Jan Choinski|Wu Yibing": 0.316,
+    "Jan Choinski|Zachary Svajda": 0.514,
+    "Jan Choinski|Zizou Bergs": 0.359,
     "Jan-Lennard Struff|Jesper de Jong": 0.565,
     "Jan-Lennard Struff|Jiri Lehecka": 0.272,
     "Jan-Lennard Struff|Jurij Rodionov": 0.599,

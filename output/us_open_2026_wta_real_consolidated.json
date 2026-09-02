@@ -1,757 +1,2167 @@
 {
   "meta": {
     "tournament": "us-open-women-2026",
-    "generated_at": "2026-09-02T19:17:10Z",
-    "iterations": 10000,
-    "seed": 42
+    "generated_at": "2026-09-02T19:17:45Z",
+    "current_iterations": 10000,
+    "current_seed": 42,
+    "round_history_iterations": 2000,
+    "pretournament_baseline_path": "X:\\idanh\\Documents\\VS Code Projects\\Monte-Carlo-Simulation-Grand-Slam-Model-\\output\\us_open_2026_wta_real_pretournament_baseline.json"
   },
-  "players": [
+  "round_history": [
     {
-      "player": "Aryna Sabalenka",
-      "quarter": "Q1",
-      "p_champ": 0.294,
-      "p_sf": 0.605,
-      "p_final": 0.424
+      "checkpoint": "pretournament",
+      "round": 0,
+      "label": "Pre-tournament",
+      "generated_at": "2026-08-30T18:04:32Z",
+      "players": [
+        {
+          "player": "Aryna Sabalenka",
+          "quarter": "Q1",
+          "p_champ": 0.25,
+          "p_sf": 0.5,
+          "p_final": 0.36
+        },
+        {
+          "player": "Coco Gauff",
+          "quarter": "Q3",
+          "p_champ": 0.117,
+          "p_sf": 0.337,
+          "p_final": 0.222
+        },
+        {
+          "player": "Elena Rybakina",
+          "quarter": "Q4",
+          "p_champ": 0.11,
+          "p_sf": 0.38,
+          "p_final": 0.215,
+          "health_adjustment": {
+            "elo_penalty": -100,
+            "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
+          }
+        },
+        {
+          "player": "Iga Swiatek",
+          "quarter": "Q3",
+          "p_champ": 0.105,
+          "p_sf": 0.332,
+          "p_final": 0.209
+        },
+        {
+          "player": "Jessica Pegula",
+          "quarter": "Q2",
+          "p_champ": 0.092,
+          "p_sf": 0.304,
+          "p_final": 0.163
+        },
+        {
+          "player": "Karolina Muchova",
+          "quarter": "Q2",
+          "p_champ": 0.06,
+          "p_sf": 0.266,
+          "p_final": 0.118
+        },
+        {
+          "player": "Marta Kostyuk",
+          "quarter": "Q2",
+          "p_champ": 0.04,
+          "p_sf": 0.189,
+          "p_final": 0.082
+        },
+        {
+          "player": "Elina Svitolina",
+          "quarter": "Q1",
+          "p_champ": 0.032,
+          "p_sf": 0.14,
+          "p_final": 0.071
+        },
+        {
+          "player": "Amanda Anisimova",
+          "quarter": "Q4",
+          "p_champ": 0.031,
+          "p_sf": 0.172,
+          "p_final": 0.075
+        },
+        {
+          "player": "Linda Noskova",
+          "quarter": "Q4",
+          "p_champ": 0.026,
+          "p_sf": 0.158,
+          "p_final": 0.069
+        },
+        {
+          "player": "Naomi Osaka",
+          "quarter": "Q1",
+          "p_champ": 0.025,
+          "p_sf": 0.123,
+          "p_final": 0.057
+        },
+        {
+          "player": "Belinda Bencic",
+          "quarter": "Q3",
+          "p_champ": 0.023,
+          "p_sf": 0.108,
+          "p_final": 0.054
+        },
+        {
+          "player": "Mirra Andreeva",
+          "quarter": "Q1",
+          "p_champ": 0.019,
+          "p_sf": 0.098,
+          "p_final": 0.045
+        },
+        {
+          "player": "Sorana Cirstea",
+          "quarter": "Q3",
+          "p_champ": 0.009,
+          "p_sf": 0.064,
+          "p_final": 0.027
+        },
+        {
+          "player": "Madison Keys",
+          "quarter": "Q4",
+          "p_champ": 0.009,
+          "p_sf": 0.075,
+          "p_final": 0.027
+        },
+        {
+          "player": "Diana Shnaider",
+          "quarter": "Q2",
+          "p_champ": 0.006,
+          "p_sf": 0.051,
+          "p_final": 0.018
+        },
+        {
+          "player": "Barbora Krejcikova",
+          "quarter": "Q2",
+          "p_champ": 0.005,
+          "p_sf": 0.045,
+          "p_final": 0.013
+        },
+        {
+          "player": "Anna Kalinskaya",
+          "quarter": "Q1",
+          "p_champ": 0.004,
+          "p_sf": 0.033,
+          "p_final": 0.013
+        },
+        {
+          "player": "Zheng Qinwen",
+          "quarter": "Q2",
+          "p_champ": 0.004,
+          "p_sf": 0.038,
+          "p_final": 0.012
+        },
+        {
+          "player": "Iva Jovic",
+          "quarter": "Q4",
+          "p_champ": 0.004,
+          "p_sf": 0.042,
+          "p_final": 0.013
+        },
+        {
+          "player": "Alexandra Eala",
+          "quarter": "Q1",
+          "p_champ": 0.003,
+          "p_sf": 0.035,
+          "p_final": 0.012
+        },
+        {
+          "player": "Sara Bejlek",
+          "quarter": "Q3",
+          "p_champ": 0.003,
+          "p_sf": 0.027,
+          "p_final": 0.01
+        },
+        {
+          "player": "Paula Badosa",
+          "quarter": "Q4",
+          "p_champ": 0.003,
+          "p_sf": 0.027,
+          "p_final": 0.009
+        },
+        {
+          "player": "Marie Bouzkova",
+          "quarter": "Q1",
+          "p_champ": 0.002,
+          "p_sf": 0.02,
+          "p_final": 0.006
+        },
+        {
+          "player": "Jelena Ostapenko",
+          "quarter": "Q4",
+          "p_champ": 0.002,
+          "p_sf": 0.03,
+          "p_final": 0.008
+        },
+        {
+          "player": "Karolina Pliskova",
+          "quarter": "Q1",
+          "p_champ": 0.001,
+          "p_sf": 0.011,
+          "p_final": 0.003
+        },
+        {
+          "player": "Elise Mertens",
+          "quarter": "Q2",
+          "p_champ": 0.001,
+          "p_sf": 0.026,
+          "p_final": 0.007
+        },
+        {
+          "player": "Jasmine Paolini",
+          "quarter": "Q2",
+          "p_champ": 0.001,
+          "p_sf": 0.023,
+          "p_final": 0.006
+        },
+        {
+          "player": "Lilli Tagger",
+          "quarter": "Q2",
+          "p_champ": 0.001,
+          "p_sf": 0.008,
+          "p_final": 0.002
+        },
+        {
+          "player": "Taylor Townsend",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.02,
+          "p_final": 0.006
+        },
+        {
+          "player": "Maria Sakkari",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.018,
+          "p_final": 0.006
+        },
+        {
+          "player": "Katerina Siniakova",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.012,
+          "p_final": 0.004
+        },
+        {
+          "player": "Anastasia Potapova",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.018,
+          "p_final": 0.007
+        },
+        {
+          "player": "Alina Korneeva",
+          "quarter": "Q4",
+          "p_champ": 0.001,
+          "p_sf": 0.005,
+          "p_final": 0.001
+        },
+        {
+          "player": "Magdalena Frech",
+          "quarter": "Q4",
+          "p_champ": 0.001,
+          "p_sf": 0.013,
+          "p_final": 0.002
+        },
+        {
+          "player": "Nikola Bartunkova",
+          "quarter": "Q4",
+          "p_champ": 0.001,
+          "p_sf": 0.014,
+          "p_final": 0.003
+        },
+        {
+          "player": "Emma Navarro",
+          "quarter": "Q4",
+          "p_champ": 0.001,
+          "p_sf": 0.016,
+          "p_final": 0.003
+        },
+        {
+          "player": "Ekaterina Alexandrova",
+          "quarter": "Q4",
+          "p_champ": 0.001,
+          "p_sf": 0.015,
+          "p_final": 0.004
+        },
+        {
+          "player": "Camila Osorio",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Renata Zarazua",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Polina Iatcenko",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Mary Stoiana",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Talia Gibson",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Donna Vekic",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Elsa Jacquemot",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Emiliana Arango",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Wang Xinyu",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Solana Sierra",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Elvina Kalieva",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Lanlana Tararudee",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.001
+        },
+        {
+          "player": "Anastasia Zakharova",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Lucrezia Stefanini",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Dayana Yastremska",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Ann Li",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.006,
+          "p_final": 0.001
+        },
+        {
+          "player": "Antonia Ruzic",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Lee C.Y.",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Katie Boulter",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.005,
+          "p_final": 0.0
+        },
+        {
+          "player": "Anna Blinkova",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Hanne Vandewinkel",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Janice Tjen",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Taylah Preston",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Alycia Parks",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Sinja Kraus",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Kimberly Birrell",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Petra Marcinko",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Kaitlin Quevedo",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Venus Williams",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Sofia Kenin",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Zhang Shuai",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.009,
+          "p_final": 0.002
+        },
+        {
+          "player": "Leylah Fernandez",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Harriet Dart",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Peyton Stearns",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.006,
+          "p_final": 0.001
+        },
+        {
+          "player": "Daria Snigur",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.005,
+          "p_final": 0.001
+        },
+        {
+          "player": "Kristina Liutova",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Storm Hunter",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Mananchaya Sawangkaew",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.0
+        },
+        {
+          "player": "Panna Udvardy",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Kamilla Rakhimova",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Anhelina Kalinina",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Himeno Sakatsume",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Veronika Erjavec",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Tamara Korpatsch",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Elena-Gabriela Ruse",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Aoi Ito",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Oksana Selekhmeteva",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Zeynep Sonmez",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Nadia Podoroska",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Simona Waltert",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Maja Chwalinska",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Tamara Zidansek",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Maria Timofeeva",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Cristina Bucsa",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Anouk Koevermans",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "McNally C.",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.01,
+          "p_final": 0.003
+        },
+        {
+          "player": "Yulia Putintseva",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Sloane Stephens",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Clara Tauson",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.011,
+          "p_final": 0.003
+        },
+        {
+          "player": "Julia Grabher",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Viktorija Golubic",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.001
+        },
+        {
+          "player": "Diane Parry",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.0
+        },
+        {
+          "player": "Robin Montgomery",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Elisabetta Cocciaretto",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Valentova T.",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.005,
+          "p_final": 0.002
+        },
+        {
+          "player": "Maya Joint",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Liudmila Samsonova",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.01,
+          "p_final": 0.003
+        },
+        {
+          "player": "Wang Xiyu",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Yuliia Starodubtseva",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Ella Seidel",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Katie Volynets",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Darja Vidmanova",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Jessica Bouzas Maneiro",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Lucie Havlickova",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Anna Bondar",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Tatjana Maria",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Gabriela Knutson",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Eva Lys",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.011,
+          "p_final": 0.002
+        },
+        {
+          "player": "Mayar Sherif",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Ashlyn Krueger",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Magda Linette",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.005,
+          "p_final": 0.001
+        },
+        {
+          "player": "Francesca Jones",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Lois Boisson",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Oleksandra Oliynykova",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.006,
+          "p_final": 0.001
+        },
+        {
+          "player": "Reese Brantmeier",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "McCartney Kessler",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.005,
+          "p_final": 0.001
+        },
+        {
+          "player": "Daria Kasatkina",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Thea Frodin",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Arantxa Rus",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Leolia Jeanjean",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        }
+      ],
+      "matches": []
     },
     {
-      "player": "Coco Gauff",
-      "quarter": "Q3",
-      "p_champ": 0.123,
-      "p_sf": 0.416,
-      "p_final": 0.242
-    },
-    {
-      "player": "Jessica Pegula",
-      "quarter": "Q2",
-      "p_champ": 0.115,
-      "p_sf": 0.41,
-      "p_final": 0.195
-    },
-    {
-      "player": "Iga Swiatek",
-      "quarter": "Q4",
-      "p_champ": 0.103,
-      "p_sf": 0.352,
-      "p_final": 0.212
-    },
-    {
-      "player": "Elena Rybakina",
-      "quarter": "Q4",
-      "p_champ": 0.09,
-      "p_sf": 0.321,
-      "p_final": 0.193,
-      "health_adjustment": {
-        "elo_penalty": -100,
-        "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
-      }
-    },
-    {
-      "player": "Marta Kostyuk",
-      "quarter": "Q1",
-      "p_champ": 0.047,
-      "p_sf": 0.186,
-      "p_final": 0.1
-    },
-    {
-      "player": "Karolina Muchova",
-      "quarter": "Q2",
-      "p_champ": 0.044,
-      "p_sf": 0.216,
-      "p_final": 0.093
-    },
-    {
-      "player": "Amanda Anisimova",
-      "quarter": "Q3",
-      "p_champ": 0.032,
-      "p_sf": 0.187,
-      "p_final": 0.087
-    },
-    {
-      "player": "Elina Svitolina",
-      "quarter": "Q2",
-      "p_champ": 0.03,
-      "p_sf": 0.171,
-      "p_final": 0.066
-    },
-    {
-      "player": "Mirra Andreeva",
-      "quarter": "Q3",
-      "p_champ": 0.024,
-      "p_sf": 0.144,
-      "p_final": 0.062
-    },
-    {
-      "player": "Naomi Osaka",
-      "quarter": "Q4",
-      "p_champ": 0.019,
-      "p_sf": 0.112,
-      "p_final": 0.053
-    },
-    {
-      "player": "Linda Noskova",
-      "quarter": "Q1",
-      "p_champ": 0.018,
-      "p_sf": 0.097,
-      "p_final": 0.042
-    },
-    {
-      "player": "Madison Keys",
-      "quarter": "Q4",
-      "p_champ": 0.009,
-      "p_sf": 0.074,
-      "p_final": 0.031
-    },
-    {
-      "player": "Alexandra Eala",
-      "quarter": "Q3",
-      "p_champ": 0.007,
-      "p_sf": 0.074,
-      "p_final": 0.026
-    },
-    {
-      "player": "Sorana Cirstea",
-      "quarter": "Q2",
-      "p_champ": 0.006,
-      "p_sf": 0.065,
-      "p_final": 0.017
-    },
-    {
-      "player": "Diana Shnaider",
-      "quarter": "Q1",
-      "p_champ": 0.005,
-      "p_sf": 0.043,
-      "p_final": 0.016
-    },
-    {
-      "player": "Anna Kalinskaya",
-      "quarter": "Q2",
-      "p_champ": 0.005,
-      "p_sf": 0.049,
-      "p_final": 0.013
-    },
-    {
-      "player": "Zheng Qinwen",
-      "quarter": "Q4",
-      "p_champ": 0.004,
-      "p_sf": 0.04,
-      "p_final": 0.015
-    },
-    {
-      "player": "Anastasia Potapova",
-      "quarter": "Q3",
-      "p_champ": 0.003,
-      "p_sf": 0.044,
-      "p_final": 0.011
-    },
-    {
-      "player": "Iva Jovic",
-      "quarter": "Q3",
-      "p_champ": 0.003,
-      "p_sf": 0.033,
-      "p_final": 0.012
-    },
-    {
-      "player": "Elise Mertens",
-      "quarter": "Q4",
-      "p_champ": 0.003,
-      "p_sf": 0.035,
-      "p_final": 0.013
-    },
-    {
-      "player": "Taylor Townsend",
-      "quarter": "Q1",
-      "p_champ": 0.002,
-      "p_sf": 0.02,
-      "p_final": 0.006
-    },
-    {
-      "player": "Jasmine Paolini",
-      "quarter": "Q2",
-      "p_champ": 0.002,
-      "p_sf": 0.034,
-      "p_final": 0.007
-    },
-    {
-      "player": "Marie Bouzkova",
-      "quarter": "Q4",
-      "p_champ": 0.002,
-      "p_sf": 0.025,
-      "p_final": 0.008
-    },
-    {
-      "player": "Maria Sakkari",
-      "quarter": "Q4",
-      "p_champ": 0.002,
-      "p_sf": 0.022,
-      "p_final": 0.006
-    },
-    {
-      "player": "Ekaterina Alexandrova",
-      "quarter": "Q1",
-      "p_champ": 0.001,
-      "p_sf": 0.014,
-      "p_final": 0.003
-    },
-    {
-      "player": "Emma Navarro",
-      "quarter": "Q2",
-      "p_champ": 0.001,
-      "p_sf": 0.019,
-      "p_final": 0.004
-    },
-    {
-      "player": "Nikola Bartunkova",
-      "quarter": "Q3",
-      "p_champ": 0.001,
-      "p_sf": 0.015,
-      "p_final": 0.004
-    },
-    {
-      "player": "Jelena Ostapenko",
-      "quarter": "Q3",
-      "p_champ": 0.001,
-      "p_sf": 0.017,
-      "p_final": 0.004
-    },
-    {
-      "player": "Paula Badosa",
-      "quarter": "Q3",
-      "p_champ": 0.001,
-      "p_sf": 0.023,
-      "p_final": 0.005
-    },
-    {
-      "player": "Katerina Siniakova",
-      "quarter": "Q4",
-      "p_champ": 0.001,
-      "p_sf": 0.01,
-      "p_final": 0.004
-    },
-    {
-      "player": "Polina Iatcenko",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Oksana Selekhmeteva",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
-    },
-    {
-      "player": "Kamilla Rakhimova",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
-    },
-    {
-      "player": "Kimberly Birrell",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Ann Li",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.009,
-      "p_final": 0.002
-    },
-    {
-      "player": "Donna Vekic",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.004,
-      "p_final": 0.001
-    },
-    {
-      "player": "Lanlana Tararudee",
-      "quarter": "Q1",
-      "p_champ": 0.0,
-      "p_sf": 0.003,
-      "p_final": 0.001
-    },
-    {
-      "player": "Leylah Fernandez",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Maya Joint",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.003,
-      "p_final": 0.0
-    },
-    {
-      "player": "Wang Xinyu",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
-    },
-    {
-      "player": "Catherine McNally",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.0,
-      "p_final": 0.0
-    },
-    {
-      "player": "Katie Boulter",
-      "quarter": "Q2",
-      "p_champ": 0.0,
-      "p_sf": 0.005,
-      "p_final": 0.001
-    },
-    {
-      "player": "Eva Lys",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.008,
-      "p_final": 0.002
-    },
-    {
-      "player": "Tatjana Maria",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Leolia Jeanjean",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.0,
-      "p_final": 0.0
-    },
-    {
-      "player": "Lilli Tagger",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.008,
-      "p_final": 0.002
-    },
-    {
-      "player": "Magdalena Frech",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.008,
-      "p_final": 0.002
-    },
-    {
-      "player": "Magda Linette",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.004,
-      "p_final": 0.001
-    },
-    {
-      "player": "Francesca Jones",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Oleksandra Oliynykova",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.008,
-      "p_final": 0.001
-    },
-    {
-      "player": "Cristina Bucsa",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.007,
-      "p_final": 0.001
-    },
-    {
-      "player": "Himeno Sakatsume",
-      "quarter": "Q3",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
-    },
-    {
-      "player": "Nadia Podoroska",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Harriet Dart",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Anna Bondar",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
-    },
-    {
-      "player": "Yulia Putintseva",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.003,
-      "p_final": 0.0
-    },
-    {
-      "player": "Maria Timofeeva",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.001
-    },
-    {
-      "player": "Yuliia Starodubtseva",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.001,
-      "p_final": 0.0
-    },
-    {
-      "player": "Jessica Bouzas Maneiro",
-      "quarter": "Q4",
-      "p_champ": 0.0,
-      "p_sf": 0.002,
-      "p_final": 0.0
+      "checkpoint": "current",
+      "round": 1,
+      "label": "Current - 60 players alive",
+      "generated_at": "2026-09-02T19:17:10Z",
+      "players": [
+        {
+          "player": "Aryna Sabalenka",
+          "quarter": "Q1",
+          "p_champ": 0.294,
+          "p_sf": 0.605,
+          "p_final": 0.424
+        },
+        {
+          "player": "Coco Gauff",
+          "quarter": "Q3",
+          "p_champ": 0.123,
+          "p_sf": 0.416,
+          "p_final": 0.242
+        },
+        {
+          "player": "Jessica Pegula",
+          "quarter": "Q2",
+          "p_champ": 0.115,
+          "p_sf": 0.41,
+          "p_final": 0.195
+        },
+        {
+          "player": "Iga Swiatek",
+          "quarter": "Q4",
+          "p_champ": 0.103,
+          "p_sf": 0.352,
+          "p_final": 0.212
+        },
+        {
+          "player": "Elena Rybakina",
+          "quarter": "Q4",
+          "p_champ": 0.09,
+          "p_sf": 0.321,
+          "p_final": 0.193,
+          "health_adjustment": {
+            "elo_penalty": -100,
+            "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
+          }
+        },
+        {
+          "player": "Marta Kostyuk",
+          "quarter": "Q1",
+          "p_champ": 0.047,
+          "p_sf": 0.186,
+          "p_final": 0.1
+        },
+        {
+          "player": "Karolina Muchova",
+          "quarter": "Q2",
+          "p_champ": 0.044,
+          "p_sf": 0.216,
+          "p_final": 0.093
+        },
+        {
+          "player": "Amanda Anisimova",
+          "quarter": "Q3",
+          "p_champ": 0.032,
+          "p_sf": 0.187,
+          "p_final": 0.087
+        },
+        {
+          "player": "Elina Svitolina",
+          "quarter": "Q2",
+          "p_champ": 0.03,
+          "p_sf": 0.171,
+          "p_final": 0.066
+        },
+        {
+          "player": "Mirra Andreeva",
+          "quarter": "Q3",
+          "p_champ": 0.024,
+          "p_sf": 0.144,
+          "p_final": 0.062
+        },
+        {
+          "player": "Naomi Osaka",
+          "quarter": "Q4",
+          "p_champ": 0.019,
+          "p_sf": 0.112,
+          "p_final": 0.053
+        },
+        {
+          "player": "Linda Noskova",
+          "quarter": "Q1",
+          "p_champ": 0.018,
+          "p_sf": 0.097,
+          "p_final": 0.042
+        },
+        {
+          "player": "Madison Keys",
+          "quarter": "Q4",
+          "p_champ": 0.009,
+          "p_sf": 0.074,
+          "p_final": 0.031
+        },
+        {
+          "player": "Alexandra Eala",
+          "quarter": "Q3",
+          "p_champ": 0.007,
+          "p_sf": 0.074,
+          "p_final": 0.026
+        },
+        {
+          "player": "Sorana Cirstea",
+          "quarter": "Q2",
+          "p_champ": 0.006,
+          "p_sf": 0.065,
+          "p_final": 0.017
+        },
+        {
+          "player": "Diana Shnaider",
+          "quarter": "Q1",
+          "p_champ": 0.005,
+          "p_sf": 0.043,
+          "p_final": 0.016
+        },
+        {
+          "player": "Anna Kalinskaya",
+          "quarter": "Q2",
+          "p_champ": 0.005,
+          "p_sf": 0.049,
+          "p_final": 0.013
+        },
+        {
+          "player": "Zheng Qinwen",
+          "quarter": "Q4",
+          "p_champ": 0.004,
+          "p_sf": 0.04,
+          "p_final": 0.015
+        },
+        {
+          "player": "Anastasia Potapova",
+          "quarter": "Q3",
+          "p_champ": 0.003,
+          "p_sf": 0.044,
+          "p_final": 0.011
+        },
+        {
+          "player": "Iva Jovic",
+          "quarter": "Q3",
+          "p_champ": 0.003,
+          "p_sf": 0.033,
+          "p_final": 0.012
+        },
+        {
+          "player": "Elise Mertens",
+          "quarter": "Q4",
+          "p_champ": 0.003,
+          "p_sf": 0.035,
+          "p_final": 0.013
+        },
+        {
+          "player": "Taylor Townsend",
+          "quarter": "Q1",
+          "p_champ": 0.002,
+          "p_sf": 0.02,
+          "p_final": 0.006
+        },
+        {
+          "player": "Jasmine Paolini",
+          "quarter": "Q2",
+          "p_champ": 0.002,
+          "p_sf": 0.034,
+          "p_final": 0.007
+        },
+        {
+          "player": "Marie Bouzkova",
+          "quarter": "Q4",
+          "p_champ": 0.002,
+          "p_sf": 0.025,
+          "p_final": 0.008
+        },
+        {
+          "player": "Maria Sakkari",
+          "quarter": "Q4",
+          "p_champ": 0.002,
+          "p_sf": 0.022,
+          "p_final": 0.006
+        },
+        {
+          "player": "Ekaterina Alexandrova",
+          "quarter": "Q1",
+          "p_champ": 0.001,
+          "p_sf": 0.014,
+          "p_final": 0.003
+        },
+        {
+          "player": "Emma Navarro",
+          "quarter": "Q2",
+          "p_champ": 0.001,
+          "p_sf": 0.019,
+          "p_final": 0.004
+        },
+        {
+          "player": "Nikola Bartunkova",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.015,
+          "p_final": 0.004
+        },
+        {
+          "player": "Jelena Ostapenko",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.017,
+          "p_final": 0.004
+        },
+        {
+          "player": "Paula Badosa",
+          "quarter": "Q3",
+          "p_champ": 0.001,
+          "p_sf": 0.023,
+          "p_final": 0.005
+        },
+        {
+          "player": "Katerina Siniakova",
+          "quarter": "Q4",
+          "p_champ": 0.001,
+          "p_sf": 0.01,
+          "p_final": 0.004
+        },
+        {
+          "player": "Polina Iatcenko",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Oksana Selekhmeteva",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Kamilla Rakhimova",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Kimberly Birrell",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Ann Li",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.009,
+          "p_final": 0.002
+        },
+        {
+          "player": "Donna Vekic",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Lanlana Tararudee",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.001
+        },
+        {
+          "player": "Leylah Fernandez",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Maya Joint",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.0
+        },
+        {
+          "player": "Wang Xinyu",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Catherine McNally",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Katie Boulter",
+          "quarter": "Q2",
+          "p_champ": 0.0,
+          "p_sf": 0.005,
+          "p_final": 0.001
+        },
+        {
+          "player": "Eva Lys",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.008,
+          "p_final": 0.002
+        },
+        {
+          "player": "Tatjana Maria",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Leolia Jeanjean",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.0,
+          "p_final": 0.0
+        },
+        {
+          "player": "Lilli Tagger",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.008,
+          "p_final": 0.002
+        },
+        {
+          "player": "Magdalena Frech",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.008,
+          "p_final": 0.002
+        },
+        {
+          "player": "Magda Linette",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.004,
+          "p_final": 0.001
+        },
+        {
+          "player": "Francesca Jones",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Oleksandra Oliynykova",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.008,
+          "p_final": 0.001
+        },
+        {
+          "player": "Cristina Bucsa",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.007,
+          "p_final": 0.001
+        },
+        {
+          "player": "Himeno Sakatsume",
+          "quarter": "Q3",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Nadia Podoroska",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Harriet Dart",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Anna Bondar",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        },
+        {
+          "player": "Yulia Putintseva",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.003,
+          "p_final": 0.0
+        },
+        {
+          "player": "Maria Timofeeva",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.001
+        },
+        {
+          "player": "Yuliia Starodubtseva",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.001,
+          "p_final": 0.0
+        },
+        {
+          "player": "Jessica Bouzas Maneiro",
+          "quarter": "Q4",
+          "p_champ": 0.0,
+          "p_sf": 0.002,
+          "p_final": 0.0
+        }
+      ],
+      "matches": [
+        {
+          "player_a": "Arantxa Rus",
+          "player_b": "Leolia Jeanjean",
+          "model_prob_a": 0.571,
+          "market_prob_a": 0.353,
+          "gap_pct_points": 21.8,
+          "decided": true,
+          "winner": "Leolia Jeanjean"
+        },
+        {
+          "player_a": "Lilli Tagger",
+          "player_b": "Tamara Korpatsch",
+          "model_prob_a": 0.585,
+          "market_prob_a": 0.782,
+          "gap_pct_points": 19.7,
+          "decided": true,
+          "winner": "Lilli Tagger"
+        },
+        {
+          "player_a": "Hanne Vandewinkel",
+          "player_b": "Karolina Pliskova",
+          "model_prob_a": 0.312,
+          "market_prob_a": 0.506,
+          "gap_pct_points": 19.4,
+          "decided": true,
+          "winner": "Karolina Pliskova"
+        },
+        {
+          "player_a": "Oksana Selekhmeteva",
+          "player_b": "Kamilla Rakhimova",
+          "model_prob_a": 0.498,
+          "market_prob_a": 0.312,
+          "gap_pct_points": 18.6,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Anhelina Kalinina",
+          "player_b": "Himeno Sakatsume",
+          "model_prob_a": 0.547,
+          "market_prob_a": 0.725,
+          "gap_pct_points": 17.8,
+          "decided": true,
+          "winner": "Himeno Sakatsume"
+        },
+        {
+          "player_a": "Oleksandra Oliynykova",
+          "player_b": "Alexandra Eala",
+          "model_prob_a": 0.281,
+          "market_prob_a": 0.116,
+          "gap_pct_points": 16.5,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Ann Li",
+          "player_b": "Antonia Ruzic",
+          "model_prob_a": 0.58,
+          "market_prob_a": 0.731,
+          "gap_pct_points": 15.1,
+          "decided": true,
+          "winner": "Ann Li"
+        },
+        {
+          "player_a": "Maria Sakkari",
+          "player_b": "Robin Montgomery",
+          "model_prob_a": 0.709,
+          "market_prob_a": 0.565,
+          "gap_pct_points": 14.4,
+          "decided": true,
+          "winner": "Maria Sakkari"
+        },
+        {
+          "player_a": "Katie Volynets",
+          "player_b": "Linda Noskova",
+          "model_prob_a": 0.129,
+          "market_prob_a": 0.269,
+          "gap_pct_points": 14.0,
+          "decided": true,
+          "winner": "Linda Noskova"
+        },
+        {
+          "player_a": "Maria Sakkari",
+          "player_b": "Yuliia Starodubtseva",
+          "model_prob_a": 0.726,
+          "market_prob_a": 0.59,
+          "gap_pct_points": 13.6,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Daria Kasatkina",
+          "player_b": "Paula Badosa",
+          "model_prob_a": 0.318,
+          "market_prob_a": 0.45,
+          "gap_pct_points": 13.2,
+          "decided": true,
+          "winner": "Paula Badosa"
+        },
+        {
+          "player_a": "Venus Williams",
+          "player_b": "Sofia Kenin",
+          "model_prob_a": 0.285,
+          "market_prob_a": 0.157,
+          "gap_pct_points": 12.8,
+          "decided": true,
+          "winner": "Sofia Kenin"
+        },
+        {
+          "player_a": "Mirra Andreeva",
+          "player_b": "Eva Lys",
+          "model_prob_a": 0.754,
+          "market_prob_a": 0.881,
+          "gap_pct_points": 12.7,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Yuliia Starodubtseva",
+          "player_b": "Ella Seidel",
+          "model_prob_a": 0.565,
+          "market_prob_a": 0.691,
+          "gap_pct_points": 12.6,
+          "decided": true,
+          "winner": "Yuliia Starodubtseva"
+        },
+        {
+          "player_a": "Jessica Pegula",
+          "player_b": "Leylah Fernandez",
+          "model_prob_a": 0.927,
+          "market_prob_a": 0.801,
+          "gap_pct_points": 12.6,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Nadia Podoroska",
+          "player_b": "Simona Waltert",
+          "model_prob_a": 0.247,
+          "market_prob_a": 0.366,
+          "gap_pct_points": 11.9,
+          "decided": true,
+          "winner": "Nadia Podoroska"
+        },
+        {
+          "player_a": "Renata Zarazua",
+          "player_b": "Polina Iatcenko",
+          "model_prob_a": 0.647,
+          "market_prob_a": 0.537,
+          "gap_pct_points": 11.0,
+          "decided": true,
+          "winner": "Polina Iatcenko"
+        },
+        {
+          "player_a": "Elsa Jacquemot",
+          "player_b": "Marie Bouzkova",
+          "model_prob_a": 0.235,
+          "market_prob_a": 0.127,
+          "gap_pct_points": 10.8,
+          "decided": true,
+          "winner": "Marie Bouzkova"
+        },
+        {
+          "player_a": "Emma Navarro",
+          "player_b": "Lois Boisson",
+          "model_prob_a": 0.62,
+          "market_prob_a": 0.713,
+          "gap_pct_points": 9.3,
+          "decided": true,
+          "winner": "Emma Navarro"
+        },
+        {
+          "player_a": "Gabriela Knutson",
+          "player_b": "Eva Lys",
+          "model_prob_a": 0.281,
+          "market_prob_a": 0.374,
+          "gap_pct_points": 9.3,
+          "decided": true,
+          "winner": "Eva Lys"
+        },
+        {
+          "player_a": "Oleksandra Oliynykova",
+          "player_b": "Reese Brantmeier",
+          "model_prob_a": 0.592,
+          "market_prob_a": 0.5,
+          "gap_pct_points": 9.2,
+          "decided": true,
+          "winner": "Oleksandra Oliynykova"
+        },
+        {
+          "player_a": "Anastasia Potapova",
+          "player_b": "Leolia Jeanjean",
+          "model_prob_a": 0.841,
+          "market_prob_a": 0.754,
+          "gap_pct_points": 8.7,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Kimberly Birrell",
+          "player_b": "Ekaterina Alexandrova",
+          "model_prob_a": 0.315,
+          "market_prob_a": 0.233,
+          "gap_pct_points": 8.2,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Viktorija Golubic",
+          "player_b": "Diane Parry",
+          "model_prob_a": 0.379,
+          "market_prob_a": 0.458,
+          "gap_pct_points": 7.9,
+          "decided": true,
+          "winner": "Diane Parry"
+        },
+        {
+          "player_a": "Kaitlin Quevedo",
+          "player_b": "Elise Mertens",
+          "model_prob_a": 0.246,
+          "market_prob_a": 0.17,
+          "gap_pct_points": 7.6,
+          "decided": true,
+          "winner": "Elise Mertens"
+        },
+        {
+          "player_a": "Tamara Zidansek",
+          "player_b": "Maria Timofeeva",
+          "model_prob_a": 0.408,
+          "market_prob_a": 0.333,
+          "gap_pct_points": 7.5,
+          "decided": true,
+          "winner": "Maria Timofeeva"
+        },
+        {
+          "player_a": "Talia Gibson",
+          "player_b": "Donna Vekic",
+          "model_prob_a": 0.568,
+          "market_prob_a": 0.496,
+          "gap_pct_points": 7.2,
+          "decided": true,
+          "winner": "Donna Vekic"
+        },
+        {
+          "player_a": "Elvina Kalieva",
+          "player_b": "Lanlana Tararudee",
+          "model_prob_a": 0.4,
+          "market_prob_a": 0.331,
+          "gap_pct_points": 6.9,
+          "decided": true,
+          "winner": "Lanlana Tararudee"
+        },
+        {
+          "player_a": "Paula Badosa",
+          "player_b": "Coco Gauff",
+          "model_prob_a": 0.203,
+          "market_prob_a": 0.137,
+          "gap_pct_points": 6.6,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Sinja Kraus",
+          "player_b": "Karolina Muchova",
+          "model_prob_a": 0.071,
+          "market_prob_a": 0.13,
+          "gap_pct_points": 5.9,
+          "decided": true,
+          "winner": "Karolina Muchova"
+        },
+        {
+          "player_a": "Jessica Bouzas Maneiro",
+          "player_b": "Elena Rybakina",
+          "model_prob_a": 0.103,
+          "market_prob_a": 0.161,
+          "gap_pct_points": 5.8,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Mirra Andreeva",
+          "player_b": "Janice Tjen",
+          "model_prob_a": 0.794,
+          "market_prob_a": 0.85,
+          "gap_pct_points": 5.6,
+          "decided": true,
+          "winner": "Mirra Andreeva"
+        },
+        {
+          "player_a": "Cristina Bucsa",
+          "player_b": "Himeno Sakatsume",
+          "model_prob_a": 0.603,
+          "market_prob_a": 0.658,
+          "gap_pct_points": 5.5,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Maya Joint",
+          "player_b": "Liudmila Samsonova",
+          "model_prob_a": 0.351,
+          "market_prob_a": 0.3,
+          "gap_pct_points": 5.1,
+          "decided": true,
+          "winner": "Maya Joint"
+        },
+        {
+          "player_a": "Jasmine Paolini",
+          "player_b": "Veronika Erjavec",
+          "model_prob_a": 0.797,
+          "market_prob_a": 0.843,
+          "gap_pct_points": 4.6,
+          "decided": true,
+          "winner": "Jasmine Paolini"
+        },
+        {
+          "player_a": "Kamilla Rakhimova",
+          "player_b": "Barbora Krejcikova",
+          "model_prob_a": 0.222,
+          "market_prob_a": 0.267,
+          "gap_pct_points": 4.5,
+          "decided": true,
+          "winner": "Kamilla Rakhimova"
+        },
+        {
+          "player_a": "Anna Blinkova",
+          "player_b": "Anna Kalinskaya",
+          "model_prob_a": 0.227,
+          "market_prob_a": 0.272,
+          "gap_pct_points": 4.5,
+          "decided": true,
+          "winner": "Anna Kalinskaya"
+        },
+        {
+          "player_a": "Harriet Dart",
+          "player_b": "Peyton Stearns",
+          "model_prob_a": 0.337,
+          "market_prob_a": 0.292,
+          "gap_pct_points": 4.5,
+          "decided": true,
+          "winner": "Harriet Dart"
+        },
+        {
+          "player_a": "Naomi Osaka",
+          "player_b": "Anastasia Zakharova",
+          "model_prob_a": 0.829,
+          "market_prob_a": 0.872,
+          "gap_pct_points": 4.3,
+          "decided": true,
+          "winner": "Naomi Osaka"
+        },
+        {
+          "player_a": "Elisabetta Cocciaretto",
+          "player_b": "Katerina Siniakova",
+          "model_prob_a": 0.41,
+          "market_prob_a": 0.371,
+          "gap_pct_points": 3.9,
+          "decided": true,
+          "winner": "Katerina Siniakova"
+        },
+        {
+          "player_a": "Harriet Dart",
+          "player_b": "Marie Bouzkova",
+          "model_prob_a": 0.217,
+          "market_prob_a": 0.181,
+          "gap_pct_points": 3.6,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Daria Snigur",
+          "player_b": "Diana Shnaider",
+          "model_prob_a": 0.317,
+          "market_prob_a": 0.283,
+          "gap_pct_points": 3.4,
+          "decided": true,
+          "winner": "Diana Shnaider"
+        },
+        {
+          "player_a": "Nikola Bartunkova",
+          "player_b": "Mayar Sherif",
+          "model_prob_a": 0.751,
+          "market_prob_a": 0.783,
+          "gap_pct_points": 3.2,
+          "decided": true,
+          "winner": "Nikola Bartunkova"
+        },
+        {
+          "player_a": "Mary Stoiana",
+          "player_b": "Alexandra Eala",
+          "model_prob_a": 0.203,
+          "market_prob_a": 0.235,
+          "gap_pct_points": 3.2,
+          "decided": true,
+          "winner": "Alexandra Eala"
+        },
+        {
+          "player_a": "Sara Bejlek",
+          "player_b": "Cristina Bucsa",
+          "model_prob_a": 0.726,
+          "market_prob_a": 0.758,
+          "gap_pct_points": 3.2,
+          "decided": true,
+          "winner": "Cristina Bucsa"
+        },
+        {
+          "player_a": "Zeynep Sonmez",
+          "player_b": "Coco Gauff",
+          "model_prob_a": 0.108,
+          "market_prob_a": 0.076,
+          "gap_pct_points": 3.2,
+          "decided": true,
+          "winner": "Coco Gauff"
+        },
+        {
+          "player_a": "Jasmine Paolini",
+          "player_b": "Sorana Cirstea",
+          "model_prob_a": 0.421,
+          "market_prob_a": 0.389,
+          "gap_pct_points": 3.2,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Ann Li",
+          "player_b": "Donna Vekic",
+          "model_prob_a": 0.566,
+          "market_prob_a": 0.597,
+          "gap_pct_points": 3.1,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Naomi Osaka",
+          "player_b": "Katerina Siniakova",
+          "model_prob_a": 0.72,
+          "market_prob_a": 0.751,
+          "gap_pct_points": 3.1,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Elina Svitolina",
+          "player_b": "Solana Sierra",
+          "model_prob_a": 0.864,
+          "market_prob_a": 0.893,
+          "gap_pct_points": 2.9,
+          "decided": true,
+          "winner": "Elina Svitolina"
+        },
+        {
+          "player_a": "Yulia Putintseva",
+          "player_b": "Belinda Bencic",
+          "model_prob_a": 0.185,
+          "market_prob_a": 0.206,
+          "gap_pct_points": 2.1,
+          "decided": true,
+          "winner": "Yulia Putintseva"
+        },
+        {
+          "player_a": "Lanlana Tararudee",
+          "player_b": "Linda Noskova",
+          "model_prob_a": 0.191,
+          "market_prob_a": 0.212,
+          "gap_pct_points": 2.1,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Mananchaya Sawangkaew",
+          "player_b": "Panna Udvardy",
+          "model_prob_a": 0.585,
+          "market_prob_a": 0.603,
+          "gap_pct_points": 1.8,
+          "decided": true,
+          "winner": "Mananchaya Sawangkaew"
+        },
+        {
+          "player_a": "Ashlyn Krueger",
+          "player_b": "Amanda Anisimova",
+          "model_prob_a": 0.194,
+          "market_prob_a": 0.176,
+          "gap_pct_points": 1.8,
+          "decided": true,
+          "winner": "Amanda Anisimova"
+        },
+        {
+          "player_a": "Iga Swiatek",
+          "player_b": "Nadia Podoroska",
+          "model_prob_a": 0.927,
+          "market_prob_a": 0.945,
+          "gap_pct_points": 1.8,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Aryna Sabalenka",
+          "player_b": "Polina Iatcenko",
+          "model_prob_a": 0.956,
+          "market_prob_a": 0.939,
+          "gap_pct_points": 1.7,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Kimberly Birrell",
+          "player_b": "Petra Marcinko",
+          "model_prob_a": 0.534,
+          "market_prob_a": 0.519,
+          "gap_pct_points": 1.5,
+          "decided": true,
+          "winner": "Kimberly Birrell"
+        },
+        {
+          "player_a": "Darja Vidmanova",
+          "player_b": "Jessica Bouzas Maneiro",
+          "model_prob_a": 0.504,
+          "market_prob_a": 0.489,
+          "gap_pct_points": 1.5,
+          "decided": true,
+          "winner": "Jessica Bouzas Maneiro"
+        },
+        {
+          "player_a": "Elina Svitolina",
+          "player_b": "Maya Joint",
+          "model_prob_a": 0.851,
+          "market_prob_a": 0.866,
+          "gap_pct_points": 1.5,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Taylor Townsend",
+          "player_b": "Diana Shnaider",
+          "model_prob_a": 0.36,
+          "market_prob_a": 0.375,
+          "gap_pct_points": 1.5,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Taylah Preston",
+          "player_b": "Alycia Parks",
+          "model_prob_a": 0.484,
+          "market_prob_a": 0.498,
+          "gap_pct_points": 1.4,
+          "decided": true,
+          "winner": "Taylah Preston"
+        },
+        {
+          "player_a": "Marta Kostyuk",
+          "player_b": "Storm Hunter",
+          "model_prob_a": 0.879,
+          "market_prob_a": 0.867,
+          "gap_pct_points": 1.2,
+          "decided": true,
+          "winner": "Marta Kostyuk"
+        },
+        {
+          "player_a": "Thea Frodin",
+          "player_b": "Elena Rybakina",
+          "model_prob_a": 0.06,
+          "market_prob_a": 0.072,
+          "gap_pct_points": 1.2,
+          "decided": true,
+          "winner": "Elena Rybakina"
+        },
+        {
+          "player_a": "Sloane Stephens",
+          "player_b": "Clara Tauson",
+          "model_prob_a": 0.285,
+          "market_prob_a": 0.296,
+          "gap_pct_points": 1.1,
+          "decided": true,
+          "winner": "Sloane Stephens"
+        },
+        {
+          "player_a": "Lucrezia Stefanini",
+          "player_b": "Dayana Yastremska",
+          "model_prob_a": 0.399,
+          "market_prob_a": 0.41,
+          "gap_pct_points": 1.1,
+          "decided": true,
+          "winner": "Lucrezia Stefanini"
+        },
+        {
+          "player_a": "Maria Timofeeva",
+          "player_b": "Elise Mertens",
+          "model_prob_a": 0.286,
+          "market_prob_a": 0.276,
+          "gap_pct_points": 1.0,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "McCartney Kessler",
+          "player_b": "Ekaterina Alexandrova",
+          "model_prob_a": 0.393,
+          "market_prob_a": 0.401,
+          "gap_pct_points": 0.8,
+          "decided": true,
+          "winner": "Ekaterina Alexandrova"
+        },
+        {
+          "player_a": "Katie Boulter",
+          "player_b": "Karolina Muchova",
+          "model_prob_a": 0.165,
+          "market_prob_a": 0.157,
+          "gap_pct_points": 0.8,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Maja Chwalinska",
+          "player_b": "Taylor Townsend",
+          "model_prob_a": 0.323,
+          "market_prob_a": 0.329,
+          "gap_pct_points": 0.6,
+          "decided": true,
+          "winner": "Taylor Townsend"
+        },
+        {
+          "player_a": "Julia Grabher",
+          "player_b": "Sorana Cirstea",
+          "model_prob_a": 0.12,
+          "market_prob_a": 0.115,
+          "gap_pct_points": 0.5,
+          "decided": true,
+          "winner": "Sorana Cirstea"
+        },
+        {
+          "player_a": "Madison Keys",
+          "player_b": "Alina Korneeva",
+          "model_prob_a": 0.708,
+          "market_prob_a": 0.703,
+          "gap_pct_points": 0.5,
+          "decided": true,
+          "winner": "Madison Keys"
+        },
+        {
+          "player_a": "Aoi Ito",
+          "player_b": "Oksana Selekhmeteva",
+          "model_prob_a": 0.404,
+          "market_prob_a": 0.408,
+          "gap_pct_points": 0.4,
+          "decided": true,
+          "winner": "Oksana Selekhmeteva"
+        },
+        {
+          "player_a": "Lilli Tagger",
+          "player_b": "Amanda Anisimova",
+          "model_prob_a": 0.207,
+          "market_prob_a": 0.206,
+          "gap_pct_points": 0.1,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Aryna Sabalenka",
+          "player_b": "Camila Osorio",
+          "model_prob_a": 0.932,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Aryna Sabalenka"
+        },
+        {
+          "player_a": "Jessica Pegula",
+          "player_b": "Elena-Gabriela Ruse",
+          "model_prob_a": 0.851,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Jessica Pegula"
+        },
+        {
+          "player_a": "Zhang Shuai",
+          "player_b": "Leylah Fernandez",
+          "model_prob_a": 0.648,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Leylah Fernandez"
+        },
+        {
+          "player_a": "Emiliana Arango",
+          "player_b": "Wang Xinyu",
+          "model_prob_a": 0.458,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Wang Xinyu"
+        },
+        {
+          "player_a": "Anouk Koevermans",
+          "player_b": "Catherine McNally",
+          "model_prob_a": 0.302,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Catherine McNally"
+        },
+        {
+          "player_a": "Carol Young Suh Lee",
+          "player_b": "Katie Boulter",
+          "model_prob_a": 0.34,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Katie Boulter"
+        },
+        {
+          "player_a": "Tatjana Maria",
+          "player_b": "Jelena Ostapenko",
+          "model_prob_a": 0.28,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Anastasia Potapova",
+          "player_b": "Darja Semenistaja",
+          "model_prob_a": 0.78,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Anastasia Potapova"
+        },
+        {
+          "player_a": "Iva Jovic",
+          "player_b": "Magdalena Frech",
+          "model_prob_a": 0.619,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Magda Linette",
+          "player_b": "Francesca Jones",
+          "model_prob_a": 0.61,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Iga Swiatek",
+          "player_b": "Wang Xiyu",
+          "model_prob_a": 0.9,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Iga Swiatek"
+        },
+        {
+          "player_a": "Lucie Havlickova",
+          "player_b": "Anna Bondar",
+          "model_prob_a": 0.376,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Anna Bondar"
+        },
+        {
+          "player_a": "Zheng Qinwen",
+          "player_b": "Kristina Liutova",
+          "model_prob_a": 0.702,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": true,
+          "winner": "Zheng Qinwen"
+        },
+        {
+          "player_a": "Emma Navarro",
+          "player_b": "Catherine McNally",
+          "model_prob_a": 0.759,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Wang Xinyu",
+          "player_b": "Anna Kalinskaya",
+          "model_prob_a": 0.242,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Madison Keys",
+          "player_b": "Anna Bondar",
+          "model_prob_a": 0.795,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Zheng Qinwen",
+          "player_b": "Yulia Putintseva",
+          "model_prob_a": 0.731,
+          "market_prob_a": null,
+          "gap_pct_points": null,
+          "decided": false,
+          "winner": null
+        }
+      ]
     }
   ],
-  "matchups": {
-    "B-R1-10": {
-      "slot_a": "Magda Linette",
-      "slot_b": "Francesca Jones",
-      "p_slot_a": 0.61,
-      "p_slot_b": 0.39,
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "model_prob_a": 0.61,
-      "model_prob_b": 0.39,
-      "relative_change_pct": null
-    },
-    "B-R1-9": {
-      "slot_a": "Iva Jovic",
-      "slot_b": "Magdalena Frech",
-      "p_slot_a": 0.619,
-      "p_slot_b": 0.381,
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "model_prob_a": 0.619,
-      "model_prob_b": 0.381,
-      "relative_change_pct": null
-    },
-    "B-R1-4": {
-      "slot_a": "Tatjana Maria",
-      "slot_b": "Jelena Ostapenko",
-      "p_slot_a": 0.28,
-      "p_slot_b": 0.72,
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "model_prob_a": 0.28,
-      "model_prob_b": 0.72,
-      "relative_change_pct": null
-    },
-    "T-R2-15": {
-      "slot_a": "Emma Navarro",
-      "slot_b": "Catherine McNally",
-      "p_slot_a": 0.759,
-      "p_slot_b": 0.241,
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "model_prob_a": 0.759,
-      "model_prob_b": 0.241,
-      "relative_change_pct": null
-    },
-    "T-R2-2": {
-      "slot_a": "Oksana Selekhmeteva",
-      "slot_b": "Kamilla Rakhimova",
-      "p_slot_a": 0.312,
-      "p_slot_b": 0.688,
-      "market_prob_a": 0.312,
-      "market_prob_b": 0.688,
-      "model_prob_a": 0.498,
-      "model_prob_b": 0.502,
-      "relative_change_pct": 59.8
-    },
-    "T-R2-16": {
-      "slot_a": "Katie Boulter",
-      "slot_b": "Karolina Muchova",
-      "p_slot_a": 0.157,
-      "p_slot_b": 0.843,
-      "market_prob_a": 0.157,
-      "market_prob_b": 0.843,
-      "model_prob_a": 0.165,
-      "model_prob_b": 0.835,
-      "relative_change_pct": 5.5
-    },
-    "T-R2-14": {
-      "slot_a": "Wang Xinyu",
-      "slot_b": "Anna Kalinskaya",
-      "p_slot_a": 0.242,
-      "p_slot_b": 0.758,
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "model_prob_a": 0.242,
-      "model_prob_b": 0.758,
-      "relative_change_pct": null
-    },
-    "T-R2-7": {
-      "slot_a": "Ann Li",
-      "slot_b": "Donna Vekic",
-      "p_slot_a": 0.597,
-      "p_slot_b": 0.403,
-      "market_prob_a": 0.597,
-      "market_prob_b": 0.403,
-      "model_prob_a": 0.566,
-      "model_prob_b": 0.434,
-      "relative_change_pct": -5.3
-    },
-    "T-R2-6": {
-      "slot_a": "Kimberly Birrell",
-      "slot_b": "Ekaterina Alexandrova",
-      "p_slot_a": 0.233,
-      "p_slot_b": 0.767,
-      "market_prob_a": 0.233,
-      "market_prob_b": 0.767,
-      "model_prob_a": 0.315,
-      "model_prob_b": 0.685,
-      "relative_change_pct": 35.0
-    },
-    "T-R2-1": {
-      "slot_a": "Aryna Sabalenka",
-      "slot_b": "Polina Iatcenko",
-      "p_slot_a": 0.939,
-      "p_slot_b": 0.061,
-      "market_prob_a": 0.939,
-      "market_prob_b": 0.061,
-      "model_prob_a": 0.956,
-      "model_prob_b": 0.044,
-      "relative_change_pct": 1.9
-    },
-    "T-R2-13": {
-      "slot_a": "Elina Svitolina",
-      "slot_b": "Maya Joint",
-      "p_slot_a": 0.866,
-      "p_slot_b": 0.134,
-      "market_prob_a": 0.866,
-      "market_prob_b": 0.134,
-      "model_prob_a": 0.851,
-      "model_prob_b": 0.149,
-      "relative_change_pct": -1.8
-    },
-    "T-R2-8": {
-      "slot_a": "Lanlana Tararudee",
-      "slot_b": "Linda Noskova",
-      "p_slot_a": 0.212,
-      "p_slot_b": 0.788,
-      "market_prob_a": 0.212,
-      "market_prob_b": 0.788,
-      "model_prob_a": 0.191,
-      "model_prob_b": 0.809,
-      "relative_change_pct": -9.9
-    },
-    "B-R2-9": {
-      "slot_a": "Iga Swiatek",
-      "slot_b": "Nadia Podoroska",
-      "p_slot_a": 0.945,
-      "p_slot_b": 0.055,
-      "market_prob_a": 0.945,
-      "market_prob_b": 0.055,
-      "model_prob_a": 0.927,
-      "model_prob_b": 0.073,
-      "relative_change_pct": -1.8
-    },
-    "B-R2-10": {
-      "slot_a": "Harriet Dart",
-      "slot_b": "Marie Bouzkova",
-      "p_slot_a": 0.181,
-      "p_slot_b": 0.819,
-      "market_prob_a": 0.181,
-      "market_prob_b": 0.819,
-      "model_prob_a": 0.217,
-      "model_prob_b": 0.783,
-      "relative_change_pct": 19.9
-    },
-    "B-R2-11": {
-      "slot_a": "Madison Keys",
-      "slot_b": "Anna Bondar",
-      "p_slot_a": 0.795,
-      "p_slot_b": 0.205,
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "model_prob_a": 0.795,
-      "model_prob_b": 0.205,
-      "relative_change_pct": null
-    },
-    "B-R2-1": {
-      "slot_a": "Mirra Andreeva",
-      "slot_b": "Eva Lys",
-      "p_slot_a": 0.881,
-      "p_slot_b": 0.119,
-      "market_prob_a": 0.881,
-      "market_prob_b": 0.119,
-      "model_prob_a": 0.754,
-      "model_prob_b": 0.246,
-      "relative_change_pct": -14.4
-    },
-    "B-R2-7": {
-      "slot_a": "Cristina Bucsa",
-      "slot_b": "Himeno Sakatsume",
-      "p_slot_a": 0.658,
-      "p_slot_b": 0.342,
-      "market_prob_a": 0.658,
-      "market_prob_b": 0.342,
-      "model_prob_a": 0.603,
-      "model_prob_b": 0.397,
-      "relative_change_pct": -8.4
-    },
-    "B-R2-12": {
-      "slot_a": "Zheng Qinwen",
-      "slot_b": "Yulia Putintseva",
-      "p_slot_a": 0.731,
-      "p_slot_b": 0.269,
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "model_prob_a": 0.731,
-      "model_prob_b": 0.269,
-      "relative_change_pct": null
-    },
-    "B-R2-3": {
-      "slot_a": "Anastasia Potapova",
-      "slot_b": "Leolia Jeanjean",
-      "p_slot_a": 0.754,
-      "p_slot_b": 0.246,
-      "market_prob_a": 0.754,
-      "market_prob_b": 0.246,
-      "model_prob_a": 0.841,
-      "model_prob_b": 0.159,
-      "relative_change_pct": 11.6
-    },
-    "B-R2-14": {
-      "slot_a": "Maria Timofeeva",
-      "slot_b": "Elise Mertens",
-      "p_slot_a": 0.276,
-      "p_slot_b": 0.724,
-      "market_prob_a": 0.276,
-      "market_prob_b": 0.724,
-      "model_prob_a": 0.286,
-      "model_prob_b": 0.714,
-      "relative_change_pct": 3.5
-    },
-    "B-R2-15": {
-      "slot_a": "Maria Sakkari",
-      "slot_b": "Yuliia Starodubtseva",
-      "p_slot_a": 0.59,
-      "p_slot_b": 0.41,
-      "market_prob_a": 0.59,
-      "market_prob_b": 0.41,
-      "model_prob_a": 0.726,
-      "model_prob_b": 0.274,
-      "relative_change_pct": 22.9
-    },
-    "B-R2-4": {
-      "slot_a": "Lilli Tagger",
-      "slot_b": "Amanda Anisimova",
-      "p_slot_a": 0.206,
-      "p_slot_b": 0.794,
-      "market_prob_a": 0.206,
-      "market_prob_b": 0.794,
-      "model_prob_a": 0.207,
-      "model_prob_b": 0.793,
-      "relative_change_pct": 0.9
-    },
-    "B-R2-13": {
-      "slot_a": "Naomi Osaka",
-      "slot_b": "Katerina Siniakova",
-      "p_slot_a": 0.751,
-      "p_slot_b": 0.249,
-      "market_prob_a": 0.751,
-      "market_prob_b": 0.249,
-      "model_prob_a": 0.72,
-      "model_prob_b": 0.28,
-      "relative_change_pct": -4.2
-    },
-    "B-R2-6": {
-      "slot_a": "Oleksandra Oliynykova",
-      "slot_b": "Alexandra Eala",
-      "p_slot_a": 0.116,
-      "p_slot_b": 0.884,
-      "market_prob_a": 0.116,
-      "market_prob_b": 0.884,
-      "model_prob_a": 0.281,
-      "model_prob_b": 0.719,
-      "relative_change_pct": 143.1
-    },
-    "B-R2-8": {
-      "slot_a": "Paula Badosa",
-      "slot_b": "Coco Gauff",
-      "p_slot_a": 0.137,
-      "p_slot_b": 0.863,
-      "market_prob_a": 0.137,
-      "market_prob_b": 0.863,
-      "model_prob_a": 0.203,
-      "model_prob_b": 0.797,
-      "relative_change_pct": 47.8
-    },
-    "B-R2-16": {
-      "slot_a": "Jessica Bouzas Maneiro",
-      "slot_b": "Elena Rybakina",
-      "p_slot_a": 0.161,
-      "p_slot_b": 0.839,
-      "market_prob_a": 0.161,
-      "market_prob_b": 0.839,
-      "model_prob_a": 0.103,
-      "model_prob_b": 0.897,
-      "relative_change_pct": -36.1
-    },
-    "T-R3-5": {
-      "slot_a": "Jessica Pegula",
-      "slot_b": "Leylah Fernandez",
-      "p_slot_a": 0.801,
-      "p_slot_b": 0.199,
-      "market_prob_a": 0.801,
-      "market_prob_b": 0.199,
-      "model_prob_a": 0.927,
-      "model_prob_b": 0.073,
-      "relative_change_pct": 15.7
-    },
-    "T-R3-6": {
-      "slot_a": "Jasmine Paolini",
-      "slot_b": "Sorana Cirstea",
-      "p_slot_a": 0.389,
-      "p_slot_b": 0.611,
-      "market_prob_a": 0.389,
-      "market_prob_b": 0.611,
-      "model_prob_a": 0.421,
-      "model_prob_b": 0.579,
-      "relative_change_pct": 8.3
-    },
-    "T-R3-2": {
-      "slot_a": "Taylor Townsend",
-      "slot_b": "Diana Shnaider",
-      "p_slot_a": 0.375,
-      "p_slot_b": 0.625,
-      "market_prob_a": 0.375,
-      "market_prob_b": 0.625,
-      "model_prob_a": 0.36,
-      "model_prob_b": 0.64,
-      "relative_change_pct": -3.9
-    }
-  },
   "head_to_head": {
     "Alexandra Eala|Amanda Anisimova": 0.356,
     "Alexandra Eala|Anastasia Potapova": 0.58,

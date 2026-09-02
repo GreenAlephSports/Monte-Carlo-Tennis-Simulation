@@ -29,6 +29,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from bracket import DuplicatePlayerDrawError  # noqa: E402
 from bracket_export import OUTPUT_DIR, QUALIFIER_PLACEHOLDER_RE, export_bracket_json  # noqa: E402
 from bracket_schema import BracketValidationError, load_bracket_yaml  # noqa: E402
+from consolidated_export import HISTORY_SIMULATIONS_DEFAULT, build_consolidated_export  # noqa: E402
 from hybrid_simulation import TOUR_SINGLES_CATEGORY  # noqa: E402
 from live_scores import LiveScoresError, ended_by_retirement, extract_matches, fetch_scoreboard, format_match  # noqa: E402
 from simulate import N_SIMULATIONS  # noqa: E402
@@ -201,7 +202,23 @@ def print_delta_report(completed_matches, before_players, after_players):
     print("=" * 78)
 
 
-def watch(bracket_path, interval, n_simulations, seed, dates, exit_after):
+def refresh_consolidated(bracket_path, export_output, export_path, seed, dates, history_simulations):
+    """Rebuilds the single consolidated-per-tournament file (futures + round history + model-vs-
+    market) from the export_bracket_json result the caller already just produced this cycle -
+    reuses it instead of triggering a second live simulation, so this only costs the extra
+    round_history computation (build_round_history), not another full futures run."""
+    try:
+        consolidated_path, _output = build_consolidated_export(
+            bracket_path, dates=dates, seed=seed, history_simulations=history_simulations,
+            current_export=export_output, current_export_path=export_path,
+        )
+        print(f"Refreshed consolidated export: {consolidated_path}")
+    except (BracketValidationError, LiveScoresError, RuntimeError) as e:
+        print(f"WARNING: consolidated export refresh failed this cycle ({e}) - regular export "
+              f"above is unaffected, will retry on the next transition", file=sys.stderr)
+
+
+def watch(bracket_path, interval, n_simulations, seed, dates, exit_after, history_simulations=HISTORY_SIMULATIONS_DEFAULT):
     bracket = load_bracket_yaml(bracket_path)
     check_no_tbd_placeholders(bracket, bracket_path)
     tour = bracket.tour.lower()
@@ -240,6 +257,7 @@ def watch(bracket_path, interval, n_simulations, seed, dates, exit_after):
     if n_cached:
         print(f"Cached {n_cached} new pregame market price(s) to {MARKET_PRICE_CACHE_PATH} "
               f"for calibration_log.py to backfill once these matches conclude.")
+    refresh_consolidated(bracket_path, baseline_export, _out_path, seed, dates, history_simulations)
     last_statuses = snapshot_statuses(current_matches)
     n_already_final = sum(1 for s in last_statuses.values() if s == "post")
     print(f"{len(last_statuses)} matches tracked, {n_already_final} already Final at startup "
@@ -264,7 +282,7 @@ def watch(bracket_path, interval, n_simulations, seed, dates, exit_after):
 
         print(f"[{time.strftime('%H:%M:%S')}] detected {len(newly_final)} new completion(s) - rerunning simulation...")
         try:
-            _out_path, new_export = export_bracket_json(
+            out_path, new_export = export_bracket_json(
                 bracket_path, output_path=OUTPUT_DIR / f"{Path(bracket_path).stem}_watcher_baseline.json",
                 n_simulations=n_simulations, seed=seed, dates=dates,
             )
@@ -280,6 +298,7 @@ def watch(bracket_path, interval, n_simulations, seed, dates, exit_after):
         n_cached = update_market_price_cache(bracket, new_export, current_matches)
         if n_cached:
             print(f"Cached {n_cached} new pregame market price(s) to {MARKET_PRICE_CACHE_PATH}.")
+        refresh_consolidated(bracket_path, new_export, out_path, seed, dates, history_simulations)
         new_players = players_by_espn_name(new_export)
         print_delta_report(newly_final, current_players, new_players)
         current_players = new_players
@@ -311,10 +330,15 @@ def main():
                               "that's not 'today' by ESPN's own default")
     parser.add_argument("--exit-after", type=int, default=None,
                          help="stop after this many detected transitions (default: run forever)")
+    parser.add_argument("--history-simulations", type=int, default=HISTORY_SIMULATIONS_DEFAULT,
+                         help="simulations per round in the consolidated export's round_history "
+                              f"(default {HISTORY_SIMULATIONS_DEFAULT} - lower than --simulations "
+                              "since this reruns once per already-known round, every transition)")
     args = parser.parse_args()
 
     try:
-        watch(args.bracket_path, args.interval, args.simulations, args.seed, args.dates, args.exit_after)
+        watch(args.bracket_path, args.interval, args.simulations, args.seed, args.dates, args.exit_after,
+              history_simulations=args.history_simulations)
     except (BracketValidationError, LiveScoresError, RuntimeError) as e:
         print(f"ERROR: {e}", file=sys.stderr)
         sys.exit(1)
