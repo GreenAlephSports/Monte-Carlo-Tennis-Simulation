@@ -4,6 +4,9 @@ import json
 import os
 import re
 import sys
+import time
+import traceback
+from datetime import datetime, timezone
 from pathlib import Path
 
 from flask import Flask, jsonify, request, send_file
@@ -174,4 +177,31 @@ if __name__ == "__main__":
               f"(e.g. http://{lan_ip or '<this-machine-LAN-IP>'}:{args.port}), NOT the public internet "
               f"(no port-forwarding/external hosting is set up by this script)")
 
-    app.run(host=args.host, port=args.port)
+    # Flask's dev server already isolates a per-request exception (returns 500, keeps serving) -
+    # the real unattended-operation risk is the SERVER PROCESS itself dying (an OS-level socket
+    # error, a crash inside Werkzeug's own request loop). For a read-only poller meant to stay up
+    # for the rest of the tournament with no one watching a terminal, restart rather than exit.
+    crash_log_path = OUTPUT_DIR / "api_server_crashes.log"
+    backoff_seconds = 15
+    attempt = 0
+    while True:
+        attempt += 1
+        try:
+            app.run(host=args.host, port=args.port)
+            break  # app.run() returning at all (not raising) means a clean shutdown - don't restart
+        except KeyboardInterrupt:
+            print("\nStopped.")
+            break
+        except Exception as e:
+            message = (
+                f"[{datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}] api_server crashed "
+                f"(attempt {attempt}) with {type(e).__name__}: {e}\n{traceback.format_exc()}"
+            )
+            print(f"ERROR: {message}\nRestarting in {backoff_seconds}s...", file=sys.stderr)
+            try:
+                crash_log_path.parent.mkdir(parents=True, exist_ok=True)
+                with open(crash_log_path, "a", encoding="utf-8") as f:
+                    f.write(message + "\n")
+            except OSError:
+                pass
+            time.sleep(backoff_seconds)

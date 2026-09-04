@@ -21,6 +21,7 @@ import argparse
 import json
 import sys
 import time
+import traceback
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -36,6 +37,14 @@ from simulate import N_SIMULATIONS  # noqa: E402
 
 DEFAULT_INTERVAL_SECONDS = 60
 MILESTONE_FIELDS = ["p_champ", "p_sf", "p_final"]
+
+# Unattended, multi-day operation means SOMETHING will eventually throw an exception type this
+# module doesn't already anticipate (a transient DNS blip, a malformed ESPN payload, etc.) - rather
+# than let that kill the whole process with no one watching a terminal to restart it, main() catches
+# broad Exception at the outermost level, logs it here (in addition to stderr, which is easy to lose
+# if this is running detached/backgrounded), and restarts watch() from scratch after a backoff.
+CRASH_LOG_PATH = Path(__file__).resolve().parent.parent / "output" / "live_match_watcher_crashes.log"
+CRASH_RESTART_BACKOFF_SECONDS = 30
 
 # The Odds API drops an event entirely once it's Final (confirmed in compare_match.py's own
 # investigation), and calibration_log.py only logs a match AFTER it's decided - so there is no way
@@ -245,6 +254,14 @@ def watch(bracket_path, interval, n_simulations, seed, dates, exit_after, histor
                 f"self-corrects.", file=sys.stderr,
             )
             time.sleep(interval)
+        except (LiveScoresError, BracketValidationError) as e:
+            # transient live-data trouble (Odds API/ESPN hiccup, momentarily-inconsistent draw
+            # state) - same non-fatal retry treatment as the poll loop below gives scoreboard
+            # fetch failures, just applied to baseline establishment too so a bad moment at
+            # startup doesn't need a human to notice and restart the process by hand.
+            print(f"WARNING: baseline simulation failed this attempt ({e}) - retrying in {interval}s",
+                  file=sys.stderr)
+            time.sleep(interval)
     current_players = players_by_espn_name(baseline_export)
     print(f"Baseline established: {len(current_players)} players alive.")
 
@@ -295,6 +312,18 @@ def watch(bracket_path, interval, n_simulations, seed, dates, exit_after, histor
                 f"espn_bracket.py) for the report to resume.", file=sys.stderr,
             )
             continue
+        except (LiveScoresError, BracketValidationError) as e:
+            # A transient failure here (Odds API/ESPN hiccup) must not crash the whole watcher -
+            # last_statuses was already advanced above, so this cycle's transition report/
+            # consolidated refresh is skipped, but nothing is lost: the next detected completion
+            # re-runs export_bracket_json against the full current live state anyway, which will
+            # naturally catch this round up. Only a repeated, permanent failure would leave the
+            # consolidated export stale, and that would keep surfacing here every cycle for
+            # visibility rather than going silent.
+            print(f"WARNING: simulation rerun failed this cycle ({e}) - consolidated export stays "
+                  f"at its last-known state, will retry on the next detected completion",
+                  file=sys.stderr)
+            continue
         n_cached = update_market_price_cache(bracket, new_export, current_matches)
         if n_cached:
             print(f"Cached {n_cached} new pregame market price(s) to {MARKET_PRICE_CACHE_PATH}.")
@@ -336,14 +365,38 @@ def main():
                               "since this reruns once per already-known round, every transition)")
     args = parser.parse_args()
 
-    try:
-        watch(args.bracket_path, args.interval, args.simulations, args.seed, args.dates, args.exit_after,
-              history_simulations=args.history_simulations)
-    except (BracketValidationError, LiveScoresError, RuntimeError) as e:
-        print(f"ERROR: {e}", file=sys.stderr)
-        sys.exit(1)
-    except KeyboardInterrupt:
-        print("\nStopped.")
+    # Known, anticipated error types (bad bracket YAML, a genuinely unrecoverable live-data
+    # problem) already get non-fatal retry handling INSIDE watch()'s own loops - reaching here
+    # means either one of those escaped (e.g. the bracket itself is invalid, not just a transient
+    # live-data hiccup) or something entirely unanticipated crashed. For a script meant to run
+    # unattended for the rest of the tournament, the right behavior isn't to exit and wait for a
+    # human to notice - it's to log the crash somewhere durable and restart from a clean baseline.
+    # --exit-after is respected as an explicit "don't run forever" request and is NOT retried past.
+    attempt = 0
+    while True:
+        attempt += 1
+        try:
+            watch(args.bracket_path, args.interval, args.simulations, args.seed, args.dates,
+                  args.exit_after, history_simulations=args.history_simulations)
+            return  # watch() only returns normally via --exit-after being reached
+        except KeyboardInterrupt:
+            print("\nStopped.")
+            return
+        except Exception as e:
+            tb = traceback.format_exc()
+            message = (
+                f"[{datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}] watcher crashed "
+                f"(attempt {attempt}) with {type(e).__name__}: {e}\n{tb}"
+            )
+            print(f"ERROR: {message}\nRestarting from a clean baseline in "
+                  f"{CRASH_RESTART_BACKOFF_SECONDS}s...", file=sys.stderr)
+            try:
+                CRASH_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+                with open(CRASH_LOG_PATH, "a", encoding="utf-8") as f:
+                    f.write(message + "\n")
+            except OSError:
+                pass  # logging the crash must never itself prevent the restart below
+            time.sleep(CRASH_RESTART_BACKOFF_SECONDS)
 
 
 if __name__ == "__main__":

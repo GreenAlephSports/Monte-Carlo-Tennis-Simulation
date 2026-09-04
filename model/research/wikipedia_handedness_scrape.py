@@ -76,7 +76,10 @@ SEARCH_LIMIT = 10
 
 OUTPUT_DIR = Path(__file__).resolve().parent.parent.parent / "output"
 CACHE_PATH = OUTPUT_DIR / "player_handedness.csv"
-CACHE_COLUMNS = ["player", "tour", "status", "hand", "backhand", "wikipedia_title", "raw_plays"]
+CACHE_COLUMNS = [
+    "player", "tour", "status", "hand", "backhand", "wikipedia_title", "raw_plays",
+    "height_cm", "height_status", "birth_year", "birth_year_status",
+]
 
 # statuses that legitimately end the pipeline for a player without a hand/backhand answer - all
 # require manual curation, never guessed
@@ -113,8 +116,63 @@ BACKHAND_PATTERNS = [
 # capturing e.g. "|careerprizemoney = $220,596" as this player's "plays" value instead of correctly
 # recognizing plays as blank - confirmed on Berrettini J. and Samrej K.'s cached raw_plays
 PLAYS_FIELD_RE = re.compile(r"^[ \t]*\|[ \t]*plays[ \t]*=[ \t]*(.*?)[ \t]*$", re.MULTILINE)
+HEIGHT_FIELD_RE = re.compile(r"^[ \t]*\|[ \t]*height[ \t]*=[ \t]*(.*?)[ \t]*$", re.MULTILINE)
+BIRTH_DATE_FIELD_RE = re.compile(r"^[ \t]*\|[ \t]*birth_date[ \t]*=[ \t]*(.*?)[ \t]*$", re.MULTILINE)
 INFOBOX_RE = re.compile(r"\{\{\s*Infobox tennis biography", re.IGNORECASE)
 DISAMBIGUATOR_RE = re.compile(r"\s*\([^()]*\)\s*$")
+
+# height is stored via {{convert}} (confirmed both forms live: Sinner's is metric-first
+# "{{convert|1.91|m|abbr=on}}", Shelton's is imperial-first "{{convert|6|ft|4|in|m|2|abbr=on}}",
+# and "{{convert|abbr=on|1.91|m}}" puts the named param BEFORE the number - all three real,
+# roughly equally common), occasionally the dedicated {{height}} template, or - on older/thinner
+# articles - plain text with no template at all, in any of "1.91 m" / "183 cm" / "6'0\"" (Facundo
+# Bagnis, Alex de Minaur respectively). Tried in this order; first one that matches wins.
+# Each entry is (regex, unit): "ft_in" converts both captured groups (1 ft = 30.48 cm, 1 in = 2.54
+# cm), "m" multiplies the single captured value by 100, "cm" uses it directly. Anything else (a
+# handful of articles use nonstandard phrasing) is left unparsed rather than guessed.
+HEIGHT_PATTERNS = [
+    (re.compile(r"(\d+(?:\.\d+)?)\|ft\|(\d+(?:\.\d+)?)\|in\b", re.IGNORECASE), "ft_in"),
+    (re.compile(r"(\d+(?:\.\d+)?)\|m\b", re.IGNORECASE), "m"),
+    (re.compile(r"\{\{height\|[^}]*\bft[ _]*=[ _]*(\d+(?:\.\d+)?)[^}]*\bin[ _]*=[ _]*(\d+(?:\.\d+)?)", re.IGNORECASE), "ft_in"),
+    (re.compile(r"\{\{height\|[^}]*\bm[ _]*=[ _]*(\d+(?:\.\d+)?)", re.IGNORECASE), "m"),
+    (re.compile(r"(\d+)\s*'\s*(\d+)\"?"), "ft_in"),                              # plain "6'0\""
+    (re.compile(r"(\d+)\s*ft\s*(\d+)\s*in\b", re.IGNORECASE), "ft_in"),         # plain "6 ft 0 in"
+    (re.compile(r"(\d\.\d{2})\s*m\b"), "m"),                                    # plain "1.91 m"
+    (re.compile(r"(\d+)\s*cm\b", re.IGNORECASE), "cm"),                         # plain integer "183 cm"
+]
+
+
+def _parse_height_cm(raw_value):
+    """Returns height in cm (float) or None if raw_value doesn't match any known template/text
+    shape."""
+    for pat, unit in HEIGHT_PATTERNS:
+        m = pat.search(raw_value)
+        if not m:
+            continue
+        if unit == "ft_in":
+            ft, inch = float(m.group(1)), float(m.group(2))
+            return round(ft * 30.48 + inch * 2.54, 1)
+        if unit == "m":
+            return round(float(m.group(1)) * 100, 1)
+        return round(float(m.group(1)), 1)  # cm
+    return None
+
+
+# birth_date is stored via {{birth date and age|YYYY|MM|DD|...}} or {{birth date|YYYY|MM|DD}}
+# (confirmed on Jannik Sinner: "{{birth date and age|2001|8|16|df=yes}}"), or plain text on
+# older/thinner articles. Only the year is needed (age-at-match-time, not exact birthday), so this
+# just grabs the first plausible 4-digit year (1930-2015 - wide enough for any active pro's
+# grandparents' generation of Wikipedia articles without accidentally matching an unrelated
+# 4-digit number elsewhere in the value).
+BIRTH_TEMPLATE_RE = re.compile(r"\{\{[Bb]irth[ _]date(?:[ _]and[ _]age)?\|([^}]*)\}\}")
+PLAUSIBLE_YEAR_RE = re.compile(r"\b(19[3-9]\d|20[01]\d)\b")
+
+
+def _parse_birth_year(raw_value):
+    """Returns birth year (int) or None if raw_value has no plausible year in it."""
+    m = BIRTH_TEMPLATE_RE.search(raw_value)
+    year_m = PLAUSIBLE_YEAR_RE.search(m.group(1)) if m else PLAUSIBLE_YEAR_RE.search(raw_value)
+    return int(year_m.group(0)) if year_m else None
 
 
 def _strip_diacritics(text):
@@ -152,7 +210,10 @@ def _api_get(params, timeout=15):
                 time.sleep(wait)
                 continue
             raise WikipediaFetchError(f"request failed ({url}): {e}") from e
-        except URLError as e:
+        except (URLError, TimeoutError, OSError) as e:
+            # a bare socket-level TimeoutError (seen in practice on a long backfill run - an
+            # otherwise-healthy connection just stalled mid-response) isn't a URLError/HTTPError
+            # and was previously uncaught here, crashing the whole run instead of just this player
             raise WikipediaFetchError(f"request failed ({url}): {e}") from e
     else:
         raise WikipediaFetchError(f"request failed ({url}): exceeded {MAX_RETRIES} retries on 429")
@@ -336,29 +397,70 @@ def _parse_plays_field(wikitext):
     return hand, backhand, raw_value, status
 
 
+def _parse_height_field(wikitext):
+    """Returns (height_cm, height_status). height_status is 'resolved', 'missing_height_field'
+    (no `height` line in the infobox at all, OR the line exists but is blank - confirmed on
+    Sebastian Fanselow: "| height = " with nothing after it - nothing to parse either way, same
+    convention _classify_plays_value uses for a blank `plays` value), or 'unparsed_height' (field
+    present with real text but none of HEIGHT_PATTERNS matched it - kept for manual review, never
+    guessed)."""
+    match = HEIGHT_FIELD_RE.search(wikitext)
+    if match is None or not match.group(1).strip():
+        return None, "missing_height_field"
+    height_cm = _parse_height_cm(match.group(1))
+    if height_cm is None:
+        return None, "unparsed_height"
+    return height_cm, "resolved"
+
+
+def _parse_birth_year_field(wikitext):
+    """Returns (birth_year, birth_year_status), same three-way convention as _parse_height_field:
+    'resolved', 'missing_birth_date_field' (no line, or blank), 'unparsed_birth_date' (text present,
+    no plausible year found - kept for manual review, never guessed)."""
+    match = BIRTH_DATE_FIELD_RE.search(wikitext)
+    if match is None or not match.group(1).strip():
+        return None, "missing_birth_date_field"
+    birth_year = _parse_birth_year(match.group(1))
+    if birth_year is None:
+        return None, "unparsed_birth_date"
+    return birth_year, "resolved"
+
+
 def _resolve_one_player(csv_name, name_aliases, request_count):
     """Returns (row_dict, request_count)."""
     title, wikitext, request_count = _resolve_wikipedia_page(csv_name, name_aliases, request_count)
     if title is None:
         return {"status": "unresolved_name", "hand": "", "backhand": "",
-                "wikipedia_title": "", "raw_plays": ""}, request_count
+                "wikipedia_title": "", "raw_plays": "", "height_cm": "", "height_status": "",
+                "birth_year": "", "birth_year_status": ""}, request_count
 
     if not wikitext or not INFOBOX_RE.search(wikitext):
         return {"status": "no_infobox", "hand": "", "backhand": "",
-                "wikipedia_title": title, "raw_plays": ""}, request_count
+                "wikipedia_title": title, "raw_plays": "", "height_cm": "", "height_status": "",
+                "birth_year": "", "birth_year_status": ""}, request_count
 
     hand, backhand, raw_value, status = _parse_plays_field(wikitext)
+    height_cm, height_status = _parse_height_field(wikitext)
+    birth_year, birth_year_status = _parse_birth_year_field(wikitext)
     return {
         "status": status, "hand": hand or "", "backhand": backhand or "",
         "wikipedia_title": title, "raw_plays": raw_value or "",
+        "birth_year": birth_year if birth_year is not None else "", "birth_year_status": birth_year_status,
+        "height_cm": height_cm if height_cm is not None else "", "height_status": height_status,
     }, request_count
 
 
 def _load_cache():
-    if CACHE_PATH.exists():
-        df = pd.read_csv(CACHE_PATH, keep_default_na=False, dtype=str)
-        return {(row["tour"], row["player"]): row.to_dict() for _, row in df.iterrows()}
-    return {}
+    if not CACHE_PATH.exists():
+        return {}
+    df = pd.read_csv(CACHE_PATH, keep_default_na=False, dtype=str)
+    # a cache written before a CACHE_COLUMNS addition (e.g. height_cm/height_status, added after
+    # the original hand/backhand-only scrape) won't have that column on disk yet - backfill "" so
+    # every in-memory row has the same shape regardless of which scraper version wrote it
+    for col in CACHE_COLUMNS:
+        if col not in df.columns:
+            df[col] = ""
+    return {(row["tour"], row["player"]): row.to_dict() for _, row in df.iterrows()}
 
 
 def _save_cache(cache):
@@ -418,6 +520,62 @@ def run(tours, limit=None, retry_failed=False):
 
     fetched_this_run = [cache[k] for k in cache if k in set(to_fetch)]
     _report(cache, tours, fetched_this_run, request_count, elapsed)
+
+
+def backfill_height(force=False, fields=("height", "birth_year")):
+    """Fills in height_cm/height_status and/or birth_year/birth_year_status for every cache row
+    that already has a resolved wikipedia_title but is missing the requested field(s) (or, with
+    force=True, every row with a title - re-parses even previously-attempted ones, e.g. after a
+    HEIGHT_PATTERNS/birth-date-parsing improvement). Costs exactly ONE direct-title fetch per
+    player (_fetch_wikitext_by_title, no search) regardless of how many of the two fields are being
+    filled - both are parsed from the SAME wikitext fetch, since the right page is already known
+    from the original hand/backhand scrape. Rows that were never resolved to a title at all
+    (unresolved_name) get neither field either - same population gap as hand/backhand, not
+    something this can independently fix."""
+    cache = _load_cache()
+    status_col = {"height": "height_status", "birth_year": "birth_year_status"}
+    candidates = [
+        key for key, row in cache.items()
+        if row.get("wikipedia_title")
+        and (force or any(not row.get(status_col[f]) for f in fields))
+    ]
+    print(f"{len(cache)} cached players; {len(candidates)} have a resolved wikipedia_title and "
+          f"need a fetch for {fields}" + (" (--force: re-fetching all of them)" if force else "") + ".")
+
+    request_count = 0
+    start = time.monotonic()
+    for i, key in enumerate(candidates):
+        row = cache[key]
+        try:
+            title, wikitext = _fetch_wikitext_by_title(row["wikipedia_title"])
+            request_count += 1
+        except WikipediaFetchError as e:
+            print(f"WARNING: fetch failed for {key}: {e} - leaving unresolved this run", file=sys.stderr)
+            continue
+        if "height" in fields:
+            if wikitext is None:
+                row["height_cm"], row["height_status"] = "", "title_no_longer_resolves"
+            else:
+                height_cm, height_status = _parse_height_field(wikitext)
+                row["height_cm"], row["height_status"] = (height_cm if height_cm is not None else ""), height_status
+        if "birth_year" in fields:
+            if wikitext is None:
+                row["birth_year"], row["birth_year_status"] = "", "title_no_longer_resolves"
+            else:
+                birth_year, birth_year_status = _parse_birth_year_field(wikitext)
+                row["birth_year"], row["birth_year_status"] = (birth_year if birth_year is not None else ""), birth_year_status
+
+        if (i + 1) % FLUSH_EVERY == 0 or i + 1 == len(candidates):
+            _save_cache(cache)
+            elapsed = time.monotonic() - start
+            print(f"  {i + 1}/{len(candidates)} fetched ({request_count} API requests, "
+                  f"{elapsed:.0f}s elapsed)...")
+        time.sleep(THROTTLE_SECONDS)
+
+    _save_cache(cache)
+    for f in fields:
+        counts = Counter(cache[k][status_col[f]] for k in candidates)
+        print(f"\n{f} backfill results: {dict(counts)}")
 
 
 def reparse_cache():
@@ -493,10 +651,21 @@ def main():
     parser.add_argument("--reparse-cache", action="store_true",
                          help="reclassify already-cached malformed_plays rows against the current "
                               "hand/backhand patterns with zero network calls, then exit")
+    parser.add_argument("--backfill-height", action="store_true",
+                         help="fetch height_cm/birth_year for cached players with a resolved "
+                              "wikipedia_title but missing that field yet (one direct-title fetch "
+                              "each, no search - both fields come from the same fetch), then exit")
+    parser.add_argument("--fields", default="height,birth_year",
+                         help="with --backfill-height, comma-separated subset of {height,birth_year} to fetch")
+    parser.add_argument("--force", action="store_true",
+                         help="with --backfill-height, re-fetch for every titled row, not just missing ones")
     args = parser.parse_args()
 
     if args.reparse_cache:
         reparse_cache()
+        return
+    if args.backfill_height:
+        backfill_height(force=args.force, fields=tuple(args.fields.split(",")))
         return
 
     tours = ["ATP", "WTA"] if args.tour == "both" else [args.tour.upper()]
