@@ -79,6 +79,50 @@ ATP_NAME_ALIASES = {
     # wimbledon_2026_atp.yaml, the first true 128-draw/live-replay path this alias mechanism was
     # exercised against.
     "Kwon S.": "Kwon S.W.",
+
+    # Keys below are full Wikipedia article titles, not "Lastname I." shapes - used by
+    # model/research/wikipedia_handedness_scrape.py's tier-0 direct-title fetch (see that file's
+    # _resolve_wikipedia_page docstring), which needs a real title -> csv-name override for cases
+    # its own search-and-fuzzy-match pipeline structurally can't reach on its own: two real
+    # players sharing lastname AND first initial (match_espn_name_to_draw's own alias check can't
+    # tell them apart either, since it re-derives the identical "Lastname I." key from both full
+    # names), a Wikipedia title kept in native surname-first order, a compound surname the ratings
+    # csv truncated to one word, or a hyphen/apostrophe the shared matcher's lastname splitter
+    # handles differently than the csv's own spelling.
+    "Ben Shelton": "Shelton B.",  # vs Ben's father Bryan Shelton, a former pro/coach - same lastname+initial
+    "Casper Ruud": "Ruud C.",  # vs Casper's father Christian Ruud, also a former pro - same lastname+initial
+    "Brandon Nakashima": "Nakashima B.",  # vs an unrelated same-format "Bryce Nakashima" Wikipedia article
+    "Tommy Paul (tennis)": "Paul T.",  # vs an unrelated "Thomas Paul" article (not a redirect to this one)
+    "Daniel Mérida": "Merida Aguilar D.",  # Wikipedia has no "Aguilar" - same underlying csv/real-name
+                                           # mismatch as the "Merida D." bracket-alias above, different key shape
+    "Emilio Nava": "Nava E.",  # search also surfaces an unrelated "Eduardo Nava" (sprinter and tennis pages)
+    "Max Purcell": "Purcell M.",  # vs 1980s pro Mel Purcell - same lastname+initial
+    "Giovanni Mpetshi Perricard": "Mpetshi G.",  # ratings csv truncated this compound surname to "Mpetshi" only
+    "Jordan Thompson (tennis)": "Thompson J.",  # bare "Jordan Thompson" is itself a disambiguation
+                                                # page (American footballer/boxer/cricketer/etc.),
+                                                # not a redirect to this player
+    "Wu Yibing": "Wu Y.",  # Wikipedia keeps Chinese name order (surname first), the western-order
+                           # prefilter can't read that as "Wu" + initial "Y" without this override
+    "Nicolai Budkov Kjær": "Budkov Kjaer N.",
+    "Bu Yunchaokete": "Bu Y.",  # native surname-first order, as with Wu Yibing above
+    "Albert Ramos Viñolas": "Ramos-Vinolas A.",  # csv hyphenates the surname, Wikipedia's title doesn't
+    "Christopher O'Connell": "O Connell C.",  # apostrophe glues "O'Connell" into one token the
+                                              # western-order prefilter can't split into the csv's two words
+    "Alexandre Müller": "Muller A.",  # search also surfaces an unrelated same-format "Andrea Müller" (WTA)
+    "Dan Evans (tennis)": "Evans D.",  # plays under "Dan"; birth name "Daniel" is a different Wikipedia article
+    "Yosuke Watanuki": "Watanuki Y.",
+    "Martin Damm (born 2003)": "Damm M.",  # vs his father, 1990s doubles world No. 1 "Martin Damm" -
+                                           # the active ratings-csv entry is the son, not the more
+                                           # Wikipedia-notable father sharing the exact same name
+    # this project's ratings csv carries these three players under a SPACE-separated two-initial
+    # spelling ("Tirante T. A.") as well as the more common unspaced one ("Tirante T.A.") - a
+    # pre-existing data-generation quirk, not something this alias block fixes - and
+    # match_espn_name_to_draw's own suffix parser (_lastname_and_suffix, separate from
+    # bracket._split_csv_name) doesn't recover a compound initials suffix from the spaced form,
+    # unlike the unspaced one which it handles fine
+    "Thiago Agustín Tirante": "Tirante T. A.",
+    "Tomás Martín Etcheverry": "Etcheverry T. M.",
+    "Juan Pablo Varillas": "Varillas J. P.",
 }
 
 WTA_NAME_ALIASES = {
@@ -94,6 +138,29 @@ WTA_NAME_ALIASES = {
     # given-name string read the other way round. Without this, match_espn_name_to_draw finds two
     # candidates and correctly refuses to guess.
     "Timofeeva M.": "Timofeeva M.",
+
+    # Full Wikipedia article titles (not "Lastname I." shapes) for wikipedia_handedness_scrape.py's
+    # tier-0 direct-title fetch - see the matching comment block in ATP_NAME_ALIASES above for why
+    # this needs its own key shape.
+    "Hsieh Su-wei": "Hsieh S.W.",  # native surname-first order
+    "Alison Riske-Amritraj": "Riske A.",  # renamed on Wikipedia after marriage
+    "Wang Xinyu": "Wang Xin.",  # native order, plus the csv's own truncated-given-name disambiguator
+                                # ("Xin" for Xinyu, vs "Xiy" for Xiyu) matches no real title word sequence
+    "Zhang Shuai": "Zhang S.",  # native order
+    "Karolína Plíšková": "Pliskova Ka.",  # same truncated-disambiguator mismatch as Wang Xin. above
+    "Camila Osorio": "Osorio M.",  # existing "Osorio C." alias above covers match_espn_name_to_draw
+                                   # directly; this scraper-specific key is a safety net for its own
+                                   # separate western-order/dedup prefiltering
+    "Rebecca Peterson": "Peterson R.",
+    "Wang Xiyu": "Wang Xiy.",  # native order
+    "Zheng Qinwen": "Zheng Q.",
+    "Kristýna Plíšková": "Pliskova Kr.",
+    "Marina Bassols Ribera": "Bassols M.",  # ratings csv truncated this compound surname to "Bassols" only
+    "Joanna Garland": "Garland J.",
+    "Viktória Hrunčáková": "Kuzmova V.",  # renamed on Wikipedia after marriage - no longer under
+                                          # "Kuzmova" at all, so no lastname-based search could find it
+    "Stefanie Vögele": "Voegele S.",
+    "Kateryna Baindl": "Kozlova K.",  # renamed on Wikipedia after marriage, same situation as Kuzmova above
 }
 
 
