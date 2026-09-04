@@ -12,6 +12,9 @@ champion-probability CSV per --through-round checkpoint, not the sf/final breakd
 loop itself stays cheap (a single scoreboard fetch, no simulation) - a full export only runs when a
 transition is actually detected, plus once up front to establish the pre-transition baseline.
 
+Purely a model-output automation path: this module makes no Odds API calls anywhere, directly or
+via bracket_export.py/consolidated_export.py - see those modules' own docstrings.
+
 Usage:
     python model/live_match_watcher.py brackets/cincinnati_2026_atp_demo.yaml
     python model/live_match_watcher.py brackets/cincinnati_2026_atp_demo.yaml --interval 30
@@ -46,13 +49,12 @@ MILESTONE_FIELDS = ["p_champ", "p_sf", "p_final"]
 CRASH_LOG_PATH = Path(__file__).resolve().parent.parent / "output" / "live_match_watcher_crashes.log"
 CRASH_RESTART_BACKOFF_SECONDS = 30
 
-# The Odds API drops an event entirely once it's Final (confirmed in compare_match.py's own
-# investigation), and calibration_log.py only logs a match AFTER it's decided - so there is no way
-# to fetch a pregame market price for a match after the fact. This cache is the fix: every poll
-# here already runs export_bracket_json, which already fetches market_prob_a for every unsettled
-# matchup as a side effect (see bracket_export.resolve_probability) - this just persists that
-# price, keyed by ESPN name pair, while it's still available and still genuinely pregame, so
-# calibration_log.py can look it up later once the match concludes. See update_market_price_cache.
+# Historical cache from when this watcher's own poll cycle fetched market prices via bracket_
+# export.py's (now-removed) Odds API integration - this module no longer writes to it (the live
+# automation path makes no Odds API calls at all any more), but the file itself still holds prices
+# captured before that removal, and calibration_log.py/live_match_snapshot.py (separate, explicitly
+# market-vs-model research tooling, out of scope for this pipeline's own removal) still read it via
+# these two helpers - kept here, read-only, so those imports keep working.
 MARKET_PRICE_CACHE_PATH = OUTPUT_DIR / "market_price_cache.json"
 
 
@@ -64,40 +66,6 @@ def load_market_price_cache():
     if not MARKET_PRICE_CACHE_PATH.exists():
         return {}
     return json.loads(MARKET_PRICE_CACHE_PATH.read_text(encoding="utf-8"))
-
-
-def update_market_price_cache(bracket, export_output, current_matches):
-    """Snapshots market_prob_a for every currently-pregame matchup export_bracket_json just
-    returned. Only caches a matchup confirmed 'pre' status_state at THIS poll (not 'in') - a price
-    fetched while a match is already live/in-progress isn't a genuine pregame number (same
-    exclusion logic compare_match.py already applies for the same reason). Skips anything already
-    cached under the same key so an early, more-pregame snapshot is never overwritten by a later
-    poll's (still valid, but no more informative) re-confirmation - the first pregame price seen is
-    the one worth keeping. Returns how many new prices were cached this call."""
-    status_by_pair = {
-        frozenset((m["player_1"], m["player_2"])): m["status_state"] for m in current_matches
-    }
-    cache = load_market_price_cache()
-    added = 0
-    for info in export_output["matchups"].values():
-        market_prob_a = info.get("market_prob_a")
-        if market_prob_a is None:
-            continue
-        slot_a, slot_b = info["slot_a"], info["slot_b"]
-        if status_by_pair.get(frozenset((slot_a, slot_b))) != "pre":
-            continue
-        key = _market_price_cache_key(bracket.tour, bracket.tournament, bracket.year, slot_a, slot_b)
-        if key in cache:
-            continue
-        cache[key] = {
-            "player_a": slot_a, "player_b": slot_b, "market_prob_a": market_prob_a,
-            "captured_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        }
-        added += 1
-    if added:
-        MARKET_PRICE_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
-        MARKET_PRICE_CACHE_PATH.write_text(json.dumps(cache, indent=2), encoding="utf-8")
-    return added
 
 
 def fetch_tournament_matches(tour, tournament_name, category, dates=None):
@@ -270,10 +238,6 @@ def watch(bracket_path, interval, n_simulations, seed, dates, exit_after, histor
     except LiveScoresError as e:
         print(f"ERROR fetching initial scoreboard: {e}", file=sys.stderr)
         sys.exit(1)
-    n_cached = update_market_price_cache(bracket, baseline_export, current_matches)
-    if n_cached:
-        print(f"Cached {n_cached} new pregame market price(s) to {MARKET_PRICE_CACHE_PATH} "
-              f"for calibration_log.py to backfill once these matches conclude.")
     refresh_consolidated(bracket_path, baseline_export, _out_path, seed, dates, history_simulations)
     last_statuses = snapshot_statuses(current_matches)
     n_already_final = sum(1 for s in last_statuses.values() if s == "post")
@@ -324,9 +288,6 @@ def watch(bracket_path, interval, n_simulations, seed, dates, exit_after, histor
                   f"at its last-known state, will retry on the next detected completion",
                   file=sys.stderr)
             continue
-        n_cached = update_market_price_cache(bracket, new_export, current_matches)
-        if n_cached:
-            print(f"Cached {n_cached} new pregame market price(s) to {MARKET_PRICE_CACHE_PATH}.")
         refresh_consolidated(bracket_path, new_export, out_path, seed, dates, history_simulations)
         new_players = players_by_espn_name(new_export)
         print_delta_report(newly_final, current_players, new_players)

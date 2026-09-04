@@ -635,16 +635,38 @@ def build_round_history(bracket_path, n_simulations=2000, seed=42, dates=None, u
     # "about to play" checkpoint last time this was called is correctly excluded here and gets a
     # real (non-partial) computation below now that it's finished, instead of reusing its stale
     # partial snapshot.
+    #
+    # previous_history's entries do NOT reliably have this function's own internal shape: the
+    # caller this is actually used for (consolidated_export.py) persists round checkpoints to disk
+    # in ITS OWN, slimmer shape (checkpoint/round/label/players/matches - see
+    # build_consolidated_export) and feeds that same persisted dict back in here on the next
+    # refresh as previous_history. It never carries "partial" or "players_about_to_play" at all -
+    # a bare entry["partial"] here reliably KeyErrors on the very first refresh after any round
+    # checkpoint has ever been persisted. Every read below is defensive (.get with an explicit
+    # default) rather than assuming this function's own full internal schema round-trips through
+    # a caller's on-disk format unchanged. A missing "partial" defaults to False (not True): the
+    # only place that ever persists a "round"-type checkpoint - consolidated_export.py - already
+    # filters out partial entries before writing (see its own "superseded by ... current" skip),
+    # so anything that reached disk as a round checkpoint was non-partial by construction.
     cached_by_n = {
         entry["round"] - 1: entry
         for entry in (previous_history or [])
-        if not entry["partial"] and entry["round"] - 1 <= state.max_known_round
+        if "round" in entry and not entry.get("partial", False) and entry["round"] - 1 <= state.max_known_round
     }
 
     history = []
     for n in round_numbers:
         if n in cached_by_n:
-            history.append(cached_by_n[n])
+            cached = cached_by_n[n]
+            # Normalize before returning it as part of this function's OWN output - a caller of
+            # build_round_history (e.g. consolidated_export.py's own "if entry["partial"]" check
+            # just below its call site) expects every entry in the returned list to have this
+            # function's full internal shape, cache-sourced or freshly computed alike.
+            history.append({
+                "players_about_to_play": len(cached.get("players", [])),
+                **cached,
+                "partial": False,
+            })
             continue
         upcoming_round_num, field_size, label, rows = compute_round_snapshot(
             state, n, n_simulations, seed, use_upset_boost=use_upset_boost)

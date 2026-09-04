@@ -131,6 +131,21 @@ WTA_NAME_ALIASES = {
     # both (e.g. brackets/wta_toronto_2026.yaml) must spell each entry out fully instead
     # (Wang Xiy. / Wang Xin., matching the ratings csv) rather than relying on this alias.
     "Wang X.": "Wang Xin.",
+    # brackets/us_open_2026_wta_real.yaml was built (espn_bracket.py) at a moment when the WTA
+    # ratings csv didn't exist yet on disk, so _known_ratings_names() returned [] and EVERY
+    # player fell through to _fallback_lastname_firstname's naive "last word = lastname" guess -
+    # correct for ~126 Western-order players in that draw, but wrong for these two, whose ESPN
+    # displayName ("Wang Xinyu"/"Wang Xiyu") is native (lastname-first) order: the fallback
+    # produced "Xinyu W."/"Xiyu W." (firstname and lastname swapped) instead of "Wang Xin."/
+    # "Wang Xiy." - the same class of ESPN-native-order bug match_espn_name_to_draw's own
+    # tail/leading dual check already handles for the live-export path (see its docstring's
+    # "Wang Xiyu/Wang Xinyu/Zhang Shuai" mention), just not yet reachable here since this bracket
+    # was built before there was any ratings pool to check against. Without this alias, both
+    # players silently get a fresh STARTING_ELO=1500 placeholder (tier 3) instead of their real,
+    # well-established rating (164/107 hard-court matches respectively) for as long as they're
+    # still alive in the draw. Confirmed via usopen.org's official draw feed (position 53/97).
+    "Xinyu W.": "Wang Xin.",
+    "Xiyu W.": "Wang Xiy.",
     "Pliskova K.": "Pliskova Ka.",
     "Osorio C.": "Osorio M.",
     # self-alias: "Maria Timofeeva" is otherwise ambiguous against a separate real player whose

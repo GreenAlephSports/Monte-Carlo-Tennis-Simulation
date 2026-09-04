@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "us-open-men-2026",
-    "generated_at": "2026-09-04T05:13:33Z",
+    "generated_at": "2026-09-04T23:15:30Z",
     "current_iterations": 10000,
     "current_seed": 42,
     "round_history_iterations": 2000,
@@ -822,231 +822,231 @@
       "players": [
         {
           "player": "Carlos Alcaraz",
-          "tournament_win_probability": 0.3915,
+          "tournament_win_probability": 0.3825,
           "upcoming_opponent": "Jaime Faria",
           "upcoming_match_win_probability": 0.9119
         },
         {
           "player": "Alexander Zverev",
-          "tournament_win_probability": 0.1345,
+          "tournament_win_probability": 0.098,
           "upcoming_opponent": "Quentin Halys",
           "upcoming_match_win_probability": 0.8177
         },
         {
           "player": "Felix Auger-Aliassime",
-          "tournament_win_probability": 0.0715,
+          "tournament_win_probability": 0.095,
           "upcoming_opponent": "Karen Khachanov",
           "upcoming_match_win_probability": 0.833
         },
         {
-          "player": "Taylor Fritz",
-          "tournament_win_probability": 0.0485,
-          "upcoming_opponent": "Mattia Bellucci",
-          "upcoming_match_win_probability": 0.8271
-        },
-        {
           "player": "Ben Shelton",
-          "tournament_win_probability": 0.046,
+          "tournament_win_probability": 0.0585,
           "upcoming_opponent": "Hubert Hurkacz",
           "upcoming_match_win_probability": 0.7506
         },
         {
-          "player": "Frances Tiafoe",
-          "tournament_win_probability": 0.0455,
-          "upcoming_opponent": "Rei Sakamoto",
-          "upcoming_match_win_probability": 0.8583
-        },
-        {
           "player": "Daniil Medvedev",
-          "tournament_win_probability": 0.037,
+          "tournament_win_probability": 0.042,
           "upcoming_opponent": "Sebastian Gorzny",
           "upcoming_match_win_probability": 0.8135
         },
         {
-          "player": "Alex de Minaur",
-          "tournament_win_probability": 0.029,
-          "upcoming_opponent": "Botic Van De Zandschulp",
-          "upcoming_match_win_probability": 0.6689
+          "player": "Taylor Fritz",
+          "tournament_win_probability": 0.0385,
+          "upcoming_opponent": "Mattia Bellucci",
+          "upcoming_match_win_probability": 0.8271
         },
         {
-          "player": "Brandon Nakashima",
-          "tournament_win_probability": 0.028,
-          "upcoming_opponent": "Alex Michelsen",
-          "upcoming_match_win_probability": 0.6369
-        },
-        {
-          "player": "Jakub Mensik",
-          "tournament_win_probability": 0.021,
-          "upcoming_opponent": "Jurij Rodionov",
-          "upcoming_match_win_probability": 0.8296
-        },
-        {
-          "player": "Tommy Paul",
-          "tournament_win_probability": 0.02,
-          "upcoming_opponent": "Dino Prizmic",
-          "upcoming_match_win_probability": 0.7341
+          "player": "Frances Tiafoe",
+          "tournament_win_probability": 0.0375,
+          "upcoming_opponent": "Rei Sakamoto",
+          "upcoming_match_win_probability": 0.8583
         },
         {
           "player": "Lorenzo Musetti",
-          "tournament_win_probability": 0.0185,
+          "tournament_win_probability": 0.0255,
           "upcoming_opponent": "Dane Sweeny",
           "upcoming_match_win_probability": 0.7963
         },
         {
-          "player": "Learner Tien",
-          "tournament_win_probability": 0.015,
-          "upcoming_opponent": "Gael Monfils",
-          "upcoming_match_win_probability": 0.6963
+          "player": "Alex de Minaur",
+          "tournament_win_probability": 0.0245,
+          "upcoming_opponent": "Botic Van De Zandschulp",
+          "upcoming_match_win_probability": 0.6689
         },
         {
-          "player": "Jiri Lehecka",
-          "tournament_win_probability": 0.015,
-          "upcoming_opponent": "Toby Samuel",
-          "upcoming_match_win_probability": 0.7628
+          "player": "Jakub Mensik",
+          "tournament_win_probability": 0.0245,
+          "upcoming_opponent": "Jurij Rodionov",
+          "upcoming_match_win_probability": 0.8296
         },
         {
           "player": "Flavio Cobolli",
-          "tournament_win_probability": 0.014,
+          "tournament_win_probability": 0.024,
           "upcoming_opponent": "Tristan Schoolkate",
           "upcoming_match_win_probability": 0.8416
         },
         {
+          "player": "Brandon Nakashima",
+          "tournament_win_probability": 0.023,
+          "upcoming_opponent": "Alex Michelsen",
+          "upcoming_match_win_probability": 0.6369
+        },
+        {
+          "player": "Jiri Lehecka",
+          "tournament_win_probability": 0.0185,
+          "upcoming_opponent": "Toby Samuel",
+          "upcoming_match_win_probability": 0.7628
+        },
+        {
+          "player": "Learner Tien",
+          "tournament_win_probability": 0.0155,
+          "upcoming_opponent": "Gael Monfils",
+          "upcoming_match_win_probability": 0.6963
+        },
+        {
+          "player": "Tommy Paul",
+          "tournament_win_probability": 0.015,
+          "upcoming_opponent": "Dino Prizmic",
+          "upcoming_match_win_probability": 0.7341
+        },
+        {
           "player": "Andrey Rublev",
-          "tournament_win_probability": 0.0055,
+          "tournament_win_probability": 0.0085,
           "upcoming_opponent": "Daniel Merida",
           "upcoming_match_win_probability": 0.5237
         },
         {
-          "player": "Denis Shapovalov",
-          "tournament_win_probability": 0.005,
-          "upcoming_opponent": "Luca Van Assche",
-          "upcoming_match_win_probability": 0.6954
-        },
-        {
-          "player": "Botic Van De Zandschulp",
-          "tournament_win_probability": 0.0045,
-          "upcoming_opponent": "Alex de Minaur",
-          "upcoming_match_win_probability": 0.3311
-        },
-        {
-          "player": "Daniel Merida",
-          "tournament_win_probability": 0.0045,
-          "upcoming_opponent": "Andrey Rublev",
-          "upcoming_match_win_probability": 0.4763
-        },
-        {
-          "player": "Alex Michelsen",
-          "tournament_win_probability": 0.004,
-          "upcoming_opponent": "Brandon Nakashima",
-          "upcoming_match_win_probability": 0.3631
-        },
-        {
           "player": "Alexander Bublik",
-          "tournament_win_probability": 0.0035,
+          "tournament_win_probability": 0.008,
           "upcoming_opponent": "Adrian Mannarino",
           "upcoming_match_win_probability": 0.688
         },
         {
-          "player": "Francisco Cerundolo",
-          "tournament_win_probability": 0.003,
-          "upcoming_opponent": "Jan-Lennard Struff",
-          "upcoming_match_win_probability": 0.6142
-        },
-        {
-          "player": "Alexander Blockx",
-          "tournament_win_probability": 0.003,
-          "upcoming_opponent": "Marco Trungelliti",
-          "upcoming_match_win_probability": 0.6459
-        },
-        {
-          "player": "Hubert Hurkacz",
-          "tournament_win_probability": 0.003,
-          "upcoming_opponent": "Ben Shelton",
-          "upcoming_match_win_probability": 0.2494
-        },
-        {
-          "player": "Stefanos Tsitsipas",
-          "tournament_win_probability": 0.003,
-          "upcoming_opponent": "Lloyd Harris",
-          "upcoming_match_win_probability": 0.7251
-        },
-        {
-          "player": "Luciano Darderi",
-          "tournament_win_probability": 0.0025,
-          "upcoming_opponent": "Dalibor Svrcina",
-          "upcoming_match_win_probability": 0.6351
-        },
-        {
-          "player": "Matteo Berrettini",
-          "tournament_win_probability": 0.0025,
-          "upcoming_opponent": "Mariano Navone",
-          "upcoming_match_win_probability": 0.5794
-        },
-        {
-          "player": "Valentin Vacherot",
-          "tournament_win_probability": 0.002,
-          "upcoming_opponent": "Kamil Majchrzak",
-          "upcoming_match_win_probability": 0.5467
-        },
-        {
-          "player": "Quentin Halys",
-          "tournament_win_probability": 0.0015,
-          "upcoming_opponent": "Alexander Zverev",
-          "upcoming_match_win_probability": 0.1823
-        },
-        {
-          "player": "Michael Zheng",
-          "tournament_win_probability": 0.0015,
-          "upcoming_opponent": "Bu Yunchaokete",
-          "upcoming_match_win_probability": 0.6212
-        },
-        {
           "player": "Jaume Munar",
-          "tournament_win_probability": 0.0015,
+          "tournament_win_probability": 0.0055,
           "upcoming_opponent": "Arthur Rinderknech",
           "upcoming_match_win_probability": 0.5759
         },
         {
-          "player": "Arthur Rinderknech",
-          "tournament_win_probability": 0.0015,
-          "upcoming_opponent": "Jaume Munar",
-          "upcoming_match_win_probability": 0.4241
+          "player": "Matteo Berrettini",
+          "tournament_win_probability": 0.0045,
+          "upcoming_opponent": "Mariano Navone",
+          "upcoming_match_win_probability": 0.5794
+        },
+        {
+          "player": "Denis Shapovalov",
+          "tournament_win_probability": 0.0045,
+          "upcoming_opponent": "Luca Van Assche",
+          "upcoming_match_win_probability": 0.6954
         },
         {
           "player": "Alejandro Tabilo",
-          "tournament_win_probability": 0.001,
+          "tournament_win_probability": 0.004,
           "upcoming_opponent": "Alexei Popyrin",
           "upcoming_match_win_probability": 0.6215
         },
         {
-          "player": "Arthur Gea",
-          "tournament_win_probability": 0.001,
-          "upcoming_opponent": "Zachary Svajda",
-          "upcoming_match_win_probability": 0.6677
-        },
-        {
-          "player": "Benjamin Bonzi",
-          "tournament_win_probability": 0.001,
-          "upcoming_opponent": "Ignacio Buse",
-          "upcoming_match_win_probability": 0.4349
+          "player": "Stefanos Tsitsipas",
+          "tournament_win_probability": 0.004,
+          "upcoming_opponent": "Lloyd Harris",
+          "upcoming_match_win_probability": 0.7251
         },
         {
           "player": "Ignacio Buse",
-          "tournament_win_probability": 0.001,
+          "tournament_win_probability": 0.003,
           "upcoming_opponent": "Benjamin Bonzi",
           "upcoming_match_win_probability": 0.5651
         },
         {
-          "player": "Gael Monfils",
-          "tournament_win_probability": 0.001,
-          "upcoming_opponent": "Learner Tien",
-          "upcoming_match_win_probability": 0.3037
+          "player": "Valentin Vacherot",
+          "tournament_win_probability": 0.003,
+          "upcoming_opponent": "Kamil Majchrzak",
+          "upcoming_match_win_probability": 0.5467
         },
         {
-          "player": "Sebastian Gorzny",
+          "player": "Daniel Merida",
+          "tournament_win_probability": 0.003,
+          "upcoming_opponent": "Andrey Rublev",
+          "upcoming_match_win_probability": 0.4763
+        },
+        {
+          "player": "Francisco Cerundolo",
+          "tournament_win_probability": 0.0025,
+          "upcoming_opponent": "Jan-Lennard Struff",
+          "upcoming_match_win_probability": 0.6142
+        },
+        {
+          "player": "Arthur Rinderknech",
+          "tournament_win_probability": 0.0025,
+          "upcoming_opponent": "Jaume Munar",
+          "upcoming_match_win_probability": 0.4241
+        },
+        {
+          "player": "Arthur Gea",
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Zachary Svajda",
+          "upcoming_match_win_probability": 0.6677
+        },
+        {
+          "player": "Botic Van De Zandschulp",
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Alex de Minaur",
+          "upcoming_match_win_probability": 0.3311
+        },
+        {
+          "player": "Benjamin Bonzi",
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Ignacio Buse",
+          "upcoming_match_win_probability": 0.4349
+        },
+        {
+          "player": "Alex Michelsen",
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Brandon Nakashima",
+          "upcoming_match_win_probability": 0.3631
+        },
+        {
+          "player": "Mariano Navone",
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Matteo Berrettini",
+          "upcoming_match_win_probability": 0.4206
+        },
+        {
+          "player": "Hubert Hurkacz",
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Ben Shelton",
+          "upcoming_match_win_probability": 0.2494
+        },
+        {
+          "player": "Jaime Faria",
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Carlos Alcaraz",
+          "upcoming_match_win_probability": 0.0881
+        },
+        {
+          "player": "Luciano Darderi",
+          "tournament_win_probability": 0.0015,
+          "upcoming_opponent": "Dalibor Svrcina",
+          "upcoming_match_win_probability": 0.6351
+        },
+        {
+          "player": "Michael Zheng",
           "tournament_win_probability": 0.001,
-          "upcoming_opponent": "Daniil Medvedev",
-          "upcoming_match_win_probability": 0.1865
+          "upcoming_opponent": "Bu Yunchaokete",
+          "upcoming_match_win_probability": 0.6212
+        },
+        {
+          "player": "Jan-Lennard Struff",
+          "tournament_win_probability": 0.001,
+          "upcoming_opponent": "Francisco Cerundolo",
+          "upcoming_match_win_probability": 0.3858
+        },
+        {
+          "player": "Alexander Blockx",
+          "tournament_win_probability": 0.001,
+          "upcoming_opponent": "Marco Trungelliti",
+          "upcoming_match_win_probability": 0.6459
         },
         {
           "player": "Kamil Majchrzak",
@@ -1055,34 +1055,16 @@
           "upcoming_match_win_probability": 0.4533
         },
         {
-          "player": "Tomas Martin Etcheverry",
-          "tournament_win_probability": 0.001,
-          "upcoming_opponent": "Jacob Fearnley",
-          "upcoming_match_win_probability": 0.5945
-        },
-        {
-          "player": "Mariano Navone",
-          "tournament_win_probability": 0.001,
-          "upcoming_opponent": "Matteo Berrettini",
-          "upcoming_match_win_probability": 0.4206
-        },
-        {
-          "player": "Wu Yibing",
-          "tournament_win_probability": 0.001,
-          "upcoming_opponent": "James Duckworth",
-          "upcoming_match_win_probability": 0.5442
-        },
-        {
-          "player": "Bu Yunchaokete",
+          "player": "Quentin Halys",
           "tournament_win_probability": 0.0005,
-          "upcoming_opponent": "Michael Zheng",
-          "upcoming_match_win_probability": 0.3788
+          "upcoming_opponent": "Alexander Zverev",
+          "upcoming_match_win_probability": 0.1823
         },
         {
-          "player": "Zachary Svajda",
+          "player": "Alexei Popyrin",
           "tournament_win_probability": 0.0005,
-          "upcoming_opponent": "Arthur Gea",
-          "upcoming_match_win_probability": 0.3323
+          "upcoming_opponent": "Alejandro Tabilo",
+          "upcoming_match_win_probability": 0.3785
         },
         {
           "player": "Zizou Bergs",
@@ -1097,1229 +1079,724 @@
           "upcoming_match_win_probability": 0.403
         },
         {
-          "player": "Toby Samuel",
+          "player": "Gael Monfils",
           "tournament_win_probability": 0.0005,
-          "upcoming_opponent": "Jiri Lehecka",
-          "upcoming_match_win_probability": 0.2372
+          "upcoming_opponent": "Learner Tien",
+          "upcoming_match_win_probability": 0.3037
+        },
+        {
+          "player": "Marco Trungelliti",
+          "tournament_win_probability": 0.0005,
+          "upcoming_opponent": "Alexander Blockx",
+          "upcoming_match_win_probability": 0.3541
+        },
+        {
+          "player": "Tomas Martin Etcheverry",
+          "tournament_win_probability": 0.0005,
+          "upcoming_opponent": "Jacob Fearnley",
+          "upcoming_match_win_probability": 0.5945
         },
         {
           "player": "Adrian Mannarino",
           "tournament_win_probability": 0.0005,
           "upcoming_opponent": "Alexander Bublik",
           "upcoming_match_win_probability": 0.312
+        },
+        {
+          "player": "James Duckworth",
+          "tournament_win_probability": 0.0005,
+          "upcoming_opponent": "Wu Yibing",
+          "upcoming_match_win_probability": 0.4558
+        },
+        {
+          "player": "Wu Yibing",
+          "tournament_win_probability": 0.0005,
+          "upcoming_opponent": "James Duckworth",
+          "upcoming_match_win_probability": 0.5442
         }
       ],
       "matches": [
         {
-          "player_a": "Alexander Zverev",
-          "player_b": "Lorenzo Sonego",
-          "model_prob_a": 0.826,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Alexander Zverev"
-        },
-        {
-          "player_a": "Quentin Halys",
-          "player_b": "Facundo Diaz Acosta",
-          "model_prob_a": 0.682,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Quentin Halys"
-        },
-        {
-          "player_a": "Grigor Dimitrov",
-          "player_b": "Alexei Popyrin",
-          "model_prob_a": 0.705,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Alexei Popyrin"
-        },
-        {
-          "player_a": "Yannick Hanfmann",
-          "player_b": "Alejandro Tabilo",
-          "model_prob_a": 0.454,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Alejandro Tabilo"
-        },
-        {
-          "player_a": "Luciano Darderi",
-          "player_b": "Harry Wendelken",
-          "model_prob_a": 0.666,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Luciano Darderi"
-        },
-        {
-          "player_a": "Dalibor Svrcina",
-          "player_b": "Valentin Royer",
-          "model_prob_a": 0.555,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Dalibor Svrcina"
-        },
-        {
-          "player_a": "Dane Sweeny",
-          "player_b": "Corentin Moutet",
-          "model_prob_a": 0.407,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Dane Sweeny"
-        },
-        {
-          "player_a": "Arthur Fery",
-          "player_b": "Lorenzo Musetti",
-          "model_prob_a": 0.327,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Lorenzo Musetti"
-        },
-        {
-          "player_a": "Rafael Jodar",
-          "player_b": "Bu Yunchaokete",
-          "model_prob_a": 0.837,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Bu Yunchaokete"
-        },
-        {
-          "player_a": "Fabian Marozsan",
-          "player_b": "Michael Zheng",
-          "model_prob_a": 0.591,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Michael Zheng"
-        },
-        {
-          "player_a": "Zachary Svajda",
-          "player_b": "Daniel Altmaier",
-          "model_prob_a": 0.383,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Zachary Svajda"
-        },
-        {
-          "player_a": "Juan Manuel Cerundolo",
-          "player_b": "Arthur Gea",
-          "model_prob_a": 0.556,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Arthur Gea"
-        },
-        {
-          "player_a": "Zizou Bergs",
-          "player_b": "Carlos Taberner",
-          "model_prob_a": 0.642,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Zizou Bergs"
-        },
-        {
-          "player_a": "Jesper de Jong",
-          "player_b": "Francesco Passaro",
-          "model_prob_a": 0.662,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Jesper de Jong"
-        },
-        {
-          "player_a": "Jan Choinski",
-          "player_b": "Botic Van De Zandschulp",
-          "model_prob_a": 0.267,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Botic Van De Zandschulp"
-        },
-        {
-          "player_a": "Andrea Guerrieri",
-          "player_b": "Alex de Minaur",
-          "model_prob_a": 0.207,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Alex de Minaur"
-        },
-        {
-          "player_a": "Felix Auger-Aliassime",
-          "player_b": "Rinky Hijikata",
-          "model_prob_a": 0.807,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Felix Auger-Aliassime"
-        },
-        {
-          "player_a": "Roman Andres Burruchaga",
-          "player_b": "Karen Khachanov",
-          "model_prob_a": 0.449,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Karen Khachanov"
-        },
-        {
-          "player_a": "Alex Molcan",
-          "player_b": "Benjamin Bonzi",
-          "model_prob_a": 0.423,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Benjamin Bonzi"
-        },
-        {
-          "player_a": "Marcos Giron",
-          "player_b": "Ignacio Buse",
-          "model_prob_a": 0.344,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Ignacio Buse"
-        },
-        {
-          "player_a": "Jakub Mensik",
-          "player_b": "Shintaro Mochizuki",
-          "model_prob_a": 0.837,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Jakub Mensik"
-        },
-        {
-          "player_a": "Jurij Rodionov",
-          "player_b": "Giovanni Mpetshi Perricard",
-          "model_prob_a": 0.409,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Jurij Rodionov"
-        },
-        {
           "player_a": "Adolfo Daniel Vallejo",
           "player_b": "Gael Monfils",
           "model_prob_a": 0.437,
-          "market_prob_a": null,
-          "gap_pct_points": null,
           "decided": true,
           "winner": "Gael Monfils"
-        },
-        {
-          "player_a": "Nuno Borges",
-          "player_b": "Learner Tien",
-          "model_prob_a": 0.381,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Learner Tien"
-        },
-        {
-          "player_a": "Taylor Fritz",
-          "player_b": "Darwin Blanch",
-          "model_prob_a": 0.856,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Taylor Fritz"
-        },
-        {
-          "player_a": "Mattia Bellucci",
-          "player_b": "Zsombor Piros",
-          "model_prob_a": 0.619,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Mattia Bellucci"
-        },
-        {
-          "player_a": "Camilo Ugo Carabelli",
-          "player_b": "Jan-Lennard Struff",
-          "model_prob_a": 0.395,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Jan-Lennard Struff"
-        },
-        {
-          "player_a": "Filip Misolic",
-          "player_b": "Francisco Cerundolo",
-          "model_prob_a": 0.281,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Francisco Cerundolo"
-        },
-        {
-          "player_a": "Alexander Blockx",
-          "player_b": "Tomas Barrios Vera",
-          "model_prob_a": 0.601,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Alexander Blockx"
-        },
-        {
-          "player_a": "Shang Juncheng",
-          "player_b": "Marco Trungelliti",
-          "model_prob_a": 0.571,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Marco Trungelliti"
-        },
-        {
-          "player_a": "Nishesh Basavareddy",
-          "player_b": "Tristan Schoolkate",
-          "model_prob_a": 0.639,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Tristan Schoolkate"
-        },
-        {
-          "player_a": "Francisco Comesana",
-          "player_b": "Flavio Cobolli",
-          "model_prob_a": 0.252,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Flavio Cobolli"
-        },
-        {
-          "player_a": "Daniil Medvedev",
-          "player_b": "Hugo Gaston",
-          "model_prob_a": 0.876,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Daniil Medvedev"
-        },
-        {
-          "player_a": "Sebastian Gorzny",
-          "player_b": "Raphael Collignon",
-          "model_prob_a": 0.18,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Sebastian Gorzny"
-        },
-        {
-          "player_a": "Jaume Munar",
-          "player_b": "Terence Atmane",
-          "model_prob_a": 0.502,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Jaume Munar"
-        },
-        {
-          "player_a": "Sho Shimabukuro",
-          "player_b": "Arthur Rinderknech",
-          "model_prob_a": 0.326,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Arthur Rinderknech"
-        },
-        {
-          "player_a": "Valentin Vacherot",
-          "player_b": "Aleksandar Kovacevic",
-          "model_prob_a": 0.589,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Valentin Vacherot"
-        },
-        {
-          "player_a": "Kamil Majchrzak",
-          "player_b": "Hamad Medjedovic",
-          "model_prob_a": 0.581,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Kamil Majchrzak"
         },
         {
           "player_a": "Aleksandar Vukic",
           "player_b": "Rei Sakamoto",
           "model_prob_a": 0.59,
-          "market_prob_a": null,
-          "gap_pct_points": null,
           "decided": true,
           "winner": "Rei Sakamoto"
-        },
-        {
-          "player_a": "Martin Damm",
-          "player_b": "Frances Tiafoe",
-          "model_prob_a": 0.221,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Frances Tiafoe"
-        },
-        {
-          "player_a": "Brandon Nakashima",
-          "player_b": "Sebastian Baez",
-          "model_prob_a": 0.747,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Brandon Nakashima"
         },
         {
           "player_a": "Alex Michelsen",
           "player_b": "Federico Cina",
           "model_prob_a": 0.781,
-          "market_prob_a": null,
-          "gap_pct_points": null,
           "decided": true,
           "winner": "Alex Michelsen"
         },
         {
-          "player_a": "Daniel Merida",
-          "player_b": "Marton Fucsovics",
-          "model_prob_a": 0.642,
-          "market_prob_a": null,
-          "gap_pct_points": null,
+          "player_a": "Alex Molcan",
+          "player_b": "Benjamin Bonzi",
+          "model_prob_a": 0.423,
           "decided": true,
-          "winner": "Daniel Merida"
+          "winner": "Benjamin Bonzi"
         },
         {
-          "player_a": "Otto Virtanen",
-          "player_b": "Andrey Rublev",
-          "model_prob_a": 0.262,
-          "market_prob_a": null,
-          "gap_pct_points": null,
+          "player_a": "Alexander Blockx",
+          "player_b": "Tomas Barrios Vera",
+          "model_prob_a": 0.601,
           "decided": true,
-          "winner": "Andrey Rublev"
-        },
-        {
-          "player_a": "Tomas Martin Etcheverry",
-          "player_b": "Vit Kopriva",
-          "model_prob_a": 0.562,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Tomas Martin Etcheverry"
-        },
-        {
-          "player_a": "Martin Landaluce",
-          "player_b": "Jacob Fearnley",
-          "model_prob_a": 0.603,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Jacob Fearnley"
-        },
-        {
-          "player_a": "Matteo Berrettini",
-          "player_b": "Stan Wawrinka",
-          "model_prob_a": 0.679,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Matteo Berrettini"
-        },
-        {
-          "player_a": "Mariano Navone",
-          "player_b": "Novak Djokovic",
-          "model_prob_a": 0.142,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Mariano Navone"
-        },
-        {
-          "player_a": "Ben Shelton",
-          "player_b": "Tallon Griekspoor",
-          "model_prob_a": 0.759,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Ben Shelton"
-        },
-        {
-          "player_a": "Damir Dzumhur",
-          "player_b": "Hubert Hurkacz",
-          "model_prob_a": 0.285,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Hubert Hurkacz"
-        },
-        {
-          "player_a": "Miomir Kecmanovic",
-          "player_b": "Denis Shapovalov",
-          "model_prob_a": 0.359,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Denis Shapovalov"
-        },
-        {
-          "player_a": "Luca Van Assche",
-          "player_b": "Cameron Norrie",
-          "model_prob_a": 0.286,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Luca Van Assche"
-        },
-        {
-          "player_a": "Jiri Lehecka",
-          "player_b": "Pablo Carreno Busta",
-          "model_prob_a": 0.732,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Jiri Lehecka"
-        },
-        {
-          "player_a": "Toby Samuel",
-          "player_b": "Tomas Machac",
-          "model_prob_a": 0.264,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Toby Samuel"
-        },
-        {
-          "player_a": "Lloyd Harris",
-          "player_b": "Jack Kennedy",
-          "model_prob_a": 0.403,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Lloyd Harris"
-        },
-        {
-          "player_a": "Stefanos Tsitsipas",
-          "player_b": "Arthur Fils",
-          "model_prob_a": 0.201,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Stefanos Tsitsipas"
+          "winner": "Alexander Blockx"
         },
         {
           "player_a": "Alexander Bublik",
           "player_b": "J.J. Wolf",
           "model_prob_a": 0.781,
-          "market_prob_a": null,
-          "gap_pct_points": null,
           "decided": true,
           "winner": "Alexander Bublik"
         },
         {
-          "player_a": "Thiago Agustin Tirante",
-          "player_b": "Adrian Mannarino",
-          "model_prob_a": 0.72,
-          "market_prob_a": null,
-          "gap_pct_points": null,
+          "player_a": "Alexander Zverev",
+          "player_b": "Lorenzo Sonego",
+          "model_prob_a": 0.826,
           "decided": true,
-          "winner": "Adrian Mannarino"
+          "winner": "Alexander Zverev"
         },
         {
-          "player_a": "Dino Prizmic",
-          "player_b": "Aleksandr Shevchenko",
-          "model_prob_a": 0.498,
-          "market_prob_a": null,
-          "gap_pct_points": null,
+          "player_a": "Andrea Guerrieri",
+          "player_b": "Alex de Minaur",
+          "model_prob_a": 0.207,
           "decided": true,
-          "winner": "Dino Prizmic"
+          "winner": "Alex de Minaur"
+        },
+        {
+          "player_a": "Arthur Fery",
+          "player_b": "Lorenzo Musetti",
+          "model_prob_a": 0.327,
+          "decided": true,
+          "winner": "Lorenzo Musetti"
+        },
+        {
+          "player_a": "Ben Shelton",
+          "player_b": "Tallon Griekspoor",
+          "model_prob_a": 0.759,
+          "decided": true,
+          "winner": "Ben Shelton"
+        },
+        {
+          "player_a": "Brandon Nakashima",
+          "player_b": "Sebastian Baez",
+          "model_prob_a": 0.747,
+          "decided": true,
+          "winner": "Brandon Nakashima"
+        },
+        {
+          "player_a": "Camilo Ugo Carabelli",
+          "player_b": "Jan-Lennard Struff",
+          "model_prob_a": 0.395,
+          "decided": true,
+          "winner": "Jan-Lennard Struff"
         },
         {
           "player_a": "Chak Lam Coleman Wong",
           "player_b": "Tommy Paul",
           "model_prob_a": 0.254,
-          "market_prob_a": null,
-          "gap_pct_points": null,
           "decided": true,
           "winner": "Tommy Paul"
         },
         {
-          "player_a": "Matteo Arnaldi",
-          "player_b": "James Duckworth",
-          "model_prob_a": 0.444,
-          "market_prob_a": null,
-          "gap_pct_points": null,
+          "player_a": "Dalibor Svrcina",
+          "player_b": "Valentin Royer",
+          "model_prob_a": 0.555,
           "decided": true,
-          "winner": "James Duckworth"
+          "winner": "Dalibor Svrcina"
         },
         {
-          "player_a": "Wu Yibing",
-          "player_b": "Adam Walton",
-          "model_prob_a": 0.637,
-          "market_prob_a": null,
-          "gap_pct_points": null,
+          "player_a": "Damir Dzumhur",
+          "player_b": "Hubert Hurkacz",
+          "model_prob_a": 0.285,
           "decided": true,
-          "winner": "Wu Yibing"
+          "winner": "Hubert Hurkacz"
+        },
+        {
+          "player_a": "Dane Sweeny",
+          "player_b": "Corentin Moutet",
+          "model_prob_a": 0.407,
+          "decided": true,
+          "winner": "Dane Sweeny"
+        },
+        {
+          "player_a": "Daniel Merida",
+          "player_b": "Marton Fucsovics",
+          "model_prob_a": 0.642,
+          "decided": true,
+          "winner": "Daniel Merida"
+        },
+        {
+          "player_a": "Daniil Medvedev",
+          "player_b": "Hugo Gaston",
+          "model_prob_a": 0.876,
+          "decided": true,
+          "winner": "Daniil Medvedev"
+        },
+        {
+          "player_a": "Dino Prizmic",
+          "player_b": "Aleksandr Shevchenko",
+          "model_prob_a": 0.498,
+          "decided": true,
+          "winner": "Dino Prizmic"
+        },
+        {
+          "player_a": "Fabian Marozsan",
+          "player_b": "Michael Zheng",
+          "model_prob_a": 0.591,
+          "decided": true,
+          "winner": "Michael Zheng"
+        },
+        {
+          "player_a": "Felix Auger-Aliassime",
+          "player_b": "Rinky Hijikata",
+          "model_prob_a": 0.807,
+          "decided": true,
+          "winner": "Felix Auger-Aliassime"
+        },
+        {
+          "player_a": "Filip Misolic",
+          "player_b": "Francisco Cerundolo",
+          "model_prob_a": 0.281,
+          "decided": true,
+          "winner": "Francisco Cerundolo"
+        },
+        {
+          "player_a": "Francisco Comesana",
+          "player_b": "Flavio Cobolli",
+          "model_prob_a": 0.252,
+          "decided": true,
+          "winner": "Flavio Cobolli"
+        },
+        {
+          "player_a": "Grigor Dimitrov",
+          "player_b": "Alexei Popyrin",
+          "model_prob_a": 0.705,
+          "decided": true,
+          "winner": "Alexei Popyrin"
         },
         {
           "player_a": "Jaime Faria",
           "player_b": "Jenson Brooksby",
           "model_prob_a": 0.503,
-          "market_prob_a": null,
-          "gap_pct_points": null,
           "decided": true,
           "winner": "Jaime Faria"
+        },
+        {
+          "player_a": "Jakub Mensik",
+          "player_b": "Shintaro Mochizuki",
+          "model_prob_a": 0.837,
+          "decided": true,
+          "winner": "Jakub Mensik"
+        },
+        {
+          "player_a": "Jan Choinski",
+          "player_b": "Botic Van De Zandschulp",
+          "model_prob_a": 0.267,
+          "decided": true,
+          "winner": "Botic Van De Zandschulp"
+        },
+        {
+          "player_a": "Jaume Munar",
+          "player_b": "Terence Atmane",
+          "model_prob_a": 0.502,
+          "decided": true,
+          "winner": "Jaume Munar"
+        },
+        {
+          "player_a": "Jesper de Jong",
+          "player_b": "Francesco Passaro",
+          "model_prob_a": 0.662,
+          "decided": true,
+          "winner": "Jesper de Jong"
+        },
+        {
+          "player_a": "Jiri Lehecka",
+          "player_b": "Pablo Carreno Busta",
+          "model_prob_a": 0.732,
+          "decided": true,
+          "winner": "Jiri Lehecka"
+        },
+        {
+          "player_a": "Juan Manuel Cerundolo",
+          "player_b": "Arthur Gea",
+          "model_prob_a": 0.556,
+          "decided": true,
+          "winner": "Arthur Gea"
+        },
+        {
+          "player_a": "Jurij Rodionov",
+          "player_b": "Giovanni Mpetshi Perricard",
+          "model_prob_a": 0.409,
+          "decided": true,
+          "winner": "Jurij Rodionov"
+        },
+        {
+          "player_a": "Kamil Majchrzak",
+          "player_b": "Hamad Medjedovic",
+          "model_prob_a": 0.581,
+          "decided": true,
+          "winner": "Kamil Majchrzak"
+        },
+        {
+          "player_a": "Lloyd Harris",
+          "player_b": "Jack Kennedy",
+          "model_prob_a": 0.403,
+          "decided": true,
+          "winner": "Lloyd Harris"
+        },
+        {
+          "player_a": "Luca Van Assche",
+          "player_b": "Cameron Norrie",
+          "model_prob_a": 0.286,
+          "decided": true,
+          "winner": "Luca Van Assche"
+        },
+        {
+          "player_a": "Luciano Darderi",
+          "player_b": "Harry Wendelken",
+          "model_prob_a": 0.666,
+          "decided": true,
+          "winner": "Luciano Darderi"
+        },
+        {
+          "player_a": "Marcos Giron",
+          "player_b": "Ignacio Buse",
+          "model_prob_a": 0.344,
+          "decided": true,
+          "winner": "Ignacio Buse"
+        },
+        {
+          "player_a": "Mariano Navone",
+          "player_b": "Novak Djokovic",
+          "model_prob_a": 0.142,
+          "decided": true,
+          "winner": "Mariano Navone"
+        },
+        {
+          "player_a": "Martin Damm",
+          "player_b": "Frances Tiafoe",
+          "model_prob_a": 0.221,
+          "decided": true,
+          "winner": "Frances Tiafoe"
+        },
+        {
+          "player_a": "Martin Landaluce",
+          "player_b": "Jacob Fearnley",
+          "model_prob_a": 0.603,
+          "decided": true,
+          "winner": "Jacob Fearnley"
+        },
+        {
+          "player_a": "Matteo Arnaldi",
+          "player_b": "James Duckworth",
+          "model_prob_a": 0.444,
+          "decided": true,
+          "winner": "James Duckworth"
+        },
+        {
+          "player_a": "Matteo Berrettini",
+          "player_b": "Stan Wawrinka",
+          "model_prob_a": 0.679,
+          "decided": true,
+          "winner": "Matteo Berrettini"
+        },
+        {
+          "player_a": "Mattia Bellucci",
+          "player_b": "Zsombor Piros",
+          "model_prob_a": 0.619,
+          "decided": true,
+          "winner": "Mattia Bellucci"
+        },
+        {
+          "player_a": "Miomir Kecmanovic",
+          "player_b": "Denis Shapovalov",
+          "model_prob_a": 0.359,
+          "decided": true,
+          "winner": "Denis Shapovalov"
+        },
+        {
+          "player_a": "Nishesh Basavareddy",
+          "player_b": "Tristan Schoolkate",
+          "model_prob_a": 0.639,
+          "decided": true,
+          "winner": "Tristan Schoolkate"
+        },
+        {
+          "player_a": "Nuno Borges",
+          "player_b": "Learner Tien",
+          "model_prob_a": 0.381,
+          "decided": true,
+          "winner": "Learner Tien"
+        },
+        {
+          "player_a": "Otto Virtanen",
+          "player_b": "Andrey Rublev",
+          "model_prob_a": 0.262,
+          "decided": true,
+          "winner": "Andrey Rublev"
+        },
+        {
+          "player_a": "Quentin Halys",
+          "player_b": "Facundo Diaz Acosta",
+          "model_prob_a": 0.682,
+          "decided": true,
+          "winner": "Quentin Halys"
+        },
+        {
+          "player_a": "Rafael Jodar",
+          "player_b": "Bu Yunchaokete",
+          "model_prob_a": 0.837,
+          "decided": true,
+          "winner": "Bu Yunchaokete"
+        },
+        {
+          "player_a": "Roman Andres Burruchaga",
+          "player_b": "Karen Khachanov",
+          "model_prob_a": 0.449,
+          "decided": true,
+          "winner": "Karen Khachanov"
         },
         {
           "player_a": "Roman Safiullin",
           "player_b": "Carlos Alcaraz",
           "model_prob_a": 0.071,
-          "market_prob_a": null,
-          "gap_pct_points": null,
           "decided": true,
           "winner": "Carlos Alcaraz"
-        }
-      ]
-    },
-    {
-      "checkpoint": "current",
-      "round": 2,
-      "label": "Current - 33 players alive",
-      "generated_at": "2026-09-04T05:12:49Z",
-      "players": [
-        {
-          "player": "Carlos Alcaraz",
-          "quarter": "Q4",
-          "p_champ": 0.39,
-          "p_sf": 0.609,
-          "p_final": 0.5
         },
         {
-          "player": "Alexander Zverev",
-          "quarter": "Q1",
-          "p_champ": 0.154,
-          "p_sf": 0.463,
-          "p_final": 0.315
+          "player_a": "Sebastian Gorzny",
+          "player_b": "Raphael Collignon",
+          "model_prob_a": 0.18,
+          "decided": true,
+          "winner": "Sebastian Gorzny"
         },
         {
-          "player": "Taylor Fritz",
-          "quarter": "Q2",
-          "p_champ": 0.066,
-          "p_sf": 0.285,
-          "p_final": 0.172
-        },
-        {
-          "player": "Ben Shelton",
-          "quarter": "Q4",
-          "p_champ": 0.062,
-          "p_sf": 0.172,
-          "p_final": 0.114
-        },
-        {
-          "player": "Daniil Medvedev",
-          "quarter": "Q3",
-          "p_champ": 0.056,
-          "p_sf": 0.295,
-          "p_final": 0.1
-        },
-        {
-          "player": "Frances Tiafoe",
-          "quarter": "Q3",
-          "p_champ": 0.051,
-          "p_sf": 0.283,
-          "p_final": 0.097
-        },
-        {
-          "player": "Jakub Mensik",
-          "quarter": "Q2",
-          "p_champ": 0.039,
-          "p_sf": 0.195,
-          "p_final": 0.105
-        },
-        {
-          "player": "Learner Tien",
-          "quarter": "Q2",
-          "p_champ": 0.032,
-          "p_sf": 0.172,
-          "p_final": 0.09
-        },
-        {
-          "player": "Flavio Cobolli",
-          "quarter": "Q2",
-          "p_champ": 0.024,
-          "p_sf": 0.157,
-          "p_final": 0.075
-        },
-        {
-          "player": "Jiri Lehecka",
-          "quarter": "Q4",
-          "p_champ": 0.016,
-          "p_sf": 0.067,
-          "p_final": 0.035
-        },
-        {
-          "player": "Tommy Paul",
-          "quarter": "Q4",
-          "p_champ": 0.015,
-          "p_sf": 0.066,
-          "p_final": 0.034
-        },
-        {
-          "player": "Botic Van De Zandschulp",
-          "quarter": "Q1",
-          "p_champ": 0.013,
-          "p_sf": 0.141,
-          "p_final": 0.054
-        },
-        {
-          "player": "Alex Michelsen",
-          "quarter": "Q3",
-          "p_champ": 0.013,
-          "p_sf": 0.136,
-          "p_final": 0.031
-        },
-        {
-          "player": "Daniel Merida",
-          "quarter": "Q3",
-          "p_champ": 0.009,
-          "p_sf": 0.109,
-          "p_final": 0.025
-        },
-        {
-          "player": "Luciano Darderi",
-          "quarter": "Q1",
-          "p_champ": 0.007,
-          "p_sf": 0.097,
-          "p_final": 0.034
-        },
-        {
-          "player": "Alejandro Tabilo",
-          "quarter": "Q1",
-          "p_champ": 0.005,
-          "p_sf": 0.073,
-          "p_final": 0.024
-        },
-        {
-          "player": "Benjamin Bonzi",
-          "quarter": "Q2",
-          "p_champ": 0.005,
-          "p_sf": 0.06,
-          "p_final": 0.021
-        },
-        {
-          "player": "Francisco Cerundolo",
-          "quarter": "Q2",
-          "p_champ": 0.005,
-          "p_sf": 0.051,
-          "p_final": 0.021
-        },
-        {
-          "player": "Valentin Vacherot",
-          "quarter": "Q3",
-          "p_champ": 0.004,
-          "p_sf": 0.049,
-          "p_final": 0.009
-        },
-        {
-          "player": "Denis Shapovalov",
-          "quarter": "Q4",
-          "p_champ": 0.004,
-          "p_sf": 0.026,
-          "p_final": 0.011
-        },
-        {
-          "player": "Stefanos Tsitsipas",
-          "quarter": "Q4",
-          "p_champ": 0.004,
-          "p_sf": 0.022,
-          "p_final": 0.01
-        },
-        {
-          "player": "Alexander Bublik",
-          "quarter": "Q4",
-          "p_champ": 0.004,
-          "p_sf": 0.028,
-          "p_final": 0.013
-        },
-        {
-          "player": "Zizou Bergs",
-          "quarter": "Q1",
-          "p_champ": 0.003,
-          "p_sf": 0.059,
-          "p_final": 0.017
-        },
-        {
-          "player": "Alexander Blockx",
-          "quarter": "Q2",
-          "p_champ": 0.003,
-          "p_sf": 0.044,
-          "p_final": 0.017
-        },
-        {
-          "player": "Michael Zheng",
-          "quarter": "Q1",
-          "p_champ": 0.002,
-          "p_sf": 0.054,
-          "p_final": 0.015
-        },
-        {
-          "player": "Arthur Gea",
-          "quarter": "Q1",
-          "p_champ": 0.002,
-          "p_sf": 0.054,
-          "p_final": 0.015
-        },
-        {
-          "player": "Karen Khachanov",
-          "quarter": "Q2",
-          "p_champ": 0.002,
-          "p_sf": 0.036,
-          "p_final": 0.011
-        },
-        {
-          "player": "Mariano Navone",
-          "quarter": "Q3",
-          "p_champ": 0.002,
-          "p_sf": 0.055,
-          "p_final": 0.008
-        },
-        {
-          "player": "Quentin Halys",
-          "quarter": "Q1",
-          "p_champ": 0.001,
-          "p_sf": 0.028,
-          "p_final": 0.008
-        },
-        {
-          "player": "Dane Sweeny",
-          "quarter": "Q1",
-          "p_champ": 0.001,
-          "p_sf": 0.029,
-          "p_final": 0.007
-        },
-        {
-          "player": "Arthur Rinderknech",
-          "quarter": "Q3",
-          "p_champ": 0.001,
-          "p_sf": 0.032,
-          "p_final": 0.005
-        },
-        {
-          "player": "Tomas Martin Etcheverry",
-          "quarter": "Q3",
-          "p_champ": 0.001,
-          "p_sf": 0.041,
-          "p_final": 0.006
-        },
-        {
-          "player": "Wu Yibing",
-          "quarter": "Q4",
-          "p_champ": 0.001,
-          "p_sf": 0.01,
-          "p_final": 0.004
-        }
-      ],
-      "matches": [
-        {
-          "player_a": "Karen Khachanov",
-          "player_b": "Benjamin Bonzi",
-          "model_prob_a": 0.452,
-          "market_prob_a": 0.655,
-          "gap_pct_points": 20.3,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Luciano Darderi",
-          "player_b": "Dane Sweeny",
-          "model_prob_a": 0.656,
-          "market_prob_a": 0.819,
-          "gap_pct_points": 16.3,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Alexander Blockx",
+          "player_a": "Shang Juncheng",
           "player_b": "Marco Trungelliti",
-          "model_prob_a": 0.646,
-          "market_prob_a": 0.808,
-          "gap_pct_points": 16.2,
+          "model_prob_a": 0.571,
           "decided": true,
-          "winner": "Alexander Blockx"
+          "winner": "Marco Trungelliti"
         },
         {
-          "player_a": "Alexander Blockx",
-          "player_b": "Flavio Cobolli",
-          "model_prob_a": 0.342,
-          "market_prob_a": 0.477,
-          "gap_pct_points": 13.5,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Michael Zheng",
-          "player_b": "Arthur Gea",
-          "model_prob_a": 0.485,
-          "market_prob_a": 0.62,
-          "gap_pct_points": 13.5,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Felix Auger-Aliassime",
-          "player_b": "Karen Khachanov",
-          "model_prob_a": 0.833,
-          "market_prob_a": 0.703,
-          "gap_pct_points": 13.0,
-          "decided": true,
-          "winner": "Karen Khachanov"
-        },
-        {
-          "player_a": "Dane Sweeny",
-          "player_b": "Lorenzo Musetti",
-          "model_prob_a": 0.204,
-          "market_prob_a": 0.081,
-          "gap_pct_points": 12.3,
-          "decided": true,
-          "winner": "Dane Sweeny"
-        },
-        {
-          "player_a": "Jakub Mensik",
-          "player_b": "Learner Tien",
-          "model_prob_a": 0.516,
-          "market_prob_a": 0.399,
-          "gap_pct_points": 11.7,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Denis Shapovalov",
-          "player_b": "Luca Van Assche",
-          "model_prob_a": 0.695,
-          "market_prob_a": 0.582,
-          "gap_pct_points": 11.3,
-          "decided": true,
-          "winner": "Denis Shapovalov"
-        },
-        {
-          "player_a": "Rei Sakamoto",
-          "player_b": "Frances Tiafoe",
-          "model_prob_a": 0.142,
-          "market_prob_a": 0.242,
-          "gap_pct_points": 10.0,
-          "decided": true,
-          "winner": "Frances Tiafoe"
-        },
-        {
-          "player_a": "Learner Tien",
-          "player_b": "Gael Monfils",
-          "model_prob_a": 0.696,
-          "market_prob_a": 0.79,
-          "gap_pct_points": 9.4,
-          "decided": true,
-          "winner": "Learner Tien"
-        },
-        {
-          "player_a": "Valentin Vacherot",
-          "player_b": "Frances Tiafoe",
-          "model_prob_a": 0.269,
-          "market_prob_a": 0.361,
-          "gap_pct_points": 9.2,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Dino Prizmic",
-          "player_b": "Tommy Paul",
-          "model_prob_a": 0.266,
-          "market_prob_a": 0.191,
-          "gap_pct_points": 7.5,
-          "decided": true,
-          "winner": "Tommy Paul"
-        },
-        {
-          "player_a": "Quentin Halys",
-          "player_b": "Alexander Zverev",
-          "model_prob_a": 0.818,
-          "market_prob_a": 0.892,
-          "gap_pct_points": 7.4,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Luciano Darderi",
-          "player_b": "Dalibor Svrcina",
-          "model_prob_a": 0.635,
-          "market_prob_a": 0.571,
-          "gap_pct_points": 6.4,
-          "decided": true,
-          "winner": "Luciano Darderi"
-        },
-        {
-          "player_a": "Taylor Fritz",
-          "player_b": "Francisco Cerundolo",
-          "model_prob_a": 0.721,
-          "market_prob_a": 0.784,
-          "gap_pct_points": 6.3,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Adrian Mannarino",
-          "player_b": "Alexander Bublik",
-          "model_prob_a": 0.312,
-          "market_prob_a": 0.251,
-          "gap_pct_points": 6.1,
-          "decided": true,
-          "winner": "Alexander Bublik"
-        },
-        {
-          "player_a": "Jiri Lehecka",
-          "player_b": "Toby Samuel",
-          "model_prob_a": 0.763,
-          "market_prob_a": 0.703,
-          "gap_pct_points": 6.0,
-          "decided": true,
-          "winner": "Jiri Lehecka"
-        },
-        {
-          "player_a": "Alejandro Tabilo",
-          "player_b": "Alexei Popyrin",
-          "model_prob_a": 0.622,
-          "market_prob_a": 0.568,
-          "gap_pct_points": 5.4,
-          "decided": true,
-          "winner": "Alejandro Tabilo"
-        },
-        {
-          "player_a": "Daniil Medvedev",
+          "player_a": "Sho Shimabukuro",
           "player_b": "Arthur Rinderknech",
-          "model_prob_a": 0.76,
-          "market_prob_a": 0.708,
-          "gap_pct_points": 5.2,
-          "decided": false,
-          "winner": null
+          "model_prob_a": 0.326,
+          "decided": true,
+          "winner": "Arthur Rinderknech"
         },
         {
-          "player_a": "Lloyd Harris",
-          "player_b": "Stefanos Tsitsipas",
-          "model_prob_a": 0.275,
-          "market_prob_a": 0.321,
-          "gap_pct_points": 4.6,
+          "player_a": "Stefanos Tsitsipas",
+          "player_b": "Arthur Fils",
+          "model_prob_a": 0.201,
           "decided": true,
           "winner": "Stefanos Tsitsipas"
         },
         {
           "player_a": "Taylor Fritz",
-          "player_b": "Mattia Bellucci",
-          "model_prob_a": 0.827,
-          "market_prob_a": 0.871,
-          "gap_pct_points": 4.4,
+          "player_b": "Darwin Blanch",
+          "model_prob_a": 0.856,
           "decided": true,
           "winner": "Taylor Fritz"
         },
         {
-          "player_a": "Mariano Navone",
-          "player_b": "Matteo Berrettini",
-          "model_prob_a": 0.421,
-          "market_prob_a": 0.38,
-          "gap_pct_points": 4.1,
+          "player_a": "Thiago Agustin Tirante",
+          "player_b": "Adrian Mannarino",
+          "model_prob_a": 0.72,
           "decided": true,
-          "winner": "Mariano Navone"
+          "winner": "Adrian Mannarino"
         },
         {
-          "player_a": "Ben Shelton",
-          "player_b": "Denis Shapovalov",
-          "model_prob_a": 0.721,
-          "market_prob_a": 0.758,
-          "gap_pct_points": 3.7,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Jurij Rodionov",
-          "player_b": "Jakub Mensik",
-          "model_prob_a": 0.17,
-          "market_prob_a": 0.142,
-          "gap_pct_points": 2.8,
+          "player_a": "Toby Samuel",
+          "player_b": "Tomas Machac",
+          "model_prob_a": 0.264,
           "decided": true,
-          "winner": "Jakub Mensik"
-        },
-        {
-          "player_a": "Alexander Bublik",
-          "player_b": "Tommy Paul",
-          "model_prob_a": 0.422,
-          "market_prob_a": 0.394,
-          "gap_pct_points": 2.8,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Wu Yibing",
-          "player_b": "James Duckworth",
-          "model_prob_a": 0.544,
-          "market_prob_a": 0.57,
-          "gap_pct_points": 2.6,
-          "decided": true,
-          "winner": "Wu Yibing"
-        },
-        {
-          "player_a": "Tristan Schoolkate",
-          "player_b": "Flavio Cobolli",
-          "model_prob_a": 0.158,
-          "market_prob_a": 0.184,
-          "gap_pct_points": 2.6,
-          "decided": true,
-          "winner": "Flavio Cobolli"
-        },
-        {
-          "player_a": "Jaime Faria",
-          "player_b": "Carlos Alcaraz",
-          "model_prob_a": 0.088,
-          "market_prob_a": 0.113,
-          "gap_pct_points": 2.5,
-          "decided": true,
-          "winner": "Carlos Alcaraz"
+          "winner": "Toby Samuel"
         },
         {
           "player_a": "Tomas Martin Etcheverry",
-          "player_b": "Mariano Navone",
-          "model_prob_a": 0.471,
-          "market_prob_a": 0.489,
-          "gap_pct_points": 1.8,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Jan-Lennard Struff",
-          "player_b": "Francisco Cerundolo",
-          "model_prob_a": 0.386,
-          "market_prob_a": 0.393,
-          "gap_pct_points": 0.7,
+          "player_b": "Vit Kopriva",
+          "model_prob_a": 0.562,
           "decided": true,
-          "winner": "Francisco Cerundolo"
+          "winner": "Tomas Martin Etcheverry"
         },
         {
           "player_a": "Valentin Vacherot",
-          "player_b": "Kamil Majchrzak",
-          "model_prob_a": 0.547,
-          "market_prob_a": 0.542,
-          "gap_pct_points": 0.5,
+          "player_b": "Aleksandar Kovacevic",
+          "model_prob_a": 0.589,
           "decided": true,
           "winner": "Valentin Vacherot"
         },
         {
           "player_a": "Wu Yibing",
-          "player_b": "Carlos Alcaraz",
-          "model_prob_a": 0.092,
-          "market_prob_a": 0.094,
-          "gap_pct_points": 0.2,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Jiri Lehecka",
-          "player_b": "Stefanos Tsitsipas",
-          "model_prob_a": 0.621,
-          "market_prob_a": 0.621,
-          "gap_pct_points": 0.0,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Sebastian Gorzny",
-          "player_b": "Daniil Medvedev",
-          "model_prob_a": 0.186,
-          "market_prob_a": null,
-          "gap_pct_points": null,
+          "player_b": "Adam Walton",
+          "model_prob_a": 0.637,
           "decided": true,
-          "winner": "Daniil Medvedev"
+          "winner": "Wu Yibing"
         },
         {
-          "player_a": "Ben Shelton",
-          "player_b": "Hubert Hurkacz",
-          "model_prob_a": 0.751,
-          "market_prob_a": null,
-          "gap_pct_points": null,
+          "player_a": "Yannick Hanfmann",
+          "player_b": "Alejandro Tabilo",
+          "model_prob_a": 0.454,
           "decided": true,
-          "winner": "Ben Shelton"
+          "winner": "Alejandro Tabilo"
         },
         {
-          "player_a": "Bu Yunchaokete",
-          "player_b": "Michael Zheng",
-          "model_prob_a": 0.379,
-          "market_prob_a": null,
-          "gap_pct_points": null,
+          "player_a": "Zachary Svajda",
+          "player_b": "Daniel Altmaier",
+          "model_prob_a": 0.383,
           "decided": true,
-          "winner": "Michael Zheng"
+          "winner": "Zachary Svajda"
         },
         {
           "player_a": "Zizou Bergs",
-          "player_b": "Jesper de Jong",
-          "model_prob_a": 0.597,
-          "market_prob_a": null,
-          "gap_pct_points": null,
+          "player_b": "Carlos Taberner",
+          "model_prob_a": 0.642,
           "decided": true,
           "winner": "Zizou Bergs"
+        }
+      ]
+    },
+    {
+      "checkpoint": "round",
+      "round": 3,
+      "label": "Round 3 - 32 players about to play",
+      "players": [
+        {
+          "player": "Carlos Alcaraz",
+          "tournament_win_probability": 0.382,
+          "upcoming_opponent": "Wu Yibing",
+          "upcoming_match_win_probability": 0.9082
+        },
+        {
+          "player": "Alexander Zverev",
+          "tournament_win_probability": 0.197,
+          "upcoming_opponent": "Alejandro Tabilo",
+          "upcoming_match_win_probability": 0.8151
+        },
+        {
+          "player": "Ben Shelton",
+          "tournament_win_probability": 0.074,
+          "upcoming_opponent": "Denis Shapovalov",
+          "upcoming_match_win_probability": 0.7205
+        },
+        {
+          "player": "Taylor Fritz",
+          "tournament_win_probability": 0.0595,
+          "upcoming_opponent": "Francisco Cerundolo",
+          "upcoming_match_win_probability": 0.7212
+        },
+        {
+          "player": "Daniil Medvedev",
+          "tournament_win_probability": 0.048,
+          "upcoming_opponent": "Arthur Rinderknech",
+          "upcoming_match_win_probability": 0.7596
+        },
+        {
+          "player": "Frances Tiafoe",
+          "tournament_win_probability": 0.043,
+          "upcoming_opponent": "Valentin Vacherot",
+          "upcoming_match_win_probability": 0.7311
+        },
+        {
+          "player": "Jakub Mensik",
+          "tournament_win_probability": 0.042,
+          "upcoming_opponent": "Learner Tien",
+          "upcoming_match_win_probability": 0.516
+        },
+        {
+          "player": "Learner Tien",
+          "tournament_win_probability": 0.028,
+          "upcoming_opponent": "Jakub Mensik",
+          "upcoming_match_win_probability": 0.484
+        },
+        {
+          "player": "Flavio Cobolli",
+          "tournament_win_probability": 0.023,
+          "upcoming_opponent": "Alexander Blockx",
+          "upcoming_match_win_probability": 0.6583
+        },
+        {
+          "player": "Tommy Paul",
+          "tournament_win_probability": 0.016,
+          "upcoming_opponent": "Alexander Bublik",
+          "upcoming_match_win_probability": 0.5782
+        },
+        {
+          "player": "Jiri Lehecka",
+          "tournament_win_probability": 0.013,
+          "upcoming_opponent": "Stefanos Tsitsipas",
+          "upcoming_match_win_probability": 0.6207
+        },
+        {
+          "player": "Botic Van De Zandschulp",
+          "tournament_win_probability": 0.0125,
+          "upcoming_opponent": "Zizou Bergs",
+          "upcoming_match_win_probability": 0.6051
+        },
+        {
+          "player": "Alex Michelsen",
+          "tournament_win_probability": 0.012,
+          "upcoming_opponent": "Daniel Merida",
+          "upcoming_match_win_probability": 0.5255
+        },
+        {
+          "player": "Daniel Merida",
+          "tournament_win_probability": 0.0105,
+          "upcoming_opponent": "Alex Michelsen",
+          "upcoming_match_win_probability": 0.4745
+        },
+        {
+          "player": "Michael Zheng",
+          "tournament_win_probability": 0.0055,
+          "upcoming_opponent": "Arthur Gea",
+          "upcoming_match_win_probability": 0.485
+        },
+        {
+          "player": "Alexander Bublik",
+          "tournament_win_probability": 0.0035,
+          "upcoming_opponent": "Tommy Paul",
+          "upcoming_match_win_probability": 0.4218
+        },
+        {
+          "player": "Luciano Darderi",
+          "tournament_win_probability": 0.003,
+          "upcoming_opponent": "Dane Sweeny",
+          "upcoming_match_win_probability": 0.6557
+        },
+        {
+          "player": "Alexander Blockx",
+          "tournament_win_probability": 0.003,
+          "upcoming_opponent": "Flavio Cobolli",
+          "upcoming_match_win_probability": 0.3417
+        },
+        {
+          "player": "Stefanos Tsitsipas",
+          "tournament_win_probability": 0.003,
+          "upcoming_opponent": "Jiri Lehecka",
+          "upcoming_match_win_probability": 0.3793
+        },
+        {
+          "player": "Arthur Gea",
+          "tournament_win_probability": 0.0025,
+          "upcoming_opponent": "Michael Zheng",
+          "upcoming_match_win_probability": 0.515
+        },
+        {
+          "player": "Francisco Cerundolo",
+          "tournament_win_probability": 0.0025,
+          "upcoming_opponent": "Taylor Fritz",
+          "upcoming_match_win_probability": 0.2788
+        },
+        {
+          "player": "Alejandro Tabilo",
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Alexander Zverev",
+          "upcoming_match_win_probability": 0.1849
+        },
+        {
+          "player": "Zizou Bergs",
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Botic Van De Zandschulp",
+          "upcoming_match_win_probability": 0.3949
+        },
+        {
+          "player": "Karen Khachanov",
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Benjamin Bonzi",
+          "upcoming_match_win_probability": 0.4521
+        },
+        {
+          "player": "Mariano Navone",
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Tomas Martin Etcheverry",
+          "upcoming_match_win_probability": 0.5288
+        },
+        {
+          "player": "Denis Shapovalov",
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Ben Shelton",
+          "upcoming_match_win_probability": 0.2795
+        },
+        {
+          "player": "Benjamin Bonzi",
+          "tournament_win_probability": 0.0015,
+          "upcoming_opponent": "Karen Khachanov",
+          "upcoming_match_win_probability": 0.5479
+        },
+        {
+          "player": "Valentin Vacherot",
+          "tournament_win_probability": 0.0015,
+          "upcoming_opponent": "Frances Tiafoe",
+          "upcoming_match_win_probability": 0.2689
+        },
+        {
+          "player": "Wu Yibing",
+          "tournament_win_probability": 0.0015,
+          "upcoming_opponent": "Carlos Alcaraz",
+          "upcoming_match_win_probability": 0.0918
+        },
+        {
+          "player": "Tomas Martin Etcheverry",
+          "tournament_win_probability": 0.001,
+          "upcoming_opponent": "Mariano Navone",
+          "upcoming_match_win_probability": 0.4712
+        },
+        {
+          "player": "Dane Sweeny",
+          "tournament_win_probability": 0.0005,
+          "upcoming_opponent": "Luciano Darderi",
+          "upcoming_match_win_probability": 0.3443
+        },
+        {
+          "player": "Arthur Rinderknech",
+          "tournament_win_probability": 0.0005,
+          "upcoming_opponent": "Daniil Medvedev",
+          "upcoming_match_win_probability": 0.2404
+        }
+      ],
+      "matches": [
+        {
+          "player_a": "Alex de Minaur",
+          "player_b": "Botic Van De Zandschulp",
+          "model_prob_a": 0.669,
+          "decided": true,
+          "winner": "Botic Van De Zandschulp"
+        },
+        {
+          "player_a": "Alexander Bublik",
+          "player_b": "Adrian Mannarino",
+          "model_prob_a": 0.688,
+          "decided": true,
+          "winner": "Alexander Bublik"
+        },
+        {
+          "player_a": "Alexei Popyrin",
+          "player_b": "Alejandro Tabilo",
+          "model_prob_a": 0.378,
+          "decided": true,
+          "winner": "Alejandro Tabilo"
         },
         {
           "player_a": "Andrey Rublev",
           "player_b": "Daniel Merida",
           "model_prob_a": 0.524,
-          "market_prob_a": null,
-          "gap_pct_points": null,
           "decided": true,
           "winner": "Daniel Merida"
-        },
-        {
-          "player_a": "Alex Michelsen",
-          "player_b": "Brandon Nakashima",
-          "model_prob_a": 0.363,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Alex Michelsen"
-        },
-        {
-          "player_a": "Botic Van De Zandschulp",
-          "player_b": "Alex de Minaur",
-          "model_prob_a": 0.331,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Botic Van De Zandschulp"
-        },
-        {
-          "player_a": "Tomas Martin Etcheverry",
-          "player_b": "Jacob Fearnley",
-          "model_prob_a": 0.594,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Tomas Martin Etcheverry"
-        },
-        {
-          "player_a": "Arthur Gea",
-          "player_b": "Zachary Svajda",
-          "model_prob_a": 0.668,
-          "market_prob_a": null,
-          "gap_pct_points": null,
-          "decided": true,
-          "winner": "Arthur Gea"
         },
         {
           "player_a": "Arthur Rinderknech",
           "player_b": "Jaume Munar",
           "model_prob_a": 0.424,
-          "market_prob_a": null,
-          "gap_pct_points": null,
           "decided": true,
           "winner": "Arthur Rinderknech"
         },
@@ -2327,17 +1804,513 @@
           "player_a": "Benjamin Bonzi",
           "player_b": "Ignacio Buse",
           "model_prob_a": 0.435,
-          "market_prob_a": null,
-          "gap_pct_points": null,
           "decided": true,
           "winner": "Benjamin Bonzi"
+        },
+        {
+          "player_a": "Brandon Nakashima",
+          "player_b": "Alex Michelsen",
+          "model_prob_a": 0.637,
+          "decided": true,
+          "winner": "Alex Michelsen"
+        },
+        {
+          "player_a": "Bu Yunchaokete",
+          "player_b": "Michael Zheng",
+          "model_prob_a": 0.379,
+          "decided": true,
+          "winner": "Michael Zheng"
+        },
+        {
+          "player_a": "Carlos Alcaraz",
+          "player_b": "Jaime Faria",
+          "model_prob_a": 0.912,
+          "decided": true,
+          "winner": "Carlos Alcaraz"
+        },
+        {
+          "player_a": "Dalibor Svrcina",
+          "player_b": "Luciano Darderi",
+          "model_prob_a": 0.365,
+          "decided": true,
+          "winner": "Luciano Darderi"
+        },
+        {
+          "player_a": "Dane Sweeny",
+          "player_b": "Lorenzo Musetti",
+          "model_prob_a": 0.204,
+          "decided": true,
+          "winner": "Dane Sweeny"
+        },
+        {
+          "player_a": "Dino Prizmic",
+          "player_b": "Tommy Paul",
+          "model_prob_a": 0.266,
+          "decided": true,
+          "winner": "Tommy Paul"
+        },
+        {
+          "player_a": "Felix Auger-Aliassime",
+          "player_b": "Karen Khachanov",
+          "model_prob_a": 0.833,
+          "decided": true,
+          "winner": "Karen Khachanov"
+        },
+        {
+          "player_a": "Flavio Cobolli",
+          "player_b": "Tristan Schoolkate",
+          "model_prob_a": 0.842,
+          "decided": true,
+          "winner": "Flavio Cobolli"
+        },
+        {
+          "player_a": "Gael Monfils",
+          "player_b": "Learner Tien",
+          "model_prob_a": 0.304,
+          "decided": true,
+          "winner": "Learner Tien"
+        },
+        {
+          "player_a": "Hubert Hurkacz",
+          "player_b": "Ben Shelton",
+          "model_prob_a": 0.249,
+          "decided": true,
+          "winner": "Ben Shelton"
+        },
+        {
+          "player_a": "Jacob Fearnley",
+          "player_b": "Tomas Martin Etcheverry",
+          "model_prob_a": 0.406,
+          "decided": true,
+          "winner": "Tomas Martin Etcheverry"
+        },
+        {
+          "player_a": "James Duckworth",
+          "player_b": "Wu Yibing",
+          "model_prob_a": 0.456,
+          "decided": true,
+          "winner": "Wu Yibing"
+        },
+        {
+          "player_a": "Jan-Lennard Struff",
+          "player_b": "Francisco Cerundolo",
+          "model_prob_a": 0.386,
+          "decided": true,
+          "winner": "Francisco Cerundolo"
+        },
+        {
+          "player_a": "Jesper de Jong",
+          "player_b": "Zizou Bergs",
+          "model_prob_a": 0.403,
+          "decided": true,
+          "winner": "Zizou Bergs"
+        },
+        {
+          "player_a": "Jiri Lehecka",
+          "player_b": "Toby Samuel",
+          "model_prob_a": 0.763,
+          "decided": true,
+          "winner": "Jiri Lehecka"
+        },
+        {
+          "player_a": "Jurij Rodionov",
+          "player_b": "Jakub Mensik",
+          "model_prob_a": 0.17,
+          "decided": true,
+          "winner": "Jakub Mensik"
+        },
+        {
+          "player_a": "Luca Van Assche",
+          "player_b": "Denis Shapovalov",
+          "model_prob_a": 0.305,
+          "decided": true,
+          "winner": "Denis Shapovalov"
+        },
+        {
+          "player_a": "Marco Trungelliti",
+          "player_b": "Alexander Blockx",
+          "model_prob_a": 0.354,
+          "decided": true,
+          "winner": "Alexander Blockx"
+        },
+        {
+          "player_a": "Mariano Navone",
+          "player_b": "Matteo Berrettini",
+          "model_prob_a": 0.421,
+          "decided": true,
+          "winner": "Mariano Navone"
+        },
+        {
+          "player_a": "Quentin Halys",
+          "player_b": "Alexander Zverev",
+          "model_prob_a": 0.182,
+          "decided": true,
+          "winner": "Alexander Zverev"
+        },
+        {
+          "player_a": "Rei Sakamoto",
+          "player_b": "Frances Tiafoe",
+          "model_prob_a": 0.142,
+          "decided": true,
+          "winner": "Frances Tiafoe"
+        },
+        {
+          "player_a": "Sebastian Gorzny",
+          "player_b": "Daniil Medvedev",
+          "model_prob_a": 0.186,
+          "decided": true,
+          "winner": "Daniil Medvedev"
+        },
+        {
+          "player_a": "Stefanos Tsitsipas",
+          "player_b": "Lloyd Harris",
+          "model_prob_a": 0.725,
+          "decided": true,
+          "winner": "Stefanos Tsitsipas"
+        },
+        {
+          "player_a": "Taylor Fritz",
+          "player_b": "Mattia Bellucci",
+          "model_prob_a": 0.827,
+          "decided": true,
+          "winner": "Taylor Fritz"
+        },
+        {
+          "player_a": "Valentin Vacherot",
+          "player_b": "Kamil Majchrzak",
+          "model_prob_a": 0.547,
+          "decided": true,
+          "winner": "Valentin Vacherot"
+        },
+        {
+          "player_a": "Zachary Svajda",
+          "player_b": "Arthur Gea",
+          "model_prob_a": 0.332,
+          "decided": true,
+          "winner": "Arthur Gea"
+        }
+      ]
+    },
+    {
+      "checkpoint": "current",
+      "round": 3,
+      "label": "Current - 29 players alive",
+      "generated_at": "2026-09-04T23:15:16Z",
+      "players": [
+        {
+          "player": "Carlos Alcaraz",
+          "quarter": "Q4",
+          "p_champ": 0.412,
+          "p_sf": 0.658,
+          "p_final": 0.539
+        },
+        {
+          "player": "Alexander Zverev",
+          "quarter": "Q1",
+          "p_champ": 0.185,
+          "p_sf": 0.565,
+          "p_final": 0.387
+        },
+        {
+          "player": "Daniil Medvedev",
+          "quarter": "Q3",
+          "p_champ": 0.064,
+          "p_sf": 0.391,
+          "p_final": 0.121
+        },
+        {
+          "player": "Taylor Fritz",
+          "quarter": "Q2",
+          "p_champ": 0.06,
+          "p_sf": 0.288,
+          "p_final": 0.159
+        },
+        {
+          "player": "Ben Shelton",
+          "quarter": "Q4",
+          "p_champ": 0.055,
+          "p_sf": 0.15,
+          "p_final": 0.099
+        },
+        {
+          "player": "Frances Tiafoe",
+          "quarter": "Q3",
+          "p_champ": 0.04,
+          "p_sf": 0.255,
+          "p_final": 0.079
+        },
+        {
+          "player": "Jakub Mensik",
+          "quarter": "Q2",
+          "p_champ": 0.032,
+          "p_sf": 0.19,
+          "p_final": 0.095
+        },
+        {
+          "player": "Learner Tien",
+          "quarter": "Q2",
+          "p_champ": 0.027,
+          "p_sf": 0.172,
+          "p_final": 0.08
+        },
+        {
+          "player": "Flavio Cobolli",
+          "quarter": "Q2",
+          "p_champ": 0.023,
+          "p_sf": 0.153,
+          "p_final": 0.069
+        },
+        {
+          "player": "Tommy Paul",
+          "quarter": "Q4",
+          "p_champ": 0.02,
+          "p_sf": 0.087,
+          "p_final": 0.046
+        },
+        {
+          "player": "Jiri Lehecka",
+          "quarter": "Q4",
+          "p_champ": 0.014,
+          "p_sf": 0.06,
+          "p_final": 0.03
+        },
+        {
+          "player": "Alex Michelsen",
+          "quarter": "Q3",
+          "p_champ": 0.01,
+          "p_sf": 0.122,
+          "p_final": 0.027
+        },
+        {
+          "player": "Botic Van De Zandschulp",
+          "quarter": "Q1",
+          "p_champ": 0.009,
+          "p_sf": 0.116,
+          "p_final": 0.044
+        },
+        {
+          "player": "Daniel Merida",
+          "quarter": "Q3",
+          "p_champ": 0.007,
+          "p_sf": 0.1,
+          "p_final": 0.019
+        },
+        {
+          "player": "Luciano Darderi",
+          "quarter": "Q1",
+          "p_champ": 0.005,
+          "p_sf": 0.089,
+          "p_final": 0.029
+        },
+        {
+          "player": "Benjamin Bonzi",
+          "quarter": "Q2",
+          "p_champ": 0.005,
+          "p_sf": 0.067,
+          "p_final": 0.022
+        },
+        {
+          "player": "Alejandro Tabilo",
+          "quarter": "Q1",
+          "p_champ": 0.004,
+          "p_sf": 0.06,
+          "p_final": 0.023
+        },
+        {
+          "player": "Francisco Cerundolo",
+          "quarter": "Q2",
+          "p_champ": 0.004,
+          "p_sf": 0.048,
+          "p_final": 0.018
+        },
+        {
+          "player": "Denis Shapovalov",
+          "quarter": "Q4",
+          "p_champ": 0.004,
+          "p_sf": 0.026,
+          "p_final": 0.01
+        },
+        {
+          "player": "Zizou Bergs",
+          "quarter": "Q1",
+          "p_champ": 0.003,
+          "p_sf": 0.054,
+          "p_final": 0.016
+        },
+        {
+          "player": "Alexander Blockx",
+          "quarter": "Q2",
+          "p_champ": 0.003,
+          "p_sf": 0.047,
+          "p_final": 0.017
+        },
+        {
+          "player": "Valentin Vacherot",
+          "quarter": "Q3",
+          "p_champ": 0.003,
+          "p_sf": 0.043,
+          "p_final": 0.009
+        },
+        {
+          "player": "Michael Zheng",
+          "quarter": "Q1",
+          "p_champ": 0.002,
+          "p_sf": 0.047,
+          "p_final": 0.013
+        },
+        {
+          "player": "Arthur Gea",
+          "quarter": "Q1",
+          "p_champ": 0.002,
+          "p_sf": 0.05,
+          "p_final": 0.017
+        },
+        {
+          "player": "Tomas Martin Etcheverry",
+          "quarter": "Q3",
+          "p_champ": 0.002,
+          "p_sf": 0.036,
+          "p_final": 0.005
+        },
+        {
+          "player": "Mariano Navone",
+          "quarter": "Q3",
+          "p_champ": 0.002,
+          "p_sf": 0.052,
+          "p_final": 0.008
+        },
+        {
+          "player": "Stefanos Tsitsipas",
+          "quarter": "Q4",
+          "p_champ": 0.002,
+          "p_sf": 0.018,
+          "p_final": 0.007
+        },
+        {
+          "player": "Karen Khachanov",
+          "quarter": "Q2",
+          "p_champ": 0.001,
+          "p_sf": 0.033,
+          "p_final": 0.009
+        },
+        {
+          "player": "Dane Sweeny",
+          "quarter": "Q1",
+          "p_champ": 0.0,
+          "p_sf": 0.02,
+          "p_final": 0.004
+        }
+      ],
+      "matches": [
+        {
+          "player_a": "Alejandro Tabilo",
+          "player_b": "Alexander Zverev",
+          "model_prob_a": 0.815,
+          "decided": false,
+          "winner": null
         },
         {
           "player_a": "Alex Michelsen",
           "player_b": "Daniel Merida",
           "model_prob_a": 0.525,
-          "market_prob_a": null,
-          "gap_pct_points": null,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Arthur Gea",
+          "player_b": "Michael Zheng",
+          "model_prob_a": 0.485,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Ben Shelton",
+          "player_b": "Denis Shapovalov",
+          "model_prob_a": 0.721,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Carlos Alcaraz",
+          "player_b": "Wu Yibing",
+          "model_prob_a": 0.908,
+          "decided": true,
+          "winner": "Carlos Alcaraz"
+        },
+        {
+          "player_a": "Daniil Medvedev",
+          "player_b": "Arthur Rinderknech",
+          "model_prob_a": 0.76,
+          "decided": true,
+          "winner": "Daniil Medvedev"
+        },
+        {
+          "player_a": "Flavio Cobolli",
+          "player_b": "Alexander Blockx",
+          "model_prob_a": 0.342,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Francisco Cerundolo",
+          "player_b": "Taylor Fritz",
+          "model_prob_a": 0.721,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Jakub Mensik",
+          "player_b": "Learner Tien",
+          "model_prob_a": 0.516,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Jiri Lehecka",
+          "player_b": "Stefanos Tsitsipas",
+          "model_prob_a": 0.621,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Karen Khachanov",
+          "player_b": "Benjamin Bonzi",
+          "model_prob_a": 0.452,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Luciano Darderi",
+          "player_b": "Dane Sweeny",
+          "model_prob_a": 0.656,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Mariano Navone",
+          "player_b": "Tomas Martin Etcheverry",
+          "model_prob_a": 0.471,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Tommy Paul",
+          "player_b": "Alexander Bublik",
+          "model_prob_a": 0.578,
+          "decided": true,
+          "winner": "Tommy Paul"
+        },
+        {
+          "player_a": "Tommy Paul",
+          "player_b": "Carlos Alcaraz",
+          "model_prob_a": 0.176,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Valentin Vacherot",
+          "player_b": "Frances Tiafoe",
+          "model_prob_a": 0.269,
           "decided": false,
           "winner": null
         },
@@ -2345,8 +2318,6 @@
           "player_a": "Zizou Bergs",
           "player_b": "Botic Van De Zandschulp",
           "model_prob_a": 0.395,
-          "market_prob_a": null,
-          "gap_pct_points": null,
           "decided": false,
           "winner": null
         }
@@ -2354,518 +2325,1574 @@
     }
   ],
   "head_to_head": {
-    "Alejandro Tabilo|Alex Michelsen": 0.424,
-    "Alejandro Tabilo|Alexander Blockx": 0.516,
-    "Alejandro Tabilo|Alexander Bublik": 0.421,
-    "Alejandro Tabilo|Alexander Zverev": 0.185,
-    "Alejandro Tabilo|Arthur Gea": 0.617,
-    "Alejandro Tabilo|Arthur Rinderknech": 0.556,
-    "Alejandro Tabilo|Ben Shelton": 0.237,
-    "Alejandro Tabilo|Benjamin Bonzi": 0.555,
-    "Alejandro Tabilo|Botic Van De Zandschulp": 0.494,
-    "Alejandro Tabilo|Carlos Alcaraz": 0.098,
-    "Alejandro Tabilo|Dane Sweeny": 0.663,
-    "Alejandro Tabilo|Daniel Merida": 0.459,
-    "Alejandro Tabilo|Daniil Medvedev": 0.285,
-    "Alejandro Tabilo|Denis Shapovalov": 0.445,
-    "Alejandro Tabilo|Flavio Cobolli": 0.353,
-    "Alejandro Tabilo|Frances Tiafoe": 0.278,
-    "Alejandro Tabilo|Francisco Cerundolo": 0.477,
-    "Alejandro Tabilo|Jakub Mensik": 0.311,
-    "Alejandro Tabilo|Jiri Lehecka": 0.355,
-    "Alejandro Tabilo|Karen Khachanov": 0.603,
-    "Alejandro Tabilo|Learner Tien": 0.329,
-    "Alejandro Tabilo|Luciano Darderi": 0.502,
-    "Alejandro Tabilo|Mariano Navone": 0.577,
-    "Alejandro Tabilo|Michael Zheng": 0.571,
-    "Alejandro Tabilo|Quentin Halys": 0.525,
-    "Alejandro Tabilo|Stefanos Tsitsipas": 0.496,
-    "Alejandro Tabilo|Taylor Fritz": 0.264,
-    "Alejandro Tabilo|Tomas Martin Etcheverry": 0.605,
-    "Alejandro Tabilo|Tommy Paul": 0.336,
-    "Alejandro Tabilo|Valentin Vacherot": 0.502,
-    "Alejandro Tabilo|Wu Yibing": 0.585,
-    "Alejandro Tabilo|Zizou Bergs": 0.568,
-    "Alex Michelsen|Alexander Blockx": 0.588,
-    "Alex Michelsen|Alexander Bublik": 0.471,
-    "Alex Michelsen|Alexander Zverev": 0.236,
-    "Alex Michelsen|Arthur Gea": 0.616,
-    "Alex Michelsen|Arthur Rinderknech": 0.631,
-    "Alex Michelsen|Ben Shelton": 0.297,
-    "Alex Michelsen|Benjamin Bonzi": 0.566,
-    "Alex Michelsen|Botic Van De Zandschulp": 0.534,
-    "Alex Michelsen|Carlos Alcaraz": 0.128,
-    "Alex Michelsen|Dane Sweeny": 0.728,
-    "Alex Michelsen|Daniil Medvedev": 0.351,
-    "Alex Michelsen|Denis Shapovalov": 0.528,
-    "Alex Michelsen|Flavio Cobolli": 0.399,
-    "Alex Michelsen|Frances Tiafoe": 0.343,
-    "Alex Michelsen|Francisco Cerundolo": 0.543,
-    "Alex Michelsen|Jakub Mensik": 0.381,
-    "Alex Michelsen|Jiri Lehecka": 0.405,
-    "Alex Michelsen|Karen Khachanov": 0.666,
-    "Alex Michelsen|Learner Tien": 0.399,
-    "Alex Michelsen|Luciano Darderi": 0.584,
-    "Alex Michelsen|Mariano Navone": 0.634,
-    "Alex Michelsen|Michael Zheng": 0.644,
-    "Alex Michelsen|Quentin Halys": 0.58,
-    "Alex Michelsen|Stefanos Tsitsipas": 0.551,
-    "Alex Michelsen|Taylor Fritz": 0.327,
-    "Alex Michelsen|Tomas Martin Etcheverry": 0.674,
-    "Alex Michelsen|Tommy Paul": 0.393,
-    "Alex Michelsen|Valentin Vacherot": 0.587,
-    "Alex Michelsen|Wu Yibing": 0.593,
-    "Alex Michelsen|Zizou Bergs": 0.638,
-    "Alexander Blockx|Alexander Bublik": 0.409,
-    "Alexander Blockx|Alexander Zverev": 0.177,
-    "Alexander Blockx|Arthur Gea": 0.603,
-    "Alexander Blockx|Arthur Rinderknech": 0.541,
-    "Alexander Blockx|Ben Shelton": 0.228,
-    "Alexander Blockx|Benjamin Bonzi": 0.54,
-    "Alexander Blockx|Botic Van De Zandschulp": 0.479,
-    "Alexander Blockx|Carlos Alcaraz": 0.093,
-    "Alexander Blockx|Dane Sweeny": 0.652,
-    "Alexander Blockx|Daniel Merida": 0.444,
-    "Alexander Blockx|Daniil Medvedev": 0.274,
-    "Alexander Blockx|Denis Shapovalov": 0.432,
-    "Alexander Blockx|Frances Tiafoe": 0.267,
-    "Alexander Blockx|Francisco Cerundolo": 0.468,
-    "Alexander Blockx|Jakub Mensik": 0.301,
-    "Alexander Blockx|Jiri Lehecka": 0.344,
-    "Alexander Blockx|Karen Khachanov": 0.588,
-    "Alexander Blockx|Learner Tien": 0.317,
-    "Alexander Blockx|Luciano Darderi": 0.486,
-    "Alexander Blockx|Mariano Navone": 0.562,
-    "Alexander Blockx|Michael Zheng": 0.621,
-    "Alexander Blockx|Quentin Halys": 0.51,
-    "Alexander Blockx|Stefanos Tsitsipas": 0.48,
-    "Alexander Blockx|Taylor Fritz": 0.254,
-    "Alexander Blockx|Tomas Martin Etcheverry": 0.59,
-    "Alexander Blockx|Tommy Paul": 0.325,
-    "Alexander Blockx|Valentin Vacherot": 0.486,
-    "Alexander Blockx|Wu Yibing": 0.57,
-    "Alexander Blockx|Zizou Bergs": 0.553,
-    "Alexander Bublik|Alexander Zverev": 0.238,
-    "Alexander Bublik|Arthur Gea": 0.618,
-    "Alexander Bublik|Arthur Rinderknech": 0.633,
-    "Alexander Bublik|Ben Shelton": 0.299,
-    "Alexander Bublik|Benjamin Bonzi": 0.568,
-    "Alexander Bublik|Botic Van De Zandschulp": 0.537,
-    "Alexander Bublik|Carlos Alcaraz": 0.13,
-    "Alexander Bublik|Dane Sweeny": 0.73,
-    "Alexander Bublik|Daniel Merida": 0.528,
-    "Alexander Bublik|Daniil Medvedev": 0.353,
-    "Alexander Bublik|Denis Shapovalov": 0.556,
-    "Alexander Bublik|Flavio Cobolli": 0.428,
-    "Alexander Bublik|Frances Tiafoe": 0.345,
-    "Alexander Bublik|Francisco Cerundolo": 0.56,
-    "Alexander Bublik|Jakub Mensik": 0.383,
-    "Alexander Bublik|Jiri Lehecka": 0.434,
-    "Alexander Bublik|Karen Khachanov": 0.668,
-    "Alexander Bublik|Learner Tien": 0.403,
-    "Alexander Bublik|Luciano Darderi": 0.587,
-    "Alexander Bublik|Mariano Navone": 0.636,
-    "Alexander Bublik|Michael Zheng": 0.647,
-    "Alexander Bublik|Quentin Halys": 0.583,
-    "Alexander Bublik|Stefanos Tsitsipas": 0.553,
-    "Alexander Bublik|Taylor Fritz": 0.33,
-    "Alexander Bublik|Tomas Martin Etcheverry": 0.676,
-    "Alexander Bublik|Valentin Vacherot": 0.589,
-    "Alexander Bublik|Wu Yibing": 0.595,
-    "Alexander Bublik|Zizou Bergs": 0.64,
-    "Alexander Zverev|Arthur Gea": 0.839,
-    "Alexander Zverev|Arthur Rinderknech": 0.847,
-    "Alexander Zverev|Ben Shelton": 0.578,
-    "Alexander Zverev|Benjamin Bonzi": 0.809,
-    "Alexander Zverev|Botic Van De Zandschulp": 0.788,
-    "Alexander Zverev|Carlos Alcaraz": 0.323,
-    "Alexander Zverev|Dane Sweeny": 0.897,
-    "Alexander Zverev|Daniel Merida": 0.782,
-    "Alexander Zverev|Daniil Medvedev": 0.637,
-    "Alexander Zverev|Denis Shapovalov": 0.779,
-    "Alexander Zverev|Flavio Cobolli": 0.707,
-    "Alexander Zverev|Frances Tiafoe": 0.629,
-    "Alexander Zverev|Francisco Cerundolo": 0.803,
-    "Alexander Zverev|Jakub Mensik": 0.666,
-    "Alexander Zverev|Jiri Lehecka": 0.708,
-    "Alexander Zverev|Karen Khachanov": 0.866,
-    "Alexander Zverev|Learner Tien": 0.683,
-    "Alexander Zverev|Luciano Darderi": 0.82,
-    "Alexander Zverev|Mariano Navone": 0.849,
-    "Alexander Zverev|Michael Zheng": 0.855,
-    "Alexander Zverev|Stefanos Tsitsipas": 0.799,
-    "Alexander Zverev|Taylor Fritz": 0.612,
-    "Alexander Zverev|Tomas Martin Etcheverry": 0.87,
-    "Alexander Zverev|Tommy Paul": 0.691,
-    "Alexander Zverev|Valentin Vacherot": 0.822,
-    "Alexander Zverev|Wu Yibing": 0.825,
-    "Alexander Zverev|Zizou Bergs": 0.851,
-    "Arthur Gea|Arthur Rinderknech": 0.437,
-    "Arthur Gea|Ben Shelton": 0.209,
-    "Arthur Gea|Benjamin Bonzi": 0.432,
-    "Arthur Gea|Botic Van De Zandschulp": 0.372,
-    "Arthur Gea|Carlos Alcaraz": 0.084,
-    "Arthur Gea|Dane Sweeny": 0.625,
-    "Arthur Gea|Daniel Merida": 0.343,
-    "Arthur Gea|Daniil Medvedev": 0.252,
-    "Arthur Gea|Denis Shapovalov": 0.405,
-    "Arthur Gea|Flavio Cobolli": 0.316,
-    "Arthur Gea|Frances Tiafoe": 0.246,
-    "Arthur Gea|Francisco Cerundolo": 0.44,
-    "Arthur Gea|Jakub Mensik": 0.277,
-    "Arthur Gea|Jiri Lehecka": 0.318,
-    "Arthur Gea|Karen Khachanov": 0.483,
-    "Arthur Gea|Learner Tien": 0.293,
-    "Arthur Gea|Luciano Darderi": 0.386,
-    "Arthur Gea|Mariano Navone": 0.454,
-    "Arthur Gea|Quentin Halys": 0.402,
-    "Arthur Gea|Stefanos Tsitsipas": 0.374,
-    "Arthur Gea|Taylor Fritz": 0.233,
-    "Arthur Gea|Tomas Martin Etcheverry": 0.487,
-    "Arthur Gea|Tommy Paul": 0.3,
-    "Arthur Gea|Valentin Vacherot": 0.387,
-    "Arthur Gea|Wu Yibing": 0.463,
-    "Arthur Gea|Zizou Bergs": 0.448,
-    "Arthur Rinderknech|Ben Shelton": 0.198,
-    "Arthur Rinderknech|Benjamin Bonzi": 0.498,
-    "Arthur Rinderknech|Botic Van De Zandschulp": 0.438,
-    "Arthur Rinderknech|Carlos Alcaraz": 0.079,
-    "Arthur Rinderknech|Dane Sweeny": 0.611,
-    "Arthur Rinderknech|Daniel Merida": 0.404,
-    "Arthur Rinderknech|Denis Shapovalov": 0.389,
-    "Arthur Rinderknech|Flavio Cobolli": 0.303,
-    "Arthur Rinderknech|Frances Tiafoe": 0.234,
-    "Arthur Rinderknech|Francisco Cerundolo": 0.424,
-    "Arthur Rinderknech|Jakub Mensik": 0.265,
-    "Arthur Rinderknech|Jiri Lehecka": 0.305,
-    "Arthur Rinderknech|Karen Khachanov": 0.548,
-    "Arthur Rinderknech|Learner Tien": 0.28,
-    "Arthur Rinderknech|Luciano Darderi": 0.446,
-    "Arthur Rinderknech|Mariano Navone": 0.521,
-    "Arthur Rinderknech|Michael Zheng": 0.581,
-    "Arthur Rinderknech|Quentin Halys": 0.469,
-    "Arthur Rinderknech|Stefanos Tsitsipas": 0.44,
-    "Arthur Rinderknech|Taylor Fritz": 0.222,
-    "Arthur Rinderknech|Tomas Martin Etcheverry": 0.55,
-    "Arthur Rinderknech|Tommy Paul": 0.287,
-    "Arthur Rinderknech|Valentin Vacherot": 0.446,
-    "Arthur Rinderknech|Wu Yibing": 0.529,
-    "Arthur Rinderknech|Zizou Bergs": 0.512,
-    "Ben Shelton|Benjamin Bonzi": 0.755,
-    "Ben Shelton|Botic Van De Zandschulp": 0.731,
-    "Ben Shelton|Carlos Alcaraz": 0.258,
-    "Ben Shelton|Dane Sweeny": 0.864,
-    "Ben Shelton|Daniel Merida": 0.724,
-    "Ben Shelton|Daniil Medvedev": 0.563,
-    "Ben Shelton|Flavio Cobolli": 0.637,
-    "Ben Shelton|Frances Tiafoe": 0.568,
-    "Ben Shelton|Francisco Cerundolo": 0.749,
-    "Ben Shelton|Jakub Mensik": 0.593,
-    "Ben Shelton|Jiri Lehecka": 0.639,
-    "Ben Shelton|Karen Khachanov": 0.825,
-    "Ben Shelton|Learner Tien": 0.612,
-    "Ben Shelton|Luciano Darderi": 0.769,
-    "Ben Shelton|Mariano Navone": 0.804,
-    "Ben Shelton|Michael Zheng": 0.811,
-    "Ben Shelton|Quentin Halys": 0.766,
-    "Ben Shelton|Stefanos Tsitsipas": 0.744,
-    "Ben Shelton|Taylor Fritz": 0.538,
-    "Ben Shelton|Tomas Martin Etcheverry": 0.83,
-    "Ben Shelton|Tommy Paul": 0.62,
-    "Ben Shelton|Valentin Vacherot": 0.771,
-    "Ben Shelton|Wu Yibing": 0.775,
-    "Ben Shelton|Zizou Bergs": 0.806,
-    "Benjamin Bonzi|Botic Van De Zandschulp": 0.436,
-    "Benjamin Bonzi|Carlos Alcaraz": 0.102,
-    "Benjamin Bonzi|Dane Sweeny": 0.673,
-    "Benjamin Bonzi|Daniel Merida": 0.403,
-    "Benjamin Bonzi|Daniil Medvedev": 0.293,
-    "Benjamin Bonzi|Denis Shapovalov": 0.456,
-    "Benjamin Bonzi|Flavio Cobolli": 0.363,
-    "Benjamin Bonzi|Frances Tiafoe": 0.286,
-    "Benjamin Bonzi|Francisco Cerundolo": 0.424,
-    "Benjamin Bonzi|Jakub Mensik": 0.321,
-    "Benjamin Bonzi|Jiri Lehecka": 0.365,
-    "Benjamin Bonzi|Learner Tien": 0.338,
-    "Benjamin Bonzi|Luciano Darderi": 0.449,
-    "Benjamin Bonzi|Mariano Navone": 0.52,
-    "Benjamin Bonzi|Michael Zheng": 0.582,
-    "Benjamin Bonzi|Quentin Halys": 0.467,
-    "Benjamin Bonzi|Stefanos Tsitsipas": 0.438,
-    "Benjamin Bonzi|Taylor Fritz": 0.272,
-    "Benjamin Bonzi|Tomas Martin Etcheverry": 0.551,
-    "Benjamin Bonzi|Tommy Paul": 0.346,
-    "Benjamin Bonzi|Valentin Vacherot": 0.449,
-    "Benjamin Bonzi|Wu Yibing": 0.532,
-    "Benjamin Bonzi|Zizou Bergs": 0.513,
-    "Botic Van De Zandschulp|Carlos Alcaraz": 0.114,
-    "Botic Van De Zandschulp|Dane Sweeny": 0.7,
-    "Botic Van De Zandschulp|Daniel Merida": 0.464,
-    "Botic Van De Zandschulp|Daniil Medvedev": 0.32,
-    "Botic Van De Zandschulp|Denis Shapovalov": 0.466,
-    "Botic Van De Zandschulp|Flavio Cobolli": 0.393,
-    "Botic Van De Zandschulp|Frances Tiafoe": 0.313,
-    "Botic Van De Zandschulp|Francisco Cerundolo": 0.483,
-    "Botic Van De Zandschulp|Jakub Mensik": 0.349,
-    "Botic Van De Zandschulp|Jiri Lehecka": 0.395,
-    "Botic Van De Zandschulp|Karen Khachanov": 0.634,
-    "Botic Van De Zandschulp|Learner Tien": 0.367,
-    "Botic Van De Zandschulp|Luciano Darderi": 0.509,
-    "Botic Van De Zandschulp|Mariano Navone": 0.601,
-    "Botic Van De Zandschulp|Michael Zheng": 0.612,
-    "Botic Van De Zandschulp|Quentin Halys": 0.529,
-    "Botic Van De Zandschulp|Stefanos Tsitsipas": 0.5,
-    "Botic Van De Zandschulp|Taylor Fritz": 0.298,
-    "Botic Van De Zandschulp|Tomas Martin Etcheverry": 0.643,
-    "Botic Van De Zandschulp|Tommy Paul": 0.375,
-    "Botic Van De Zandschulp|Valentin Vacherot": 0.509,
-    "Botic Van De Zandschulp|Wu Yibing": 0.595,
-    "Carlos Alcaraz|Dane Sweeny": 0.948,
-    "Carlos Alcaraz|Daniel Merida": 0.883,
-    "Carlos Alcaraz|Daniil Medvedev": 0.786,
-    "Carlos Alcaraz|Denis Shapovalov": 0.881,
-    "Carlos Alcaraz|Flavio Cobolli": 0.835,
-    "Carlos Alcaraz|Frances Tiafoe": 0.78,
-    "Carlos Alcaraz|Francisco Cerundolo": 0.895,
-    "Carlos Alcaraz|Jakub Mensik": 0.807,
-    "Carlos Alcaraz|Jiri Lehecka": 0.836,
-    "Carlos Alcaraz|Karen Khachanov": 0.931,
-    "Carlos Alcaraz|Learner Tien": 0.819,
-    "Carlos Alcaraz|Luciano Darderi": 0.905,
-    "Carlos Alcaraz|Mariano Navone": 0.922,
-    "Carlos Alcaraz|Michael Zheng": 0.925,
-    "Carlos Alcaraz|Quentin Halys": 0.904,
-    "Carlos Alcaraz|Stefanos Tsitsipas": 0.893,
-    "Carlos Alcaraz|Taylor Fritz": 0.768,
-    "Carlos Alcaraz|Tomas Martin Etcheverry": 0.933,
-    "Carlos Alcaraz|Tommy Paul": 0.824,
-    "Carlos Alcaraz|Valentin Vacherot": 0.906,
-    "Carlos Alcaraz|Zizou Bergs": 0.923,
-    "Dane Sweeny|Daniel Merida": 0.293,
-    "Dane Sweeny|Daniil Medvedev": 0.168,
-    "Dane Sweeny|Denis Shapovalov": 0.289,
-    "Dane Sweeny|Flavio Cobolli": 0.217,
-    "Dane Sweeny|Frances Tiafoe": 0.163,
-    "Dane Sweeny|Francisco Cerundolo": 0.32,
-    "Dane Sweeny|Jakub Mensik": 0.187,
-    "Dane Sweeny|Jiri Lehecka": 0.219,
-    "Dane Sweeny|Karen Khachanov": 0.427,
-    "Dane Sweeny|Learner Tien": 0.199,
-    "Dane Sweeny|Mariano Navone": 0.393,
-    "Dane Sweeny|Michael Zheng": 0.389,
-    "Dane Sweeny|Quentin Halys": 0.34,
-    "Dane Sweeny|Stefanos Tsitsipas": 0.314,
-    "Dane Sweeny|Taylor Fritz": 0.154,
-    "Dane Sweeny|Tomas Martin Etcheverry": 0.435,
-    "Dane Sweeny|Tommy Paul": 0.204,
-    "Dane Sweeny|Valentin Vacherot": 0.347,
-    "Dane Sweeny|Wu Yibing": 0.352,
-    "Dane Sweeny|Zizou Bergs": 0.397,
-    "Daniel Merida|Daniil Medvedev": 0.328,
-    "Daniel Merida|Denis Shapovalov": 0.503,
-    "Daniel Merida|Flavio Cobolli": 0.401,
-    "Daniel Merida|Frances Tiafoe": 0.32,
-    "Daniel Merida|Francisco Cerundolo": 0.518,
-    "Daniel Merida|Jakub Mensik": 0.357,
-    "Daniel Merida|Jiri Lehecka": 0.403,
-    "Daniel Merida|Karen Khachanov": 0.643,
-    "Daniel Merida|Learner Tien": 0.375,
-    "Daniel Merida|Luciano Darderi": 0.543,
-    "Daniel Merida|Mariano Navone": 0.61,
-    "Daniel Merida|Michael Zheng": 0.62,
-    "Daniel Merida|Quentin Halys": 0.566,
-    "Daniel Merida|Stefanos Tsitsipas": 0.537,
-    "Daniel Merida|Taylor Fritz": 0.305,
-    "Daniel Merida|Tomas Martin Etcheverry": 0.651,
-    "Daniel Merida|Tommy Paul": 0.383,
-    "Daniel Merida|Valentin Vacherot": 0.543,
-    "Daniel Merida|Wu Yibing": 0.626,
-    "Daniel Merida|Zizou Bergs": 0.614,
-    "Daniil Medvedev|Denis Shapovalov": 0.668,
-    "Daniil Medvedev|Flavio Cobolli": 0.579,
-    "Daniil Medvedev|Frances Tiafoe": 0.505,
-    "Daniil Medvedev|Francisco Cerundolo": 0.7,
-    "Daniil Medvedev|Jakub Mensik": 0.539,
-    "Daniil Medvedev|Jiri Lehecka": 0.581,
-    "Daniil Medvedev|Karen Khachanov": 0.787,
-    "Daniil Medvedev|Learner Tien": 0.555,
-    "Daniil Medvedev|Luciano Darderi": 0.722,
-    "Daniil Medvedev|Mariano Navone": 0.762,
-    "Daniil Medvedev|Michael Zheng": 0.77,
-    "Daniil Medvedev|Quentin Halys": 0.719,
-    "Daniil Medvedev|Stefanos Tsitsipas": 0.694,
-    "Daniil Medvedev|Taylor Fritz": 0.475,
-    "Daniil Medvedev|Tomas Martin Etcheverry": 0.793,
-    "Daniil Medvedev|Tommy Paul": 0.56,
-    "Daniil Medvedev|Valentin Vacherot": 0.724,
-    "Daniil Medvedev|Wu Yibing": 0.729,
-    "Daniil Medvedev|Zizou Bergs": 0.765,
-    "Denis Shapovalov|Flavio Cobolli": 0.405,
-    "Denis Shapovalov|Frances Tiafoe": 0.324,
-    "Denis Shapovalov|Francisco Cerundolo": 0.515,
-    "Denis Shapovalov|Jakub Mensik": 0.361,
-    "Denis Shapovalov|Jiri Lehecka": 0.407,
-    "Denis Shapovalov|Karen Khachanov": 0.646,
-    "Denis Shapovalov|Learner Tien": 0.379,
-    "Denis Shapovalov|Luciano Darderi": 0.563,
-    "Denis Shapovalov|Mariano Navone": 0.614,
-    "Denis Shapovalov|Michael Zheng": 0.624,
-    "Denis Shapovalov|Quentin Halys": 0.559,
-    "Denis Shapovalov|Stefanos Tsitsipas": 0.534,
-    "Denis Shapovalov|Taylor Fritz": 0.309,
-    "Denis Shapovalov|Tomas Martin Etcheverry": 0.655,
-    "Denis Shapovalov|Tommy Paul": 0.387,
-    "Denis Shapovalov|Valentin Vacherot": 0.54,
-    "Denis Shapovalov|Wu Yibing": 0.572,
-    "Denis Shapovalov|Zizou Bergs": 0.618,
-    "Flavio Cobolli|Frances Tiafoe": 0.413,
-    "Flavio Cobolli|Francisco Cerundolo": 0.629,
-    "Flavio Cobolli|Jakub Mensik": 0.458,
-    "Flavio Cobolli|Jiri Lehecka": 0.506,
-    "Flavio Cobolli|Karen Khachanov": 0.728,
-    "Flavio Cobolli|Learner Tien": 0.474,
-    "Flavio Cobolli|Luciano Darderi": 0.654,
-    "Flavio Cobolli|Mariano Navone": 0.7,
-    "Flavio Cobolli|Michael Zheng": 0.709,
-    "Flavio Cobolli|Quentin Halys": 0.651,
-    "Flavio Cobolli|Stefanos Tsitsipas": 0.623,
-    "Flavio Cobolli|Taylor Fritz": 0.396,
-    "Flavio Cobolli|Tomas Martin Etcheverry": 0.736,
-    "Flavio Cobolli|Tommy Paul": 0.494,
-    "Flavio Cobolli|Valentin Vacherot": 0.657,
-    "Flavio Cobolli|Wu Yibing": 0.662,
-    "Flavio Cobolli|Zizou Bergs": 0.703,
-    "Frances Tiafoe|Francisco Cerundolo": 0.707,
-    "Frances Tiafoe|Jakub Mensik": 0.534,
-    "Frances Tiafoe|Jiri Lehecka": 0.589,
-    "Frances Tiafoe|Karen Khachanov": 0.792,
-    "Frances Tiafoe|Learner Tien": 0.55,
-    "Frances Tiafoe|Luciano Darderi": 0.729,
-    "Frances Tiafoe|Mariano Navone": 0.768,
-    "Frances Tiafoe|Michael Zheng": 0.776,
-    "Frances Tiafoe|Quentin Halys": 0.726,
-    "Frances Tiafoe|Stefanos Tsitsipas": 0.701,
-    "Frances Tiafoe|Taylor Fritz": 0.47,
-    "Frances Tiafoe|Tomas Martin Etcheverry": 0.798,
-    "Frances Tiafoe|Tommy Paul": 0.57,
-    "Frances Tiafoe|Wu Yibing": 0.736,
-    "Frances Tiafoe|Zizou Bergs": 0.771,
-    "Francisco Cerundolo|Jakub Mensik": 0.328,
-    "Francisco Cerundolo|Jiri Lehecka": 0.373,
-    "Francisco Cerundolo|Karen Khachanov": 0.613,
-    "Francisco Cerundolo|Learner Tien": 0.346,
-    "Francisco Cerundolo|Luciano Darderi": 0.525,
-    "Francisco Cerundolo|Mariano Navone": 0.579,
-    "Francisco Cerundolo|Michael Zheng": 0.59,
-    "Francisco Cerundolo|Quentin Halys": 0.523,
-    "Francisco Cerundolo|Stefanos Tsitsipas": 0.518,
-    "Francisco Cerundolo|Tomas Martin Etcheverry": 0.621,
-    "Francisco Cerundolo|Tommy Paul": 0.354,
-    "Francisco Cerundolo|Valentin Vacherot": 0.525,
-    "Francisco Cerundolo|Wu Yibing": 0.606,
-    "Francisco Cerundolo|Zizou Bergs": 0.583,
-    "Jakub Mensik|Jiri Lehecka": 0.547,
-    "Jakub Mensik|Karen Khachanov": 0.764,
-    "Jakub Mensik|Luciano Darderi": 0.696,
-    "Jakub Mensik|Mariano Navone": 0.738,
-    "Jakub Mensik|Michael Zheng": 0.747,
-    "Jakub Mensik|Quentin Halys": 0.692,
-    "Jakub Mensik|Stefanos Tsitsipas": 0.666,
-    "Jakub Mensik|Taylor Fritz": 0.435,
-    "Jakub Mensik|Tomas Martin Etcheverry": 0.771,
-    "Jakub Mensik|Tommy Paul": 0.536,
-    "Jakub Mensik|Valentin Vacherot": 0.698,
-    "Jakub Mensik|Wu Yibing": 0.703,
-    "Jakub Mensik|Zizou Bergs": 0.741,
-    "Jiri Lehecka|Karen Khachanov": 0.727,
-    "Jiri Lehecka|Learner Tien": 0.469,
-    "Jiri Lehecka|Luciano Darderi": 0.652,
-    "Jiri Lehecka|Mariano Navone": 0.698,
-    "Jiri Lehecka|Michael Zheng": 0.707,
-    "Jiri Lehecka|Quentin Halys": 0.649,
-    "Jiri Lehecka|Taylor Fritz": 0.394,
-    "Jiri Lehecka|Tomas Martin Etcheverry": 0.734,
-    "Jiri Lehecka|Tommy Paul": 0.488,
-    "Jiri Lehecka|Valentin Vacherot": 0.655,
-    "Jiri Lehecka|Wu Yibing": 0.66,
-    "Jiri Lehecka|Zizou Bergs": 0.701,
-    "Karen Khachanov|Learner Tien": 0.25,
-    "Karen Khachanov|Luciano Darderi": 0.399,
-    "Karen Khachanov|Mariano Navone": 0.473,
-    "Karen Khachanov|Michael Zheng": 0.535,
-    "Karen Khachanov|Quentin Halys": 0.421,
-    "Karen Khachanov|Stefanos Tsitsipas": 0.381,
-    "Karen Khachanov|Taylor Fritz": 0.196,
-    "Karen Khachanov|Tomas Martin Etcheverry": 0.502,
-    "Karen Khachanov|Tommy Paul": 0.257,
-    "Karen Khachanov|Valentin Vacherot": 0.416,
-    "Karen Khachanov|Wu Yibing": 0.483,
-    "Karen Khachanov|Zizou Bergs": 0.463,
-    "Learner Tien|Luciano Darderi": 0.679,
-    "Learner Tien|Mariano Navone": 0.722,
-    "Learner Tien|Michael Zheng": 0.731,
-    "Learner Tien|Quentin Halys": 0.675,
-    "Learner Tien|Stefanos Tsitsipas": 0.648,
-    "Learner Tien|Taylor Fritz": 0.422,
-    "Learner Tien|Tomas Martin Etcheverry": 0.756,
-    "Learner Tien|Tommy Paul": 0.519,
-    "Learner Tien|Valentin Vacherot": 0.681,
-    "Learner Tien|Wu Yibing": 0.686,
-    "Learner Tien|Zizou Bergs": 0.726,
-    "Luciano Darderi|Mariano Navone": 0.575,
-    "Luciano Darderi|Michael Zheng": 0.563,
-    "Luciano Darderi|Quentin Halys": 0.522,
-    "Luciano Darderi|Stefanos Tsitsipas": 0.493,
-    "Luciano Darderi|Taylor Fritz": 0.257,
-    "Luciano Darderi|Tomas Martin Etcheverry": 0.603,
-    "Luciano Darderi|Tommy Paul": 0.329,
-    "Luciano Darderi|Valentin Vacherot": 0.5,
-    "Luciano Darderi|Wu Yibing": 0.581,
-    "Luciano Darderi|Zizou Bergs": 0.566,
-    "Mariano Navone|Michael Zheng": 0.563,
-    "Mariano Navone|Quentin Halys": 0.448,
-    "Mariano Navone|Stefanos Tsitsipas": 0.415,
-    "Mariano Navone|Taylor Fritz": 0.22,
-    "Mariano Navone|Tommy Paul": 0.285,
-    "Mariano Navone|Valentin Vacherot": 0.451,
-    "Mariano Navone|Wu Yibing": 0.511,
-    "Mariano Navone|Zizou Bergs": 0.491,
-    "Michael Zheng|Quentin Halys": 0.385,
-    "Michael Zheng|Stefanos Tsitsipas": 0.404,
-    "Michael Zheng|Taylor Fritz": 0.212,
-    "Michael Zheng|Tomas Martin Etcheverry": 0.468,
-    "Michael Zheng|Tommy Paul": 0.275,
-    "Michael Zheng|Valentin Vacherot": 0.439,
-    "Michael Zheng|Wu Yibing": 0.446,
-    "Michael Zheng|Zizou Bergs": 0.43,
-    "Quentin Halys|Stefanos Tsitsipas": 0.471,
-    "Quentin Halys|Taylor Fritz": 0.26,
-    "Quentin Halys|Tomas Martin Etcheverry": 0.581,
-    "Quentin Halys|Tommy Paul": 0.332,
-    "Quentin Halys|Valentin Vacherot": 0.478,
-    "Quentin Halys|Wu Yibing": 0.564,
-    "Quentin Halys|Zizou Bergs": 0.543,
-    "Stefanos Tsitsipas|Taylor Fritz": 0.284,
-    "Stefanos Tsitsipas|Tomas Martin Etcheverry": 0.628,
-    "Stefanos Tsitsipas|Tommy Paul": 0.36,
-    "Stefanos Tsitsipas|Valentin Vacherot": 0.507,
-    "Stefanos Tsitsipas|Wu Yibing": 0.593,
-    "Stefanos Tsitsipas|Zizou Bergs": 0.572,
-    "Taylor Fritz|Tomas Martin Etcheverry": 0.809,
-    "Taylor Fritz|Tommy Paul": 0.586,
-    "Taylor Fritz|Valentin Vacherot": 0.745,
-    "Taylor Fritz|Wu Yibing": 0.75,
-    "Taylor Fritz|Zizou Bergs": 0.783,
-    "Tomas Martin Etcheverry|Tommy Paul": 0.25,
-    "Tomas Martin Etcheverry|Valentin Vacherot": 0.407,
-    "Tomas Martin Etcheverry|Wu Yibing": 0.48,
-    "Tomas Martin Etcheverry|Zizou Bergs": 0.462,
-    "Tommy Paul|Valentin Vacherot": 0.674,
-    "Tommy Paul|Wu Yibing": 0.679,
-    "Tommy Paul|Zizou Bergs": 0.719,
-    "Valentin Vacherot|Wu Yibing": 0.581,
-    "Valentin Vacherot|Zizou Bergs": 0.553,
-    "Wu Yibing|Zizou Bergs": 0.482
+    "Alejandro Tabilo|Alex Michelsen": {
+      "model_prob_a": 0.424,
+      "model_prob_b": 0.576
+    },
+    "Alejandro Tabilo|Alexander Blockx": {
+      "model_prob_a": 0.516,
+      "model_prob_b": 0.484
+    },
+    "Alejandro Tabilo|Arthur Gea": {
+      "model_prob_a": 0.617,
+      "model_prob_b": 0.383
+    },
+    "Alejandro Tabilo|Ben Shelton": {
+      "model_prob_a": 0.237,
+      "model_prob_b": 0.763
+    },
+    "Alejandro Tabilo|Benjamin Bonzi": {
+      "model_prob_a": 0.555,
+      "model_prob_b": 0.445
+    },
+    "Alejandro Tabilo|Botic Van De Zandschulp": {
+      "model_prob_a": 0.494,
+      "model_prob_b": 0.506
+    },
+    "Alejandro Tabilo|Carlos Alcaraz": {
+      "model_prob_a": 0.098,
+      "model_prob_b": 0.902
+    },
+    "Alejandro Tabilo|Dane Sweeny": {
+      "model_prob_a": 0.663,
+      "model_prob_b": 0.337
+    },
+    "Alejandro Tabilo|Daniel Merida": {
+      "model_prob_a": 0.459,
+      "model_prob_b": 0.541
+    },
+    "Alejandro Tabilo|Daniil Medvedev": {
+      "model_prob_a": 0.285,
+      "model_prob_b": 0.715
+    },
+    "Alejandro Tabilo|Denis Shapovalov": {
+      "model_prob_a": 0.445,
+      "model_prob_b": 0.555
+    },
+    "Alejandro Tabilo|Flavio Cobolli": {
+      "model_prob_a": 0.353,
+      "model_prob_b": 0.647
+    },
+    "Alejandro Tabilo|Frances Tiafoe": {
+      "model_prob_a": 0.278,
+      "model_prob_b": 0.722
+    },
+    "Alejandro Tabilo|Francisco Cerundolo": {
+      "model_prob_a": 0.477,
+      "model_prob_b": 0.523
+    },
+    "Alejandro Tabilo|Jakub Mensik": {
+      "model_prob_a": 0.311,
+      "model_prob_b": 0.689
+    },
+    "Alejandro Tabilo|Jiri Lehecka": {
+      "model_prob_a": 0.355,
+      "model_prob_b": 0.645
+    },
+    "Alejandro Tabilo|Karen Khachanov": {
+      "model_prob_a": 0.603,
+      "model_prob_b": 0.397
+    },
+    "Alejandro Tabilo|Learner Tien": {
+      "model_prob_a": 0.329,
+      "model_prob_b": 0.671
+    },
+    "Alejandro Tabilo|Luciano Darderi": {
+      "model_prob_a": 0.502,
+      "model_prob_b": 0.498
+    },
+    "Alejandro Tabilo|Mariano Navone": {
+      "model_prob_a": 0.577,
+      "model_prob_b": 0.423
+    },
+    "Alejandro Tabilo|Michael Zheng": {
+      "model_prob_a": 0.571,
+      "model_prob_b": 0.429
+    },
+    "Alejandro Tabilo|Stefanos Tsitsipas": {
+      "model_prob_a": 0.496,
+      "model_prob_b": 0.504
+    },
+    "Alejandro Tabilo|Taylor Fritz": {
+      "model_prob_a": 0.264,
+      "model_prob_b": 0.736
+    },
+    "Alejandro Tabilo|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.605,
+      "model_prob_b": 0.395
+    },
+    "Alejandro Tabilo|Tommy Paul": {
+      "model_prob_a": 0.336,
+      "model_prob_b": 0.664
+    },
+    "Alejandro Tabilo|Valentin Vacherot": {
+      "model_prob_a": 0.502,
+      "model_prob_b": 0.498
+    },
+    "Alejandro Tabilo|Zizou Bergs": {
+      "model_prob_a": 0.568,
+      "model_prob_b": 0.432
+    },
+    "Alex Michelsen|Alexander Blockx": {
+      "model_prob_a": 0.588,
+      "model_prob_b": 0.412
+    },
+    "Alex Michelsen|Alexander Zverev": {
+      "model_prob_a": 0.236,
+      "model_prob_b": 0.764
+    },
+    "Alex Michelsen|Arthur Gea": {
+      "model_prob_a": 0.616,
+      "model_prob_b": 0.384
+    },
+    "Alex Michelsen|Ben Shelton": {
+      "model_prob_a": 0.297,
+      "model_prob_b": 0.703
+    },
+    "Alex Michelsen|Benjamin Bonzi": {
+      "model_prob_a": 0.566,
+      "model_prob_b": 0.434
+    },
+    "Alex Michelsen|Botic Van De Zandschulp": {
+      "model_prob_a": 0.534,
+      "model_prob_b": 0.466
+    },
+    "Alex Michelsen|Carlos Alcaraz": {
+      "model_prob_a": 0.128,
+      "model_prob_b": 0.872
+    },
+    "Alex Michelsen|Dane Sweeny": {
+      "model_prob_a": 0.728,
+      "model_prob_b": 0.272
+    },
+    "Alex Michelsen|Daniil Medvedev": {
+      "model_prob_a": 0.351,
+      "model_prob_b": 0.649
+    },
+    "Alex Michelsen|Denis Shapovalov": {
+      "model_prob_a": 0.528,
+      "model_prob_b": 0.472
+    },
+    "Alex Michelsen|Flavio Cobolli": {
+      "model_prob_a": 0.399,
+      "model_prob_b": 0.601
+    },
+    "Alex Michelsen|Frances Tiafoe": {
+      "model_prob_a": 0.343,
+      "model_prob_b": 0.657
+    },
+    "Alex Michelsen|Francisco Cerundolo": {
+      "model_prob_a": 0.543,
+      "model_prob_b": 0.457
+    },
+    "Alex Michelsen|Jakub Mensik": {
+      "model_prob_a": 0.381,
+      "model_prob_b": 0.619
+    },
+    "Alex Michelsen|Jiri Lehecka": {
+      "model_prob_a": 0.405,
+      "model_prob_b": 0.595
+    },
+    "Alex Michelsen|Karen Khachanov": {
+      "model_prob_a": 0.666,
+      "model_prob_b": 0.334
+    },
+    "Alex Michelsen|Learner Tien": {
+      "model_prob_a": 0.399,
+      "model_prob_b": 0.601
+    },
+    "Alex Michelsen|Luciano Darderi": {
+      "model_prob_a": 0.584,
+      "model_prob_b": 0.416
+    },
+    "Alex Michelsen|Mariano Navone": {
+      "model_prob_a": 0.634,
+      "model_prob_b": 0.366
+    },
+    "Alex Michelsen|Michael Zheng": {
+      "model_prob_a": 0.644,
+      "model_prob_b": 0.356
+    },
+    "Alex Michelsen|Stefanos Tsitsipas": {
+      "model_prob_a": 0.551,
+      "model_prob_b": 0.449
+    },
+    "Alex Michelsen|Taylor Fritz": {
+      "model_prob_a": 0.327,
+      "model_prob_b": 0.673
+    },
+    "Alex Michelsen|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.674,
+      "model_prob_b": 0.326
+    },
+    "Alex Michelsen|Tommy Paul": {
+      "model_prob_a": 0.393,
+      "model_prob_b": 0.607
+    },
+    "Alex Michelsen|Valentin Vacherot": {
+      "model_prob_a": 0.587,
+      "model_prob_b": 0.413
+    },
+    "Alex Michelsen|Zizou Bergs": {
+      "model_prob_a": 0.638,
+      "model_prob_b": 0.362
+    },
+    "Alexander Blockx|Alexander Zverev": {
+      "model_prob_a": 0.177,
+      "model_prob_b": 0.823
+    },
+    "Alexander Blockx|Arthur Gea": {
+      "model_prob_a": 0.603,
+      "model_prob_b": 0.397
+    },
+    "Alexander Blockx|Ben Shelton": {
+      "model_prob_a": 0.228,
+      "model_prob_b": 0.772
+    },
+    "Alexander Blockx|Benjamin Bonzi": {
+      "model_prob_a": 0.54,
+      "model_prob_b": 0.46
+    },
+    "Alexander Blockx|Botic Van De Zandschulp": {
+      "model_prob_a": 0.479,
+      "model_prob_b": 0.521
+    },
+    "Alexander Blockx|Carlos Alcaraz": {
+      "model_prob_a": 0.093,
+      "model_prob_b": 0.907
+    },
+    "Alexander Blockx|Dane Sweeny": {
+      "model_prob_a": 0.652,
+      "model_prob_b": 0.348
+    },
+    "Alexander Blockx|Daniel Merida": {
+      "model_prob_a": 0.444,
+      "model_prob_b": 0.556
+    },
+    "Alexander Blockx|Daniil Medvedev": {
+      "model_prob_a": 0.274,
+      "model_prob_b": 0.726
+    },
+    "Alexander Blockx|Denis Shapovalov": {
+      "model_prob_a": 0.432,
+      "model_prob_b": 0.568
+    },
+    "Alexander Blockx|Frances Tiafoe": {
+      "model_prob_a": 0.267,
+      "model_prob_b": 0.733
+    },
+    "Alexander Blockx|Francisco Cerundolo": {
+      "model_prob_a": 0.468,
+      "model_prob_b": 0.532
+    },
+    "Alexander Blockx|Jakub Mensik": {
+      "model_prob_a": 0.301,
+      "model_prob_b": 0.699
+    },
+    "Alexander Blockx|Jiri Lehecka": {
+      "model_prob_a": 0.344,
+      "model_prob_b": 0.656
+    },
+    "Alexander Blockx|Karen Khachanov": {
+      "model_prob_a": 0.588,
+      "model_prob_b": 0.412
+    },
+    "Alexander Blockx|Learner Tien": {
+      "model_prob_a": 0.317,
+      "model_prob_b": 0.683
+    },
+    "Alexander Blockx|Luciano Darderi": {
+      "model_prob_a": 0.486,
+      "model_prob_b": 0.514
+    },
+    "Alexander Blockx|Mariano Navone": {
+      "model_prob_a": 0.562,
+      "model_prob_b": 0.438
+    },
+    "Alexander Blockx|Michael Zheng": {
+      "model_prob_a": 0.621,
+      "model_prob_b": 0.379
+    },
+    "Alexander Blockx|Stefanos Tsitsipas": {
+      "model_prob_a": 0.48,
+      "model_prob_b": 0.52
+    },
+    "Alexander Blockx|Taylor Fritz": {
+      "model_prob_a": 0.254,
+      "model_prob_b": 0.746
+    },
+    "Alexander Blockx|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.59,
+      "model_prob_b": 0.41
+    },
+    "Alexander Blockx|Tommy Paul": {
+      "model_prob_a": 0.325,
+      "model_prob_b": 0.675
+    },
+    "Alexander Blockx|Valentin Vacherot": {
+      "model_prob_a": 0.486,
+      "model_prob_b": 0.514
+    },
+    "Alexander Blockx|Zizou Bergs": {
+      "model_prob_a": 0.553,
+      "model_prob_b": 0.447
+    },
+    "Alexander Zverev|Arthur Gea": {
+      "model_prob_a": 0.839,
+      "model_prob_b": 0.161
+    },
+    "Alexander Zverev|Ben Shelton": {
+      "model_prob_a": 0.578,
+      "model_prob_b": 0.422
+    },
+    "Alexander Zverev|Benjamin Bonzi": {
+      "model_prob_a": 0.809,
+      "model_prob_b": 0.191
+    },
+    "Alexander Zverev|Botic Van De Zandschulp": {
+      "model_prob_a": 0.788,
+      "model_prob_b": 0.212
+    },
+    "Alexander Zverev|Carlos Alcaraz": {
+      "model_prob_a": 0.323,
+      "model_prob_b": 0.677
+    },
+    "Alexander Zverev|Dane Sweeny": {
+      "model_prob_a": 0.897,
+      "model_prob_b": 0.103
+    },
+    "Alexander Zverev|Daniel Merida": {
+      "model_prob_a": 0.782,
+      "model_prob_b": 0.218
+    },
+    "Alexander Zverev|Daniil Medvedev": {
+      "model_prob_a": 0.637,
+      "model_prob_b": 0.363
+    },
+    "Alexander Zverev|Denis Shapovalov": {
+      "model_prob_a": 0.779,
+      "model_prob_b": 0.221
+    },
+    "Alexander Zverev|Flavio Cobolli": {
+      "model_prob_a": 0.707,
+      "model_prob_b": 0.293
+    },
+    "Alexander Zverev|Frances Tiafoe": {
+      "model_prob_a": 0.629,
+      "model_prob_b": 0.371
+    },
+    "Alexander Zverev|Francisco Cerundolo": {
+      "model_prob_a": 0.803,
+      "model_prob_b": 0.197
+    },
+    "Alexander Zverev|Jakub Mensik": {
+      "model_prob_a": 0.666,
+      "model_prob_b": 0.334
+    },
+    "Alexander Zverev|Jiri Lehecka": {
+      "model_prob_a": 0.708,
+      "model_prob_b": 0.292
+    },
+    "Alexander Zverev|Karen Khachanov": {
+      "model_prob_a": 0.866,
+      "model_prob_b": 0.134
+    },
+    "Alexander Zverev|Learner Tien": {
+      "model_prob_a": 0.683,
+      "model_prob_b": 0.317
+    },
+    "Alexander Zverev|Luciano Darderi": {
+      "model_prob_a": 0.82,
+      "model_prob_b": 0.18
+    },
+    "Alexander Zverev|Mariano Navone": {
+      "model_prob_a": 0.849,
+      "model_prob_b": 0.151
+    },
+    "Alexander Zverev|Michael Zheng": {
+      "model_prob_a": 0.855,
+      "model_prob_b": 0.145
+    },
+    "Alexander Zverev|Stefanos Tsitsipas": {
+      "model_prob_a": 0.799,
+      "model_prob_b": 0.201
+    },
+    "Alexander Zverev|Taylor Fritz": {
+      "model_prob_a": 0.612,
+      "model_prob_b": 0.388
+    },
+    "Alexander Zverev|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.87,
+      "model_prob_b": 0.13
+    },
+    "Alexander Zverev|Tommy Paul": {
+      "model_prob_a": 0.691,
+      "model_prob_b": 0.309
+    },
+    "Alexander Zverev|Valentin Vacherot": {
+      "model_prob_a": 0.822,
+      "model_prob_b": 0.178
+    },
+    "Alexander Zverev|Zizou Bergs": {
+      "model_prob_a": 0.851,
+      "model_prob_b": 0.149
+    },
+    "Arthur Gea|Ben Shelton": {
+      "model_prob_a": 0.209,
+      "model_prob_b": 0.791
+    },
+    "Arthur Gea|Benjamin Bonzi": {
+      "model_prob_a": 0.432,
+      "model_prob_b": 0.568
+    },
+    "Arthur Gea|Botic Van De Zandschulp": {
+      "model_prob_a": 0.372,
+      "model_prob_b": 0.628
+    },
+    "Arthur Gea|Carlos Alcaraz": {
+      "model_prob_a": 0.084,
+      "model_prob_b": 0.916
+    },
+    "Arthur Gea|Dane Sweeny": {
+      "model_prob_a": 0.625,
+      "model_prob_b": 0.375
+    },
+    "Arthur Gea|Daniel Merida": {
+      "model_prob_a": 0.343,
+      "model_prob_b": 0.657
+    },
+    "Arthur Gea|Daniil Medvedev": {
+      "model_prob_a": 0.252,
+      "model_prob_b": 0.748
+    },
+    "Arthur Gea|Denis Shapovalov": {
+      "model_prob_a": 0.405,
+      "model_prob_b": 0.595
+    },
+    "Arthur Gea|Flavio Cobolli": {
+      "model_prob_a": 0.316,
+      "model_prob_b": 0.684
+    },
+    "Arthur Gea|Frances Tiafoe": {
+      "model_prob_a": 0.246,
+      "model_prob_b": 0.754
+    },
+    "Arthur Gea|Francisco Cerundolo": {
+      "model_prob_a": 0.44,
+      "model_prob_b": 0.56
+    },
+    "Arthur Gea|Jakub Mensik": {
+      "model_prob_a": 0.277,
+      "model_prob_b": 0.723
+    },
+    "Arthur Gea|Jiri Lehecka": {
+      "model_prob_a": 0.318,
+      "model_prob_b": 0.682
+    },
+    "Arthur Gea|Karen Khachanov": {
+      "model_prob_a": 0.483,
+      "model_prob_b": 0.517
+    },
+    "Arthur Gea|Learner Tien": {
+      "model_prob_a": 0.293,
+      "model_prob_b": 0.707
+    },
+    "Arthur Gea|Luciano Darderi": {
+      "model_prob_a": 0.386,
+      "model_prob_b": 0.614
+    },
+    "Arthur Gea|Mariano Navone": {
+      "model_prob_a": 0.454,
+      "model_prob_b": 0.546
+    },
+    "Arthur Gea|Stefanos Tsitsipas": {
+      "model_prob_a": 0.374,
+      "model_prob_b": 0.626
+    },
+    "Arthur Gea|Taylor Fritz": {
+      "model_prob_a": 0.233,
+      "model_prob_b": 0.767
+    },
+    "Arthur Gea|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.487,
+      "model_prob_b": 0.513
+    },
+    "Arthur Gea|Tommy Paul": {
+      "model_prob_a": 0.3,
+      "model_prob_b": 0.7
+    },
+    "Arthur Gea|Valentin Vacherot": {
+      "model_prob_a": 0.387,
+      "model_prob_b": 0.613
+    },
+    "Arthur Gea|Zizou Bergs": {
+      "model_prob_a": 0.448,
+      "model_prob_b": 0.552
+    },
+    "Ben Shelton|Benjamin Bonzi": {
+      "model_prob_a": 0.755,
+      "model_prob_b": 0.245
+    },
+    "Ben Shelton|Botic Van De Zandschulp": {
+      "model_prob_a": 0.731,
+      "model_prob_b": 0.269
+    },
+    "Ben Shelton|Carlos Alcaraz": {
+      "model_prob_a": 0.258,
+      "model_prob_b": 0.742
+    },
+    "Ben Shelton|Dane Sweeny": {
+      "model_prob_a": 0.864,
+      "model_prob_b": 0.136
+    },
+    "Ben Shelton|Daniel Merida": {
+      "model_prob_a": 0.724,
+      "model_prob_b": 0.276
+    },
+    "Ben Shelton|Daniil Medvedev": {
+      "model_prob_a": 0.563,
+      "model_prob_b": 0.437
+    },
+    "Ben Shelton|Flavio Cobolli": {
+      "model_prob_a": 0.637,
+      "model_prob_b": 0.363
+    },
+    "Ben Shelton|Frances Tiafoe": {
+      "model_prob_a": 0.568,
+      "model_prob_b": 0.432
+    },
+    "Ben Shelton|Francisco Cerundolo": {
+      "model_prob_a": 0.749,
+      "model_prob_b": 0.251
+    },
+    "Ben Shelton|Jakub Mensik": {
+      "model_prob_a": 0.593,
+      "model_prob_b": 0.407
+    },
+    "Ben Shelton|Jiri Lehecka": {
+      "model_prob_a": 0.639,
+      "model_prob_b": 0.361
+    },
+    "Ben Shelton|Karen Khachanov": {
+      "model_prob_a": 0.825,
+      "model_prob_b": 0.175
+    },
+    "Ben Shelton|Learner Tien": {
+      "model_prob_a": 0.612,
+      "model_prob_b": 0.388
+    },
+    "Ben Shelton|Luciano Darderi": {
+      "model_prob_a": 0.769,
+      "model_prob_b": 0.231
+    },
+    "Ben Shelton|Mariano Navone": {
+      "model_prob_a": 0.804,
+      "model_prob_b": 0.196
+    },
+    "Ben Shelton|Michael Zheng": {
+      "model_prob_a": 0.811,
+      "model_prob_b": 0.189
+    },
+    "Ben Shelton|Stefanos Tsitsipas": {
+      "model_prob_a": 0.744,
+      "model_prob_b": 0.256
+    },
+    "Ben Shelton|Taylor Fritz": {
+      "model_prob_a": 0.538,
+      "model_prob_b": 0.462
+    },
+    "Ben Shelton|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.83,
+      "model_prob_b": 0.17
+    },
+    "Ben Shelton|Tommy Paul": {
+      "model_prob_a": 0.62,
+      "model_prob_b": 0.38
+    },
+    "Ben Shelton|Valentin Vacherot": {
+      "model_prob_a": 0.771,
+      "model_prob_b": 0.229
+    },
+    "Ben Shelton|Zizou Bergs": {
+      "model_prob_a": 0.806,
+      "model_prob_b": 0.194
+    },
+    "Benjamin Bonzi|Botic Van De Zandschulp": {
+      "model_prob_a": 0.436,
+      "model_prob_b": 0.564
+    },
+    "Benjamin Bonzi|Carlos Alcaraz": {
+      "model_prob_a": 0.102,
+      "model_prob_b": 0.898
+    },
+    "Benjamin Bonzi|Dane Sweeny": {
+      "model_prob_a": 0.673,
+      "model_prob_b": 0.327
+    },
+    "Benjamin Bonzi|Daniel Merida": {
+      "model_prob_a": 0.403,
+      "model_prob_b": 0.597
+    },
+    "Benjamin Bonzi|Daniil Medvedev": {
+      "model_prob_a": 0.293,
+      "model_prob_b": 0.707
+    },
+    "Benjamin Bonzi|Denis Shapovalov": {
+      "model_prob_a": 0.456,
+      "model_prob_b": 0.544
+    },
+    "Benjamin Bonzi|Flavio Cobolli": {
+      "model_prob_a": 0.363,
+      "model_prob_b": 0.637
+    },
+    "Benjamin Bonzi|Frances Tiafoe": {
+      "model_prob_a": 0.286,
+      "model_prob_b": 0.714
+    },
+    "Benjamin Bonzi|Francisco Cerundolo": {
+      "model_prob_a": 0.424,
+      "model_prob_b": 0.576
+    },
+    "Benjamin Bonzi|Jakub Mensik": {
+      "model_prob_a": 0.321,
+      "model_prob_b": 0.679
+    },
+    "Benjamin Bonzi|Jiri Lehecka": {
+      "model_prob_a": 0.365,
+      "model_prob_b": 0.635
+    },
+    "Benjamin Bonzi|Learner Tien": {
+      "model_prob_a": 0.338,
+      "model_prob_b": 0.662
+    },
+    "Benjamin Bonzi|Luciano Darderi": {
+      "model_prob_a": 0.449,
+      "model_prob_b": 0.551
+    },
+    "Benjamin Bonzi|Mariano Navone": {
+      "model_prob_a": 0.52,
+      "model_prob_b": 0.48
+    },
+    "Benjamin Bonzi|Michael Zheng": {
+      "model_prob_a": 0.582,
+      "model_prob_b": 0.418
+    },
+    "Benjamin Bonzi|Stefanos Tsitsipas": {
+      "model_prob_a": 0.438,
+      "model_prob_b": 0.562
+    },
+    "Benjamin Bonzi|Taylor Fritz": {
+      "model_prob_a": 0.272,
+      "model_prob_b": 0.728
+    },
+    "Benjamin Bonzi|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.551,
+      "model_prob_b": 0.449
+    },
+    "Benjamin Bonzi|Tommy Paul": {
+      "model_prob_a": 0.346,
+      "model_prob_b": 0.654
+    },
+    "Benjamin Bonzi|Valentin Vacherot": {
+      "model_prob_a": 0.449,
+      "model_prob_b": 0.551
+    },
+    "Benjamin Bonzi|Zizou Bergs": {
+      "model_prob_a": 0.513,
+      "model_prob_b": 0.487
+    },
+    "Botic Van De Zandschulp|Carlos Alcaraz": {
+      "model_prob_a": 0.114,
+      "model_prob_b": 0.886
+    },
+    "Botic Van De Zandschulp|Dane Sweeny": {
+      "model_prob_a": 0.7,
+      "model_prob_b": 0.3
+    },
+    "Botic Van De Zandschulp|Daniel Merida": {
+      "model_prob_a": 0.464,
+      "model_prob_b": 0.536
+    },
+    "Botic Van De Zandschulp|Daniil Medvedev": {
+      "model_prob_a": 0.32,
+      "model_prob_b": 0.68
+    },
+    "Botic Van De Zandschulp|Denis Shapovalov": {
+      "model_prob_a": 0.466,
+      "model_prob_b": 0.534
+    },
+    "Botic Van De Zandschulp|Flavio Cobolli": {
+      "model_prob_a": 0.393,
+      "model_prob_b": 0.607
+    },
+    "Botic Van De Zandschulp|Frances Tiafoe": {
+      "model_prob_a": 0.313,
+      "model_prob_b": 0.687
+    },
+    "Botic Van De Zandschulp|Francisco Cerundolo": {
+      "model_prob_a": 0.483,
+      "model_prob_b": 0.517
+    },
+    "Botic Van De Zandschulp|Jakub Mensik": {
+      "model_prob_a": 0.349,
+      "model_prob_b": 0.651
+    },
+    "Botic Van De Zandschulp|Jiri Lehecka": {
+      "model_prob_a": 0.395,
+      "model_prob_b": 0.605
+    },
+    "Botic Van De Zandschulp|Karen Khachanov": {
+      "model_prob_a": 0.634,
+      "model_prob_b": 0.366
+    },
+    "Botic Van De Zandschulp|Learner Tien": {
+      "model_prob_a": 0.367,
+      "model_prob_b": 0.633
+    },
+    "Botic Van De Zandschulp|Luciano Darderi": {
+      "model_prob_a": 0.509,
+      "model_prob_b": 0.491
+    },
+    "Botic Van De Zandschulp|Mariano Navone": {
+      "model_prob_a": 0.601,
+      "model_prob_b": 0.399
+    },
+    "Botic Van De Zandschulp|Michael Zheng": {
+      "model_prob_a": 0.612,
+      "model_prob_b": 0.388
+    },
+    "Botic Van De Zandschulp|Stefanos Tsitsipas": {
+      "model_prob_a": 0.5,
+      "model_prob_b": 0.5
+    },
+    "Botic Van De Zandschulp|Taylor Fritz": {
+      "model_prob_a": 0.298,
+      "model_prob_b": 0.702
+    },
+    "Botic Van De Zandschulp|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.643,
+      "model_prob_b": 0.357
+    },
+    "Botic Van De Zandschulp|Tommy Paul": {
+      "model_prob_a": 0.375,
+      "model_prob_b": 0.625
+    },
+    "Botic Van De Zandschulp|Valentin Vacherot": {
+      "model_prob_a": 0.509,
+      "model_prob_b": 0.491
+    },
+    "Carlos Alcaraz|Dane Sweeny": {
+      "model_prob_a": 0.948,
+      "model_prob_b": 0.052
+    },
+    "Carlos Alcaraz|Daniel Merida": {
+      "model_prob_a": 0.883,
+      "model_prob_b": 0.117
+    },
+    "Carlos Alcaraz|Daniil Medvedev": {
+      "model_prob_a": 0.786,
+      "model_prob_b": 0.214
+    },
+    "Carlos Alcaraz|Denis Shapovalov": {
+      "model_prob_a": 0.881,
+      "model_prob_b": 0.119
+    },
+    "Carlos Alcaraz|Flavio Cobolli": {
+      "model_prob_a": 0.835,
+      "model_prob_b": 0.165
+    },
+    "Carlos Alcaraz|Frances Tiafoe": {
+      "model_prob_a": 0.78,
+      "model_prob_b": 0.22
+    },
+    "Carlos Alcaraz|Francisco Cerundolo": {
+      "model_prob_a": 0.895,
+      "model_prob_b": 0.105
+    },
+    "Carlos Alcaraz|Jakub Mensik": {
+      "model_prob_a": 0.807,
+      "model_prob_b": 0.193
+    },
+    "Carlos Alcaraz|Jiri Lehecka": {
+      "model_prob_a": 0.836,
+      "model_prob_b": 0.164
+    },
+    "Carlos Alcaraz|Karen Khachanov": {
+      "model_prob_a": 0.931,
+      "model_prob_b": 0.069
+    },
+    "Carlos Alcaraz|Learner Tien": {
+      "model_prob_a": 0.819,
+      "model_prob_b": 0.181
+    },
+    "Carlos Alcaraz|Luciano Darderi": {
+      "model_prob_a": 0.905,
+      "model_prob_b": 0.095
+    },
+    "Carlos Alcaraz|Mariano Navone": {
+      "model_prob_a": 0.922,
+      "model_prob_b": 0.078
+    },
+    "Carlos Alcaraz|Michael Zheng": {
+      "model_prob_a": 0.925,
+      "model_prob_b": 0.075
+    },
+    "Carlos Alcaraz|Stefanos Tsitsipas": {
+      "model_prob_a": 0.893,
+      "model_prob_b": 0.107
+    },
+    "Carlos Alcaraz|Taylor Fritz": {
+      "model_prob_a": 0.768,
+      "model_prob_b": 0.232
+    },
+    "Carlos Alcaraz|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.933,
+      "model_prob_b": 0.067
+    },
+    "Carlos Alcaraz|Valentin Vacherot": {
+      "model_prob_a": 0.906,
+      "model_prob_b": 0.094
+    },
+    "Carlos Alcaraz|Zizou Bergs": {
+      "model_prob_a": 0.923,
+      "model_prob_b": 0.077
+    },
+    "Dane Sweeny|Daniel Merida": {
+      "model_prob_a": 0.293,
+      "model_prob_b": 0.707
+    },
+    "Dane Sweeny|Daniil Medvedev": {
+      "model_prob_a": 0.168,
+      "model_prob_b": 0.832
+    },
+    "Dane Sweeny|Denis Shapovalov": {
+      "model_prob_a": 0.289,
+      "model_prob_b": 0.711
+    },
+    "Dane Sweeny|Flavio Cobolli": {
+      "model_prob_a": 0.217,
+      "model_prob_b": 0.783
+    },
+    "Dane Sweeny|Frances Tiafoe": {
+      "model_prob_a": 0.163,
+      "model_prob_b": 0.837
+    },
+    "Dane Sweeny|Francisco Cerundolo": {
+      "model_prob_a": 0.32,
+      "model_prob_b": 0.68
+    },
+    "Dane Sweeny|Jakub Mensik": {
+      "model_prob_a": 0.187,
+      "model_prob_b": 0.813
+    },
+    "Dane Sweeny|Jiri Lehecka": {
+      "model_prob_a": 0.219,
+      "model_prob_b": 0.781
+    },
+    "Dane Sweeny|Karen Khachanov": {
+      "model_prob_a": 0.427,
+      "model_prob_b": 0.573
+    },
+    "Dane Sweeny|Learner Tien": {
+      "model_prob_a": 0.199,
+      "model_prob_b": 0.801
+    },
+    "Dane Sweeny|Mariano Navone": {
+      "model_prob_a": 0.393,
+      "model_prob_b": 0.607
+    },
+    "Dane Sweeny|Michael Zheng": {
+      "model_prob_a": 0.389,
+      "model_prob_b": 0.611
+    },
+    "Dane Sweeny|Stefanos Tsitsipas": {
+      "model_prob_a": 0.314,
+      "model_prob_b": 0.686
+    },
+    "Dane Sweeny|Taylor Fritz": {
+      "model_prob_a": 0.154,
+      "model_prob_b": 0.846
+    },
+    "Dane Sweeny|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.435,
+      "model_prob_b": 0.565
+    },
+    "Dane Sweeny|Tommy Paul": {
+      "model_prob_a": 0.204,
+      "model_prob_b": 0.796
+    },
+    "Dane Sweeny|Valentin Vacherot": {
+      "model_prob_a": 0.347,
+      "model_prob_b": 0.653
+    },
+    "Dane Sweeny|Zizou Bergs": {
+      "model_prob_a": 0.397,
+      "model_prob_b": 0.603
+    },
+    "Daniel Merida|Daniil Medvedev": {
+      "model_prob_a": 0.328,
+      "model_prob_b": 0.672
+    },
+    "Daniel Merida|Denis Shapovalov": {
+      "model_prob_a": 0.503,
+      "model_prob_b": 0.497
+    },
+    "Daniel Merida|Flavio Cobolli": {
+      "model_prob_a": 0.401,
+      "model_prob_b": 0.599
+    },
+    "Daniel Merida|Frances Tiafoe": {
+      "model_prob_a": 0.32,
+      "model_prob_b": 0.68
+    },
+    "Daniel Merida|Francisco Cerundolo": {
+      "model_prob_a": 0.518,
+      "model_prob_b": 0.482
+    },
+    "Daniel Merida|Jakub Mensik": {
+      "model_prob_a": 0.357,
+      "model_prob_b": 0.643
+    },
+    "Daniel Merida|Jiri Lehecka": {
+      "model_prob_a": 0.403,
+      "model_prob_b": 0.597
+    },
+    "Daniel Merida|Karen Khachanov": {
+      "model_prob_a": 0.643,
+      "model_prob_b": 0.357
+    },
+    "Daniel Merida|Learner Tien": {
+      "model_prob_a": 0.375,
+      "model_prob_b": 0.625
+    },
+    "Daniel Merida|Luciano Darderi": {
+      "model_prob_a": 0.543,
+      "model_prob_b": 0.457
+    },
+    "Daniel Merida|Mariano Navone": {
+      "model_prob_a": 0.61,
+      "model_prob_b": 0.39
+    },
+    "Daniel Merida|Michael Zheng": {
+      "model_prob_a": 0.62,
+      "model_prob_b": 0.38
+    },
+    "Daniel Merida|Stefanos Tsitsipas": {
+      "model_prob_a": 0.537,
+      "model_prob_b": 0.463
+    },
+    "Daniel Merida|Taylor Fritz": {
+      "model_prob_a": 0.305,
+      "model_prob_b": 0.695
+    },
+    "Daniel Merida|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.651,
+      "model_prob_b": 0.349
+    },
+    "Daniel Merida|Tommy Paul": {
+      "model_prob_a": 0.383,
+      "model_prob_b": 0.617
+    },
+    "Daniel Merida|Valentin Vacherot": {
+      "model_prob_a": 0.543,
+      "model_prob_b": 0.457
+    },
+    "Daniel Merida|Zizou Bergs": {
+      "model_prob_a": 0.614,
+      "model_prob_b": 0.386
+    },
+    "Daniil Medvedev|Denis Shapovalov": {
+      "model_prob_a": 0.668,
+      "model_prob_b": 0.332
+    },
+    "Daniil Medvedev|Flavio Cobolli": {
+      "model_prob_a": 0.579,
+      "model_prob_b": 0.421
+    },
+    "Daniil Medvedev|Frances Tiafoe": {
+      "model_prob_a": 0.505,
+      "model_prob_b": 0.495
+    },
+    "Daniil Medvedev|Francisco Cerundolo": {
+      "model_prob_a": 0.7,
+      "model_prob_b": 0.3
+    },
+    "Daniil Medvedev|Jakub Mensik": {
+      "model_prob_a": 0.539,
+      "model_prob_b": 0.461
+    },
+    "Daniil Medvedev|Jiri Lehecka": {
+      "model_prob_a": 0.581,
+      "model_prob_b": 0.419
+    },
+    "Daniil Medvedev|Karen Khachanov": {
+      "model_prob_a": 0.787,
+      "model_prob_b": 0.213
+    },
+    "Daniil Medvedev|Learner Tien": {
+      "model_prob_a": 0.555,
+      "model_prob_b": 0.445
+    },
+    "Daniil Medvedev|Luciano Darderi": {
+      "model_prob_a": 0.722,
+      "model_prob_b": 0.278
+    },
+    "Daniil Medvedev|Mariano Navone": {
+      "model_prob_a": 0.762,
+      "model_prob_b": 0.238
+    },
+    "Daniil Medvedev|Michael Zheng": {
+      "model_prob_a": 0.77,
+      "model_prob_b": 0.23
+    },
+    "Daniil Medvedev|Stefanos Tsitsipas": {
+      "model_prob_a": 0.694,
+      "model_prob_b": 0.306
+    },
+    "Daniil Medvedev|Taylor Fritz": {
+      "model_prob_a": 0.475,
+      "model_prob_b": 0.525
+    },
+    "Daniil Medvedev|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.793,
+      "model_prob_b": 0.207
+    },
+    "Daniil Medvedev|Tommy Paul": {
+      "model_prob_a": 0.56,
+      "model_prob_b": 0.44
+    },
+    "Daniil Medvedev|Valentin Vacherot": {
+      "model_prob_a": 0.724,
+      "model_prob_b": 0.276
+    },
+    "Daniil Medvedev|Zizou Bergs": {
+      "model_prob_a": 0.765,
+      "model_prob_b": 0.235
+    },
+    "Denis Shapovalov|Flavio Cobolli": {
+      "model_prob_a": 0.405,
+      "model_prob_b": 0.595
+    },
+    "Denis Shapovalov|Frances Tiafoe": {
+      "model_prob_a": 0.324,
+      "model_prob_b": 0.676
+    },
+    "Denis Shapovalov|Francisco Cerundolo": {
+      "model_prob_a": 0.515,
+      "model_prob_b": 0.485
+    },
+    "Denis Shapovalov|Jakub Mensik": {
+      "model_prob_a": 0.361,
+      "model_prob_b": 0.639
+    },
+    "Denis Shapovalov|Jiri Lehecka": {
+      "model_prob_a": 0.407,
+      "model_prob_b": 0.593
+    },
+    "Denis Shapovalov|Karen Khachanov": {
+      "model_prob_a": 0.646,
+      "model_prob_b": 0.354
+    },
+    "Denis Shapovalov|Learner Tien": {
+      "model_prob_a": 0.379,
+      "model_prob_b": 0.621
+    },
+    "Denis Shapovalov|Luciano Darderi": {
+      "model_prob_a": 0.563,
+      "model_prob_b": 0.437
+    },
+    "Denis Shapovalov|Mariano Navone": {
+      "model_prob_a": 0.614,
+      "model_prob_b": 0.386
+    },
+    "Denis Shapovalov|Michael Zheng": {
+      "model_prob_a": 0.624,
+      "model_prob_b": 0.376
+    },
+    "Denis Shapovalov|Stefanos Tsitsipas": {
+      "model_prob_a": 0.534,
+      "model_prob_b": 0.466
+    },
+    "Denis Shapovalov|Taylor Fritz": {
+      "model_prob_a": 0.309,
+      "model_prob_b": 0.691
+    },
+    "Denis Shapovalov|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.655,
+      "model_prob_b": 0.345
+    },
+    "Denis Shapovalov|Tommy Paul": {
+      "model_prob_a": 0.387,
+      "model_prob_b": 0.613
+    },
+    "Denis Shapovalov|Valentin Vacherot": {
+      "model_prob_a": 0.54,
+      "model_prob_b": 0.46
+    },
+    "Denis Shapovalov|Zizou Bergs": {
+      "model_prob_a": 0.618,
+      "model_prob_b": 0.382
+    },
+    "Flavio Cobolli|Frances Tiafoe": {
+      "model_prob_a": 0.413,
+      "model_prob_b": 0.587
+    },
+    "Flavio Cobolli|Francisco Cerundolo": {
+      "model_prob_a": 0.629,
+      "model_prob_b": 0.371
+    },
+    "Flavio Cobolli|Jakub Mensik": {
+      "model_prob_a": 0.458,
+      "model_prob_b": 0.542
+    },
+    "Flavio Cobolli|Jiri Lehecka": {
+      "model_prob_a": 0.506,
+      "model_prob_b": 0.494
+    },
+    "Flavio Cobolli|Karen Khachanov": {
+      "model_prob_a": 0.728,
+      "model_prob_b": 0.272
+    },
+    "Flavio Cobolli|Learner Tien": {
+      "model_prob_a": 0.474,
+      "model_prob_b": 0.526
+    },
+    "Flavio Cobolli|Luciano Darderi": {
+      "model_prob_a": 0.654,
+      "model_prob_b": 0.346
+    },
+    "Flavio Cobolli|Mariano Navone": {
+      "model_prob_a": 0.7,
+      "model_prob_b": 0.3
+    },
+    "Flavio Cobolli|Michael Zheng": {
+      "model_prob_a": 0.709,
+      "model_prob_b": 0.291
+    },
+    "Flavio Cobolli|Stefanos Tsitsipas": {
+      "model_prob_a": 0.623,
+      "model_prob_b": 0.377
+    },
+    "Flavio Cobolli|Taylor Fritz": {
+      "model_prob_a": 0.396,
+      "model_prob_b": 0.604
+    },
+    "Flavio Cobolli|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.736,
+      "model_prob_b": 0.264
+    },
+    "Flavio Cobolli|Tommy Paul": {
+      "model_prob_a": 0.494,
+      "model_prob_b": 0.506
+    },
+    "Flavio Cobolli|Valentin Vacherot": {
+      "model_prob_a": 0.657,
+      "model_prob_b": 0.343
+    },
+    "Flavio Cobolli|Zizou Bergs": {
+      "model_prob_a": 0.703,
+      "model_prob_b": 0.297
+    },
+    "Frances Tiafoe|Francisco Cerundolo": {
+      "model_prob_a": 0.707,
+      "model_prob_b": 0.293
+    },
+    "Frances Tiafoe|Jakub Mensik": {
+      "model_prob_a": 0.534,
+      "model_prob_b": 0.466
+    },
+    "Frances Tiafoe|Jiri Lehecka": {
+      "model_prob_a": 0.589,
+      "model_prob_b": 0.411
+    },
+    "Frances Tiafoe|Karen Khachanov": {
+      "model_prob_a": 0.792,
+      "model_prob_b": 0.208
+    },
+    "Frances Tiafoe|Learner Tien": {
+      "model_prob_a": 0.55,
+      "model_prob_b": 0.45
+    },
+    "Frances Tiafoe|Luciano Darderi": {
+      "model_prob_a": 0.729,
+      "model_prob_b": 0.271
+    },
+    "Frances Tiafoe|Mariano Navone": {
+      "model_prob_a": 0.768,
+      "model_prob_b": 0.232
+    },
+    "Frances Tiafoe|Michael Zheng": {
+      "model_prob_a": 0.776,
+      "model_prob_b": 0.224
+    },
+    "Frances Tiafoe|Stefanos Tsitsipas": {
+      "model_prob_a": 0.701,
+      "model_prob_b": 0.299
+    },
+    "Frances Tiafoe|Taylor Fritz": {
+      "model_prob_a": 0.47,
+      "model_prob_b": 0.53
+    },
+    "Frances Tiafoe|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.798,
+      "model_prob_b": 0.202
+    },
+    "Frances Tiafoe|Tommy Paul": {
+      "model_prob_a": 0.57,
+      "model_prob_b": 0.43
+    },
+    "Frances Tiafoe|Zizou Bergs": {
+      "model_prob_a": 0.771,
+      "model_prob_b": 0.229
+    },
+    "Francisco Cerundolo|Jakub Mensik": {
+      "model_prob_a": 0.328,
+      "model_prob_b": 0.672
+    },
+    "Francisco Cerundolo|Jiri Lehecka": {
+      "model_prob_a": 0.373,
+      "model_prob_b": 0.627
+    },
+    "Francisco Cerundolo|Karen Khachanov": {
+      "model_prob_a": 0.613,
+      "model_prob_b": 0.387
+    },
+    "Francisco Cerundolo|Learner Tien": {
+      "model_prob_a": 0.346,
+      "model_prob_b": 0.654
+    },
+    "Francisco Cerundolo|Luciano Darderi": {
+      "model_prob_a": 0.525,
+      "model_prob_b": 0.475
+    },
+    "Francisco Cerundolo|Mariano Navone": {
+      "model_prob_a": 0.579,
+      "model_prob_b": 0.421
+    },
+    "Francisco Cerundolo|Michael Zheng": {
+      "model_prob_a": 0.59,
+      "model_prob_b": 0.41
+    },
+    "Francisco Cerundolo|Stefanos Tsitsipas": {
+      "model_prob_a": 0.518,
+      "model_prob_b": 0.482
+    },
+    "Francisco Cerundolo|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.621,
+      "model_prob_b": 0.379
+    },
+    "Francisco Cerundolo|Tommy Paul": {
+      "model_prob_a": 0.354,
+      "model_prob_b": 0.646
+    },
+    "Francisco Cerundolo|Valentin Vacherot": {
+      "model_prob_a": 0.525,
+      "model_prob_b": 0.475
+    },
+    "Francisco Cerundolo|Zizou Bergs": {
+      "model_prob_a": 0.583,
+      "model_prob_b": 0.417
+    },
+    "Jakub Mensik|Jiri Lehecka": {
+      "model_prob_a": 0.547,
+      "model_prob_b": 0.453
+    },
+    "Jakub Mensik|Karen Khachanov": {
+      "model_prob_a": 0.764,
+      "model_prob_b": 0.236
+    },
+    "Jakub Mensik|Luciano Darderi": {
+      "model_prob_a": 0.696,
+      "model_prob_b": 0.304
+    },
+    "Jakub Mensik|Mariano Navone": {
+      "model_prob_a": 0.738,
+      "model_prob_b": 0.262
+    },
+    "Jakub Mensik|Michael Zheng": {
+      "model_prob_a": 0.747,
+      "model_prob_b": 0.253
+    },
+    "Jakub Mensik|Stefanos Tsitsipas": {
+      "model_prob_a": 0.666,
+      "model_prob_b": 0.334
+    },
+    "Jakub Mensik|Taylor Fritz": {
+      "model_prob_a": 0.435,
+      "model_prob_b": 0.565
+    },
+    "Jakub Mensik|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.771,
+      "model_prob_b": 0.229
+    },
+    "Jakub Mensik|Tommy Paul": {
+      "model_prob_a": 0.536,
+      "model_prob_b": 0.464
+    },
+    "Jakub Mensik|Valentin Vacherot": {
+      "model_prob_a": 0.698,
+      "model_prob_b": 0.302
+    },
+    "Jakub Mensik|Zizou Bergs": {
+      "model_prob_a": 0.741,
+      "model_prob_b": 0.259
+    },
+    "Jiri Lehecka|Karen Khachanov": {
+      "model_prob_a": 0.727,
+      "model_prob_b": 0.273
+    },
+    "Jiri Lehecka|Learner Tien": {
+      "model_prob_a": 0.469,
+      "model_prob_b": 0.531
+    },
+    "Jiri Lehecka|Luciano Darderi": {
+      "model_prob_a": 0.652,
+      "model_prob_b": 0.348
+    },
+    "Jiri Lehecka|Mariano Navone": {
+      "model_prob_a": 0.698,
+      "model_prob_b": 0.302
+    },
+    "Jiri Lehecka|Michael Zheng": {
+      "model_prob_a": 0.707,
+      "model_prob_b": 0.293
+    },
+    "Jiri Lehecka|Taylor Fritz": {
+      "model_prob_a": 0.394,
+      "model_prob_b": 0.606
+    },
+    "Jiri Lehecka|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.734,
+      "model_prob_b": 0.266
+    },
+    "Jiri Lehecka|Tommy Paul": {
+      "model_prob_a": 0.488,
+      "model_prob_b": 0.512
+    },
+    "Jiri Lehecka|Valentin Vacherot": {
+      "model_prob_a": 0.655,
+      "model_prob_b": 0.345
+    },
+    "Jiri Lehecka|Zizou Bergs": {
+      "model_prob_a": 0.701,
+      "model_prob_b": 0.299
+    },
+    "Karen Khachanov|Learner Tien": {
+      "model_prob_a": 0.25,
+      "model_prob_b": 0.75
+    },
+    "Karen Khachanov|Luciano Darderi": {
+      "model_prob_a": 0.399,
+      "model_prob_b": 0.601
+    },
+    "Karen Khachanov|Mariano Navone": {
+      "model_prob_a": 0.473,
+      "model_prob_b": 0.527
+    },
+    "Karen Khachanov|Michael Zheng": {
+      "model_prob_a": 0.535,
+      "model_prob_b": 0.465
+    },
+    "Karen Khachanov|Stefanos Tsitsipas": {
+      "model_prob_a": 0.381,
+      "model_prob_b": 0.619
+    },
+    "Karen Khachanov|Taylor Fritz": {
+      "model_prob_a": 0.196,
+      "model_prob_b": 0.804
+    },
+    "Karen Khachanov|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.502,
+      "model_prob_b": 0.498
+    },
+    "Karen Khachanov|Tommy Paul": {
+      "model_prob_a": 0.257,
+      "model_prob_b": 0.743
+    },
+    "Karen Khachanov|Valentin Vacherot": {
+      "model_prob_a": 0.416,
+      "model_prob_b": 0.584
+    },
+    "Karen Khachanov|Zizou Bergs": {
+      "model_prob_a": 0.463,
+      "model_prob_b": 0.537
+    },
+    "Learner Tien|Luciano Darderi": {
+      "model_prob_a": 0.679,
+      "model_prob_b": 0.321
+    },
+    "Learner Tien|Mariano Navone": {
+      "model_prob_a": 0.722,
+      "model_prob_b": 0.278
+    },
+    "Learner Tien|Michael Zheng": {
+      "model_prob_a": 0.731,
+      "model_prob_b": 0.269
+    },
+    "Learner Tien|Stefanos Tsitsipas": {
+      "model_prob_a": 0.648,
+      "model_prob_b": 0.352
+    },
+    "Learner Tien|Taylor Fritz": {
+      "model_prob_a": 0.422,
+      "model_prob_b": 0.578
+    },
+    "Learner Tien|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.756,
+      "model_prob_b": 0.244
+    },
+    "Learner Tien|Tommy Paul": {
+      "model_prob_a": 0.519,
+      "model_prob_b": 0.481
+    },
+    "Learner Tien|Valentin Vacherot": {
+      "model_prob_a": 0.681,
+      "model_prob_b": 0.319
+    },
+    "Learner Tien|Zizou Bergs": {
+      "model_prob_a": 0.726,
+      "model_prob_b": 0.274
+    },
+    "Luciano Darderi|Mariano Navone": {
+      "model_prob_a": 0.575,
+      "model_prob_b": 0.425
+    },
+    "Luciano Darderi|Michael Zheng": {
+      "model_prob_a": 0.563,
+      "model_prob_b": 0.437
+    },
+    "Luciano Darderi|Stefanos Tsitsipas": {
+      "model_prob_a": 0.493,
+      "model_prob_b": 0.507
+    },
+    "Luciano Darderi|Taylor Fritz": {
+      "model_prob_a": 0.257,
+      "model_prob_b": 0.743
+    },
+    "Luciano Darderi|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.603,
+      "model_prob_b": 0.397
+    },
+    "Luciano Darderi|Tommy Paul": {
+      "model_prob_a": 0.329,
+      "model_prob_b": 0.671
+    },
+    "Luciano Darderi|Valentin Vacherot": {
+      "model_prob_a": 0.5,
+      "model_prob_b": 0.5
+    },
+    "Luciano Darderi|Zizou Bergs": {
+      "model_prob_a": 0.566,
+      "model_prob_b": 0.434
+    },
+    "Mariano Navone|Michael Zheng": {
+      "model_prob_a": 0.563,
+      "model_prob_b": 0.437
+    },
+    "Mariano Navone|Stefanos Tsitsipas": {
+      "model_prob_a": 0.415,
+      "model_prob_b": 0.585
+    },
+    "Mariano Navone|Taylor Fritz": {
+      "model_prob_a": 0.22,
+      "model_prob_b": 0.78
+    },
+    "Mariano Navone|Tommy Paul": {
+      "model_prob_a": 0.285,
+      "model_prob_b": 0.715
+    },
+    "Mariano Navone|Valentin Vacherot": {
+      "model_prob_a": 0.451,
+      "model_prob_b": 0.549
+    },
+    "Mariano Navone|Zizou Bergs": {
+      "model_prob_a": 0.491,
+      "model_prob_b": 0.509
+    },
+    "Michael Zheng|Stefanos Tsitsipas": {
+      "model_prob_a": 0.404,
+      "model_prob_b": 0.596
+    },
+    "Michael Zheng|Taylor Fritz": {
+      "model_prob_a": 0.212,
+      "model_prob_b": 0.788
+    },
+    "Michael Zheng|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.468,
+      "model_prob_b": 0.532
+    },
+    "Michael Zheng|Tommy Paul": {
+      "model_prob_a": 0.275,
+      "model_prob_b": 0.725
+    },
+    "Michael Zheng|Valentin Vacherot": {
+      "model_prob_a": 0.439,
+      "model_prob_b": 0.561
+    },
+    "Michael Zheng|Zizou Bergs": {
+      "model_prob_a": 0.43,
+      "model_prob_b": 0.57
+    },
+    "Stefanos Tsitsipas|Taylor Fritz": {
+      "model_prob_a": 0.284,
+      "model_prob_b": 0.716
+    },
+    "Stefanos Tsitsipas|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.628,
+      "model_prob_b": 0.372
+    },
+    "Stefanos Tsitsipas|Tommy Paul": {
+      "model_prob_a": 0.36,
+      "model_prob_b": 0.64
+    },
+    "Stefanos Tsitsipas|Valentin Vacherot": {
+      "model_prob_a": 0.507,
+      "model_prob_b": 0.493
+    },
+    "Stefanos Tsitsipas|Zizou Bergs": {
+      "model_prob_a": 0.572,
+      "model_prob_b": 0.428
+    },
+    "Taylor Fritz|Tomas Martin Etcheverry": {
+      "model_prob_a": 0.809,
+      "model_prob_b": 0.191
+    },
+    "Taylor Fritz|Tommy Paul": {
+      "model_prob_a": 0.586,
+      "model_prob_b": 0.414
+    },
+    "Taylor Fritz|Valentin Vacherot": {
+      "model_prob_a": 0.745,
+      "model_prob_b": 0.255
+    },
+    "Taylor Fritz|Zizou Bergs": {
+      "model_prob_a": 0.783,
+      "model_prob_b": 0.217
+    },
+    "Tomas Martin Etcheverry|Tommy Paul": {
+      "model_prob_a": 0.25,
+      "model_prob_b": 0.75
+    },
+    "Tomas Martin Etcheverry|Valentin Vacherot": {
+      "model_prob_a": 0.407,
+      "model_prob_b": 0.593
+    },
+    "Tomas Martin Etcheverry|Zizou Bergs": {
+      "model_prob_a": 0.462,
+      "model_prob_b": 0.538
+    },
+    "Tommy Paul|Valentin Vacherot": {
+      "model_prob_a": 0.674,
+      "model_prob_b": 0.326
+    },
+    "Tommy Paul|Zizou Bergs": {
+      "model_prob_a": 0.719,
+      "model_prob_b": 0.281
+    },
+    "Valentin Vacherot|Zizou Bergs": {
+      "model_prob_a": 0.553,
+      "model_prob_b": 0.447
+    }
   },
   "health_adjustments": [],
   "warnings": []

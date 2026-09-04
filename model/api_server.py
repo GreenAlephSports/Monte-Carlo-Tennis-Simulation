@@ -14,6 +14,7 @@ from flask import Flask, jsonify, request, send_file
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from bracket_export import OUTPUT_DIR  # noqa: E402
+from live_scores import LiveScoresError, fetch_scoreboard  # noqa: E402
 
 app = Flask(__name__)
 
@@ -134,13 +135,56 @@ def get_tournament(tournament_id):
     return send_file(path, mimetype="application/json", conditional=True)
 
 
+# dates gets interpolated straight into the ESPN URL by live_scores.fetch_scoreboard - unlike
+# tournament_id (used only as a local filesystem path segment), this value would otherwise flow
+# untouched into an outbound request URL, so it's validated against ESPN's own documented shape
+# (YYYYMMDD or YYYYMMDD-YYYYMMDD) before ever reaching that call.
+VALID_SCOREBOARD_DATES = re.compile(r"^\d{8}(-\d{8})?$")
+
+
+@app.get("/live/<tour>/scoreboard")
+def live_scoreboard_proxy(tour):
+    """Browser-side CORS proxy for ESPN's own live scoreboard endpoint (see live_scores.py's
+    module docstring for the upstream URL) - added for the standalone live-status HTML artifact,
+    which polls this directly from the browser with no dependency on live_match_watcher.py or any
+    export file. Exists because a plain browser fetch() straight to ESPN was found to be blocked
+    (see the artifact's own in-page diagnostic banner, which reports live whether direct fetch
+    would have worked) - server-to-server requests from this project's own machine work fine (confirmed
+    all tournament by live_scores.py itself), so this just re-serves that same successful request
+    with permissive CORS headers attached, rather than reimplementing scoreboard-fetching logic.
+
+    Read-only, and deliberately NOT gated behind the X-API-Key check above (a browser fetch() from
+    a third-party artifact page can't attach a custom header to a simple cross-origin GET without
+    triggering its own CORS preflight complications, and there's nothing sensitive being proxied -
+    this mirrors ESPN's own public scoreboard, nothing from this project's own output/ directory)."""
+    tour = tour.lower()
+    if tour not in ("atp", "wta"):
+        return jsonify({"error": "invalid_tour", "message": "tour must be 'atp' or 'wta'"}), 400
+
+    dates = request.args.get("dates")
+    if dates is not None and not VALID_SCOREBOARD_DATES.match(dates):
+        return jsonify({
+            "error": "invalid_dates",
+            "message": f"dates must match {VALID_SCOREBOARD_DATES.pattern!r} (YYYYMMDD or YYYYMMDD-YYYYMMDD)",
+        }), 400
+
+    try:
+        data = fetch_scoreboard(tour, dates=dates)
+    except LiveScoresError as e:
+        return jsonify({"error": "upstream_fetch_failed", "message": str(e)}), 502
+
+    response = jsonify(data)
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    return response
+
+
 @app.get("/")
 def health():
     return jsonify({
         "service": "bracket export polling API",
         "read_only": True,
         "auth_required": CONFIGURED_API_KEY is not None,
-        "endpoints": ["/tournaments", "/tournament/<tournament_id>"],
+        "endpoints": ["/tournaments", "/tournament/<tournament_id>", "/live/<atp|wta>/scoreboard"],
         "output_dir": str(OUTPUT_DIR),
     })
 

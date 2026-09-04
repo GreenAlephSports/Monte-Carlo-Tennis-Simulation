@@ -502,5 +502,89 @@
     "player_b": "Quentin Halys",
     "market_prob_a": 0.819,
     "captured_at": "2026-09-02T18:41:08Z"
+  },
+  "ATP|US Open|2026|Arthur Rinderknech::Daniil Medvedev": {
+    "player_a": "Daniil Medvedev",
+    "player_b": "Arthur Rinderknech",
+    "market_prob_a": 0.722,
+    "captured_at": "2026-09-04T16:29:33Z"
+  },
+  "ATP|US Open|2026|Alexander Bublik::Tommy Paul": {
+    "player_a": "Alexander Bublik",
+    "player_b": "Tommy Paul",
+    "market_prob_a": 0.386,
+    "captured_at": "2026-09-04T16:29:33Z"
+  },
+  "ATP|US Open|2026|Carlos Alcaraz::Wu Yibing": {
+    "player_a": "Wu Yibing",
+    "player_b": "Carlos Alcaraz",
+    "market_prob_a": 0.09,
+    "captured_at": "2026-09-04T16:29:33Z"
+  },
+  "ATP|US Open|2026|Mariano Navone::Tomas Martin Etcheverry": {
+    "player_a": "Tomas Martin Etcheverry",
+    "player_b": "Mariano Navone",
+    "market_prob_a": 0.516,
+    "captured_at": "2026-09-04T16:29:33Z"
+  },
+  "ATP|US Open|2026|Jiri Lehecka::Stefanos Tsitsipas": {
+    "player_a": "Jiri Lehecka",
+    "player_b": "Stefanos Tsitsipas",
+    "market_prob_a": 0.616,
+    "captured_at": "2026-09-04T16:29:33Z"
+  },
+  "ATP|US Open|2026|Frances Tiafoe::Valentin Vacherot": {
+    "player_a": "Valentin Vacherot",
+    "player_b": "Frances Tiafoe",
+    "market_prob_a": 0.378,
+    "captured_at": "2026-09-04T16:29:33Z"
+  },
+  "ATP|US Open|2026|Ben Shelton::Denis Shapovalov": {
+    "player_a": "Ben Shelton",
+    "player_b": "Denis Shapovalov",
+    "market_prob_a": 0.759,
+    "captured_at": "2026-09-04T16:29:33Z"
+  },
+  "ATP|US Open|2026|Alejandro Tabilo::Alexander Zverev": {
+    "player_a": "Alexander Zverev",
+    "player_b": "Alejandro Tabilo",
+    "market_prob_a": 0.837,
+    "captured_at": "2026-09-04T16:29:33Z"
+  },
+  "ATP|US Open|2026|Benjamin Bonzi::Karen Khachanov": {
+    "player_a": "Karen Khachanov",
+    "player_b": "Benjamin Bonzi",
+    "market_prob_a": 0.64,
+    "captured_at": "2026-09-04T16:29:33Z"
+  },
+  "ATP|US Open|2026|Francisco Cerundolo::Taylor Fritz": {
+    "player_a": "Taylor Fritz",
+    "player_b": "Francisco Cerundolo",
+    "market_prob_a": 0.835,
+    "captured_at": "2026-09-04T16:29:33Z"
+  },
+  "ATP|US Open|2026|Jakub Mensik::Learner Tien": {
+    "player_a": "Jakub Mensik",
+    "player_b": "Learner Tien",
+    "market_prob_a": 0.447,
+    "captured_at": "2026-09-04T16:29:33Z"
+  },
+  "ATP|US Open|2026|Alexander Blockx::Flavio Cobolli": {
+    "player_a": "Alexander Blockx",
+    "player_b": "Flavio Cobolli",
+    "market_prob_a": 0.497,
+    "captured_at": "2026-09-04T16:29:33Z"
+  },
+  "ATP|US Open|2026|Dane Sweeny::Luciano Darderi": {
+    "player_a": "Luciano Darderi",
+    "player_b": "Dane Sweeny",
+    "market_prob_a": 0.751,
+    "captured_at": "2026-09-04T16:29:33Z"
+  },
+  "ATP|US Open|2026|Arthur Gea::Michael Zheng": {
+    "player_a": "Michael Zheng",
+    "player_b": "Arthur Gea",
+    "market_prob_a": 0.567,
+    "captured_at": "2026-09-04T16:29:33Z"
   }
 }

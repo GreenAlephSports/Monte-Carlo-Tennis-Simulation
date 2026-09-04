@@ -6,12 +6,10 @@ The whole thing is one ordered "round_history" list of self-contained checkpoint
 each historical round once it's fully decided, then the current/latest state - each carrying BOTH
 halves of the picture for that exact moment:
   - "players": futures odds by model (who wins the whole tournament from here).
-  - "matches": that checkpoint's own real matchups, model probability vs market probability vs the
-    gap - pretournament has none yet (no real matches exist), a historical round has its own now-
-    decided matches (market price recovered from a persisted pregame cache, since The Odds API
-    drops an event once it's Final - see MARKET_PRICE_CACHE_PATH), and "current" has the live
-    round's matches, decided and not-yet-decided alike, sourced from bracket_export.py's own fresh
-    Odds API fetch for anything still unsettled.
+  - "matches": that checkpoint's own real matchups with this project's own model probability -
+    pretournament has none yet (no real matches exist), a historical round has its own now-decided
+    matches, and "current" has the live round's matches, decided and not-yet-decided alike. Purely
+    a model-output export - no market/odds-API data anywhere in this pipeline.
 
 A historical round's checkpoint, once written, never changes again (see
 hybrid_simulation.build_round_history's own caching) - only the trailing "current" checkpoint (and
@@ -42,76 +40,37 @@ from simulate import N_SIMULATIONS  # noqa: E402
 
 HISTORY_SIMULATIONS_DEFAULT = 2000
 
-# Mirrors live_match_watcher.py's own MARKET_PRICE_CACHE_PATH/_market_price_cache_key exactly -
-# duplicated rather than imported because live_match_watcher.py itself imports
-# build_consolidated_export from this module, and importing back from it here would be circular.
-# Keep this in sync with live_match_watcher.py by hand if that file's cache format ever changes.
-MARKET_PRICE_CACHE_PATH = OUTPUT_DIR / "market_price_cache.json"
-
-
-def _market_price_cache_key(tour, tournament, year, player_a, player_b):
-    return f"{tour}|{tournament}|{year}|{'::'.join(sorted((player_a, player_b)))}"
-
-
-def _load_market_price_cache():
-    if not MARKET_PRICE_CACHE_PATH.exists():
-        return {}
-    with open(MARKET_PRICE_CACHE_PATH, encoding="utf-8") as f:
-        return json.load(f)
-
-
-def _cached_market_prob_a(cache, bracket, player_a, player_b):
-    entry = cache.get(_market_price_cache_key(bracket.tour, bracket.tournament, bracket.year, player_a, player_b))
-    if entry is None:
-        return None
-    return entry["market_prob_a"] if entry["player_a"] == player_a else round(1 - entry["market_prob_a"], 3)
-
 
 def consolidated_output_path(bracket_path, output_dir=OUTPUT_DIR):
     return Path(output_dir) / f"{Path(bracket_path).stem}_consolidated.json"
 
 
-def _match_row(player_a, player_b, model_prob_a, market_prob_a, decided, winner):
+def _match_row(player_a, player_b, model_prob_a, decided, winner):
     return {
         "player_a": player_a, "player_b": player_b,
         "model_prob_a": round(model_prob_a, 3) if model_prob_a is not None else None,
-        "market_prob_a": round(market_prob_a, 3) if market_prob_a is not None else None,
-        "gap_pct_points": (
-            round(abs(market_prob_a - model_prob_a) * 100, 1)
-            if market_prob_a is not None and model_prob_a is not None else None
-        ),
         "decided": decided,
         "winner": winner,
     }
 
 
-def _enrich_historical_matches(model_only_matches, bracket, market_cache):
-    """A historical round's matches are all decided by definition, so The Odds API no longer has
-    them (see module docstring) - the only place their pregame market price can still come from is
-    the persisted cache. Missing from the cache just means live_match_watcher.py wasn't polling yet
-    while that specific match was still pregame - market_prob_a stays None, not fabricated."""
-    rows = []
-    for m in model_only_matches:
-        market_prob_a = _cached_market_prob_a(market_cache, bracket, m["player_a"], m["player_b"])
-        rows.append(_match_row(
-            m["player_a"], m["player_b"], m["model_prob_a"], market_prob_a, m["decided"], m["winner"]
-        ))
-    rows.sort(key=lambda r: -(r["gap_pct_points"] if r["gap_pct_points"] is not None else -1))
+def _enrich_historical_matches(model_only_matches):
+    rows = [
+        _match_row(m["player_a"], m["player_b"], m["model_prob_a"], m["decided"], m["winner"])
+        for m in model_only_matches
+    ]
+    rows.sort(key=lambda r: r["player_a"])
     return rows
 
 
-def _build_current_matches(current_export, partial_model_only_matches, bracket, market_cache):
+def _build_current_matches(current_export, partial_model_only_matches):
     """The 'current' checkpoint's matches: every real match in the round currently being played,
     decided or not - not just the unsettled ones. current_export['matchups'] only ever contains
     STILL-unsettled matches (bracket_export.py explicitly excludes anything already decided - see
     its own matchups-loop comment) - already-decided matches within the round still in progress
     would be silently missing from 'current' entirely without partial_model_only_matches
     (hybrid_simulation's own _round_matches for this exact round, which covers the whole round,
-    decided or not, and is where 'decided'/'winner' come from here).
-
-    For a pairing STILL unsettled, current_export's own live, just-fetched Odds API price is used
-    (fresher than the cache); for one already decided this cycle, only the persisted cache has a
-    market price at all (same reasoning as _enrich_historical_matches)."""
+    decided or not, and is where 'decided'/'winner' come from here)."""
     live_by_pair = {
         frozenset((info["slot_a"], info["slot_b"])): info for info in current_export["matchups"].values()
     }
@@ -120,23 +79,17 @@ def _build_current_matches(current_export, partial_model_only_matches, bracket, 
         pair = frozenset((m["player_a"], m["player_b"]))
         seen_pairs.add(pair)
         live = live_by_pair.get(pair)
-        if live is not None:
-            market_prob_a = live["market_prob_a"]
-            model_prob_a = live["model_prob_a"]
-        else:
-            market_prob_a = _cached_market_prob_a(market_cache, bracket, m["player_a"], m["player_b"])
-            model_prob_a = m["model_prob_a"]
-        rows.append(_match_row(m["player_a"], m["player_b"], model_prob_a, market_prob_a, m["decided"], m["winner"]))
+        model_prob_a = live["p_slot_a"] if live is not None else m["model_prob_a"]
+        rows.append(_match_row(m["player_a"], m["player_b"], model_prob_a, m["decided"], m["winner"]))
 
     # any live unsettled matchup NOT already covered above (e.g. a later round whose pairing is
     # also already fully known) - still surfaced, just appended rather than dropped.
     for pair, info in live_by_pair.items():
         if pair in seen_pairs:
             continue
-        rows.append(_match_row(info["slot_a"], info["slot_b"], info["model_prob_a"], info["market_prob_a"],
-                                False, None))
+        rows.append(_match_row(info["slot_a"], info["slot_b"], info["p_slot_a"], False, None))
 
-    rows.sort(key=lambda r: -(r["gap_pct_points"] if r["gap_pct_points"] is not None else -1))
+    rows.sort(key=lambda r: r["player_a"])
     return rows
 
 
@@ -186,7 +139,6 @@ def build_consolidated_export(
         previous_history=previous_round_checkpoints,
     )
     partial_entry = next((e for e in raw_history if e["partial"]), None)
-    market_cache = _load_market_price_cache()
 
     checkpoints = []
 
@@ -208,7 +160,7 @@ def build_consolidated_export(
             "round": entry["round"],
             "label": entry["label"],
             "players": entry["players"],
-            "matches": _enrich_historical_matches(entry["matches"], bracket, market_cache),
+            "matches": _enrich_historical_matches(entry["matches"]),
         })
 
     current_round_num = partial_entry["round"] if partial_entry else (raw_history[-1]["round"] if raw_history else 1)
@@ -219,7 +171,7 @@ def build_consolidated_export(
         "generated_at": current_export["meta"]["generated_at"],
         "players": current_export["players"],
         "matches": _build_current_matches(
-            current_export, partial_entry["matches"] if partial_entry else [], bracket, market_cache
+            current_export, partial_entry["matches"] if partial_entry else []
         ),
     })
 

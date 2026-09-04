@@ -7,22 +7,21 @@
     cross-half match). Each match has slot_a/slot_b, "probability" always meaning P(slot_a wins).
   - player rows are quarter-based (Q1-Q4, per Daron's correction): p_champ, p_sf (wins the
     quarter = reaches the semifinal), p_final (wins the half = reaches the final).
+  - purely a model-output export: every probability in this file (matchups.p_slot_a/b,
+    head_to_head.model_prob_a/b) is this project's own Elo-based win_probability(), with no
+    market/odds-API blending anywhere in the pipeline - see this module's git history for the
+    now-removed The Odds API integration.
 Usage:
     python model/bracket_export.py brackets/cincinnati_2026_atp.yaml --simulations 10000
 """
 import argparse
-import difflib
 import json
-import os
 import random
 import re
 import sys
-import urllib.parse
 from dataclasses import replace
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent / "research"))  # projected_draw_builder's overrides machinery
@@ -33,7 +32,6 @@ from bracket import (  # noqa: E402
 )
 from bracket_schema import BracketValidationError, load_bracket_yaml  # noqa: E402
 from elo_ratings import calculate_elo_ratings, load_matches_for_tour  # noqa: E402
-from ev_comparison import implied_probabilities  # noqa: E402
 from hybrid_simulation import (  # noqa: E402
     TOUR_SINGLES_CATEGORY, build_known_pairings_by_round, build_real_results_by_round,
     known_matchups_for_round, match_espn_name_to_draw, replay_real_rounds,
@@ -44,223 +42,11 @@ from title_odds_movement import build_comparison, print_table, write_csv  # noqa
 from win_probability import win_probability  # noqa: E402
 
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
-ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
 SEED = 42
 # same path projected_draw_builder.DEFAULT_OVERRIDES_PATH resolves to - redefined here (rather
 # than imported) because that module can't be imported at module load time, see the comment on
 # the lazy import inside export_bracket_json below.
 DEFAULT_OVERRIDES_PATH = Path(__file__).resolve().parent.parent / "overrides.yaml"
-ODDS_API_BASE = "https://api.the-odds-api.com/v4"
-
-
-def _load_env():
-    """Tiny KEY=VALUE .env loader - avoids adding python-dotenv as a dependency for one key."""
-    if not ENV_PATH.exists():
-        return
-    for line in ENV_PATH.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, _, value = line.partition("=")
-        os.environ.setdefault(key.strip(), value.strip())
-
-
-_load_env()
-ODDS_API_KEY = os.environ.get("ODDS_API_KEY")
-
-
-def _http_get_json(url, params, timeout=15):
-    query = urllib.parse.urlencode(params)
-    request = Request(f"{url}?{query}", headers={"User-Agent": "Mozilla/5.0"})
-    with urlopen(request, timeout=timeout) as response:
-        return json.loads(response.read())
-
-
-# ESPN's tournament name is sometimes a sponsor-branded title that shares no meaningful word with
-# The Odds API's own (often older/historical) title for the same event - confirmed for the
-# Canadian Open, which ESPN reports as "National Bank Open presented by Rogers" (current title
-# sponsor) but The Odds API still lists as "WTA/ATP Canadian Open" (the tournament's long-standing
-# name). Measured: fuzzy_similarity("National Bank Open presented by Rogers", "Canadian Open")
-# scores below even unrelated tournaments like "Australian Open"/"Italian Open" (incidental
-# "...ian Open" substring overlap outscores the real match) - a text-similarity match genuinely
-# can't bridge a sponsor-branding swap like this, so it stays a hardcoded, logged last resort
-# rather than something fuzzy matching should be tuned to catch. Checked only after
-# _best_fuzzy_match finds nothing above FUZZY_MATCH_MIN_SCORE - real tournaments discovered by
-# fuzzy matching stay untouched by this table.
-TOURNAMENT_NAME_ALIASES = {
-    "national bank open": "canadian open",
-}
-
-FUZZY_MATCH_MIN_SCORE = 0.6
-
-# generic tournament-naming boilerplate that would otherwise inflate token overlap between two
-# unrelated events (nearly every title contains "Open") - stripped before scoring so overlap
-# reflects the tournament's actual identity (city/sponsor/name), not shared filler.
-_TITLE_FILLER_WORDS = {
-    "open", "championship", "championships", "cup", "masters", "the", "of", "and", "club",
-    "presented", "by", "international", "internazionali", "invitational",
-}
-
-
-def _meaningful_tokens(text):
-    return {w for w in re.findall(r"[a-z0-9]+", text.lower()) if w not in _TITLE_FILLER_WORDS}
-
-
-def _fuzzy_similarity(name_a, name_b):
-    """Best of two signals: Jaccard overlap of meaningful tokens (order-independent, catches
-    reordered or partial-name matches, e.g. 'Miami Open' vs 'Miami Masters') and difflib's
-    character-level ratio (catches close spelling variants token overlap alone would miss).
-    Taking the max is deliberately generous - a real match strong on either axis should pass -
-    but still leaves genuinely unrelated names (e.g. a sponsor-branded title with zero token
-    overlap and only incidental character overlap) below FUZZY_MATCH_MIN_SCORE."""
-    tokens_a, tokens_b = _meaningful_tokens(name_a), _meaningful_tokens(name_b)
-    token_overlap = len(tokens_a & tokens_b) / len(tokens_a | tokens_b) if (tokens_a or tokens_b) else 0.0
-    char_ratio = difflib.SequenceMatcher(None, name_a.lower(), name_b.lower()).ratio()
-    return max(token_overlap, char_ratio)
-
-
-def _best_fuzzy_match(query_name, candidates):
-    """candidates: sport dicts already filtered to the right tour. Returns (chosen_sport, score) -
-    the highest-scoring candidate if it clears FUZZY_MATCH_MIN_SCORE, else (None, best_score_seen)
-    so a rejected best-guess can still be logged by the caller."""
-    scored = []
-    for s in candidates:
-        # score against the title with the leading tour word ('ATP '/'WTA ') stripped, so that
-        # shared prefix never inflates the similarity of an otherwise-unrelated tournament.
-        title_body = s.get("title", "").split(" ", 1)[-1]
-        scored.append((_fuzzy_similarity(query_name, title_body), s))
-    if not scored:
-        return None, 0.0
-    scored.sort(key=lambda pair: (pair[0], pair[1].get("active", False)), reverse=True)
-    best_score, best_sport = scored[0]
-    if best_score >= FUZZY_MATCH_MIN_SCORE:
-        return best_sport, best_score
-    return None, best_score
-
-
-def discover_odds_sport_key(tour, tournament_name, api_key):
-    """The Odds API's tennis sport keys are per-tournament (e.g. 'tennis_atp_cincinnati_open')
-    and only exist while that event is currently listed - discovered by fuzzy title match against
-    /v4/sports rather than hardcoded, so this isn't wired to one specific tournament. Falls back to
-    TOURNAMENT_NAME_ALIASES, logged loudly, only for the rare sponsor-branded title fuzzy matching
-    can't bridge (see that table's docstring) - every other tournament is resolved by text
-    similarity alone, with no hardcoded name."""
-    try:
-        sports = _http_get_json(f"{ODDS_API_BASE}/sports/", {"apiKey": api_key, "all": "true"})
-    except (HTTPError, URLError) as e:
-        print(f"WARNING: couldn't list The Odds API sports ({e}) - odds pricing unavailable", file=sys.stderr)
-        return None
-
-    tour_word = "ATP" if tour == "ATP" else "WTA"
-    candidates = [
-        s for s in sports if s.get("group") == "Tennis" and s.get("title", "").upper().startswith(tour_word)
-    ]
-
-    chosen, score = _best_fuzzy_match(tournament_name, candidates)
-    if chosen is not None:
-        return chosen["key"]
-
-    alias_body = next(
-        (alias for espn_prefix, alias in TOURNAMENT_NAME_ALIASES.items()
-         if tournament_name.lower().startswith(espn_prefix)),
-        None,
-    )
-    if alias_body is None:
-        print(
-            f"WARNING: no Odds API tennis sport matched {tournament_name!r} ({tour}) - best fuzzy "
-            f"candidate scored {score:.2f}, below the {FUZZY_MATCH_MIN_SCORE} threshold, and no "
-            f"manual alias is configured for it - odds pricing unavailable", file=sys.stderr,
-        )
-        return None
-
-    print(
-        f"WARNING: fuzzy matching found no confident Odds API sport for {tournament_name!r} "
-        f"(best candidate scored {score:.2f}, below the {FUZZY_MATCH_MIN_SCORE} threshold) - "
-        f"falling back to the manual alias table (matched alias {alias_body!r}). If this fires for "
-        f"a tournament that ISN'T a known sponsor-branding case, the alias table may be masking a "
-        f"real mismatch - check it.", file=sys.stderr,
-    )
-    aliased_chosen, _alias_score = _best_fuzzy_match(alias_body, candidates)
-    if aliased_chosen is not None:
-        return aliased_chosen["key"]
-
-    print(
-        f"WARNING: manual alias {alias_body!r} for {tournament_name!r} still matched no Odds API "
-        f"tennis sport - odds pricing unavailable", file=sys.stderr,
-    )
-    return None
-
-
-def fetch_devigged_odds(sport_key, api_key):
-    """Returns odds_lookup: frozenset({espn_name_a, espn_name_b}) -> {espn_name: p_win}, for
-    every event The Odds API currently has bookmaker h2h data for. Prints each bookmaker's raw
-    decimal odds alongside its own de-vigged implied probability, then averages decimal odds
-    across every bookmaker quoting both sides and de-vigs that average via
-    ev_comparison.implied_probabilities - the same de-vig math already used elsewhere in this
-    codebase, not reimplemented here. Cross-referencing against ESPN names is exact-string only
-    (never fuzzy) - a name that doesn't match byte-for-byte just falls back to the model, per the
-    spec's own fallback rule, rather than risking a wrong join."""
-    if not sport_key or not api_key:
-        return {}
-    try:
-        events = _http_get_json(
-            f"{ODDS_API_BASE}/sports/{sport_key}/odds/",
-            {"apiKey": api_key, "regions": "us", "markets": "h2h", "oddsFormat": "decimal"},
-        )
-    except (HTTPError, URLError) as e:
-        print(f"WARNING: The Odds API request failed ({e}) - falling back to model probabilities "
-              f"everywhere", file=sys.stderr)
-        return {}
-
-    odds_lookup = {}
-    for event in events:
-        home, away = event.get("home_team"), event.get("away_team")
-        if not home or not away:
-            continue
-        home_prices, away_prices = [], []
-        book_rows = []
-        for bookmaker in event.get("bookmakers", []):
-            for market in bookmaker.get("markets", []):
-                if market.get("key") != "h2h":
-                    continue
-                outcomes = {o["name"]: o["price"] for o in market.get("outcomes", [])}
-                if home in outcomes and away in outcomes:
-                    home_odd, away_odd = outcomes[home], outcomes[away]
-                    home_prices.append(home_odd)
-                    away_prices.append(away_odd)
-                    home_pct, away_pct = implied_probabilities(home_odd, away_odd)
-                    book_rows.append((bookmaker.get("title", bookmaker.get("key", "?")),
-                                       home_odd, away_odd, home_pct, away_pct))
-        if not home_prices:
-            continue
-        print(f"{home} vs {away} - de-vigged odds by bookmaker:")
-        for title, home_odd, away_odd, home_pct, away_pct in book_rows:
-            print(f"  {title:<20} {home}: {home_odd:.2f} -> {home_pct:.1%}    "
-                  f"{away}: {away_odd:.2f} -> {away_pct:.1%}")
-        avg_home = sum(home_prices) / len(home_prices)
-        avg_away = sum(away_prices) / len(away_prices)
-        prob_home, prob_away = implied_probabilities(avg_home, avg_away)
-        odds_lookup[frozenset((home, away))] = {home: prob_home, away: prob_away}
-    return odds_lookup
-
-
-def resolve_probability(espn_name_a, espn_name_b, draw_name_a, draw_name_b, odds_lookup, surface, ratings_path):
-    """P(a beats b), computed TWO independent ways every time (not just whichever one happens to
-    win), so callers can expose both alongside the blended "official" value:
-      - market_prob_a: The Odds API's de-vigged price for this exact pairing (matched by exact
-        ESPN displayName, never fuzzy), or None if no book has posted odds for it yet.
-      - model_prob_a: this project's own Elo-based win_probability(), independent of whether
-        market odds exist - the same computation compare_match.py already does post-hoc, just
-        done inline here instead of requiring a second pass over the export file.
-      - prob_a/source: the existing blended "official" value (market when available, else model)
-        and which one won - source is for our own console reporting, not part of Daron's schema.
-    Returns (prob_a, source, market_prob_a, model_prob_a)."""
-    entry = odds_lookup.get(frozenset((espn_name_a, espn_name_b)))
-    market_prob_a = entry[espn_name_a] if entry is not None and espn_name_a in entry else None
-    model_prob_a = win_probability(draw_name_a, draw_name_b, surface, ratings_path)
-    if market_prob_a is not None:
-        return market_prob_a, "odds_api", market_prob_a, model_prob_a
-    return model_prob_a, "model", market_prob_a, model_prob_a
 
 
 def build_round_label_map(round_sequence):
@@ -576,14 +362,8 @@ def export_bracket_json(
             losers.add(next(p for p in pair if p != winner))
     alive_draw_names = [p for p in draw if p in draw_to_espn and p not in losers]
 
-    # --- odds ---
-    sport_key = discover_odds_sport_key(bracket.tour, bracket.tournament, ODDS_API_KEY) if ODDS_API_KEY else None
-    odds_lookup = fetch_devigged_odds(sport_key, ODDS_API_KEY) if sport_key else {}
-    print(f"Odds API sport key: {sport_key!r} - {len(odds_lookup)} priced match(es) available")
-
     # --- matchups: every unsettled match, any round, where both sides are already real names ---
     matchups = {}
-    odds_used = model_used = 0
     for round_label in round_sequence:
         round_num = round_sequence.index(round_label) + 1
         round_matches = [m for m in tournament_matches if m["round"] == round_label]
@@ -618,40 +398,15 @@ def export_bracket_json(
                 )
                 match_id = f"{half_prefix}-{daron_round}-{half_index + 1}"
 
-            prob_a, source, market_prob_a, model_prob_a = resolve_probability(
-                p1_raw, p2_raw, draw_a, draw_b, odds_lookup, bracket.surface, tour_config.ratings_path
-            )
-            odds_used += source == "odds_api"
-            model_used += source == "model"
-            prob_a = round(prob_a, 3)
+            # purely this project's own Elo-based model - no market/odds-API blending, see the
+            # module docstring.
+            prob_a = round(win_probability(draw_a, draw_b, bracket.surface, tour_config.ratings_path), 3)
             matchups[match_id] = {
                 "slot_a": p1_raw, "slot_b": p2_raw,
-                # existing blended "official" value, unchanged - Daron's spec, always market when
-                # available else model, always sums to 1 with its counterpart.
                 "p_slot_a": prob_a, "p_slot_b": round(1 - prob_a, 3),
-                # additive fields: the same two probabilities BEFORE blending, side by side, so a
-                # consumer can see market/model agreement (or disagreement) directly instead of
-                # inferring it from which one "source" happened to be. market_prob_a/b are null
-                # when no book has posted odds for this exact pairing yet.
-                "market_prob_a": round(market_prob_a, 3) if market_prob_a is not None else None,
-                "market_prob_b": round(1 - market_prob_a, 3) if market_prob_a is not None else None,
-                "model_prob_a": round(model_prob_a, 3),
-                "model_prob_b": round(1 - model_prob_a, 3),
-                # how far the model's view of slot_a is from the market's, as a percentage OF the
-                # market's own probability (not a percentage-point gap like market_prob_a -
-                # p_slot_a above) - e.g. market 69%, model 36% is a -47.8% relative change: the
-                # model sees slot_a's chances as ~48% lower than the market does, proportionally.
-                # Computed from the unrounded market/model probabilities, not the already-rounded
-                # display fields above, so this stays accurate rather than compounding rounding
-                # error. Null whenever market_prob_a is null - nothing to compare against.
-                "relative_change_pct": (
-                    round((model_prob_a - market_prob_a) / market_prob_a * 100, 1)
-                    if market_prob_a is not None else None
-                ),
             }
 
-    print(f"matchups: {len(matchups)} unsettled ({odds_used} priced via The Odds API, "
-          f"{model_used} via model)")
+    print(f"matchups: {len(matchups)} unsettled")
 
     # --- players: p_champ / p_sf / p_final via simulation from the current real state ---
     target_round = max_known_round + 1
@@ -715,12 +470,16 @@ def export_bracket_json(
             if frozenset((name_a, name_b)) in matchup_pairs:
                 continue
             draw_a, draw_b = espn_to_draw[name_a], espn_to_draw[name_b]
-            # head_to_head stays the existing blended-only schema (Daron's spec, unchanged) -
-            # market_prob/model_prob are only added to "matchups" per this change's scope.
-            prob_a, _source, _market_prob_a, _model_prob_a = resolve_probability(
-                name_a, name_b, draw_a, draw_b, odds_lookup, bracket.surface, tour_config.ratings_path
-            )
-            head_to_head[f"{name_a}|{name_b}"] = round(prob_a, 3)
+            # model_prob_a: pure Elo-model probability, win_probability()'s own output every
+            # time - structurally never blended with market data (there is none in this export
+            # any more, see the module docstring). Named "model_prob_a" rather than a bare
+            # "prob_a" to match matchups' field naming and stay unambiguous to any downstream
+            # consumer, per Daron's request.
+            model_prob_a = round(win_probability(draw_a, draw_b, bracket.surface, tour_config.ratings_path), 3)
+            head_to_head[f"{name_a}|{name_b}"] = {
+                "model_prob_a": model_prob_a,
+                "model_prob_b": round(1 - model_prob_a, 3),
+            }
 
     if health_adjustments_applied:
         warnings = warnings + [
