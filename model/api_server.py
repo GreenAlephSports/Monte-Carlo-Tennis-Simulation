@@ -135,6 +135,41 @@ def get_tournament(tournament_id):
     return send_file(path, mimetype="application/json", conditional=True)
 
 
+ARTIFACT_DATA_SUFFIX = "_artifact_data.json"
+
+
+@app.get("/artifact_data/<tournament_id>")
+def get_artifact_data(tournament_id):
+    """Serves {tournament_id}_artifact_data.json (model/export_artifact_data.py's output - draw
+    position order, every player's title odds, and every real match with model vs artifact-only
+    market comparison) for the standalone 'Model vs Market Draw' artifact's own polling loop.
+    Distinct from /tournament/<id> above (which serves the production *_bracket_export.json /
+    *_watcher_baseline.json, deliberately market-free per Daron's 2026-09-04 request) - this file
+    is written by a separate, on-demand script and never touched by the live automation path.
+    CORS-open and unauthenticated for the same reason /live/<tour>/scoreboard is: a browser-side
+    fetch() from the artifact page can't attach a custom header without CORS-preflight
+    complications, and nothing served here is sensitive (same data already public on usopen.org)."""
+    if not VALID_TOURNAMENT_ID.match(tournament_id):
+        return jsonify({
+            "error": "invalid_tournament_id",
+            "message": f"tournament_id must match {VALID_TOURNAMENT_ID.pattern!r}, got {tournament_id!r}",
+        }), 400
+
+    path = OUTPUT_DIR / f"{tournament_id}{ARTIFACT_DATA_SUFFIX}"
+    if not path.exists():
+        return jsonify({
+            "error": "tournament_not_found",
+            "message": (
+                f"No artifact data file exists yet for tournament_id={tournament_id!r} - looked for "
+                f"{path.name} under {OUTPUT_DIR}. Run model/export_artifact_data.py for this bracket first."
+            ),
+        }), 404
+
+    response = send_file(path, mimetype="application/json", conditional=True)
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    return response
+
+
 # dates gets interpolated straight into the ESPN URL by live_scores.fetch_scoreboard - unlike
 # tournament_id (used only as a local filesystem path segment), this value would otherwise flow
 # untouched into an outbound request URL, so it's validated against ESPN's own documented shape
@@ -184,7 +219,10 @@ def health():
         "service": "bracket export polling API",
         "read_only": True,
         "auth_required": CONFIGURED_API_KEY is not None,
-        "endpoints": ["/tournaments", "/tournament/<tournament_id>", "/live/<atp|wta>/scoreboard"],
+        "endpoints": [
+            "/tournaments", "/tournament/<tournament_id>", "/live/<atp|wta>/scoreboard",
+            "/artifact_data/<tournament_id>",
+        ],
         "output_dir": str(OUTPUT_DIR),
     })
 

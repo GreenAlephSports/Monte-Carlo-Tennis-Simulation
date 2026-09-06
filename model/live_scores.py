@@ -87,6 +87,17 @@ def _extract_sets(competitor):
     return sets
 
 
+def _extract_seed(competitor):
+    """A player's tournament seed, or None if they weren't seeded - same field ESPN itself only
+    populates for actually-seeded players (see espn_bracket.py's build_bracket_players docstring:
+    in a draw with byes, that means only the Round-2 bye entrants carry this in Round 1's own
+    competitions). ESPN's own seed data can itself be incomplete (confirmed real case: the 2026 US
+    Open ATP draw was missing seed 19's curatedRank entirely, ESPN-side) - None here just means
+    'not present in this response', not 'not actually seeded'."""
+    seed = (competitor.get("curatedRank") or {}).get("current")
+    return int(seed) if seed is not None else None
+
+
 def _extract_raw_games(competitor):
     """Same linescores as _extract_sets, but plain ints (no tiebreak annotation) - for score-state
     math (live_match_snapshot.py's live-adjusted probability heuristic) rather than display."""
@@ -134,6 +145,12 @@ def _extract_match(tournament_name, category_name, event_id, competition):
         "status_detail": status_type.get("name"),  # e.g. 'STATUS_FINAL' | 'STATUS_RETIRED' | 'STATUS_WALKOVER'
         "player_1": names[0],
         "player_2": names[1],
+        # curatedRank-derived seed, for a genuine external cross-check against our own declared
+        # bracket seeds (see model/bracket_export.py's tag_halves_and_quarters and the seed-
+        # placement verification this enables) - None whenever ESPN doesn't carry it for this
+        # competitor (see _extract_seed's docstring), not an extraction failure.
+        "seed_1": _extract_seed(by_order[0]),
+        "seed_2": _extract_seed(by_order[1]),
         "sets_1": _extract_sets(by_order[0]),
         "sets_2": _extract_sets(by_order[1]),
         "winner": names[winner_index] if winner_index is not None else None,

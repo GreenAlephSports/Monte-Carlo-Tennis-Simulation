@@ -1,4 +1,5 @@
 import math
+from datetime import date
 from functools import lru_cache
 from pathlib import Path
 
@@ -19,6 +20,7 @@ SURFACE_COLUMNS_UNDAMPED = {
 
 ATP_RATINGS_PATH = Path(__file__).resolve().parent.parent / "output" / "player_elo_ratings_atp.csv"
 WTA_RATINGS_PATH = Path(__file__).resolve().parent.parent / "output" / "player_elo_ratings_wta.csv"
+HEIGHT_METADATA_PATH = Path(__file__).resolve().parent.parent / "output" / "player_handedness.csv"
 
 # Empirically-fit ranking-gap calibration adjustment - see the backtest that derived it: among
 # 17,955 historical ATP matches with |Elo diff| <= 50 (i.e. Elo calls them a near-coin-flip),
@@ -39,6 +41,24 @@ RANK_ADJUSTMENT_D = 260.72
 # improving accuracy at all (identical favorite-win-rate, higher assigned confidence). Gating to the
 # validated window is what fixed that.
 RANK_ADJUSTMENT_ELO_WINDOW = 50
+
+# DISABLED as of 2026-09-05 (see win_probability(), use_rank_adjustment default below) - the fixed
+# constants above have gone stale. model/research/rank_gap_original_reproduction.py confirmed the
+# original train-era pattern still reproduces (harness is trustworthy) but the EXISTING fixed formula
+# shows no significant held-out benefit on the (mostly-recent) test-era split of full history.
+# model/research/rank_adjustment_recency_refit.py then asked the direct follow-up: is that just
+# stale constants, or has the underlying signal itself disappeared? Refit C, D via MLE on ONLY
+# 2021-2026 ATP data (train-era half of a chronological split WITHIN that window: C=0.2185, D=117.10,
+# vs. the fixed C=1.0629/D=260.72 above), then validated BOTH formulas on the SAME 2021-2026 test-era
+# half, same |Elo diff|<=50 gate, player-clustered bootstrap CI: existing fixed formula
+# -0.00125 CI[-0.00900,+0.00621] (negative point estimate, not significant), recency-refit formula
+# +0.00226 CI[-0.00036,+0.00488] (closer, still doesn't clear zero). A same-era refit does NOT
+# restore a real, significant benefit - this isn't stale constants, the rank-vs-Elo divergence this
+# correction was built on appears to have genuinely weakened/disappeared in the current game. Left
+# live (use_rank_adjustment=True) would mean shipping a correction with zero present-day evidence
+# behind it; disabled by default until a real, held-out-validated replacement is found. The constants
+# above are kept (not deleted) so a future refit attempt - e.g. once more 2024-2026+ editions
+# accumulate - has the old baseline to compare against.
 
 # Empirically-fit confidence-calibration correction (Platt scaling) - see the backtest that derived
 # it: among 133,552 historical ATP player-match observations (2000-2026, frozen-per-tournament-
@@ -285,6 +305,89 @@ LAYOFF_BUCKET_EDGES_WTA = [
 RECENT_FORM_BETA = 0.2021
 
 
+# Empirically-fit height correction - see model/research/height_effect_scoped_test.py: a linear-
+# probability-model coefficient (won_a ~ elo_diff + height_diff, OLS, NOT a logit-space fit like
+# every other correction above) for height_diff (height_a - height_b, in cm) among ATP+WTA matches
+# restricted to the ONE population height_effect_validation_test.py's full-history robustness audit
+# found the effect actually stable in: prime-age (avg age 23-29), best_rank <= 150, 2015-2024. Pooled
+# scoped coefficient +0.001621 (z=+4.51, 95% player-clustered bootstrap CI [+0.001086,+0.002179]),
+# and - unlike a pooled number taken at face value - a chronological split WITHIN that scoped
+# population independently replicates in BOTH halves with the same sign (earlier half +0.001346
+# z=+2.79, later half +0.001864 z=+3.45): the strongest form of support this dataset can offer for a
+# correction this narrow. Every broader/adjacent population validation_test checked (151+ rank,
+# <23 or 29+ avg age, pre-2015/post-2024) did NOT hold up and is deliberately excluded here - this is
+# NOT "height matters, scaled down everywhere else", it's "height matters in this one population and
+# nowhere else checked".
+#
+# Applied as a DIRECT probability-space additive shift (prob_a + HEIGHT_COEF * height_diff), not
+# routed through apply_logit_shift like the other corrections - because that's the scale it was
+# actually fit on (a linear probability model against raw elo_diff, not a logistic fit against
+# logit-space odds). Composed in the same downstream slot as recent-form (after layoff, before
+# confidence calibration): fit against raw Elo like recent-form, same "applied where the codebase's
+# existing convention already stacks corrections" pragmatic reasoning documented at RECENT_FORM_BETA
+# above, not because a joint refit was done.
+HEIGHT_COEF = 0.001621
+HEIGHT_AGE_RANGE = (23, 29)  # avg age of both players, inclusive-exclusive [lo, hi)
+HEIGHT_RANK_MAX = 150        # best (numerically lowest) current rank of the two players
+
+
+@lru_cache(maxsize=None)
+def _load_height_metadata_cached(_mtime_ns: int) -> pd.DataFrame:
+    df = pd.read_csv(HEIGHT_METADATA_PATH, keep_default_na=False, dtype=str)
+    df = df.set_index("player")
+    df["height_cm"] = pd.to_numeric(df["height_cm"], errors="coerce")
+    df["birth_year"] = pd.to_numeric(df["birth_year"], errors="coerce")
+    return df
+
+
+def _load_height_metadata() -> pd.DataFrame:
+    return _load_height_metadata_cached(HEIGHT_METADATA_PATH.stat().st_mtime_ns)
+
+
+def get_height(player: str):
+    """Height in cm, or None if unknown (player not in player_handedness.csv, or their height_cm
+    was never cleanly resolved - see wikipedia_handedness_scrape.py's height_status column)."""
+    metadata = _load_height_metadata()
+    if player not in metadata.index:
+        return None
+    height = metadata.loc[player, "height_cm"]
+    return None if pd.isna(height) else float(height)
+
+
+def get_birth_year(player: str):
+    """Birth year, or None if unknown - same resolution caveat as get_height."""
+    metadata = _load_height_metadata()
+    if player not in metadata.index:
+        return None
+    birth_year = metadata.loc[player, "birth_year"]
+    return None if pd.isna(birth_year) else int(birth_year)
+
+
+def _apply_height_adjustment(prob_a: float, height_a, height_b, birth_a, birth_b, rank_a, rank_b) -> float:
+    """A no-op unless BOTH players' height and birth year are known, both current ranks are known,
+    and the pair falls inside the one validated population (HEIGHT_AGE_RANGE avg age, HEIGHT_RANK_MAX
+    best rank) - this correction has zero empirical backing outside that population (see HEIGHT_COEF's
+    docstring above) and is deliberately gated to it, same discipline as RANK_ADJUSTMENT_ELO_WINDOW."""
+    if height_a is None or height_b is None or birth_a is None or birth_b is None:
+        return prob_a
+    if rank_a is None or rank_b is None or pd.isna(rank_a) or pd.isna(rank_b):
+        return prob_a
+
+    best_rank = min(rank_a, rank_b)
+    if best_rank > HEIGHT_RANK_MAX:
+        return prob_a
+
+    current_year = date.today().year
+    avg_age = ((current_year - birth_a) + (current_year - birth_b)) / 2
+    lo_age, hi_age = HEIGHT_AGE_RANGE
+    if not (lo_age <= avg_age < hi_age):
+        return prob_a
+
+    height_diff = height_a - height_b
+    adjusted = prob_a + HEIGHT_COEF * height_diff
+    return min(max(adjusted, 1e-6), 1 - 1e-6)
+
+
 def get_recent_form_residual(player: str, ratings_path: Path, _ratings: pd.DataFrame = None):
     """Recent-form residual as of the ratings file's cutoff date - see elo_ratings.
     compute_recent_form_residuals. None if unknown: the player isn't in the ratings file, the
@@ -360,8 +463,9 @@ def _apply_layoff_adjustment(prob_a: float, days_a, days_b, bucket_edges) -> flo
 # just pulls each player's surface-specific elo and updates ratings
 def win_probability(
     player_a: str, player_b: str, surface: str, ratings_path: Path = ATP_RATINGS_PATH,
-    use_rank_adjustment: bool = True, use_confidence_calibration: bool = True,
+    use_rank_adjustment: bool = False, use_confidence_calibration: bool = True,
     use_layoff_adjustment: bool = True, use_recent_form_adjustment: bool = True,
+    use_height_adjustment: bool = True,
     use_surface_mismatch_damping: bool = True, _ratings: pd.DataFrame = None,
 ) -> float:
     # loaded once and threaded through every get_* call below instead of each one reloading
@@ -396,6 +500,15 @@ def win_probability(
         residual_a = get_recent_form_residual(player_a, ratings_path, _ratings=ratings)
         residual_b = get_recent_form_residual(player_b, ratings_path, _ratings=ratings)
         prob_a = _apply_recent_form_adjustment(prob_a, residual_a, residual_b)
+
+    if use_height_adjustment:
+        height_a = get_height(player_a)
+        height_b = get_height(player_b)
+        birth_a = get_birth_year(player_a)
+        birth_b = get_birth_year(player_b)
+        rank_a = get_current_rank(player_a, ratings_path, _ratings=ratings)
+        rank_b = get_current_rank(player_b, ratings_path, _ratings=ratings)
+        prob_a = _apply_height_adjustment(prob_a, height_a, height_b, birth_a, birth_b, rank_a, rank_b)
 
     if use_confidence_calibration:
         prob_a = _apply_confidence_calibration(prob_a)

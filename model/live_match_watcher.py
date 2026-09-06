@@ -22,6 +22,7 @@ Usage:
 """
 import argparse
 import json
+import subprocess
 import sys
 import time
 import traceback
@@ -183,16 +184,64 @@ def refresh_consolidated(bracket_path, export_output, export_path, seed, dates, 
     """Rebuilds the single consolidated-per-tournament file (futures + round history + model-vs-
     market) from the export_bracket_json result the caller already just produced this cycle -
     reuses it instead of triggering a second live simulation, so this only costs the extra
-    round_history computation (build_round_history), not another full futures run."""
+    round_history computation (build_round_history), not another full futures run.
+
+    Returns the consolidated file's path, or None if the refresh failed this cycle - the caller
+    uses this to know which files to commit (see _git_commit_exports)."""
     try:
         consolidated_path, _output = build_consolidated_export(
             bracket_path, dates=dates, seed=seed, history_simulations=history_simulations,
             current_export=export_output, current_export_path=export_path,
         )
         print(f"Refreshed consolidated export: {consolidated_path}")
+        return consolidated_path
     except (BracketValidationError, LiveScoresError, RuntimeError) as e:
         print(f"WARNING: consolidated export refresh failed this cycle ({e}) - regular export "
               f"above is unaffected, will retry on the next transition", file=sys.stderr)
+        return None
+
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+
+def _git_commit_exports(paths, message):
+    """Best-effort LOCAL commit of this cycle's regenerated export files - per Daron's explicit
+    cadence request ('committed to your repo - not Slack files'): his side reads these two exports
+    from the repo itself, not from whatever gets manually shared, so a regenerated-but-uncommitted
+    export is invisible to him no matter how fresh it is on disk. Deliberately commit-only, NOT
+    push - pushing to the shared remote from an unattended, multi-day process is a materially
+    bigger risk (a bad push is much harder to quietly correct than a bad local commit) and wasn't
+    part of what was actually asked for; a human still reviews and pushes.
+
+    Never raises - same "one cycle's failure must not take down a process meant to run unattended
+    for the rest of the tournament" posture as watch()'s own outermost crash handler. A failed
+    commit here just means this cycle's export sits locally uncommitted until the next successful
+    one (which re-adds and re-commits it along with whatever changed since) - nothing is lost."""
+    existing = [str(p) for p in paths if p and Path(p).exists()]
+    if not existing:
+        return
+    try:
+        add_result = subprocess.run(
+            ["git", "add", *existing], cwd=REPO_ROOT, capture_output=True, text=True,
+        )
+        if add_result.returncode != 0:
+            print(f"WARNING: git add failed this cycle ({add_result.stderr.strip()}) - export(s) "
+                  f"written locally but not committed", file=sys.stderr)
+            return
+        commit_result = subprocess.run(
+            ["git", "commit", "-m", message], cwd=REPO_ROOT, capture_output=True, text=True,
+        )
+        if commit_result.returncode == 0:
+            print(f"Committed: {message}")
+        elif "nothing to commit" in (commit_result.stdout + commit_result.stderr).lower():
+            pass  # regenerated output was byte-identical to what's already committed - not an error
+        else:
+            print(f"WARNING: git commit failed this cycle "
+                  f"({commit_result.stdout.strip() or commit_result.stderr.strip()}) - export(s) "
+                  f"written locally but not committed", file=sys.stderr)
+    except OSError as e:
+        print(f"WARNING: git commit failed this cycle ({e}) - export(s) written locally but not "
+              f"committed", file=sys.stderr)
 
 
 def watch(bracket_path, interval, n_simulations, seed, dates, exit_after, history_simulations=HISTORY_SIMULATIONS_DEFAULT):
@@ -238,7 +287,11 @@ def watch(bracket_path, interval, n_simulations, seed, dates, exit_after, histor
     except LiveScoresError as e:
         print(f"ERROR fetching initial scoreboard: {e}", file=sys.stderr)
         sys.exit(1)
-    refresh_consolidated(bracket_path, baseline_export, _out_path, seed, dates, history_simulations)
+    consolidated_path = refresh_consolidated(bracket_path, baseline_export, _out_path, seed, dates, history_simulations)
+    _git_commit_exports(
+        [_out_path, consolidated_path],
+        f"Live export baseline: {bracket.tournament} ({bracket.tour})",
+    )
     last_statuses = snapshot_statuses(current_matches)
     n_already_final = sum(1 for s in last_statuses.values() if s == "post")
     print(f"{len(last_statuses)} matches tracked, {n_already_final} already Final at startup "
@@ -288,7 +341,12 @@ def watch(bracket_path, interval, n_simulations, seed, dates, exit_after, histor
                   f"at its last-known state, will retry on the next detected completion",
                   file=sys.stderr)
             continue
-        refresh_consolidated(bracket_path, new_export, out_path, seed, dates, history_simulations)
+        consolidated_path = refresh_consolidated(bracket_path, new_export, out_path, seed, dates, history_simulations)
+        settled_names = ", ".join(format_match(m) for m in newly_final)
+        _git_commit_exports(
+            [out_path, consolidated_path],
+            f"Live export update: {bracket.tournament} ({bracket.tour}) - settled: {settled_names}",
+        )
         new_players = players_by_espn_name(new_export)
         print_delta_report(newly_final, current_players, new_players)
         current_players = new_players

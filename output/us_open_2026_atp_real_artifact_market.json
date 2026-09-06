@@ -1,0 +1,50 @@
+[
+  {
+    "player_a": "Alcaraz C.",
+    "player_b": "Paul T.",
+    "market_prob_a": 0.792510508215514,
+    "captured_at": "2026-09-06T16:27:26Z"
+  },
+  {
+    "player_a": "Michelsen A.",
+    "player_b": "Etcheverry T.",
+    "market_prob_a": 0.7131949415413982,
+    "captured_at": "2026-09-06T16:27:26Z"
+  },
+  {
+    "player_a": "Medvedev D.",
+    "player_b": "Tiafoe F.",
+    "market_prob_a": 0.6011689396047872,
+    "captured_at": "2026-09-06T16:27:26Z"
+  },
+  {
+    "player_a": "Shelton B.",
+    "player_b": "Tsitsipas S.",
+    "market_prob_a": 0.6951700344997536,
+    "captured_at": "2026-09-06T16:27:26Z"
+  },
+  {
+    "player_a": "Cerundolo F.",
+    "player_b": "Blockx A.",
+    "market_prob_a": 0.40685585838718746,
+    "captured_at": "2026-09-06T16:27:26Z"
+  },
+  {
+    "player_a": "Zverev A.",
+    "player_b": "Darderi L.",
+    "market_prob_a": 0.8794493882091213,
+    "captured_at": "2026-09-06T16:27:26Z"
+  },
+  {
+    "player_a": "Gea A.",
+    "player_b": "Van De Zandschulp B.",
+    "market_prob_a": 0.4071496361910788,
+    "captured_at": "2026-09-06T16:27:26Z"
+  },
+  {
+    "player_a": "Khachanov K.",
+    "player_b": "Tien L.",
+    "market_prob_a": 0.38888888888888895,
+    "captured_at": "2026-09-06T16:27:26Z"
+  }
+]

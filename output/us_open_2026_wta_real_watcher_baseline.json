@@ -1,0 +1,1324 @@
+{
+  "meta": {
+    "tournament": "us-open-women-2026",
+    "generated_at": "2026-09-05T03:54:34Z",
+    "iterations": 10000,
+    "seed": 42
+  },
+  "players": [
+    {
+      "player": "Aryna Sabalenka",
+      "quarter": "Q1",
+      "p_champ": 0.32,
+      "p_sf": 0.648,
+      "p_final": 0.475
+    },
+    {
+      "player": "Coco Gauff",
+      "quarter": "Q3",
+      "p_champ": 0.142,
+      "p_sf": 0.483,
+      "p_final": 0.279
+    },
+    {
+      "player": "Jessica Pegula",
+      "quarter": "Q2",
+      "p_champ": 0.138,
+      "p_sf": 0.578,
+      "p_final": 0.254
+    },
+    {
+      "player": "Elena Rybakina",
+      "quarter": "Q4",
+      "p_champ": 0.101,
+      "p_sf": 0.368,
+      "p_final": 0.212,
+      "health_adjustment": {
+        "elo_penalty": -100,
+        "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
+      }
+    },
+    {
+      "player": "Iga Swiatek",
+      "quarter": "Q4",
+      "p_champ": 0.087,
+      "p_sf": 0.326,
+      "p_final": 0.19
+    },
+    {
+      "player": "Marta Kostyuk",
+      "quarter": "Q1",
+      "p_champ": 0.052,
+      "p_sf": 0.195,
+      "p_final": 0.109
+    },
+    {
+      "player": "Amanda Anisimova",
+      "quarter": "Q3",
+      "p_champ": 0.031,
+      "p_sf": 0.189,
+      "p_final": 0.082
+    },
+    {
+      "player": "Linda Noskova",
+      "quarter": "Q1",
+      "p_champ": 0.024,
+      "p_sf": 0.115,
+      "p_final": 0.058
+    },
+    {
+      "player": "Mirra Andreeva",
+      "quarter": "Q3",
+      "p_champ": 0.024,
+      "p_sf": 0.157,
+      "p_final": 0.07
+    },
+    {
+      "player": "Naomi Osaka",
+      "quarter": "Q4",
+      "p_champ": 0.021,
+      "p_sf": 0.133,
+      "p_final": 0.056
+    },
+    {
+      "player": "Anna Kalinskaya",
+      "quarter": "Q2",
+      "p_champ": 0.012,
+      "p_sf": 0.184,
+      "p_final": 0.043
+    },
+    {
+      "player": "Sorana Cirstea",
+      "quarter": "Q2",
+      "p_champ": 0.011,
+      "p_sf": 0.151,
+      "p_final": 0.035
+    },
+    {
+      "player": "Madison Keys",
+      "quarter": "Q4",
+      "p_champ": 0.009,
+      "p_sf": 0.076,
+      "p_final": 0.029
+    },
+    {
+      "player": "Alexandra Eala",
+      "quarter": "Q3",
+      "p_champ": 0.007,
+      "p_sf": 0.066,
+      "p_final": 0.023
+    },
+    {
+      "player": "Taylor Townsend",
+      "quarter": "Q1",
+      "p_champ": 0.004,
+      "p_sf": 0.042,
+      "p_final": 0.013
+    },
+    {
+      "player": "Iva Jovic",
+      "quarter": "Q3",
+      "p_champ": 0.004,
+      "p_sf": 0.046,
+      "p_final": 0.014
+    },
+    {
+      "player": "Emma Navarro",
+      "quarter": "Q2",
+      "p_champ": 0.003,
+      "p_sf": 0.086,
+      "p_final": 0.013
+    },
+    {
+      "player": "Zheng Qinwen",
+      "quarter": "Q4",
+      "p_champ": 0.003,
+      "p_sf": 0.039,
+      "p_final": 0.013
+    },
+    {
+      "player": "Elise Mertens",
+      "quarter": "Q4",
+      "p_champ": 0.003,
+      "p_sf": 0.034,
+      "p_final": 0.011
+    },
+    {
+      "player": "Anastasia Potapova",
+      "quarter": "Q3",
+      "p_champ": 0.002,
+      "p_sf": 0.035,
+      "p_final": 0.009
+    },
+    {
+      "player": "Marie Bouzkova",
+      "quarter": "Q4",
+      "p_champ": 0.002,
+      "p_sf": 0.021,
+      "p_final": 0.007
+    },
+    {
+      "player": "Nikola Bartunkova",
+      "quarter": "Q3",
+      "p_champ": 0.001,
+      "p_sf": 0.018,
+      "p_final": 0.004
+    },
+    {
+      "player": "Cristina Bucsa",
+      "quarter": "Q3",
+      "p_champ": 0.0,
+      "p_sf": 0.006,
+      "p_final": 0.001
+    },
+    {
+      "player": "Yuliia Starodubtseva",
+      "quarter": "Q4",
+      "p_champ": 0.0,
+      "p_sf": 0.002,
+      "p_final": 0.0
+    }
+  ],
+  "matchups": {
+    "B-R3-2": {
+      "slot_a": "Anastasia Potapova",
+      "slot_b": "Amanda Anisimova",
+      "p_slot_a": 0.29,
+      "p_slot_b": 0.71
+    },
+    "B-R3-6": {
+      "slot_a": "Madison Keys",
+      "slot_b": "Zheng Qinwen",
+      "p_slot_a": 0.611,
+      "p_slot_b": 0.389
+    },
+    "B-R3-1": {
+      "slot_a": "Mirra Andreeva",
+      "slot_b": "Nikola Bartunkova",
+      "p_slot_a": 0.74,
+      "p_slot_b": 0.26
+    },
+    "B-R3-5": {
+      "slot_a": "Iga Swiatek",
+      "slot_b": "Marie Bouzkova",
+      "p_slot_a": 0.799,
+      "p_slot_b": 0.201
+    },
+    "B-R3-4": {
+      "slot_a": "Cristina Bucsa",
+      "slot_b": "Coco Gauff",
+      "p_slot_a": 0.095,
+      "p_slot_b": 0.905
+    },
+    "B-R3-8": {
+      "slot_a": "Yuliia Starodubtseva",
+      "slot_b": "Elena Rybakina",
+      "p_slot_a": 0.081,
+      "p_slot_b": 0.919
+    },
+    "B-R3-7": {
+      "slot_a": "Naomi Osaka",
+      "slot_b": "Elise Mertens",
+      "p_slot_a": 0.658,
+      "p_slot_b": 0.342
+    },
+    "B-R3-3": {
+      "slot_a": "Iva Jovic",
+      "slot_b": "Alexandra Eala",
+      "p_slot_a": 0.461,
+      "p_slot_b": 0.539
+    },
+    "T-R16-1": {
+      "slot_a": "Aryna Sabalenka",
+      "slot_b": "Taylor Townsend",
+      "p_slot_a": 0.871,
+      "p_slot_b": 0.129
+    },
+    "T-R16-2": {
+      "slot_a": "Marta Kostyuk",
+      "slot_b": "Linda Noskova",
+      "p_slot_a": 0.588,
+      "p_slot_b": 0.412
+    },
+    "T-R16-3": {
+      "slot_a": "Jessica Pegula",
+      "slot_b": "Sorana Cirstea",
+      "p_slot_a": 0.739,
+      "p_slot_b": 0.261
+    },
+    "T-R16-4": {
+      "slot_a": "Anna Kalinskaya",
+      "slot_b": "Emma Navarro",
+      "p_slot_a": 0.615,
+      "p_slot_b": 0.385
+    }
+  },
+  "head_to_head": {
+    "Alexandra Eala|Amanda Anisimova": {
+      "model_prob_a": 0.356,
+      "model_prob_b": 0.644
+    },
+    "Alexandra Eala|Anastasia Potapova": {
+      "model_prob_a": 0.58,
+      "model_prob_b": 0.42
+    },
+    "Alexandra Eala|Anna Kalinskaya": {
+      "model_prob_a": 0.514,
+      "model_prob_b": 0.486
+    },
+    "Alexandra Eala|Aryna Sabalenka": {
+      "model_prob_a": 0.165,
+      "model_prob_b": 0.835
+    },
+    "Alexandra Eala|Coco Gauff": {
+      "model_prob_a": 0.239,
+      "model_prob_b": 0.761
+    },
+    "Alexandra Eala|Cristina Bucsa": {
+      "model_prob_a": 0.751,
+      "model_prob_b": 0.249
+    },
+    "Alexandra Eala|Elena Rybakina": {
+      "model_prob_a": 0.257,
+      "model_prob_b": 0.743
+    },
+    "Alexandra Eala|Elise Mertens": {
+      "model_prob_a": 0.545,
+      "model_prob_b": 0.455
+    },
+    "Alexandra Eala|Emma Navarro": {
+      "model_prob_a": 0.627,
+      "model_prob_b": 0.373
+    },
+    "Alexandra Eala|Iga Swiatek": {
+      "model_prob_a": 0.258,
+      "model_prob_b": 0.742
+    },
+    "Alexandra Eala|Jessica Pegula": {
+      "model_prob_a": 0.259,
+      "model_prob_b": 0.741
+    },
+    "Alexandra Eala|Linda Noskova": {
+      "model_prob_a": 0.405,
+      "model_prob_b": 0.595
+    },
+    "Alexandra Eala|Madison Keys": {
+      "model_prob_a": 0.474,
+      "model_prob_b": 0.526
+    },
+    "Alexandra Eala|Marie Bouzkova": {
+      "model_prob_a": 0.579,
+      "model_prob_b": 0.421
+    },
+    "Alexandra Eala|Marta Kostyuk": {
+      "model_prob_a": 0.323,
+      "model_prob_b": 0.677
+    },
+    "Alexandra Eala|Mirra Andreeva": {
+      "model_prob_a": 0.394,
+      "model_prob_b": 0.606
+    },
+    "Alexandra Eala|Naomi Osaka": {
+      "model_prob_a": 0.38,
+      "model_prob_b": 0.62
+    },
+    "Alexandra Eala|Nikola Bartunkova": {
+      "model_prob_a": 0.649,
+      "model_prob_b": 0.351
+    },
+    "Alexandra Eala|Sorana Cirstea": {
+      "model_prob_a": 0.496,
+      "model_prob_b": 0.504
+    },
+    "Alexandra Eala|Taylor Townsend": {
+      "model_prob_a": 0.629,
+      "model_prob_b": 0.371
+    },
+    "Alexandra Eala|Yuliia Starodubtseva": {
+      "model_prob_a": 0.796,
+      "model_prob_b": 0.204
+    },
+    "Alexandra Eala|Zheng Qinwen": {
+      "model_prob_a": 0.585,
+      "model_prob_b": 0.415
+    },
+    "Amanda Anisimova|Anna Kalinskaya": {
+      "model_prob_a": 0.655,
+      "model_prob_b": 0.345
+    },
+    "Amanda Anisimova|Aryna Sabalenka": {
+      "model_prob_a": 0.263,
+      "model_prob_b": 0.737
+    },
+    "Amanda Anisimova|Coco Gauff": {
+      "model_prob_a": 0.363,
+      "model_prob_b": 0.637
+    },
+    "Amanda Anisimova|Cristina Bucsa": {
+      "model_prob_a": 0.845,
+      "model_prob_b": 0.155
+    },
+    "Amanda Anisimova|Elena Rybakina": {
+      "model_prob_a": 0.385,
+      "model_prob_b": 0.615
+    },
+    "Amanda Anisimova|Elise Mertens": {
+      "model_prob_a": 0.68,
+      "model_prob_b": 0.32
+    },
+    "Amanda Anisimova|Emma Navarro": {
+      "model_prob_a": 0.752,
+      "model_prob_b": 0.248
+    },
+    "Amanda Anisimova|Iga Swiatek": {
+      "model_prob_a": 0.385,
+      "model_prob_b": 0.615
+    },
+    "Amanda Anisimova|Iva Jovic": {
+      "model_prob_a": 0.682,
+      "model_prob_b": 0.318
+    },
+    "Amanda Anisimova|Jessica Pegula": {
+      "model_prob_a": 0.387,
+      "model_prob_b": 0.613
+    },
+    "Amanda Anisimova|Linda Noskova": {
+      "model_prob_a": 0.549,
+      "model_prob_b": 0.451
+    },
+    "Amanda Anisimova|Madison Keys": {
+      "model_prob_a": 0.616,
+      "model_prob_b": 0.384
+    },
+    "Amanda Anisimova|Marie Bouzkova": {
+      "model_prob_a": 0.713,
+      "model_prob_b": 0.287
+    },
+    "Amanda Anisimova|Marta Kostyuk": {
+      "model_prob_a": 0.464,
+      "model_prob_b": 0.536
+    },
+    "Amanda Anisimova|Mirra Andreeva": {
+      "model_prob_a": 0.537,
+      "model_prob_b": 0.463
+    },
+    "Amanda Anisimova|Naomi Osaka": {
+      "model_prob_a": 0.528,
+      "model_prob_b": 0.472
+    },
+    "Amanda Anisimova|Nikola Bartunkova": {
+      "model_prob_a": 0.77,
+      "model_prob_b": 0.23
+    },
+    "Amanda Anisimova|Sorana Cirstea": {
+      "model_prob_a": 0.641,
+      "model_prob_b": 0.359
+    },
+    "Amanda Anisimova|Taylor Townsend": {
+      "model_prob_a": 0.706,
+      "model_prob_b": 0.294
+    },
+    "Amanda Anisimova|Yuliia Starodubtseva": {
+      "model_prob_a": 0.876,
+      "model_prob_b": 0.124
+    },
+    "Amanda Anisimova|Zheng Qinwen": {
+      "model_prob_a": 0.648,
+      "model_prob_b": 0.352
+    },
+    "Anastasia Potapova|Anna Kalinskaya": {
+      "model_prob_a": 0.434,
+      "model_prob_b": 0.566
+    },
+    "Anastasia Potapova|Aryna Sabalenka": {
+      "model_prob_a": 0.127,
+      "model_prob_b": 0.873
+    },
+    "Anastasia Potapova|Coco Gauff": {
+      "model_prob_a": 0.189,
+      "model_prob_b": 0.811
+    },
+    "Anastasia Potapova|Cristina Bucsa": {
+      "model_prob_a": 0.69,
+      "model_prob_b": 0.31
+    },
+    "Anastasia Potapova|Elena Rybakina": {
+      "model_prob_a": 0.204,
+      "model_prob_b": 0.796
+    },
+    "Anastasia Potapova|Elise Mertens": {
+      "model_prob_a": 0.465,
+      "model_prob_b": 0.535
+    },
+    "Anastasia Potapova|Emma Navarro": {
+      "model_prob_a": 0.554,
+      "model_prob_b": 0.446
+    },
+    "Anastasia Potapova|Iga Swiatek": {
+      "model_prob_a": 0.204,
+      "model_prob_b": 0.796
+    },
+    "Anastasia Potapova|Iva Jovic": {
+      "model_prob_a": 0.459,
+      "model_prob_b": 0.541
+    },
+    "Anastasia Potapova|Jessica Pegula": {
+      "model_prob_a": 0.205,
+      "model_prob_b": 0.795
+    },
+    "Anastasia Potapova|Linda Noskova": {
+      "model_prob_a": 0.335,
+      "model_prob_b": 0.665
+    },
+    "Anastasia Potapova|Madison Keys": {
+      "model_prob_a": 0.396,
+      "model_prob_b": 0.604
+    },
+    "Anastasia Potapova|Marie Bouzkova": {
+      "model_prob_a": 0.506,
+      "model_prob_b": 0.494
+    },
+    "Anastasia Potapova|Marta Kostyuk": {
+      "model_prob_a": 0.261,
+      "model_prob_b": 0.739
+    },
+    "Anastasia Potapova|Mirra Andreeva": {
+      "model_prob_a": 0.325,
+      "model_prob_b": 0.675
+    },
+    "Anastasia Potapova|Naomi Osaka": {
+      "model_prob_a": 0.312,
+      "model_prob_b": 0.688
+    },
+    "Anastasia Potapova|Nikola Bartunkova": {
+      "model_prob_a": 0.577,
+      "model_prob_b": 0.423
+    },
+    "Anastasia Potapova|Sorana Cirstea": {
+      "model_prob_a": 0.422,
+      "model_prob_b": 0.578
+    },
+    "Anastasia Potapova|Taylor Townsend": {
+      "model_prob_a": 0.553,
+      "model_prob_b": 0.447
+    },
+    "Anastasia Potapova|Yuliia Starodubtseva": {
+      "model_prob_a": 0.743,
+      "model_prob_b": 0.257
+    },
+    "Anastasia Potapova|Zheng Qinwen": {
+      "model_prob_a": 0.429,
+      "model_prob_b": 0.571
+    },
+    "Anna Kalinskaya|Aryna Sabalenka": {
+      "model_prob_a": 0.158,
+      "model_prob_b": 0.842
+    },
+    "Anna Kalinskaya|Coco Gauff": {
+      "model_prob_a": 0.23,
+      "model_prob_b": 0.77
+    },
+    "Anna Kalinskaya|Cristina Bucsa": {
+      "model_prob_a": 0.741,
+      "model_prob_b": 0.259
+    },
+    "Anna Kalinskaya|Elena Rybakina": {
+      "model_prob_a": 0.248,
+      "model_prob_b": 0.752
+    },
+    "Anna Kalinskaya|Elise Mertens": {
+      "model_prob_a": 0.531,
+      "model_prob_b": 0.469
+    },
+    "Anna Kalinskaya|Iga Swiatek": {
+      "model_prob_a": 0.248,
+      "model_prob_b": 0.752
+    },
+    "Anna Kalinskaya|Iva Jovic": {
+      "model_prob_a": 0.526,
+      "model_prob_b": 0.474
+    },
+    "Anna Kalinskaya|Jessica Pegula": {
+      "model_prob_a": 0.249,
+      "model_prob_b": 0.751
+    },
+    "Anna Kalinskaya|Linda Noskova": {
+      "model_prob_a": 0.392,
+      "model_prob_b": 0.608
+    },
+    "Anna Kalinskaya|Madison Keys": {
+      "model_prob_a": 0.46,
+      "model_prob_b": 0.54
+    },
+    "Anna Kalinskaya|Marie Bouzkova": {
+      "model_prob_a": 0.566,
+      "model_prob_b": 0.434
+    },
+    "Anna Kalinskaya|Marta Kostyuk": {
+      "model_prob_a": 0.312,
+      "model_prob_b": 0.688
+    },
+    "Anna Kalinskaya|Mirra Andreeva": {
+      "model_prob_a": 0.382,
+      "model_prob_b": 0.618
+    },
+    "Anna Kalinskaya|Naomi Osaka": {
+      "model_prob_a": 0.368,
+      "model_prob_b": 0.632
+    },
+    "Anna Kalinskaya|Nikola Bartunkova": {
+      "model_prob_a": 0.637,
+      "model_prob_b": 0.363
+    },
+    "Anna Kalinskaya|Sorana Cirstea": {
+      "model_prob_a": 0.482,
+      "model_prob_b": 0.518
+    },
+    "Anna Kalinskaya|Taylor Townsend": {
+      "model_prob_a": 0.617,
+      "model_prob_b": 0.383
+    },
+    "Anna Kalinskaya|Yuliia Starodubtseva": {
+      "model_prob_a": 0.788,
+      "model_prob_b": 0.212
+    },
+    "Anna Kalinskaya|Zheng Qinwen": {
+      "model_prob_a": 0.572,
+      "model_prob_b": 0.428
+    },
+    "Aryna Sabalenka|Coco Gauff": {
+      "model_prob_a": 0.615,
+      "model_prob_b": 0.385
+    },
+    "Aryna Sabalenka|Cristina Bucsa": {
+      "model_prob_a": 0.939,
+      "model_prob_b": 0.061
+    },
+    "Aryna Sabalenka|Elena Rybakina": {
+      "model_prob_a": 0.637,
+      "model_prob_b": 0.363
+    },
+    "Aryna Sabalenka|Elise Mertens": {
+      "model_prob_a": 0.857,
+      "model_prob_b": 0.143
+    },
+    "Aryna Sabalenka|Emma Navarro": {
+      "model_prob_a": 0.895,
+      "model_prob_b": 0.105
+    },
+    "Aryna Sabalenka|Iga Swiatek": {
+      "model_prob_a": 0.637,
+      "model_prob_b": 0.363
+    },
+    "Aryna Sabalenka|Iva Jovic": {
+      "model_prob_a": 0.858,
+      "model_prob_b": 0.142
+    },
+    "Aryna Sabalenka|Jessica Pegula": {
+      "model_prob_a": 0.639,
+      "model_prob_b": 0.361
+    },
+    "Aryna Sabalenka|Linda Noskova": {
+      "model_prob_a": 0.775,
+      "model_prob_b": 0.225
+    },
+    "Aryna Sabalenka|Madison Keys": {
+      "model_prob_a": 0.818,
+      "model_prob_b": 0.182
+    },
+    "Aryna Sabalenka|Marie Bouzkova": {
+      "model_prob_a": 0.874,
+      "model_prob_b": 0.126
+    },
+    "Aryna Sabalenka|Marta Kostyuk": {
+      "model_prob_a": 0.707,
+      "model_prob_b": 0.293
+    },
+    "Aryna Sabalenka|Mirra Andreeva": {
+      "model_prob_a": 0.767,
+      "model_prob_b": 0.233
+    },
+    "Aryna Sabalenka|Naomi Osaka": {
+      "model_prob_a": 0.757,
+      "model_prob_b": 0.243
+    },
+    "Aryna Sabalenka|Nikola Bartunkova": {
+      "model_prob_a": 0.904,
+      "model_prob_b": 0.096
+    },
+    "Aryna Sabalenka|Sorana Cirstea": {
+      "model_prob_a": 0.833,
+      "model_prob_b": 0.167
+    },
+    "Aryna Sabalenka|Yuliia Starodubtseva": {
+      "model_prob_a": 0.952,
+      "model_prob_b": 0.048
+    },
+    "Aryna Sabalenka|Zheng Qinwen": {
+      "model_prob_a": 0.838,
+      "model_prob_b": 0.162
+    },
+    "Coco Gauff|Elena Rybakina": {
+      "model_prob_a": 0.522,
+      "model_prob_b": 0.478
+    },
+    "Coco Gauff|Elise Mertens": {
+      "model_prob_a": 0.789,
+      "model_prob_b": 0.211
+    },
+    "Coco Gauff|Emma Navarro": {
+      "model_prob_a": 0.842,
+      "model_prob_b": 0.158
+    },
+    "Coco Gauff|Iga Swiatek": {
+      "model_prob_a": 0.525,
+      "model_prob_b": 0.475
+    },
+    "Coco Gauff|Iva Jovic": {
+      "model_prob_a": 0.791,
+      "model_prob_b": 0.209
+    },
+    "Coco Gauff|Jessica Pegula": {
+      "model_prob_a": 0.525,
+      "model_prob_b": 0.475
+    },
+    "Coco Gauff|Linda Noskova": {
+      "model_prob_a": 0.684,
+      "model_prob_b": 0.316
+    },
+    "Coco Gauff|Madison Keys": {
+      "model_prob_a": 0.738,
+      "model_prob_b": 0.262
+    },
+    "Coco Gauff|Marie Bouzkova": {
+      "model_prob_a": 0.814,
+      "model_prob_b": 0.186
+    },
+    "Coco Gauff|Marta Kostyuk": {
+      "model_prob_a": 0.602,
+      "model_prob_b": 0.398
+    },
+    "Coco Gauff|Mirra Andreeva": {
+      "model_prob_a": 0.674,
+      "model_prob_b": 0.326
+    },
+    "Coco Gauff|Naomi Osaka": {
+      "model_prob_a": 0.661,
+      "model_prob_b": 0.339
+    },
+    "Coco Gauff|Nikola Bartunkova": {
+      "model_prob_a": 0.854,
+      "model_prob_b": 0.146
+    },
+    "Coco Gauff|Sorana Cirstea": {
+      "model_prob_a": 0.758,
+      "model_prob_b": 0.242
+    },
+    "Coco Gauff|Taylor Townsend": {
+      "model_prob_a": 0.809,
+      "model_prob_b": 0.191
+    },
+    "Coco Gauff|Yuliia Starodubtseva": {
+      "model_prob_a": 0.925,
+      "model_prob_b": 0.075
+    },
+    "Coco Gauff|Zheng Qinwen": {
+      "model_prob_a": 0.764,
+      "model_prob_b": 0.236
+    },
+    "Cristina Bucsa|Elena Rybakina": {
+      "model_prob_a": 0.103,
+      "model_prob_b": 0.897
+    },
+    "Cristina Bucsa|Elise Mertens": {
+      "model_prob_a": 0.281,
+      "model_prob_b": 0.719
+    },
+    "Cristina Bucsa|Emma Navarro": {
+      "model_prob_a": 0.358,
+      "model_prob_b": 0.642
+    },
+    "Cristina Bucsa|Iga Swiatek": {
+      "model_prob_a": 0.103,
+      "model_prob_b": 0.897
+    },
+    "Cristina Bucsa|Iva Jovic": {
+      "model_prob_a": 0.283,
+      "model_prob_b": 0.717
+    },
+    "Cristina Bucsa|Jessica Pegula": {
+      "model_prob_a": 0.104,
+      "model_prob_b": 0.896
+    },
+    "Cristina Bucsa|Linda Noskova": {
+      "model_prob_a": 0.184,
+      "model_prob_b": 0.816
+    },
+    "Cristina Bucsa|Madison Keys": {
+      "model_prob_a": 0.227,
+      "model_prob_b": 0.773
+    },
+    "Cristina Bucsa|Marie Bouzkova": {
+      "model_prob_a": 0.313,
+      "model_prob_b": 0.687
+    },
+    "Cristina Bucsa|Marta Kostyuk": {
+      "model_prob_a": 0.137,
+      "model_prob_b": 0.863
+    },
+    "Cristina Bucsa|Mirra Andreeva": {
+      "model_prob_a": 0.178,
+      "model_prob_b": 0.822
+    },
+    "Cristina Bucsa|Naomi Osaka": {
+      "model_prob_a": 0.169,
+      "model_prob_b": 0.831
+    },
+    "Cristina Bucsa|Nikola Bartunkova": {
+      "model_prob_a": 0.38,
+      "model_prob_b": 0.62
+    },
+    "Cristina Bucsa|Sorana Cirstea": {
+      "model_prob_a": 0.247,
+      "model_prob_b": 0.753
+    },
+    "Cristina Bucsa|Taylor Townsend": {
+      "model_prob_a": 0.306,
+      "model_prob_b": 0.694
+    },
+    "Cristina Bucsa|Yuliia Starodubtseva": {
+      "model_prob_a": 0.565,
+      "model_prob_b": 0.435
+    },
+    "Cristina Bucsa|Zheng Qinwen": {
+      "model_prob_a": 0.252,
+      "model_prob_b": 0.748
+    },
+    "Elena Rybakina|Elise Mertens": {
+      "model_prob_a": 0.773,
+      "model_prob_b": 0.227
+    },
+    "Elena Rybakina|Emma Navarro": {
+      "model_prob_a": 0.829,
+      "model_prob_b": 0.171
+    },
+    "Elena Rybakina|Iga Swiatek": {
+      "model_prob_a": 0.503,
+      "model_prob_b": 0.497
+    },
+    "Elena Rybakina|Iva Jovic": {
+      "model_prob_a": 0.774,
+      "model_prob_b": 0.226
+    },
+    "Elena Rybakina|Jessica Pegula": {
+      "model_prob_a": 0.503,
+      "model_prob_b": 0.497
+    },
+    "Elena Rybakina|Linda Noskova": {
+      "model_prob_a": 0.662,
+      "model_prob_b": 0.338
+    },
+    "Elena Rybakina|Madison Keys": {
+      "model_prob_a": 0.719,
+      "model_prob_b": 0.281
+    },
+    "Elena Rybakina|Marie Bouzkova": {
+      "model_prob_a": 0.799,
+      "model_prob_b": 0.201
+    },
+    "Elena Rybakina|Marta Kostyuk": {
+      "model_prob_a": 0.579,
+      "model_prob_b": 0.421
+    },
+    "Elena Rybakina|Mirra Andreeva": {
+      "model_prob_a": 0.653,
+      "model_prob_b": 0.347
+    },
+    "Elena Rybakina|Naomi Osaka": {
+      "model_prob_a": 0.639,
+      "model_prob_b": 0.361
+    },
+    "Elena Rybakina|Nikola Bartunkova": {
+      "model_prob_a": 0.842,
+      "model_prob_b": 0.158
+    },
+    "Elena Rybakina|Sorana Cirstea": {
+      "model_prob_a": 0.74,
+      "model_prob_b": 0.26
+    },
+    "Elena Rybakina|Taylor Townsend": {
+      "model_prob_a": 0.793,
+      "model_prob_b": 0.207
+    },
+    "Elena Rybakina|Zheng Qinwen": {
+      "model_prob_a": 0.746,
+      "model_prob_b": 0.254
+    },
+    "Elise Mertens|Emma Navarro": {
+      "model_prob_a": 0.588,
+      "model_prob_b": 0.412
+    },
+    "Elise Mertens|Iga Swiatek": {
+      "model_prob_a": 0.227,
+      "model_prob_b": 0.773
+    },
+    "Elise Mertens|Iva Jovic": {
+      "model_prob_a": 0.495,
+      "model_prob_b": 0.505
+    },
+    "Elise Mertens|Jessica Pegula": {
+      "model_prob_a": 0.228,
+      "model_prob_b": 0.772
+    },
+    "Elise Mertens|Linda Noskova": {
+      "model_prob_a": 0.366,
+      "model_prob_b": 0.634
+    },
+    "Elise Mertens|Madison Keys": {
+      "model_prob_a": 0.429,
+      "model_prob_b": 0.571
+    },
+    "Elise Mertens|Marie Bouzkova": {
+      "model_prob_a": 0.541,
+      "model_prob_b": 0.459
+    },
+    "Elise Mertens|Marta Kostyuk": {
+      "model_prob_a": 0.288,
+      "model_prob_b": 0.712
+    },
+    "Elise Mertens|Mirra Andreeva": {
+      "model_prob_a": 0.356,
+      "model_prob_b": 0.644
+    },
+    "Elise Mertens|Nikola Bartunkova": {
+      "model_prob_a": 0.611,
+      "model_prob_b": 0.389
+    },
+    "Elise Mertens|Sorana Cirstea": {
+      "model_prob_a": 0.451,
+      "model_prob_b": 0.549
+    },
+    "Elise Mertens|Taylor Townsend": {
+      "model_prob_a": 0.587,
+      "model_prob_b": 0.413
+    },
+    "Elise Mertens|Yuliia Starodubtseva": {
+      "model_prob_a": 0.768,
+      "model_prob_b": 0.232
+    },
+    "Elise Mertens|Zheng Qinwen": {
+      "model_prob_a": 0.463,
+      "model_prob_b": 0.537
+    },
+    "Emma Navarro|Iga Swiatek": {
+      "model_prob_a": 0.171,
+      "model_prob_b": 0.829
+    },
+    "Emma Navarro|Iva Jovic": {
+      "model_prob_a": 0.414,
+      "model_prob_b": 0.586
+    },
+    "Emma Navarro|Jessica Pegula": {
+      "model_prob_a": 0.172,
+      "model_prob_b": 0.828
+    },
+    "Emma Navarro|Linda Noskova": {
+      "model_prob_a": 0.288,
+      "model_prob_b": 0.712
+    },
+    "Emma Navarro|Madison Keys": {
+      "model_prob_a": 0.345,
+      "model_prob_b": 0.655
+    },
+    "Emma Navarro|Marie Bouzkova": {
+      "model_prob_a": 0.449,
+      "model_prob_b": 0.551
+    },
+    "Emma Navarro|Marta Kostyuk": {
+      "model_prob_a": 0.221,
+      "model_prob_b": 0.779
+    },
+    "Emma Navarro|Mirra Andreeva": {
+      "model_prob_a": 0.279,
+      "model_prob_b": 0.721
+    },
+    "Emma Navarro|Naomi Osaka": {
+      "model_prob_a": 0.267,
+      "model_prob_b": 0.733
+    },
+    "Emma Navarro|Nikola Bartunkova": {
+      "model_prob_a": 0.533,
+      "model_prob_b": 0.467
+    },
+    "Emma Navarro|Sorana Cirstea": {
+      "model_prob_a": 0.37,
+      "model_prob_b": 0.63
+    },
+    "Emma Navarro|Taylor Townsend": {
+      "model_prob_a": 0.497,
+      "model_prob_b": 0.503
+    },
+    "Emma Navarro|Yuliia Starodubtseva": {
+      "model_prob_a": 0.699,
+      "model_prob_b": 0.301
+    },
+    "Emma Navarro|Zheng Qinwen": {
+      "model_prob_a": 0.377,
+      "model_prob_b": 0.623
+    },
+    "Iga Swiatek|Iva Jovic": {
+      "model_prob_a": 0.774,
+      "model_prob_b": 0.226
+    },
+    "Iga Swiatek|Jessica Pegula": {
+      "model_prob_a": 0.499,
+      "model_prob_b": 0.501
+    },
+    "Iga Swiatek|Linda Noskova": {
+      "model_prob_a": 0.662,
+      "model_prob_b": 0.338
+    },
+    "Iga Swiatek|Madison Keys": {
+      "model_prob_a": 0.719,
+      "model_prob_b": 0.281
+    },
+    "Iga Swiatek|Marta Kostyuk": {
+      "model_prob_a": 0.579,
+      "model_prob_b": 0.421
+    },
+    "Iga Swiatek|Mirra Andreeva": {
+      "model_prob_a": 0.652,
+      "model_prob_b": 0.348
+    },
+    "Iga Swiatek|Naomi Osaka": {
+      "model_prob_a": 0.639,
+      "model_prob_b": 0.361
+    },
+    "Iga Swiatek|Nikola Bartunkova": {
+      "model_prob_a": 0.842,
+      "model_prob_b": 0.158
+    },
+    "Iga Swiatek|Sorana Cirstea": {
+      "model_prob_a": 0.74,
+      "model_prob_b": 0.26
+    },
+    "Iga Swiatek|Taylor Townsend": {
+      "model_prob_a": 0.793,
+      "model_prob_b": 0.207
+    },
+    "Iga Swiatek|Yuliia Starodubtseva": {
+      "model_prob_a": 0.918,
+      "model_prob_b": 0.082
+    },
+    "Iga Swiatek|Zheng Qinwen": {
+      "model_prob_a": 0.746,
+      "model_prob_b": 0.254
+    },
+    "Iva Jovic|Jessica Pegula": {
+      "model_prob_a": 0.227,
+      "model_prob_b": 0.773
+    },
+    "Iva Jovic|Linda Noskova": {
+      "model_prob_a": 0.364,
+      "model_prob_b": 0.636
+    },
+    "Iva Jovic|Madison Keys": {
+      "model_prob_a": 0.427,
+      "model_prob_b": 0.573
+    },
+    "Iva Jovic|Marie Bouzkova": {
+      "model_prob_a": 0.546,
+      "model_prob_b": 0.454
+    },
+    "Iva Jovic|Marta Kostyuk": {
+      "model_prob_a": 0.286,
+      "model_prob_b": 0.714
+    },
+    "Iva Jovic|Mirra Andreeva": {
+      "model_prob_a": 0.354,
+      "model_prob_b": 0.646
+    },
+    "Iva Jovic|Naomi Osaka": {
+      "model_prob_a": 0.34,
+      "model_prob_b": 0.66
+    },
+    "Iva Jovic|Nikola Bartunkova": {
+      "model_prob_a": 0.609,
+      "model_prob_b": 0.391
+    },
+    "Iva Jovic|Sorana Cirstea": {
+      "model_prob_a": 0.456,
+      "model_prob_b": 0.544
+    },
+    "Iva Jovic|Taylor Townsend": {
+      "model_prob_a": 0.591,
+      "model_prob_b": 0.409
+    },
+    "Iva Jovic|Yuliia Starodubtseva": {
+      "model_prob_a": 0.767,
+      "model_prob_b": 0.233
+    },
+    "Iva Jovic|Zheng Qinwen": {
+      "model_prob_a": 0.461,
+      "model_prob_b": 0.539
+    },
+    "Jessica Pegula|Linda Noskova": {
+      "model_prob_a": 0.661,
+      "model_prob_b": 0.339
+    },
+    "Jessica Pegula|Madison Keys": {
+      "model_prob_a": 0.718,
+      "model_prob_b": 0.282
+    },
+    "Jessica Pegula|Marie Bouzkova": {
+      "model_prob_a": 0.798,
+      "model_prob_b": 0.202
+    },
+    "Jessica Pegula|Marta Kostyuk": {
+      "model_prob_a": 0.577,
+      "model_prob_b": 0.423
+    },
+    "Jessica Pegula|Mirra Andreeva": {
+      "model_prob_a": 0.651,
+      "model_prob_b": 0.349
+    },
+    "Jessica Pegula|Naomi Osaka": {
+      "model_prob_a": 0.637,
+      "model_prob_b": 0.363
+    },
+    "Jessica Pegula|Nikola Bartunkova": {
+      "model_prob_a": 0.841,
+      "model_prob_b": 0.159
+    },
+    "Jessica Pegula|Taylor Townsend": {
+      "model_prob_a": 0.792,
+      "model_prob_b": 0.208
+    },
+    "Jessica Pegula|Yuliia Starodubtseva": {
+      "model_prob_a": 0.918,
+      "model_prob_b": 0.082
+    },
+    "Jessica Pegula|Zheng Qinwen": {
+      "model_prob_a": 0.745,
+      "model_prob_b": 0.255
+    },
+    "Linda Noskova|Madison Keys": {
+      "model_prob_a": 0.58,
+      "model_prob_b": 0.42
+    },
+    "Linda Noskova|Marie Bouzkova": {
+      "model_prob_a": 0.669,
+      "model_prob_b": 0.331
+    },
+    "Linda Noskova|Mirra Andreeva": {
+      "model_prob_a": 0.487,
+      "model_prob_b": 0.513
+    },
+    "Linda Noskova|Naomi Osaka": {
+      "model_prob_a": 0.479,
+      "model_prob_b": 0.521
+    },
+    "Linda Noskova|Nikola Bartunkova": {
+      "model_prob_a": 0.731,
+      "model_prob_b": 0.269
+    },
+    "Linda Noskova|Sorana Cirstea": {
+      "model_prob_a": 0.592,
+      "model_prob_b": 0.408
+    },
+    "Linda Noskova|Taylor Townsend": {
+      "model_prob_a": 0.662,
+      "model_prob_b": 0.338
+    },
+    "Linda Noskova|Yuliia Starodubtseva": {
+      "model_prob_a": 0.852,
+      "model_prob_b": 0.148
+    },
+    "Linda Noskova|Zheng Qinwen": {
+      "model_prob_a": 0.681,
+      "model_prob_b": 0.319
+    },
+    "Madison Keys|Marie Bouzkova": {
+      "model_prob_a": 0.608,
+      "model_prob_b": 0.392
+    },
+    "Madison Keys|Marta Kostyuk": {
+      "model_prob_a": 0.35,
+      "model_prob_b": 0.65
+    },
+    "Madison Keys|Mirra Andreeva": {
+      "model_prob_a": 0.423,
+      "model_prob_b": 0.577
+    },
+    "Madison Keys|Naomi Osaka": {
+      "model_prob_a": 0.409,
+      "model_prob_b": 0.591
+    },
+    "Madison Keys|Nikola Bartunkova": {
+      "model_prob_a": 0.676,
+      "model_prob_b": 0.324
+    },
+    "Madison Keys|Sorana Cirstea": {
+      "model_prob_a": 0.522,
+      "model_prob_b": 0.478
+    },
+    "Madison Keys|Taylor Townsend": {
+      "model_prob_a": 0.6,
+      "model_prob_b": 0.4
+    },
+    "Madison Keys|Yuliia Starodubtseva": {
+      "model_prob_a": 0.815,
+      "model_prob_b": 0.185
+    },
+    "Marie Bouzkova|Marta Kostyuk": {
+      "model_prob_a": 0.257,
+      "model_prob_b": 0.743
+    },
+    "Marie Bouzkova|Mirra Andreeva": {
+      "model_prob_a": 0.321,
+      "model_prob_b": 0.679
+    },
+    "Marie Bouzkova|Naomi Osaka": {
+      "model_prob_a": 0.308,
+      "model_prob_b": 0.692
+    },
+    "Marie Bouzkova|Nikola Bartunkova": {
+      "model_prob_a": 0.573,
+      "model_prob_b": 0.427
+    },
+    "Marie Bouzkova|Sorana Cirstea": {
+      "model_prob_a": 0.418,
+      "model_prob_b": 0.582
+    },
+    "Marie Bouzkova|Taylor Townsend": {
+      "model_prob_a": 0.547,
+      "model_prob_b": 0.453
+    },
+    "Marie Bouzkova|Yuliia Starodubtseva": {
+      "model_prob_a": 0.74,
+      "model_prob_b": 0.26
+    },
+    "Marie Bouzkova|Zheng Qinwen": {
+      "model_prob_a": 0.425,
+      "model_prob_b": 0.575
+    },
+    "Marta Kostyuk|Mirra Andreeva": {
+      "model_prob_a": 0.577,
+      "model_prob_b": 0.423
+    },
+    "Marta Kostyuk|Naomi Osaka": {
+      "model_prob_a": 0.565,
+      "model_prob_b": 0.435
+    },
+    "Marta Kostyuk|Nikola Bartunkova": {
+      "model_prob_a": 0.795,
+      "model_prob_b": 0.205
+    },
+    "Marta Kostyuk|Sorana Cirstea": {
+      "model_prob_a": 0.674,
+      "model_prob_b": 0.326
+    },
+    "Marta Kostyuk|Taylor Townsend": {
+      "model_prob_a": 0.736,
+      "model_prob_b": 0.264
+    },
+    "Marta Kostyuk|Yuliia Starodubtseva": {
+      "model_prob_a": 0.891,
+      "model_prob_b": 0.109
+    },
+    "Marta Kostyuk|Zheng Qinwen": {
+      "model_prob_a": 0.681,
+      "model_prob_b": 0.319
+    },
+    "Mirra Andreeva|Naomi Osaka": {
+      "model_prob_a": 0.492,
+      "model_prob_b": 0.508
+    },
+    "Mirra Andreeva|Sorana Cirstea": {
+      "model_prob_a": 0.602,
+      "model_prob_b": 0.398
+    },
+    "Mirra Andreeva|Taylor Townsend": {
+      "model_prob_a": 0.671,
+      "model_prob_b": 0.329
+    },
+    "Mirra Andreeva|Yuliia Starodubtseva": {
+      "model_prob_a": 0.857,
+      "model_prob_b": 0.143
+    },
+    "Mirra Andreeva|Zheng Qinwen": {
+      "model_prob_a": 0.61,
+      "model_prob_b": 0.39
+    },
+    "Naomi Osaka|Nikola Bartunkova": {
+      "model_prob_a": 0.751,
+      "model_prob_b": 0.249
+    },
+    "Naomi Osaka|Sorana Cirstea": {
+      "model_prob_a": 0.617,
+      "model_prob_b": 0.383
+    },
+    "Naomi Osaka|Taylor Townsend": {
+      "model_prob_a": 0.684,
+      "model_prob_b": 0.316
+    },
+    "Naomi Osaka|Yuliia Starodubtseva": {
+      "model_prob_a": 0.864,
+      "model_prob_b": 0.136
+    },
+    "Naomi Osaka|Zheng Qinwen": {
+      "model_prob_a": 0.624,
+      "model_prob_b": 0.376
+    },
+    "Nikola Bartunkova|Sorana Cirstea": {
+      "model_prob_a": 0.348,
+      "model_prob_b": 0.652
+    },
+    "Nikola Bartunkova|Taylor Townsend": {
+      "model_prob_a": 0.418,
+      "model_prob_b": 0.582
+    },
+    "Nikola Bartunkova|Yuliia Starodubtseva": {
+      "model_prob_a": 0.679,
+      "model_prob_b": 0.321
+    },
+    "Nikola Bartunkova|Zheng Qinwen": {
+      "model_prob_a": 0.355,
+      "model_prob_b": 0.645
+    },
+    "Sorana Cirstea|Taylor Townsend": {
+      "model_prob_a": 0.574,
+      "model_prob_b": 0.426
+    },
+    "Sorana Cirstea|Yuliia Starodubtseva": {
+      "model_prob_a": 0.798,
+      "model_prob_b": 0.202
+    },
+    "Sorana Cirstea|Zheng Qinwen": {
+      "model_prob_a": 0.589,
+      "model_prob_b": 0.411
+    },
+    "Taylor Townsend|Yuliia Starodubtseva": {
+      "model_prob_a": 0.746,
+      "model_prob_b": 0.254
+    },
+    "Taylor Townsend|Zheng Qinwen": {
+      "model_prob_a": 0.434,
+      "model_prob_b": 0.566
+    },
+    "Yuliia Starodubtseva|Zheng Qinwen": {
+      "model_prob_a": 0.207,
+      "model_prob_b": 0.793
+    }
+  },
+  "health_adjustments": [
+    {
+      "player": "Rybakina E.",
+      "elo_penalty": -100,
+      "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
+    }
+  ],
+  "warnings": [
+    "One or more players carry a manual health_adjustment (see overrides.yaml) - a disclosed human judgment call, not a statistical model output. Affected players are flagged individually under players[].health_adjustment; see also the top-level health_adjustments list."
+  ]
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "player_a": "Sabalenka A.",
+    "player_b": "Townsend T.",
+    "market_prob_a": 0.880468404772426,
+    "captured_at": "2026-09-06T16:27:31Z"
+  },
+  {
+    "player_a": "Noskova L.",
+    "player_b": "Kostyuk M.",
+    "market_prob_a": 0.42991721381672854,
+    "captured_at": "2026-09-06T16:27:31Z"
+  },
+  {
+    "player_a": "Cirstea S.",
+    "player_b": "Pegula J.",
+    "market_prob_a": 0.2949308755760369,
+    "captured_at": "2026-09-06T16:27:31Z"
+  },
+  {
+    "player_a": "Navarro E.",
+    "player_b": "Kalinskaya A.",
+    "market_prob_a": 0.49824868651488624,
+    "captured_at": "2026-09-06T16:27:31Z"
+  },
+  {
+    "player_a": "Potapova A.",
+    "player_b": "Andreeva M.",
+    "market_prob_a": 0.16514203177660086,
+    "captured_at": "2026-09-06T16:27:31Z"
+  },
+  {
+    "player_a": "Osaka N.",
+    "player_b": "Rybakina E.",
+    "market_prob_a": 0.4543683013965573,
+    "captured_at": "2026-09-06T16:27:31Z"
+  },
+  {
+    "player_a": "Swiatek I.",
+    "player_b": "Zheng Q.",
+    "market_prob_a": 0.7787592852840794,
+    "captured_at": "2026-09-06T16:27:31Z"
+  }
+]

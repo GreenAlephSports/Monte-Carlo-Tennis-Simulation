@@ -176,11 +176,31 @@ def resolve_qualifier_placeholders(players, byes, tournament_matches, ratings_df
 
         resolved_csv_name = match_espn_name_to_draw(qualifier_espn_name, ratings_names, name_aliases)
         if resolved_csv_name is None:
+            # Real bug this branch used to hit (confirmed 2026-09-05, Coleman Wong at the 2026 US
+            # Open): leaving the placeholder unresolved here means it's STILL literally
+            # 'TBD (Qualifier N)' - a string that can never match this player's own real ESPN
+            # results later (match_espn_name_to_draw has nothing to compare it against), so a real,
+            # live, alive qualifier silently drops out of the whole export with no further trace
+            # beyond this one warning - exactly the failure mode this function's own docstring
+            # already anticipated ("the real qualifier can then never be matched against ESPN's
+            # live results and gets silently dropped"). This was previously "documented but not
+            # actually prevented".
+            #
+            # Fix: fall back to the raw ESPN name itself as the resolved name. This still gives a
+            # synthetic STARTING_ELO rating (match_draw_to_ratings' existing tier-3 path - the raw
+            # ESPN name won't match any ratings-csv lastname/initials pattern either, so it takes
+            # the same fresh-placeholder branch a genuinely history-less debutant already does) -
+            # a real accuracy cost (their true Elo history, which DOES exist under their csv-format
+            # name, isn't used), but that's strictly better than the player vanishing from the
+            # export entirely. Once real ESPN results start coming in for them, this name is now
+            # the one draw_to_espn/espn_to_draw will actually see and match against - it survives.
             warnings.append(
                 f"{placeholder.name}: ESPN shows {qualifier_espn_name!r} as the real qualifier, "
-                f"but that name couldn't be matched to any player in the Elo ratings data - left "
-                f"unresolved"
+                f"but that name couldn't be matched to any player in the Elo ratings data - using "
+                f"a fresh STARTING_ELO placeholder under their real ESPN name instead of leaving "
+                f"them unresolved (their true Elo history, if any, is not reflected)"
             )
+            resolved_by_id[id(placeholder)] = qualifier_espn_name
             continue
 
         resolved_by_id[id(placeholder)] = resolved_csv_name
