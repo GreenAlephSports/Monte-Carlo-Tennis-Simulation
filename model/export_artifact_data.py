@@ -9,6 +9,7 @@ Usage:
 import argparse
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -58,6 +59,24 @@ def _load_artifact_market(bracket_path, draw_to_espn):
     return by_pair
 
 
+def _market_meta(bracket_path, market_by_pair):
+    """Top-level staleness signal for the artifact UI ('market data last updated: X minutes ago') -
+    keyed off the market file's own mtime (when fetch_artifact_market_odds.py / the refresh loop
+    last WROTE it), not any individual record's captured_at, so this stays accurate even on a run
+    that resolved zero pairings (an empty-but-freshly-written file is still a real, recent fetch
+    attempt, not staleness). None entirely when the file has never been written for this bracket -
+    the artifact UI treats that as 'no market refresh loop has ever run', distinct from 'ran but
+    stale'."""
+    market_path = OUTPUT_DIR / f"{bracket_path.stem}_artifact_market.json"
+    if not market_path.exists():
+        return None
+    mtime = datetime.fromtimestamp(market_path.stat().st_mtime, tz=timezone.utc)
+    return {
+        "fetched_at": mtime.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "n_priced_matches": len(market_by_pair),
+    }
+
+
 def _market_comparison(model_prob_a, player_a, player_b, market_by_pair):
     """Both directions of the model-vs-market comparison for one real match, keyed off draw
     names, so a single lookup covers whichever side the artifact needs to render:
@@ -98,6 +117,7 @@ def build_artifact_data(bracket_path):
     bye_set = set(state.bye_players)
     live_by_pair = _live_status_by_pair(state.tournament_matches)
     market_by_pair = _load_artifact_market(bracket_path, state.draw_to_espn)
+    market_meta = _market_meta(bracket_path, market_by_pair)
 
     n = len(draw)
     quarter_size = n // 4
@@ -155,6 +175,7 @@ def build_artifact_data(bracket_path):
 
     return {
         "meta": consolidated["meta"],
+        "market_meta": market_meta,
         "draw_size": n,
         "players": players_out,
         "matches": matches_out,

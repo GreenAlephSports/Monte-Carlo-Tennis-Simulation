@@ -7,6 +7,10 @@
     "round_history_iterations": 2000,
     "pretournament_baseline_path": "X:\\idanh\\Documents\\VS Code Projects\\Monte-Carlo-Simulation-Grand-Slam-Model-\\output\\us_open_2026_atp_real_pretournament_baseline.json"
   },
+  "market_meta": {
+    "fetched_at": "2026-09-06T16:51:24Z",
+    "n_priced_matches": 8
+  },
   "draw_size": 128,
   "players": [
     {
@@ -4320,13 +4324,13 @@
       "live_state": "pre",
       "status_text": "Scheduled",
       "score": null,
-      "market_prob_a": 0.7131949415413982,
-      "market_prob_b": 0.2868050584586018,
-      "gap_pp_a": -4.419494154139814,
-      "gap_pp_b": 4.419494154139814,
-      "relative_pct_a": -6.1967547674807495,
-      "relative_pct_b": 15.40940099833607,
-      "market_captured_at": "2026-09-06T16:27:26Z"
+      "market_prob_a": 0.7131949415413983,
+      "market_prob_b": 0.2868050584586017,
+      "gap_pp_a": -4.419494154139825,
+      "gap_pp_b": 4.419494154139825,
+      "relative_pct_a": -6.196754767480764,
+      "relative_pct_b": 15.409400998336114,
+      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Alexander Zverev",
@@ -4345,7 +4349,7 @@
       "gap_pp_b": 3.4449388209121357,
       "relative_pct_a": -3.917154150197641,
       "relative_pct_b": 28.576701268742905,
-      "market_captured_at": "2026-09-06T16:27:26Z"
+      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Arthur Gea",
@@ -4364,7 +4368,7 @@
       "gap_pp_b": 0.6149636191078778,
       "relative_pct_a": -1.5104118104118116,
       "relative_pct_b": 1.037299893276415,
-      "market_captured_at": "2026-09-06T16:27:26Z"
+      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Ben Shelton",
@@ -4383,7 +4387,7 @@
       "gap_pp_b": -4.882996550024643,
       "relative_pct_a": 7.024175824175825,
       "relative_pct_b": -16.018755052546485,
-      "market_captured_at": "2026-09-06T16:27:26Z"
+      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Daniil Medvedev",
@@ -4396,13 +4400,13 @@
       "live_state": "pre",
       "status_text": "Scheduled",
       "score": null,
-      "market_prob_a": 0.6011689396047872,
-      "market_prob_b": 0.39883106039521277,
-      "gap_pp_a": -11.016893960478724,
-      "gap_pp_b": 11.016893960478724,
-      "relative_pct_a": -18.32578703703706,
-      "relative_pct_b": 27.62295882763438,
-      "market_captured_at": "2026-09-06T16:27:26Z"
+      "market_prob_a": 0.6020578420467185,
+      "market_prob_b": 0.3979421579532815,
+      "gap_pp_a": -11.105784204671853,
+      "gap_pp_b": 11.105784204671853,
+      "relative_pct_a": -18.44637413394919,
+      "relative_pct_b": 27.908036338225006,
+      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Francisco Cerundolo",
@@ -4415,13 +4419,13 @@
       "live_state": "pre",
       "status_text": "Scheduled",
       "score": null,
-      "market_prob_a": 0.40685585838718746,
+      "market_prob_a": 0.4068558583871875,
       "market_prob_b": 0.5931441416128125,
-      "gap_pp_a": 11.314414161281256,
+      "gap_pp_a": 11.314414161281249,
       "gap_pp_b": -11.314414161281249,
-      "relative_pct_a": 27.80939226519336,
+      "relative_pct_a": 27.80939226519334,
       "relative_pct_b": -19.075319753671234,
-      "market_captured_at": "2026-09-06T16:27:26Z"
+      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Karen Khachanov",
@@ -4434,13 +4438,13 @@
       "live_state": "pre",
       "status_text": "Scheduled",
       "score": null,
-      "market_prob_a": 0.38888888888888895,
-      "market_prob_b": 0.611111111111111,
-      "gap_pp_a": -11.088888888888892,
-      "gap_pp_b": 11.088888888888892,
-      "relative_pct_a": -28.51428571428572,
-      "relative_pct_b": 18.145454545454555,
-      "market_captured_at": "2026-09-06T16:27:26Z"
+      "market_prob_a": 0.38888888888888884,
+      "market_prob_b": 0.6111111111111112,
+      "gap_pp_a": -11.088888888888881,
+      "gap_pp_b": 11.088888888888881,
+      "relative_pct_a": -28.5142857142857,
+      "relative_pct_b": 18.14545454545453,
+      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Tommy Paul",
@@ -4453,13 +4457,13 @@
       "live_state": "pre",
       "status_text": "Scheduled",
       "score": null,
-      "market_prob_a": 0.20748949178448595,
-      "market_prob_b": 0.792510508215514,
-      "gap_pp_a": -2.748949178448595,
-      "gap_pp_b": 2.748949178448601,
-      "relative_pct_a": -13.248618784530345,
-      "relative_pct_b": 3.468659594985529,
-      "market_captured_at": "2026-09-06T16:27:26Z"
+      "market_prob_a": 0.20748949178448603,
+      "market_prob_b": 0.7925105082155139,
+      "gap_pp_a": -2.7489491784486035,
+      "gap_pp_b": 2.748949178448612,
+      "relative_pct_a": -13.24861878453038,
+      "relative_pct_b": 3.4686595949855437,
+      "market_captured_at": "2026-09-06T16:51:24Z"
     }
   ]
 }

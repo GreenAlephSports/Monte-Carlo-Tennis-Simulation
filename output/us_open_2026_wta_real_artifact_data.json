@@ -7,6 +7,10 @@
     "round_history_iterations": 2000,
     "pretournament_baseline_path": "X:\\idanh\\Documents\\VS Code Projects\\Monte-Carlo-Simulation-Grand-Slam-Model-\\output\\us_open_2026_wta_real_pretournament_baseline.json"
   },
+  "market_meta": {
+    "fetched_at": "2026-09-06T16:51:24Z",
+    "n_priced_matches": 7
+  },
   "draw_size": 128,
   "players": [
     {
@@ -4189,13 +4193,13 @@
       "live_state": "pre",
       "status_text": "Scheduled",
       "score": null,
-      "market_prob_a": 0.5017513134851137,
-      "market_prob_b": 0.4982486865148863,
-      "gap_pp_a": 12.02486865148863,
-      "gap_pp_b": -12.02486865148863,
-      "relative_pct_a": 23.96579406631766,
-      "relative_pct_b": -24.13427065026364,
-      "market_captured_at": "2026-09-06T16:27:31Z"
+      "market_prob_a": 0.5020443925233644,
+      "market_prob_b": 0.4979556074766356,
+      "gap_pp_a": 11.995560747663559,
+      "gap_pp_b": -11.995560747663559,
+      "relative_pct_a": 23.893426410703917,
+      "relative_pct_b": -24.089618768328457,
+      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Aryna Sabalenka",
@@ -4226,14 +4230,14 @@
       "round_label": "Current - 20 players alive",
       "live_state": "in",
       "status_text": "In Progress",
-      "score": "6-4",
-      "market_prob_a": 0.880468404772426,
-      "market_prob_b": 0.11953159522757395,
-      "gap_pp_a": -0.9468404772426053,
-      "gap_pp_b": 0.9468404772426053,
-      "relative_pct_a": -1.0753826850690167,
-      "relative_pct_b": 7.921256931608196,
-      "market_captured_at": "2026-09-06T16:27:31Z"
+      "score": "6-4, 1-3",
+      "market_prob_a": 0.9195910894110467,
+      "market_prob_b": 0.08040891058895328,
+      "gap_pp_a": -4.859108941104672,
+      "gap_pp_b": 4.859108941104672,
+      "relative_pct_a": -5.283988717438199,
+      "relative_pct_b": 60.42998102466801,
+      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Cristina Bucsa",
@@ -4309,7 +4313,7 @@
       "gap_pp_b": 3.5759285284079456,
       "relative_pct_a": -4.5918277906676925,
       "relative_pct_b": 16.163067150635186,
-      "market_captured_at": "2026-09-06T16:27:31Z"
+      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Jasmine Paolini",
@@ -4347,7 +4351,7 @@
       "gap_pp_b": -3.393087557603691,
       "relative_pct_a": 4.812418300653602,
       "relative_pct_b": -11.504687500000014,
-      "market_captured_at": "2026-09-06T16:27:31Z"
+      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Karolina Muchova",
@@ -4471,16 +4475,16 @@
       "winner": null,
       "round": 3,
       "round_label": "Current - 20 players alive",
-      "live_state": "pre",
-      "status_text": "Scheduled",
-      "score": null,
-      "market_prob_a": 0.5700827861832715,
-      "market_prob_b": 0.42991721381672854,
-      "gap_pp_a": 1.19172138167285,
-      "gap_pp_b": -1.19172138167285,
-      "relative_pct_a": 2.0904356534802173,
-      "relative_pct_b": -2.7719787516600225,
-      "market_captured_at": "2026-09-06T16:27:31Z"
+      "live_state": "in",
+      "status_text": "In Progress",
+      "score": "0-0",
+      "market_prob_a": 0.5372279495990836,
+      "market_prob_b": 0.4627720504009164,
+      "gap_pp_a": 4.477205040091636,
+      "gap_pp_b": -4.477205040091636,
+      "relative_pct_a": 8.333901918976542,
+      "relative_pct_b": -9.674752475247521,
+      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Mirra Andreeva",
@@ -4499,7 +4503,7 @@
       "gap_pp_b": 15.985796822339914,
       "relative_pct_a": -19.147923875432525,
       "relative_pct_b": 96.80029154518955,
-      "market_captured_at": "2026-09-06T16:27:31Z"
+      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Nikola Bartunkova",
