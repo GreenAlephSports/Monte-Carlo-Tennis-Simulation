@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "us-open-men-2026",
-    "generated_at": "2026-09-07T18:40:48Z",
+    "generated_at": "2026-09-07T22:37:26Z",
     "iterations": 10000,
     "seed": 42
   },
@@ -9,106 +9,93 @@
     {
       "player": "Carlos Alcaraz",
       "quarter": "Q4",
-      "p_champ": 0.435,
-      "p_sf": 0.725,
-      "p_final": 0.584
+      "p_champ": 0.436,
+      "p_sf": 0.727,
+      "p_final": 0.583
     },
     {
       "player": "Alexander Zverev",
       "quarter": "Q1",
-      "p_champ": 0.246,
-      "p_sf": 0.69,
-      "p_final": 0.532
+      "p_champ": 0.242,
+      "p_sf": 0.692,
+      "p_final": 0.537
     },
     {
       "player": "Frances Tiafoe",
       "quarter": "Q3",
-      "p_champ": 0.091,
-      "p_sf": 0.643,
-      "p_final": 0.181
+      "p_champ": 0.094,
+      "p_sf": 0.65,
+      "p_final": 0.184
     },
     {
       "player": "Ben Shelton",
       "quarter": "Q4",
-      "p_champ": 0.09,
-      "p_sf": 0.275,
-      "p_final": 0.172
+      "p_champ": 0.094,
+      "p_sf": 0.273,
+      "p_final": 0.173
     },
     {
       "player": "Learner Tien",
       "quarter": "Q2",
-      "p_champ": 0.059,
-      "p_sf": 0.478,
-      "p_final": 0.188
+      "p_champ": 0.061,
+      "p_sf": 0.493,
+      "p_final": 0.192
     },
     {
       "player": "Alex Michelsen",
       "quarter": "Q3",
-      "p_champ": 0.027,
-      "p_sf": 0.356,
-      "p_final": 0.062
-    },
-    {
-      "player": "Botic Van De Zandschulp",
-      "quarter": "Q1",
-      "p_champ": 0.018,
-      "p_sf": 0.154,
-      "p_final": 0.08
-    },
-    {
-      "player": "Francisco Cerundolo",
-      "quarter": "Q2",
-      "p_champ": 0.012,
-      "p_sf": 0.218,
+      "p_champ": 0.024,
+      "p_sf": 0.35,
       "p_final": 0.06
     },
     {
       "player": "Alexander Blockx",
       "quarter": "Q2",
-      "p_champ": 0.009,
-      "p_sf": 0.184,
-      "p_final": 0.05
+      "p_champ": 0.018,
+      "p_sf": 0.38,
+      "p_final": 0.107
+    },
+    {
+      "player": "Botic Van De Zandschulp",
+      "quarter": "Q1",
+      "p_champ": 0.016,
+      "p_sf": 0.161,
+      "p_final": 0.077
     },
     {
       "player": "Luciano Darderi",
       "quarter": "Q1",
-      "p_champ": 0.006,
-      "p_sf": 0.085,
-      "p_final": 0.035
+      "p_champ": 0.005,
+      "p_sf": 0.078,
+      "p_final": 0.032
     },
     {
       "player": "Arthur Gea",
       "quarter": "Q1",
-      "p_champ": 0.004,
-      "p_sf": 0.07,
-      "p_final": 0.028
+      "p_champ": 0.005,
+      "p_sf": 0.069,
+      "p_final": 0.027
     },
     {
       "player": "Karen Khachanov",
       "quarter": "Q2",
-      "p_champ": 0.003,
-      "p_sf": 0.12,
-      "p_final": 0.027
+      "p_champ": 0.004,
+      "p_sf": 0.127,
+      "p_final": 0.029
     }
   ],
   "matchups": {
-    "T-R16-4": {
-      "slot_a": "Francisco Cerundolo",
-      "slot_b": "Alexander Blockx",
-      "p_slot_a": 0.52,
-      "p_slot_b": 0.48
+    "T-R16-2": {
+      "slot_a": "Arthur Gea",
+      "slot_b": "Botic Van De Zandschulp",
+      "p_slot_a": 0.401,
+      "p_slot_b": 0.599
     },
     "T-R16-3": {
       "slot_a": "Karen Khachanov",
       "slot_b": "Learner Tien",
       "p_slot_a": 0.278,
       "p_slot_b": 0.722
-    },
-    "T-R16-2": {
-      "slot_a": "Arthur Gea",
-      "slot_b": "Botic Van De Zandschulp",
-      "p_slot_a": 0.401,
-      "p_slot_b": 0.599
     },
     "T-R16-1": {
       "slot_a": "Alexander Zverev",
@@ -153,10 +140,6 @@
     "Alex Michelsen|Carlos Alcaraz": {
       "model_prob_a": 0.128,
       "model_prob_b": 0.872
-    },
-    "Alex Michelsen|Francisco Cerundolo": {
-      "model_prob_a": 0.569,
-      "model_prob_b": 0.431
     },
     "Alex Michelsen|Karen Khachanov": {
       "model_prob_a": 0.658,
@@ -226,10 +209,6 @@
       "model_prob_a": 0.644,
       "model_prob_b": 0.356
     },
-    "Alexander Zverev|Francisco Cerundolo": {
-      "model_prob_a": 0.824,
-      "model_prob_b": 0.176
-    },
     "Alexander Zverev|Karen Khachanov": {
       "model_prob_a": 0.866,
       "model_prob_b": 0.134
@@ -249,10 +228,6 @@
     "Arthur Gea|Frances Tiafoe": {
       "model_prob_a": 0.233,
       "model_prob_b": 0.767
-    },
-    "Arthur Gea|Francisco Cerundolo": {
-      "model_prob_a": 0.432,
-      "model_prob_b": 0.568
     },
     "Arthur Gea|Karen Khachanov": {
       "model_prob_a": 0.527,
@@ -274,10 +249,6 @@
       "model_prob_a": 0.56,
       "model_prob_b": 0.44
     },
-    "Ben Shelton|Francisco Cerundolo": {
-      "model_prob_a": 0.761,
-      "model_prob_b": 0.239
-    },
     "Ben Shelton|Karen Khachanov": {
       "model_prob_a": 0.817,
       "model_prob_b": 0.183
@@ -298,10 +269,6 @@
       "model_prob_a": 0.313,
       "model_prob_b": 0.687
     },
-    "Botic Van De Zandschulp|Francisco Cerundolo": {
-      "model_prob_a": 0.523,
-      "model_prob_b": 0.477
-    },
     "Botic Van De Zandschulp|Karen Khachanov": {
       "model_prob_a": 0.634,
       "model_prob_b": 0.366
@@ -318,10 +285,6 @@
       "model_prob_a": 0.772,
       "model_prob_b": 0.228
     },
-    "Carlos Alcaraz|Francisco Cerundolo": {
-      "model_prob_a": 0.892,
-      "model_prob_b": 0.108
-    },
     "Carlos Alcaraz|Karen Khachanov": {
       "model_prob_a": 0.904,
       "model_prob_b": 0.096
@@ -334,10 +297,6 @@
       "model_prob_a": 0.905,
       "model_prob_b": 0.095
     },
-    "Frances Tiafoe|Francisco Cerundolo": {
-      "model_prob_a": 0.711,
-      "model_prob_b": 0.289
-    },
     "Frances Tiafoe|Karen Khachanov": {
       "model_prob_a": 0.792,
       "model_prob_b": 0.208
@@ -349,18 +308,6 @@
     "Frances Tiafoe|Luciano Darderi": {
       "model_prob_a": 0.737,
       "model_prob_b": 0.263
-    },
-    "Francisco Cerundolo|Karen Khachanov": {
-      "model_prob_a": 0.613,
-      "model_prob_b": 0.387
-    },
-    "Francisco Cerundolo|Learner Tien": {
-      "model_prob_a": 0.353,
-      "model_prob_b": 0.647
-    },
-    "Francisco Cerundolo|Luciano Darderi": {
-      "model_prob_a": 0.531,
-      "model_prob_b": 0.469
     },
     "Karen Khachanov|Luciano Darderi": {
       "model_prob_a": 0.436,

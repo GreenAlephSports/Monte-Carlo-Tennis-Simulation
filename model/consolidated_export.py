@@ -79,7 +79,18 @@ def _build_current_matches(current_export, partial_model_only_matches):
         pair = frozenset((m["player_a"], m["player_b"]))
         seen_pairs.add(pair)
         live = live_by_pair.get(pair)
-        model_prob_a = live["p_slot_a"] if live is not None else m["model_prob_a"]
+        if live is None:
+            model_prob_a = m["model_prob_a"]
+        else:
+            # slot_a/slot_b come from ESPN's own raw competitor order (bracket_export.py's p1_raw/
+            # p2_raw), which is independent of - and can disagree with - player_a/player_b's own
+            # draw-position pairing order here. Confirmed real case (2026-09-07, Tien vs Khachanov,
+            # US Open ATP R16): ESPN listed Khachanov as competitor 1 (slot_a) while the draw-
+            # position pairing put Tien first (player_a) - taking p_slot_a unconditionally silently
+            # stored P(Khachanov wins) as if it were P(Tien wins), the exact complement of the
+            # model's real prediction. Checking which side slot_a actually is before picking
+            # p_slot_a vs p_slot_b (its complement) is what fixes that.
+            model_prob_a = live["p_slot_a"] if live["slot_a"] == m["player_a"] else live["p_slot_b"]
         rows.append(_match_row(m["player_a"], m["player_b"], model_prob_a, m["decided"], m["winner"]))
 
     # any live unsettled matchup NOT already covered above (e.g. a later round whose pairing is

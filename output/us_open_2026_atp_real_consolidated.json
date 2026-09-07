@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "us-open-men-2026",
-    "generated_at": "2026-09-07T21:29:56Z",
+    "generated_at": "2026-09-07T22:33:24Z",
     "current_iterations": 10000,
     "current_seed": 42,
     "round_history_iterations": 2000,
@@ -2212,7 +2212,7 @@
       "checkpoint": "current",
       "round": 4,
       "label": "Current - 11 players alive",
-      "generated_at": "2026-09-07T21:29:32Z",
+      "generated_at": "2026-09-07T22:32:59Z",
       "players": [
         {
           "player": "Carlos Alcaraz",
@@ -2308,13 +2308,6 @@
           "winner": null
         },
         {
-          "player_a": "Arthur Gea",
-          "player_b": "Botic Van De Zandschulp",
-          "model_prob_a": 0.401,
-          "decided": false,
-          "winner": null
-        },
-        {
           "player_a": "Ben Shelton",
           "player_b": "Carlos Alcaraz",
           "model_prob_a": 0.274,
@@ -2322,9 +2315,16 @@
           "winner": null
         },
         {
-          "player_a": "Frances Tiafoe",
-          "player_b": "Daniil Medvedev",
-          "model_prob_a": 0.509,
+          "player_a": "Botic Van De Zandschulp",
+          "player_b": "Arthur Gea",
+          "model_prob_a": 0.599,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Daniil Medvedev",
+          "player_b": "Frances Tiafoe",
+          "model_prob_a": 0.491,
           "decided": true,
           "winner": "Frances Tiafoe"
         },
@@ -2336,9 +2336,9 @@
           "winner": null
         },
         {
-          "player_a": "Karen Khachanov",
-          "player_b": "Learner Tien",
-          "model_prob_a": 0.278,
+          "player_a": "Learner Tien",
+          "player_b": "Karen Khachanov",
+          "model_prob_a": 0.722,
           "decided": false,
           "winner": null
         },

@@ -1,15 +1,15 @@
 {
   "meta": {
     "tournament": "us-open-men-2026",
-    "generated_at": "2026-09-07T18:41:15Z",
+    "generated_at": "2026-09-07T22:33:24Z",
     "current_iterations": 10000,
     "current_seed": 42,
     "round_history_iterations": 2000,
     "pretournament_baseline_path": "X:\\idanh\\Documents\\VS Code Projects\\Monte-Carlo-Simulation-Grand-Slam-Model-\\output\\us_open_2026_atp_real_pretournament_baseline.json"
   },
   "market_meta": {
-    "fetched_at": "2026-09-07T18:44:06Z",
-    "n_priced_matches": 6
+    "fetched_at": "2026-09-07T22:13:48Z",
+    "n_priced_matches": 5
   },
   "draw_size": 128,
   "players": [
@@ -30,9 +30,9 @@
       "current": {
         "player": "Alexander Zverev",
         "quarter": "Q1",
-        "p_champ": 0.246,
-        "p_sf": 0.69,
-        "p_final": 0.532
+        "p_champ": 0.242,
+        "p_sf": 0.692,
+        "p_final": 0.537
       },
       "alive": true
     },
@@ -172,9 +172,9 @@
       "current": {
         "player": "Luciano Darderi",
         "quarter": "Q1",
-        "p_champ": 0.006,
-        "p_sf": 0.085,
-        "p_final": 0.035
+        "p_champ": 0.005,
+        "p_sf": 0.078,
+        "p_final": 0.032
       },
       "alive": true
     },
@@ -409,9 +409,9 @@
       "current": {
         "player": "Arthur Gea",
         "quarter": "Q1",
-        "p_champ": 0.004,
-        "p_sf": 0.07,
-        "p_final": 0.028
+        "p_champ": 0.005,
+        "p_sf": 0.069,
+        "p_final": 0.027
       },
       "alive": true
     },
@@ -511,9 +511,9 @@
       "current": {
         "player": "Botic Van De Zandschulp",
         "quarter": "Q1",
-        "p_champ": 0.018,
-        "p_sf": 0.154,
-        "p_final": 0.08
+        "p_champ": 0.016,
+        "p_sf": 0.161,
+        "p_final": 0.077
       },
       "alive": true
     },
@@ -619,9 +619,9 @@
       "current": {
         "player": "Karen Khachanov",
         "quarter": "Q2",
-        "p_champ": 0.003,
-        "p_sf": 0.12,
-        "p_final": 0.027
+        "p_champ": 0.004,
+        "p_sf": 0.127,
+        "p_final": 0.029
       },
       "alive": true
     },
@@ -817,9 +817,9 @@
       "current": {
         "player": "Learner Tien",
         "quarter": "Q2",
-        "p_champ": 0.059,
-        "p_sf": 0.478,
-        "p_final": 0.188
+        "p_champ": 0.061,
+        "p_sf": 0.493,
+        "p_final": 0.192
       },
       "alive": true
     },
@@ -950,14 +950,8 @@
         "p_sf": 0.032,
         "p_final": 0.012
       },
-      "current": {
-        "player": "Francisco Cerundolo",
-        "quarter": "Q2",
-        "p_champ": 0.012,
-        "p_sf": 0.218,
-        "p_final": 0.06
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 57,
@@ -976,9 +970,9 @@
       "current": {
         "player": "Alexander Blockx",
         "quarter": "Q2",
-        "p_champ": 0.009,
-        "p_sf": 0.184,
-        "p_final": 0.05
+        "p_champ": 0.018,
+        "p_sf": 0.38,
+        "p_final": 0.107
       },
       "alive": true
     },
@@ -1349,9 +1343,9 @@
       "current": {
         "player": "Frances Tiafoe",
         "quarter": "Q3",
-        "p_champ": 0.091,
-        "p_sf": 0.643,
-        "p_final": 0.181
+        "p_champ": 0.094,
+        "p_sf": 0.65,
+        "p_final": 0.184
       },
       "alive": true
     },
@@ -1406,9 +1400,9 @@
       "current": {
         "player": "Alex Michelsen",
         "quarter": "Q3",
-        "p_champ": 0.027,
-        "p_sf": 0.356,
-        "p_final": 0.062
+        "p_champ": 0.024,
+        "p_sf": 0.35,
+        "p_final": 0.06
       },
       "alive": true
     },
@@ -1632,9 +1626,9 @@
       "current": {
         "player": "Ben Shelton",
         "quarter": "Q4",
-        "p_champ": 0.09,
-        "p_sf": 0.275,
-        "p_final": 0.172
+        "p_champ": 0.094,
+        "p_sf": 0.273,
+        "p_final": 0.173
       },
       "alive": true
     },
@@ -2153,9 +2147,9 @@
       "current": {
         "player": "Carlos Alcaraz",
         "quarter": "Q4",
-        "p_champ": 0.435,
-        "p_sf": 0.725,
-        "p_final": 0.584
+        "p_champ": 0.436,
+        "p_sf": 0.727,
+        "p_final": 0.583
       },
       "alive": true
     }
@@ -4292,71 +4286,14 @@
     {
       "player_a": "Alexander Blockx",
       "player_b": "Francisco Cerundolo",
-      "model_prob_a": 0.52,
-      "decided": false,
-      "winner": null,
-      "round": 4,
-      "round_label": "Current - 12 players alive",
-      "live_state": "in",
-      "status_text": "In Progress",
-      "score": "2-3",
-      "market_prob_a": 0.42464040025015637,
-      "market_prob_b": 0.5753595997498436,
-      "gap_pp_a": 9.535959974984365,
-      "gap_pp_b": -9.535959974984365,
-      "relative_pct_a": 22.456553755522826,
-      "relative_pct_b": -16.57391304347826,
-      "market_captured_at": "2026-09-07T18:44:06Z"
-    },
-    {
-      "player_a": "Alexander Zverev",
-      "player_b": "Luciano Darderi",
-      "model_prob_a": 0.845,
-      "decided": false,
-      "winner": null,
-      "round": 4,
-      "round_label": "Current - 12 players alive",
-      "live_state": "pre",
-      "status_text": "Scheduled",
-      "score": null,
-      "market_prob_a": 0.8691341705221414,
-      "market_prob_b": 0.13086582947785863,
-      "gap_pp_a": -2.4134170522141396,
-      "gap_pp_b": 2.4134170522141396,
-      "relative_pct_a": -2.776806083650185,
-      "relative_pct_b": 18.441919191919148,
-      "market_captured_at": "2026-09-07T18:44:06Z"
-    },
-    {
-      "player_a": "Arthur Gea",
-      "player_b": "Botic Van De Zandschulp",
-      "model_prob_a": 0.401,
-      "decided": false,
-      "winner": null,
-      "round": 4,
-      "round_label": "Current - 12 players alive",
-      "live_state": "pre",
-      "status_text": "Scheduled",
-      "score": null,
-      "market_prob_a": 0.40313111545988267,
-      "market_prob_b": 0.5968688845401173,
-      "gap_pp_a": -0.21311154598826487,
-      "gap_pp_b": 0.21311154598826487,
-      "relative_pct_a": -0.5286407766990453,
-      "relative_pct_b": 0.35704918032787986,
-      "market_captured_at": "2026-09-07T18:44:06Z"
-    },
-    {
-      "player_a": "Ben Shelton",
-      "player_b": "Stefanos Tsitsipas",
-      "model_prob_a": 0.744,
+      "model_prob_a": 0.48,
       "decided": true,
-      "winner": "Ben Shelton",
+      "winner": "Alexander Blockx",
       "round": 4,
-      "round_label": "Current - 12 players alive",
+      "round_label": "Current - 11 players alive",
       "live_state": "post",
       "status_text": "Final",
-      "score": "6-2, 6-3, 6-4",
+      "score": "3-6, 6-4, 5-7, 5-7",
       "market_prob_a": null,
       "market_prob_b": null,
       "gap_pp_a": null,
@@ -4366,13 +4303,32 @@
       "market_captured_at": null
     },
     {
+      "player_a": "Alexander Zverev",
+      "player_b": "Luciano Darderi",
+      "model_prob_a": 0.845,
+      "decided": false,
+      "winner": null,
+      "round": 4,
+      "round_label": "Current - 11 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null,
+      "market_prob_a": 0.8765291966200025,
+      "market_prob_b": 0.1234708033799975,
+      "gap_pp_a": -3.152919662000253,
+      "gap_pp_b": 3.152919662000253,
+      "relative_pct_a": -3.597050359712231,
+      "relative_pct_b": 25.53575076608785,
+      "market_captured_at": "2026-09-07T22:13:48Z"
+    },
+    {
       "player_a": "Ben Shelton",
       "player_b": "Carlos Alcaraz",
       "model_prob_a": 0.274,
       "decided": false,
       "winner": null,
       "round": 4,
-      "round_label": "Current - 12 players alive",
+      "round_label": "Current - 11 players alive",
       "live_state": "pre",
       "status_text": "Scheduled",
       "score": null,
@@ -4382,16 +4338,35 @@
       "gap_pp_b": -3.593493874102238,
       "relative_pct_a": 15.094587400177456,
       "relative_pct_b": -4.716273911838091,
-      "market_captured_at": "2026-09-07T18:44:06Z"
+      "market_captured_at": "2026-09-07T22:13:48Z"
     },
     {
-      "player_a": "Frances Tiafoe",
-      "player_b": "Daniil Medvedev",
-      "model_prob_a": 0.509,
+      "player_a": "Botic Van De Zandschulp",
+      "player_b": "Arthur Gea",
+      "model_prob_a": 0.599,
+      "decided": false,
+      "winner": null,
+      "round": 4,
+      "round_label": "Current - 11 players alive",
+      "live_state": "in",
+      "status_text": "In Progress",
+      "score": "6-3, 7(7)-6(0), 1-0",
+      "market_prob_a": 0.4837355718782791,
+      "market_prob_b": 0.5162644281217209,
+      "gap_pp_a": 11.526442812172089,
+      "gap_pp_b": -11.526442812172089,
+      "relative_pct_a": 23.827982646420825,
+      "relative_pct_b": -22.32662601626016,
+      "market_captured_at": "2026-09-07T22:13:48Z"
+    },
+    {
+      "player_a": "Daniil Medvedev",
+      "player_b": "Frances Tiafoe",
+      "model_prob_a": 0.491,
       "decided": true,
       "winner": "Frances Tiafoe",
       "round": 4,
-      "round_label": "Current - 12 players alive",
+      "round_label": "Current - 11 players alive",
       "live_state": "post",
       "status_text": "Final",
       "score": "6(1)-7(7), 4-6, 6(6)-7(8)",
@@ -4410,36 +4385,55 @@
       "decided": false,
       "winner": null,
       "round": 4,
-      "round_label": "Current - 12 players alive",
+      "round_label": "Current - 11 players alive",
       "live_state": "pre",
       "status_text": "Scheduled",
       "score": null,
-      "market_prob_a": 0.5754047145697245,
-      "market_prob_b": 0.42459528543027547,
-      "gap_pp_a": 7.359528543027549,
-      "gap_pp_b": -7.359528543027549,
-      "relative_pct_a": 12.790177690029614,
-      "relative_pct_b": -17.33304347826087,
-      "market_captured_at": "2026-09-07T18:44:06Z"
+      "market_prob_a": 0.5767375886524821,
+      "market_prob_b": 0.42326241134751785,
+      "gap_pp_a": 7.226241134751787,
+      "gap_pp_b": -7.226241134751787,
+      "relative_pct_a": 12.529513034923786,
+      "relative_pct_b": -17.072721179624693,
+      "market_captured_at": "2026-09-07T22:13:48Z"
     },
     {
       "player_a": "Learner Tien",
       "player_b": "Karen Khachanov",
-      "model_prob_a": 0.278,
+      "model_prob_a": 0.722,
       "decided": false,
       "winner": null,
       "round": 4,
-      "round_label": "Current - 12 players alive",
-      "live_state": "pre",
-      "status_text": "Scheduled",
-      "score": null,
-      "market_prob_a": 0.6202566202566202,
-      "market_prob_b": 0.3797433797433798,
-      "gap_pp_a": -34.22566202566202,
-      "gap_pp_b": 34.22566202566202,
-      "relative_pct_a": -55.17984154929577,
-      "relative_pct_b": 90.12839683680802,
-      "market_captured_at": "2026-09-07T18:44:06Z"
+      "round_label": "Current - 11 players alive",
+      "live_state": "in",
+      "status_text": "In Progress",
+      "score": "7-5, 0-0",
+      "market_prob_a": 0.5802152742183496,
+      "market_prob_b": 0.4197847257816504,
+      "gap_pp_a": 14.178472578165035,
+      "gap_pp_b": -14.178472578165035,
+      "relative_pct_a": 24.43657243816253,
+      "relative_pct_b": -33.77557997557996,
+      "market_captured_at": "2026-09-07T22:13:48Z"
+    },
+    {
+      "player_a": "Stefanos Tsitsipas",
+      "player_b": "Ben Shelton",
+      "model_prob_a": 0.256,
+      "decided": true,
+      "winner": "Ben Shelton",
+      "round": 4,
+      "round_label": "Current - 11 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 6-3, 6-4",
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
     },
     {
       "player_a": "Tomas Martin Etcheverry",
@@ -4448,7 +4442,7 @@
       "decided": true,
       "winner": "Alex Michelsen",
       "round": 4,
-      "round_label": "Current - 12 players alive",
+      "round_label": "Current - 11 players alive",
       "live_state": "post",
       "status_text": "Final",
       "score": "7(8)-6(6), 6-4, 6-4",
@@ -4467,7 +4461,7 @@
       "decided": true,
       "winner": "Carlos Alcaraz",
       "round": 4,
-      "round_label": "Current - 12 players alive",
+      "round_label": "Current - 11 players alive",
       "live_state": "post",
       "status_text": "Final",
       "score": "4-6, 3-6, 4-6",
