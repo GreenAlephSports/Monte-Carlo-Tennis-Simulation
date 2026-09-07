@@ -1,50 +1,32 @@
 [
   {
-    "player_a": "Paul T.",
-    "player_b": "Alcaraz C.",
-    "market_prob_a": 0.20748949178448603,
-    "captured_at": "2026-09-06T16:51:24Z"
+    "player_a": "Van De Zandschulp B.",
+    "player_b": "Gea A.",
+    "market_prob_a": 0.5039411455596428,
+    "captured_at": "2026-09-07T22:09:36Z"
   },
   {
-    "player_a": "Etcheverry T.",
-    "player_b": "Michelsen A.",
-    "market_prob_a": 0.2868050584586017,
-    "captured_at": "2026-09-06T16:51:24Z"
-  },
-  {
-    "player_a": "Medvedev D.",
-    "player_b": "Tiafoe F.",
-    "market_prob_a": 0.6020578420467185,
-    "captured_at": "2026-09-06T16:51:24Z"
-  },
-  {
-    "player_a": "Shelton B.",
-    "player_b": "Tsitsipas S.",
-    "market_prob_a": 0.6951700344997536,
-    "captured_at": "2026-09-06T16:51:24Z"
-  },
-  {
-    "player_a": "Blockx A.",
-    "player_b": "Cerundolo F.",
-    "market_prob_a": 0.5931441416128125,
-    "captured_at": "2026-09-06T16:51:24Z"
+    "player_a": "Khachanov K.",
+    "player_b": "Tien L.",
+    "market_prob_a": 0.3809059912323429,
+    "captured_at": "2026-09-07T22:09:36Z"
   },
   {
     "player_a": "Zverev A.",
     "player_b": "Darderi L.",
-    "market_prob_a": 0.8794493882091213,
-    "captured_at": "2026-09-06T16:51:24Z"
+    "market_prob_a": 0.8765291966200025,
+    "captured_at": "2026-09-07T22:09:36Z"
   },
   {
-    "player_a": "Van De Zandschulp B.",
-    "player_b": "Gea A.",
-    "market_prob_a": 0.5928503638089212,
-    "captured_at": "2026-09-06T16:51:24Z"
+    "player_a": "Tiafoe F.",
+    "player_b": "Michelsen A.",
+    "market_prob_a": 0.5767375886524823,
+    "captured_at": "2026-09-07T22:09:36Z"
   },
   {
-    "player_a": "Tien L.",
-    "player_b": "Khachanov K.",
-    "market_prob_a": 0.6111111111111112,
-    "captured_at": "2026-09-06T16:51:24Z"
+    "player_a": "Alcaraz C.",
+    "player_b": "Shelton B.",
+    "market_prob_a": 0.7619349387410224,
+    "captured_at": "2026-09-07T22:09:36Z"
   }
 ]

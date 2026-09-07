@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "us-open-women-2026",
-    "generated_at": "2026-09-05T21:11:12Z",
+    "generated_at": "2026-09-07T18:43:58Z",
     "current_iterations": 10000,
     "current_seed": 42,
     "round_history_iterations": 2000,
@@ -1980,226 +1980,170 @@
       ]
     },
     {
-      "checkpoint": "current",
-      "round": 3,
-      "label": "Current - 20 players alive",
-      "generated_at": "2026-09-05T21:10:25Z",
+      "checkpoint": "round",
+      "round": 4,
+      "label": "Round 4 - 16 players about to play",
       "players": [
         {
           "player": "Aryna Sabalenka",
-          "quarter": "Q1",
-          "p_champ": 0.317,
-          "p_sf": 0.646,
-          "p_final": 0.469
-        },
-        {
-          "player": "Jessica Pegula",
-          "quarter": "Q2",
-          "p_champ": 0.14,
-          "p_sf": 0.569,
-          "p_final": 0.255
-        },
-        {
-          "player": "Coco Gauff",
-          "quarter": "Q3",
-          "p_champ": 0.14,
-          "p_sf": 0.505,
-          "p_final": 0.283
-        },
-        {
-          "player": "Iga Swiatek",
-          "quarter": "Q4",
-          "p_champ": 0.113,
-          "p_sf": 0.41,
-          "p_final": 0.239
+          "tournament_win_probability": 0.284,
+          "upcoming_opponent": "Taylor Townsend",
+          "upcoming_match_win_probability": 0.8699
         },
         {
           "player": "Elena Rybakina",
-          "quarter": "Q4",
-          "p_champ": 0.096,
-          "p_sf": 0.351,
-          "p_final": 0.207,
-          "health_adjustment": {
-            "elo_penalty": -100,
-            "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
-          }
+          "tournament_win_probability": 0.2215,
+          "upcoming_opponent": "Naomi Osaka",
+          "upcoming_match_win_probability": 0.762
+        },
+        {
+          "player": "Jessica Pegula",
+          "tournament_win_probability": 0.1325,
+          "upcoming_opponent": "Sorana Cirstea",
+          "upcoming_match_win_probability": 0.738
+        },
+        {
+          "player": "Coco Gauff",
+          "tournament_win_probability": 0.128,
+          "upcoming_opponent": "Iva Jovic",
+          "upcoming_match_win_probability": 0.7928
+        },
+        {
+          "player": "Iga Swiatek",
+          "tournament_win_probability": 0.0935,
+          "upcoming_opponent": "Zheng Qinwen",
+          "upcoming_match_win_probability": 0.7435
         },
         {
           "player": "Marta Kostyuk",
-          "quarter": "Q1",
-          "p_champ": 0.054,
-          "p_sf": 0.198,
-          "p_final": 0.111
+          "tournament_win_probability": 0.0495,
+          "upcoming_opponent": "Linda Noskova",
+          "upcoming_match_win_probability": 0.5779
         },
         {
           "player": "Mirra Andreeva",
-          "quarter": "Q3",
-          "p_champ": 0.042,
-          "p_sf": 0.265,
-          "p_final": 0.114
-        },
-        {
-          "player": "Linda Noskova",
-          "quarter": "Q1",
-          "p_champ": 0.022,
-          "p_sf": 0.114,
-          "p_final": 0.056
+          "tournament_win_probability": 0.029,
+          "upcoming_opponent": "Anastasia Potapova",
+          "upcoming_match_win_probability": 0.6737
         },
         {
           "player": "Naomi Osaka",
-          "quarter": "Q4",
-          "p_champ": 0.02,
-          "p_sf": 0.12,
-          "p_final": 0.055
+          "tournament_win_probability": 0.017,
+          "upcoming_opponent": "Elena Rybakina",
+          "upcoming_match_win_probability": 0.238
         },
         {
-          "player": "Anna Kalinskaya",
-          "quarter": "Q2",
-          "p_champ": 0.015,
-          "p_sf": 0.183,
-          "p_final": 0.045
+          "player": "Linda Noskova",
+          "tournament_win_probability": 0.016,
+          "upcoming_opponent": "Marta Kostyuk",
+          "upcoming_match_win_probability": 0.4221
         },
         {
           "player": "Sorana Cirstea",
-          "quarter": "Q2",
-          "p_champ": 0.011,
-          "p_sf": 0.155,
-          "p_final": 0.037
-        },
-        {
-          "player": "Zheng Qinwen",
-          "quarter": "Q4",
-          "p_champ": 0.008,
-          "p_sf": 0.086,
-          "p_final": 0.028
-        },
-        {
-          "player": "Alexandra Eala",
-          "quarter": "Q3",
-          "p_champ": 0.006,
-          "p_sf": 0.071,
-          "p_final": 0.02
-        },
-        {
-          "player": "Anastasia Potapova",
-          "quarter": "Q3",
-          "p_champ": 0.004,
-          "p_sf": 0.1,
-          "p_final": 0.025
+          "tournament_win_probability": 0.0095,
+          "upcoming_opponent": "Jessica Pegula",
+          "upcoming_match_win_probability": 0.262
         },
         {
           "player": "Iva Jovic",
-          "quarter": "Q3",
-          "p_champ": 0.004,
-          "p_sf": 0.052,
-          "p_final": 0.015
+          "tournament_win_probability": 0.007,
+          "upcoming_opponent": "Coco Gauff",
+          "upcoming_match_win_probability": 0.2072
+        },
+        {
+          "player": "Anna Kalinskaya",
+          "tournament_win_probability": 0.0055,
+          "upcoming_opponent": "Emma Navarro",
+          "upcoming_match_win_probability": 0.6266
+        },
+        {
+          "player": "Zheng Qinwen",
+          "tournament_win_probability": 0.0035,
+          "upcoming_opponent": "Iga Swiatek",
+          "upcoming_match_win_probability": 0.2565
+        },
+        {
+          "player": "Anastasia Potapova",
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Mirra Andreeva",
+          "upcoming_match_win_probability": 0.3263
         },
         {
           "player": "Taylor Townsend",
-          "quarter": "Q1",
-          "p_champ": 0.003,
-          "p_sf": 0.043,
-          "p_final": 0.015
+          "tournament_win_probability": 0.001,
+          "upcoming_opponent": "Aryna Sabalenka",
+          "upcoming_match_win_probability": 0.1301
         },
         {
           "player": "Emma Navarro",
-          "quarter": "Q2",
-          "p_champ": 0.003,
-          "p_sf": 0.093,
-          "p_final": 0.013
-        },
-        {
-          "player": "Elise Mertens",
-          "quarter": "Q4",
-          "p_champ": 0.003,
-          "p_sf": 0.032,
-          "p_final": 0.012
-        },
-        {
-          "player": "Cristina Bucsa",
-          "quarter": "Q3",
-          "p_champ": 0.0,
-          "p_sf": 0.006,
-          "p_final": 0.001
-        },
-        {
-          "player": "Yuliia Starodubtseva",
-          "quarter": "Q4",
-          "p_champ": 0.0,
-          "p_sf": 0.002,
-          "p_final": 0.0
+          "tournament_win_probability": 0.0005,
+          "upcoming_opponent": "Anna Kalinskaya",
+          "upcoming_match_win_probability": 0.3734
         }
       ],
       "matches": [
         {
-          "player_a": "Alexandra Eala",
-          "player_b": "Iva Jovic",
-          "model_prob_a": 0.457,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Anastasia Potapova",
-          "player_b": "Amanda Anisimova",
-          "model_prob_a": 0.28,
+          "player_a": "Amanda Anisimova",
+          "player_b": "Anastasia Potapova",
+          "model_prob_a": 0.72,
           "decided": true,
           "winner": "Anastasia Potapova"
         },
         {
-          "player_a": "Anna Kalinskaya",
-          "player_b": "Elina Svitolina",
-          "model_prob_a": 0.337,
+          "player_a": "Ann Li",
+          "player_b": "Linda Noskova",
+          "model_prob_a": 0.222,
           "decided": true,
-          "winner": "Anna Kalinskaya"
+          "winner": "Linda Noskova"
         },
         {
-          "player_a": "Anna Kalinskaya",
-          "player_b": "Emma Navarro",
-          "model_prob_a": 0.622,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Aryna Sabalenka",
-          "player_b": "Kamilla Rakhimova",
-          "model_prob_a": 0.974,
+          "player_a": "Coco Gauff",
+          "player_b": "Cristina Bucsa",
+          "model_prob_a": 0.904,
           "decided": true,
-          "winner": "Aryna Sabalenka"
+          "winner": "Coco Gauff"
         },
         {
-          "player_a": "Aryna Sabalenka",
+          "player_a": "Diana Shnaider",
           "player_b": "Taylor Townsend",
-          "model_prob_a": 0.871,
-          "decided": false,
-          "winner": null
+          "model_prob_a": 0.573,
+          "decided": true,
+          "winner": "Taylor Townsend"
         },
         {
-          "player_a": "Cristina Bucsa",
-          "player_b": "Coco Gauff",
-          "model_prob_a": 0.096,
-          "decided": false,
-          "winner": null
+          "player_a": "Ekaterina Alexandrova",
+          "player_b": "Marta Kostyuk",
+          "model_prob_a": 0.233,
+          "decided": true,
+          "winner": "Marta Kostyuk"
         },
         {
           "player_a": "Elena Rybakina",
           "player_b": "Yuliia Starodubtseva",
-          "model_prob_a": 0.081,
-          "decided": false,
-          "winner": null
+          "model_prob_a": 0.951,
+          "decided": true,
+          "winner": "Elena Rybakina"
         },
         {
-          "player_a": "Elise Mertens",
-          "player_b": "Naomi Osaka",
-          "model_prob_a": 0.658,
-          "decided": false,
-          "winner": null
+          "player_a": "Elina Svitolina",
+          "player_b": "Anna Kalinskaya",
+          "model_prob_a": 0.663,
+          "decided": true,
+          "winner": "Anna Kalinskaya"
         },
         {
           "player_a": "Iga Swiatek",
-          "player_b": "Zheng Qinwen",
-          "model_prob_a": 0.743,
-          "decided": false,
-          "winner": null
+          "player_b": "Marie Bouzkova",
+          "model_prob_a": 0.795,
+          "decided": true,
+          "winner": "Iga Swiatek"
+        },
+        {
+          "player_a": "Iva Jovic",
+          "player_b": "Alexandra Eala",
+          "model_prob_a": 0.458,
+          "decided": true,
+          "winner": "Iva Jovic"
         },
         {
           "player_a": "Jasmine Paolini",
@@ -2209,11 +2153,11 @@
           "winner": "Sorana Cirstea"
         },
         {
-          "player_a": "Jessica Pegula",
-          "player_b": "Sorana Cirstea",
-          "model_prob_a": 0.739,
-          "decided": false,
-          "winner": null
+          "player_a": "Kamilla Rakhimova",
+          "player_b": "Aryna Sabalenka",
+          "model_prob_a": 0.026,
+          "decided": true,
+          "winner": "Aryna Sabalenka"
         },
         {
           "player_a": "Karolina Muchova",
@@ -2230,13 +2174,6 @@
           "winner": "Jessica Pegula"
         },
         {
-          "player_a": "Linda Noskova",
-          "player_b": "Ann Li",
-          "model_prob_a": 0.778,
-          "decided": true,
-          "winner": "Linda Noskova"
-        },
-        {
           "player_a": "Madison Keys",
           "player_b": "Zheng Qinwen",
           "model_prob_a": 0.53,
@@ -2244,32 +2181,11 @@
           "winner": "Zheng Qinwen"
         },
         {
-          "player_a": "Marie Bouzkova",
-          "player_b": "Iga Swiatek",
-          "model_prob_a": 0.205,
+          "player_a": "Naomi Osaka",
+          "player_b": "Elise Mertens",
+          "model_prob_a": 0.656,
           "decided": true,
-          "winner": "Iga Swiatek"
-        },
-        {
-          "player_a": "Marta Kostyuk",
-          "player_b": "Ekaterina Alexandrova",
-          "model_prob_a": 0.767,
-          "decided": true,
-          "winner": "Marta Kostyuk"
-        },
-        {
-          "player_a": "Marta Kostyuk",
-          "player_b": "Linda Noskova",
-          "model_prob_a": 0.582,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Mirra Andreeva",
-          "player_b": "Anastasia Potapova",
-          "model_prob_a": 0.675,
-          "decided": false,
-          "winner": null
+          "winner": "Naomi Osaka"
         },
         {
           "player_a": "Nikola Bartunkova",
@@ -2277,245 +2193,176 @@
           "model_prob_a": 0.264,
           "decided": true,
           "winner": "Mirra Andreeva"
+        }
+      ]
+    },
+    {
+      "checkpoint": "current",
+      "round": 4,
+      "label": "Current - 10 players alive",
+      "generated_at": "2026-09-07T18:43:03Z",
+      "players": [
+        {
+          "player": "Aryna Sabalenka",
+          "quarter": "Q1",
+          "p_champ": 0.376,
+          "p_sf": 0.782,
+          "p_final": 0.531
         },
         {
-          "player_a": "Taylor Townsend",
-          "player_b": "Diana Shnaider",
-          "model_prob_a": 0.427,
+          "player": "Jessica Pegula",
+          "quarter": "Q2",
+          "p_champ": 0.198,
+          "p_sf": 0.824,
+          "p_final": 0.343
+        },
+        {
+          "player": "Coco Gauff",
+          "quarter": "Q3",
+          "p_champ": 0.151,
+          "p_sf": 0.534,
+          "p_final": 0.33
+        },
+        {
+          "player": "Elena Rybakina",
+          "quarter": "Q4",
+          "p_champ": 0.112,
+          "p_sf": 0.469,
+          "p_final": 0.261,
+          "health_adjustment": {
+            "elo_penalty": -100,
+            "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
+          }
+        },
+        {
+          "player": "Mirra Andreeva",
+          "quarter": "Q3",
+          "p_champ": 0.055,
+          "p_sf": 0.387,
+          "p_final": 0.181
+        },
+        {
+          "player": "Linda Noskova",
+          "quarter": "Q1",
+          "p_champ": 0.042,
+          "p_sf": 0.218,
+          "p_final": 0.101
+        },
+        {
+          "player": "Naomi Osaka",
+          "quarter": "Q4",
+          "p_champ": 0.031,
+          "p_sf": 0.218,
+          "p_final": 0.094
+        },
+        {
+          "player": "Zheng Qinwen",
+          "quarter": "Q4",
+          "p_champ": 0.023,
+          "p_sf": 0.312,
+          "p_final": 0.107
+        },
+        {
+          "player": "Emma Navarro",
+          "quarter": "Q2",
+          "p_champ": 0.007,
+          "p_sf": 0.176,
+          "p_final": 0.025
+        },
+        {
+          "player": "Iva Jovic",
+          "quarter": "Q3",
+          "p_champ": 0.005,
+          "p_sf": 0.079,
+          "p_final": 0.026
+        }
+      ],
+      "matches": [
+        {
+          "player_a": "Anastasia Potapova",
+          "player_b": "Mirra Andreeva",
+          "model_prob_a": 0.326,
           "decided": true,
-          "winner": "Taylor Townsend"
+          "winner": "Mirra Andreeva"
+        },
+        {
+          "player_a": "Anna Kalinskaya",
+          "player_b": "Emma Navarro",
+          "model_prob_a": 0.627,
+          "decided": true,
+          "winner": "Emma Navarro"
+        },
+        {
+          "player_a": "Aryna Sabalenka",
+          "player_b": "Taylor Townsend",
+          "model_prob_a": 0.87,
+          "decided": true,
+          "winner": "Aryna Sabalenka"
+        },
+        {
+          "player_a": "Aryna Sabalenka",
+          "player_b": "Linda Noskova",
+          "model_prob_a": 0.78,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Iga Swiatek",
+          "player_b": "Zheng Qinwen",
+          "model_prob_a": 0.743,
+          "decided": true,
+          "winner": "Zheng Qinwen"
+        },
+        {
+          "player_a": "Iva Jovic",
+          "player_b": "Coco Gauff",
+          "model_prob_a": 0.209,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Jessica Pegula",
+          "player_b": "Sorana Cirstea",
+          "model_prob_a": 0.738,
+          "decided": true,
+          "winner": "Jessica Pegula"
+        },
+        {
+          "player_a": "Jessica Pegula",
+          "player_b": "Emma Navarro",
+          "model_prob_a": 0.828,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Linda Noskova",
+          "player_b": "Marta Kostyuk",
+          "model_prob_a": 0.422,
+          "decided": true,
+          "winner": "Linda Noskova"
+        },
+        {
+          "player_a": "Naomi Osaka",
+          "player_b": "Elena Rybakina",
+          "model_prob_a": 0.355,
+          "decided": false,
+          "winner": null
         }
       ]
     }
   ],
   "head_to_head": {
-    "Alexandra Eala|Anastasia Potapova": {
-      "model_prob_a": 0.575,
-      "model_prob_b": 0.425
-    },
-    "Alexandra Eala|Anna Kalinskaya": {
-      "model_prob_a": 0.513,
-      "model_prob_b": 0.487
-    },
-    "Alexandra Eala|Aryna Sabalenka": {
-      "model_prob_a": 0.153,
-      "model_prob_b": 0.847
-    },
-    "Alexandra Eala|Coco Gauff": {
-      "model_prob_a": 0.239,
-      "model_prob_b": 0.761
-    },
-    "Alexandra Eala|Cristina Bucsa": {
-      "model_prob_a": 0.749,
-      "model_prob_b": 0.251
-    },
-    "Alexandra Eala|Elena Rybakina": {
-      "model_prob_a": 0.243,
-      "model_prob_b": 0.757
-    },
-    "Alexandra Eala|Elise Mertens": {
-      "model_prob_a": 0.535,
-      "model_prob_b": 0.465
-    },
-    "Alexandra Eala|Emma Navarro": {
-      "model_prob_a": 0.634,
-      "model_prob_b": 0.366
-    },
-    "Alexandra Eala|Iga Swiatek": {
-      "model_prob_a": 0.256,
-      "model_prob_b": 0.744
-    },
-    "Alexandra Eala|Jessica Pegula": {
-      "model_prob_a": 0.266,
-      "model_prob_b": 0.734
-    },
-    "Alexandra Eala|Linda Noskova": {
-      "model_prob_a": 0.405,
-      "model_prob_b": 0.595
-    },
-    "Alexandra Eala|Marta Kostyuk": {
-      "model_prob_a": 0.323,
-      "model_prob_b": 0.677
-    },
-    "Alexandra Eala|Mirra Andreeva": {
-      "model_prob_a": 0.394,
-      "model_prob_b": 0.606
-    },
-    "Alexandra Eala|Naomi Osaka": {
-      "model_prob_a": 0.373,
-      "model_prob_b": 0.627
-    },
-    "Alexandra Eala|Sorana Cirstea": {
-      "model_prob_a": 0.495,
-      "model_prob_b": 0.505
-    },
-    "Alexandra Eala|Taylor Townsend": {
-      "model_prob_a": 0.578,
-      "model_prob_b": 0.422
-    },
-    "Alexandra Eala|Yuliia Starodubtseva": {
-      "model_prob_a": 0.796,
-      "model_prob_b": 0.204
-    },
-    "Alexandra Eala|Zheng Qinwen": {
-      "model_prob_a": 0.504,
-      "model_prob_b": 0.496
-    },
-    "Anastasia Potapova|Anna Kalinskaya": {
-      "model_prob_a": 0.438,
-      "model_prob_b": 0.562
-    },
-    "Anastasia Potapova|Aryna Sabalenka": {
-      "model_prob_a": 0.115,
-      "model_prob_b": 0.885
-    },
-    "Anastasia Potapova|Coco Gauff": {
-      "model_prob_a": 0.188,
-      "model_prob_b": 0.812
-    },
-    "Anastasia Potapova|Cristina Bucsa": {
-      "model_prob_a": 0.689,
-      "model_prob_b": 0.311
-    },
-    "Anastasia Potapova|Elena Rybakina": {
-      "model_prob_a": 0.189,
-      "model_prob_b": 0.811
-    },
-    "Anastasia Potapova|Elise Mertens": {
-      "model_prob_a": 0.46,
-      "model_prob_b": 0.54
-    },
-    "Anastasia Potapova|Emma Navarro": {
-      "model_prob_a": 0.561,
-      "model_prob_b": 0.439
-    },
-    "Anastasia Potapova|Iga Swiatek": {
-      "model_prob_a": 0.203,
-      "model_prob_b": 0.797
-    },
-    "Anastasia Potapova|Iva Jovic": {
-      "model_prob_a": 0.468,
-      "model_prob_b": 0.532
-    },
-    "Anastasia Potapova|Jessica Pegula": {
-      "model_prob_a": 0.213,
-      "model_prob_b": 0.787
-    },
-    "Anastasia Potapova|Linda Noskova": {
-      "model_prob_a": 0.329,
-      "model_prob_b": 0.671
-    },
-    "Anastasia Potapova|Marta Kostyuk": {
-      "model_prob_a": 0.261,
-      "model_prob_b": 0.739
-    },
-    "Anastasia Potapova|Naomi Osaka": {
-      "model_prob_a": 0.304,
-      "model_prob_b": 0.696
-    },
-    "Anastasia Potapova|Sorana Cirstea": {
-      "model_prob_a": 0.422,
-      "model_prob_b": 0.578
-    },
-    "Anastasia Potapova|Taylor Townsend": {
-      "model_prob_a": 0.503,
-      "model_prob_b": 0.497
-    },
-    "Anastasia Potapova|Yuliia Starodubtseva": {
-      "model_prob_a": 0.743,
-      "model_prob_b": 0.257
-    },
-    "Anastasia Potapova|Zheng Qinwen": {
-      "model_prob_a": 0.425,
-      "model_prob_b": 0.575
-    },
-    "Anna Kalinskaya|Aryna Sabalenka": {
-      "model_prob_a": 0.146,
-      "model_prob_b": 0.854
-    },
-    "Anna Kalinskaya|Coco Gauff": {
-      "model_prob_a": 0.23,
-      "model_prob_b": 0.77
-    },
-    "Anna Kalinskaya|Cristina Bucsa": {
-      "model_prob_a": 0.74,
-      "model_prob_b": 0.26
-    },
-    "Anna Kalinskaya|Elena Rybakina": {
-      "model_prob_a": 0.233,
-      "model_prob_b": 0.767
-    },
-    "Anna Kalinskaya|Elise Mertens": {
-      "model_prob_a": 0.528,
-      "model_prob_b": 0.472
-    },
-    "Anna Kalinskaya|Iga Swiatek": {
-      "model_prob_a": 0.246,
-      "model_prob_b": 0.754
-    },
-    "Anna Kalinskaya|Iva Jovic": {
-      "model_prob_a": 0.533,
-      "model_prob_b": 0.467
-    },
-    "Anna Kalinskaya|Jessica Pegula": {
-      "model_prob_a": 0.249,
-      "model_prob_b": 0.751
-    },
-    "Anna Kalinskaya|Linda Noskova": {
-      "model_prob_a": 0.386,
-      "model_prob_b": 0.614
-    },
-    "Anna Kalinskaya|Marta Kostyuk": {
-      "model_prob_a": 0.312,
-      "model_prob_b": 0.688
-    },
-    "Anna Kalinskaya|Mirra Andreeva": {
-      "model_prob_a": 0.382,
-      "model_prob_b": 0.618
-    },
-    "Anna Kalinskaya|Naomi Osaka": {
-      "model_prob_a": 0.361,
-      "model_prob_b": 0.639
-    },
-    "Anna Kalinskaya|Sorana Cirstea": {
-      "model_prob_a": 0.484,
-      "model_prob_b": 0.516
-    },
-    "Anna Kalinskaya|Taylor Townsend": {
-      "model_prob_a": 0.558,
-      "model_prob_b": 0.442
-    },
-    "Anna Kalinskaya|Yuliia Starodubtseva": {
-      "model_prob_a": 0.788,
-      "model_prob_b": 0.212
-    },
-    "Anna Kalinskaya|Zheng Qinwen": {
-      "model_prob_a": 0.487,
-      "model_prob_b": 0.513
-    },
     "Aryna Sabalenka|Coco Gauff": {
       "model_prob_a": 0.625,
       "model_prob_b": 0.375
-    },
-    "Aryna Sabalenka|Cristina Bucsa": {
-      "model_prob_a": 0.95,
-      "model_prob_b": 0.05
     },
     "Aryna Sabalenka|Elena Rybakina": {
       "model_prob_a": 0.634,
       "model_prob_b": 0.366
     },
-    "Aryna Sabalenka|Elise Mertens": {
-      "model_prob_a": 0.857,
-      "model_prob_b": 0.143
-    },
     "Aryna Sabalenka|Emma Navarro": {
       "model_prob_a": 0.916,
       "model_prob_b": 0.084
-    },
-    "Aryna Sabalenka|Iga Swiatek": {
-      "model_prob_a": 0.646,
-      "model_prob_b": 0.354
     },
     "Aryna Sabalenka|Iva Jovic": {
       "model_prob_a": 0.873,
@@ -2525,14 +2372,6 @@
       "model_prob_a": 0.639,
       "model_prob_b": 0.361
     },
-    "Aryna Sabalenka|Linda Noskova": {
-      "model_prob_a": 0.78,
-      "model_prob_b": 0.22
-    },
-    "Aryna Sabalenka|Marta Kostyuk": {
-      "model_prob_a": 0.718,
-      "model_prob_b": 0.282
-    },
     "Aryna Sabalenka|Mirra Andreeva": {
       "model_prob_a": 0.778,
       "model_prob_b": 0.222
@@ -2540,14 +2379,6 @@
     "Aryna Sabalenka|Naomi Osaka": {
       "model_prob_a": 0.76,
       "model_prob_b": 0.24
-    },
-    "Aryna Sabalenka|Sorana Cirstea": {
-      "model_prob_a": 0.833,
-      "model_prob_b": 0.167
-    },
-    "Aryna Sabalenka|Yuliia Starodubtseva": {
-      "model_prob_a": 0.952,
-      "model_prob_b": 0.048
     },
     "Aryna Sabalenka|Zheng Qinwen": {
       "model_prob_a": 0.844,
@@ -2557,21 +2388,9 @@
       "model_prob_a": 0.511,
       "model_prob_b": 0.489
     },
-    "Coco Gauff|Elise Mertens": {
-      "model_prob_a": 0.783,
-      "model_prob_b": 0.217
-    },
     "Coco Gauff|Emma Navarro": {
       "model_prob_a": 0.851,
       "model_prob_b": 0.149
-    },
-    "Coco Gauff|Iga Swiatek": {
-      "model_prob_a": 0.523,
-      "model_prob_b": 0.477
-    },
-    "Coco Gauff|Iva Jovic": {
-      "model_prob_a": 0.791,
-      "model_prob_b": 0.209
     },
     "Coco Gauff|Jessica Pegula": {
       "model_prob_a": 0.533,
@@ -2581,10 +2400,6 @@
       "model_prob_a": 0.684,
       "model_prob_b": 0.316
     },
-    "Coco Gauff|Marta Kostyuk": {
-      "model_prob_a": 0.603,
-      "model_prob_b": 0.397
-    },
     "Coco Gauff|Mirra Andreeva": {
       "model_prob_a": 0.674,
       "model_prob_b": 0.326
@@ -2593,89 +2408,13 @@
       "model_prob_a": 0.654,
       "model_prob_b": 0.346
     },
-    "Coco Gauff|Sorana Cirstea": {
-      "model_prob_a": 0.758,
-      "model_prob_b": 0.242
-    },
-    "Coco Gauff|Taylor Townsend": {
-      "model_prob_a": 0.817,
-      "model_prob_b": 0.183
-    },
-    "Coco Gauff|Yuliia Starodubtseva": {
-      "model_prob_a": 0.925,
-      "model_prob_b": 0.075
-    },
     "Coco Gauff|Zheng Qinwen": {
       "model_prob_a": 0.76,
       "model_prob_b": 0.24
     },
-    "Cristina Bucsa|Elena Rybakina": {
-      "model_prob_a": 0.089,
-      "model_prob_b": 0.911
-    },
-    "Cristina Bucsa|Elise Mertens": {
-      "model_prob_a": 0.281,
-      "model_prob_b": 0.719
-    },
-    "Cristina Bucsa|Emma Navarro": {
-      "model_prob_a": 0.367,
-      "model_prob_b": 0.633
-    },
-    "Cristina Bucsa|Iga Swiatek": {
-      "model_prob_a": 0.103,
-      "model_prob_b": 0.897
-    },
-    "Cristina Bucsa|Iva Jovic": {
-      "model_prob_a": 0.287,
-      "model_prob_b": 0.713
-    },
-    "Cristina Bucsa|Jessica Pegula": {
-      "model_prob_a": 0.104,
-      "model_prob_b": 0.896
-    },
-    "Cristina Bucsa|Linda Noskova": {
-      "model_prob_a": 0.179,
-      "model_prob_b": 0.821
-    },
-    "Cristina Bucsa|Marta Kostyuk": {
-      "model_prob_a": 0.138,
-      "model_prob_b": 0.862
-    },
-    "Cristina Bucsa|Mirra Andreeva": {
-      "model_prob_a": 0.179,
-      "model_prob_b": 0.821
-    },
-    "Cristina Bucsa|Naomi Osaka": {
-      "model_prob_a": 0.163,
-      "model_prob_b": 0.837
-    },
-    "Cristina Bucsa|Sorana Cirstea": {
-      "model_prob_a": 0.247,
-      "model_prob_b": 0.753
-    },
-    "Cristina Bucsa|Taylor Townsend": {
-      "model_prob_a": 0.306,
-      "model_prob_b": 0.694
-    },
-    "Cristina Bucsa|Yuliia Starodubtseva": {
-      "model_prob_a": 0.565,
-      "model_prob_b": 0.435
-    },
-    "Cristina Bucsa|Zheng Qinwen": {
-      "model_prob_a": 0.249,
-      "model_prob_b": 0.751
-    },
-    "Elena Rybakina|Elise Mertens": {
-      "model_prob_a": 0.773,
-      "model_prob_b": 0.227
-    },
     "Elena Rybakina|Emma Navarro": {
       "model_prob_a": 0.852,
       "model_prob_b": 0.148
-    },
-    "Elena Rybakina|Iga Swiatek": {
-      "model_prob_a": 0.512,
-      "model_prob_b": 0.488
     },
     "Elena Rybakina|Iva Jovic": {
       "model_prob_a": 0.792,
@@ -2689,93 +2428,21 @@
       "model_prob_a": 0.67,
       "model_prob_b": 0.33
     },
-    "Elena Rybakina|Marta Kostyuk": {
-      "model_prob_a": 0.593,
-      "model_prob_b": 0.407
-    },
     "Elena Rybakina|Mirra Andreeva": {
       "model_prob_a": 0.666,
       "model_prob_b": 0.334
-    },
-    "Elena Rybakina|Naomi Osaka": {
-      "model_prob_a": 0.645,
-      "model_prob_b": 0.355
-    },
-    "Elena Rybakina|Sorana Cirstea": {
-      "model_prob_a": 0.74,
-      "model_prob_b": 0.26
-    },
-    "Elena Rybakina|Taylor Townsend": {
-      "model_prob_a": 0.816,
-      "model_prob_b": 0.184
     },
     "Elena Rybakina|Zheng Qinwen": {
       "model_prob_a": 0.755,
       "model_prob_b": 0.245
     },
-    "Elise Mertens|Emma Navarro": {
-      "model_prob_a": 0.601,
-      "model_prob_b": 0.399
-    },
-    "Elise Mertens|Iga Swiatek": {
-      "model_prob_a": 0.232,
-      "model_prob_b": 0.768
-    },
-    "Elise Mertens|Iva Jovic": {
-      "model_prob_a": 0.511,
-      "model_prob_b": 0.489
-    },
-    "Elise Mertens|Jessica Pegula": {
-      "model_prob_a": 0.228,
-      "model_prob_b": 0.772
-    },
-    "Elise Mertens|Linda Noskova": {
-      "model_prob_a": 0.366,
-      "model_prob_b": 0.634
-    },
-    "Elise Mertens|Marta Kostyuk": {
-      "model_prob_a": 0.294,
-      "model_prob_b": 0.706
-    },
-    "Elise Mertens|Mirra Andreeva": {
-      "model_prob_a": 0.362,
-      "model_prob_b": 0.638
-    },
-    "Elise Mertens|Sorana Cirstea": {
-      "model_prob_a": 0.456,
-      "model_prob_b": 0.544
-    },
-    "Elise Mertens|Taylor Townsend": {
-      "model_prob_a": 0.53,
-      "model_prob_b": 0.47
-    },
-    "Elise Mertens|Yuliia Starodubtseva": {
-      "model_prob_a": 0.768,
-      "model_prob_b": 0.232
-    },
-    "Elise Mertens|Zheng Qinwen": {
-      "model_prob_a": 0.465,
-      "model_prob_b": 0.535
-    },
-    "Emma Navarro|Iga Swiatek": {
-      "model_prob_a": 0.162,
-      "model_prob_b": 0.838
-    },
     "Emma Navarro|Iva Jovic": {
       "model_prob_a": 0.414,
       "model_prob_b": 0.586
     },
-    "Emma Navarro|Jessica Pegula": {
-      "model_prob_a": 0.172,
-      "model_prob_b": 0.828
-    },
     "Emma Navarro|Linda Noskova": {
       "model_prob_a": 0.274,
       "model_prob_b": 0.726
-    },
-    "Emma Navarro|Marta Kostyuk": {
-      "model_prob_a": 0.213,
-      "model_prob_b": 0.787
     },
     "Emma Navarro|Mirra Andreeva": {
       "model_prob_a": 0.279,
@@ -2785,57 +2452,9 @@
       "model_prob_a": 0.252,
       "model_prob_b": 0.748
     },
-    "Emma Navarro|Sorana Cirstea": {
-      "model_prob_a": 0.37,
-      "model_prob_b": 0.63
-    },
-    "Emma Navarro|Taylor Townsend": {
-      "model_prob_a": 0.442,
-      "model_prob_b": 0.558
-    },
-    "Emma Navarro|Yuliia Starodubtseva": {
-      "model_prob_a": 0.699,
-      "model_prob_b": 0.301
-    },
     "Emma Navarro|Zheng Qinwen": {
       "model_prob_a": 0.365,
       "model_prob_b": 0.635
-    },
-    "Iga Swiatek|Iva Jovic": {
-      "model_prob_a": 0.774,
-      "model_prob_b": 0.226
-    },
-    "Iga Swiatek|Jessica Pegula": {
-      "model_prob_a": 0.51,
-      "model_prob_b": 0.49
-    },
-    "Iga Swiatek|Linda Noskova": {
-      "model_prob_a": 0.658,
-      "model_prob_b": 0.342
-    },
-    "Iga Swiatek|Marta Kostyuk": {
-      "model_prob_a": 0.58,
-      "model_prob_b": 0.42
-    },
-    "Iga Swiatek|Mirra Andreeva": {
-      "model_prob_a": 0.652,
-      "model_prob_b": 0.348
-    },
-    "Iga Swiatek|Naomi Osaka": {
-      "model_prob_a": 0.633,
-      "model_prob_b": 0.367
-    },
-    "Iga Swiatek|Sorana Cirstea": {
-      "model_prob_a": 0.74,
-      "model_prob_b": 0.26
-    },
-    "Iga Swiatek|Taylor Townsend": {
-      "model_prob_a": 0.803,
-      "model_prob_b": 0.197
-    },
-    "Iga Swiatek|Yuliia Starodubtseva": {
-      "model_prob_a": 0.918,
-      "model_prob_b": 0.082
     },
     "Iva Jovic|Jessica Pegula": {
       "model_prob_a": 0.231,
@@ -2845,10 +2464,6 @@
       "model_prob_a": 0.364,
       "model_prob_b": 0.636
     },
-    "Iva Jovic|Marta Kostyuk": {
-      "model_prob_a": 0.286,
-      "model_prob_b": 0.714
-    },
     "Iva Jovic|Mirra Andreeva": {
       "model_prob_a": 0.354,
       "model_prob_b": 0.646
@@ -2856,18 +2471,6 @@
     "Iva Jovic|Naomi Osaka": {
       "model_prob_a": 0.33,
       "model_prob_b": 0.67
-    },
-    "Iva Jovic|Sorana Cirstea": {
-      "model_prob_a": 0.449,
-      "model_prob_b": 0.551
-    },
-    "Iva Jovic|Taylor Townsend": {
-      "model_prob_a": 0.533,
-      "model_prob_b": 0.467
-    },
-    "Iva Jovic|Yuliia Starodubtseva": {
-      "model_prob_a": 0.767,
-      "model_prob_b": 0.233
     },
     "Iva Jovic|Zheng Qinwen": {
       "model_prob_a": 0.461,
@@ -2877,10 +2480,6 @@
       "model_prob_a": 0.648,
       "model_prob_b": 0.352
     },
-    "Jessica Pegula|Marta Kostyuk": {
-      "model_prob_a": 0.57,
-      "model_prob_b": 0.43
-    },
     "Jessica Pegula|Mirra Andreeva": {
       "model_prob_a": 0.644,
       "model_prob_b": 0.356
@@ -2888,14 +2487,6 @@
     "Jessica Pegula|Naomi Osaka": {
       "model_prob_a": 0.637,
       "model_prob_b": 0.363
-    },
-    "Jessica Pegula|Taylor Townsend": {
-      "model_prob_a": 0.792,
-      "model_prob_b": 0.208
-    },
-    "Jessica Pegula|Yuliia Starodubtseva": {
-      "model_prob_a": 0.918,
-      "model_prob_b": 0.082
     },
     "Jessica Pegula|Zheng Qinwen": {
       "model_prob_a": 0.733,
@@ -2909,105 +2500,21 @@
       "model_prob_a": 0.473,
       "model_prob_b": 0.527
     },
-    "Linda Noskova|Sorana Cirstea": {
-      "model_prob_a": 0.592,
-      "model_prob_b": 0.408
-    },
-    "Linda Noskova|Taylor Townsend": {
-      "model_prob_a": 0.675,
-      "model_prob_b": 0.325
-    },
-    "Linda Noskova|Yuliia Starodubtseva": {
-      "model_prob_a": 0.852,
-      "model_prob_b": 0.148
-    },
     "Linda Noskova|Zheng Qinwen": {
       "model_prob_a": 0.601,
       "model_prob_b": 0.399
-    },
-    "Marta Kostyuk|Mirra Andreeva": {
-      "model_prob_a": 0.577,
-      "model_prob_b": 0.423
-    },
-    "Marta Kostyuk|Naomi Osaka": {
-      "model_prob_a": 0.555,
-      "model_prob_b": 0.445
-    },
-    "Marta Kostyuk|Sorana Cirstea": {
-      "model_prob_a": 0.674,
-      "model_prob_b": 0.326
-    },
-    "Marta Kostyuk|Taylor Townsend": {
-      "model_prob_a": 0.744,
-      "model_prob_b": 0.256
-    },
-    "Marta Kostyuk|Yuliia Starodubtseva": {
-      "model_prob_a": 0.891,
-      "model_prob_b": 0.109
-    },
-    "Marta Kostyuk|Zheng Qinwen": {
-      "model_prob_a": 0.676,
-      "model_prob_b": 0.324
     },
     "Mirra Andreeva|Naomi Osaka": {
       "model_prob_a": 0.478,
       "model_prob_b": 0.522
     },
-    "Mirra Andreeva|Sorana Cirstea": {
-      "model_prob_a": 0.601,
-      "model_prob_b": 0.399
-    },
-    "Mirra Andreeva|Taylor Townsend": {
-      "model_prob_a": 0.679,
-      "model_prob_b": 0.321
-    },
-    "Mirra Andreeva|Yuliia Starodubtseva": {
-      "model_prob_a": 0.857,
-      "model_prob_b": 0.143
-    },
     "Mirra Andreeva|Zheng Qinwen": {
       "model_prob_a": 0.61,
       "model_prob_b": 0.39
     },
-    "Naomi Osaka|Sorana Cirstea": {
-      "model_prob_a": 0.617,
-      "model_prob_b": 0.383
-    },
-    "Naomi Osaka|Taylor Townsend": {
-      "model_prob_a": 0.684,
-      "model_prob_b": 0.316
-    },
-    "Naomi Osaka|Yuliia Starodubtseva": {
-      "model_prob_a": 0.864,
-      "model_prob_b": 0.136
-    },
     "Naomi Osaka|Zheng Qinwen": {
       "model_prob_a": 0.627,
       "model_prob_b": 0.373
-    },
-    "Sorana Cirstea|Taylor Townsend": {
-      "model_prob_a": 0.574,
-      "model_prob_b": 0.426
-    },
-    "Sorana Cirstea|Yuliia Starodubtseva": {
-      "model_prob_a": 0.798,
-      "model_prob_b": 0.202
-    },
-    "Sorana Cirstea|Zheng Qinwen": {
-      "model_prob_a": 0.508,
-      "model_prob_b": 0.492
-    },
-    "Taylor Townsend|Yuliia Starodubtseva": {
-      "model_prob_a": 0.746,
-      "model_prob_b": 0.254
-    },
-    "Taylor Townsend|Zheng Qinwen": {
-      "model_prob_a": 0.422,
-      "model_prob_b": 0.578
-    },
-    "Yuliia Starodubtseva|Zheng Qinwen": {
-      "model_prob_a": 0.207,
-      "model_prob_b": 0.793
     }
   },
   "health_adjustments": [

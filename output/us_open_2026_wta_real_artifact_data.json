@@ -1,15 +1,15 @@
 {
   "meta": {
     "tournament": "us-open-women-2026",
-    "generated_at": "2026-09-05T21:11:12Z",
+    "generated_at": "2026-09-07T18:43:58Z",
     "current_iterations": 10000,
     "current_seed": 42,
     "round_history_iterations": 2000,
     "pretournament_baseline_path": "X:\\idanh\\Documents\\VS Code Projects\\Monte-Carlo-Simulation-Grand-Slam-Model-\\output\\us_open_2026_wta_real_pretournament_baseline.json"
   },
   "market_meta": {
-    "fetched_at": "2026-09-06T16:51:24Z",
-    "n_priced_matches": 7
+    "fetched_at": "2026-09-07T18:44:06Z",
+    "n_priced_matches": 3
   },
   "draw_size": 128,
   "players": [
@@ -30,9 +30,9 @@
       "current": {
         "player": "Aryna Sabalenka",
         "quarter": "Q1",
-        "p_champ": 0.317,
-        "p_sf": 0.646,
-        "p_final": 0.469
+        "p_champ": 0.376,
+        "p_sf": 0.782,
+        "p_final": 0.531
       },
       "alive": true
     },
@@ -186,14 +186,8 @@
         "p_sf": 0.02,
         "p_final": 0.006
       },
-      "current": {
-        "player": "Taylor Townsend",
-        "quarter": "Q1",
-        "p_champ": 0.003,
-        "p_sf": 0.043,
-        "p_final": 0.015
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 11,
@@ -311,14 +305,8 @@
         "p_sf": 0.189,
         "p_final": 0.082
       },
-      "current": {
-        "player": "Marta Kostyuk",
-        "quarter": "Q1",
-        "p_champ": 0.054,
-        "p_sf": 0.198,
-        "p_final": 0.111
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 18,
@@ -575,9 +563,9 @@
       "current": {
         "player": "Linda Noskova",
         "quarter": "Q1",
-        "p_champ": 0.022,
-        "p_sf": 0.114,
-        "p_final": 0.056
+        "p_champ": 0.042,
+        "p_sf": 0.218,
+        "p_final": 0.101
       },
       "alive": true
     },
@@ -598,9 +586,9 @@
       "current": {
         "player": "Jessica Pegula",
         "quarter": "Q2",
-        "p_champ": 0.14,
-        "p_sf": 0.569,
-        "p_final": 0.255
+        "p_champ": 0.198,
+        "p_sf": 0.824,
+        "p_final": 0.343
       },
       "alive": true
     },
@@ -856,14 +844,8 @@
         "p_sf": 0.064,
         "p_final": 0.027
       },
-      "current": {
-        "player": "Sorana Cirstea",
-        "quarter": "Q2",
-        "p_champ": 0.011,
-        "p_sf": 0.155,
-        "p_final": 0.037
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 49,
@@ -998,14 +980,8 @@
         "p_sf": 0.033,
         "p_final": 0.013
       },
-      "current": {
-        "player": "Anna Kalinskaya",
-        "quarter": "Q2",
-        "p_champ": 0.015,
-        "p_sf": 0.183,
-        "p_final": 0.045
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 57,
@@ -1024,9 +1000,9 @@
       "current": {
         "player": "Emma Navarro",
         "quarter": "Q2",
-        "p_champ": 0.003,
-        "p_sf": 0.093,
-        "p_final": 0.013
+        "p_champ": 0.007,
+        "p_sf": 0.176,
+        "p_final": 0.025
       },
       "alive": true
     },
@@ -1154,9 +1130,9 @@
       "current": {
         "player": "Mirra Andreeva",
         "quarter": "Q3",
-        "p_champ": 0.042,
-        "p_sf": 0.265,
-        "p_final": 0.114
+        "p_champ": 0.055,
+        "p_sf": 0.387,
+        "p_final": 0.181
       },
       "alive": true
     },
@@ -1293,14 +1269,8 @@
         "p_sf": 0.018,
         "p_final": 0.007
       },
-      "current": {
-        "player": "Anastasia Potapova",
-        "quarter": "Q3",
-        "p_champ": 0.004,
-        "p_sf": 0.1,
-        "p_final": 0.025
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 74,
@@ -1432,9 +1402,9 @@
       "current": {
         "player": "Iva Jovic",
         "quarter": "Q3",
-        "p_champ": 0.004,
-        "p_sf": 0.052,
-        "p_final": 0.015
+        "p_champ": 0.005,
+        "p_sf": 0.079,
+        "p_final": 0.026
       },
       "alive": true
     },
@@ -1554,14 +1524,8 @@
         "p_sf": 0.035,
         "p_final": 0.012
       },
-      "current": {
-        "player": "Alexandra Eala",
-        "quarter": "Q3",
-        "p_champ": 0.006,
-        "p_sf": 0.071,
-        "p_final": 0.02
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 89,
@@ -1594,14 +1558,8 @@
         "p_sf": 0.002,
         "p_final": 0.0
       },
-      "current": {
-        "player": "Cristina Bucsa",
-        "quarter": "Q3",
-        "p_champ": 0.0,
-        "p_sf": 0.006,
-        "p_final": 0.001
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 91,
@@ -1705,9 +1663,9 @@
       "current": {
         "player": "Coco Gauff",
         "quarter": "Q3",
-        "p_champ": 0.14,
-        "p_sf": 0.505,
-        "p_final": 0.283
+        "p_champ": 0.151,
+        "p_sf": 0.534,
+        "p_final": 0.33
       },
       "alive": true
     },
@@ -1725,14 +1683,8 @@
         "p_sf": 0.332,
         "p_final": 0.209
       },
-      "current": {
-        "player": "Iga Swiatek",
-        "quarter": "Q4",
-        "p_champ": 0.113,
-        "p_sf": 0.41,
-        "p_final": 0.239
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 98,
@@ -1938,9 +1890,9 @@
       "current": {
         "player": "Zheng Qinwen",
         "quarter": "Q4",
-        "p_champ": 0.008,
-        "p_sf": 0.086,
-        "p_final": 0.028
+        "p_champ": 0.023,
+        "p_sf": 0.312,
+        "p_final": 0.107
       },
       "alive": true
     },
@@ -2012,9 +1964,9 @@
       "current": {
         "player": "Naomi Osaka",
         "quarter": "Q4",
-        "p_champ": 0.02,
-        "p_sf": 0.12,
-        "p_final": 0.055
+        "p_champ": 0.031,
+        "p_sf": 0.218,
+        "p_final": 0.094
       },
       "alive": true
     },
@@ -2134,14 +2086,8 @@
         "p_sf": 0.026,
         "p_final": 0.007
       },
-      "current": {
-        "player": "Elise Mertens",
-        "quarter": "Q4",
-        "p_champ": 0.003,
-        "p_sf": 0.032,
-        "p_final": 0.012
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 121,
@@ -2191,14 +2137,8 @@
         "p_sf": 0.0,
         "p_final": 0.0
       },
-      "current": {
-        "player": "Yuliia Starodubtseva",
-        "quarter": "Q4",
-        "p_champ": 0.0,
-        "p_sf": 0.002,
-        "p_final": 0.0
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 124,
@@ -2289,9 +2229,9 @@
       "current": {
         "player": "Elena Rybakina",
         "quarter": "Q4",
-        "p_champ": 0.096,
-        "p_sf": 0.351,
-        "p_final": 0.207,
+        "p_champ": 0.112,
+        "p_sf": 0.469,
+        "p_final": 0.261,
         "health_adjustment": {
           "elo_penalty": -100,
           "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
@@ -4126,32 +4066,13 @@
       "market_captured_at": null
     },
     {
-      "player_a": "Alexandra Eala",
-      "player_b": "Iva Jovic",
-      "model_prob_a": 0.457,
-      "decided": false,
-      "winner": null,
-      "round": 3,
-      "round_label": "Current - 20 players alive",
-      "live_state": "post",
-      "status_text": "Final",
-      "score": "7-5, 3-6, 7-5",
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "gap_pp_a": null,
-      "gap_pp_b": null,
-      "relative_pct_a": null,
-      "relative_pct_b": null,
-      "market_captured_at": null
-    },
-    {
-      "player_a": "Anastasia Potapova",
-      "player_b": "Amanda Anisimova",
-      "model_prob_a": 0.28,
+      "player_a": "Amanda Anisimova",
+      "player_b": "Anastasia Potapova",
+      "model_prob_a": 0.72,
       "decided": true,
       "winner": "Anastasia Potapova",
-      "round": 3,
-      "round_label": "Current - 20 players alive",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
       "live_state": "post",
       "status_text": "Final",
       "score": "6-2, 7-5",
@@ -4164,16 +4085,16 @@
       "market_captured_at": null
     },
     {
-      "player_a": "Anna Kalinskaya",
-      "player_b": "Elina Svitolina",
-      "model_prob_a": 0.337,
+      "player_a": "Ann Li",
+      "player_b": "Linda Noskova",
+      "model_prob_a": 0.222,
       "decided": true,
-      "winner": "Anna Kalinskaya",
-      "round": 3,
-      "round_label": "Current - 20 players alive",
+      "winner": "Linda Noskova",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
       "live_state": "post",
       "status_text": "Final",
-      "score": "3-6, 6-2, 3-6",
+      "score": "2-6, 7(8)-6(6), 2-6",
       "market_prob_a": null,
       "market_prob_b": null,
       "gap_pp_a": null,
@@ -4183,70 +4104,13 @@
       "market_captured_at": null
     },
     {
-      "player_a": "Anna Kalinskaya",
-      "player_b": "Emma Navarro",
-      "model_prob_a": 0.622,
-      "decided": false,
-      "winner": null,
-      "round": 3,
-      "round_label": "Current - 20 players alive",
-      "live_state": "pre",
-      "status_text": "Scheduled",
-      "score": null,
-      "market_prob_a": 0.5020443925233644,
-      "market_prob_b": 0.4979556074766356,
-      "gap_pp_a": 11.995560747663559,
-      "gap_pp_b": -11.995560747663559,
-      "relative_pct_a": 23.893426410703917,
-      "relative_pct_b": -24.089618768328457,
-      "market_captured_at": "2026-09-06T16:51:24Z"
-    },
-    {
-      "player_a": "Aryna Sabalenka",
-      "player_b": "Kamilla Rakhimova",
-      "model_prob_a": 0.974,
+      "player_a": "Coco Gauff",
+      "player_b": "Cristina Bucsa",
+      "model_prob_a": 0.904,
       "decided": true,
-      "winner": "Aryna Sabalenka",
-      "round": 3,
-      "round_label": "Current - 20 players alive",
-      "live_state": "post",
-      "status_text": "Final",
-      "score": "6-3, 6-4",
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "gap_pp_a": null,
-      "gap_pp_b": null,
-      "relative_pct_a": null,
-      "relative_pct_b": null,
-      "market_captured_at": null
-    },
-    {
-      "player_a": "Aryna Sabalenka",
-      "player_b": "Taylor Townsend",
-      "model_prob_a": 0.871,
-      "decided": false,
-      "winner": null,
-      "round": 3,
-      "round_label": "Current - 20 players alive",
-      "live_state": "in",
-      "status_text": "In Progress",
-      "score": "6-4, 1-3",
-      "market_prob_a": 0.9195910894110467,
-      "market_prob_b": 0.08040891058895328,
-      "gap_pp_a": -4.859108941104672,
-      "gap_pp_b": 4.859108941104672,
-      "relative_pct_a": -5.283988717438199,
-      "relative_pct_b": 60.42998102466801,
-      "market_captured_at": "2026-09-06T16:51:24Z"
-    },
-    {
-      "player_a": "Cristina Bucsa",
-      "player_b": "Coco Gauff",
-      "model_prob_a": 0.096,
-      "decided": false,
-      "winner": null,
-      "round": 3,
-      "round_label": "Current - 20 players alive",
+      "winner": "Coco Gauff",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
       "live_state": "post",
       "status_text": "Final",
       "score": "3-6, 4-6",
@@ -4259,13 +4123,51 @@
       "market_captured_at": null
     },
     {
+      "player_a": "Diana Shnaider",
+      "player_b": "Taylor Townsend",
+      "model_prob_a": 0.573,
+      "decided": true,
+      "winner": "Taylor Townsend",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 6(3)-7(7), 6-3",
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
+    },
+    {
+      "player_a": "Ekaterina Alexandrova",
+      "player_b": "Marta Kostyuk",
+      "model_prob_a": 0.233,
+      "decided": true,
+      "winner": "Marta Kostyuk",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 6-2",
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
+    },
+    {
       "player_a": "Elena Rybakina",
       "player_b": "Yuliia Starodubtseva",
-      "model_prob_a": 0.081,
-      "decided": false,
-      "winner": null,
-      "round": 3,
-      "round_label": "Current - 20 players alive",
+      "model_prob_a": 0.951,
+      "decided": true,
+      "winner": "Elena Rybakina",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
       "live_state": "post",
       "status_text": "Final",
       "score": "6(6)-7(8), 3-6",
@@ -4278,16 +4180,16 @@
       "market_captured_at": null
     },
     {
-      "player_a": "Elise Mertens",
-      "player_b": "Naomi Osaka",
-      "model_prob_a": 0.658,
-      "decided": false,
-      "winner": null,
-      "round": 3,
-      "round_label": "Current - 20 players alive",
+      "player_a": "Elina Svitolina",
+      "player_b": "Anna Kalinskaya",
+      "model_prob_a": 0.663,
+      "decided": true,
+      "winner": "Anna Kalinskaya",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
       "live_state": "post",
       "status_text": "Final",
-      "score": "6-3, 3-6, 7-5",
+      "score": "3-6, 6-2, 3-6",
       "market_prob_a": null,
       "market_prob_b": null,
       "gap_pp_a": null,
@@ -4298,22 +4200,41 @@
     },
     {
       "player_a": "Iga Swiatek",
-      "player_b": "Zheng Qinwen",
-      "model_prob_a": 0.743,
-      "decided": false,
-      "winner": null,
-      "round": 3,
-      "round_label": "Current - 20 players alive",
-      "live_state": "pre",
-      "status_text": "Scheduled",
-      "score": null,
-      "market_prob_a": 0.7787592852840794,
-      "market_prob_b": 0.22124071471592055,
-      "gap_pp_a": -3.5759285284079456,
-      "gap_pp_b": 3.5759285284079456,
-      "relative_pct_a": -4.5918277906676925,
-      "relative_pct_b": 16.163067150635186,
-      "market_captured_at": "2026-09-06T16:51:24Z"
+      "player_b": "Marie Bouzkova",
+      "model_prob_a": 0.795,
+      "decided": true,
+      "winner": "Iga Swiatek",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7(7)-6(3), 7(7)-6(3)",
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
+    },
+    {
+      "player_a": "Iva Jovic",
+      "player_b": "Alexandra Eala",
+      "model_prob_a": 0.458,
+      "decided": true,
+      "winner": "Iva Jovic",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7-5, 3-6, 7-5",
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
     },
     {
       "player_a": "Jasmine Paolini",
@@ -4321,8 +4242,8 @@
       "model_prob_a": 0.419,
       "decided": true,
       "winner": "Sorana Cirstea",
-      "round": 3,
-      "round_label": "Current - 20 players alive",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
       "live_state": "post",
       "status_text": "Final",
       "score": "3-6, 3-6",
@@ -4335,23 +4256,23 @@
       "market_captured_at": null
     },
     {
-      "player_a": "Jessica Pegula",
-      "player_b": "Sorana Cirstea",
-      "model_prob_a": 0.739,
-      "decided": false,
-      "winner": null,
-      "round": 3,
-      "round_label": "Current - 20 players alive",
-      "live_state": "pre",
-      "status_text": "Scheduled",
-      "score": null,
-      "market_prob_a": 0.7050691244239631,
-      "market_prob_b": 0.2949308755760369,
-      "gap_pp_a": 3.393087557603691,
-      "gap_pp_b": -3.393087557603691,
-      "relative_pct_a": 4.812418300653602,
-      "relative_pct_b": -11.504687500000014,
-      "market_captured_at": "2026-09-06T16:51:24Z"
+      "player_a": "Kamilla Rakhimova",
+      "player_b": "Aryna Sabalenka",
+      "model_prob_a": 0.026,
+      "decided": true,
+      "winner": "Aryna Sabalenka",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 6-4",
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
     },
     {
       "player_a": "Karolina Muchova",
@@ -4359,8 +4280,8 @@
       "model_prob_a": 0.797,
       "decided": true,
       "winner": "Emma Navarro",
-      "round": 3,
-      "round_label": "Current - 20 players alive",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
       "live_state": "post",
       "status_text": "Final",
       "score": "6-3, 7-5",
@@ -4378,30 +4299,11 @@
       "model_prob_a": 0.068,
       "decided": true,
       "winner": "Jessica Pegula",
-      "round": 3,
-      "round_label": "Current - 20 players alive",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
       "live_state": "post",
       "status_text": "Final",
       "score": "1-6, 6-4, 6-3",
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "gap_pp_a": null,
-      "gap_pp_b": null,
-      "relative_pct_a": null,
-      "relative_pct_b": null,
-      "market_captured_at": null
-    },
-    {
-      "player_a": "Linda Noskova",
-      "player_b": "Ann Li",
-      "model_prob_a": 0.778,
-      "decided": true,
-      "winner": "Linda Noskova",
-      "round": 3,
-      "round_label": "Current - 20 players alive",
-      "live_state": "post",
-      "status_text": "Final",
-      "score": "2-6, 7(8)-6(6), 2-6",
       "market_prob_a": null,
       "market_prob_b": null,
       "gap_pp_a": null,
@@ -4416,8 +4318,8 @@
       "model_prob_a": 0.53,
       "decided": true,
       "winner": "Zheng Qinwen",
-      "round": 3,
-      "round_label": "Current - 20 players alive",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
       "live_state": "post",
       "status_text": "Final",
       "score": "6-1, 6(3)-7(7), 5-7",
@@ -4430,16 +4332,16 @@
       "market_captured_at": null
     },
     {
-      "player_a": "Marie Bouzkova",
-      "player_b": "Iga Swiatek",
-      "model_prob_a": 0.205,
+      "player_a": "Naomi Osaka",
+      "player_b": "Elise Mertens",
+      "model_prob_a": 0.656,
       "decided": true,
-      "winner": "Iga Swiatek",
-      "round": 3,
-      "round_label": "Current - 20 players alive",
+      "winner": "Naomi Osaka",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
       "live_state": "post",
       "status_text": "Final",
-      "score": "7(7)-6(3), 7(7)-6(3)",
+      "score": "6-3, 3-6, 7-5",
       "market_prob_a": null,
       "market_prob_b": null,
       "gap_pp_a": null,
@@ -4447,63 +4349,6 @@
       "relative_pct_a": null,
       "relative_pct_b": null,
       "market_captured_at": null
-    },
-    {
-      "player_a": "Marta Kostyuk",
-      "player_b": "Ekaterina Alexandrova",
-      "model_prob_a": 0.767,
-      "decided": true,
-      "winner": "Marta Kostyuk",
-      "round": 3,
-      "round_label": "Current - 20 players alive",
-      "live_state": "post",
-      "status_text": "Final",
-      "score": "6-3, 6-2",
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "gap_pp_a": null,
-      "gap_pp_b": null,
-      "relative_pct_a": null,
-      "relative_pct_b": null,
-      "market_captured_at": null
-    },
-    {
-      "player_a": "Marta Kostyuk",
-      "player_b": "Linda Noskova",
-      "model_prob_a": 0.582,
-      "decided": false,
-      "winner": null,
-      "round": 3,
-      "round_label": "Current - 20 players alive",
-      "live_state": "in",
-      "status_text": "In Progress",
-      "score": "0-0",
-      "market_prob_a": 0.5372279495990836,
-      "market_prob_b": 0.4627720504009164,
-      "gap_pp_a": 4.477205040091636,
-      "gap_pp_b": -4.477205040091636,
-      "relative_pct_a": 8.333901918976542,
-      "relative_pct_b": -9.674752475247521,
-      "market_captured_at": "2026-09-06T16:51:24Z"
-    },
-    {
-      "player_a": "Mirra Andreeva",
-      "player_b": "Anastasia Potapova",
-      "model_prob_a": 0.675,
-      "decided": false,
-      "winner": null,
-      "round": 3,
-      "round_label": "Current - 20 players alive",
-      "live_state": "pre",
-      "status_text": "Scheduled",
-      "score": null,
-      "market_prob_a": 0.8348579682233992,
-      "market_prob_b": 0.1651420317766008,
-      "gap_pp_a": -15.985796822339914,
-      "gap_pp_b": 15.985796822339914,
-      "relative_pct_a": -19.147923875432525,
-      "relative_pct_b": 96.80029154518955,
-      "market_captured_at": "2026-09-06T16:51:24Z"
     },
     {
       "player_a": "Nikola Bartunkova",
@@ -4511,8 +4356,8 @@
       "model_prob_a": 0.264,
       "decided": true,
       "winner": "Mirra Andreeva",
-      "round": 3,
-      "round_label": "Current - 20 players alive",
+      "round": 4,
+      "round_label": "Round 4 - 16 players about to play",
       "live_state": "post",
       "status_text": "Final",
       "score": "6-2, 7(7)-6(5)",
@@ -4525,16 +4370,16 @@
       "market_captured_at": null
     },
     {
-      "player_a": "Taylor Townsend",
-      "player_b": "Diana Shnaider",
-      "model_prob_a": 0.427,
+      "player_a": "Anastasia Potapova",
+      "player_b": "Mirra Andreeva",
+      "model_prob_a": 0.326,
       "decided": true,
-      "winner": "Taylor Townsend",
-      "round": 3,
-      "round_label": "Current - 20 players alive",
+      "winner": "Mirra Andreeva",
+      "round": 4,
+      "round_label": "Current - 10 players alive",
       "live_state": "post",
       "status_text": "Final",
-      "score": "6-2, 6(3)-7(7), 6-3",
+      "score": "5-7, 6-4, 6-3",
       "market_prob_a": null,
       "market_prob_b": null,
       "gap_pp_a": null,
@@ -4542,6 +4387,177 @@
       "relative_pct_a": null,
       "relative_pct_b": null,
       "market_captured_at": null
+    },
+    {
+      "player_a": "Anna Kalinskaya",
+      "player_b": "Emma Navarro",
+      "model_prob_a": 0.627,
+      "decided": true,
+      "winner": "Emma Navarro",
+      "round": 4,
+      "round_label": "Current - 10 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "4-6, 2-6",
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
+    },
+    {
+      "player_a": "Aryna Sabalenka",
+      "player_b": "Taylor Townsend",
+      "model_prob_a": 0.87,
+      "decided": true,
+      "winner": "Aryna Sabalenka",
+      "round": 4,
+      "round_label": "Current - 10 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-4, 6-3",
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
+    },
+    {
+      "player_a": "Aryna Sabalenka",
+      "player_b": "Linda Noskova",
+      "model_prob_a": 0.78,
+      "decided": false,
+      "winner": null,
+      "round": 4,
+      "round_label": "Current - 10 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null,
+      "market_prob_a": 0.6902038786673297,
+      "market_prob_b": 0.3097961213326703,
+      "gap_pp_a": 8.979612133267034,
+      "gap_pp_b": -8.979612133267034,
+      "relative_pct_a": 13.010086455331415,
+      "relative_pct_b": -28.98555377207063,
+      "market_captured_at": "2026-09-07T18:44:06Z"
+    },
+    {
+      "player_a": "Iga Swiatek",
+      "player_b": "Zheng Qinwen",
+      "model_prob_a": 0.743,
+      "decided": true,
+      "winner": "Zheng Qinwen",
+      "round": 4,
+      "round_label": "Current - 10 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "5-7, 3-6",
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
+    },
+    {
+      "player_a": "Iva Jovic",
+      "player_b": "Coco Gauff",
+      "model_prob_a": 0.209,
+      "decided": false,
+      "winner": null,
+      "round": 4,
+      "round_label": "Current - 10 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null,
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
+    },
+    {
+      "player_a": "Jessica Pegula",
+      "player_b": "Sorana Cirstea",
+      "model_prob_a": 0.738,
+      "decided": true,
+      "winner": "Jessica Pegula",
+      "round": 4,
+      "round_label": "Current - 10 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 6-4",
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
+    },
+    {
+      "player_a": "Jessica Pegula",
+      "player_b": "Emma Navarro",
+      "model_prob_a": 0.828,
+      "decided": false,
+      "winner": null,
+      "round": 4,
+      "round_label": "Current - 10 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null,
+      "market_prob_a": 0.7753241491085899,
+      "market_prob_b": 0.22467585089141007,
+      "gap_pp_a": 5.2675850891410025,
+      "gap_pp_b": -5.2675850891410025,
+      "relative_pct_a": 6.794042330807418,
+      "relative_pct_b": -23.445266005410268,
+      "market_captured_at": "2026-09-07T18:44:06Z"
+    },
+    {
+      "player_a": "Linda Noskova",
+      "player_b": "Marta Kostyuk",
+      "model_prob_a": 0.422,
+      "decided": true,
+      "winner": "Linda Noskova",
+      "round": 4,
+      "round_label": "Current - 10 players alive",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "5-7, 7-5, 4-6",
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
+    },
+    {
+      "player_a": "Naomi Osaka",
+      "player_b": "Elena Rybakina",
+      "model_prob_a": 0.355,
+      "decided": false,
+      "winner": null,
+      "round": 4,
+      "round_label": "Current - 10 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null,
+      "market_prob_a": 0.4485442490631306,
+      "market_prob_b": 0.5514557509368694,
+      "gap_pp_a": -9.354424906313064,
+      "gap_pp_b": 9.354424906313064,
+      "relative_pct_a": -20.85507712082263,
+      "relative_pct_b": 16.96314688970205,
+      "market_captured_at": "2026-09-07T18:44:06Z"
     }
   ]
 }
