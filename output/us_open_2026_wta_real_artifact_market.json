@@ -1,20 +1,20 @@
 [
   {
-    "player_a": "Noskova L.",
-    "player_b": "Sabalenka A.",
-    "market_prob_a": 0.3097961213326703,
-    "captured_at": "2026-09-07T22:13:51Z"
-  },
-  {
     "player_a": "Zheng Q.",
     "player_b": "Rybakina E.",
-    "market_prob_a": 0.30449251247920134,
-    "captured_at": "2026-09-07T22:13:51Z"
+    "market_prob_a": 0.275342147993505,
+    "captured_at": "2026-09-09T13:54:29Z"
   },
   {
-    "player_a": "Navarro E.",
-    "player_b": "Pegula J.",
-    "market_prob_a": 0.22467585089141007,
-    "captured_at": "2026-09-07T22:13:51Z"
+    "player_a": "Gauff C.",
+    "player_b": "Andreeva M.",
+    "market_prob_a": 0.6461538461538462,
+    "captured_at": "2026-09-09T13:54:29Z"
+  },
+  {
+    "player_a": "Pegula J.",
+    "player_b": "Sabalenka A.",
+    "market_prob_a": 0.3791615289765721,
+    "captured_at": "2026-09-09T13:54:29Z"
   }
 ]

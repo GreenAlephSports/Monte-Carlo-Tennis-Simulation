@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "us-open-women-2026",
-    "generated_at": "2026-09-07T22:35:22Z",
+    "generated_at": "2026-09-09T13:53:53Z",
     "current_iterations": 10000,
     "current_seed": 42,
     "round_history_iterations": 2000,
@@ -2197,107 +2197,73 @@
       ]
     },
     {
-      "checkpoint": "current",
-      "round": 4,
-      "label": "Current - 9 players alive",
-      "generated_at": "2026-09-07T22:35:03Z",
+      "checkpoint": "round",
+      "round": 5,
+      "label": "Round 5 - 8 players about to play",
       "players": [
         {
+          "player": "Elena Rybakina",
+          "tournament_win_probability": 0.333,
+          "upcoming_opponent": "Zheng Qinwen",
+          "upcoming_match_win_probability": 0.8427
+        },
+        {
           "player": "Aryna Sabalenka",
-          "quarter": "Q1",
-          "p_champ": 0.36,
-          "p_sf": 0.774,
-          "p_final": 0.524
+          "tournament_win_probability": 0.298,
+          "upcoming_opponent": "Linda Noskova",
+          "upcoming_match_win_probability": 0.7795
         },
         {
           "player": "Jessica Pegula",
-          "quarter": "Q2",
-          "p_champ": 0.199,
-          "p_sf": 0.826,
-          "p_final": 0.353
-        },
-        {
-          "player": "Elena Rybakina",
-          "quarter": "Q4",
-          "p_champ": 0.181,
-          "p_sf": 0.725,
-          "p_final": 0.411,
-          "health_adjustment": {
-            "elo_penalty": -100,
-            "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
-          }
+          "tournament_win_probability": 0.1595,
+          "upcoming_opponent": "Emma Navarro",
+          "upcoming_match_win_probability": 0.8307
         },
         {
           "player": "Coco Gauff",
-          "quarter": "Q3",
-          "p_champ": 0.137,
-          "p_sf": 0.539,
-          "p_final": 0.306
+          "tournament_win_probability": 0.134,
+          "upcoming_opponent": "Mirra Andreeva",
+          "upcoming_match_win_probability": 0.6785
         },
         {
           "player": "Mirra Andreeva",
-          "quarter": "Q3",
-          "p_champ": 0.056,
-          "p_sf": 0.381,
-          "p_final": 0.166
+          "tournament_win_probability": 0.031,
+          "upcoming_opponent": "Coco Gauff",
+          "upcoming_match_win_probability": 0.3215
         },
         {
           "player": "Linda Noskova",
-          "quarter": "Q1",
-          "p_champ": 0.037,
-          "p_sf": 0.226,
-          "p_final": 0.101
+          "tournament_win_probability": 0.0305,
+          "upcoming_opponent": "Aryna Sabalenka",
+          "upcoming_match_win_probability": 0.2205
         },
         {
           "player": "Zheng Qinwen",
-          "quarter": "Q4",
-          "p_champ": 0.02,
-          "p_sf": 0.275,
-          "p_final": 0.091
+          "tournament_win_probability": 0.012,
+          "upcoming_opponent": "Elena Rybakina",
+          "upcoming_match_win_probability": 0.1573
         },
         {
           "player": "Emma Navarro",
-          "quarter": "Q2",
-          "p_champ": 0.005,
-          "p_sf": 0.174,
-          "p_final": 0.023
-        },
-        {
-          "player": "Iva Jovic",
-          "quarter": "Q3",
-          "p_champ": 0.004,
-          "p_sf": 0.08,
-          "p_final": 0.025
+          "tournament_win_probability": 0.002,
+          "upcoming_opponent": "Jessica Pegula",
+          "upcoming_match_win_probability": 0.1693
         }
       ],
       "matches": [
         {
-          "player_a": "Anna Kalinskaya",
-          "player_b": "Emma Navarro",
-          "model_prob_a": 0.627,
+          "player_a": "Aryna Sabalenka",
+          "player_b": "Taylor Townsend",
+          "model_prob_a": 0.87,
+          "decided": true,
+          "winner": "Aryna Sabalenka"
+        },
+        {
+          "player_a": "Emma Navarro",
+          "player_b": "Anna Kalinskaya",
+          "model_prob_a": 0.373,
           "decided": true,
           "winner": "Emma Navarro"
-        },
-        {
-          "player_a": "Aryna Sabalenka",
-          "player_b": "Linda Noskova",
-          "model_prob_a": 0.78,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Coco Gauff",
-          "player_b": "Iva Jovic",
-          "model_prob_a": 0.791,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Elena Rybakina",
-          "player_b": "Naomi Osaka",
-          "model_prob_a": 0.762,
-          "decided": true,
-          "winner": "Elena Rybakina"
         },
         {
           "player_a": "Iga Swiatek",
@@ -2307,11 +2273,11 @@
           "winner": "Zheng Qinwen"
         },
         {
-          "player_a": "Jessica Pegula",
-          "player_b": "Emma Navarro",
-          "model_prob_a": 0.828,
-          "decided": false,
-          "winner": null
+          "player_a": "Iva Jovic",
+          "player_b": "Coco Gauff",
+          "model_prob_a": 0.207,
+          "decided": true,
+          "winner": "Coco Gauff"
         },
         {
           "player_a": "Marta Kostyuk",
@@ -2328,18 +2294,102 @@
           "winner": "Mirra Andreeva"
         },
         {
+          "player_a": "Naomi Osaka",
+          "player_b": "Elena Rybakina",
+          "model_prob_a": 0.238,
+          "decided": true,
+          "winner": "Elena Rybakina"
+        },
+        {
           "player_a": "Sorana Cirstea",
           "player_b": "Jessica Pegula",
           "model_prob_a": 0.262,
           "decided": true,
           "winner": "Jessica Pegula"
+        }
+      ]
+    },
+    {
+      "checkpoint": "current",
+      "round": 5,
+      "label": "Current - 6 players alive",
+      "generated_at": "2026-09-09T13:53:27Z",
+      "players": [
+        {
+          "player": "Aryna Sabalenka",
+          "quarter": "Q1",
+          "p_champ": 0.421,
+          "p_sf": 1.0,
+          "p_final": 0.639
         },
         {
-          "player_a": "Taylor Townsend",
-          "player_b": "Aryna Sabalenka",
-          "model_prob_a": 0.13,
+          "player": "Jessica Pegula",
+          "quarter": "Q2",
+          "p_champ": 0.202,
+          "p_sf": 1.0,
+          "p_final": 0.361
+        },
+        {
+          "player": "Elena Rybakina",
+          "quarter": "Q4",
+          "p_champ": 0.169,
+          "p_sf": 0.762,
+          "p_final": 0.412,
+          "health_adjustment": {
+            "elo_penalty": -100,
+            "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
+          }
+        },
+        {
+          "player": "Coco Gauff",
+          "quarter": "Q3",
+          "p_champ": 0.155,
+          "p_sf": 0.676,
+          "p_final": 0.378
+        },
+        {
+          "player": "Mirra Andreeva",
+          "quarter": "Q3",
+          "p_champ": 0.04,
+          "p_sf": 0.324,
+          "p_final": 0.144
+        },
+        {
+          "player": "Zheng Qinwen",
+          "quarter": "Q4",
+          "p_champ": 0.013,
+          "p_sf": 0.238,
+          "p_final": 0.067
+        }
+      ],
+      "matches": [
+        {
+          "player_a": "Aryna Sabalenka",
+          "player_b": "Linda Noskova",
+          "model_prob_a": 0.78,
           "decided": true,
           "winner": "Aryna Sabalenka"
+        },
+        {
+          "player_a": "Aryna Sabalenka",
+          "player_b": "Jessica Pegula",
+          "model_prob_a": 0.639,
+          "decided": false,
+          "winner": null
+        },
+        {
+          "player_a": "Emma Navarro",
+          "player_b": "Jessica Pegula",
+          "model_prob_a": 0.169,
+          "decided": true,
+          "winner": "Jessica Pegula"
+        },
+        {
+          "player_a": "Mirra Andreeva",
+          "player_b": "Coco Gauff",
+          "model_prob_a": 0.326,
+          "decided": false,
+          "winner": null
         },
         {
           "player_a": "Zheng Qinwen",
@@ -2360,18 +2410,6 @@
       "model_prob_a": 0.634,
       "model_prob_b": 0.366
     },
-    "Aryna Sabalenka|Emma Navarro": {
-      "model_prob_a": 0.916,
-      "model_prob_b": 0.084
-    },
-    "Aryna Sabalenka|Iva Jovic": {
-      "model_prob_a": 0.873,
-      "model_prob_b": 0.127
-    },
-    "Aryna Sabalenka|Jessica Pegula": {
-      "model_prob_a": 0.639,
-      "model_prob_b": 0.361
-    },
     "Aryna Sabalenka|Mirra Andreeva": {
       "model_prob_a": 0.778,
       "model_prob_b": 0.222
@@ -2384,81 +2422,21 @@
       "model_prob_a": 0.511,
       "model_prob_b": 0.489
     },
-    "Coco Gauff|Emma Navarro": {
-      "model_prob_a": 0.851,
-      "model_prob_b": 0.149
-    },
     "Coco Gauff|Jessica Pegula": {
       "model_prob_a": 0.533,
       "model_prob_b": 0.467
-    },
-    "Coco Gauff|Linda Noskova": {
-      "model_prob_a": 0.684,
-      "model_prob_b": 0.316
-    },
-    "Coco Gauff|Mirra Andreeva": {
-      "model_prob_a": 0.674,
-      "model_prob_b": 0.326
     },
     "Coco Gauff|Zheng Qinwen": {
       "model_prob_a": 0.76,
       "model_prob_b": 0.24
     },
-    "Elena Rybakina|Emma Navarro": {
-      "model_prob_a": 0.852,
-      "model_prob_b": 0.148
-    },
-    "Elena Rybakina|Iva Jovic": {
-      "model_prob_a": 0.792,
-      "model_prob_b": 0.208
-    },
     "Elena Rybakina|Jessica Pegula": {
       "model_prob_a": 0.502,
       "model_prob_b": 0.498
     },
-    "Elena Rybakina|Linda Noskova": {
-      "model_prob_a": 0.67,
-      "model_prob_b": 0.33
-    },
     "Elena Rybakina|Mirra Andreeva": {
       "model_prob_a": 0.666,
       "model_prob_b": 0.334
-    },
-    "Emma Navarro|Iva Jovic": {
-      "model_prob_a": 0.414,
-      "model_prob_b": 0.586
-    },
-    "Emma Navarro|Linda Noskova": {
-      "model_prob_a": 0.274,
-      "model_prob_b": 0.726
-    },
-    "Emma Navarro|Mirra Andreeva": {
-      "model_prob_a": 0.279,
-      "model_prob_b": 0.721
-    },
-    "Emma Navarro|Zheng Qinwen": {
-      "model_prob_a": 0.365,
-      "model_prob_b": 0.635
-    },
-    "Iva Jovic|Jessica Pegula": {
-      "model_prob_a": 0.231,
-      "model_prob_b": 0.769
-    },
-    "Iva Jovic|Linda Noskova": {
-      "model_prob_a": 0.364,
-      "model_prob_b": 0.636
-    },
-    "Iva Jovic|Mirra Andreeva": {
-      "model_prob_a": 0.354,
-      "model_prob_b": 0.646
-    },
-    "Iva Jovic|Zheng Qinwen": {
-      "model_prob_a": 0.461,
-      "model_prob_b": 0.539
-    },
-    "Jessica Pegula|Linda Noskova": {
-      "model_prob_a": 0.648,
-      "model_prob_b": 0.352
     },
     "Jessica Pegula|Mirra Andreeva": {
       "model_prob_a": 0.644,
@@ -2467,14 +2445,6 @@
     "Jessica Pegula|Zheng Qinwen": {
       "model_prob_a": 0.733,
       "model_prob_b": 0.267
-    },
-    "Linda Noskova|Mirra Andreeva": {
-      "model_prob_a": 0.489,
-      "model_prob_b": 0.511
-    },
-    "Linda Noskova|Zheng Qinwen": {
-      "model_prob_a": 0.601,
-      "model_prob_b": 0.399
     },
     "Mirra Andreeva|Zheng Qinwen": {
       "model_prob_a": 0.61,
