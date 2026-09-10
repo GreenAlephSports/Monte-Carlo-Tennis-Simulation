@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "us-open-women-2026",
-    "generated_at": "2026-09-09T13:53:53Z",
+    "generated_at": "2026-09-10T18:01:09Z",
     "current_iterations": 10000,
     "current_seed": 42,
     "round_history_iterations": 2000,
@@ -2310,66 +2310,106 @@
       ]
     },
     {
+      "checkpoint": "round",
+      "round": 6,
+      "label": "Round 6 - 4 players about to play",
+      "players": [
+        {
+          "player": "Aryna Sabalenka",
+          "tournament_win_probability": 0.3555,
+          "upcoming_opponent": "Jessica Pegula",
+          "upcoming_match_win_probability": 0.6376
+        },
+        {
+          "player": "Elena Rybakina",
+          "tournament_win_probability": 0.3255,
+          "upcoming_opponent": "Coco Gauff",
+          "upcoming_match_win_probability": 0.6196
+        },
+        {
+          "player": "Coco Gauff",
+          "tournament_win_probability": 0.1605,
+          "upcoming_opponent": "Elena Rybakina",
+          "upcoming_match_win_probability": 0.3804
+        },
+        {
+          "player": "Jessica Pegula",
+          "tournament_win_probability": 0.1585,
+          "upcoming_opponent": "Aryna Sabalenka",
+          "upcoming_match_win_probability": 0.3624
+        }
+      ],
+      "matches": [
+        {
+          "player_a": "Jessica Pegula",
+          "player_b": "Emma Navarro",
+          "model_prob_a": 0.831,
+          "decided": true,
+          "winner": "Jessica Pegula"
+        },
+        {
+          "player_a": "Linda Noskova",
+          "player_b": "Aryna Sabalenka",
+          "model_prob_a": 0.22,
+          "decided": true,
+          "winner": "Aryna Sabalenka"
+        },
+        {
+          "player_a": "Mirra Andreeva",
+          "player_b": "Coco Gauff",
+          "model_prob_a": 0.322,
+          "decided": true,
+          "winner": "Coco Gauff"
+        },
+        {
+          "player_a": "Zheng Qinwen",
+          "player_b": "Elena Rybakina",
+          "model_prob_a": 0.157,
+          "decided": true,
+          "winner": "Elena Rybakina"
+        }
+      ]
+    },
+    {
       "checkpoint": "current",
-      "round": 5,
-      "label": "Current - 6 players alive",
-      "generated_at": "2026-09-09T13:53:27Z",
+      "round": 6,
+      "label": "Current - 4 players alive",
+      "generated_at": "2026-09-10T18:01:01Z",
       "players": [
         {
           "player": "Aryna Sabalenka",
           "quarter": "Q1",
-          "p_champ": 0.421,
+          "p_champ": 0.398,
           "p_sf": 1.0,
-          "p_final": 0.639
+          "p_final": 0.635
         },
         {
-          "player": "Jessica Pegula",
-          "quarter": "Q2",
-          "p_champ": 0.202,
+          "player": "Coco Gauff",
+          "quarter": "Q3",
+          "p_champ": 0.221,
           "p_sf": 1.0,
-          "p_final": 0.361
+          "p_final": 0.517
         },
         {
           "player": "Elena Rybakina",
           "quarter": "Q4",
-          "p_champ": 0.169,
-          "p_sf": 0.762,
-          "p_final": 0.412,
+          "p_champ": 0.193,
+          "p_sf": 1.0,
+          "p_final": 0.483,
           "health_adjustment": {
             "elo_penalty": -100,
             "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
           }
         },
         {
-          "player": "Coco Gauff",
-          "quarter": "Q3",
-          "p_champ": 0.155,
-          "p_sf": 0.676,
-          "p_final": 0.378
-        },
-        {
-          "player": "Mirra Andreeva",
-          "quarter": "Q3",
-          "p_champ": 0.04,
-          "p_sf": 0.324,
-          "p_final": 0.144
-        },
-        {
-          "player": "Zheng Qinwen",
-          "quarter": "Q4",
-          "p_champ": 0.013,
-          "p_sf": 0.238,
-          "p_final": 0.067
+          "player": "Jessica Pegula",
+          "quarter": "Q2",
+          "p_champ": 0.189,
+          "p_sf": 1.0,
+          "p_final": 0.365
         }
       ],
       "matches": [
-        {
-          "player_a": "Aryna Sabalenka",
-          "player_b": "Linda Noskova",
-          "model_prob_a": 0.78,
-          "decided": true,
-          "winner": "Aryna Sabalenka"
-        },
         {
           "player_a": "Aryna Sabalenka",
           "player_b": "Jessica Pegula",
@@ -2378,23 +2418,9 @@
           "winner": null
         },
         {
-          "player_a": "Emma Navarro",
-          "player_b": "Jessica Pegula",
-          "model_prob_a": 0.169,
-          "decided": true,
-          "winner": "Jessica Pegula"
-        },
-        {
-          "player_a": "Mirra Andreeva",
-          "player_b": "Coco Gauff",
-          "model_prob_a": 0.326,
-          "decided": false,
-          "winner": null
-        },
-        {
-          "player_a": "Zheng Qinwen",
+          "player_a": "Coco Gauff",
           "player_b": "Elena Rybakina",
-          "model_prob_a": 0.245,
+          "model_prob_a": 0.511,
           "decided": false,
           "winner": null
         }
@@ -2410,45 +2436,13 @@
       "model_prob_a": 0.634,
       "model_prob_b": 0.366
     },
-    "Aryna Sabalenka|Mirra Andreeva": {
-      "model_prob_a": 0.778,
-      "model_prob_b": 0.222
-    },
-    "Aryna Sabalenka|Zheng Qinwen": {
-      "model_prob_a": 0.844,
-      "model_prob_b": 0.156
-    },
-    "Coco Gauff|Elena Rybakina": {
-      "model_prob_a": 0.511,
-      "model_prob_b": 0.489
-    },
     "Coco Gauff|Jessica Pegula": {
       "model_prob_a": 0.533,
       "model_prob_b": 0.467
     },
-    "Coco Gauff|Zheng Qinwen": {
-      "model_prob_a": 0.76,
-      "model_prob_b": 0.24
-    },
     "Elena Rybakina|Jessica Pegula": {
       "model_prob_a": 0.502,
       "model_prob_b": 0.498
-    },
-    "Elena Rybakina|Mirra Andreeva": {
-      "model_prob_a": 0.666,
-      "model_prob_b": 0.334
-    },
-    "Jessica Pegula|Mirra Andreeva": {
-      "model_prob_a": 0.644,
-      "model_prob_b": 0.356
-    },
-    "Jessica Pegula|Zheng Qinwen": {
-      "model_prob_a": 0.733,
-      "model_prob_b": 0.267
-    },
-    "Mirra Andreeva|Zheng Qinwen": {
-      "model_prob_a": 0.61,
-      "model_prob_b": 0.39
     }
   },
   "health_adjustments": [
