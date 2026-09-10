@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "us-open-men-2026",
-    "generated_at": "2026-09-09T13:52:20Z",
+    "generated_at": "2026-09-10T17:56:40Z",
     "current_iterations": 10000,
     "current_seed": 42,
     "round_history_iterations": 2000,
@@ -2322,61 +2322,49 @@
       ]
     },
     {
-      "checkpoint": "current",
-      "round": 5,
-      "label": "Current - 6 players alive",
-      "generated_at": "2026-09-09T13:51:53Z",
+      "checkpoint": "round",
+      "round": 6,
+      "label": "Round 6 - 4 players about to play",
       "players": [
         {
           "player": "Alexander Zverev",
-          "quarter": "Q1",
-          "p_champ": 0.408,
-          "p_sf": 0.791,
-          "p_final": 0.674
+          "tournament_win_probability": 0.5275,
+          "upcoming_opponent": "Karen Khachanov",
+          "upcoming_match_win_probability": 0.866
         },
         {
           "player": "Ben Shelton",
-          "quarter": "Q4",
-          "p_champ": 0.313,
-          "p_sf": 1.0,
-          "p_final": 0.591
+          "tournament_win_probability": 0.2615,
+          "upcoming_opponent": "Frances Tiafoe",
+          "upcoming_match_win_probability": 0.5602
         },
         {
           "player": "Frances Tiafoe",
-          "quarter": "Q3",
-          "p_champ": 0.189,
-          "p_sf": 1.0,
-          "p_final": 0.409
-        },
-        {
-          "player": "Botic Van De Zandschulp",
-          "quarter": "Q1",
-          "p_champ": 0.038,
-          "p_sf": 0.209,
-          "p_final": 0.127
-        },
-        {
-          "player": "Alexander Blockx",
-          "quarter": "Q2",
-          "p_champ": 0.036,
-          "p_sf": 0.579,
-          "p_final": 0.127
+          "tournament_win_probability": 0.1835,
+          "upcoming_opponent": "Ben Shelton",
+          "upcoming_match_win_probability": 0.4398
         },
         {
           "player": "Karen Khachanov",
-          "quarter": "Q2",
-          "p_champ": 0.016,
-          "p_sf": 0.421,
-          "p_final": 0.072
+          "tournament_win_probability": 0.0275,
+          "upcoming_opponent": "Alexander Zverev",
+          "upcoming_match_win_probability": 0.134
         }
       ],
       "matches": [
         {
+          "player_a": "Alex Michelsen",
+          "player_b": "Frances Tiafoe",
+          "model_prob_a": 0.351,
+          "decided": true,
+          "winner": "Frances Tiafoe"
+        },
+        {
           "player_a": "Alexander Zverev",
           "player_b": "Botic Van De Zandschulp",
           "model_prob_a": 0.788,
-          "decided": false,
-          "winner": null
+          "decided": true,
+          "winner": "Alexander Zverev"
         },
         {
           "player_a": "Carlos Alcaraz",
@@ -2386,11 +2374,56 @@
           "winner": "Ben Shelton"
         },
         {
-          "player_a": "Frances Tiafoe",
-          "player_b": "Alex Michelsen",
-          "model_prob_a": 0.649,
+          "player_a": "Karen Khachanov",
+          "player_b": "Alexander Blockx",
+          "model_prob_a": 0.425,
           "decided": true,
-          "winner": "Frances Tiafoe"
+          "winner": "Karen Khachanov"
+        }
+      ]
+    },
+    {
+      "checkpoint": "current",
+      "round": 6,
+      "label": "Current - 4 players alive",
+      "generated_at": "2026-09-10T17:56:32Z",
+      "players": [
+        {
+          "player": "Alexander Zverev",
+          "quarter": "Q1",
+          "p_champ": 0.527,
+          "p_sf": 1.0,
+          "p_final": 0.866
+        },
+        {
+          "player": "Ben Shelton",
+          "quarter": "Q4",
+          "p_champ": 0.26,
+          "p_sf": 1.0,
+          "p_final": 0.557
+        },
+        {
+          "player": "Frances Tiafoe",
+          "quarter": "Q3",
+          "p_champ": 0.185,
+          "p_sf": 1.0,
+          "p_final": 0.443
+        },
+        {
+          "player": "Karen Khachanov",
+          "quarter": "Q2",
+          "p_champ": 0.029,
+          "p_sf": 1.0,
+          "p_final": 0.134
+        }
+      ],
+      "matches": [
+        {
+          "player_a": "Alexander Zverev",
+          "player_b": "Karen Khachanov",
+          "model_prob_a": 0.866,
+          "decided": false,
+          "winner": null
         },
         {
           "player_a": "Frances Tiafoe",
@@ -2398,34 +2431,11 @@
           "model_prob_a": 0.44,
           "decided": false,
           "winner": null
-        },
-        {
-          "player_a": "Karen Khachanov",
-          "player_b": "Alexander Blockx",
-          "model_prob_a": 0.425,
-          "decided": false,
-          "winner": null
         }
       ]
     }
   ],
   "head_to_head": {
-    "Alexander Blockx|Alexander Zverev": {
-      "model_prob_a": 0.169,
-      "model_prob_b": 0.831
-    },
-    "Alexander Blockx|Ben Shelton": {
-      "model_prob_a": 0.228,
-      "model_prob_b": 0.772
-    },
-    "Alexander Blockx|Botic Van De Zandschulp": {
-      "model_prob_a": 0.448,
-      "model_prob_b": 0.552
-    },
-    "Alexander Blockx|Frances Tiafoe": {
-      "model_prob_a": 0.275,
-      "model_prob_b": 0.725
-    },
     "Alexander Zverev|Ben Shelton": {
       "model_prob_a": 0.586,
       "model_prob_b": 0.414
@@ -2434,25 +2444,9 @@
       "model_prob_a": 0.644,
       "model_prob_b": 0.356
     },
-    "Alexander Zverev|Karen Khachanov": {
-      "model_prob_a": 0.866,
-      "model_prob_b": 0.134
-    },
-    "Ben Shelton|Botic Van De Zandschulp": {
-      "model_prob_a": 0.734,
-      "model_prob_b": 0.266
-    },
     "Ben Shelton|Karen Khachanov": {
       "model_prob_a": 0.817,
       "model_prob_b": 0.183
-    },
-    "Botic Van De Zandschulp|Frances Tiafoe": {
-      "model_prob_a": 0.313,
-      "model_prob_b": 0.687
-    },
-    "Botic Van De Zandschulp|Karen Khachanov": {
-      "model_prob_a": 0.634,
-      "model_prob_b": 0.366
     },
     "Frances Tiafoe|Karen Khachanov": {
       "model_prob_a": 0.792,
