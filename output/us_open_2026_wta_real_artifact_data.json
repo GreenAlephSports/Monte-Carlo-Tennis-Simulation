@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "us-open-women-2026",
-    "generated_at": "2026-09-09T13:53:53Z",
+    "generated_at": "2026-09-10T18:01:09Z",
     "current_iterations": 10000,
     "current_seed": 42,
     "round_history_iterations": 2000,
@@ -30,9 +30,9 @@
       "current": {
         "player": "Aryna Sabalenka",
         "quarter": "Q1",
-        "p_champ": 0.421,
+        "p_champ": 0.398,
         "p_sf": 1.0,
-        "p_final": 0.639
+        "p_final": 0.635
       },
       "alive": true
     },
@@ -580,9 +580,9 @@
       "current": {
         "player": "Jessica Pegula",
         "quarter": "Q2",
-        "p_champ": 0.202,
+        "p_champ": 0.189,
         "p_sf": 1.0,
-        "p_final": 0.361
+        "p_final": 0.365
       },
       "alive": true
     },
@@ -1115,14 +1115,8 @@
         "p_sf": 0.098,
         "p_final": 0.045
       },
-      "current": {
-        "player": "Mirra Andreeva",
-        "quarter": "Q3",
-        "p_champ": 0.04,
-        "p_sf": 0.324,
-        "p_final": 0.144
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 66,
@@ -1645,9 +1639,9 @@
       "current": {
         "player": "Coco Gauff",
         "quarter": "Q3",
-        "p_champ": 0.155,
-        "p_sf": 0.676,
-        "p_final": 0.378
+        "p_champ": 0.221,
+        "p_sf": 1.0,
+        "p_final": 0.517
       },
       "alive": true
     },
@@ -1869,14 +1863,8 @@
         "p_sf": 0.038,
         "p_final": 0.012
       },
-      "current": {
-        "player": "Zheng Qinwen",
-        "quarter": "Q4",
-        "p_champ": 0.013,
-        "p_sf": 0.238,
-        "p_final": 0.067
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 110,
@@ -2205,9 +2193,9 @@
       "current": {
         "player": "Elena Rybakina",
         "quarter": "Q4",
-        "p_champ": 0.169,
-        "p_sf": 0.762,
-        "p_final": 0.412,
+        "p_champ": 0.193,
+        "p_sf": 1.0,
+        "p_final": 0.483,
         "health_adjustment": {
           "elo_penalty": -100,
           "reason": "Retired mid-match at Cincinnati (2026-08-20), 3 weeks pre-tournament."
@@ -4498,51 +4486,13 @@
       "market_captured_at": null
     },
     {
-      "player_a": "Aryna Sabalenka",
-      "player_b": "Linda Noskova",
-      "model_prob_a": 0.78,
-      "decided": true,
-      "winner": "Aryna Sabalenka",
-      "round": 5,
-      "round_label": "Current - 6 players alive",
-      "live_state": "post",
-      "status_text": "Final",
-      "score": "7(7)-6(1), 3-6, 7(10)-6(7)",
-      "market_prob_a": null,
-      "market_prob_b": null,
-      "gap_pp_a": null,
-      "gap_pp_b": null,
-      "relative_pct_a": null,
-      "relative_pct_b": null,
-      "market_captured_at": null
-    },
-    {
-      "player_a": "Aryna Sabalenka",
-      "player_b": "Jessica Pegula",
-      "model_prob_a": 0.639,
-      "decided": false,
-      "winner": null,
-      "round": 5,
-      "round_label": "Current - 6 players alive",
-      "live_state": "pre",
-      "status_text": "Scheduled",
-      "score": null,
-      "market_prob_a": 0.6208384710234278,
-      "market_prob_b": 0.3791615289765722,
-      "gap_pp_a": 1.8161528976572194,
-      "gap_pp_b": -1.8161528976572194,
-      "relative_pct_a": 2.92532274081431,
-      "relative_pct_b": -4.789918699187008,
-      "market_captured_at": "2026-09-09T13:54:29Z"
-    },
-    {
-      "player_a": "Emma Navarro",
-      "player_b": "Jessica Pegula",
-      "model_prob_a": 0.169,
+      "player_a": "Jessica Pegula",
+      "player_b": "Emma Navarro",
+      "model_prob_a": 0.831,
       "decided": true,
       "winner": "Jessica Pegula",
-      "round": 5,
-      "round_label": "Current - 6 players alive",
+      "round": 6,
+      "round_label": "Round 6 - 4 players about to play",
       "live_state": "post",
       "status_text": "Final",
       "score": "3-6, 6-4, 6-3",
@@ -4555,42 +4505,99 @@
       "market_captured_at": null
     },
     {
+      "player_a": "Linda Noskova",
+      "player_b": "Aryna Sabalenka",
+      "model_prob_a": 0.22,
+      "decided": true,
+      "winner": "Aryna Sabalenka",
+      "round": 6,
+      "round_label": "Round 6 - 4 players about to play",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "7(7)-6(1), 3-6, 7(10)-6(7)",
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
+    },
+    {
       "player_a": "Mirra Andreeva",
       "player_b": "Coco Gauff",
-      "model_prob_a": 0.326,
-      "decided": false,
-      "winner": null,
-      "round": 5,
-      "round_label": "Current - 6 players alive",
-      "live_state": "pre",
-      "status_text": "Scheduled",
-      "score": null,
+      "model_prob_a": 0.322,
+      "decided": true,
+      "winner": "Coco Gauff",
+      "round": 6,
+      "round_label": "Round 6 - 4 players about to play",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 6(7)-7(9), 2-6",
       "market_prob_a": 0.3538461538461538,
       "market_prob_b": 0.6461538461538462,
-      "gap_pp_a": -2.78461538461538,
-      "gap_pp_b": 2.7846153846153743,
-      "relative_pct_a": -7.869565217391291,
-      "relative_pct_b": 4.309523809523793,
+      "gap_pp_a": -3.1846153846153804,
+      "gap_pp_b": 3.1846153846153746,
+      "relative_pct_a": -8.99999999999999,
+      "relative_pct_b": 4.928571428571413,
       "market_captured_at": "2026-09-09T13:54:29Z"
     },
     {
       "player_a": "Zheng Qinwen",
       "player_b": "Elena Rybakina",
-      "model_prob_a": 0.245,
+      "model_prob_a": 0.157,
+      "decided": true,
+      "winner": "Elena Rybakina",
+      "round": 6,
+      "round_label": "Round 6 - 4 players about to play",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-3, 1-6, 4-6",
+      "market_prob_a": 0.275342147993505,
+      "market_prob_b": 0.724657852006495,
+      "gap_pp_a": -11.834214799350498,
+      "gap_pp_b": 11.834214799350494,
+      "relative_pct_a": -42.980033698399325,
+      "relative_pct_b": 16.330761843790008,
+      "market_captured_at": "2026-09-09T13:54:29Z"
+    },
+    {
+      "player_a": "Aryna Sabalenka",
+      "player_b": "Jessica Pegula",
+      "model_prob_a": 0.639,
       "decided": false,
       "winner": null,
-      "round": 5,
-      "round_label": "Current - 6 players alive",
+      "round": 6,
+      "round_label": "Current - 4 players alive",
       "live_state": "pre",
       "status_text": "Scheduled",
       "score": null,
-      "market_prob_a": 0.275342147993505,
-      "market_prob_b": 0.724657852006495,
-      "gap_pp_a": -3.0342147993504986,
-      "gap_pp_b": 3.0342147993504986,
-      "relative_pct_a": -11.019797809604045,
-      "relative_pct_b": 4.187099871959027,
+      "market_prob_a": 0.6208384710234278,
+      "market_prob_b": 0.3791615289765722,
+      "gap_pp_a": 1.8161528976572194,
+      "gap_pp_b": -1.8161528976572194,
+      "relative_pct_a": 2.92532274081431,
+      "relative_pct_b": -4.789918699187008,
       "market_captured_at": "2026-09-09T13:54:29Z"
+    },
+    {
+      "player_a": "Coco Gauff",
+      "player_b": "Elena Rybakina",
+      "model_prob_a": 0.511,
+      "decided": false,
+      "winner": null,
+      "round": 6,
+      "round_label": "Current - 4 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null,
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
     }
   ]
 }

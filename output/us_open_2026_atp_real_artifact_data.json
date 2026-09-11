@@ -1,7 +1,7 @@
 {
   "meta": {
     "tournament": "us-open-men-2026",
-    "generated_at": "2026-09-09T13:52:20Z",
+    "generated_at": "2026-09-10T17:56:40Z",
     "current_iterations": 10000,
     "current_seed": 42,
     "round_history_iterations": 2000,
@@ -30,9 +30,9 @@
       "current": {
         "player": "Alexander Zverev",
         "quarter": "Q1",
-        "p_champ": 0.408,
-        "p_sf": 0.791,
-        "p_final": 0.674
+        "p_champ": 0.527,
+        "p_sf": 1.0,
+        "p_final": 0.866
       },
       "alive": true
     },
@@ -496,14 +496,8 @@
         "p_sf": 0.025,
         "p_final": 0.009
       },
-      "current": {
-        "player": "Botic Van De Zandschulp",
-        "quarter": "Q1",
-        "p_champ": 0.038,
-        "p_sf": 0.209,
-        "p_final": 0.127
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 31,
@@ -607,9 +601,9 @@
       "current": {
         "player": "Karen Khachanov",
         "quarter": "Q2",
-        "p_champ": 0.016,
-        "p_sf": 0.421,
-        "p_final": 0.072
+        "p_champ": 0.029,
+        "p_sf": 1.0,
+        "p_final": 0.134
       },
       "alive": true
     },
@@ -949,14 +943,8 @@
         "p_sf": 0.008,
         "p_final": 0.002
       },
-      "current": {
-        "player": "Alexander Blockx",
-        "quarter": "Q2",
-        "p_champ": 0.036,
-        "p_sf": 0.579,
-        "p_final": 0.127
-      },
-      "alive": true
+      "current": null,
+      "alive": false
     },
     {
       "position": 58,
@@ -1325,9 +1313,9 @@
       "current": {
         "player": "Frances Tiafoe",
         "quarter": "Q3",
-        "p_champ": 0.189,
+        "p_champ": 0.185,
         "p_sf": 1.0,
-        "p_final": 0.409
+        "p_final": 0.443
       },
       "alive": true
     },
@@ -1602,9 +1590,9 @@
       "current": {
         "player": "Ben Shelton",
         "quarter": "Q4",
-        "p_champ": 0.313,
+        "p_champ": 0.26,
         "p_sf": 1.0,
-        "p_final": 0.591
+        "p_final": 0.557
       },
       "alive": true
     },
@@ -4406,16 +4394,35 @@
       "market_captured_at": null
     },
     {
+      "player_a": "Alex Michelsen",
+      "player_b": "Frances Tiafoe",
+      "model_prob_a": 0.351,
+      "decided": true,
+      "winner": "Frances Tiafoe",
+      "round": 6,
+      "round_label": "Round 6 - 4 players about to play",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "5-7, 3-6, 7-5, 6-3, 7(10)-6(6)",
+      "market_prob_a": null,
+      "market_prob_b": null,
+      "gap_pp_a": null,
+      "gap_pp_b": null,
+      "relative_pct_a": null,
+      "relative_pct_b": null,
+      "market_captured_at": null
+    },
+    {
       "player_a": "Alexander Zverev",
       "player_b": "Botic Van De Zandschulp",
       "model_prob_a": 0.788,
-      "decided": false,
-      "winner": null,
-      "round": 5,
-      "round_label": "Current - 6 players alive",
-      "live_state": "pre",
-      "status_text": "Scheduled",
-      "score": null,
+      "decided": true,
+      "winner": "Alexander Zverev",
+      "round": 6,
+      "round_label": "Round 6 - 4 players about to play",
+      "live_state": "post",
+      "status_text": "Final",
+      "score": "6-2, 7-5, 6-1",
       "market_prob_a": 0.8637605903252255,
       "market_prob_b": 0.13623940967477455,
       "gap_pp_a": -7.576059032522542,
@@ -4430,8 +4437,8 @@
       "model_prob_a": 0.726,
       "decided": true,
       "winner": "Ben Shelton",
-      "round": 5,
-      "round_label": "Current - 6 players alive",
+      "round": 6,
+      "round_label": "Round 6 - 4 players about to play",
       "live_state": "post",
       "status_text": "Final",
       "score": "6(5)-7(7), 6-1, 6-3, 1-6, 7(10)-6(7)",
@@ -4444,16 +4451,35 @@
       "market_captured_at": null
     },
     {
-      "player_a": "Frances Tiafoe",
-      "player_b": "Alex Michelsen",
-      "model_prob_a": 0.649,
+      "player_a": "Karen Khachanov",
+      "player_b": "Alexander Blockx",
+      "model_prob_a": 0.425,
       "decided": true,
-      "winner": "Frances Tiafoe",
-      "round": 5,
-      "round_label": "Current - 6 players alive",
+      "winner": "Karen Khachanov",
+      "round": 6,
+      "round_label": "Round 6 - 4 players about to play",
       "live_state": "post",
-      "status_text": "Final",
-      "score": "5-7, 3-6, 7-5, 6-3, 7(10)-6(6)",
+      "status_text": "Retired",
+      "score": "6-2, 7-5, 3-2",
+      "market_prob_a": 0.6004451864218141,
+      "market_prob_b": 0.3995548135781859,
+      "gap_pp_a": -17.544518642181412,
+      "gap_pp_b": 17.544518642181405,
+      "relative_pct_a": -29.219184430027802,
+      "relative_pct_b": 43.9101671309192,
+      "market_captured_at": "2026-09-09T13:54:24Z"
+    },
+    {
+      "player_a": "Alexander Zverev",
+      "player_b": "Karen Khachanov",
+      "model_prob_a": 0.866,
+      "decided": false,
+      "winner": null,
+      "round": 6,
+      "round_label": "Current - 4 players alive",
+      "live_state": "pre",
+      "status_text": "Scheduled",
+      "score": null,
       "market_prob_a": null,
       "market_prob_b": null,
       "gap_pp_a": null,
@@ -4468,8 +4494,8 @@
       "model_prob_a": 0.44,
       "decided": false,
       "winner": null,
-      "round": 5,
-      "round_label": "Current - 6 players alive",
+      "round": 6,
+      "round_label": "Current - 4 players alive",
       "live_state": "pre",
       "status_text": "Scheduled",
       "score": null,
@@ -4479,25 +4505,6 @@
       "gap_pp_b": -15.10091743119265,
       "relative_pct_a": 52.25396825396823,
       "relative_pct_b": -21.238709677419344,
-      "market_captured_at": "2026-09-09T13:54:24Z"
-    },
-    {
-      "player_a": "Karen Khachanov",
-      "player_b": "Alexander Blockx",
-      "model_prob_a": 0.425,
-      "decided": false,
-      "winner": null,
-      "round": 5,
-      "round_label": "Current - 6 players alive",
-      "live_state": "pre",
-      "status_text": "Scheduled",
-      "score": null,
-      "market_prob_a": 0.6004451864218141,
-      "market_prob_b": 0.3995548135781859,
-      "gap_pp_a": -17.544518642181412,
-      "gap_pp_b": 17.544518642181405,
-      "relative_pct_a": -29.219184430027802,
-      "relative_pct_b": 43.9101671309192,
       "market_captured_at": "2026-09-09T13:54:24Z"
     }
   ]
