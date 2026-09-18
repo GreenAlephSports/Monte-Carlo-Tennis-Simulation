@@ -148,6 +148,17 @@ WTA_NAME_ALIASES = {
     "Xiyu W.": "Wang Xiy.",
     "Pliskova K.": "Pliskova Ka.",
     "Osorio C.": "Osorio M.",
+    # every bracket that lists her (us_open_2026_wta_real.yaml, wta_toronto_2026.yaml,
+    # cincinnati_2026_wta.yaml) spells Leylah Annie Fernandez's draw entry "Fernandez L." (single
+    # initial) - which tier 1 then exact-matches to a REAL BUT SEPARATE ratings-csv identity also
+    # named "Fernandez L." (8 matches, 2018-2023), not a fuzzy-tier miss. Her actual career record
+    # (255 matches, 2019-2026) lives under "Fernandez L.A." (two initials) - a completely different
+    # (lastname, initials) key, so tier 1 never even considers it. Confirmed via a full WTA-history
+    # name audit (2026-09-17): "Fernandez L. A." (with a space) is a third, single-match variant of
+    # the same real person. Without this alias, her draw slot in all three brackets above silently
+    # uses the near-empty 8-match identity's Elo instead of her real 255-match rating - same class
+    # of bug as the Wang X. entries above, just discovered later.
+    "Fernandez L.": "Fernandez L.A.",
     # self-alias: "Maria Timofeeva" is otherwise ambiguous against a separate real player whose
     # ratings-csv entry is "Maria T." (lastname "Maria", first-initial "T.") - the same surname/
     # given-name string read the other way round. Without this, match_espn_name_to_draw finds two

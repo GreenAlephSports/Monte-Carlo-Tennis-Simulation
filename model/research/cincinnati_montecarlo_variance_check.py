@@ -35,11 +35,14 @@ RNG_SEED = 20260825  # fixed seed = reproducible report numbers, not a hidden ra
 
 def simulate_roi_distribution(opps, stake_col, rng):
     """Vectorized: draw N_TRIALS x n_bets Bernoulli outcomes at each bet's own model_prob (not the
-    real, single outcome that happened), settle every trial at the same real decimal_odds and
-    stake this bet was actually sized at, and return the resulting ROI% for every trial."""
+    real, single outcome that happened), settle every trial at the same REAL best-obtainable
+    closing price (real_decimal_odds - MaxW/MaxL, vig included) and stake this bet was actually
+    sized at, and return the resulting ROI% for every trial. Was settling at the de-vigged fair
+    price (decimal_odds) - corrected to match cincinnati_paper_trading_backtest_tennisdata.py's
+    own real-price settlement fix, which this script had not picked up until now."""
     model_p = opps["model_prob"].to_numpy()
     stake = opps[stake_col].to_numpy()
-    decimal_odds = opps["decimal_odds"].to_numpy()
+    decimal_odds = opps["real_decimal_odds"].to_numpy()
 
     draws = rng.random((N_TRIALS, len(opps))) < model_p  # True = simulated win
     pnl_if_win = stake * (decimal_odds - 1)
@@ -51,7 +54,7 @@ def simulate_roi_distribution(opps, stake_col, rng):
 
 
 def report_variance_check(label, opps, rng):
-    opps = size_and_settle(opps)
+    opps = size_and_settle(opps, price_col="real_decimal_odds")
     real_summary = summarize(opps)
 
     print(f"\n=== {label} (n={len(opps)}) ===")

@@ -337,6 +337,10 @@ def _load_height_metadata_cached(_mtime_ns: int) -> pd.DataFrame:
     df = df.set_index("player")
     df["height_cm"] = pd.to_numeric(df["height_cm"], errors="coerce")
     df["birth_year"] = pd.to_numeric(df["birth_year"], errors="coerce")
+    # a small number of players (e.g. Coleman Wong) are scraped once per tour and land as
+    # duplicate rows under the same "player" key here - identical data, just repeated, so keeping
+    # the first is safe (not a real ATP/WTA name-collision case to disambiguate).
+    df = df[~df.index.duplicated(keep="first")]
     return df
 
 

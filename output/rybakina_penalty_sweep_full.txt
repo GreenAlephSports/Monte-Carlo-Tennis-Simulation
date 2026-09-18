@@ -1,0 +1,144 @@
+Loaded 68635 live ATP rows from Kaggle (2000-01-03 to 2026-08-29)
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+Loaded 68635 live ATP rows from Kaggle (2000-01-03 to 2026-08-29)
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+====================================================================================================
+BASELINE (penalty = 0, i.e. current standing result)
+====================================================================================================
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+        event         round          opponent  new_model_prob  new_edge_pp  still_positive_ev  clears_filter   won
+      US Open     2nd Round Bouzas Maneiro J.        0.963830    15.214205               True           True  True
+      US Open     4th Round          Osaka N.        0.761968    19.946780               True           True  True
+      US Open Quarterfinals          Zheng Q.        0.842715    11.429426               True           True  True
+Canadian Open     3rd Round             Li A.        0.936998    10.972549               True           True  True
+Canadian Open     4th Round      Samsonova L.        0.893308    17.374298               True           True  True
+Canadian Open Quarterfinals          Osaka N.        0.705706    21.233765               True           True  True
+Canadian Open     The Final        Swiatek I.        0.667769    21.107561               True           True False
+Canadian Open    Semifinals          Gauff C.        0.633624    19.805687               True           True  True
+
+Combined filtered set (both events, both tours): n=60, win rate=48.3%
+  Flat         staked=   60.00  P&L=   +4.35  ROI=   +7.2%
+  Kelly 0.25x  staked=  461.43  P&L=  +11.83  ROI=   +2.6%
+  Kelly 0.5x   staked=  922.86  P&L=  +23.67  ROI=   +2.6%
+
+====================================================================================================
+PENALTY = -50 Elo
+====================================================================================================
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+        event         round          opponent  new_model_prob  new_edge_pp  still_positive_ev  clears_filter   won
+      US Open     2nd Round Bouzas Maneiro J.        0.945487    13.379825               True           True  True
+      US Open     4th Round          Osaka N.        0.709697    14.719662               True           True  True
+      US Open Quarterfinals          Zheng Q.        0.802269     7.384776               True          False  True
+Canadian Open     3rd Round             Li A.        0.912553     8.528028               True          False  True
+Canadian Open     4th Round      Samsonova L.        0.864443    14.487828               True           True  True
+Canadian Open Quarterfinals          Osaka N.        0.647176    15.380741               True           True  True
+Canadian Open     The Final        Swiatek I.        0.605605    14.891230               True           True False
+Canadian Open    Semifinals          Gauff C.        0.569446    13.387936               True           True  True
+
+Combined filtered set (both events, both tours): n=58, win rate=46.6%
+  Flat         staked=   58.00  P&L=   +3.87  ROI=   +6.7%
+  Kelly 0.25x  staked=  418.44  P&L=   -1.79  ROI=   -0.4%
+  Kelly 0.5x   staked=  836.88  P&L=   -3.58  ROI=   -0.4%
+
+====================================================================================================
+PENALTY = -75 Elo
+====================================================================================================
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+        event         round          opponent  new_model_prob  new_edge_pp  still_positive_ev  clears_filter   won
+      US Open     2nd Round Bouzas Maneiro J.        0.934763    12.307426               True           True  True
+      US Open     4th Round          Osaka N.        0.681290    11.879013               True           True  True
+      US Open Quarterfinals          Zheng Q.        0.779537     5.111588               True          False  True
+Canadian Open     3rd Round             Li A.        0.898373     7.110055               True          False  True
+Canadian Open     4th Round      Samsonova L.        0.847782    12.821715               True           True  True
+Canadian Open Quarterfinals          Osaka N.        0.616126    12.275700               True           True  True
+Canadian Open     The Final        Swiatek I.        0.573247    11.655394               True           True False
+Canadian Open    Semifinals          Gauff C.        0.536524    10.095686               True           True  True
+
+Combined filtered set (both events, both tours): n=58, win rate=46.6%
+  Flat         staked=   58.00  P&L=   +3.87  ROI=   +6.7%
+  Kelly 0.25x  staked=  409.43  P&L=   -5.97  ROI=   -1.5%
+  Kelly 0.5x   staked=  818.86  P&L=  -11.95  ROI=   -1.5%
+
+====================================================================================================
+PENALTY = -100 Elo
+====================================================================================================
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+        event         round          opponent  new_model_prob  new_edge_pp  still_positive_ev  clears_filter   won
+      US Open     2nd Round Bouzas Maneiro J.        0.922873    11.118462               True           True  True
+      US Open     4th Round          Osaka N.        0.651546     8.904614               True          False  True
+      US Open Quarterfinals          Zheng Q.        0.755138     2.671681               True          False  True
+Canadian Open     3rd Round             Li A.        0.882767     5.549389               True          False  True
+Canadian Open     4th Round      Samsonova L.        0.829536    10.997109               True           True  True
+Canadian Open Quarterfinals          Osaka N.        0.584167     9.079861               True          False  True
+Canadian Open     The Final        Swiatek I.        0.540379     8.368606               True          False False
+Canadian Open    Semifinals          Gauff C.        0.503416     6.784942               True          False  True
+
+Combined filtered set (both events, both tours): n=54, win rate=44.4%
+  Flat         staked=   54.00  P&L=   +1.64  ROI=   +3.0%
+  Kelly 0.25x  staked=  383.54  P&L=  -19.55  ROI=   -5.1%
+  Kelly 0.5x   staked=  767.09  P&L=  -39.09  ROI=   -5.1%
+
+====================================================================================================
+PENALTY = -125 Elo
+====================================================================================================
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+        event         round          opponent  new_model_prob  new_edge_pp  still_positive_ev  clears_filter   won
+      US Open     2nd Round Bouzas Maneiro J.        0.909720     9.803173               True          False  True
+      US Open     4th Round          Osaka N.        0.620645     5.814495               True          False  True
+      US Open Quarterfinals          Zheng Q.        0.729116     0.069468               True          False  True
+Canadian Open     3rd Round             Li A.        0.865651     3.837848               True          False  True
+Canadian Open     4th Round      Samsonova L.        0.809650     9.008487               True          False  True
+Canadian Open Quarterfinals          Osaka N.        0.551551     5.818207               True          False  True
+Canadian Open     The Final        Swiatek I.        0.507282     5.058906               True          False False
+Canadian Open    Semifinals          Gauff C.        0.470413     3.484611               True          False  True
+
+Combined filtered set (both events, both tours): n=52, win rate=42.3%
+  Flat         staked=   52.00  P&L=   +1.13  ROI=   +2.2%
+  Kelly 0.25x  staked=  358.98  P&L=  -25.44  ROI=   -7.1%
+  Kelly 0.5x   staked=  717.96  P&L=  -50.88  ROI=   -7.1%
+
+====================================================================================================
+PENALTY = -150 Elo
+====================================================================================================
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+        event         round          opponent  new_model_prob  new_edge_pp  still_positive_ev  clears_filter   won
+      US Open     2nd Round Bouzas Maneiro J.        0.895209     8.352094               True          False  True
+      US Open     4th Round          Osaka N.        0.588802     2.630218               True          False  True
+      US Open Quarterfinals          Zheng Q.        0.701551    -2.686997              False          False  True
+Canadian Open     3rd Round             Li A.        0.846958     1.968503               True          False  True
+Canadian Open     4th Round      Samsonova L.        0.788089     6.852413               True          False  True
+Canadian Open Quarterfinals          Osaka N.        0.518548     2.517945               True          False  True
+Canadian Open     The Final        Swiatek I.        0.474245     1.755163               True          False False
+Canadian Open    Semifinals          Gauff C.        0.437800     0.223282               True          False  True
+
+Combined filtered set (both events, both tours): n=53, win rate=41.5%
+  Flat         staked=   53.00  P&L=   +0.13  ROI=   +0.2%
+  Kelly 0.25x  staked=  365.70  P&L=  -32.16  ROI=   -8.8%
+  Kelly 0.5x   staked=  731.40  P&L=  -64.31  ROI=   -8.8%
+
+====================================================================================================
+PENALTY = -175 Elo
+====================================================================================================
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+Loaded 45383 live WTA rows from Kaggle (2006-12-31 to 2026-08-30)
+        event         round          opponent  new_model_prob  new_edge_pp  still_positive_ev  clears_filter   won
+      US Open     2nd Round Bouzas Maneiro J.        0.879252     6.756354               True          False  True
+      US Open     4th Round          Osaka N.        0.556264    -0.623617              False          False  True
+      US Open Quarterfinals          Zheng Q.        0.672563    -5.585814              False          False  True
+Canadian Open     3rd Round             Li A.        0.826634    -0.063884              False          False  True
+Canadian Open     4th Round      Samsonova L.        0.764845     4.528023               True          False  True
+Canadian Open Quarterfinals          Osaka N.        0.485445    -0.792373              False          False  True
+Canadian Open     The Final        Swiatek I.        0.441554    -1.513920              False          False False
+Canadian Open    Semifinals          Gauff C.        0.405849    -2.971757              False          False  True
+
+Combined filtered set (both events, both tours): n=54, win rate=40.7%
+  Flat         staked=   54.00  P&L=   -0.87  ROI=   -1.6%
+  Kelly 0.25x  staked=  373.52  P&L=  -39.98  ROI=  -10.7%
+  Kelly 0.5x   staked=  747.04  P&L=  -79.96  ROI=  -10.7%
+

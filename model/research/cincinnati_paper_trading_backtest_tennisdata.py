@@ -26,11 +26,37 @@ Same Kelly/flat sizing methodology as the original backtest, unchanged:
   - Fractional Kelly at 0.25x/0.5x of full Kelly, against a fixed 100-unit non-compounding
     reference bankroll.
   - Flat 1-unit stake per bet, for direct comparison.
-  - Bets settled at the market's DE-VIGGED implied price (decimal odds = 1/market_prob) - still a
-    best-case assumption, real bookmaker vig would leave less on the table.
   - Same sensitivity-check discipline: report P&L/ROI with and without the single largest-payout
     winning bet, so the headline number is never read without knowing how much it leans on one
     outcome.
+
+GRADING-PRICE CORRECTION (this revision): bets were previously settled at the market's DE-VIGGED
+implied price (decimal odds = 1/market_prob) - a fair-value price nobody could actually trade at,
+since removing the vig only exists on the analysis side, never as a price a bookmaker will quote.
+That overstated every winning bet's payout by however much vig the market was actually holding.
+Settlement now uses each match's MaxW/MaxL column from tennis-data.co.uk - the best (highest) real,
+vig-included closing price recorded across every bookmaker that CSV tracks for that specific
+selection: a price a bettor genuinely could have obtained by shopping the market at close, not a
+theoretical fair price. The de-vigged consensus (AvgW/AvgL, de-vigged) is still used for everything
+upstream of settlement - identifying +EV opportunities, edge_pp, the data-quality filter, and Kelly
+stake sizing all continue to compare the model against the market's fair (de-vigged) read, since
+that is a read on disagreement, not a claim about what price is tradeable. Only the number multiplied
+into P&L on a win changed. Both the old (fair-price) and new (real-price) settlements are printed
+side by side below, specifically so the delta this correction makes is visible rather than silently
+overwriting the earlier headline.
+
+RESULT OF THIS CORRECTION (rerun 2026-09-14, same MIN_HARD_MATCHES/MIN_EDGE_PP filter as always -
+note the underlying Kaggle ratings pull is refetched live each run, so n has since drifted from the
+34 quoted below to 27; that drift is pre-existing data churn, unrelated to this price correction):
+on the standing filtered set (n=27, 55.6% win rate - win rate itself does not move, only payout
+size does), flat-stake ROI goes from +17.1% (old, fair de-vigged settlement) to +14.5% (real,
+best-obtainable settlement), and fractional-Kelly ROI (both 0.25x and 0.5x - fraction only scales
+stake size, not ROI%) goes from +9.8% to +7.1% - roughly a 2.6-2.7 percentage-point haircut, real
+money on the table but not enough to erase the edge. On the unfiltered 190-bet set the correction
+is more damaging: flat ROI goes from +0.9% to -2.3%, and both Kelly ROI figures go from -2.1% to
+-5.3% - already negative, more negative once vig is charged. The single-bet sensitivity check
+still flips both Kelly variants unprofitable if the Pegula-over-Swiatek semifinal bet is excluded,
+same as before - that fragility was never about settlement price.
 
 DATA-QUALITY FILTER (default, standing result): cincinnati_data_quality_filter_test.py measured
 the unfiltered "every side with model_prob > market_prob" opportunity set directly against each
@@ -132,8 +158,11 @@ def build_opportunity_rows_for_tour(tour):
     for row in df.itertuples(index=False):
         winner_raw, loser_raw = row.Winner, row.Loser
         avg_w, avg_l = row.AvgW, row.AvgL
+        max_w, max_l = row.MaxW, row.MaxL
         if pd.isna(avg_w) or pd.isna(avg_l):
             continue  # no usable closing price for this match
+        if pd.isna(max_w) or pd.isna(max_l):
+            continue  # no real, tradeable closing price for this match
 
         winner = match_name_to_pool(winner_raw, pool, tour_config.name_aliases)
         loser = match_name_to_pool(loser_raw, pool, tour_config.name_aliases)
@@ -148,10 +177,12 @@ def build_opportunity_rows_for_tour(tour):
         model_winner = win_probability(winner, loser, bracket.surface, tour_config.ratings_path)
         model_loser = 1 - model_winner
 
-        for player, opponent, model_p, market_p, won in [
-            (winner, loser, model_winner, market_winner, True),
-            (loser, winner, model_loser, market_loser, False),
+        for player, opponent, model_p, market_p, real_odds, won in [
+            (winner, loser, model_winner, market_winner, max_w, True),
+            (loser, winner, model_loser, market_loser, max_l, False),
         ]:
+            # signal for whether/how much to bet: model vs. the market's DE-VIGGED fair read -
+            # unaffected by the settlement-price correction below.
             ev_per_unit = model_p / market_p - 1
             if ev_per_unit <= 0:
                 continue
@@ -160,7 +191,13 @@ def build_opportunity_rows_for_tour(tour):
                 "bet_on": player, "opponent": opponent,
                 "model_prob": model_p, "market_prob": market_p, "ev_per_unit": ev_per_unit,
                 "edge_pp": (model_p - market_p) * 100,
-                "decimal_odds": 1 / market_p, "won": won,
+                # fair (de-vigged) price - kept only as a reference/upper-bound, not tradeable.
+                "decimal_odds": 1 / market_p,
+                # real, actually-obtainable price: the best (highest) closing odds any tracked
+                # bookmaker offered on this exact selection - vig included. This is what settlement
+                # uses.
+                "real_decimal_odds": real_odds,
+                "won": won,
                 "player_hard_matches": hard_matches.get(player),
                 "opponent_hard_matches": hard_matches.get(opponent),
                 "min_hard_matches": min(hard_matches.get(player, 0) or 0, hard_matches.get(opponent, 0) or 0),
@@ -172,7 +209,11 @@ def build_opportunity_rows_for_tour(tour):
     return pd.DataFrame(rows)
 
 
-def size_and_settle(opps):
+def size_and_settle(opps, price_col="decimal_odds"):
+    """Sizes every bet off model_prob vs. market_prob (the de-vigged consensus signal, unaffected
+    by price_col), then settles P&L at price_col - "decimal_odds" (fair, de-vigged, default, kept
+    for backward compatibility with other scripts that import this function) or
+    "real_decimal_odds" (the real, actually-obtainable best closing price)."""
     opps = opps.copy()
     opps["kelly_f_raw"] = opps.apply(lambda r: kelly_fraction(r["model_prob"], r["market_prob"]), axis=1).clip(lower=0)
     for frac in KELLY_FRACTIONS:
@@ -181,7 +222,7 @@ def size_and_settle(opps):
     for label in [f"kelly_{f}" for f in KELLY_FRACTIONS] + ["flat"]:
         stake_col = f"stake_{label}"
         opps[f"pnl_{label}"] = opps.apply(
-            lambda r, sc=stake_col: r[sc] * (r["decimal_odds"] - 1) if r["won"] else -r[sc], axis=1,
+            lambda r, sc=stake_col: r[sc] * (r[price_col] - 1) if r["won"] else -r[sc], axis=1,
         )
     return opps
 
@@ -211,6 +252,21 @@ def print_summary_table(summary, labels, title):
               f"{s['total_staked']:>10.2f} {s['total_pnl']:>+10.2f} {s['roi_pct']:>+7.1f}%")
 
 
+def print_price_correction_delta(summary_fair, summary_real, labels, title):
+    """The whole point of this revision: show, side by side, exactly how much ROI moves when
+    settlement switches from the de-vigged fair price to the real, actually-obtainable best price."""
+    print(f"\n{title}")
+    header = (f"{'Method':<22} {'ROI% (fair, old)':>17} {'ROI% (real, new)':>17} "
+              f"{'ROI pp change':>14} {'P&L (fair)':>11} {'P&L (real)':>11}")
+    print(header)
+    print("-" * len(header))
+    for key, label in labels.items():
+        f, r = summary_fair[key], summary_real[key]
+        delta = r["roi_pct"] - f["roi_pct"]
+        print(f"{label:<22} {f['roi_pct']:>+16.1f}% {r['roi_pct']:>+16.1f}% {delta:>+13.1f}pp "
+              f"{f['total_pnl']:>+11.2f} {r['total_pnl']:>+11.2f}")
+
+
 def main():
     for stream in (sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
@@ -230,34 +286,60 @@ def main():
 
     # --- BEFORE data-quality filtering: every +EV side, unfiltered (kept for transparency, no
     # longer the headline - see MIN_HARD_MATCHES/MIN_EDGE_PP docstring above for why) ---
-    opps_unfiltered = size_and_settle(all_opps)
+    opps_unfiltered_fair = size_and_settle(all_opps, price_col="decimal_odds")
+    opps_unfiltered_real = size_and_settle(all_opps, price_col="real_decimal_odds")
+    summary_unfiltered_fair = summarize(opps_unfiltered_fair)
+    summary_unfiltered_real = summarize(opps_unfiltered_real)
     print_summary_table(
-        summarize(opps_unfiltered), labels,
-        f"--- BEFORE data-quality filtering (n={len(opps_unfiltered)} settled bets; every side "
-        f"with model_prob > market_prob, no data-quality or edge-size floor) ---",
+        summary_unfiltered_fair, labels,
+        f"--- BEFORE data-quality filtering, settled at FAIR de-vigged price (reference/upper-bound "
+        f"only, not tradeable) (n={len(opps_unfiltered_fair)} settled bets) ---",
+    )
+    print_summary_table(
+        summary_unfiltered_real, labels,
+        f"--- BEFORE data-quality filtering, settled at REAL best-obtainable price "
+        f"(n={len(opps_unfiltered_real)} settled bets; every side with model_prob > market_prob, "
+        f"no data-quality or edge-size floor) ---",
+    )
+    print_price_correction_delta(
+        summary_unfiltered_fair, summary_unfiltered_real, labels,
+        "--- Price-correction delta, BEFORE data-quality filtering (real - fair) ---",
     )
 
     # --- AFTER data-quality filtering: the real, standing result ---
     filtered_opps = all_opps[
         (all_opps["min_hard_matches"] >= MIN_HARD_MATCHES) & (all_opps["edge_pp"] >= MIN_EDGE_PP)
     ]
-    opps = size_and_settle(filtered_opps)
+    opps_fair = size_and_settle(filtered_opps, price_col="decimal_odds")
+    opps = size_and_settle(filtered_opps, price_col="real_decimal_odds")
+    summary_fair = summarize(opps_fair)
     summary = summarize(opps)
     print_summary_table(
+        summary_fair, labels,
+        f"--- AFTER data-quality filtering, settled at FAIR de-vigged price (reference/upper-bound "
+        f"only, not tradeable) (n={summary_fair['flat']['n_bets']} settled bets) ---",
+    )
+    print_summary_table(
         summary, labels,
-        f"--- AFTER data-quality filtering (STANDING RESULT): min_hard_matches>={MIN_HARD_MATCHES}, "
-        f"min_edge_pp>={MIN_EDGE_PP:.0f} (n={summary['flat']['n_bets']} settled bets; reference "
-        f"bankroll = {REFERENCE_BANKROLL:.0f} units for Kelly, {FLAT_STAKE:.0f}-unit flat stake) ---",
+        f"--- AFTER data-quality filtering, settled at REAL best-obtainable price (STANDING RESULT): "
+        f"min_hard_matches>={MIN_HARD_MATCHES}, min_edge_pp>={MIN_EDGE_PP:.0f} "
+        f"(n={summary['flat']['n_bets']} settled bets; reference bankroll = {REFERENCE_BANKROLL:.0f} "
+        f"units for Kelly, {FLAT_STAKE:.0f}-unit flat stake) ---",
+    )
+    print_price_correction_delta(
+        summary_fair, summary, labels,
+        "--- Price-correction delta, AFTER data-quality filtering (real - fair; THIS is the number "
+        "that answers 'how much does the earlier ROI change') ---",
     )
 
-    # per-tour breakdown of the filtered (standing) result, since the original 9-match sample was
-    # ATP-only and this is worth seeing split out explicitly
+    # per-tour breakdown of the filtered (standing, real-price) result, since the original 9-match
+    # sample was ATP-only and this is worth seeing split out explicitly
     for tour in ("ATP", "WTA"):
         tour_opps = opps[opps["tour"] == tour]
         if len(tour_opps) == 0:
             print(f"\n{tour}: 0 +EV opportunities survive the data-quality filter.")
             continue
-        print_summary_table(summarize(tour_opps), labels, f"--- {tour} only, filtered (n={len(tour_opps)}) ---")
+        print_summary_table(summarize(tour_opps), labels, f"--- {tour} only, filtered, real price (n={len(tour_opps)}) ---")
 
     # --- sensitivity: with vs. without the single largest-payout WINNING bet ---
     won = opps[opps["won"]]
@@ -271,7 +353,8 @@ def main():
 
         print(f"\n--- Sensitivity: with vs. without the single largest-payout bet "
               f"({outlier['bet_on']} over {outlier['opponent']}, {outlier['tour']} {outlier['round']}, "
-              f"decimal odds {outlier['decimal_odds']:.2f}, won) ---")
+              f"real decimal odds {outlier['real_decimal_odds']:.2f} (fair was {outlier['decimal_odds']:.2f}), "
+              f"won) ---")
         header2 = f"{'Method':<22} {'P&L (with)':>12} {'P&L (w/o)':>12} {'ROI% (with)':>13} {'ROI% (w/o)':>12}"
         print(header2)
         print("-" * len(header2))
@@ -291,21 +374,25 @@ def main():
 
     print(f"\n--- Every +EV opportunity found, sorted by |EV| ---")
     display = opps.sort_values("ev_per_unit", key=abs, ascending=False)[
-        ["tour", "round", "bet_on", "opponent", "model_prob", "market_prob", "ev_per_unit", "decimal_odds", "won"]
+        ["tour", "round", "bet_on", "opponent", "model_prob", "market_prob", "ev_per_unit",
+         "decimal_odds", "real_decimal_odds", "won"]
     ]
     print(display.to_string(index=False, formatters={
         "model_prob": "{:.1%}".format, "market_prob": "{:.1%}".format, "ev_per_unit": "{:+.1%}".format,
-        "decimal_odds": "{:.2f}".format,
+        "decimal_odds": "{:.2f}".format, "real_decimal_odds": "{:.2f}".format,
     }))
 
     print(f"\nASSUMPTIONS (stated plainly, not buried):")
     print(f"  - Fractional Kelly at 0.25x/0.5x of full Kelly, against a fixed {REFERENCE_BANKROLL:.0f}-unit "
           f"non-compounding reference bankroll (these are real-world-concurrent matches, not a "
-          f"strict sequential series).")
-    print(f"  - Every bet settled at the market's DE-VIGGED implied price (decimal odds = "
-          f"1/market_prob, averaged across every book tennis-data.co.uk tracked for this match) - "
-          f"a real placed bet would face a worse, vig-inclusive price, so real P&L would run below "
-          f"what's reported here.")
+          f"strict sequential series). Stake SIZING still compares model_prob against the market's "
+          f"DE-VIGGED fair read (that's a disagreement signal, not a tradeable-price claim) - only "
+          f"settlement price changed in this revision.")
+    print(f"  - Every bet SETTLED at the REAL best-obtainable price (decimal odds = MaxW/MaxL, the "
+          f"highest closing odds any bookmaker tennis-data.co.uk tracked actually offered on that "
+          f"selection) - vig included, a price a bettor genuinely could have gotten. The de-vigged "
+          f"fair price is still reported alongside it (see the price-correction delta tables above) "
+          f"as a reference upper bound, never as the headline P&L number.")
     print(f"  - Model probability uses Elo FROZEN at each tournament's start_date (2026-08-13) - "
           f"no in-tournament result (this player's own run, momentum, etc.) is baked in, matching "
           f"every other pregame-calibration script in this project.")

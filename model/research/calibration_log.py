@@ -151,7 +151,15 @@ def _prepare_ratings(bracket):
     validate_bracket_structure(byes)
 
     matches_history = load_matches_for_tour(bracket.tour)
-    ratings_df = calculate_elo_ratings(matches_history, bracket.start_date)
+    # tour= must be passed so decay3 (WTA-only recency-weighting, see elo_ratings.DECAY3_TOURS)
+    # actually applies here - without it this defaulted to tour=None, silently using the plain
+    # 5-year hard-cutoff window for WTA too, unlike bracket_export.py's real production call
+    # (which already passes tour=bracket.tour). Confirmed 2026-09-17 via a direct before/after
+    # comparison: the effect on model_prob is tiny (mean |shift| 0.003, max 0.010 across 51 real
+    # WTA bets) - this was a real correctness gap, not the explanation for any calibration finding
+    # built on top of it, but every caller of this function should get the same model production
+    # actually runs, not a silently-different variant.
+    ratings_df = calculate_elo_ratings(matches_history, bracket.start_date, tour=bracket.tour)
     ratings_df = ratings_df.sort_values("overall_elo", ascending=False).reset_index(drop=True)
 
     draw, resolutions, ratings_df = match_draw_to_ratings(
